@@ -1,5 +1,6 @@
 __pycache__/
 venv/
+*.log
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -15,6 +16,6 @@ dist/
 .DS_Store
 rl_logs/
 .vscode/
-pokeenv/scripts/replays/*
-pokeenv/scripts/results/*
+showdown_agent/scripts/replays/*
+showdown_agent/scripts/results/*
 

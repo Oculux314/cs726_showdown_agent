@@ -1,3 +1,5 @@
+~/venv/pokemon/scripts/activate.ps1
+
 # COMPSYS726: Pokemon Showdown Expert Agent
 This document provides all the instructions to setup and run the base random agent example and then how to create your own expert agent. 
 
