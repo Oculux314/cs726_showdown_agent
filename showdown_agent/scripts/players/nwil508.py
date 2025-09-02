@@ -3,7 +3,10 @@ from poke_env.battle import AbstractBattle
 from poke_env.player import Player
 from poke_env import AccountConfiguration
 from poke_env.player.battle_order import BattleOrder
+# Import move
+from poke_env.battle import Move
 
+# MARK: TEAM
 team = """
 Forretress (F) @ Leftovers
 Ability: Sturdy
@@ -68,18 +71,48 @@ Careful Nature
 - Stealth Rock
 """
 
+# MARK: GLOBALS
 round_count = 0
 
 class CustomAgent(Player):
     def __init__(self, *args: AccountConfiguration | None, **kwargs: object):
         super().__init__(team=team, *args, **kwargs)
-        # Forfeit current battle if exists
-        # self.reset_battles()
 
     def teampreview(self, battle: AbstractBattle) -> str:
         return "/team 123456"
 
+    # MARK: CHOOSE MOVE
     def choose_move(self, battle: AbstractBattle):
+
+        ## If half health, and can regen, use it
+        if battle.active_pokemon.current_hp / battle.active_pokemon.max_hp < 0.5:
+            move = self.findMove(battle.available_moves, "recover")
+            if move:
+                return self.create_order(move)
+
+        ## Hazards
+        hazardsToMax = { "stealthrock": 1, "toxicspikes": 2, "spikes": 3 }
+        for hazard_name, max_layers in hazardsToMax.items():
+            print(f"Checking {hazard_name}...")
+
+            # Get move & side condition
+            move = self.findMove(battle.available_moves, hazard_name)
+            side_condition = move.side_condition if move else None
+            if not side_condition:
+                # print(f"REJECTED: {battle.active_pokemon.species} has no move that applies {hazard_name}.")
+                continue
+
+            # Get current layers
+            current_layers = battle.opponent_side_conditions.get(side_condition, 0)
+
+            # If we can apply another layer, do it
+            if current_layers < max_layers:
+                move = self.findMove(battle.available_moves, hazard_name)
+                if move:
+                    print(f"ACCEPTED: {battle.active_pokemon.species} applied {hazard_name} using {move.id}.")
+                    return self.create_order(move)
+
+
 
         # global round_count
         # round_count += 1
@@ -91,6 +124,26 @@ class CustomAgent(Player):
         # print(f"Opponent Active: {battle.opponent_active_pokemon}")
         # print(f"Opponent Moves: {battle.opponent_active_pokemon}")
         # print(f"Opponent Team: {battle.opponent_team.values()}")
+        return self.choose_max_damage_move(battle)
 
-        return self.choose_random_move(battle)
-        # return battle.available_moves[0]
+    # MARK: MAX DAMAGE
+    # From max damage bot
+    def choose_max_damage_move(self, battle: AbstractBattle):
+        # Chooses a move with the highest base power when possible
+        if battle.available_moves:
+            # Iterating over available moves to find the one with the highest base power
+            best_move = max(battle.available_moves, key=lambda move: move.base_power)
+            # Creating an order for the selected move
+            return self.create_order(best_move)
+        else:
+            # If no attacking move is available, perform a random switch
+            # This involves choosing a random move, which could be a switch or another available action
+            return self.choose_random_move(battle)
+
+    # MARK: HELPERS
+
+    def findMove(self, moves: list[Move], move_name: str) -> Move | None:
+        for move in moves:
+            if move.id == move_name:
+                return move
+        return None
