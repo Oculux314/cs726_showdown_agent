@@ -186,7 +186,7 @@ def main():
 
     for player in players:
         results_file = os.path.join(
-            os.path.dirname(__file__), "results", f"hp_{player.username}.txt"
+            os.path.dirname(__file__), "results", f"hp_{player.username}.csv"
         )
         if not os.path.exists(os.path.dirname(results_file)):
             os.makedirs(os.path.dirname(results_file))
@@ -214,12 +214,11 @@ def main():
         hp_results["Overall"] = (overall_hp_percentage_lost / len(battles) if battles else 0.0, overall_losses)
 
         with open(results_file, "w", encoding="utf-8") as file:
-            file.write(f"HP Results for player: {player.username}\n")
             print(f"HP Results for player: {player.username}")
             for bot_username, result in hp_results.items():
                 hp_percentage, num_losses = result
-                file.write(f"Against {bot_username}: {hp_percentage:.2f} (Losses: {num_losses})\n")
                 print(f"Against {bot_username}: {hp_percentage:.2f} (Losses: {num_losses})")
+                file.write(f"{bot_username}, {hp_percentage:.2f}, {num_losses}\n")
 
 if __name__ == "__main__":
     main()
