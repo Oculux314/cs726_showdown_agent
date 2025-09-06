@@ -10,67 +10,70 @@ from poke_env.data.gen_data import GenData
 
 # MARK: TEAM
 team = """
-Forretress (F) @ Leftovers
-Ability: Sturdy
-Tera Type: Bug
-EVs: 252 HP / 252 Def / 4 SpD
-Relaxed Nature
-IVs: 0 Spe
-- Spikes
-- Toxic Spikes
-- Stealth Rock
-- Rapid Spin
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
 
-Great Tusk @ Leftovers
-Ability: Protosynthesis
-Tera Type: Ground
-EVs: 252 HP / 252 Def / 4 Spe
-Impish Nature
-- Rapid Spin
-- Stealth Rock
-- Headlong Rush
-- Knock Off
-
-Slowking-Galar (F) @ Heavy-Duty Boots
-Ability: Regenerator
-Tera Type: Poison
-EVs: 252 HP / 4 Def / 252 SpD
-Calm Nature
-- Future Sight
-- Sludge Bomb
-- Toxic
-- Slack Off
-
-Toxapex (F) @ Black Sludge
-Ability: Regenerator
-Tera Type: Poison
-EVs: 252 HP / 252 Def / 4 SpD
-Bold Nature
+Arceus-Ground @ Earth Plate
+Ability: Multitype
+Tera Type: Fairy
+EVs: 248 HP / 8 SpA / 252 Spe
+Timid Nature
 IVs: 0 Atk
-- Toxic
+- Judgment
+- Ice Beam
 - Recover
-- Haze
-- Surf
+- Earth Power
 
-Gholdengo @ Leftovers
-Ability: Good as Gold
-Tera Type: Steel
-EVs: 252 HP / 80 Def / 176 Spe
-Bold Nature
-- Make It Rain
-- Nasty Plot
-- Recover
-- Thunder Wave
-
-Clodsire @ Leftovers
-Ability: Unaware
-Tera Type: Water
-EVs: 252 HP / 4 Def / 252 SpD
-Careful Nature
-- Recover
-- Toxic
-- Toxic Spikes
+Necrozma-Dusk-Mane @ Leftovers
+Ability: Prism Armor
+Tera Type: Flying
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+IVs: 0 SpA
+- Sunsteel Strike
+- Earthquake
+- Morning Sun
 - Stealth Rock
+
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Water
+EVs: 252 SpA / 4 SpD / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Water Spout
+- Origin Pulse
+- Ice Beam
+- Thunder
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Mystical Fire
+- Power Gem
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+IVs: 0 SpA
+- Earthquake
+- Ruination
+- Spikes
+- Whirlwind
 """
 
 # MARK: MEMORY
