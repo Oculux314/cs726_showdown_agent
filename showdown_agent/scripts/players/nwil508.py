@@ -7,6 +7,8 @@ from poke_env.battle import Move
 from poke_env.battle import Pokemon
 from poke_env.calc.damage_calc_gen9 import calculate_damage
 from poke_env.data.gen_data import GenData
+from poke_env.battle import Effect
+from poke_env.data.normalize import to_id_str
 
 # MARK: TEAM
 team = """
@@ -82,6 +84,7 @@ class Memory:
         self.knockoffed_pokes = cast(set[str], set()) # species names of pokes that have been knockoffed
         self.last_used_future_sight = -10 # round number when future sight was last used
         self.toxiced_pokes = cast(set[str], set()) # species names of pokes that have been toxiced
+        self.prev_damage = cast(dict[tuple[str, str, str], float], {}) # attacker_id, defender_id, move_id -> damage
 
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
@@ -106,12 +109,31 @@ class CustomAgent(Player):
         try:
             best_lead_order = self.choose_forced_switch(battle)
             best_lead_species = cast(str, best_lead_order.order.species)
-            print(f"DEBUG: Teampreview chose {best_lead_species}")
+            # print(f"DEBUG: Teampreview chose {best_lead_species}")
             best_lead_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_lead_species), 0)
             return f"/team {best_lead_index + 1}" + "123456".replace(str(best_lead_index + 1), "")
         except Exception as e:
             print(f"ERROR: in teampreview method: {e}")
             return "/team 123456"
+
+    ## MARK: BATTLE MSGs
+    async def _handle_battle_message(self, split_messages: list[list[str]]) -> None:
+        await super()._handle_battle_message(split_messages)
+        battle = await self._get_battle(split_messages[0][0])
+
+        # Remember moves which did no damage due to immunity
+        attacking_poke = ""
+        current_move = ""
+        defender_poke = ""
+        for msg in split_messages:
+            if len(msg) < 2:
+                continue
+            if msg[1] == 'move':
+                attacking_poke = to_id_str(msg[2][4:])
+                current_move = to_id_str(msg[3])
+                defender_poke = to_id_str(msg[4][4:])
+            if msg[1] == '-immune':
+                memory[battle.battle_tag].prev_damage[(attacking_poke, defender_poke, current_move)] = 0
 
     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
         # print(f"--- ROUND {battle.turn} ---")
@@ -145,15 +167,18 @@ class CustomAgent(Player):
 
         ## If half health, and can regen, use it
         if battle.active_pokemon.current_hp / battle.active_pokemon.max_hp < 0.5:
-            move = self.findMove(battle.available_moves, "recover")
-            if not move:
-                move = self.findMove(battle.available_moves, "slackoff")
-            if not move:
-                move = self.findMove(battle.available_moves, "morningsun")
+            # Check for heal block
+            if battle.active_pokemon.effects.get(Effect.HEAL_BLOCK):
+                print(f"INFO: {battle.active_pokemon.species} is affected by Heal Block, cannot use recovery move")
+            else:
+                move = self.findMove(battle.available_moves, "recover")
+                if not move:
+                    move = self.findMove(battle.available_moves, "slackoff")
+                if not move:
+                    move = self.findMove(battle.available_moves, "morningsun")
                 if move:
-                    print(f"ACCEPTED: {battle.active_pokemon.species} used Morning Sun.")
-            if move:
-                return self.create_order(move)
+                    # print(f"ACCEPTED: {battle.active_pokemon.species} used recovery move.")
+                    return self.create_order(move)
 
         ## Hazards
         hazardsToMax = { "stealthrock": 1, "spikes": 3, "toxicspikes": 2 }
@@ -276,7 +301,7 @@ class CustomAgent(Player):
             print("INFO: No opponent active pokemon, choosing to stay in")
             return None
         if len(battle.available_switches) == 0:
-            print("INFO: No available switches, choosing to stay in")
+            # print("INFO: No available switches, choosing to stay in")
             return None
 
         current_pokemon = battle.active_pokemon
@@ -307,6 +332,13 @@ class CustomAgent(Player):
     def estimate_damage(self, attacker: Pokemon, defender: Pokemon, move: Move, battle: Battle, attackingOpponent: bool) -> Tuple[float, float]:
         attacker_id = self.generateIdentifier(attacker, attackingOpponent, battle)
         defender_id = self.generateIdentifier(defender, not attackingOpponent, battle)
+
+        attacker_simple_id = to_id_str(attacker_id[3:])
+        defender_simple_id = to_id_str(defender_id[3:])
+        if (attacker_simple_id, defender_simple_id, move.id) in memory[battle.battle_tag].prev_damage:
+            damage = memory[battle.battle_tag].prev_damage[(attacker_simple_id, defender_simple_id, move.id)]
+            return damage, damage
+
         try:
             return calculate_damage(attacker_id, defender_id, move, battle)
         except Exception as e:
