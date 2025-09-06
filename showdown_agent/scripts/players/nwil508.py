@@ -10,7 +10,7 @@ from poke_env.data.gen_data import GenData
 
 # MARK: TEAM
 team = """
-Koraidon @ Choice Scarf
+Koraidon @ Life Orb
 Ability: Orichalcum Pulse
 Tera Type: Fire
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -18,7 +18,7 @@ Jolly Nature
 - Flare Blitz
 - Close Combat
 - Outrage
-- U-turn
+- Zen Headbutt
 
 Arceus-Ground @ Earth Plate
 Ability: Multitype
@@ -42,7 +42,7 @@ IVs: 0 SpA
 - Morning Sun
 - Stealth Rock
 
-Kyogre @ Choice Specs
+Kyogre @ Expert Belt
 Ability: Drizzle
 Tera Type: Water
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -53,7 +53,7 @@ IVs: 0 Atk
 - Ice Beam
 - Thunder
 
-Flutter Mane @ Choice Specs
+Flutter Mane @ Life Orb
 Ability: Protosynthesis
 Tera Type: Fairy
 EVs: 4 Def / 252 SpA / 252 Spe
@@ -61,7 +61,7 @@ Timid Nature
 IVs: 0 Atk
 - Moonblast
 - Shadow Ball
-- Mystical Fire
+- Energy Ball
 - Power Gem
 
 Ting-Lu @ Leftovers
@@ -72,8 +72,8 @@ Careful Nature
 IVs: 0 SpA
 - Earthquake
 - Ruination
-- Spikes
-- Whirlwind
+- Body Press
+- Heavy Slam
 """
 
 # MARK: MEMORY
