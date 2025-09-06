@@ -100,21 +100,21 @@ class CustomAgent(Player):
             print("ERROR: Expected battle to be of type Battle")
             return "/team 123456"
 
-        return "/team 123456"
+        # return "/team 123456"
 
-        # # Assume opponent will lead with first pokemon
-        # try:
-        #     best_lead_order = self.choose_forced_switch(battle)
-        #     best_lead_species = cast(str, best_lead_order.order.species)
-        #     print(f"DEBUG: Teampreview chose {best_lead_species}")
-        #     best_lead_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_lead_species), 0)
-        #     return f"/team {best_lead_index + 1}" + "123456".replace(str(best_lead_index + 1), "")
-        # except Exception as e:
-        #     print(f"ERROR: in teampreview method: {e}")
-        #     return "/team 123456"
+        # Assume opponent will lead with first pokemon
+        try:
+            best_lead_order = self.choose_forced_switch(battle)
+            best_lead_species = cast(str, best_lead_order.order.species)
+            print(f"DEBUG: Teampreview chose {best_lead_species}")
+            best_lead_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_lead_species), 0)
+            return f"/team {best_lead_index + 1}" + "123456".replace(str(best_lead_index + 1), "")
+        except Exception as e:
+            print(f"ERROR: in teampreview method: {e}")
+            return "/team 123456"
 
     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
-        print(f"--- ROUND {battle.turn} ---")
+        # print(f"--- ROUND {battle.turn} ---")
 
         # Cast: Ensure battle is of correct type
         if not isinstance(battle, Battle):
