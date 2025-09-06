@@ -1,0 +1,98 @@
+|j|☆nwil508
+|j|☆max_damage-nu
+|t:|1757182524
+|gametype|singles
+|player|p1|nwil508|265|
+|player|p2|max_damage-nu|102|
+|gen|9
+|tier|[Gen 9] Ubers
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Species Clause: Limit one of each Pokémon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|clearpoke
+|poke|p1|Koraidon|
+|poke|p1|Arceus-Ground|
+|poke|p1|Necrozma-Dusk-Mane|
+|poke|p1|Kyogre|
+|poke|p1|Flutter Mane|
+|poke|p1|Ting-Lu|
+|poke|p2|Entei|
+|poke|p2|Chesnaught, M|
+|poke|p2|Volcanion|
+|poke|p2|Muk-Alola, M|
+|poke|p2|Bronzong|
+|poke|p2|Zapdos-Galar|
+|teampreview
+|
+|t:|1757182525
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Necrozma|Necrozma-Dusk-Mane|100/100
+|switch|p2a: Volcanion|Volcanion|100/100
+|turn|1
+|
+|t:|1757182632
+|move|p2a: Volcanion|Steam Eruption|p1a: Necrozma
+|-damage|p1a: Necrozma|54/100
+|-status|p1a: Necrozma|brn
+|move|p1a: Necrozma|Stealth Rock|p2a: Volcanion
+|-sidestart|p2: max_damage-nu|move: Stealth Rock
+|
+|-heal|p1a: Necrozma|60/100 brn|[from] item: Leftovers
+|-damage|p1a: Necrozma|54/100 brn|[from] brn
+|upkeep
+|turn|2
+|
+|t:|1757182634
+|switch|p1a: Kyogre|Kyogre|100/100
+|-weather|RainDance|[from] ability: Drizzle|[of] p1a: Kyogre
+|move|p2a: Volcanion|Steam Eruption|p1a: Kyogre
+|-resisted|p1a: Kyogre
+|-damage|p1a: Kyogre|66/100
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|3
+|
+|t:|1757182635
+|move|p1a: Kyogre|Thunder|p2a: Volcanion
+|-supereffective|p2a: Volcanion
+|-damage|p2a: Volcanion|0 fnt
+|faint|p2a: Volcanion
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|t:|1757182635
+|switch|p2a: Chesnaught|Chesnaught, M|100/100
+|-damage|p2a: Chesnaught|94/100|[from] Stealth Rock
+|turn|4
+|
+|t:|1757182636
+|switch|p1a: Flutter Mane|Flutter Mane|100/100
+|move|p2a: Chesnaught|Body Press|p1a: Flutter Mane
+|-immune|p1a: Flutter Mane
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|5
+|
+|t:|1757182637
+|move|p1a: Flutter Mane|Moonblast|p2a: Chesnaught
+|-supereffective|p2a: Chesnaught
+|-damage|p2a: Chesnaught|0 fnt
+|faint|p2a: Chesnaught
+|-damage|p1a: Flutter Mane|91/100|[from] item: Life Orb
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|t:|1757182637
+|switch|p2a: Bronzong|Bronzong|100/100
+|-damage|p2a: Bronzong|94/100|[from] Stealth Rock
+|turn|6

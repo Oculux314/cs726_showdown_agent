@@ -9,6 +9,13 @@ from poke_env.calc.damage_calc_gen9 import calculate_damage
 from poke_env.data.gen_data import GenData
 from poke_env.battle import Effect
 from poke_env.data.normalize import to_id_str
+from poke_env import SimpleHeuristicsPlayer
+import requests
+
+## MARK: Simple Agent
+class DummyOpponentAgent(SimpleHeuristicsPlayer):
+    def __init__(self, team, *args, **kwargs):
+        super().__init__(team=team, *args, **kwargs)
 
 # MARK: TEAM
 team = """
@@ -135,6 +142,24 @@ class CustomAgent(Player):
             if msg[1] == '-immune':
                 memory[battle.battle_tag].prev_damage[(attacking_poke, defender_poke, current_move)] = 0
 
+    def aggregateAllMessages(self, battle: Battle) -> str:
+        # Make a network call to localhost:3001 to get latest data
+        try:
+            # Make the API call
+            response = requests.get(
+                f"http://localhost:3002/battle/{battle.battle_tag}/log",
+                timeout=5
+            )
+
+            if response.status_code == 200:
+                return response.json().get("log", "NO LOG")
+            else:
+                return f"API call failed with status {response.status_code}"
+        except requests.exceptions.RequestException as e:
+            return f"Network error: {str(e)}"
+        except Exception as e:
+            return f"Error aggregating messages: {str(e)}"
+
     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
         # print(f"--- ROUND {battle.turn} ---")
 
@@ -142,6 +167,9 @@ class CustomAgent(Player):
         if not isinstance(battle, Battle):
             print("ERROR: Expected battle to be of type Battle")
             return self.choose_random_move(battle)
+
+        msg = self.aggregateAllMessages(battle)
+        print(msg)
 
         # Safeguard against unexpected errors
         try:
@@ -485,3 +513,36 @@ class CustomAgent(Player):
             if move.id == move_name:
                 return move
         return None
+
+
+
+
+
+
+
+
+
+## MARK: MONTE CARLO AGENT
+
+# class CustomAgent(Player):
+
+#     def __init__(self, *args: AccountConfiguration | None, **kwargs: object):
+#         super().__init__(team=team, *args, **kwargs)
+
+#     def teampreview(self, battle: AbstractBattle) -> str:
+#         return "/team 123456"
+
+#     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
+#         # Cast: Ensure battle is of correct type
+#         if not isinstance(battle, Battle):
+#             print("ERROR: Expected battle to be of type Battle")
+#             return self.choose_random_move(battle)
+
+#         # Safeguard against unexpected errors
+#         try:
+#             if battle.force_switch:
+#                 return self.choose_forced_switch(battle)
+#             return self.choose_move_impl(battle)
+#         except Exception as e:
+#             print(f"ERROR: in main method: {e}")
+#             return self.choose_max_damage_move(battle)
