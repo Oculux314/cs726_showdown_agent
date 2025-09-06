@@ -73,18 +73,45 @@ Careful Nature
 - Stealth Rock
 """
 
+# MARK: MEMORY
+class Memory:
+    def __init__(self):
+        self.round = 0
+
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
+memory = cast(dict[str, Memory], {}) # battle_tag -> Memory
 
-# MARK: INIT
 class CustomAgent(Player):
+
+    # MARK: INIT
     def __init__(self, *args: AccountConfiguration | None, **kwargs: object):
         super().__init__(team=team, *args, **kwargs)
 
     def teampreview(self, battle: AbstractBattle) -> str:
+        memory[battle.battle_tag] = Memory() # Set up memory for this battle
+        # Cast: Ensure battle is of correct type
+        if not isinstance(battle, Battle):
+            print("ERROR: Expected battle to be of type Battle")
+            return "/team 123456"
+
         return "/team 123456"
 
+        # # Assume opponent will lead with first pokemon
+        # try:
+        #     best_lead_order = self.choose_forced_switch(battle)
+        #     best_lead_species = cast(str, best_lead_order.order.species)
+        #     print(f"DEBUG: Teampreview chose {best_lead_species}")
+        #     best_lead_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_lead_species), 0)
+        #     return f"/team {best_lead_index + 1}" + "123456".replace(str(best_lead_index + 1), "")
+        # except Exception as e:
+        #     print(f"ERROR: in teampreview method: {e}")
+        #     return "/team 123456"
+
     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
+        memory[battle.battle_tag].round += 1
+        print(f"--- ROUND {memory[battle.battle_tag].round} ---")
+
         # Cast: Ensure battle is of correct type
         if not isinstance(battle, Battle):
             print("ERROR: Expected battle to be of type Battle")
@@ -93,7 +120,7 @@ class CustomAgent(Player):
         # Safeguard against unexpected errors
         try:
             if battle.force_switch:
-                return self.choose_switch(battle)
+                return self.choose_forced_switch(battle)
             return self.choose_move_impl(battle)
         except Exception as e:
             print(f"ERROR: in main method: {e}")
@@ -107,6 +134,11 @@ class CustomAgent(Player):
             print("WARN: Missing active pokemon, choosing random move")
             return self.choose_random_move(battle)
 
+        # Try switching if we can
+        switch_order = self.try_switch(battle)
+        if switch_order:
+            return switch_order
+
         ## If half health, and can regen, use it
         if battle.active_pokemon.current_hp / battle.active_pokemon.max_hp < 0.5:
             move = self.findMove(battle.available_moves, "recover")
@@ -114,7 +146,7 @@ class CustomAgent(Player):
                 return self.create_order(move)
 
         ## Hazards
-        hazardsToMax = { "stealthrock": 1, "toxicspikes": 2, "spikes": 3 }
+        hazardsToMax = { "stealthrock": 1, "spikes": 3, "toxicspikes": 2 }
         for hazard_name, max_layers in hazardsToMax.items():
             # print(f"Checking {hazard_name}...")
 
@@ -138,22 +170,68 @@ class CustomAgent(Player):
         return self.choose_max_damage_move(battle)
 
     # MARK: SWITCHING
-    def choose_switch(self, battle: Battle) -> BattleOrder:
+
+    # Find first non-fainted opponent pokemon
+    def findFirstNonFaintedOpponent(self, battle: dict[str, Pokemon]) -> Pokemon | None:
+        for poke in battle.values():
+            if not poke.fainted:
+                return poke
+        return None
+
+    # Only when pokemon faints or otherwise forced
+    def choose_forced_switch(self, battle: Battle) -> BattleOrder:
+        opponent_pokemon = battle.opponent_active_pokemon
+
         # If we have no available switches, random
-        if not battle.opponent_active_pokemon:
-            print("INFO: No opponent active pokemon, choosing random move")
+        if not opponent_pokemon:
+            opponent_pokemon = self.findFirstNonFaintedOpponent(battle.opponent_team)
+            if not opponent_pokemon:
+                print("INFO: No opponent active pokemon, choosing random move")
+                return self.choose_random_move(battle)
+        if len(battle.available_switches) == 0:
+            print("INFO: No available switches, choosing random move")
             return self.choose_random_move(battle)
 
-        opposing_pokemon = battle.opponent_active_pokemon
-        # Find the best switch
-        best_switch = max(
-            battle.available_switches,
-            key=lambda poke: self.getTypeScoreTwoWay(poke, opposing_pokemon)
-        )
+        best_switch = self.getPokemonToTypeScore(battle, opponent_pokemon)[0]
+        print(f"DEBUG: Switching to {best_switch[0].species} with type score {best_switch[1]:.2f}")
+        return self.create_order(best_switch[0])
 
-        type_score = self.getTypeScoreTwoWay(best_switch, opposing_pokemon)
-        print(f"DEBUG: Switching to {best_switch.species} with type score {type_score:.2f}")
-        return self.create_order(best_switch)
+    # Return None if better to stay in
+    def try_switch(self, battle: Battle) -> BattleOrder | None:
+        if not battle.active_pokemon:
+            print("ERROR: No active pokemon, this should never happen")
+            return None
+        # If opponent is fainted, better to stay in and attack
+        if not battle.opponent_active_pokemon:
+            print("INFO: No opponent active pokemon, choosing to stay in")
+            return None
+        if len(battle.available_switches) == 0:
+            print("INFO: No available switches, choosing to stay in")
+            return None
+
+        current_pokemon = battle.active_pokemon
+        opposing_pokemon = battle.opponent_active_pokemon
+        type_score_current = self.getTypeScoreTwoWay(current_pokemon, opposing_pokemon)
+        switches = self.getPokemonToTypeScore(battle, opposing_pokemon)
+        best_switch = switches[0]
+
+        if best_switch[0].species == 'gholdengo' and len(switches) > 1 and switches[1][1] < best_switch[1] * 1.2:
+            print(f"INFO: Avoiding switch to {best_switch[0].species}")
+            best_switch = switches[1] # Avoid switching to Gholdengo unless it's clearly better
+
+        if best_switch[1] > type_score_current * 1.5:
+            print(f"INFO: Switching to {best_switch[0].species}")
+            return self.create_order(best_switch[0])
+        print("INFO: Better to stay in")
+        return None
+
+    def getPokemonToTypeScore(self, battle: Battle, opponent_pokemon: Pokemon) -> list[tuple[Pokemon, float]]:
+        result = cast(list[tuple[Pokemon, float]], [])
+        for poke in battle.available_switches:
+            result.append((poke, self.getTypeScoreTwoWay(poke, opponent_pokemon) if opponent_pokemon else 1))
+        # Sort by descending type score
+        result.sort(key=lambda x: x[1], reverse=True)
+        return result
 
     # MARK: DAMAGE HEURISTICS
     def estimate_damage(self, attacker: Pokemon, defender: Pokemon, move: Move, battle: Battle, attackingOpponent: bool) -> Tuple[float, float]:
@@ -218,6 +296,7 @@ class CustomAgent(Player):
         scoreBToA = self.getTypeScoreOneWay(pokemonB, pokemonA) # B -> A
         if scoreBToA == 0:
             print("WARN: Division by zero in type score calculation, returning large value")
+            return float("inf")
         return scoreAToB / scoreBToA
 
     def getTypeScoreOneWay(self, attacker: Pokemon, defender: Pokemon) -> float:
@@ -234,12 +313,19 @@ class CustomAgent(Player):
             # print(f"DEBUG: {attacker.species}'s {attack_type} moves have x{multiplier:.2f} effectiveness against {defender.species} (weight {count})")
             score += multiplier * count
 
+        if score / attacker_type_histogram.get("TOTAL", 1) == 0:
+            print("WARN: Division by zero in type score calculation, returning 0")
+            return 0.0
+
         return score / attacker_type_histogram.get("TOTAL", 1)
 
     def getTypeMultiplier(self, attacking_type: str, defending_type: str) -> float:
         return gen9_data.type_chart.get(defending_type, {}).get(attacking_type, 1.0)
 
     def getLearnableMoves(self, pokemon: Pokemon) -> dict[str, Any]:
+        if pokemon.moves and len(pokemon.moves) > 0:
+            return {move_id: gen9_data.moves[move_id] for move_id in pokemon.moves if move_id in gen9_data.moves}
+
         learnset_of_original = gen9_data.learnset.get(pokemon.species)
         learnset_of_base = gen9_data.learnset.get(pokemon.base_species) if pokemon.base_species != pokemon.species else {}
         moveset = {**self.getLearnableMovesLearnset(learnset_of_base), **self.getLearnableMovesLearnset(learnset_of_original)}
