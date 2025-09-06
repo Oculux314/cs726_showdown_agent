@@ -148,6 +148,10 @@ class CustomAgent(Player):
             move = self.findMove(battle.available_moves, "recover")
             if not move:
                 move = self.findMove(battle.available_moves, "slackoff")
+            if not move:
+                move = self.findMove(battle.available_moves, "morningsun")
+                if move:
+                    print(f"ACCEPTED: {battle.active_pokemon.species} used Morning Sun.")
             if move:
                 return self.create_order(move)
 
@@ -203,6 +207,16 @@ class CustomAgent(Player):
             health_pct = battle.active_pokemon.current_hp_fraction
             if sp_atk_boosts < 6 and health_pct > 0.5:
                 move = self.findMove(battle.available_moves, "nastyplot")
+                if move:
+                    return self.create_order(move)
+
+        ## Necrozma Dusk Mane Swords Dance
+        if battle.active_pokemon.species == 'necrozmaduskmane':
+            # Get current Attack
+            atk_boosts = battle.active_pokemon.boosts.get('atk', 0)
+            health_pct = battle.active_pokemon.current_hp_fraction
+            if atk_boosts < 6 and health_pct > 0.5:
+                move = self.findMove(battle.available_moves, "swordsdance")
                 if move:
                     return self.create_order(move)
 
