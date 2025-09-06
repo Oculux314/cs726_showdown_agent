@@ -76,7 +76,9 @@ Careful Nature
 # MARK: MEMORY
 class Memory:
     def __init__(self):
-        self.round = 0
+        self.knockoffed_pokes = cast(set[str], set()) # species names of pokes that have been knockoffed
+        self.last_used_future_sight = -10 # round number when future sight was last used
+        self.toxiced_pokes = cast(set[str], set()) # species names of pokes that have been toxiced
 
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
@@ -109,8 +111,7 @@ class CustomAgent(Player):
         #     return "/team 123456"
 
     def choose_move(self, battle: AbstractBattle) -> BattleOrder:
-        memory[battle.battle_tag].round += 1
-        print(f"--- ROUND {memory[battle.battle_tag].round} ---")
+        print(f"--- ROUND {battle.turn} ---")
 
         # Cast: Ensure battle is of correct type
         if not isinstance(battle, Battle):
@@ -142,6 +143,8 @@ class CustomAgent(Player):
         ## If half health, and can regen, use it
         if battle.active_pokemon.current_hp / battle.active_pokemon.max_hp < 0.5:
             move = self.findMove(battle.available_moves, "recover")
+            if not move:
+                move = self.findMove(battle.available_moves, "slackoff")
             if move:
                 return self.create_order(move)
 
@@ -164,10 +167,60 @@ class CustomAgent(Player):
             if current_layers < max_layers:
                 move = self.findMove(battle.available_moves, hazard_name)
                 if move:
-                    print(f"ACCEPTED: {battle.active_pokemon.species} applied {hazard_name} using {move.id}.")
+                    # print(f"ACCEPTED: {battle.active_pokemon.species} applied {hazard_name} using {move.id}.")
                     return self.create_order(move)
 
+        ## Knock off if we can and haven't already
+        if battle.active_pokemon.species not in memory[battle.battle_tag].knockoffed_pokes:
+            move = self.findMove(battle.available_moves, "knockoff")
+            if move:
+                memory[battle.battle_tag].knockoffed_pokes.add(battle.active_pokemon.species)
+                print(f"ACCEPTED: {battle.active_pokemon.species} used knockoff.")
+                return self.create_order(move)
+
+        ## Rapid Spin if we can and hazards are up
+        if self.check_hazards(battle) > 0:
+            move = self.findMove(battle.available_moves, "rapidspin")
+            if move:
+                return self.create_order(move)
+
+        ## Toxic if we can and opponent isn't already statused
+        if not self.opponent_has_status(battle, "tox") and battle.opponent_active_pokemon.species not in memory[battle.battle_tag].toxiced_pokes:
+            move = self.findMove(battle.available_moves, "toxic")
+            if move:
+                # print("DEBUG: Using Toxic. Current toxiced pokes:", memory[battle.battle_tag].toxiced_pokes)
+                memory[battle.battle_tag].toxiced_pokes.add(battle.opponent_active_pokemon.species) # Avoid re-toxicing with same pokemon
+                # print("DEBUG: Current toxiced pokes:", memory[battle.battle_tag].toxiced_pokes)
+                return self.create_order(move)
+
+        ## Gholdengo Nasty Plot
+        if battle.active_pokemon.species == 'gholdengo':
+            # Get current Special Attack
+            sp_atk_boosts = battle.active_pokemon.boosts.get('spa', 0)
+            health_pct = battle.active_pokemon.current_hp_fraction
+            if sp_atk_boosts < 6 and health_pct > 0.5:
+                move = self.findMove(battle.available_moves, "nastyplot")
+                if move:
+                    return self.create_order(move)
+
+        ## If all else fails, just go for max damage
         return self.choose_max_damage_move(battle)
+
+    # MARK: STATUS CHECKS
+    def check_hazards(self, battle: Battle) -> int:
+        total_hazards = 0
+        hazards = battle.side_conditions.items()
+        for _condition, layers in hazards:
+            total_hazards += layers
+        return total_hazards
+
+    def opponent_has_status(self, battle: Battle, status: str) -> bool:
+        if not battle.opponent_active_pokemon:
+            return False
+        opp_status = battle.opponent_active_pokemon.status
+        if not opp_status:
+            return False
+        return status.lower() == opp_status.name.lower()
 
     # MARK: SWITCHING
 
@@ -193,7 +246,7 @@ class CustomAgent(Player):
             return self.choose_random_move(battle)
 
         best_switch = self.getPokemonToTypeScore(battle, opponent_pokemon)[0]
-        print(f"DEBUG: Switching to {best_switch[0].species} with type score {best_switch[1]:.2f}")
+        # print(f"DEBUG: Switching to {best_switch[0].species} with type score {best_switch[1]:.2f}")
         return self.create_order(best_switch[0])
 
     # Return None if better to stay in
@@ -216,13 +269,13 @@ class CustomAgent(Player):
         best_switch = switches[0]
 
         if best_switch[0].species == 'gholdengo' and len(switches) > 1 and switches[1][1] < best_switch[1] * 1.2:
-            print(f"INFO: Avoiding switch to {best_switch[0].species}")
+            # print(f"INFO: Avoiding switch to {best_switch[0].species}")
             best_switch = switches[1] # Avoid switching to Gholdengo unless it's clearly better
 
         if best_switch[1] > type_score_current * 1.5:
-            print(f"INFO: Switching to {best_switch[0].species}")
+            # print(f"INFO: Switching to {best_switch[0].species}")
             return self.create_order(best_switch[0])
-        print("INFO: Better to stay in")
+        # print("INFO: Better to stay in")
         return None
 
     def getPokemonToTypeScore(self, battle: Battle, opponent_pokemon: Pokemon) -> list[tuple[Pokemon, float]]:
@@ -270,23 +323,46 @@ class CustomAgent(Player):
             and battle.active_pokemon is not None
             and battle.opponent_active_pokemon is not None
         ):
-            # Iterating over available moves to find the one with the highest base power
-            best_move = max(
-                battle.available_moves,
-                key=lambda move: self.estimate_damage(
-                    cast(Pokemon, battle.active_pokemon),
-                    cast(Pokemon, battle.opponent_active_pokemon),
-                    move,
-                    battle,
-                    True
-                )[1]  # Use max damage value for comparison
-            )
+            # Iterating over available moves to find the one with the highest expected damage
+            best_move = self.getMaxDamageMove(battle)
             # Creating an order for the selected move
             return self.create_order(best_move)
         # If no attacking move is available, perform a random switch
         # This involves choosing a random move, which could be a switch or another available action
         print("WARN: No attacking move available. Choosing random move.")
         return self.choose_random_move(battle)
+
+    def getMaxDamageMove(self, battle: Battle) -> Move:
+        ranked_moves = self.getRankedMovesByDamage(battle)
+        best_move = ranked_moves[0][0] if ranked_moves else battle.available_moves[0]
+
+        # Avoid wasting moves like Future Sight
+        if best_move.id == "futuresight" and battle.turn - memory[battle.battle_tag].last_used_future_sight < 3:
+            if len(ranked_moves) > 1:
+                best_move = ranked_moves[1][0]
+        if best_move.id == "futuresight": # Update memory only if we actually use Future Sight
+            memory[battle.battle_tag].last_used_future_sight = battle.turn
+
+        return best_move
+
+    def getRankedMovesByDamage(self, battle: Battle) -> list[tuple[Move, float]]:
+        """Returns moves ranked by average damage in descending order."""
+        move_damage_pairs: list[tuple[Move, float]] = []
+
+        for move in battle.available_moves:
+            min_damage, max_damage = self.estimate_damage(
+                cast(Pokemon, battle.active_pokemon),
+                cast(Pokemon, battle.opponent_active_pokemon),
+                move,
+                battle,
+                True
+            )
+            avg_damage = (min_damage + max_damage) / 2.0
+            move_damage_pairs.append((move, avg_damage))
+
+        # Sort by average damage in descending order
+        move_damage_pairs.sort(key=lambda x: x[1], reverse=True)
+        return move_damage_pairs
 
     # MARK: TYPE HEURISTICS
 
@@ -295,7 +371,7 @@ class CustomAgent(Player):
         scoreAToB = self.getTypeScoreOneWay(pokemonA, pokemonB) # A -> B
         scoreBToA = self.getTypeScoreOneWay(pokemonB, pokemonA) # B -> A
         if scoreBToA == 0:
-            print("WARN: Division by zero in type score calculation, returning large value")
+            # print("WARN: Division by zero in type score calculation, returning large value")
             return float("inf")
         return scoreAToB / scoreBToA
 
@@ -314,7 +390,7 @@ class CustomAgent(Player):
             score += multiplier * count
 
         if score / attacker_type_histogram.get("TOTAL", 1) == 0:
-            print("WARN: Division by zero in type score calculation, returning 0")
+            # print("WARN: Division by zero in type score calculation, returning 0")
             return 0.0
 
         return score / attacker_type_histogram.get("TOTAL", 1)
