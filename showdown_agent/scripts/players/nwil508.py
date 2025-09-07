@@ -168,8 +168,8 @@ class CustomAgent(Player):
             print("ERROR: Expected battle to be of type Battle")
             return self.choose_random_move(battle)
 
-        msg = self.aggregateAllMessages(battle)
-        print(msg)
+        # msg = self.aggregateAllMessages(battle)
+        # print(msg)
 
         # Safeguard against unexpected errors
         try:
