@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23558</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23558<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23558|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Kilowattrel|Kilowattrel, L83, M|252/252
+|switch|p2a: Lunala|Lunala, L70|100/100
+|turn|1
+|
+|switch|p1a: Golem|Golem-Alola, L93, F|300/300
+|move|p2a: Lunala|Moongeist Beam|p1a: Golem
+|-damage|p1a: Golem|180/300
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Lunala|Moongeist Beam|p1a: Golem
+|-damage|p1a: Golem|75/300
+|move|p1a: Golem|Earthquake|p2a: Lunala
+|-damage|p2a: Lunala|77/100
+|-damage|p1a: Golem|45/300|[from] item: Life Orb
+|
+|-heal|p2a: Lunala|83/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Lunala|Moongeist Beam|p1a: Golem
+|-damage|p1a: Golem|0 fnt
+|faint|p1a: Golem
+|
+|-heal|p2a: Lunala|89/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Meowstic|Meowstic, L89, M|277/277
+|turn|4
+|
+|move|p1a: Meowstic|Psychic Noise|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|77/100
+|-start|p2a: Lunala|move: Heal Block
+|move|p2a: Lunala|Moongeist Beam|p1a: Meowstic
+|-supereffective|p1a: Meowstic
+|-damage|p1a: Meowstic|85/277
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Meowstic|Psychic Noise|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|65/100
+|move|p2a: Lunala|Moongeist Beam|p1a: Meowstic
+|-supereffective|p1a: Meowstic
+|-damage|p1a: Meowstic|0 fnt
+|faint|p1a: Meowstic
+|
+|-end|p2a: Lunala|move: Heal Block
+|upkeep
+|
+|switch|p1a: Kilowattrel|Kilowattrel, L83, M|252/252
+|turn|6
+|
+|move|p1a: Kilowattrel|Roost||[still]
+|-fail|p1a: Kilowattrel|heal
+|move|p2a: Lunala|Moongeist Beam|p1a: Kilowattrel
+|-damage|p1a: Kilowattrel|114/252
+|
+|-heal|p2a: Lunala|71/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Kilowattrel|Roost|p1a: Kilowattrel
+|-heal|p1a: Kilowattrel|240/252
+|-singleturn|p1a: Kilowattrel|move: Roost
+|move|p2a: Lunala|Moongeist Beam|p1a: Kilowattrel
+|-crit|p1a: Kilowattrel
+|-damage|p1a: Kilowattrel|23/252
+|
+|-heal|p2a: Lunala|77/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Kilowattrel|Roost|p1a: Kilowattrel
+|-heal|p1a: Kilowattrel|149/252
+|-singleturn|p1a: Kilowattrel|move: Roost
+|move|p2a: Lunala|Moongeist Beam|p1a: Kilowattrel
+|-damage|p1a: Kilowattrel|4/252
+|
+|-heal|p2a: Lunala|83/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Kilowattrel|Roost|p1a: Kilowattrel
+|-heal|p1a: Kilowattrel|130/252
+|-singleturn|p1a: Kilowattrel|move: Roost
+|move|p2a: Lunala|Psyshock|p1a: Kilowattrel
+|-damage|p1a: Kilowattrel|21/252
+|
+|-heal|p2a: Lunala|89/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Kilowattrel|Discharge|p2a: Lunala
+|-damage|p2a: Lunala|58/100
+|move|p2a: Lunala|Psyshock|p1a: Kilowattrel
+|-damage|p1a: Kilowattrel|0 fnt
+|faint|p1a: Kilowattrel
+|
+|-heal|p2a: Lunala|64/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, F|364/364
+|turn|11
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p2a: Lunala|70/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p2a: Lunala|76/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-crit|p1a: Vaporeon
+|-damage|p1a: Vaporeon|222/364
+|
+|-heal|p2a: Lunala|83/100|[from] item: Leftovers
+|-heal|p1a: Vaporeon|244/364|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p2a: Lunala|89/100|[from] item: Leftovers
+|-heal|p1a: Vaporeon|266/364|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p2a: Lunala|95/100|[from] item: Leftovers
+|-heal|p1a: Vaporeon|288/364|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-damage|p1a: Vaporeon|180/364
+|
+|-heal|p2a: Lunala|100/100|[from] item: Leftovers
+|-heal|p1a: Vaporeon|202/364|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p1a: Vaporeon|224/364|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-damage|p1a: Vaporeon|121/364
+|
+|-heal|p1a: Vaporeon|143/364|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p1a: Vaporeon|165/364|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-damage|p1a: Vaporeon|68/364
+|
+|-heal|p1a: Vaporeon|90/364|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p1a: Vaporeon|112/364|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-damage|p1a: Vaporeon|15/364
+|
+|-heal|p1a: Vaporeon|37/364|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p1a: Vaporeon|59/364|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|-terastallize|p1a: Vaporeon|Ground
+|move|p2a: Lunala|Psyshock|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|
+|upkeep
+|
+|switch|p1a: Sneasler|Sneasler, L74, F|240/240
+|turn|25
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|1
+|-boost|p2a: Lunala|spd|1
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Sneasler|Close Combat|p2a: Lunala
+|-immune|p2a: Lunala
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|93/100
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|99/100|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|84/100
+|-status|p2a: Lunala|par
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|90/100 par|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|75/100 par
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|81/100 par|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|64/100 par
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|70/100 par|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-crit|p2a: Lunala
+|-damage|p2a: Lunala|45/100 par
+|cant|p2a: Lunala|par
+|
+|-heal|p2a: Lunala|51/100 par|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|35/100 par
+|cant|p2a: Lunala|par
+|
+|-heal|p2a: Lunala|41/100 par|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|25/100 par
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|31/100 par|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|16/100 par
+|move|p2a: Lunala|Calm Mind|p2a: Lunala
+|-boost|p2a: Lunala|spa|0
+|-boost|p2a: Lunala|spd|0
+|
+|-heal|p2a: Lunala|22/100 par|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|6/100 par
+|cant|p2a: Lunala|par
+|
+|-heal|p2a: Lunala|13/100 par|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Lunala
+|-resisted|p2a: Lunala
+|-damage|p2a: Lunala|0 fnt
+|faint|p2a: Lunala
+|
+|upkeep
+|
+|switch|p2a: Torterra|Torterra, L78, F|100/100
+|turn|43
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Torterra
+|-damage|p2a: Torterra|71/100
+|-status|p2a: Torterra|slp
+|cant|p2a: Torterra|slp
+|
+|upkeep
+|turn|44
+|
+|move|p1a: Sneasler|Dire Claw|p2a: Torterra
+|-damage|p2a: Torterra|41/100 slp
+|-curestatus|p2a: Torterra|slp|[msg]
+|move|p2a: Torterra|Headlong Rush|p1a: Sneasler
+|-supereffective|p1a: Sneasler
+|-damage|p1a: Sneasler|0 fnt
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|faint|p1a: Sneasler
+|
+|upkeep
+|
+|switch|p1a: Kingdra|Kingdra, L84, F|263/263
+|turn|45
+|
+|move|p1a: Kingdra|Hurricane|p2a: Torterra
+|-supereffective|p2a: Torterra
+|-damage|p2a: Torterra|0 fnt
+|faint|p2a: Torterra
+|-damage|p1a: Kingdra|237/263|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Smeargle|Smeargle, L95, F|100/100
+|turn|46
+|
+|move|p2a: Smeargle|Population Bomb|p1a: Kingdra
+|-damage|p1a: Kingdra|221/263
+|-crit|p1a: Kingdra
+|-damage|p1a: Kingdra|197/263
+|-damage|p1a: Kingdra|181/263
+|-damage|p1a: Kingdra|165/263
+|-damage|p1a: Kingdra|149/263
+|-damage|p1a: Kingdra|134/263
+|-damage|p1a: Kingdra|116/263
+|-damage|p1a: Kingdra|100/263
+|-damage|p1a: Kingdra|84/263
+|-crit|p1a: Kingdra
+|-damage|p1a: Kingdra|60/263
+|-hitcount|p1a: Kingdra|10
+|move|p1a: Kingdra|Hurricane|p2a: Smeargle
+|-damage|p2a: Smeargle|43/100
+|-damage|p1a: Kingdra|34/263|[from] item: Life Orb
+|
+|upkeep
+|turn|47
+|
+|move|p2a: Smeargle|Population Bomb|p1a: Kingdra
+|-damage|p1a: Kingdra|19/263
+|-damage|p1a: Kingdra|4/263
+|-damage|p1a: Kingdra|0 fnt
+|faint|p1a: Kingdra
+|-hitcount|p1: Kingdra|3
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

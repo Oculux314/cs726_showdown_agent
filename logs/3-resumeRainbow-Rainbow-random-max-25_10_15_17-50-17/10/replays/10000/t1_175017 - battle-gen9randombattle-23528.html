@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23528</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23528<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23528|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Gardevoir|Gardevoir, L83, F|249/249
+|switch|p2a: Cyclizar|Cyclizar, L83, M|100/100
+|-ability|p1a: Gardevoir|Regenerator|Trace|[from] ability: Trace|[of] p2a: Cyclizar
+|turn|1
+|
+|switch|p1a: Raikou|Raikou, L81|278/278
+|-ability|p1a: Raikou|Pressure
+|move|p2a: Cyclizar|Draco Meteor|p1a: Raikou
+|-damage|p1a: Raikou|172/278
+|-unboost|p2a: Cyclizar|spa|2
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Cyclizar|Draco Meteor|p1a: Raikou
+|-damage|p1a: Raikou|118/278
+|-unboost|p2a: Cyclizar|spa|2
+|move|p1a: Raikou|Scald|p2a: Cyclizar
+|-resisted|p2a: Cyclizar
+|-damage|p2a: Cyclizar|79/100
+|-status|p2a: Cyclizar|brn
+|
+|-damage|p2a: Cyclizar|73/100 brn|[from] brn
+|upkeep
+|turn|3
+|
+|move|p2a: Cyclizar|Draco Meteor|p1a: Raikou
+|-damage|p1a: Raikou|75/278
+|-unboost|p2a: Cyclizar|spa|2
+|move|p1a: Raikou|Scald|p2a: Cyclizar
+|-resisted|p2a: Cyclizar
+|-damage|p2a: Cyclizar|51/100 brn
+|
+|-damage|p2a: Cyclizar|45/100 brn|[from] brn
+|upkeep
+|turn|4
+|
+|move|p2a: Cyclizar|Draco Meteor|p1a: Raikou
+|-damage|p1a: Raikou|47/278
+|move|p1a: Raikou|Scald|p2a: Cyclizar
+|-resisted|p2a: Cyclizar
+|-damage|p2a: Cyclizar|21/100 brn
+|
+|-damage|p2a: Cyclizar|15/100 brn|[from] brn
+|upkeep
+|turn|5
+|
+|move|p2a: Cyclizar|Knock Off|p1a: Raikou
+|-damage|p1a: Raikou|5/278
+|-enditem|p1a: Raikou|Choice Specs|[from] move: Knock Off|[of] p2a: Cyclizar
+|move|p1a: Raikou|Scald|p2a: Cyclizar
+|-resisted|p2a: Cyclizar
+|-damage|p2a: Cyclizar|0 fnt
+|faint|p2a: Cyclizar
+|
+|upkeep
+|
+|switch|p2a: Greninja|Greninja, L80, M|100/100
+|turn|6
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Raikou
+|-start|p2a: Greninja|typechange|Poison|[from] ability: Protean
+|-damage|p1a: Raikou|0 fnt
+|faint|p1a: Raikou
+|-damage|p2a: Greninja|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Toucannon|Toucannon, L88, M|284/284
+|turn|7
+|
+|-singleturn|p1a: Toucannon|move: Beak Blast
+|move|p2a: Greninja|Gunk Shot|p1a: Toucannon
+|-damage|p1a: Toucannon|115/284
+|-damage|p2a: Greninja|81/100|[from] item: Life Orb
+|move|p1a: Toucannon|Beak Blast|p2a: Greninja
+|-damage|p2a: Greninja|8/100
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Toucannon|[miss]
+|-miss|p2a: Greninja|p1a: Toucannon
+|move|p1a: Toucannon|Roost|p1a: Toucannon
+|-heal|p1a: Toucannon|257/284
+|-singleturn|p1a: Toucannon|move: Roost
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Toucannon|[miss]
+|-miss|p2a: Greninja|p1a: Toucannon
+|move|p1a: Toucannon|Roost|p1a: Toucannon
+|-heal|p1a: Toucannon|284/284
+|-singleturn|p1a: Toucannon|move: Roost
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Toucannon|[miss]
+|-miss|p2a: Greninja|p1a: Toucannon
+|move|p1a: Toucannon|Roost||[still]
+|-fail|p1a: Toucannon|heal
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Toucannon
+|-damage|p1a: Toucannon|120/284
+|-damage|p2a: Greninja|0 fnt|[from] item: Life Orb
+|faint|p2a: Greninja
+|move|p1a: Toucannon|Roost|p1a: Toucannon
+|-heal|p1a: Toucannon|262/284
+|-singleturn|p1a: Toucannon|move: Roost
+|
+|upkeep
+|
+|switch|p2a: Typhlosion|Typhlosion, L84, F|100/100
+|turn|12
+|
+|move|p2a: Typhlosion|Eruption|p1a: Toucannon
+|-damage|p1a: Toucannon|69/284
+|move|p1a: Toucannon|Roost|p1a: Toucannon
+|-heal|p1a: Toucannon|211/284
+|-singleturn|p1a: Toucannon|move: Roost
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Typhlosion|Eruption|p1a: Toucannon
+|-damage|p1a: Toucannon|9/284
+|move|p1a: Toucannon|Roost|p1a: Toucannon
+|-heal|p1a: Toucannon|151/284
+|-singleturn|p1a: Toucannon|move: Roost
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Typhlosion|Eruption|p1a: Toucannon
+|-damage|p1a: Toucannon|0 fnt
+|faint|p1a: Toucannon
+|
+|upkeep
+|
+|switch|p1a: Gardevoir|Gardevoir, L83, F|249/249
+|-ability|p1a: Gardevoir|Blaze|Trace|[from] ability: Trace|[of] p2a: Typhlosion
+|turn|15
+|
+|move|p2a: Typhlosion|Eruption|p1a: Gardevoir
+|-damage|p1a: Gardevoir|117/249
+|move|p1a: Gardevoir|Psychic|p2a: Typhlosion
+|-damage|p2a: Typhlosion|52/100
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Typhlosion|Eruption|p1a: Gardevoir
+|-damage|p1a: Gardevoir|39/249
+|move|p1a: Gardevoir|Psychic|p2a: Typhlosion
+|-damage|p2a: Typhlosion|11/100
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Typhlosion|Eruption|p1a: Gardevoir
+|-damage|p1a: Gardevoir|17/249
+|move|p1a: Gardevoir|Psychic|p2a: Typhlosion
+|-damage|p2a: Typhlosion|0 fnt
+|faint|p2a: Typhlosion
+|
+|upkeep
+|
+|switch|p2a: Veluza|Veluza, L85, F|100/100
+|turn|18
+|
+|move|p1a: Gardevoir|Psychic|p2a: Veluza
+|-resisted|p2a: Veluza
+|-damage|p2a: Veluza|76/100
+|move|p2a: Veluza|Aqua Cutter|p1a: Gardevoir
+|-damage|p1a: Gardevoir|0 fnt
+|faint|p1a: Gardevoir
+|
+|upkeep
+|
+|switch|p1a: Calyrex|Calyrex, L93|337/337
+|-ability|p1a: Calyrex|Unnerve
+|turn|19
+|
+|move|p1a: Calyrex|Psychic|p2a: Veluza
+|-resisted|p2a: Veluza
+|-crit|p2a: Veluza
+|-damage|p2a: Veluza|43/100
+|move|p2a: Veluza|Aqua Cutter|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-damage|p1a: Calyrex|249/337
+|
+|-heal|p1a: Calyrex|270/337|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Calyrex|Psychic|p2a: Veluza
+|-resisted|p2a: Veluza
+|-damage|p2a: Veluza|22/100
+|move|p2a: Veluza|Aqua Cutter|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-damage|p1a: Calyrex|185/337
+|
+|-heal|p1a: Calyrex|206/337|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Calyrex|Psychic|p2a: Veluza
+|-resisted|p2a: Veluza
+|-damage|p2a: Veluza|1/100
+|move|p2a: Veluza|Aqua Cutter|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-damage|p1a: Calyrex|114/337
+|
+|-heal|p1a: Calyrex|135/337|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Calyrex|Psychic|p2a: Veluza
+|-resisted|p2a: Veluza
+|-damage|p2a: Veluza|0 fnt
+|faint|p2a: Veluza
+|
+|-heal|p1a: Calyrex|156/337|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Chesnaught|Chesnaught, L84, F|100/100
+|turn|23
+|
+|move|p1a: Calyrex|Psychic|p2a: Chesnaught
+|-supereffective|p2a: Chesnaught
+|-damage|p2a: Chesnaught|24/100
+|-unboost|p2a: Chesnaught|spd|1
+|move|p2a: Chesnaught|Body Press|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-damage|p1a: Calyrex|104/337
+|
+|-heal|p1a: Calyrex|125/337|[from] item: Leftovers
+|-heal|p2a: Chesnaught|30/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Calyrex|Psychic|p2a: Chesnaught
+|-supereffective|p2a: Chesnaught
+|-damage|p2a: Chesnaught|0 fnt
+|faint|p2a: Chesnaught
+|
+|-heal|p1a: Calyrex|146/337|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Charizard|Charizard, L85, F|100/100
+|turn|25
+|
+|move|p2a: Charizard|Flare Blitz|p1a: Calyrex
+|-supereffective|p1a: Calyrex
+|-damage|p1a: Calyrex|0 fnt
+|faint|p1a: Calyrex
+|-damage|p2a: Charizard|83/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Conkeldurr|Conkeldurr, L80, F|299/299
+|turn|26
+|
+|move|p2a: Charizard|Flare Blitz|p1a: Conkeldurr
+|-damage|p1a: Conkeldurr|188/299
+|-damage|p2a: Charizard|69/100|[from] Recoil
+|move|p1a: Conkeldurr|Close Combat|p2a: Charizard
+|-resisted|p2a: Charizard
+|-damage|p2a: Charizard|40/100
+|-unboost|p1a: Conkeldurr|def|1
+|-unboost|p1a: Conkeldurr|spd|1
+|
+|-status|p1a: Conkeldurr|brn|[from] item: Flame Orb
+|upkeep
+|turn|27
+|
+|move|p2a: Charizard|Flare Blitz|p1a: Conkeldurr
+|-damage|p1a: Conkeldurr|2/299 brn
+|-damage|p2a: Charizard|18/100|[from] Recoil
+|move|p1a: Conkeldurr|Close Combat|p2a: Charizard
+|-resisted|p2a: Charizard
+|-damage|p2a: Charizard|0 fnt
+|-unboost|p1a: Conkeldurr|def|1
+|-unboost|p1a: Conkeldurr|spd|1
+|faint|p2a: Charizard
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

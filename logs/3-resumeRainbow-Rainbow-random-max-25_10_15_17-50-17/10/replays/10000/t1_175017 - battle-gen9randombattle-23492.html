@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23492</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23492<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23492|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Salazzle|Salazzle, L83, F|249/249
+|switch|p2a: Mismagius|Mismagius, L86, M|100/100
+|turn|1
+|
+|switch|p1a: Cinderace|Cinderace, L77, F|249/249
+|move|p2a: Mismagius|Tera Blast|p1a: Cinderace
+|-damage|p1a: Cinderace|171/249
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Cinderace
+|-damage|p1a: Cinderace|98/249
+|move|p1a: Cinderace|High Jump Kick|p2a: Mismagius
+|-start|p1a: Cinderace|typechange|Fighting|[from] ability: Libero
+|-immune|p2a: Mismagius
+|-damage|p1a: Cinderace|0 fnt|[from] highjumpkick
+|faint|p1a: Cinderace
+|
+|upkeep
+|
+|switch|p1a: Sawsbuck|Sawsbuck-Summer, L88, F|284/284
+|turn|3
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|217/284
+|move|p1a: Sawsbuck|Headbutt|p2a: Mismagius
+|-immune|p2a: Mismagius
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|150/284
+|move|p1a: Sawsbuck|Headbutt|p2a: Mismagius
+|-immune|p2a: Mismagius
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|80/284
+|move|p1a: Sawsbuck|Headbutt|p2a: Mismagius
+|-immune|p2a: Mismagius
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|4/284
+|move|p1a: Sawsbuck|Headbutt|p2a: Mismagius
+|-immune|p2a: Mismagius
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Mismagius|Tera Blast|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|0 fnt
+|faint|p1a: Sawsbuck
+|
+|upkeep
+|
+|switch|p1a: Salazzle|Salazzle, L83, F|249/249
+|turn|8
+|
+|move|p1a: Salazzle|Flamethrower|p2a: Mismagius
+|-damage|p2a: Mismagius|65/100
+|move|p2a: Mismagius|Tera Blast|p1a: Salazzle
+|-damage|p1a: Salazzle|162/249
+|
+|-heal|p1a: Salazzle|177/249|[from] item: Leftovers
+|-heal|p2a: Mismagius|71/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|-terastallize|p1a: Salazzle|Grass
+|move|p1a: Salazzle|Flamethrower|p2a: Mismagius
+|-damage|p2a: Mismagius|34/100
+|move|p2a: Mismagius|Tera Blast|p1a: Salazzle
+|-damage|p1a: Salazzle|89/249
+|
+|-heal|p1a: Salazzle|104/249|[from] item: Leftovers
+|-heal|p2a: Mismagius|40/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Salazzle|Flamethrower|p2a: Mismagius
+|-damage|p2a: Mismagius|1/100
+|move|p2a: Mismagius|Tera Blast|p1a: Salazzle
+|-damage|p1a: Salazzle|20/249
+|
+|-heal|p1a: Salazzle|35/249|[from] item: Leftovers
+|-heal|p2a: Mismagius|7/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Salazzle|Flamethrower|p2a: Mismagius
+|-damage|p2a: Mismagius|0 fnt
+|faint|p2a: Mismagius
+|
+|-heal|p1a: Salazzle|50/249|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Krookodile|Krookodile, L80, M|100/100
+|-ability|p2a: Krookodile|Intimidate|boost
+|-unboost|p1a: Salazzle|atk|1
+|turn|12
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Salazzle|[miss]
+|-miss|p2a: Krookodile|p1a: Salazzle
+|move|p1a: Salazzle|Flamethrower|p2a: Krookodile
+|-damage|p2a: Krookodile|54/100
+|
+|-heal|p1a: Salazzle|65/249|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Salazzle
+|-supereffective|p1a: Salazzle
+|-crit|p1a: Salazzle
+|-damage|p1a: Salazzle|0 fnt
+|faint|p1a: Salazzle
+|
+|upkeep
+|
+|switch|p1a: Umbreon|Umbreon, L84, F|297/297
+|turn|14
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Umbreon
+|-damage|p1a: Umbreon|219/297
+|-status|p1a: Umbreon|psn
+|-activate|p1a: Umbreon|ability: Synchronize
+|-status|p2a: Krookodile|psn
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|
+|-heal|p1a: Umbreon|237/297 psn|[from] item: Leftovers
+|-damage|p2a: Krookodile|41/100 psn|[from] psn
+|-damage|p1a: Umbreon|200/297 psn|[from] psn
+|upkeep
+|turn|15
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Umbreon|[miss]
+|-miss|p2a: Krookodile|p1a: Umbreon
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|
+|-heal|p1a: Umbreon|297/297 psn|[from] move: Wish|[wisher] Umbreon
+|-damage|p2a: Krookodile|29/100 psn|[from] psn
+|-damage|p1a: Umbreon|260/297 psn|[from] psn
+|upkeep
+|turn|16
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Umbreon
+|-damage|p1a: Umbreon|185/297 psn
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|
+|-heal|p1a: Umbreon|203/297 psn|[from] item: Leftovers
+|-damage|p2a: Krookodile|16/100 psn|[from] psn
+|-damage|p1a: Umbreon|166/297 psn|[from] psn
+|upkeep
+|turn|17
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Umbreon
+|-damage|p1a: Umbreon|88/297 psn
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|
+|-heal|p1a: Umbreon|236/297 psn|[from] move: Wish|[wisher] Umbreon
+|-heal|p1a: Umbreon|254/297 psn|[from] item: Leftovers
+|-damage|p2a: Krookodile|4/100 psn|[from] psn
+|-damage|p1a: Umbreon|217/297 psn|[from] psn
+|upkeep
+|turn|18
+|
+|move|p2a: Krookodile|Gunk Shot|p1a: Umbreon
+|-damage|p1a: Umbreon|145/297 psn
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|
+|-heal|p1a: Umbreon|163/297 psn|[from] item: Leftovers
+|-damage|p2a: Krookodile|0 fnt|[from] psn
+|faint|p2a: Krookodile
+|-damage|p1a: Umbreon|126/297 psn|[from] psn
+|upkeep
+|
+|switch|p2a: Vikavolt|Vikavolt, L83, F|100/100
+|turn|19
+|
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Vikavolt|Thunderbolt|p1a: Umbreon
+|-damage|p1a: Umbreon|24/297 psn
+|
+|-heal|p1a: Umbreon|172/297 psn|[from] move: Wish|[wisher] Umbreon
+|-heal|p1a: Umbreon|190/297 psn|[from] item: Leftovers
+|-damage|p1a: Umbreon|153/297 psn|[from] psn
+|upkeep
+|turn|20
+|
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|move|p2a: Vikavolt|Thunderbolt|p1a: Umbreon
+|-damage|p1a: Umbreon|62/297 psn
+|
+|-heal|p1a: Umbreon|80/297 psn|[from] item: Leftovers
+|-damage|p1a: Umbreon|43/297 psn|[from] psn
+|upkeep
+|turn|21
+|
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Vikavolt|Thunderbolt|p1a: Umbreon
+|-damage|p1a: Umbreon|0 fnt
+|faint|p1a: Umbreon
+|
+|upkeep
+|
+|switch|p1a: Bellossom|Bellossom, L84, M|263/263
+|turn|22
+|
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|209/263
+|-status|p1a: Bellossom|par
+|
+|-heal|p1a: Bellossom|225/263 par|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|165/263 par
+|cant|p1a: Bellossom|par
+|
+|-heal|p1a: Bellossom|181/263 par|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|124/263 par
+|move|p1a: Bellossom|Giga Drain|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|85/100
+|-heal|p1a: Bellossom|144/263 par|[from] drain|[of] p2a: Vikavolt
+|
+|-heal|p1a: Bellossom|160/263 par|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|103/263 par
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|-heal|p1a: Bellossom|183/263 par
+|
+|-heal|p1a: Bellossom|199/263 par|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|140/263 par
+|cant|p1a: Bellossom|par
+|
+|-heal|p1a: Bellossom|156/263 par|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|92/263 par
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|-heal|p1a: Bellossom|152/263 par
+|
+|-heal|p1a: Bellossom|168/263 par|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|113/263 par
+|cant|p1a: Bellossom|par
+|
+|-heal|p1a: Bellossom|129/263 par|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|73/263 par
+|move|p1a: Bellossom|Giga Drain|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|69/100
+|-heal|p1a: Bellossom|94/263 par|[from] drain|[of] p2a: Vikavolt
+|
+|-heal|p1a: Bellossom|110/263 par|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|50/263 par
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|-heal|p1a: Bellossom|98/263 par
+|
+|-heal|p1a: Bellossom|114/263 par|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|60/263 par
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|-heal|p1a: Bellossom|100/263 par
+|
+|-heal|p1a: Bellossom|116/263 par|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|52/263 par
+|move|p1a: Bellossom|Strength Sap|p2a: Vikavolt
+|-unboost|p2a: Vikavolt|atk|1
+|-heal|p1a: Bellossom|86/263 par
+|
+|-heal|p1a: Bellossom|102/263 par|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-damage|p1a: Bellossom|44/263 par
+|move|p1a: Bellossom|Strength Sap||[still]
+|-fail|p1a: Bellossom
+|
+|-heal|p1a: Bellossom|60/263 par|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p2a: Vikavolt|Thunderbolt|p1a: Bellossom
+|-resisted|p1a: Bellossom
+|-crit|p1a: Bellossom
+|-damage|p1a: Bellossom|0 fnt
+|faint|p1a: Bellossom
+|
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|265/265
+|turn|35
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|53/100
+|move|p2a: Vikavolt|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|36
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|39/100
+|move|p2a: Vikavolt|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|24/100
+|move|p2a: Vikavolt|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|38
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|8/100
+|move|p2a: Vikavolt|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|39
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Vikavolt
+|-resisted|p2a: Vikavolt
+|-damage|p2a: Vikavolt|0 fnt
+|faint|p2a: Vikavolt
+|
+|upkeep
+|
+|switch|p2a: Roaring Moon|Roaring Moon, L72|100/100
+|-enditem|p2a: Roaring Moon|Booster Energy
+|-activate|p2a: Roaring Moon|ability: Protosynthesis|[fromitem]
+|-start|p2a: Roaring Moon|protosynthesisatk
+|turn|40
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Iron Treads
+|-resisted|p1a: Iron Treads
+|-damage|p1a: Iron Treads|196/265
+|move|p1a: Iron Treads|Iron Head|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|62/100
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Iron Treads|[from] lockedmove
+|-resisted|p1a: Iron Treads
+|-damage|p1a: Iron Treads|125/265
+|move|p1a: Iron Treads|Iron Head|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|23/100
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Iron Treads|[from] lockedmove
+|-resisted|p1a: Iron Treads
+|-damage|p1a: Iron Treads|60/265
+|-start|p2a: Roaring Moon|confusion|[fatigue]
+|move|p1a: Iron Treads|Iron Head|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|0 fnt
+|faint|p2a: Roaring Moon
+|-end|p2a: Roaring Moon|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p2a: Empoleon|Empoleon, L84, F|100/100
+|turn|43
+|
+|move|p1a: Iron Treads|Iron Head|p2a: Empoleon
+|-resisted|p2a: Empoleon
+|-damage|p2a: Empoleon|94/100
+|cant|p2a: Empoleon|flinch
+|
+|-heal|p2a: Empoleon|99/100|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p1a: Iron Treads|Rapid Spin|p2a: Empoleon
+|-resisted|p2a: Empoleon
+|-damage|p2a: Empoleon|94/100
+|-boost|p1a: Iron Treads|spe|1
+|move|p2a: Empoleon|Surf|p1a: Iron Treads
+|-supereffective|p1a: Iron Treads
+|-damage|p1a: Iron Treads|0 fnt
+|faint|p1a: Iron Treads
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

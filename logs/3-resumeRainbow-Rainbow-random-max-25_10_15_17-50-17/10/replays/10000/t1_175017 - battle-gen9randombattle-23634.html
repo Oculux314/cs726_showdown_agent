@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23634</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23634<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23634|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|switch|p2a: Kleavor|Kleavor, L78, M|100/100
+|-ability|p1a: Rayquaza|Air Lock
+|turn|1
+|
+|switch|p1a: Gallade|Gallade, L80, M|240/240
+|move|p2a: Kleavor|Close Combat|p1a: Gallade
+|-resisted|p1a: Gallade
+|-damage|p1a: Gallade|176/240
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Kleavor|Close Combat|p1a: Gallade
+|-resisted|p1a: Gallade
+|-damage|p1a: Gallade|118/240
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|move|p1a: Gallade|Agility|p1a: Gallade
+|-boost|p1a: Gallade|spe|2
+|
+|upkeep
+|turn|3
+|
+|move|p1a: Gallade|Agility|p1a: Gallade
+|-boost|p1a: Gallade|spe|2
+|move|p2a: Kleavor|Close Combat|p1a: Gallade
+|-resisted|p1a: Gallade
+|-damage|p1a: Gallade|58/240
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Gallade|Agility|p1a: Gallade
+|-boost|p1a: Gallade|spe|2
+|move|p2a: Kleavor|Close Combat|p1a: Gallade
+|-resisted|p1a: Gallade
+|-damage|p1a: Gallade|0 fnt
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|faint|p1a: Gallade
+|
+|upkeep
+|
+|switch|p1a: Ariados|Ariados, L95, F|287/287
+|turn|5
+|
+|move|p2a: Kleavor|Close Combat|p1a: Ariados
+|-resisted|p1a: Ariados
+|-damage|p1a: Ariados|261/287
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|move|p1a: Ariados|Poison Jab|p2a: Kleavor
+|-resisted|p2a: Kleavor
+|-damage|p2a: Kleavor|22/100
+|-status|p2a: Kleavor|psn
+|
+|-damage|p2a: Kleavor|10/100 psn|[from] psn
+|upkeep
+|turn|6
+|
+|move|p2a: Kleavor|Close Combat|p1a: Ariados
+|-resisted|p1a: Ariados
+|-damage|p1a: Ariados|234/287
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|move|p1a: Ariados|Poison Jab|p2a: Kleavor
+|-resisted|p2a: Kleavor
+|-damage|p2a: Kleavor|0 fnt
+|faint|p2a: Kleavor
+|
+|upkeep
+|
+|switch|p2a: Archaludon|Archaludon, L78, F|100/100
+|turn|7
+|
+|move|p2a: Archaludon|Outrage|p1a: Ariados
+|-damage|p1a: Ariados|99/287
+|move|p1a: Ariados|Poison Jab|p2a: Archaludon
+|-immune|p2a: Archaludon
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Archaludon|Outrage|p1a: Ariados|[from] lockedmove
+|-damage|p1a: Ariados|0 fnt
+|faint|p1a: Ariados
+|
+|upkeep
+|
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|-ability|p1a: Rayquaza|Air Lock
+|turn|9
+|
+|move|p1a: Rayquaza|Outrage|p2a: Archaludon
+|-damage|p2a: Archaludon|60/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Outrage|p1a: Rayquaza|[from] lockedmove
+|-supereffective|p1a: Rayquaza
+|-damage|p1a: Rayquaza|0 fnt
+|faint|p1a: Rayquaza
+|-start|p2a: Archaludon|confusion|[fatigue]
+|-enditem|p2a: Archaludon|Lum Berry|[eat]
+|-end|p2a: Archaludon|confusion
+|
+|upkeep
+|
+|switch|p1a: Annihilape|Annihilape, L76, M|292/292
+|turn|10
+|
+|move|p1a: Annihilape|Rest|p1a: Annihilape
+|-fail|p1a: Annihilape|heal
+|move|p2a: Archaludon|Outrage|p1a: Annihilape
+|-damage|p1a: Annihilape|154/292
+|
+|upkeep
+|turn|11
+|
+|-terastallize|p1a: Annihilape|Ghost
+|move|p1a: Annihilape|Rest|p1a: Annihilape
+|-status|p1a: Annihilape|slp|[from] move: Rest
+|-heal|p1a: Annihilape|292/292 slp|[silent]
+|-enditem|p1a: Annihilape|Chesto Berry|[eat]
+|-curestatus|p1a: Annihilape|slp|[msg]
+|move|p2a: Archaludon|Outrage|p1a: Annihilape|[from] lockedmove
+|-crit|p1a: Annihilape
+|-damage|p1a: Annihilape|96/292
+|-start|p2a: Archaludon|confusion|[fatigue]
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Annihilape|Rest|p1a: Annihilape
+|-status|p1a: Annihilape|slp|[from] move: Rest
+|-heal|p1a: Annihilape|292/292 slp|[silent]
+|-activate|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Annihilape
+|-damage|p1a: Annihilape|163/292 slp
+|
+|upkeep
+|turn|13
+|
+|cant|p1a: Annihilape|slp
+|-activate|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Annihilape|[from] lockedmove
+|-damage|p1a: Annihilape|19/292 slp
+|
+|upkeep
+|turn|14
+|
+|cant|p1a: Annihilape|slp
+|-activate|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Annihilape|[from] lockedmove
+|-damage|p1a: Annihilape|0 fnt
+|faint|p1a: Annihilape
+|
+|upkeep
+|
+|switch|p1a: Probopass|Probopass, L92, M|260/260
+|turn|15
+|
+|-activate|p2a: Archaludon|confusion
+|-damage|p2a: Archaludon|55/100|[from] confusion
+|move|p1a: Probopass|Power Gem|p2a: Archaludon
+|-resisted|p2a: Archaludon
+|-damage|p2a: Archaludon|34/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|
+|upkeep
+|turn|16
+|
+|-end|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|226/260
+|move|p1a: Probopass|Power Gem|p2a: Archaludon
+|-resisted|p2a: Archaludon
+|-damage|p2a: Archaludon|14/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|
+|-heal|p1a: Probopass|242/260|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Archaludon|Outrage|p1a: Probopass|[from] lockedmove
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|204/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|2
+|
+|-heal|p1a: Probopass|220/260|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Archaludon|Outrage|p1a: Probopass|[from] lockedmove
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|202/260
+|-start|p2a: Archaludon|confusion|[fatigue]
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|2
+|
+|-heal|p1a: Probopass|218/260|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|-activate|p2a: Archaludon|confusion
+|-damage|p2a: Archaludon|11/100|[from] confusion
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|2
+|
+|-heal|p1a: Probopass|234/260|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|-activate|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|225/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|241/260|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|-end|p2a: Archaludon|confusion
+|move|p2a: Archaludon|Outrage|p1a: Probopass|[from] lockedmove
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|232/260
+|-start|p2a: Archaludon|confusion|[fatigue]
+|move|p1a: Probopass|Power Gem|p2a: Archaludon
+|-resisted|p2a: Archaludon
+|-damage|p2a: Archaludon|0 fnt
+|faint|p2a: Archaludon
+|
+|-heal|p1a: Probopass|248/260|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Oinkologne|Oinkologne-F, L92, F|100/100
+|turn|22
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|244/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260
+|-status|p1a: Probopass|par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|81/100
+|
+|-heal|p2a: Oinkologne|87/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|93/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|99/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|100/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|79/100
+|
+|-heal|p2a: Oinkologne|85/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|91/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|97/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|100/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|81/100
+|
+|-heal|p2a: Oinkologne|87/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|67/100
+|
+|-heal|p2a: Oinkologne|73/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|79/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|85/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p2a: Oinkologne|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|256/260 par
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|91/100|[from] item: Leftovers
+|-heal|p1a: Probopass|260/260 par|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|97/100|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|-heal|p2a: Oinkologne|100/100|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|cant|p1a: Probopass|par
+|
+|upkeep
+|turn|49
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Iron Defense|p1a: Probopass
+|-boost|p1a: Probopass|def|0
+|
+|upkeep
+|turn|50
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|80/100
+|
+|-heal|p2a: Oinkologne|86/100|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|67/100
+|
+|-heal|p2a: Oinkologne|73/100|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|55/100
+|
+|-heal|p2a: Oinkologne|61/100|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|67/100|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|73/100|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|54/100
+|
+|-heal|p2a: Oinkologne|60/100|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|38/100
+|
+|-heal|p2a: Oinkologne|45/100|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|cant|p1a: Probopass|par
+|
+|-heal|p2a: Oinkologne|51/100|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|30/100
+|
+|-heal|p2a: Oinkologne|36/100|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|15/100
+|
+|-heal|p2a: Oinkologne|21/100|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|move|p2a: Oinkologne|Sleep Talk||[still]
+|-fail|p2a: Oinkologne
+|move|p1a: Probopass|Power Gem|p2a: Oinkologne
+|-damage|p2a: Oinkologne|0 fnt
+|faint|p2a: Oinkologne
+|
+|upkeep
+|
+|switch|p2a: Keldeo|Keldeo-Resolute, L79|100/100
+|turn|61
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Probopass
+|-supereffective|p1a: Probopass
+|-crit|p1a: Probopass
+|-damage|p1a: Probopass|0 fnt
+|faint|p1a: Probopass
+|
+|upkeep
+|
+|switch|p1a: Golduck|Golduck, L90, F|290/290
+|-ability|p1a: Golduck|Cloud Nine
+|turn|62
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck
+|-resisted|p1a: Golduck
+|-damage|p1a: Golduck|188/290
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo
+|-resisted|p2a: Keldeo
+|-damage|p2a: Keldeo|76/100
+|
+|-heal|p1a: Golduck|206/290|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck|[miss]
+|-miss|p2a: Keldeo|p1a: Golduck
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo
+|-resisted|p2a: Keldeo
+|-damage|p2a: Keldeo|53/100
+|
+|-heal|p1a: Golduck|224/290|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck
+|-resisted|p1a: Golduck
+|-damage|p1a: Golduck|129/290
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo|[miss]
+|-miss|p1a: Golduck|p2a: Keldeo
+|
+|-heal|p1a: Golduck|147/290|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck|[miss]
+|-miss|p2a: Keldeo|p1a: Golduck
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo
+|-resisted|p2a: Keldeo
+|-damage|p2a: Keldeo|29/100
+|
+|-heal|p1a: Golduck|165/290|[from] item: Leftovers
+|upkeep
+|turn|66
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck|[miss]
+|-miss|p2a: Keldeo|p1a: Golduck
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo
+|-resisted|p2a: Keldeo
+|-damage|p2a: Keldeo|2/100
+|
+|-heal|p1a: Golduck|183/290|[from] item: Leftovers
+|upkeep
+|turn|67
+|
+|move|p2a: Keldeo|Hydro Pump|p1a: Golduck
+|-resisted|p1a: Golduck
+|-damage|p1a: Golduck|93/290
+|move|p1a: Golduck|Hydro Pump|p2a: Keldeo
+|-resisted|p2a: Keldeo
+|-damage|p2a: Keldeo|0 fnt
+|faint|p2a: Keldeo
+|
+|-heal|p1a: Golduck|111/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Noivern|Noivern, L82, M|100/100
+|turn|68
+|
+|move|p2a: Noivern|Boomburst|p1a: Golduck
+|-damage|p1a: Golduck|17/290
+|move|p1a: Golduck|Hydro Pump|p2a: Noivern|[miss]
+|-miss|p1a: Golduck|p2a: Noivern
+|
+|-heal|p1a: Golduck|35/290|[from] item: Leftovers
+|upkeep
+|turn|69
+|
+|move|p2a: Noivern|Boomburst|p1a: Golduck
+|-damage|p1a: Golduck|0 fnt
+|faint|p1a: Golduck
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

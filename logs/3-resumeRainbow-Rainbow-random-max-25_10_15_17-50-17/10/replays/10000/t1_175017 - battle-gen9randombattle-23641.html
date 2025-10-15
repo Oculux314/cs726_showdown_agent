@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23641</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23641<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23641|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Haxorus|Haxorus, L77, M|244/244
+|switch|p2a: Polteageist|Polteageist-Antique, L78|100/100
+|-ability|p1a: Haxorus|Mold Breaker
+|turn|1
+|
+|switch|p1a: Crabominable|Crabominable, L90, F|321/321
+|move|p2a: Polteageist|Tera Blast|p1a: Crabominable
+|-damage|p1a: Crabominable|253/321
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Polteageist|Tera Blast|p1a: Crabominable
+|-damage|p1a: Crabominable|178/321
+|move|p1a: Crabominable|Earthquake|p2a: Polteageist
+|-damage|p2a: Polteageist|11/100
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Haxorus|Haxorus, L77, M|244/244
+|-ability|p1a: Haxorus|Mold Breaker
+|move|p2a: Polteageist|Tera Blast|p1a: Haxorus
+|-damage|p1a: Haxorus|168/244
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Crabominable|Crabominable, L90, F|178/321
+|move|p2a: Polteageist|Tera Blast|p1a: Crabominable
+|-damage|p1a: Crabominable|107/321
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Polteageist|Tera Blast|p1a: Crabominable
+|-damage|p1a: Crabominable|34/321
+|move|p1a: Crabominable|Earthquake|p2a: Polteageist
+|-damage|p2a: Polteageist|0 fnt
+|faint|p2a: Polteageist
+|
+|upkeep
+|
+|switch|p2a: Dipplin|Dipplin, L88, F|100/100
+|turn|6
+|
+|-terastallize|p1a: Crabominable|Ground
+|move|p1a: Crabominable|Earthquake|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|77/100
+|move|p2a: Dipplin|Dragon Pulse|p1a: Crabominable
+|-damage|p1a: Crabominable|0 fnt
+|faint|p1a: Crabominable
+|
+|upkeep
+|
+|switch|p1a: Quaquaval|Quaquaval, L79, F|264/264
+|turn|7
+|
+|move|p1a: Quaquaval|Aqua Step|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|71/100
+|-boost|p1a: Quaquaval|spe|1
+|-damage|p1a: Quaquaval|238/264|[from] item: Life Orb
+|move|p2a: Dipplin|Dragon Pulse|p1a: Quaquaval
+|-damage|p1a: Quaquaval|124/264
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Quaquaval|Aqua Step|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|65/100
+|-boost|p1a: Quaquaval|spe|1
+|-damage|p1a: Quaquaval|98/264|[from] item: Life Orb
+|move|p2a: Dipplin|Dragon Pulse|p1a: Quaquaval
+|-damage|p1a: Quaquaval|0 fnt
+|faint|p1a: Quaquaval
+|
+|upkeep
+|
+|switch|p1a: Haxorus|Haxorus, L77, M|168/244
+|-ability|p1a: Haxorus|Mold Breaker
+|turn|9
+|
+|move|p1a: Haxorus|Iron Head|p2a: Dipplin
+|-crit|p2a: Dipplin
+|-damage|p2a: Dipplin|46/100
+|cant|p2a: Dipplin|flinch
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Haxorus|Iron Head|p2a: Dipplin
+|-damage|p2a: Dipplin|34/100
+|move|p2a: Dipplin|Dragon Pulse|p1a: Haxorus
+|-supereffective|p1a: Haxorus
+|-damage|p1a: Haxorus|0 fnt
+|faint|p1a: Haxorus
+|
+|upkeep
+|
+|switch|p1a: Overqwil|Overqwil, L82, F|274/274
+|-ability|p1a: Overqwil|Intimidate|boost
+|-unboost|p2a: Dipplin|atk|1
+|turn|11
+|
+|move|p1a: Overqwil|Liquidation|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|29/100
+|-unboost|p2a: Dipplin|def|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Overqwil
+|-damage|p1a: Overqwil|157/274
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Overqwil|Liquidation|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|22/100
+|move|p2a: Dipplin|Dragon Pulse|p1a: Overqwil
+|-damage|p1a: Overqwil|34/274
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Overqwil|Liquidation|p2a: Dipplin
+|-resisted|p2a: Dipplin
+|-damage|p2a: Dipplin|15/100
+|-unboost|p2a: Dipplin|def|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Overqwil
+|-damage|p1a: Overqwil|0 fnt
+|faint|p1a: Overqwil
+|
+|upkeep
+|
+|switch|p1a: Alcremie|Alcremie-Matcha-Cream, L88, F|258/258
+|turn|14
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Dragon Pulse|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|240/258
+|-heal|p2a: Dipplin|18/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|256/258|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|238/258
+|-heal|p2a: Dipplin|22/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|254/258|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|236/258
+|-heal|p2a: Dipplin|25/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|252/258|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|234/258
+|-heal|p2a: Dipplin|28/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|250/258|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|234/258
+|-heal|p2a: Dipplin|31/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|250/258|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|234/258
+|-heal|p2a: Dipplin|34/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|250/258|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|232/258
+|-heal|p2a: Dipplin|37/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|248/258|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|232/258
+|-heal|p2a: Dipplin|40/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|248/258|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|230/258
+|-heal|p2a: Dipplin|43/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|246/258|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|228/258
+|-heal|p2a: Dipplin|46/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|244/258|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|226/258
+|-heal|p2a: Dipplin|49/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|242/258|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|223/258
+|-heal|p2a: Dipplin|53/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|239/258|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|223/258
+|-heal|p2a: Dipplin|55/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|239/258|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|223/258
+|-heal|p2a: Dipplin|58/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|239/258|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|221/258
+|-heal|p2a: Dipplin|61/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|237/258|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|219/258
+|-heal|p2a: Dipplin|65/100|[from] drain|[of] p1a: Alcremie
+|
+|-heal|p1a: Alcremie|235/258|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|-heal|p1a: Alcremie|251/258|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|-heal|p1a: Alcremie|258/258|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|43
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|44
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|45
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|46
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|47
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|48
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|49
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|50
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|51
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|52
+|
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|0
+|-boost|p1a: Alcremie|spd|0
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|53
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|54
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Dragon Tail|p1a: Alcremie
+|-immune|p1a: Alcremie
+|
+|upkeep
+|turn|55
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover|p2a: Dipplin
+|-heal|p2a: Dipplin|100/100
+|
+|upkeep
+|turn|56
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|57
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|58
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|59
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|60
+|
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|61
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|62
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|move|p2a: Dipplin|Recover||[still]
+|-fail|p2a: Dipplin|heal
+|
+|upkeep
+|turn|63
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|-activate|p2a: Dipplin|move: Struggle
+|move|p2a: Dipplin|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|251/258
+|-damage|p2a: Dipplin|75/100|[from] recoil
+|
+|-heal|p1a: Alcremie|258/258|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|-activate|p2a: Dipplin|move: Struggle
+|move|p2a: Dipplin|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|250/258
+|-damage|p2a: Dipplin|50/100|[from] recoil
+|
+|-heal|p1a: Alcremie|258/258|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|-activate|p2a: Dipplin|move: Struggle
+|move|p2a: Dipplin|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|251/258
+|-damage|p2a: Dipplin|25/100|[from] recoil
+|
+|-heal|p1a: Alcremie|258/258|[from] item: Leftovers
+|upkeep
+|turn|66
+|
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|-activate|p2a: Dipplin|move: Struggle
+|move|p2a: Dipplin|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|250/258
+|-damage|p2a: Dipplin|0 fnt|[from] recoil
+|faint|p2a: Dipplin
+|
+|-heal|p1a: Alcremie|258/258|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Passimian|Passimian, L83, M|100/100
+|turn|67
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie|[miss]
+|-miss|p2a: Passimian|p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie
+|-supereffective|p1a: Alcremie
+|-damage|p1a: Alcremie|206/258
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|222/258|[from] item: Leftovers
+|upkeep
+|turn|69
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie
+|-supereffective|p1a: Alcremie
+|-damage|p1a: Alcremie|164/258
+|-status|p1a: Alcremie|psn
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|180/258 psn|[from] item: Leftovers
+|-damage|p1a: Alcremie|148/258 psn|[from] psn
+|upkeep
+|turn|70
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie
+|-supereffective|p1a: Alcremie
+|-damage|p1a: Alcremie|90/258 psn
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|106/258 psn|[from] item: Leftovers
+|-damage|p1a: Alcremie|74/258 psn|[from] psn
+|upkeep
+|turn|71
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie
+|-supereffective|p1a: Alcremie
+|-damage|p1a: Alcremie|20/258 psn
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|36/258 psn|[from] item: Leftovers
+|-damage|p1a: Alcremie|4/258 psn|[from] psn
+|upkeep
+|turn|72
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Alcremie
+|-supereffective|p1a: Alcremie
+|-damage|p1a: Alcremie|0 fnt
+|faint|p1a: Alcremie
+|
+|upkeep
+|
+|switch|p1a: Gastrodon|Gastrodon, L86, F|331/331
+|turn|73
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Gastrodon
+|-resisted|p1a: Gastrodon
+|-damage|p1a: Gastrodon|272/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|74
+|
+|move|p2a: Passimian|Gunk Shot|p1a: Gastrodon
+|-resisted|p1a: Gastrodon
+|-damage|p1a: Gastrodon|270/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|75
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|220/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|76
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|214/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|77
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|223/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|78
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|223/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|79
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|220/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|80
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|213/331
+|move|p1a: Gastrodon|Recover|p1a: Gastrodon
+|-heal|p1a: Gastrodon|331/331
+|
+|upkeep
+|turn|81
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|217/331
+|move|p1a: Gastrodon|Surf|p2a: Passimian
+|-damage|p2a: Passimian|57/100
+|
+|-heal|p2a: Passimian|63/100|[from] item: Leftovers
+|-heal|p1a: Gastrodon|237/331|[from] item: Leftovers
+|upkeep
+|turn|82
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|132/331
+|-heal|p2a: Passimian|80/100|[from] drain|[of] p1a: Gastrodon
+|move|p1a: Gastrodon|Surf|p2a: Passimian
+|-crit|p2a: Passimian
+|-damage|p2a: Passimian|17/100
+|
+|-heal|p2a: Passimian|23/100|[from] item: Leftovers
+|-heal|p1a: Gastrodon|152/331|[from] item: Leftovers
+|upkeep
+|turn|83
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|49/331
+|-heal|p2a: Passimian|41/100|[from] drain|[of] p1a: Gastrodon
+|move|p1a: Gastrodon|Surf|p2a: Passimian
+|-damage|p2a: Passimian|1/100
+|
+|-heal|p2a: Passimian|7/100|[from] item: Leftovers
+|-heal|p1a: Gastrodon|69/331|[from] item: Leftovers
+|upkeep
+|turn|84
+|
+|move|p2a: Passimian|Drain Punch|p1a: Gastrodon
+|-damage|p1a: Gastrodon|0 fnt
+|-heal|p2a: Passimian|18/100|[from] drain|[of] p1a: Gastrodon
+|faint|p1a: Gastrodon
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

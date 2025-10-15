@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23728</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23728<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23728|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Necrozma|Necrozma, L80|286/286
+|switch|p2a: Malamar|Malamar, L82, M|100/100
+|turn|1
+|
+|switch|p1a: Raikou|Raikou, L81|278/278
+|-ability|p1a: Raikou|Pressure
+|move|p2a: Malamar|Superpower|p1a: Raikou
+|-damage|p1a: Raikou|182/278
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|
+|-heal|p1a: Raikou|199/278|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p1a: Raikou|Calm Mind|p1a: Raikou
+|-boost|p1a: Raikou|spa|1
+|-boost|p1a: Raikou|spd|1
+|move|p2a: Malamar|Superpower|p1a: Raikou
+|-damage|p1a: Raikou|53/278
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|
+|-heal|p1a: Raikou|70/278|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Raikou|Calm Mind|p1a: Raikou
+|-boost|p1a: Raikou|spa|1
+|-boost|p1a: Raikou|spd|1
+|move|p2a: Malamar|Superpower|p1a: Raikou
+|-damage|p1a: Raikou|0 fnt
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|faint|p1a: Raikou
+|
+|upkeep
+|
+|switch|p1a: Enamorus|Enamorus, L79, F|247/247
+|turn|4
+|
+|move|p1a: Enamorus|Moonblast|p2a: Malamar
+|-supereffective|p2a: Malamar
+|-damage|p2a: Malamar|11/100
+|move|p2a: Malamar|Superpower|p1a: Enamorus
+|-resisted|p1a: Enamorus
+|-damage|p1a: Enamorus|192/247
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|
+|upkeep
+|turn|5
+|
+|switch|p1a: Bellibolt|Bellibolt, L84, F|320/320
+|move|p2a: Malamar|Superpower|p1a: Bellibolt
+|-damage|p1a: Bellibolt|109/320
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|-start|p1a: Bellibolt|Charge|Superpower|[from] ability: Electromorphosis
+|
+|-heal|p1a: Bellibolt|129/320|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|-terastallize|p1a: Bellibolt|Water
+|move|p2a: Malamar|Psycho Cut|p1a: Bellibolt
+|-crit|p1a: Bellibolt
+|-damage|p1a: Bellibolt|0 fnt
+|faint|p1a: Bellibolt
+|
+|upkeep
+|
+|switch|p1a: Necrozma|Necrozma, L80|286/286
+|turn|7
+|
+|move|p1a: Necrozma|Earthquake|p2a: Malamar
+|-damage|p2a: Malamar|0 fnt
+|faint|p2a: Malamar
+|-damage|p1a: Necrozma|258/286|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Ambipom|Ambipom, L84, F|100/100
+|turn|8
+|
+|move|p2a: Ambipom|Double-Edge|p1a: Necrozma
+|-damage|p1a: Necrozma|78/286
+|-damage|p2a: Ambipom|78/100|[from] Recoil
+|move|p1a: Necrozma|Earthquake|p2a: Ambipom
+|-damage|p2a: Ambipom|32/100
+|-damage|p1a: Necrozma|50/286|[from] item: Life Orb
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Ambipom|Double-Edge|p1a: Necrozma
+|-damage|p1a: Necrozma|0 fnt
+|faint|p1a: Necrozma
+|-damage|p2a: Ambipom|26/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Enamorus|Enamorus, L79, F|192/247
+|turn|10
+|
+|move|p2a: Ambipom|Double-Edge|p1a: Enamorus
+|-damage|p1a: Enamorus|0 fnt
+|faint|p1a: Enamorus
+|-damage|p2a: Ambipom|2/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Sableye|Sableye, L88, M|231/231
+|turn|11
+|
+|move|p1a: Sableye|Encore|p2a: Ambipom
+|-start|p2a: Ambipom|Encore
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Sableye|Encore||[still]
+|-fail|p1a: Sableye
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Sableye|Encore||[still]
+|-fail|p1a: Sableye
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|-end|p2a: Ambipom|Encore
+|upkeep
+|turn|14
+|
+|move|p1a: Sableye|Encore|p2a: Ambipom
+|-start|p2a: Ambipom|Encore
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Sableye|Encore||[still]
+|-fail|p1a: Sableye
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Sableye|Encore||[still]
+|-fail|p1a: Sableye
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|-end|p2a: Ambipom|Encore
+|upkeep
+|turn|17
+|
+|move|p1a: Sableye|Encore|p2a: Ambipom
+|-start|p2a: Ambipom|Encore
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Sableye|Encore||[still]
+|-fail|p1a: Sableye
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Sableye|Will-O-Wisp|p2a: Ambipom
+|-status|p2a: Ambipom|brn
+|move|p2a: Ambipom|Double-Edge|p1a: Sableye
+|-immune|p1a: Sableye
+|
+|-damage|p2a: Ambipom|0 fnt|[from] brn
+|faint|p2a: Ambipom
+|upkeep
+|
+|switch|p2a: Trevenant|Trevenant, L89, F|100/100
+|turn|20
+|
+|move|p1a: Sableye|Will-O-Wisp|p2a: Trevenant
+|-status|p2a: Trevenant|brn
+|move|p2a: Trevenant|Poltergeist|p1a: Sableye
+|-activate|p1a: Sableye|move: Poltergeist|Leftovers
+|-damage|p1a: Sableye|159/231
+|
+|-heal|p1a: Sableye|173/231|[from] item: Leftovers
+|-damage|p2a: Trevenant|94/100 brn|[from] brn
+|upkeep
+|turn|21
+|
+|move|p1a: Sableye|Will-O-Wisp|p2a: Trevenant|[miss]
+|-miss|p1a: Sableye|p2a: Trevenant
+|move|p2a: Trevenant|Poltergeist|p1a: Sableye
+|-activate|p1a: Sableye|move: Poltergeist|Leftovers
+|-damage|p1a: Sableye|101/231
+|
+|-heal|p1a: Sableye|115/231|[from] item: Leftovers
+|-damage|p2a: Trevenant|88/100 brn|[from] brn
+|upkeep
+|turn|22
+|
+|move|p1a: Sableye|Will-O-Wisp|p2a: Trevenant|[miss]
+|-miss|p1a: Sableye|p2a: Trevenant
+|move|p2a: Trevenant|Poltergeist|p1a: Sableye
+|-activate|p1a: Sableye|move: Poltergeist|Leftovers
+|-damage|p1a: Sableye|43/231
+|
+|-heal|p1a: Sableye|57/231|[from] item: Leftovers
+|-damage|p2a: Trevenant|82/100 brn|[from] brn
+|upkeep
+|turn|23
+|
+|move|p1a: Sableye|Will-O-Wisp|p2a: Trevenant|[miss]
+|-miss|p1a: Sableye|p2a: Trevenant
+|move|p2a: Trevenant|Poltergeist|p1a: Sableye
+|-activate|p1a: Sableye|move: Poltergeist|Leftovers
+|-damage|p1a: Sableye|0 fnt
+|faint|p1a: Sableye
+|
+|-damage|p2a: Trevenant|76/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Regirock|Regirock, L83|268/268
+|turn|24
+|
+|move|p2a: Trevenant|Poltergeist|p1a: Regirock|[miss]
+|-miss|p2a: Trevenant|p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|2
+|
+|-damage|p2a: Trevenant|70/100 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p2a: Trevenant|Poltergeist|p1a: Regirock|[miss]
+|-miss|p2a: Trevenant|p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|2
+|
+|-damage|p2a: Trevenant|64/100 brn|[from] brn
+|upkeep
+|turn|26
+|
+|move|p2a: Trevenant|Poltergeist|p1a: Regirock|[miss]
+|-miss|p2a: Trevenant|p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|2
+|
+|-damage|p2a: Trevenant|58/100 brn|[from] brn
+|upkeep
+|turn|27
+|
+|move|p2a: Trevenant|Poltergeist|p1a: Regirock
+|-activate|p1a: Regirock|move: Poltergeist|Chesto Berry
+|-damage|p1a: Regirock|258/268
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|52/100 brn|[from] brn
+|upkeep
+|turn|28
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|248/268
+|-heal|p2a: Trevenant|54/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|47/100 brn|[from] brn
+|upkeep
+|-enditem|p2a: Trevenant|Sitrus Berry|[eat]
+|-heal|p2a: Trevenant|72/100 brn|[from] item: Sitrus Berry
+|turn|29
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|237/268
+|-heal|p2a: Trevenant|74/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|68/100 brn|[from] brn
+|-item|p2a: Trevenant|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|30
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|228/268
+|-heal|p2a: Trevenant|70/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|64/100 brn|[from] brn
+|upkeep
+|turn|31
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|219/268
+|-heal|p2a: Trevenant|66/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|60/100 brn|[from] brn
+|upkeep
+|turn|32
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|208/268
+|-heal|p2a: Trevenant|62/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|56/100 brn|[from] brn
+|upkeep
+|turn|33
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|198/268
+|-heal|p2a: Trevenant|57/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|51/100 brn|[from] brn
+|upkeep
+|turn|34
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|189/268
+|-heal|p2a: Trevenant|53/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|47/100 brn|[from] brn
+|upkeep
+|-enditem|p2a: Trevenant|Sitrus Berry|[eat]
+|-heal|p2a: Trevenant|72/100 brn|[from] item: Sitrus Berry
+|turn|35
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|180/268
+|-heal|p2a: Trevenant|73/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|67/100 brn|[from] brn
+|upkeep
+|turn|36
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|170/268
+|-heal|p2a: Trevenant|69/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|63/100 brn|[from] brn
+|upkeep
+|turn|37
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|160/268
+|-heal|p2a: Trevenant|65/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|59/100 brn|[from] brn
+|upkeep
+|turn|38
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-crit|p1a: Regirock
+|-damage|p1a: Regirock|111/268
+|-heal|p2a: Trevenant|67/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|61/100 brn|[from] brn
+|-item|p2a: Trevenant|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|39
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|102/268
+|-heal|p2a: Trevenant|63/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|57/100 brn|[from] brn
+|upkeep
+|turn|40
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|92/268
+|-heal|p2a: Trevenant|58/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|52/100 brn|[from] brn
+|upkeep
+|turn|41
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|82/268
+|-heal|p2a: Trevenant|54/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|48/100 brn|[from] brn
+|upkeep
+|-enditem|p2a: Trevenant|Sitrus Berry|[eat]
+|-heal|p2a: Trevenant|73/100 brn|[from] item: Sitrus Berry
+|turn|42
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|73/268
+|-heal|p2a: Trevenant|74/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|68/100 brn|[from] brn
+|-item|p2a: Trevenant|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|43
+|
+|move|p2a: Trevenant|Drain Punch|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|63/268
+|-heal|p2a: Trevenant|70/100 brn|[from] drain|[of] p1a: Regirock
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p2a: Trevenant|64/100 brn|[from] brn
+|upkeep
+|turn|44
+|
+|move|p2a: Trevenant|Toxic|p1a: Regirock
+|-status|p1a: Regirock|tox
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p1a: Regirock|47/268 tox|[from] psn
+|-damage|p2a: Trevenant|58/100 brn|[from] brn
+|upkeep
+|turn|45
+|
+|move|p2a: Trevenant|Toxic|p1a: Regirock
+|-fail|p1a: Regirock|tox
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p1a: Regirock|15/268 tox|[from] psn
+|-damage|p2a: Trevenant|52/100 brn|[from] brn
+|upkeep
+|turn|46
+|
+|move|p2a: Trevenant|Toxic|p1a: Regirock
+|-fail|p1a: Regirock|tox
+|move|p1a: Regirock|Iron Defense|p1a: Regirock
+|-boost|p1a: Regirock|def|0
+|
+|-damage|p1a: Regirock|0 fnt|[from] psn
+|faint|p1a: Regirock
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23419</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23419<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23419|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Landorus|Landorus-Therian, L76, M|260/260
+|switch|p2a: Grumpig|Grumpig, L92, M|100/100
+|-ability|p1a: Landorus|Intimidate|boost
+|-unboost|p2a: Grumpig|atk|1
+|turn|1
+|
+|switch|p1a: Shiftry|Shiftry, L89, M|305/305
+|move|p2a: Grumpig|Focus Blast|p1a: Shiftry
+|-supereffective|p1a: Shiftry
+|-damage|p1a: Shiftry|67/305
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Landorus|Landorus-Therian, L76, M|260/260
+|-ability|p1a: Landorus|Intimidate|boost
+|-unboost|p2a: Grumpig|atk|1
+|move|p2a: Grumpig|Focus Blast|p1a: Landorus
+|-resisted|p1a: Landorus
+|-damage|p1a: Landorus|207/260
+|-unboost|p1a: Landorus|spd|1
+|
+|-heal|p1a: Landorus|223/260|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Grumpig|Focus Blast|p1a: Landorus|[miss]
+|-miss|p2a: Grumpig|p1a: Landorus
+|move|p1a: Landorus|Earthquake|p2a: Grumpig
+|-damage|p2a: Grumpig|53/100
+|
+|-heal|p1a: Landorus|239/260|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Grumpig|Focus Blast|p1a: Landorus
+|-resisted|p1a: Landorus
+|-damage|p1a: Landorus|151/260
+|move|p1a: Landorus|Earthquake|p2a: Grumpig
+|-damage|p2a: Grumpig|8/100
+|
+|-heal|p1a: Landorus|167/260|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|-terastallize|p1a: Landorus|Water
+|move|p2a: Grumpig|Focus Blast|p1a: Landorus|[miss]
+|-miss|p2a: Grumpig|p1a: Landorus
+|move|p1a: Landorus|Earthquake|p2a: Grumpig
+|-damage|p2a: Grumpig|0 fnt
+|faint|p2a: Grumpig
+|
+|-heal|p1a: Landorus|183/260|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Iron Valiant|Iron Valiant, L78|100/100
+|turn|6
+|
+|move|p2a: Iron Valiant|Close Combat|p1a: Landorus
+|-damage|p1a: Landorus|0 fnt
+|-unboost|p2a: Iron Valiant|def|1
+|-unboost|p2a: Iron Valiant|spd|1
+|faint|p1a: Landorus
+|-damage|p2a: Iron Valiant|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Phione|Phione, L91|293/293
+|turn|7
+|
+|move|p2a: Iron Valiant|Close Combat|p1a: Phione
+|-damage|p1a: Phione|102/293
+|-unboost|p2a: Iron Valiant|def|1
+|-unboost|p2a: Iron Valiant|spd|1
+|-damage|p2a: Iron Valiant|81/100|[from] item: Life Orb
+|move|p1a: Phione|Scald|p2a: Iron Valiant
+|-damage|p2a: Iron Valiant|0 fnt
+|faint|p2a: Iron Valiant
+|-end|p2a: Iron Valiant|Quark Drive|[silent]
+|
+|-heal|p1a: Phione|120/293|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Landorus|Landorus-Therian, L76, M|100/100
+|-ability|p2a: Landorus|Intimidate|boost
+|-unboost|p1a: Phione|atk|1
+|turn|8
+|
+|move|p1a: Phione|Scald|p2a: Landorus
+|-supereffective|p2a: Landorus
+|-damage|p2a: Landorus|17/100
+|-status|p2a: Landorus|brn
+|move|p2a: Landorus|Earthquake|p1a: Phione
+|-damage|p1a: Phione|62/293
+|
+|-heal|p1a: Phione|80/293|[from] item: Leftovers
+|-heal|p2a: Landorus|24/100 brn|[from] item: Leftovers
+|-damage|p2a: Landorus|17/100 brn|[from] brn
+|upkeep
+|turn|9
+|
+|move|p1a: Phione|Scald|p2a: Landorus
+|-supereffective|p2a: Landorus
+|-damage|p2a: Landorus|0 fnt
+|faint|p2a: Landorus
+|
+|-heal|p1a: Phione|98/293|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Alcremie|Alcremie-Caramel-Swirl, L88, F|100/100
+|turn|10
+|
+|move|p1a: Phione|Scald|p2a: Alcremie
+|-damage|p2a: Alcremie|77/100
+|move|p2a: Alcremie|Dazzling Gleam|p1a: Phione
+|-damage|p1a: Phione|0 fnt
+|faint|p1a: Phione
+|
+|-heal|p2a: Alcremie|83/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Shiftry|Shiftry, L89, M|67/305
+|turn|11
+|
+|move|p1a: Shiftry|Will-O-Wisp|p2a: Alcremie
+|-status|p2a: Alcremie|brn
+|move|p2a: Alcremie|Dazzling Gleam|p1a: Shiftry
+|-supereffective|p1a: Shiftry
+|-damage|p1a: Shiftry|0 fnt
+|faint|p1a: Shiftry
+|
+|-heal|p2a: Alcremie|89/100 brn|[from] item: Leftovers
+|-damage|p2a: Alcremie|83/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Venusaur|Venusaur, L84, M|272/272
+|turn|12
+|
+|move|p1a: Venusaur|Earth Power|p2a: Alcremie
+|-damage|p2a: Alcremie|63/100 brn
+|move|p2a: Alcremie|Dazzling Gleam|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-damage|p1a: Venusaur|228/272
+|
+|-heal|p1a: Venusaur|245/272|[from] item: Leftovers
+|-heal|p2a: Alcremie|69/100 brn|[from] item: Leftovers
+|-damage|p2a: Alcremie|63/100 brn|[from] brn
+|upkeep
+|turn|13
+|
+|move|p1a: Venusaur|Earth Power|p2a: Alcremie
+|-damage|p2a: Alcremie|45/100 brn
+|move|p2a: Alcremie|Dazzling Gleam|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-damage|p1a: Venusaur|201/272
+|
+|-heal|p1a: Venusaur|218/272|[from] item: Leftovers
+|-heal|p2a: Alcremie|51/100 brn|[from] item: Leftovers
+|-damage|p2a: Alcremie|45/100 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Venusaur|Earth Power|p2a: Alcremie
+|-crit|p2a: Alcremie
+|-damage|p2a: Alcremie|14/100 brn
+|move|p2a: Alcremie|Dazzling Gleam|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-damage|p1a: Venusaur|173/272
+|
+|-heal|p1a: Venusaur|190/272|[from] item: Leftovers
+|-heal|p2a: Alcremie|20/100 brn|[from] item: Leftovers
+|-damage|p2a: Alcremie|14/100 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p1a: Venusaur|Earth Power|p2a: Alcremie
+|-damage|p2a: Alcremie|0 fnt
+|faint|p2a: Alcremie
+|
+|-heal|p1a: Venusaur|207/272|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Skuntank|Skuntank, L84, F|100/100
+|turn|16
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Venusaur
+|-damage|p1a: Venusaur|54/272
+|-damage|p2a: Skuntank|90/100|[from] item: Life Orb
+|move|p1a: Venusaur|Earth Power|p2a: Skuntank
+|-supereffective|p2a: Skuntank
+|-damage|p2a: Skuntank|35/100
+|
+|-heal|p1a: Venusaur|71/272|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Venusaur
+|-damage|p1a: Venusaur|0 fnt
+|faint|p1a: Venusaur
+|-damage|p2a: Skuntank|25/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Blaziken|Blaziken, L76, M|247/247
+|turn|18
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Blaziken|[miss]
+|-miss|p2a: Skuntank|p1a: Blaziken
+|move|p1a: Blaziken|Knock Off|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|8/100
+|-enditem|p2a: Skuntank|Life Orb|[from] move: Knock Off|[of] p1a: Blaziken
+|-damage|p1a: Blaziken|223/247|[from] item: Life Orb
+|
+|-ability|p1a: Blaziken|Speed Boost|boost
+|-boost|p1a: Blaziken|spe|1
+|upkeep
+|turn|19
+|
+|move|p1a: Blaziken|Knock Off|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|0 fnt
+|-damage|p1a: Blaziken|162/247|[from] ability: Aftermath|[of] p2a: Skuntank
+|faint|p2a: Skuntank
+|-damage|p1a: Blaziken|138/247|[from] item: Life Orb
+|
+|-ability|p1a: Blaziken|Speed Boost|boost
+|-boost|p1a: Blaziken|spe|1
+|upkeep
+|
+|switch|p2a: Mandibuzz|Mandibuzz, L85, F|100/100
+|turn|20
+|
+|move|p1a: Blaziken|Knock Off|p2a: Mandibuzz
+|-resisted|p2a: Mandibuzz
+|-damage|p2a: Mandibuzz|90/100
+|-enditem|p2a: Mandibuzz|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Blaziken
+|-damage|p1a: Blaziken|114/247|[from] item: Life Orb
+|move|p2a: Mandibuzz|Brave Bird|p1a: Blaziken
+|-supereffective|p1a: Blaziken
+|-damage|p1a: Blaziken|0 fnt
+|faint|p1a: Blaziken
+|-damage|p2a: Mandibuzz|78/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Piloswine|Piloswine, L85, F|309/309
+|turn|21
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Piloswine
+|-damage|p1a: Piloswine|233/309
+|-damage|p2a: Mandibuzz|71/100|[from] Recoil
+|move|p1a: Piloswine|Roar||[still]
+|-fail|p1a: Piloswine
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Piloswine
+|-damage|p1a: Piloswine|161/309
+|-damage|p2a: Mandibuzz|63/100|[from] Recoil
+|move|p1a: Piloswine|Roar||[still]
+|-fail|p1a: Piloswine
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Piloswine
+|-damage|p1a: Piloswine|95/309
+|-damage|p2a: Mandibuzz|57/100|[from] Recoil
+|move|p1a: Piloswine|Roar||[still]
+|-fail|p1a: Piloswine
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Piloswine
+|-damage|p1a: Piloswine|25/309
+|-damage|p2a: Mandibuzz|50/100|[from] Recoil
+|move|p1a: Piloswine|Roar||[still]
+|-fail|p1a: Piloswine
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Piloswine
+|-damage|p1a: Piloswine|0 fnt
+|faint|p1a: Piloswine
+|-damage|p2a: Mandibuzz|47/100|[from] Recoil
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

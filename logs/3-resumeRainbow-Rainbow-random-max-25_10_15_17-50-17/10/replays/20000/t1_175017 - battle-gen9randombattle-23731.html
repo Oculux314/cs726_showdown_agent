@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23731</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23731<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23731|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Scyther|Scyther, L82, M|249/249
+|switch|p2a: Kleavor|Kleavor, L78, F|100/100
+|turn|1
+|
+|switch|p1a: Hydreigon|Hydreigon, L79, F|275/275
+|move|p2a: Kleavor|Close Combat|p1a: Hydreigon
+|-supereffective|p1a: Hydreigon
+|-damage|p1a: Hydreigon|0 fnt
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|faint|p1a: Hydreigon
+|
+|upkeep
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263
+|turn|2
+|
+|move|p1a: Froslass|Spikes|p2a: Kleavor
+|-sidestart|p2: t2_175017|Spikes
+|move|p2a: Kleavor|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Fezandipiti|Fezandipiti, L82, M|278/278
+|move|p2a: Kleavor|Close Combat|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|242/278
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Fezandipiti|Heat Wave|p2a: Kleavor
+|-damage|p2a: Kleavor|50/100
+|move|p2a: Kleavor|Close Combat|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|206/278
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Kleavor
+|-resisted|p2a: Kleavor
+|-damage|p2a: Kleavor|0 fnt
+|faint|p2a: Kleavor
+|
+|upkeep
+|
+|switch|p2a: Lokix|Lokix, L82, F|100/100
+|-damage|p2a: Lokix|88/100|[from] Spikes
+|turn|6
+|
+|switch|p1a: Giratina|Giratina, L75|349/349
+|-ability|p1a: Giratina|Pressure
+|move|p2a: Lokix|First Impression|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|240/349
+|-damage|p2a: Lokix|78/100|[from] item: Life Orb
+|
+|-heal|p1a: Giratina|261/349|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|282/349|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|303/349|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|324/349|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|345/349|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|349/349|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|0
+|-boost|p1a: Giratina|spd|0
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Lokix|Leech Life|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|255/349
+|-heal|p2a: Lokix|97/100|[from] drain|[of] p1a: Giratina
+|-damage|p2a: Lokix|87/100|[from] item: Life Orb
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|0
+|-boost|p1a: Giratina|spd|0
+|
+|-heal|p1a: Giratina|276/349|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Lokix|Leech Life|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|188/349
+|-heal|p2a: Lokix|100/100|[from] drain|[of] p1a: Giratina
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|0
+|-boost|p1a: Giratina|spd|0
+|
+|-heal|p1a: Giratina|209/349|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Lokix|Leech Life|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|115/349
+|-heal|p2a: Lokix|100/100|[from] drain|[of] p1a: Giratina
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|0
+|-boost|p1a: Giratina|spd|0
+|
+|-heal|p1a: Giratina|136/349|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Lokix|Leech Life|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|37/349
+|-heal|p2a: Lokix|100/100|[from] drain|[of] p1a: Giratina
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|0
+|-boost|p1a: Giratina|spd|0
+|
+|-heal|p1a: Giratina|58/349|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Lokix|Leech Life|p1a: Giratina
+|-resisted|p1a: Giratina
+|-crit|p1a: Giratina
+|-damage|p1a: Giratina|0 fnt
+|-heal|p2a: Lokix|100/100|[from] drain|[of] p1a: Giratina
+|faint|p1a: Giratina
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Scyther|Scyther, L82, M|249/249
+|turn|19
+|
+|move|p1a: Scyther|Close Combat|p2a: Lokix
+|-damage|p2a: Lokix|51/100
+|-unboost|p1a: Scyther|def|1
+|-unboost|p1a: Scyther|spd|1
+|move|p2a: Lokix|Leech Life|p1a: Scyther
+|-resisted|p1a: Scyther
+|-damage|p1a: Scyther|132/249
+|-heal|p2a: Lokix|75/100|[from] drain|[of] p1a: Scyther
+|-damage|p2a: Lokix|65/100|[from] item: Life Orb
+|
+|upkeep
+|turn|20
+|
+|-terastallize|p1a: Scyther|Fighting
+|move|p1a: Scyther|Close Combat|p2a: Lokix
+|-damage|p2a: Lokix|7/100
+|-unboost|p1a: Scyther|def|1
+|-unboost|p1a: Scyther|spd|1
+|move|p2a: Lokix|Leech Life|p1a: Scyther
+|-resisted|p1a: Scyther
+|-damage|p1a: Scyther|0 fnt
+|-heal|p2a: Lokix|34/100|[from] drain|[of] p1a: Scyther
+|faint|p1a: Scyther
+|-damage|p2a: Lokix|24/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Fezandipiti|Fezandipiti, L82, M|206/278
+|turn|21
+|
+|move|p1a: Fezandipiti|Heat Wave|p2a: Lokix
+|-supereffective|p2a: Lokix
+|-damage|p2a: Lokix|0 fnt
+|faint|p2a: Lokix
+|
+|upkeep
+|
+|switch|p2a: Kyogre|Kyogre, L71|100/100
+|-damage|p2a: Kyogre|88/100|[from] Spikes
+|-weather|RainDance|[from] ability: Drizzle|[of] p2a: Kyogre
+|turn|22
+|
+|move|p2a: Kyogre|Water Spout|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|95/278
+|move|p1a: Fezandipiti|Heat Wave|p2a: Kyogre
+|-resisted|p2a: Kyogre
+|-damage|p2a: Kyogre|84/100
+|-status|p2a: Kyogre|brn
+|
+|-weather|RainDance|[upkeep]
+|-damage|p2a: Kyogre|78/100 brn|[from] brn
+|upkeep
+|turn|23
+|
+|move|p2a: Kyogre|Water Spout|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|4/278
+|move|p1a: Fezandipiti|Heat Wave|p2a: Kyogre
+|-resisted|p2a: Kyogre
+|-damage|p2a: Kyogre|75/100 brn
+|
+|-weather|RainDance|[upkeep]
+|-damage|p2a: Kyogre|68/100 brn|[from] brn
+|upkeep
+|turn|24
+|
+|move|p2a: Kyogre|Water Spout|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|0 fnt
+|faint|p1a: Fezandipiti
+|
+|-weather|RainDance|[upkeep]
+|-damage|p2a: Kyogre|62/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263
+|turn|25
+|
+|move|p2a: Kyogre|Water Spout|p1a: Froslass
+|-damage|p1a: Froslass|77/263
+|move|p1a: Froslass|Spikes|p2a: Kyogre
+|-sidestart|p2: t2_175017|Spikes
+|
+|-weather|RainDance|[upkeep]
+|-damage|p2a: Kyogre|56/100 brn|[from] brn
+|upkeep
+|turn|26
+|
+|move|p2a: Kyogre|Water Spout|p1a: Froslass
+|-damage|p1a: Froslass|0 fnt
+|faint|p1a: Froslass
+|
+|-weather|none
+|-damage|p2a: Kyogre|50/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Probopass|Probopass, L92, M|260/260
+|turn|27
+|
+|move|p2a: Kyogre|Water Spout|p1a: Probopass
+|-supereffective|p1a: Probopass
+|-damage|p1a: Probopass|158/260
+|move|p1a: Probopass|Body Press|p2a: Kyogre
+|-damage|p2a: Kyogre|10/100 brn
+|
+|-heal|p1a: Probopass|174/260|[from] item: Leftovers
+|-damage|p2a: Kyogre|4/100 brn|[from] brn
+|upkeep
+|turn|28
+|
+|move|p2a: Kyogre|Water Spout|p1a: Probopass
+|-supereffective|p1a: Probopass
+|-damage|p1a: Probopass|166/260
+|move|p1a: Probopass|Body Press|p2a: Kyogre
+|-damage|p2a: Kyogre|0 fnt
+|faint|p2a: Kyogre
+|
+|-heal|p1a: Probopass|182/260|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Tyranitar|Tyranitar, L78, M|100/100
+|-damage|p2a: Tyranitar|84/100|[from] Spikes
+|-weather|Sandstorm|[from] ability: Sand Stream|[of] p2a: Tyranitar
+|turn|29
+|
+|move|p2a: Tyranitar|Stone Edge|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|147/260
+|move|p1a: Probopass|Body Press|p2a: Tyranitar
+|-supereffective|p2a: Tyranitar
+|-damage|p2a: Tyranitar|0 fnt
+|faint|p2a: Tyranitar
+|
+|-weather|Sandstorm|[upkeep]
+|-heal|p1a: Probopass|163/260|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Smeargle|Smeargle, L95, M|100/100
+|-damage|p2a: Smeargle|84/100|[from] Spikes
+|turn|30
+|
+|move|p2a: Smeargle|Population Bomb|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|161/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|159/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|157/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|155/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|153/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|151/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|149/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|146/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|144/260
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|142/260
+|-hitcount|p1a: Probopass|10
+|move|p1a: Probopass|Body Press|p2a: Smeargle
+|-supereffective|p2a: Smeargle
+|-damage|p2a: Smeargle|0 fnt
+|faint|p2a: Smeargle
+|
+|-weather|Sandstorm|[upkeep]
+|-heal|p1a: Probopass|158/260|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Farigiraf|Farigiraf, L91, M|100/100
+|-damage|p2a: Farigiraf|84/100|[from] Spikes
+|turn|31
+|
+|move|p2a: Farigiraf|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|142/260
+|move|p1a: Probopass|Body Press|p2a: Farigiraf
+|-damage|p2a: Farigiraf|54/100
+|
+|-weather|Sandstorm|[upkeep]
+|-damage|p2a: Farigiraf|48/100|[from] Sandstorm
+|-heal|p2a: Farigiraf|54/100|[from] item: Leftovers
+|-heal|p1a: Probopass|158/260|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Farigiraf|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|143/260
+|move|p1a: Probopass|Body Press|p2a: Farigiraf
+|-damage|p2a: Farigiraf|29/100
+|
+|-weather|Sandstorm|[upkeep]
+|-damage|p2a: Farigiraf|23/100|[from] Sandstorm
+|-heal|p2a: Farigiraf|29/100|[from] item: Leftovers
+|-heal|p1a: Probopass|159/260|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Farigiraf|Body Slam|p1a: Probopass
+|-resisted|p1a: Probopass
+|-damage|p1a: Probopass|145/260
+|move|p1a: Probopass|Body Press|p2a: Farigiraf
+|-crit|p2a: Farigiraf
+|-damage|p2a: Farigiraf|0 fnt
+|faint|p2a: Farigiraf
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

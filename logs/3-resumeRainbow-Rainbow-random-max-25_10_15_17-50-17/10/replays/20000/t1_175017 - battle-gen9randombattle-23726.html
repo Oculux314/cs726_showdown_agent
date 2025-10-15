@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23726</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23726<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23726|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Swampert|Swampert, L83, F|302/302
+|switch|p2a: Miraidon|Miraidon, L65|100/100
+|-fieldstart|move: Electric Terrain|[from] ability: Hadron Engine|[of] p2a: Miraidon
+|turn|1
+|
+|switch|p1a: Qwilfish|Qwilfish-Hisui, L83, M|244/244
+|-ability|p1a: Qwilfish|Intimidate|boost
+|-unboost|p2a: Miraidon|atk|1
+|move|p2a: Miraidon|Draco Meteor|p1a: Qwilfish
+|-damage|p1a: Qwilfish|33/244
+|-unboost|p2a: Miraidon|spa|2
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Miraidon|Draco Meteor|p1a: Qwilfish
+|-damage|p1a: Qwilfish|0 fnt
+|-unboost|p2a: Miraidon|spa|2
+|faint|p1a: Qwilfish
+|
+|upkeep
+|
+|switch|p1a: Cobalion|Cobalion, L80|277/277
+|turn|3
+|
+|move|p1a: Cobalion|Flash Cannon|p2a: Miraidon
+|-resisted|p2a: Miraidon
+|-damage|p2a: Miraidon|85/100
+|move|p2a: Miraidon|Draco Meteor|p1a: Cobalion
+|-resisted|p1a: Cobalion
+|-damage|p1a: Cobalion|235/277
+|-unboost|p2a: Miraidon|spa|2
+|
+|-heal|p1a: Cobalion|252/277|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Cobalion|Flash Cannon|p2a: Miraidon
+|-resisted|p2a: Miraidon
+|-damage|p2a: Miraidon|68/100
+|move|p2a: Miraidon|Draco Meteor|p1a: Cobalion
+|-resisted|p1a: Cobalion
+|-damage|p1a: Cobalion|222/277
+|
+|-heal|p1a: Cobalion|239/277|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|switch|p1a: Shaymin|Shaymin-Sky, L73|266/266
+|move|p2a: Miraidon|Draco Meteor|p1a: Shaymin
+|-damage|p1a: Shaymin|199/266
+|
+|-fieldend|move: Electric Terrain
+|upkeep
+|turn|6
+|
+|move|p1a: Shaymin|Synthesis|p1a: Shaymin
+|-heal|p1a: Shaymin|266/266
+|move|p2a: Miraidon|Draco Meteor|p1a: Shaymin
+|-damage|p1a: Shaymin|208/266
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Shaymin|Earth Power|p2a: Miraidon
+|-supereffective|p2a: Miraidon
+|-crit|p2a: Miraidon
+|-damage|p2a: Miraidon|0 fnt
+|faint|p2a: Miraidon
+|
+|upkeep
+|
+|switch|p2a: Clodsire|Clodsire, L81, M|100/100
+|turn|8
+|
+|move|p1a: Shaymin|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|67/100
+|move|p2a: Clodsire|Earthquake|p1a: Shaymin
+|-immune|p1a: Shaymin
+|
+|-heal|p2a: Clodsire|73/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Shaymin|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|43/100
+|-unboost|p2a: Clodsire|spd|1
+|move|p2a: Clodsire|Earthquake|p1a: Shaymin
+|-immune|p1a: Shaymin
+|
+|-heal|p2a: Clodsire|49/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Shaymin|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|0 fnt
+|faint|p2a: Clodsire
+|
+|upkeep
+|
+|switch|p2a: Calyrex|Calyrex, L93|100/100
+|-ability|p2a: Calyrex|Unnerve
+|turn|11
+|
+|-terastallize|p1a: Shaymin|Water
+|move|p1a: Shaymin|Synthesis|p1a: Shaymin
+|-heal|p1a: Shaymin|266/266
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|192/266
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Shaymin|Earth Power|p2a: Calyrex
+|-resisted|p2a: Calyrex
+|-damage|p2a: Calyrex|92/100
+|-unboost|p2a: Calyrex|spd|1
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|114/266
+|
+|-heal|p2a: Calyrex|98/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Shaymin|Synthesis|p1a: Shaymin
+|-heal|p1a: Shaymin|247/266
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|172/266
+|
+|-heal|p2a: Calyrex|100/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Shaymin|Earth Power|p2a: Calyrex
+|-resisted|p2a: Calyrex
+|-damage|p2a: Calyrex|87/100
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|91/266
+|
+|-heal|p2a: Calyrex|94/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Shaymin|Earth Power|p2a: Calyrex
+|-resisted|p2a: Calyrex
+|-damage|p2a: Calyrex|82/100
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|13/266
+|
+|-heal|p2a: Calyrex|88/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Shaymin|Earth Power|p2a: Calyrex
+|-resisted|p2a: Calyrex
+|-damage|p2a: Calyrex|75/100
+|move|p2a: Calyrex|Body Press|p1a: Shaymin
+|-damage|p1a: Shaymin|0 fnt
+|faint|p1a: Shaymin
+|
+|-heal|p2a: Calyrex|82/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Swampert|Swampert, L83, F|302/302
+|turn|17
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|240/302
+|move|p1a: Swampert|Stealth Rock|p2a: Calyrex
+|-sidestart|p2: t2_175017|move: Stealth Rock
+|
+|-heal|p2a: Calyrex|88/100|[from] item: Leftovers
+|-heal|p1a: Swampert|258/302|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|199/302
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p2a: Calyrex|94/100|[from] item: Leftovers
+|-heal|p1a: Swampert|217/302|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|153/302
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p2a: Calyrex|99/100|[from] item: Leftovers
+|-heal|p1a: Swampert|171/302|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|114/302
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p2a: Calyrex|100/100|[from] item: Leftovers
+|-heal|p1a: Swampert|132/302|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|77/302
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p1a: Swampert|95/302|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|30/302
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p1a: Swampert|48/302|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Calyrex|Body Press|p1a: Swampert
+|-damage|p1a: Swampert|0 fnt
+|faint|p1a: Swampert
+|
+|upkeep
+|
+|switch|p1a: Cobalion|Cobalion, L80|239/277
+|turn|24
+|
+|move|p1a: Cobalion|Flash Cannon|p2a: Calyrex
+|-damage|p2a: Calyrex|66/100
+|move|p2a: Calyrex|Body Press|p1a: Cobalion
+|-supereffective|p1a: Cobalion
+|-damage|p1a: Cobalion|151/277
+|
+|-heal|p1a: Cobalion|168/277|[from] item: Leftovers
+|-heal|p2a: Calyrex|73/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Cobalion|Flash Cannon|p2a: Calyrex
+|-damage|p2a: Calyrex|38/100
+|move|p2a: Calyrex|Body Press|p1a: Cobalion
+|-supereffective|p1a: Cobalion
+|-damage|p1a: Cobalion|68/277
+|
+|-heal|p1a: Cobalion|85/277|[from] item: Leftovers
+|-heal|p2a: Calyrex|44/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Cobalion|Flash Cannon|p2a: Calyrex
+|-damage|p2a: Calyrex|9/100
+|move|p2a: Calyrex|Body Press|p1a: Cobalion
+|-supereffective|p1a: Cobalion
+|-damage|p1a: Cobalion|0 fnt
+|faint|p1a: Cobalion
+|
+|-heal|p2a: Calyrex|16/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Forretress|Forretress, L84, F|263/263
+|turn|27
+|
+|move|p2a: Calyrex|Psyshock|p1a: Forretress
+|-resisted|p1a: Forretress
+|-damage|p1a: Forretress|233/263
+|move|p1a: Forretress|Iron Head|p2a: Calyrex
+|-damage|p2a: Calyrex|0 fnt
+|faint|p2a: Calyrex
+|
+|-heal|p1a: Forretress|249/263|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Dusknoir|Dusknoir, L89, M|100/100
+|-damage|p2a: Dusknoir|88/100|[from] Stealth Rock
+|-item|p1a: Forretress|Leftovers|[from] ability: Frisk|[of] p2a: Dusknoir
+|turn|28
+|
+|move|p2a: Dusknoir|Poltergeist|p1a: Forretress|[miss]
+|-miss|p2a: Dusknoir|p1a: Forretress
+|move|p1a: Forretress|Iron Head|p2a: Dusknoir
+|-damage|p2a: Dusknoir|64/100
+|
+|-heal|p2a: Dusknoir|70/100|[from] item: Leftovers
+|-heal|p1a: Forretress|263/263|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Dusknoir|Poltergeist|p1a: Forretress
+|-activate|p1a: Forretress|move: Poltergeist|Leftovers
+|-damage|p1a: Forretress|172/263
+|move|p1a: Forretress|Iron Head|p2a: Dusknoir
+|-damage|p2a: Dusknoir|46/100
+|
+|-heal|p2a: Dusknoir|52/100|[from] item: Leftovers
+|-heal|p1a: Forretress|188/263|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Dusknoir|Poltergeist|p1a: Forretress|[miss]
+|-miss|p2a: Dusknoir|p1a: Forretress
+|move|p1a: Forretress|Iron Head|p2a: Dusknoir
+|-damage|p2a: Dusknoir|27/100
+|
+|-heal|p2a: Dusknoir|33/100|[from] item: Leftovers
+|-heal|p1a: Forretress|204/263|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Dusknoir|Poltergeist|p1a: Forretress
+|-activate|p1a: Forretress|move: Poltergeist|Leftovers
+|-damage|p1a: Forretress|104/263
+|move|p1a: Forretress|Iron Head|p2a: Dusknoir
+|-damage|p2a: Dusknoir|11/100
+|
+|-heal|p2a: Dusknoir|17/100|[from] item: Leftovers
+|-heal|p1a: Forretress|120/263|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Dusknoir|Poltergeist|p1a: Forretress
+|-activate|p1a: Forretress|move: Poltergeist|Leftovers
+|-damage|p1a: Forretress|21/263
+|move|p1a: Forretress|Iron Head|p2a: Dusknoir
+|-damage|p2a: Dusknoir|0 fnt
+|faint|p2a: Dusknoir
+|
+|-heal|p1a: Forretress|37/263|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Zebstrika|Zebstrika, L87, F|100/100
+|-damage|p2a: Zebstrika|88/100|[from] Stealth Rock
+|turn|33
+|
+|move|p2a: Zebstrika|Overheat|p1a: Forretress
+|-supereffective|p1a: Forretress
+|-damage|p1a: Forretress|0 fnt
+|-unboost|p2a: Zebstrika|spa|2
+|faint|p1a: Forretress
+|-damage|p2a: Zebstrika|78/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Roaring Moon|Roaring Moon, L72|270/270
+|turn|34
+|
+|move|p2a: Zebstrika|Overheat|p1a: Roaring Moon|[miss]
+|-miss|p2a: Zebstrika|p1a: Roaring Moon
+|move|p1a: Roaring Moon|Outrage|p2a: Zebstrika
+|-damage|p2a: Zebstrika|26/100
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Zebstrika|Overheat|p1a: Roaring Moon
+|-resisted|p1a: Roaring Moon
+|-damage|p1a: Roaring Moon|243/270
+|-unboost|p2a: Zebstrika|spa|2
+|-damage|p2a: Zebstrika|16/100|[from] item: Life Orb
+|move|p1a: Roaring Moon|Outrage|p2a: Zebstrika|[from] lockedmove
+|-damage|p2a: Zebstrika|0 fnt
+|faint|p2a: Zebstrika
+|-start|p1a: Roaring Moon|confusion|[fatigue]
+|-enditem|p1a: Roaring Moon|Lum Berry|[eat]
+|-end|p1a: Roaring Moon|confusion
+|
+|upkeep
+|
+|switch|p2a: Arceus|Arceus-Dark, L71|100/100
+|-damage|p2a: Arceus|88/100|[from] Stealth Rock
+|turn|36
+|
+|move|p1a: Roaring Moon|Outrage|p2a: Arceus
+|-damage|p2a: Arceus|49/100
+|move|p2a: Arceus|Judgment|p1a: Roaring Moon
+|-resisted|p1a: Roaring Moon
+|-damage|p1a: Roaring Moon|188/270
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Roaring Moon|Outrage|p2a: Arceus|[from] lockedmove
+|-crit|p2a: Arceus
+|-damage|p2a: Arceus|0 fnt
+|faint|p2a: Arceus
+|-start|p1a: Roaring Moon|confusion|[fatigue]
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

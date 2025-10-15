@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23720</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23720<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23720|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Quaquaval|Quaquaval, L79, M|264/264
+|switch|p2a: Chi-Yu|Chi-Yu, L77|100/100
+|-ability|p2a: Chi-Yu|Beads of Ruin
+|turn|1
+|
+|switch|p1a: Wugtrio|Wugtrio, L91, F|212/212
+|move|p2a: Chi-Yu|Overheat|p1a: Wugtrio
+|-resisted|p1a: Wugtrio
+|-damage|p1a: Wugtrio|59/212
+|-unboost|p2a: Chi-Yu|spa|2
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Wugtrio|Throat Chop|p2a: Chi-Yu
+|-resisted|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|73/100
+|-start|p2a: Chi-Yu|Throat Chop|[silent]
+|move|p2a: Chi-Yu|Overheat|p1a: Wugtrio
+|-resisted|p1a: Wugtrio
+|-damage|p1a: Wugtrio|0 fnt
+|-unboost|p2a: Chi-Yu|spa|2
+|faint|p1a: Wugtrio
+|
+|upkeep
+|
+|switch|p1a: Excadrill|Excadrill, L79, F|303/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|3
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Excadrill
+|-supereffective|p1a: Excadrill
+|-damage|p1a: Excadrill|139/303
+|-unboost|p2a: Chi-Yu|spa|2
+|move|p1a: Excadrill|Rock Slide|p2a: Chi-Yu
+|-supereffective|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|4/100
+|
+|-end|p2a: Chi-Yu|Throat Chop|[silent]
+|upkeep
+|turn|4
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Excadrill
+|-supereffective|p1a: Excadrill
+|-crit|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|faint|p1a: Excadrill
+|
+|upkeep
+|
+|switch|p1a: Comfey|Comfey, L85, M|225/225
+|turn|5
+|
+|-terastallize|p1a: Comfey|Ground
+|move|p1a: Comfey|Draining Kiss|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|0 fnt
+|faint|p2a: Chi-Yu
+|
+|upkeep
+|
+|switch|p2a: Palkia|Palkia, L75|100/100
+|-ability|p2a: Palkia|Pressure
+|turn|6
+|
+|move|p1a: Comfey|Draining Kiss|p2a: Palkia
+|-supereffective|p2a: Palkia
+|-damage|p2a: Palkia|68/100
+|move|p2a: Palkia|Fire Blast|p1a: Comfey
+|-damage|p1a: Comfey|153/225
+|
+|-heal|p1a: Comfey|167/225|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Comfey|Draining Kiss|p2a: Palkia
+|-supereffective|p2a: Palkia
+|-damage|p2a: Palkia|36/100
+|-heal|p1a: Comfey|225/225|[from] drain|[of] p2a: Palkia
+|move|p2a: Palkia|Fire Blast|p1a: Comfey
+|-damage|p1a: Comfey|143/225
+|
+|-heal|p1a: Comfey|157/225|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Comfey|Draining Kiss|p2a: Palkia
+|-supereffective|p2a: Palkia
+|-damage|p2a: Palkia|2/100
+|-heal|p1a: Comfey|222/225|[from] drain|[of] p2a: Palkia
+|move|p2a: Palkia|Fire Blast|p1a: Comfey
+|-damage|p1a: Comfey|146/225
+|
+|-heal|p1a: Comfey|160/225|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Comfey|Draining Kiss|p2a: Palkia
+|-supereffective|p2a: Palkia
+|-damage|p2a: Palkia|0 fnt
+|-heal|p1a: Comfey|164/225|[from] drain|[of] p2a: Palkia
+|faint|p2a: Palkia
+|
+|-heal|p1a: Comfey|178/225|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Pecharunt|Pecharunt, L77|100/100
+|turn|10
+|
+|move|p1a: Comfey|Draining Kiss|p2a: Pecharunt
+|-resisted|p2a: Pecharunt
+|-damage|p2a: Pecharunt|90/100
+|-heal|p1a: Comfey|198/225|[from] drain|[of] p2a: Pecharunt
+|-damage|p1a: Comfey|161/225|[from] item: Rocky Helmet|[of] p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Comfey
+|-resisted|p1a: Comfey
+|-damage|p1a: Comfey|128/225
+|-status|p1a: Comfey|tox
+|-start|p1a: Comfey|confusion|[from] ability: Poison Puppeteer|[of] p2a: Pecharunt
+|
+|-heal|p1a: Comfey|142/225 tox|[from] item: Leftovers
+|-damage|p1a: Comfey|128/225 tox|[from] psn
+|upkeep
+|turn|11
+|
+|-activate|p1a: Comfey|confusion
+|move|p1a: Comfey|Draining Kiss|p2a: Pecharunt
+|-resisted|p2a: Pecharunt
+|-damage|p2a: Pecharunt|81/100
+|-heal|p1a: Comfey|146/225 tox|[from] drain|[of] p2a: Pecharunt
+|-damage|p1a: Comfey|109/225 tox|[from] item: Rocky Helmet|[of] p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Comfey
+|-resisted|p1a: Comfey
+|-damage|p1a: Comfey|74/225 tox
+|
+|-heal|p1a: Comfey|88/225 tox|[from] item: Leftovers
+|-damage|p1a: Comfey|60/225 tox|[from] psn
+|upkeep
+|turn|12
+|
+|-activate|p1a: Comfey|confusion
+|move|p1a: Comfey|Taunt|p2a: Pecharunt
+|-start|p2a: Pecharunt|move: Taunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Comfey
+|-resisted|p1a: Comfey
+|-crit|p1a: Comfey
+|-damage|p1a: Comfey|11/225 tox
+|
+|-heal|p1a: Comfey|25/225 tox|[from] item: Leftovers
+|-damage|p1a: Comfey|0 fnt|[from] psn
+|faint|p1a: Comfey
+|upkeep
+|
+|switch|p1a: Quaquaval|Quaquaval, L79, M|264/264
+|turn|13
+|
+|move|p1a: Quaquaval|Roost||[still]
+|-fail|p1a: Quaquaval|heal
+|move|p2a: Pecharunt|Malignant Chain|p1a: Quaquaval
+|-damage|p1a: Quaquaval|171/264
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Pecharunt|Malignant Chain|p1a: Quaquaval
+|-damage|p1a: Quaquaval|72/264
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|204/264
+|-singleturn|p1a: Quaquaval|move: Roost
+|
+|-end|p2a: Pecharunt|move: Taunt
+|upkeep
+|turn|15
+|
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|264/264
+|-singleturn|p1a: Quaquaval|move: Roost
+|move|p2a: Pecharunt|Malignant Chain|p1a: Quaquaval
+|-damage|p1a: Quaquaval|165/264
+|-status|p1a: Quaquaval|tox
+|-start|p1a: Quaquaval|confusion|[from] ability: Poison Puppeteer|[of] p2a: Pecharunt
+|
+|-damage|p1a: Quaquaval|149/264 tox|[from] psn
+|upkeep
+|turn|16
+|
+|move|p2a: Pecharunt|Malignant Chain|p1a: Quaquaval
+|-damage|p1a: Quaquaval|53/264 tox
+|-activate|p1a: Quaquaval|confusion
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|185/264 tox
+|-singleturn|p1a: Quaquaval|move: Roost
+|
+|-damage|p1a: Quaquaval|153/264 tox|[from] psn
+|upkeep
+|turn|17
+|
+|move|p2a: Pecharunt|Malignant Chain|p1a: Quaquaval
+|-damage|p1a: Quaquaval|47/264 tox
+|-end|p1a: Quaquaval|confusion
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|179/264 tox
+|-singleturn|p1a: Quaquaval|move: Roost
+|
+|-damage|p1a: Quaquaval|131/264 tox|[from] psn
+|upkeep
+|turn|18
+|
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|263/264 tox
+|-singleturn|p1a: Quaquaval|move: Roost
+|move|p2a: Pecharunt|Shadow Ball|p1a: Quaquaval
+|-damage|p1a: Quaquaval|187/264 tox
+|
+|-damage|p1a: Quaquaval|123/264 tox|[from] psn
+|upkeep
+|turn|19
+|
+|move|p1a: Quaquaval|Roost|p1a: Quaquaval
+|-heal|p1a: Quaquaval|255/264 tox
+|-singleturn|p1a: Quaquaval|move: Roost
+|move|p2a: Pecharunt|Shadow Ball|p1a: Quaquaval
+|-damage|p1a: Quaquaval|179/264 tox
+|
+|-damage|p1a: Quaquaval|99/264 tox|[from] psn
+|upkeep
+|turn|20
+|
+|move|p2a: Pecharunt|Shadow Ball|p1a: Quaquaval
+|-crit|p1a: Quaquaval
+|-damage|p1a: Quaquaval|0 fnt
+|faint|p1a: Quaquaval
+|
+|upkeep
+|
+|switch|p1a: Darkrai|Darkrai, L77|234/234
+|turn|21
+|
+|move|p1a: Darkrai|Sludge Bomb|p2a: Pecharunt
+|-resisted|p2a: Pecharunt
+|-damage|p2a: Pecharunt|72/100
+|-damage|p1a: Darkrai|211/234|[from] item: Life Orb
+|move|p2a: Pecharunt|Shadow Ball|p1a: Darkrai
+|-resisted|p1a: Darkrai
+|-damage|p1a: Darkrai|176/234
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Darkrai|Sludge Bomb|p2a: Pecharunt
+|-resisted|p2a: Pecharunt
+|-damage|p2a: Pecharunt|63/100
+|-damage|p1a: Darkrai|153/234|[from] item: Life Orb
+|move|p2a: Pecharunt|Shadow Ball|p1a: Darkrai
+|-resisted|p1a: Darkrai
+|-crit|p1a: Darkrai
+|-damage|p1a: Darkrai|100/234
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Pecharunt
+|-supereffective|p2a: Pecharunt
+|-damage|p2a: Pecharunt|0 fnt
+|faint|p2a: Pecharunt
+|-damage|p1a: Darkrai|77/234|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Oricorio|Oricorio, L84, M|100/100
+|turn|24
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Oricorio
+|-damage|p2a: Oricorio|48/100
+|-damage|p1a: Darkrai|54/234|[from] item: Life Orb
+|cant|p2a: Oricorio|flinch
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Oricorio
+|-damage|p2a: Oricorio|0 fnt
+|faint|p2a: Oricorio
+|-damage|p1a: Darkrai|31/234|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Lapras|Lapras, L87, M|100/100
+|turn|26
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Lapras
+|-damage|p2a: Lapras|68/100
+|-damage|p1a: Darkrai|8/234|[from] item: Life Orb
+|move|p2a: Lapras|Hydro Pump|p1a: Darkrai
+|-damage|p1a: Darkrai|0 fnt
+|faint|p1a: Darkrai
+|
+|upkeep
+|
+|switch|p1a: Ceruledge|Ceruledge, L78, F|245/245
+|turn|27
+|
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|2
+|move|p2a: Lapras|Hydro Pump|p1a: Ceruledge
+|-supereffective|p1a: Ceruledge
+|-damage|p1a: Ceruledge|0 fnt
+|faint|p1a: Ceruledge
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

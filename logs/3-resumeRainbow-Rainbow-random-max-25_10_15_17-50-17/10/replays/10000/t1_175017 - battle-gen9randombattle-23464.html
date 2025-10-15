@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23464</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23464<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23464|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Okidogi|Okidogi, L77, M|262/262
+|switch|p2a: Uxie|Uxie, L83|100/100
+|turn|1
+|
+|switch|p1a: Weavile|Weavile, L79, M|239/239
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-damage|p2a: Uxie|97/100
+|move|p2a: Uxie|Psychic Noise|p1a: Weavile
+|-immune|p1a: Weavile
+|
+|-heal|p2a: Uxie|100/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Weavile|Low Kick|p2a: Uxie
+|-resisted|p2a: Uxie
+|-crit|p2a: Uxie
+|-damage|p2a: Uxie|96/100
+|move|p2a: Uxie|U-turn|p1a: Weavile
+|-supereffective|p1a: Weavile
+|-damage|p1a: Weavile|127/239
+|
+|switch|p2a: Chesnaught|Chesnaught, L84, M|100/100|[from] U-turn
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Weavile|Low Kick|p2a: Chesnaught
+|-damage|p2a: Chesnaught|77/100
+|-damage|p1a: Weavile|88/239|[from] item: Rocky Helmet|[of] p2a: Chesnaught
+|move|p2a: Chesnaught|Wood Hammer|p1a: Weavile
+|-damage|p1a: Weavile|0 fnt
+|faint|p1a: Weavile
+|-damage|p2a: Chesnaught|67/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Umbreon|Umbreon, L84, M|297/297
+|turn|19
+|
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|move|p2a: Chesnaught|Wood Hammer|p1a: Umbreon
+|-damage|p1a: Umbreon|180/297
+|-damage|p2a: Chesnaught|53/100|[from] Recoil
+|
+|-heal|p1a: Umbreon|198/297|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Chesnaught|Wood Hammer|p1a: Umbreon
+|-damage|p1a: Umbreon|83/297
+|-damage|p2a: Chesnaught|40/100|[from] Recoil
+|
+|-heal|p1a: Umbreon|231/297|[from] move: Wish|[wisher] Umbreon
+|-heal|p1a: Umbreon|249/297|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Umbreon|Wish|p1a: Umbreon
+|move|p2a: Chesnaught|Wood Hammer|p1a: Umbreon
+|-damage|p1a: Umbreon|134/297
+|-damage|p2a: Chesnaught|27/100|[from] Recoil
+|
+|-heal|p1a: Umbreon|152/297|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Umbreon|Wish||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Chesnaught|Wood Hammer|p1a: Umbreon
+|-damage|p1a: Umbreon|43/297
+|-damage|p2a: Chesnaught|14/100|[from] Recoil
+|
+|-heal|p1a: Umbreon|191/297|[from] move: Wish|[wisher] Umbreon
+|-heal|p1a: Umbreon|209/297|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Umbreon|Foul Play|p2a: Chesnaught
+|-resisted|p2a: Chesnaught
+|-damage|p2a: Chesnaught|1/100
+|-damage|p1a: Umbreon|160/297|[from] item: Rocky Helmet|[of] p2a: Chesnaught
+|move|p2a: Chesnaught|Wood Hammer|p1a: Umbreon
+|-damage|p1a: Umbreon|52/297
+|-damage|p2a: Chesnaught|0 fnt|[from] Recoil
+|faint|p2a: Chesnaught
+|
+|-heal|p1a: Umbreon|70/297|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Meowscarada|Meowscarada, L78, F|100/100
+|turn|24
+|
+|move|p2a: Meowscarada|U-turn|p1a: Umbreon
+|-start|p2a: Meowscarada|typechange|Bug|[from] ability: Protean
+|-supereffective|p1a: Umbreon
+|-damage|p1a: Umbreon|0 fnt
+|faint|p1a: Umbreon
+|
+|switch|p2a: Iron Hands|Iron Hands, L79|100/100|[from] U-turn
+|
+|upkeep
+|
+|switch|p1a: Okidogi|Okidogi, L77, M|262/262
+|turn|25
+|
+|move|p1a: Okidogi|Knock Off|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|91/100
+|-enditem|p2a: Iron Hands|Leftovers|[from] move: Knock Off|[of] p1a: Okidogi
+|move|p2a: Iron Hands|Wild Charge|p1a: Okidogi
+|-damage|p1a: Okidogi|168/262
+|-damage|p2a: Iron Hands|85/100|[from] Recoil
+|
+|-heal|p1a: Okidogi|184/262|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Okidogi|Knock Off|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|79/100
+|move|p2a: Iron Hands|Wild Charge|p1a: Okidogi
+|-damage|p1a: Okidogi|84/262
+|-damage|p2a: Iron Hands|72/100|[from] Recoil
+|
+|-heal|p1a: Okidogi|100/262|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Okidogi|Knock Off|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|66/100
+|-status|p2a: Iron Hands|tox|[from] ability: Toxic Chain|[of] p1a: Okidogi
+|move|p2a: Iron Hands|Wild Charge|p1a: Okidogi
+|-damage|p1a: Okidogi|4/262
+|-damage|p2a: Iron Hands|60/100 tox|[from] Recoil
+|
+|-heal|p1a: Okidogi|20/262|[from] item: Leftovers
+|-damage|p2a: Iron Hands|54/100 tox|[from] psn
+|upkeep
+|turn|28
+|
+|move|p1a: Okidogi|Knock Off|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|48/100 tox
+|move|p2a: Iron Hands|Wild Charge|p1a: Okidogi
+|-damage|p1a: Okidogi|0 fnt
+|faint|p1a: Okidogi
+|-damage|p2a: Iron Hands|47/100 tox|[from] Recoil
+|
+|-damage|p2a: Iron Hands|35/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Swalot|Swalot, L90, M|326/326
+|turn|29
+|
+|move|p1a: Swalot|Earthquake|p2a: Iron Hands
+|-supereffective|p2a: Iron Hands
+|-damage|p2a: Iron Hands|3/100 tox
+|move|p2a: Iron Hands|Wild Charge|p1a: Swalot
+|-damage|p1a: Swalot|220/326
+|-damage|p2a: Iron Hands|0 fnt|[from] Recoil
+|faint|p2a: Iron Hands
+|-end|p2a: Iron Hands|Quark Drive|[silent]
+|
+|-heal|p1a: Swalot|240/326|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Meowscarada|Meowscarada, L78, F|100/100
+|turn|30
+|
+|move|p2a: Meowscarada|U-turn|p1a: Swalot
+|-start|p2a: Meowscarada|typechange|Bug|[from] ability: Protean
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|191/326
+|
+|switch|p2a: Persian|Persian, L92, F|100/100|[from] U-turn
+|move|p1a: Swalot|Earthquake|p2a: Persian
+|-damage|p2a: Persian|73/100
+|
+|-heal|p1a: Swalot|211/326|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Persian|Double-Edge|p1a: Swalot
+|-damage|p1a: Swalot|84/326
+|-damage|p2a: Persian|57/100|[from] Recoil
+|move|p1a: Swalot|Earthquake|p2a: Persian
+|-damage|p2a: Persian|29/100
+|
+|-heal|p1a: Swalot|104/326|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Persian|Double-Edge|p1a: Swalot
+|-damage|p1a: Swalot|0 fnt
+|faint|p1a: Swalot
+|-damage|p2a: Persian|17/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, F|364/364
+|turn|33
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Persian|Double-Edge|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|upkeep
+|turn|34
+|
+|move|p1a: Vaporeon|Protect||[still]
+|-fail|p1a: Vaporeon
+|move|p2a: Persian|Double-Edge|p1a: Vaporeon
+|-damage|p1a: Vaporeon|175/364
+|-damage|p2a: Persian|0 fnt|[from] Recoil
+|faint|p2a: Persian
+|
+|-heal|p1a: Vaporeon|197/364|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Delibird|Delibird, M|100/100
+|turn|35
+|
+|move|p2a: Delibird|Brave Bird|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|-damage|p2a: Delibird|75/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Toucannon|Toucannon, L88, M|284/284
+|turn|36
+|
+|-singleturn|p1a: Toucannon|move: Beak Blast
+|move|p2a: Delibird|Brave Bird|p1a: Toucannon
+|-damage|p1a: Toucannon|74/284
+|-status|p2a: Delibird|brn
+|-damage|p2a: Delibird|47/100 brn|[from] Recoil
+|move|p1a: Toucannon|Beak Blast|p2a: Delibird
+|-damage|p2a: Delibird|0 fnt
+|faint|p2a: Delibird
+|
+|upkeep
+|
+|switch|p2a: Meowscarada|Meowscarada, L78, F|100/100
+|turn|37
+|
+|-singleturn|p1a: Toucannon|move: Beak Blast
+|move|p2a: Meowscarada|U-turn|p1a: Toucannon
+|-start|p2a: Meowscarada|typechange|Bug|[from] ability: Protean
+|-resisted|p1a: Toucannon
+|-damage|p1a: Toucannon|14/284
+|-status|p2a: Meowscarada|brn
+|
+|switch|p2a: Uxie|Uxie, L83|96/100|[from] U-turn
+|move|p1a: Toucannon|Beak Blast|p2a: Uxie
+|-damage|p2a: Uxie|53/100
+|
+|-heal|p2a: Uxie|59/100|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p2a: Uxie|U-turn|p1a: Toucannon
+|-resisted|p1a: Toucannon
+|-damage|p1a: Toucannon|0 fnt
+|faint|p1a: Toucannon
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

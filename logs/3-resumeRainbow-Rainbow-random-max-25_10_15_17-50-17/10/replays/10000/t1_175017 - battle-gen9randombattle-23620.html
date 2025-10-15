@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23620</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23620<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23620|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Cramorant|Cramorant, L86, F|261/261
+|switch|p2a: Mew|Mew, L82|100/100
+|turn|1
+|
+|move|p2a: Mew|Fire Blast|p1a: Cramorant
+|-resisted|p1a: Cramorant
+|-damage|p1a: Cramorant|214/261
+|-damage|p2a: Mew|91/100|[from] item: Life Orb
+|move|p1a: Cramorant|Surf|p2a: Mew
+|-formechange|p1a: Cramorant|Cramorant-Gulping|
+|-damage|p2a: Mew|64/100
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Mew|Fire Blast|p1a: Cramorant
+|-resisted|p1a: Cramorant
+|-damage|p1a: Cramorant|167/261
+|-damage|p2a: Mew|39/100|[from] ability: Gulp Missile|[of] p1a: Cramorant
+|-unboost|p2a: Mew|def|1
+|-formechange|p1a: Cramorant|Cramorant|
+|-damage|p2a: Mew|29/100|[from] item: Life Orb
+|move|p1a: Cramorant|Surf|p2a: Mew
+|-formechange|p1a: Cramorant|Cramorant-Gulping|
+|-damage|p2a: Mew|0 fnt
+|faint|p2a: Mew
+|
+|upkeep
+|
+|switch|p2a: Thundurus|Thundurus, L80, M|100/100
+|turn|3
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Cramorant
+|-supereffective|p1a: Cramorant
+|-damage|p1a: Cramorant|0 fnt
+|-damage|p2a: Thundurus|76/100|[from] ability: Gulp Missile|[of] p1a: Cramorant
+|-unboost|p2a: Thundurus|def|1
+|-ability|p2a: Thundurus|Defiant|boost
+|-boost|p2a: Thundurus|atk|2
+|-formechange|p1a: Cramorant|Cramorant|
+|faint|p1a: Cramorant
+|
+|upkeep
+|
+|switch|p1a: Forretress|Forretress, L84, F|263/263
+|turn|4
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Forretress
+|-crit|p1a: Forretress
+|-damage|p1a: Forretress|38/263
+|move|p1a: Forretress|Iron Head|p2a: Thundurus
+|-resisted|p2a: Thundurus
+|-damage|p2a: Thundurus|45/100
+|
+|-heal|p1a: Forretress|54/263|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Forretress
+|-damage|p1a: Forretress|0 fnt
+|faint|p1a: Forretress
+|
+|upkeep
+|
+|switch|p1a: Quagsire|Quagsire, L84, M|297/297
+|turn|6
+|
+|-terastallize|p1a: Quagsire|Poison
+|move|p2a: Thundurus|Thunderbolt|p1a: Quagsire
+|-damage|p1a: Quagsire|155/297
+|move|p1a: Quagsire|Earthquake|p2a: Thundurus
+|-immune|p2a: Thundurus
+|
+|-heal|p1a: Quagsire|173/297|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Quagsire
+|-damage|p1a: Quagsire|40/297
+|move|p1a: Quagsire|Earthquake|p2a: Thundurus
+|-immune|p2a: Thundurus
+|
+|-heal|p1a: Quagsire|58/297|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Quagsire
+|-damage|p1a: Quagsire|0 fnt
+|faint|p1a: Quagsire
+|
+|upkeep
+|
+|switch|p1a: Glalie|Glalie, L96, F|309/309
+|turn|9
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Glalie
+|-damage|p1a: Glalie|212/309
+|move|p1a: Glalie|Spikes|p2a: Thundurus
+|-sidestart|p2: t2_175017|Spikes
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Glalie
+|-damage|p1a: Glalie|103/309
+|move|p1a: Glalie|Spikes|p2a: Thundurus
+|-sidestart|p2: t2_175017|Spikes
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Glalie
+|-damage|p1a: Glalie|10/309
+|move|p1a: Glalie|Spikes|p2a: Thundurus
+|-sidestart|p2: t2_175017|Spikes
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Glalie
+|-damage|p1a: Glalie|0 fnt
+|faint|p1a: Glalie
+|
+|upkeep
+|
+|switch|p1a: Lokix|Lokix, L82, M|251/251
+|turn|13
+|
+|move|p2a: Thundurus|Thunderbolt|p1a: Lokix
+|-damage|p1a: Lokix|109/251
+|move|p1a: Lokix|Knock Off|p2a: Thundurus
+|-damage|p2a: Thundurus|0 fnt
+|faint|p2a: Thundurus
+|-damage|p1a: Lokix|84/251|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Malamar|Malamar, L82, F|100/100
+|-damage|p2a: Malamar|76/100|[from] Spikes
+|turn|14
+|
+|move|p1a: Lokix|Knock Off|p2a: Malamar
+|-damage|p2a: Malamar|26/100
+|-enditem|p2a: Malamar|Chesto Berry|[from] move: Knock Off|[of] p1a: Lokix
+|-damage|p1a: Lokix|59/251|[from] item: Life Orb
+|move|p2a: Malamar|Superpower|p1a: Lokix
+|-damage|p1a: Lokix|0 fnt
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|faint|p1a: Lokix
+|
+|upkeep
+|
+|switch|p1a: Great Tusk|Great Tusk, L77|304/304
+|turn|15
+|
+|move|p1a: Great Tusk|Ice Spinner|p2a: Malamar
+|-damage|p2a: Malamar|3/100
+|move|p2a: Malamar|Superpower|p1a: Great Tusk
+|-damage|p1a: Great Tusk|212/304
+|-boost|p2a: Malamar|atk|1
+|-boost|p2a: Malamar|def|1
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Great Tusk|Ice Spinner|p2a: Malamar
+|-damage|p2a: Malamar|0 fnt
+|faint|p2a: Malamar
+|
+|upkeep
+|
+|switch|p2a: Furret|Furret, L94, M|100/100
+|-damage|p2a: Furret|75/100|[from] Spikes
+|-item|p1a: Great Tusk|Choice Band|[from] ability: Frisk|[of] p2a: Furret
+|turn|17
+|
+|move|p2a: Furret|Double-Edge|p1a: Great Tusk
+|-damage|p1a: Great Tusk|64/304
+|-damage|p2a: Furret|60/100|[from] Recoil
+|move|p1a: Great Tusk|Ice Spinner|p2a: Furret
+|-damage|p2a: Furret|30/100
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Furret|Double-Edge|p1a: Great Tusk
+|-damage|p1a: Great Tusk|0 fnt
+|faint|p1a: Great Tusk
+|-end|p1a: Great Tusk|Protosynthesis|[silent]
+|-damage|p2a: Furret|23/100|[from] Recoil
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

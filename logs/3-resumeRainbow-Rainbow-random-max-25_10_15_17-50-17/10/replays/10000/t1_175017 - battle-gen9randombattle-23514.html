@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23514</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23514<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23514|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rhyperior|Rhyperior, L82, M|323/323
+|switch|p2a: Mew|Mew, L82|100/100
+|turn|1
+|
+|move|p2a: Mew|Fire Blast|p1a: Rhyperior
+|-resisted|p1a: Rhyperior
+|-damage|p1a: Rhyperior|255/323
+|-damage|p2a: Mew|91/100|[from] item: Life Orb
+|move|p1a: Rhyperior|Megahorn|p2a: Mew
+|-supereffective|p2a: Mew
+|-damage|p2a: Mew|18/100
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Mew|Fire Blast|p1a: Rhyperior
+|-resisted|p1a: Rhyperior
+|-damage|p1a: Rhyperior|182/323
+|-damage|p2a: Mew|8/100|[from] item: Life Orb
+|move|p1a: Rhyperior|Megahorn|p2a: Mew
+|-supereffective|p2a: Mew
+|-damage|p2a: Mew|0 fnt
+|faint|p2a: Mew
+|
+|upkeep
+|
+|switch|p2a: Gliscor|Gliscor, L76, M|100/100
+|turn|3
+|
+|move|p2a: Gliscor|Earthquake|p1a: Rhyperior
+|-supereffective|p1a: Rhyperior
+|-crit|p1a: Rhyperior
+|-damage|p1a: Rhyperior|46/323
+|-enditem|p1a: Rhyperior|Weakness Policy
+|-boost|p1a: Rhyperior|atk|2|[from] item: Weakness Policy
+|-boost|p1a: Rhyperior|spa|2|[from] item: Weakness Policy
+|move|p1a: Rhyperior|Megahorn|p2a: Gliscor
+|-resisted|p2a: Gliscor
+|-damage|p2a: Gliscor|65/100
+|
+|-status|p2a: Gliscor|tox|[from] item: Toxic Orb
+|upkeep
+|turn|4
+|
+|move|p2a: Gliscor|Earthquake|p1a: Rhyperior
+|-supereffective|p1a: Rhyperior
+|-damage|p1a: Rhyperior|0 fnt
+|faint|p1a: Rhyperior
+|
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|
+|switch|p1a: Wo-Chien|Wo-Chien, L83|277/277
+|-ability|p1a: Wo-Chien|Tablets of Ruin
+|turn|5
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|244/277
+|move|p1a: Wo-Chien|Leech Seed|p2a: Gliscor
+|-start|p2a: Gliscor|move: Leech Seed
+|
+|-heal|p1a: Wo-Chien|261/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|6
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|245/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|262/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|7
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|247/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|264/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|8
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|248/277
+|move|p1a: Wo-Chien|Leech Seed|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-heal|p1a: Wo-Chien|265/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|9
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|245/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|262/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|10
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|244/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|261/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|11
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|245/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|262/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|12
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|244/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|261/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|13
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|245/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|262/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|14
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|250/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|267/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|15
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-crit|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|231/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|248/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|16
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-crit|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|232/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|249/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|17
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|250/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|267/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|18
+|
+|move|p2a: Gliscor|Earthquake|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|248/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-heal|p1a: Wo-Chien|265/277|[from] item: Leftovers
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|19
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|258/277
+|-enditem|p1a: Wo-Chien|Leftovers|[from] move: Knock Off|[of] p2a: Gliscor
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|20
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Leech Seed||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|21
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-crit|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|257/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|22
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|23
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|24
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|25
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|26
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|27
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|28
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|29
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|30
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|31
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|32
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|33
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|34
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|35
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|36
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|263/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|37
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|38
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|39
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|40
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|41
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|263/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|42
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|43
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|263/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|44
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|45
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|46
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|47
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|263/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|48
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|264/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|49
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|50
+|
+|move|p2a: Gliscor|Knock Off|p1a: Wo-Chien
+|-resisted|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|265/277
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p1a: Wo-Chien|277/277|[silent]
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|51
+|
+|move|p2a: Gliscor|Toxic Spikes|p1a: Wo-Chien
+|-sidestart|p1: t1_175017|move: Toxic Spikes
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|52
+|
+|move|p2a: Gliscor|Toxic Spikes|p1a: Wo-Chien
+|-sidestart|p1: t1_175017|move: Toxic Spikes
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|53
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|54
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|55
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|56
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|57
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|58
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|59
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|60
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|61
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|62
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|63
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|64
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|65
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|66
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|67
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|68
+|
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Stun Spore|p2a: Gliscor|[miss]
+|-miss|p1a: Wo-Chien|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|69
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|70
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|71
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|72
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|73
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|74
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|75
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|76
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|77
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|78
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|79
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|80
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|81
+|
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|82
+|
+|move|p1a: Wo-Chien|Protect|p1a: Wo-Chien
+|-singleturn|p1a: Wo-Chien|Protect
+|move|p2a: Gliscor|Toxic Spikes||[still]
+|-fail|p2a: Gliscor
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|83
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|84
+|
+|move|p2a: Gliscor|Protect||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Protect||[still]
+|-fail|p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|85
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-activate|p2a: Gliscor|move: Protect
+|
+|-damage|p2a: Gliscor|65/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|77/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|86
+|
+|move|p2a: Gliscor|Protect||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-damage|p2a: Gliscor|43/100 tox
+|-enditem|p2a: Gliscor|Toxic Orb|[from] move: Knock Off|[of] p1a: Wo-Chien
+|
+|-damage|p2a: Gliscor|31/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|43/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|87
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-activate|p2a: Gliscor|move: Protect
+|
+|-damage|p2a: Gliscor|31/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|43/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|88
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-activate|p2a: Gliscor|move: Protect
+|
+|-damage|p2a: Gliscor|31/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|43/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|89
+|
+|move|p2a: Gliscor|Protect||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-damage|p2a: Gliscor|23/100 tox
+|
+|-damage|p2a: Gliscor|11/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|23/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|90
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-activate|p2a: Gliscor|move: Protect
+|
+|-damage|p2a: Gliscor|11/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|23/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|91
+|
+|move|p2a: Gliscor|Protect|p2a: Gliscor
+|-singleturn|p2a: Gliscor|Protect
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-activate|p2a: Gliscor|move: Protect
+|
+|-damage|p2a: Gliscor|11/100 tox|[from] Leech Seed|[of] p1a: Wo-Chien
+|-heal|p2a: Gliscor|23/100 tox|[from] ability: Poison Heal
+|upkeep
+|turn|92
+|
+|move|p2a: Gliscor|Protect||[still]
+|-fail|p2a: Gliscor
+|move|p1a: Wo-Chien|Knock Off|p2a: Gliscor
+|-damage|p2a: Gliscor|0 fnt
+|faint|p2a: Gliscor
+|
+|upkeep
+|
+|switch|p2a: Deoxys|Deoxys-Attack, L72|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|93
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Wo-Chien
+|-immune|p1a: Wo-Chien
+|move|p1a: Wo-Chien|Knock Off|p2a: Deoxys
+|-supereffective|p2a: Deoxys
+|-damage|p2a: Deoxys|0 fnt
+|-enditem|p2a: Deoxys|Life Orb|[from] move: Knock Off|[of] p1a: Wo-Chien
+|faint|p2a: Deoxys
+|
+|upkeep
+|
+|switch|p2a: Delibird|Delibird, M|100/100
+|turn|94
+|
+|move|p2a: Delibird|Brave Bird|p1a: Wo-Chien
+|-supereffective|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|47/277
+|-damage|p2a: Delibird|70/100|[from] Recoil
+|move|p1a: Wo-Chien|Knock Off|p2a: Delibird
+|-damage|p2a: Delibird|18/100
+|-enditem|p2a: Delibird|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Wo-Chien
+|
+|upkeep
+|turn|95
+|
+|move|p2a: Delibird|Brave Bird|p1a: Wo-Chien|[miss]
+|-miss|p2a: Delibird|p1a: Wo-Chien
+|move|p1a: Wo-Chien|Knock Off|p2a: Delibird
+|-damage|p2a: Delibird|0 fnt
+|faint|p2a: Delibird
+|
+|upkeep
+|
+|switch|p2a: Overqwil|Overqwil, L82, F|100/100
+|-ability|p2a: Overqwil|Intimidate|boost
+|-unboost|p1a: Wo-Chien|atk|1
+|turn|96
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Wo-Chien|[miss]
+|-miss|p2a: Overqwil|p1a: Wo-Chien
+|move|p1a: Wo-Chien|Knock Off|p2a: Overqwil
+|-resisted|p2a: Overqwil
+|-damage|p2a: Overqwil|90/100
+|-enditem|p2a: Overqwil|Life Orb|[from] move: Knock Off|[of] p1a: Wo-Chien
+|
+|upkeep
+|turn|97
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Wo-Chien
+|-supereffective|p1a: Wo-Chien
+|-damage|p1a: Wo-Chien|0 fnt
+|faint|p1a: Wo-Chien
+|
+|upkeep
+|
+|switch|p1a: Primarina|Primarina, L83, F|268/268
+|-status|p1a: Primarina|tox
+|turn|98
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Primarina
+|-supereffective|p1a: Primarina
+|-damage|p1a: Primarina|0 fnt
+|faint|p1a: Primarina
+|
+|upkeep
+|
+|switch|p1a: Oinkologne|Oinkologne, L92, M|352/352
+|-status|p1a: Oinkologne|tox
+|turn|99
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Oinkologne
+|-damage|p1a: Oinkologne|205/352 tox
+|move|p1a: Oinkologne|Lash Out|p2a: Overqwil
+|-resisted|p2a: Overqwil
+|-damage|p2a: Overqwil|78/100
+|
+|-heal|p1a: Oinkologne|227/352 tox|[from] item: Leftovers
+|-damage|p1a: Oinkologne|205/352 tox|[from] psn
+|upkeep
+|turn|100
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Oinkologne
+|-damage|p1a: Oinkologne|75/352 tox
+|move|p1a: Oinkologne|Lash Out|p2a: Overqwil
+|-resisted|p2a: Overqwil
+|-damage|p2a: Overqwil|67/100
+|
+|-heal|p1a: Oinkologne|97/352 tox|[from] item: Leftovers
+|-damage|p1a: Oinkologne|53/352 tox|[from] psn
+|upkeep
+|turn|101
+|
+|-terastallize|p1a: Oinkologne|Ground
+|move|p2a: Overqwil|Gunk Shot|p1a: Oinkologne
+|-resisted|p1a: Oinkologne
+|-damage|p1a: Oinkologne|0 fnt
+|faint|p1a: Oinkologne
+|
+|upkeep
+|
+|switch|p1a: Iron Moth|Iron Moth, L78|253/253
+|-sideend|p1: t1_175017|move: Toxic Spikes|[of] p1a: Iron Moth
+|turn|102
+|
+|move|p1a: Iron Moth|Sludge Wave|p2a: Overqwil
+|-resisted|p2a: Overqwil
+|-damage|p2a: Overqwil|29/100
+|move|p2a: Overqwil|Gunk Shot|p1a: Iron Moth
+|-resisted|p1a: Iron Moth
+|-damage|p1a: Iron Moth|156/253
+|
+|upkeep
+|turn|103
+|
+|move|p1a: Iron Moth|Sludge Wave|p2a: Overqwil
+|-resisted|p2a: Overqwil
+|-damage|p2a: Overqwil|0 fnt
+|faint|p2a: Overqwil
+|
+|upkeep
+|
+|switch|p2a: Lanturn|Lanturn, L89, F|100/100
+|turn|104
+|
+|move|p1a: Iron Moth|Sludge Wave|p2a: Lanturn
+|-damage|p2a: Lanturn|47/100
+|move|p2a: Lanturn|Thunderbolt|p1a: Iron Moth
+|-damage|p1a: Iron Moth|72/253
+|
+|upkeep
+|turn|105
+|
+|move|p1a: Iron Moth|Sludge Wave|p2a: Lanturn
+|-damage|p2a: Lanturn|0 fnt
+|faint|p2a: Lanturn
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23534</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23534<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23534|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rhydon|Rhydon, L85, F|317/317
+|switch|p2a: Iron Boulder|Iron Boulder, L77|100/100
+|turn|1
+|
+|switch|p1a: Kingdra|Kingdra, L84, F|263/263
+|move|p2a: Iron Boulder|Close Combat|p1a: Kingdra
+|-crit|p1a: Kingdra
+|-damage|p1a: Kingdra|111/263
+|-unboost|p2a: Iron Boulder|def|1
+|-unboost|p2a: Iron Boulder|spd|1
+|-damage|p2a: Iron Boulder|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Kingdra|Steel
+|move|p2a: Iron Boulder|Close Combat|p1a: Kingdra
+|-supereffective|p1a: Kingdra
+|-damage|p1a: Kingdra|0 fnt
+|-unboost|p2a: Iron Boulder|def|1
+|-unboost|p2a: Iron Boulder|spd|1
+|faint|p1a: Kingdra
+|-damage|p2a: Iron Boulder|81/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Rhydon|Rhydon, L85, F|317/317
+|turn|3
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Rhydon
+|-supereffective|p1a: Rhydon
+|-damage|p1a: Rhydon|210/317
+|-unboost|p2a: Iron Boulder|def|1
+|-unboost|p2a: Iron Boulder|spd|1
+|-damage|p2a: Iron Boulder|71/100|[from] item: Life Orb
+|move|p1a: Rhydon|Stealth Rock|p2a: Iron Boulder
+|-sidestart|p2: t2_175017|move: Stealth Rock
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Rhydon
+|-supereffective|p1a: Rhydon
+|-damage|p1a: Rhydon|88/317
+|-unboost|p2a: Iron Boulder|def|1
+|-unboost|p2a: Iron Boulder|spd|1
+|-damage|p2a: Iron Boulder|61/100|[from] item: Life Orb
+|move|p1a: Rhydon|Stealth Rock||[still]
+|-fail|p1a: Rhydon
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Rhydon
+|-supereffective|p1a: Rhydon
+|-damage|p1a: Rhydon|0 fnt
+|-unboost|p2a: Iron Boulder|def|1
+|-unboost|p2a: Iron Boulder|spd|1
+|faint|p1a: Rhydon
+|-damage|p2a: Iron Boulder|51/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Sinistcha|Sinistcha, L83|254/254
+|turn|6
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Sinistcha
+|-immune|p1a: Sinistcha
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Sinistcha
+|-immune|p1a: Sinistcha
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Iron Boulder|Close Combat|p1a: Sinistcha
+|-immune|p1a: Sinistcha
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|206/254
+|-damage|p2a: Iron Boulder|42/100|[from] item: Life Orb
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|215/254
+|-damage|p2a: Iron Boulder|32/100|[from] item: Life Orb
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|219/254
+|-damage|p2a: Iron Boulder|22/100|[from] item: Life Orb
+|move|p1a: Sinistcha|Strength Sap|p2a: Iron Boulder
+|-unboost|p2a: Iron Boulder|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|225/254
+|-damage|p2a: Iron Boulder|12/100|[from] item: Life Orb
+|move|p1a: Sinistcha|Strength Sap||[still]
+|-fail|p1a: Sinistcha
+|
+|-heal|p1a: Sinistcha|240/254|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|209/254
+|-damage|p2a: Iron Boulder|2/100|[from] item: Life Orb
+|move|p1a: Sinistcha|Strength Sap||[still]
+|-fail|p1a: Sinistcha
+|
+|-heal|p1a: Sinistcha|224/254|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Iron Boulder|Mighty Cleave|p1a: Sinistcha
+|-damage|p1a: Sinistcha|195/254
+|-damage|p2a: Iron Boulder|0 fnt|[from] item: Life Orb
+|faint|p2a: Iron Boulder
+|-end|p2a: Iron Boulder|Quark Drive|[silent]
+|move|p1a: Sinistcha|Strength Sap|p2: Iron Boulder|[notarget]
+|-fail|p1a: Sinistcha
+|
+|-heal|p1a: Sinistcha|210/254|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Skuntank|Skuntank, L84, F|100/100
+|-damage|p2a: Skuntank|88/100|[from] Stealth Rock
+|turn|15
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-damage|p1a: Sinistcha|110/254
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|-heal|p2a: Skuntank|94/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-crit|p1a: Sinistcha
+|-damage|p1a: Sinistcha|79/254
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|215/254
+|
+|-heal|p2a: Skuntank|100/100|[from] item: Leftovers
+|-heal|p1a: Sinistcha|230/254|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-crit|p1a: Sinistcha
+|-damage|p1a: Sinistcha|79/254
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|181/254
+|
+|-heal|p1a: Sinistcha|196/254|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha|[miss]
+|-miss|p2a: Skuntank|p1a: Sinistcha
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-damage|p1a: Sinistcha|215/254
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-damage|p1a: Sinistcha|224/254
+|move|p1a: Sinistcha|Strength Sap|p2a: Skuntank
+|-unboost|p2a: Skuntank|atk|1
+|-heal|p1a: Sinistcha|254/254
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha
+|-damage|p1a: Sinistcha|226/254
+|move|p1a: Sinistcha|Strength Sap||[still]
+|-fail|p1a: Sinistcha
+|
+|-heal|p1a: Sinistcha|241/254|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Skuntank|Gunk Shot|p1a: Sinistcha|[miss]
+|-miss|p2a: Skuntank|p1a: Sinistcha
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank|[miss]
+|-miss|p1a: Sinistcha|p2a: Skuntank
+|
+|-heal|p1a: Sinistcha|254/254|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|212/254
+|-enditem|p1a: Sinistcha|Leftovers|[from] move: Knock Off|[of] p2a: Skuntank
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|80/100
+|-heal|p1a: Sinistcha|245/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|86/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|213/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|66/100
+|-heal|p1a: Sinistcha|243/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|72/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|213/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|50/100
+|-heal|p1a: Sinistcha|247/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|57/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|215/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|37/100
+|-heal|p1a: Sinistcha|245/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|43/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|213/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|21/100
+|-heal|p1a: Sinistcha|248/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|27/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-damage|p1a: Sinistcha|218/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|6/100
+|-heal|p1a: Sinistcha|251/254|[from] drain|[of] p2a: Skuntank
+|
+|-heal|p2a: Skuntank|12/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Skuntank|Knock Off|p1a: Sinistcha
+|-supereffective|p1a: Sinistcha
+|-crit|p1a: Sinistcha
+|-damage|p1a: Sinistcha|77/254
+|move|p1a: Sinistcha|Matcha Gotcha|p2a: Skuntank
+|-resisted|p2a: Skuntank
+|-damage|p2a: Skuntank|0 fnt
+|-heal|p1a: Sinistcha|95/254|[from] drain|[of] p2a: Skuntank
+|faint|p2a: Skuntank
+|
+|upkeep
+|
+|switch|p2a: Espeon|Espeon, L84, F|100/100
+|-damage|p2a: Espeon|88/100|[from] Stealth Rock
+|turn|30
+|
+|move|p2a: Espeon|Psyshock|p1a: Sinistcha
+|-damage|p1a: Sinistcha|0 fnt
+|faint|p1a: Sinistcha
+|
+|upkeep
+|
+|switch|p1a: Minior|Minior-Yellow, L79|224/224
+|-formechange|p1a: Minior|Minior-Meteor||[from] ability: Shields Down
+|turn|31
+|
+|move|p2a: Espeon|Psyshock|p1a: Minior
+|-damage|p1a: Minior|62/224
+|move|p1a: Minior|Earthquake|p2a: Espeon
+|-damage|p2a: Espeon|66/100
+|
+|-formechange|p1a: Minior|Minior-Yellow||[from] ability: Shields Down
+|upkeep
+|turn|32
+|
+|move|p1a: Minior|Earthquake|p2a: Espeon
+|-damage|p2a: Espeon|33/100
+|move|p2a: Espeon|Psyshock|p1a: Minior
+|-damage|p1a: Minior|0 fnt
+|faint|p1a: Minior
+|
+|upkeep
+|
+|switch|p1a: Delphox|Delphox, L84, F|263/263
+|turn|33
+|
+|move|p2a: Espeon|Psyshock|p1a: Delphox
+|-resisted|p1a: Delphox
+|-damage|p1a: Delphox|165/263
+|move|p1a: Delphox|Fire Blast|p2a: Espeon
+|-damage|p2a: Espeon|0 fnt
+|faint|p2a: Espeon
+|
+|upkeep
+|
+|switch|p2a: Flygon|Flygon, L82, F|100/100
+|-damage|p2a: Flygon|94/100|[from] Stealth Rock
+|turn|34
+|
+|move|p1a: Delphox|Fire Blast|p2a: Flygon
+|-resisted|p2a: Flygon
+|-damage|p2a: Flygon|70/100
+|move|p2a: Flygon|Outrage|p1a: Delphox
+|-damage|p1a: Delphox|26/263
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Delphox|Fire Blast|p2a: Flygon
+|-resisted|p2a: Flygon
+|-damage|p2a: Flygon|31/100
+|move|p2a: Flygon|Outrage|p1a: Delphox|[from] lockedmove
+|-damage|p1a: Delphox|0 fnt
+|faint|p1a: Delphox
+|
+|upkeep
+|
+|switch|p1a: Weavile|Weavile, L79, M|239/239
+|turn|36
+|
+|move|p1a: Weavile|Triple Axel|p2a: Flygon
+|-supereffective|p2a: Flygon
+|-damage|p2a: Flygon|0 fnt
+|faint|p2a: Flygon
+|-hitcount|p2: Flygon|1
+|
+|upkeep
+|
+|switch|p2a: Slither Wing|Slither Wing, L81|100/100
+|-damage|p2a: Slither Wing|88/100|[from] Stealth Rock
+|turn|37
+|
+|move|p1a: Weavile|Triple Axel|p2a: Slither Wing
+|-damage|p2a: Slither Wing|75/100
+|-damage|p2a: Slither Wing|47/100
+|-crit|p2a: Slither Wing
+|-damage|p2a: Slither Wing|0 fnt
+|faint|p2a: Slither Wing
+|-end|p2a: Slither Wing|Protosynthesis|[silent]
+|-hitcount|p2: Slither Wing|3
+|
+|upkeep
+|
+|switch|p2a: Blissey|Blissey, L85, F|100/100
+|-damage|p2a: Blissey|88/100|[from] Stealth Rock
+|turn|38
+|
+|move|p1a: Weavile|Triple Axel|p2a: Blissey|[miss]
+|-miss|p1a: Weavile|p2a: Blissey
+|move|p2a: Blissey|Seismic Toss|p1a: Weavile
+|-damage|p1a: Weavile|154/239
+|
+|-heal|p2a: Blissey|94/100|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Weavile|Triple Axel|p2a: Blissey
+|-damage|p2a: Blissey|78/100
+|-damage|p2a: Blissey|45/100
+|-hitcount|p2a: Blissey|2
+|move|p2a: Blissey|Seismic Toss|p1a: Weavile
+|-damage|p1a: Weavile|69/239
+|
+|-heal|p2a: Blissey|51/100|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Weavile|Triple Axel|p2a: Blissey
+|-damage|p2a: Blissey|33/100
+|-damage|p2a: Blissey|0 fnt
+|faint|p2a: Blissey
+|-hitcount|p2: Blissey|2
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

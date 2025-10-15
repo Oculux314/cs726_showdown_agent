@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23505</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23505<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23505|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Ho-Oh|Ho-Oh, L71|268/268
+|switch|p2a: Ditto|Ditto, L87|100/100
+|-transform|p2a: Ditto|p1a: Ho-Oh|[from] ability: Imposter
+|turn|1
+|
+|switch|p1a: Cloyster|Cloyster, L80, M|211/211
+|move|p2a: Ditto|Brave Bird|p1a: Cloyster
+|-damage|p1a: Cloyster|135/211
+|-damage|p2a: Ditto|89/100|[from] Recoil
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Noctowl|Noctowl, L95, M|344/344
+|move|p2a: Ditto|Brave Bird|p1a: Noctowl
+|-damage|p1a: Noctowl|145/344
+|-damage|p2a: Ditto|60/100|[from] Recoil
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Ho-Oh|Ho-Oh, L71|268/268
+|move|p2a: Ditto|Brave Bird|p1a: Ho-Oh
+|-damage|p1a: Ho-Oh|118/268
+|-damage|p2a: Ditto|38/100|[from] Recoil
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Ditto|Brave Bird|p1a: Ho-Oh
+|-damage|p1a: Ho-Oh|0 fnt
+|faint|p1a: Ho-Oh
+|-damage|p2a: Ditto|20/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Cloyster|Cloyster, L80, M|135/211
+|turn|5
+|
+|move|p2a: Ditto|Brave Bird|p1a: Cloyster
+|-damage|p1a: Cloyster|50/211
+|-damage|p2a: Ditto|8/100|[from] Recoil
+|move|p1a: Cloyster|Icicle Spear|p2a: Ditto
+|-damage|p2a: Ditto|0 fnt
+|faint|p2a: Ditto
+|-hitcount|p2: Ditto|1
+|
+|upkeep
+|
+|switch|p2a: Hitmonlee|Hitmonlee, L85, M|100/100
+|turn|6
+|
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Cloyster
+|-supereffective|p1a: Cloyster
+|-damage|p1a: Cloyster|0 fnt
+|faint|p1a: Cloyster
+|
+|upkeep
+|
+|switch|p1a: Noctowl|Noctowl, L95, M|145/344
+|turn|7
+|
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Noctowl
+|-damage|p1a: Noctowl|0 fnt
+|faint|p1a: Noctowl
+|
+|upkeep
+|
+|switch|p1a: Fezandipiti|Fezandipiti, L82, M|278/278
+|turn|8
+|
+|move|p1a: Fezandipiti|Roost||[still]
+|-fail|p1a: Fezandipiti|heal
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|203/278
+|
+|-heal|p1a: Fezandipiti|220/278|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Fezandipiti|Roost|p1a: Fezandipiti
+|-heal|p1a: Fezandipiti|278/278
+|-singleturn|p1a: Fezandipiti|move: Roost
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|202/278
+|
+|-heal|p1a: Fezandipiti|219/278|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Fezandipiti|Roost|p1a: Fezandipiti
+|-heal|p1a: Fezandipiti|278/278
+|-singleturn|p1a: Fezandipiti|move: Roost
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|203/278
+|
+|-heal|p1a: Fezandipiti|220/278|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Fezandipiti|Roost|p1a: Fezandipiti
+|-heal|p1a: Fezandipiti|278/278
+|-singleturn|p1a: Fezandipiti|move: Roost
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti|[miss]
+|-miss|p2a: Hitmonlee|p1a: Fezandipiti
+|-damage|p2a: Hitmonlee|51/100|[from] highjumpkick
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Fezandipiti|Roost||[still]
+|-fail|p1a: Fezandipiti|heal
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti|[miss]
+|-miss|p2a: Hitmonlee|p1a: Fezandipiti
+|-damage|p2a: Hitmonlee|1/100|[from] highjumpkick
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Fezandipiti|Roost||[still]
+|-fail|p1a: Fezandipiti|heal
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|200/278
+|
+|-heal|p1a: Fezandipiti|217/278|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Fezandipiti|Roost|p1a: Fezandipiti
+|-heal|p1a: Fezandipiti|278/278
+|-singleturn|p1a: Fezandipiti|move: Roost
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|197/278
+|
+|-heal|p1a: Fezandipiti|214/278|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Fezandipiti|Roost|p1a: Fezandipiti
+|-heal|p1a: Fezandipiti|278/278
+|-singleturn|p1a: Fezandipiti|move: Roost
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|203/278
+|
+|-heal|p1a: Fezandipiti|220/278|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Hitmonlee|[miss]
+|-miss|p1a: Fezandipiti|p2a: Hitmonlee
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|139/278
+|
+|-heal|p1a: Fezandipiti|156/278|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Hitmonlee|[miss]
+|-miss|p1a: Fezandipiti|p2a: Hitmonlee
+|move|p2a: Hitmonlee|High Jump Kick|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|75/278
+|
+|-heal|p1a: Fezandipiti|92/278|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Fezandipiti|Moonblast|p2a: Hitmonlee
+|-supereffective|p2a: Hitmonlee
+|-damage|p2a: Hitmonlee|0 fnt
+|faint|p2a: Hitmonlee
+|
+|-heal|p1a: Fezandipiti|109/278|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Bellibolt|Bellibolt, L84, M|100/100
+|turn|19
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Bellibolt
+|-damage|p2a: Bellibolt|63/100
+|-status|p2a: Bellibolt|psn
+|-start|p2a: Bellibolt|Charge|Gunk Shot|[from] ability: Electromorphosis
+|move|p2a: Bellibolt|Muddy Water|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|54/278
+|
+|-heal|p1a: Fezandipiti|71/278|[from] item: Leftovers
+|-heal|p2a: Bellibolt|69/100 psn|[from] item: Leftovers
+|-damage|p2a: Bellibolt|56/100 psn|[from] psn
+|upkeep
+|turn|20
+|
+|move|p1a: Fezandipiti|Moonblast|p2a: Bellibolt
+|-damage|p2a: Bellibolt|32/100 psn
+|-start|p2a: Bellibolt|Charge|Moonblast|[from] ability: Electromorphosis
+|move|p2a: Bellibolt|Muddy Water|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|18/278
+|-unboost|p1a: Fezandipiti|accuracy|1
+|
+|-heal|p1a: Fezandipiti|35/278|[from] item: Leftovers
+|-heal|p2a: Bellibolt|38/100 psn|[from] item: Leftovers
+|-damage|p2a: Bellibolt|26/100 psn|[from] psn
+|upkeep
+|turn|21
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Bellibolt
+|-damage|p2a: Bellibolt|0 fnt
+|faint|p2a: Bellibolt
+|
+|-heal|p1a: Fezandipiti|52/278|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Glalie|Glalie, L96, F|100/100
+|turn|22
+|
+|move|p1a: Fezandipiti|Gunk Shot|p2a: Glalie
+|-damage|p2a: Glalie|67/100
+|-status|p2a: Glalie|tox|[from] ability: Toxic Chain|[of] p1a: Fezandipiti
+|move|p2a: Glalie|Earthquake|p1a: Fezandipiti
+|-supereffective|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|0 fnt
+|faint|p1a: Fezandipiti
+|
+|-damage|p2a: Glalie|61/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Toxicroak|Toxicroak, L84, F|277/277
+|turn|23
+|
+|move|p2a: Glalie|Earthquake|p1a: Toxicroak
+|-supereffective|p1a: Toxicroak
+|-damage|p1a: Toxicroak|91/277
+|move|p1a: Toxicroak|Swords Dance|p1a: Toxicroak
+|-boost|p1a: Toxicroak|atk|2
+|
+|-damage|p2a: Glalie|49/100 tox|[from] psn
+|upkeep
+|turn|24
+|
+|move|p2a: Glalie|Earthquake|p1a: Toxicroak
+|-supereffective|p1a: Toxicroak
+|-damage|p1a: Toxicroak|0 fnt
+|faint|p1a: Toxicroak
+|
+|-damage|p2a: Glalie|30/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Hypno|Hypno, L95, F|315/315
+|turn|25
+|
+|move|p2a: Glalie|Earthquake|p1a: Hypno
+|-damage|p1a: Hypno|234/315
+|move|p1a: Hypno|Psychic Noise|p2a: Glalie
+|-damage|p2a: Glalie|6/100 tox
+|-start|p2a: Glalie|move: Heal Block
+|
+|-heal|p1a: Hypno|253/315|[from] item: Leftovers
+|-damage|p2a: Glalie|0 fnt|[from] psn
+|faint|p2a: Glalie
+|upkeep
+|
+|switch|p2a: Archaludon|Archaludon, L78, F|100/100
+|turn|26
+|
+|move|p1a: Hypno|Psychic Noise|p2a: Archaludon
+|-resisted|p2a: Archaludon
+|-damage|p2a: Archaludon|80/100
+|-start|p2a: Archaludon|move: Heal Block
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Outrage|p1a: Hypno
+|-damage|p1a: Hypno|120/315
+|
+|-heal|p1a: Hypno|139/315|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Hypno|Focus Blast|p2a: Archaludon
+|-supereffective|p2a: Archaludon
+|-damage|p2a: Archaludon|0 fnt
+|faint|p2a: Archaludon
+|
+|-heal|p1a: Hypno|158/315|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Iron Hands|Iron Hands, L79|100/100
+|turn|28
+|
+|move|p1a: Hypno|Psychic Noise|p2a: Iron Hands
+|-supereffective|p2a: Iron Hands
+|-damage|p2a: Iron Hands|60/100
+|-start|p2a: Iron Hands|move: Heal Block
+|move|p2a: Iron Hands|Close Combat|p1a: Hypno
+|-resisted|p1a: Hypno
+|-damage|p1a: Hypno|83/315
+|-unboost|p2a: Iron Hands|def|1
+|-unboost|p2a: Iron Hands|spd|1
+|
+|-heal|p1a: Hypno|102/315|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Hypno|Psychic Noise|p2a: Iron Hands
+|-supereffective|p2a: Iron Hands
+|-damage|p2a: Iron Hands|0 fnt
+|faint|p2a: Iron Hands
+|-end|p2a: Iron Hands|Quark Drive|[silent]
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

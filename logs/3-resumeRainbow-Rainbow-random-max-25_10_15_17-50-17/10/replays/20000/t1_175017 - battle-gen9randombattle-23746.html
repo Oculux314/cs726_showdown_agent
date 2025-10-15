@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23746</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23746<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23746|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Morpeko|Morpeko, L88, F|245/245
+|switch|p2a: Kingdra|Kingdra, L84, F|100/100
+|turn|1
+|
+|switch|p1a: Revavroom|Revavroom, L79, F|256/256
+|move|p2a: Kingdra|Wave Crash|p1a: Revavroom
+|-damage|p1a: Revavroom|117/256
+|-damage|p2a: Kingdra|83/100|[from] Recoil
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Kingdra|Wave Crash|p1a: Revavroom
+|-damage|p1a: Revavroom|0 fnt
+|faint|p1a: Revavroom
+|-damage|p2a: Kingdra|68/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Perrserker|Perrserker, L89, F|269/269
+|turn|3
+|
+|-terastallize|p1a: Perrserker|Fighting
+|move|p2a: Kingdra|Wave Crash|p1a: Perrserker
+|-damage|p1a: Perrserker|163/269
+|-damage|p2a: Kingdra|55/100|[from] Recoil
+|move|p1a: Perrserker|U-turn|p2a: Kingdra
+|-damage|p2a: Kingdra|17/100
+|-damage|p1a: Perrserker|137/269|[from] item: Life Orb
+|
+|switch|p1a: Morpeko|Morpeko, L88, F|245/245|[from] U-turn
+|
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|4
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Kingdra
+|-damage|p2a: Kingdra|3/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Kingdra|Wave Crash|p1a: Morpeko
+|-damage|p1a: Morpeko|91/245
+|-damage|p2a: Kingdra|0 fnt|[from] Recoil
+|faint|p2a: Kingdra
+|
+|-heal|p1a: Morpeko|106/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|
+|switch|p2a: Porygon2|Porygon2, L81|100/100
+|-ability|p2a: Porygon2|Download|boost
+|-boost|p2a: Porygon2|spa|1
+|turn|5
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Porygon2
+|-damage|p2a: Porygon2|91/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Porygon2|Shadow Ball|p1a: Morpeko
+|-resisted|p1a: Morpeko
+|-damage|p1a: Morpeko|52/245
+|
+|-heal|p1a: Morpeko|67/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|6
+|
+|switch|p1a: Kingdra|Kingdra, L84, M|263/263
+|move|p2a: Porygon2|Shadow Ball|p1a: Kingdra
+|-damage|p1a: Kingdra|183/263
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Kingdra|Wave Crash|p2a: Porygon2
+|-damage|p2a: Porygon2|52/100
+|-damage|p1a: Kingdra|148/263|[from] Recoil
+|-damage|p1a: Kingdra|122/263|[from] item: Life Orb
+|move|p2a: Porygon2|Shadow Ball|p1a: Kingdra
+|-damage|p1a: Kingdra|44/263
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Kingdra|Wave Crash|p2a: Porygon2
+|-damage|p2a: Porygon2|11/100
+|-damage|p1a: Kingdra|8/263|[from] Recoil
+|-damage|p1a: Kingdra|0 fnt|[from] item: Life Orb
+|faint|p1a: Kingdra
+|move|p2a: Porygon2|Shadow Ball|p1: Kingdra|[notarget]
+|-fail|p2a: Porygon2
+|
+|upkeep
+|
+|switch|p1a: Perrserker|Perrserker, L89, F, tera:Fighting|137/269
+|turn|9
+|
+|move|p2a: Porygon2|Shadow Ball|p1a: Perrserker
+|-damage|p1a: Perrserker|39/269
+|move|p1a: Perrserker|Iron Head|p2a: Porygon2
+|-damage|p2a: Porygon2|0 fnt
+|faint|p2a: Porygon2
+|-damage|p1a: Perrserker|13/269|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Maushold|Maushold-Four, L76|100/100
+|turn|10
+|
+|move|p2a: Maushold|Bite|p1a: Perrserker
+|-resisted|p1a: Perrserker
+|-damage|p1a: Perrserker|0 fnt
+|faint|p1a: Perrserker
+|
+|upkeep
+|
+|switch|p1a: Morpeko|Morpeko, L88, F|67/245
+|turn|11
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Maushold
+|-damage|p2a: Maushold|79/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Maushold|Bite|p1a: Morpeko
+|-resisted|p1a: Morpeko
+|-damage|p1a: Morpeko|39/245
+|
+|-heal|p1a: Morpeko|54/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|12
+|
+|move|p1a: Morpeko|Aura Wheel|p2a: Maushold
+|-damage|p2a: Maushold|11/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Maushold|Bite|p1a: Morpeko
+|-resisted|p1a: Morpeko
+|-damage|p1a: Morpeko|26/245
+|
+|-heal|p1a: Morpeko|41/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|13
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Maushold
+|-damage|p2a: Maushold|0 fnt
+|-boost|p1a: Morpeko|spe|1
+|faint|p2a: Maushold
+|
+|-heal|p1a: Morpeko|56/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|
+|switch|p2a: Uxie|Uxie, L83|100/100
+|turn|14
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|90/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|71/245|[from] item: Leftovers
+|-heal|p2a: Uxie|96/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|15
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|84/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|86/245|[from] item: Leftovers
+|-heal|p2a: Uxie|90/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|16
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|78/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|101/245|[from] item: Leftovers
+|-heal|p2a: Uxie|84/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|17
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|72/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|116/245|[from] item: Leftovers
+|-heal|p2a: Uxie|78/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|18
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|68/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|131/245|[from] item: Leftovers
+|-heal|p2a: Uxie|74/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|19
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|64/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|146/245|[from] item: Leftovers
+|-heal|p2a: Uxie|70/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|20
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|59/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|161/245|[from] item: Leftovers
+|-heal|p2a: Uxie|65/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|21
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|54/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|176/245|[from] item: Leftovers
+|-heal|p2a: Uxie|60/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|22
+|
+|move|p1a: Morpeko|Protect|p1a: Morpeko
+|-singleturn|p1a: Morpeko|Protect
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-activate|p1a: Morpeko|move: Protect
+|
+|-heal|p1a: Morpeko|191/245|[from] item: Leftovers
+|-heal|p2a: Uxie|67/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|23
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|55/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|206/245|[from] item: Leftovers
+|-heal|p2a: Uxie|61/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|24
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|50/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|221/245|[from] item: Leftovers
+|-heal|p2a: Uxie|56/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|25
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|44/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|236/245|[from] item: Leftovers
+|-heal|p2a: Uxie|50/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|26
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|39/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|245/245|[from] item: Leftovers
+|-heal|p2a: Uxie|45/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|27
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|34/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p2a: Uxie|40/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|28
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|28/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p2a: Uxie|34/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|29
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|23/100
+|move|p2a: Uxie|Psychic Noise|p1a: Morpeko
+|-immune|p1a: Morpeko
+|
+|-heal|p2a: Uxie|29/100|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|30
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Uxie
+|-damage|p2a: Uxie|18/100
+|move|p2a: Uxie|U-turn|p1a: Morpeko
+|-supereffective|p1a: Morpeko
+|-damage|p1a: Morpeko|131/245
+|
+|switch|p2a: Sceptile|Sceptile, L87, M|100/100|[from] U-turn
+|
+|-heal|p1a: Morpeko|146/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|31
+|
+|move|p1a: Morpeko|Rapid Spin|p2a: Sceptile
+|-crit|p2a: Sceptile
+|-damage|p2a: Sceptile|74/100
+|move|p2a: Sceptile|Earthquake|p1a: Morpeko
+|-supereffective|p1a: Morpeko
+|-damage|p1a: Morpeko|0 fnt
+|faint|p1a: Morpeko
+|-damage|p2a: Sceptile|65/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Yanmega|Yanmega, L82, F|275/275
+|turn|32
+|
+|move|p2a: Sceptile|Earthquake|p1a: Yanmega
+|-immune|p1a: Yanmega
+|move|p1a: Yanmega|Air Slash|p2a: Sceptile
+|-supereffective|p2a: Sceptile
+|-crit|p2a: Sceptile
+|-damage|p2a: Sceptile|0 fnt
+|faint|p2a: Sceptile
+|
+|-ability|p1a: Yanmega|Speed Boost|boost
+|-boost|p1a: Yanmega|spe|1
+|upkeep
+|
+|switch|p2a: Glastrier|Glastrier, L86|100/100
+|turn|33
+|
+|move|p1a: Yanmega|Bug Buzz|p2a: Glastrier
+|-damage|p2a: Glastrier|72/100
+|move|p2a: Glastrier|Close Combat|p1a: Yanmega
+|-resisted|p1a: Yanmega
+|-damage|p1a: Yanmega|227/275
+|-unboost|p2a: Glastrier|def|1
+|-unboost|p2a: Glastrier|spd|1
+|
+|-ability|p1a: Yanmega|Speed Boost|boost
+|-boost|p1a: Yanmega|spe|1
+|upkeep
+|turn|34
+|
+|move|p1a: Yanmega|Air Slash|p2a: Glastrier
+|-damage|p2a: Glastrier|37/100
+|move|p2a: Glastrier|Close Combat|p1a: Yanmega
+|-resisted|p1a: Yanmega
+|-damage|p1a: Yanmega|178/275
+|-unboost|p2a: Glastrier|def|1
+|-unboost|p2a: Glastrier|spd|1
+|
+|-ability|p1a: Yanmega|Speed Boost|boost
+|-boost|p1a: Yanmega|spe|1
+|upkeep
+|turn|35
+|
+|move|p1a: Yanmega|Air Slash|p2a: Glastrier
+|-damage|p2a: Glastrier|0 fnt
+|faint|p2a: Glastrier
+|
+|-ability|p1a: Yanmega|Speed Boost|boost
+|-boost|p1a: Yanmega|spe|1
+|upkeep
+|
+|switch|p2a: Uxie|Uxie, L83|18/100
+|turn|36
+|
+|move|p1a: Yanmega|Air Slash|p2a: Uxie
+|-damage|p2a: Uxie|0 fnt
+|faint|p2a: Uxie
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23790</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23790<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23790|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Okidogi|Okidogi, L77, M|262/262
+|switch|p2a: Weavile|Weavile, L79, F|100/100
+|turn|1
+|
+|move|p2a: Weavile|Knock Off|p1a: Okidogi
+|-resisted|p1a: Okidogi
+|-damage|p1a: Okidogi|213/262
+|-enditem|p1a: Okidogi|Assault Vest|[from] move: Knock Off|[of] p2a: Weavile
+|move|p1a: Okidogi|High Horsepower|p2a: Weavile
+|-damage|p2a: Weavile|58/100
+|-status|p2a: Weavile|tox|[from] ability: Toxic Chain|[of] p1a: Okidogi
+|
+|-damage|p2a: Weavile|52/100 tox|[from] psn
+|upkeep
+|turn|2
+|
+|move|p2a: Weavile|Knock Off|p1a: Okidogi
+|-resisted|p1a: Okidogi
+|-damage|p1a: Okidogi|181/262
+|move|p1a: Okidogi|High Horsepower|p2a: Weavile
+|-damage|p2a: Weavile|13/100 tox
+|
+|-damage|p2a: Weavile|1/100 tox|[from] psn
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Okidogi|Dark
+|move|p2a: Weavile|Knock Off|p1a: Okidogi
+|-resisted|p1a: Okidogi
+|-damage|p1a: Okidogi|147/262
+|move|p1a: Okidogi|Knock Off|p2a: Weavile
+|-resisted|p2a: Weavile
+|-damage|p2a: Weavile|0 fnt
+|-enditem|p2a: Weavile|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Okidogi
+|faint|p2a: Weavile
+|
+|upkeep
+|
+|switch|p2a: Regidrago|Regidrago, L77|100/100
+|turn|4
+|
+|move|p1a: Okidogi|High Horsepower|p2a: Regidrago
+|-damage|p2a: Regidrago|74/100
+|-status|p2a: Regidrago|tox|[from] ability: Toxic Chain|[of] p1a: Okidogi
+|-enditem|p2a: Regidrago|Lum Berry|[eat]
+|-curestatus|p2a: Regidrago|tox|[msg]
+|move|p2a: Regidrago|Draco Meteor|p1a: Okidogi
+|-damage|p1a: Okidogi|0 fnt
+|-unboost|p2a: Regidrago|spa|2
+|faint|p1a: Okidogi
+|
+|upkeep
+|
+|switch|p1a: Clefable|Clefable, L83, F|293/293
+|turn|5
+|
+|move|p2a: Regidrago|Draco Meteor|p1a: Clefable
+|-immune|p1a: Clefable
+|move|p1a: Clefable|Moonblast|p2a: Regidrago
+|-supereffective|p2a: Regidrago
+|-damage|p2a: Regidrago|0 fnt
+|faint|p2a: Regidrago
+|
+|upkeep
+|
+|switch|p2a: Masquerain|Masquerain, L87, F|100/100
+|-ability|p2a: Masquerain|Intimidate|boost
+|-unboost|p1a: Clefable|atk|1
+|turn|6
+|
+|move|p2a: Masquerain|Hydro Pump|p1a: Clefable
+|-damage|p1a: Clefable|202/293
+|move|p1a: Clefable|Moonblast|p2a: Masquerain
+|-damage|p2a: Masquerain|55/100
+|-unboost|p2a: Masquerain|spa|1
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Masquerain|Hydro Pump|p1a: Clefable
+|-damage|p1a: Clefable|149/293
+|move|p1a: Clefable|Moonblast|p2a: Masquerain
+|-damage|p2a: Masquerain|6/100
+|-unboost|p2a: Masquerain|spa|1
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Masquerain|Hydro Pump|p1a: Clefable
+|-damage|p1a: Clefable|104/293
+|move|p1a: Clefable|Moonblast|p2a: Masquerain
+|-damage|p2a: Masquerain|0 fnt
+|faint|p2a: Masquerain
+|
+|upkeep
+|
+|switch|p2a: Typhlosion|Typhlosion, L84, F|100/100
+|turn|9
+|
+|move|p2a: Typhlosion|Eruption|p1a: Clefable
+|-damage|p1a: Clefable|0 fnt
+|faint|p1a: Clefable
+|
+|upkeep
+|
+|switch|p1a: Iron Bundle|Iron Bundle, L77|213/213
+|turn|10
+|
+|move|p2a: Typhlosion|Eruption|p1a: Iron Bundle
+|-damage|p1a: Iron Bundle|0 fnt
+|faint|p1a: Iron Bundle
+|-end|p1a: Iron Bundle|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p1a: Azumarill|Azumarill, L82, M|298/298
+|turn|11
+|
+|move|p1a: Azumarill|Aqua Jet|p2a: Typhlosion
+|-supereffective|p2a: Typhlosion
+|-damage|p2a: Typhlosion|58/100
+|move|p2a: Typhlosion|Eruption|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|248/298
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Azumarill|Aqua Jet|p2a: Typhlosion
+|-supereffective|p2a: Typhlosion
+|-damage|p2a: Typhlosion|13/100
+|move|p2a: Typhlosion|Eruption|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|232/298
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Azumarill|Aqua Jet|p2a: Typhlosion
+|-supereffective|p2a: Typhlosion
+|-damage|p2a: Typhlosion|0 fnt
+|faint|p2a: Typhlosion
+|
+|upkeep
+|
+|switch|p2a: Slaking|Slaking, L84, F|100/100
+|turn|14
+|
+|move|p1a: Azumarill|Aqua Jet|p2a: Slaking
+|-damage|p2a: Slaking|88/100
+|move|p2a: Slaking|Giga Impact|p1a: Azumarill
+|-damage|p1a: Azumarill|0 fnt
+|-mustrecharge|p2a: Slaking
+|faint|p1a: Azumarill
+|
+|upkeep
+|
+|switch|p1a: Terapagos|Terapagos, L77, M|265/265
+|-activate|p1a: Terapagos|ability: Tera Shift
+|detailschange|p1a: Terapagos|Terapagos-Terastal, L77, M
+|-heal|p1a: Terapagos|273/273|[silent]
+|turn|15
+|
+|cant|p2a: Slaking|recharge
+|move|p1a: Terapagos|Tera Starstorm|p2a: Slaking
+|-damage|p2a: Slaking|52/100
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Slaking|Giga Impact|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|164/273
+|-mustrecharge|p2a: Slaking
+|move|p1a: Terapagos|Earth Power|p2a: Slaking
+|-damage|p2a: Slaking|35/100
+|
+|upkeep
+|turn|17
+|
+|cant|p2a: Slaking|recharge
+|move|p1a: Terapagos|Tera Starstorm|p2a: Slaking
+|-damage|p2a: Slaking|0 fnt
+|faint|p2a: Slaking
+|
+|upkeep
+|
+|switch|p2a: Lucario|Lucario, L84, F|100/100
+|turn|18
+|
+|move|p2a: Lucario|Close Combat|p1a: Terapagos
+|-supereffective|p1a: Terapagos
+|-damage|p1a: Terapagos|0 fnt
+|-unboost|p2a: Lucario|def|1
+|-unboost|p2a: Lucario|spd|1
+|faint|p1a: Terapagos
+|
+|upkeep
+|
+|switch|p1a: Bisharp|Bisharp, L79, M|232/232
+|turn|19
+|
+|move|p2a: Lucario|Close Combat|p1a: Bisharp
+|-supereffective|p1a: Bisharp
+|-damage|p1a: Bisharp|0 fnt
+|-unboost|p2a: Lucario|def|1
+|-unboost|p2a: Lucario|spd|1
+|faint|p1a: Bisharp
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

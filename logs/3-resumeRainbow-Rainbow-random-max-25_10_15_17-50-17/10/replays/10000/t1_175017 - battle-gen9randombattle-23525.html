@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23525</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23525<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23525|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Excadrill|Excadrill, L79, M|303/303
+|switch|p2a: Delphox|Delphox, L84, M|100/100
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|1
+|
+|switch|p1a: Kyogre|Kyogre, L71|259/259
+|-weather|RainDance|[from] ability: Drizzle|[of] p1a: Kyogre
+|move|p2a: Delphox|Focus Blast|p1a: Kyogre
+|-damage|p1a: Kyogre|177/259
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|2
+|
+|move|p2a: Delphox|Focus Blast|p1a: Kyogre
+|-crit|p1a: Kyogre
+|-damage|p1a: Kyogre|56/259
+|move|p1a: Kyogre|Water Spout|p2a: Delphox
+|-supereffective|p2a: Delphox
+|-damage|p2a: Delphox|59/100
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|3
+|
+|move|p2a: Delphox|Focus Blast|p1a: Kyogre
+|-damage|p1a: Kyogre|0 fnt
+|faint|p1a: Kyogre
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p1a: Pecharunt|Pecharunt, L77|262/262
+|turn|4
+|
+|move|p2a: Delphox|Focus Blast|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p2a: Delphox|Focus Blast|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|-weather|none
+|upkeep
+|turn|6
+|
+|move|p2a: Delphox|Focus Blast|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Delphox|Focus Blast|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Delphox|Focus Blast|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|9
+|
+|-activate|p2a: Delphox|move: Struggle
+|move|p2a: Delphox|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|247/262
+|-damage|p2a: Delphox|34/100|[from] recoil
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|upkeep
+|turn|10
+|
+|-activate|p2a: Delphox|move: Struggle
+|move|p2a: Delphox|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|248/262
+|-damage|p2a: Delphox|9/100|[from] recoil
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|upkeep
+|turn|11
+|
+|-activate|p2a: Delphox|move: Struggle
+|move|p2a: Delphox|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|248/262
+|-damage|p2a: Delphox|0 fnt|[from] recoil
+|faint|p2a: Delphox
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|upkeep
+|
+|switch|p2a: Comfey|Comfey, L85, F|100/100
+|turn|12
+|
+|move|p2a: Comfey|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|235/262
+|move|p1a: Pecharunt|Malignant Chain|p2a: Comfey
+|-supereffective|p2a: Comfey
+|-damage|p2a: Comfey|42/100
+|
+|-heal|p2a: Comfey|48/100|[from] item: Leftovers
+|-heal|p1a: Pecharunt|251/262|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Comfey|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|227/262
+|-heal|p2a: Comfey|53/100|[from] drain|[of] p1a: Pecharunt
+|move|p1a: Pecharunt|Parting Shot|p2a: Comfey
+|-unboost|p2a: Comfey|atk|1
+|-unboost|p2a: Comfey|spa|1
+|
+|switch|p1a: Excadrill|Excadrill, L79, M|303/303|[from] Parting Shot
+|-ability|p1a: Excadrill|Mold Breaker
+|
+|-heal|p2a: Comfey|60/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-crit|p1a: Excadrill
+|-damage|p1a: Excadrill|240/303
+|-heal|p2a: Comfey|74/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rock Slide|p2a: Comfey
+|-damage|p2a: Comfey|46/100
+|
+|-heal|p2a: Comfey|52/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|211/303
+|-heal|p2a: Comfey|59/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|42/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|48/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|184/303
+|-heal|p2a: Comfey|54/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|36/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|43/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|152/303
+|-heal|p2a: Comfey|50/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|32/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|39/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|123/303
+|-heal|p2a: Comfey|45/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|28/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|34/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|92/303
+|-heal|p2a: Comfey|41/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|23/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|29/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|63/303
+|-heal|p2a: Comfey|36/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|19/100
+|-boost|p1a: Excadrill|spe|1
+|
+|-heal|p2a: Comfey|25/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Comfey|Giga Drain|p1a: Excadrill
+|-damage|p1a: Excadrill|35/303
+|-heal|p2a: Comfey|32/100|[from] drain|[of] p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Comfey
+|-damage|p2a: Comfey|13/100
+|
+|-heal|p2a: Comfey|20/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|switch|p1a: Chimecho|Chimecho, L93, F|290/290
+|move|p2a: Comfey|Giga Drain|p1a: Chimecho
+|-damage|p1a: Chimecho|258/290
+|-heal|p2a: Comfey|27/100|[from] drain|[of] p1a: Chimecho
+|
+|-heal|p2a: Comfey|33/100|[from] item: Leftovers
+|-heal|p1a: Chimecho|276/290|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Comfey|Giga Drain|p1a: Chimecho
+|-damage|p1a: Chimecho|246/290
+|-heal|p2a: Comfey|40/100|[from] drain|[of] p1a: Chimecho
+|move|p1a: Chimecho|Psyshock|p2a: Comfey
+|-damage|p2a: Comfey|0 fnt
+|faint|p2a: Comfey
+|
+|-heal|p1a: Chimecho|264/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Zacian|Zacian-Crowned, L64|100/100
+|-ability|p2a: Zacian|Intrepid Sword|boost
+|-boost|p2a: Zacian|atk|1
+|turn|24
+|
+|move|p2a: Zacian|Close Combat|p1a: Chimecho
+|-resisted|p1a: Chimecho
+|-damage|p1a: Chimecho|212/290
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Chimecho|Psyshock|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|64/100
+|
+|-heal|p1a: Chimecho|230/290|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Zacian|Close Combat|p1a: Chimecho
+|-resisted|p1a: Chimecho
+|-damage|p1a: Chimecho|181/290
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Chimecho|Psyshock|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|12/100
+|
+|-heal|p1a: Chimecho|199/290|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Zacian|Close Combat|p1a: Chimecho
+|-resisted|p1a: Chimecho
+|-damage|p1a: Chimecho|146/290
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Chimecho|Psyshock|p2a: Zacian
+|-resisted|p2a: Zacian
+|-crit|p2a: Zacian
+|-damage|p2a: Zacian|0 fnt
+|faint|p2a: Zacian
+|
+|-heal|p1a: Chimecho|164/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Overqwil|Overqwil, L82, F|100/100
+|-ability|p2a: Overqwil|Intimidate|boost
+|-unboost|p1a: Chimecho|atk|1
+|turn|27
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Chimecho
+|-damage|p1a: Chimecho|0 fnt
+|faint|p1a: Chimecho
+|
+|upkeep
+|
+|switch|p1a: Excadrill|Excadrill, L79, M|35/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|28
+|
+|move|p2a: Overqwil|Gunk Shot|p1a: Excadrill
+|-immune|p1a: Excadrill
+|move|p1a: Excadrill|Rapid Spin|p2a: Overqwil
+|-damage|p2a: Overqwil|85/100
+|-boost|p1a: Excadrill|spe|1
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Overqwil
+|-damage|p2a: Overqwil|71/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Overqwil|Gunk Shot|p1a: Excadrill
+|-immune|p1a: Excadrill
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Overqwil
+|-damage|p2a: Overqwil|56/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Overqwil|Gunk Shot|p1a: Excadrill
+|-immune|p1a: Excadrill
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Overqwil
+|-damage|p2a: Overqwil|42/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Overqwil|Gunk Shot|p1a: Excadrill
+|-immune|p1a: Excadrill
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Excadrill|Earthquake|p2a: Overqwil
+|-supereffective|p2a: Overqwil
+|-damage|p2a: Overqwil|0 fnt
+|faint|p2a: Overqwil
+|
+|upkeep
+|
+|switch|p2a: Leafeon|Leafeon, L88, M|100/100
+|turn|33
+|
+|move|p1a: Excadrill|Earthquake|p2a: Leafeon
+|-resisted|p2a: Leafeon
+|-damage|p2a: Leafeon|84/100
+|move|p2a: Leafeon|Leaf Blade|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|faint|p1a: Excadrill
+|
+|-heal|p2a: Leafeon|90/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Pecharunt|Pecharunt, L77|227/262
+|turn|34
+|
+|move|p2a: Leafeon|Leaf Blade|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|187/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Leafeon
+|-damage|p2a: Leafeon|59/100
+|
+|-heal|p2a: Leafeon|65/100|[from] item: Leftovers
+|-heal|p1a: Pecharunt|203/262|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p2a: Leafeon|Leaf Blade|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|165/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Leafeon
+|-damage|p2a: Leafeon|32/100
+|
+|-heal|p2a: Leafeon|38/100|[from] item: Leftovers
+|-heal|p1a: Pecharunt|181/262|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Leafeon|Leaf Blade|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|144/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Leafeon
+|-damage|p2a: Leafeon|8/100
+|
+|-heal|p2a: Leafeon|14/100|[from] item: Leftovers
+|-heal|p1a: Pecharunt|160/262|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Leafeon|Leaf Blade|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|123/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Leafeon
+|-damage|p2a: Leafeon|0 fnt
+|faint|p2a: Leafeon
+|
+|-heal|p1a: Pecharunt|139/262|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Heracross|Heracross, L80, F|100/100
+|turn|38
+|
+|move|p2a: Heracross|Close Combat|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Heracross
+|-crit|p2a: Heracross
+|-damage|p2a: Heracross|53/100
+|
+|-heal|p1a: Pecharunt|155/262|[from] item: Leftovers
+|-status|p2a: Heracross|brn|[from] item: Flame Orb
+|upkeep
+|turn|39
+|
+|move|p2a: Heracross|Close Combat|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Heracross
+|-damage|p2a: Heracross|19/100 brn
+|
+|-heal|p1a: Pecharunt|171/262|[from] item: Leftovers
+|-damage|p2a: Heracross|13/100 brn|[from] brn
+|upkeep
+|turn|40
+|
+|move|p2a: Heracross|Close Combat|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Heracross
+|-damage|p2a: Heracross|0 fnt
+|faint|p2a: Heracross
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23791</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23791<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23791|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Ting-Lu|Ting-Lu, L78|370/370
+|switch|p2a: Rampardos|Rampardos, L90, M|100/100
+|-ability|p1a: Ting-Lu|Vessel of Ruin
+|turn|1
+|
+|move|p2a: Rampardos|Earthquake|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|234/370
+|-damage|p2a: Rampardos|91/100|[from] item: Life Orb
+|move|p1a: Ting-Lu|Spikes|p2a: Rampardos
+|-sidestart|p2: t2_175017|Spikes
+|
+|-heal|p1a: Ting-Lu|257/370|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Rampardos|Earthquake|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|117/370
+|-damage|p2a: Rampardos|81/100|[from] item: Life Orb
+|move|p1a: Ting-Lu|Earthquake|p2a: Rampardos
+|-supereffective|p2a: Rampardos
+|-damage|p2a: Rampardos|0 fnt
+|faint|p2a: Rampardos
+|
+|-heal|p1a: Ting-Lu|140/370|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Shiftry|Shiftry, L89, F|100/100
+|turn|3
+|
+|-terastallize|p1a: Ting-Lu|Poison
+|move|p2a: Shiftry|Leaf Storm|p1a: Ting-Lu
+|-resisted|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|73/370
+|-unboost|p2a: Shiftry|spa|2
+|move|p1a: Ting-Lu|Earthquake|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|78/100
+|
+|-heal|p1a: Ting-Lu|96/370|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Shiftry|Leaf Storm|p1a: Ting-Lu
+|-resisted|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|63/370
+|-unboost|p2a: Shiftry|spa|2
+|move|p1a: Ting-Lu|Earthquake|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|58/100
+|
+|-heal|p1a: Ting-Lu|86/370|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Shiftry|Leaf Storm|p1a: Ting-Lu
+|-resisted|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|65/370
+|-unboost|p2a: Shiftry|spa|2
+|move|p1a: Ting-Lu|Earthquake|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|36/100
+|
+|-heal|p1a: Ting-Lu|88/370|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p2a: Shiftry|Leaf Storm|p1a: Ting-Lu
+|-resisted|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|71/370
+|move|p1a: Ting-Lu|Earthquake|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|16/100
+|
+|-heal|p1a: Ting-Lu|94/370|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Shiftry|Leaf Storm|p1a: Ting-Lu
+|-resisted|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|79/370
+|move|p1a: Ting-Lu|Earthquake|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|0 fnt
+|faint|p2a: Shiftry
+|
+|-heal|p1a: Ting-Lu|102/370|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Volcanion|Volcanion, L79|100/100
+|turn|8
+|
+|switch|p1a: Rotom|Rotom-Wash, L83|219/219
+|move|p2a: Volcanion|Steam Eruption|p1a: Rotom
+|-resisted|p1a: Rotom
+|-damage|p1a: Rotom|158/219
+|
+|-heal|p1a: Rotom|171/219|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Ting-Lu|Ting-Lu, L78, tera:Poison|102/370
+|-ability|p1a: Ting-Lu|Vessel of Ruin
+|move|p2a: Volcanion|Steam Eruption|p1a: Ting-Lu
+|-damage|p1a: Ting-Lu|0 fnt
+|faint|p1a: Ting-Lu
+|
+|upkeep
+|
+|switch|p1a: Breloom|Breloom, L83, F|235/235
+|turn|10
+|
+|move|p1a: Breloom|Bullet Seed|p2a: Volcanion
+|-damage|p2a: Volcanion|79/100
+|-damage|p2a: Volcanion|59/100
+|-hitcount|p2a: Volcanion|2
+|-damage|p1a: Breloom|212/235|[from] item: Life Orb
+|move|p2a: Volcanion|Steam Eruption|p1a: Breloom
+|-resisted|p1a: Breloom
+|-damage|p1a: Breloom|119/235
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Breloom|Bullet Seed|p2a: Volcanion
+|-damage|p2a: Volcanion|39/100
+|-damage|p2a: Volcanion|19/100
+|-hitcount|p2a: Volcanion|2
+|-damage|p1a: Breloom|96/235|[from] item: Life Orb
+|move|p2a: Volcanion|Steam Eruption|p1a: Breloom
+|-resisted|p1a: Breloom
+|-damage|p1a: Breloom|10/235
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Breloom|Bullet Seed|p2a: Volcanion
+|-damage|p2a: Volcanion|0 fnt
+|faint|p2a: Volcanion
+|-hitcount|p2: Volcanion|1
+|-damage|p1a: Breloom|0 fnt|[from] item: Life Orb
+|faint|p1a: Breloom
+|
+|upkeep
+|
+|switch|p1a: Mesprit|Mesprit, L85|275/275
+|switch|p2a: Slaking|Slaking, L84, M|100/100
+|-damage|p2a: Slaking|88/100|[from] Spikes
+|turn|13
+|
+|move|p1a: Mesprit|Psychic|p2a: Slaking
+|-damage|p2a: Slaking|54/100
+|move|p2a: Slaking|Giga Impact|p1a: Mesprit
+|-damage|p1a: Mesprit|0 fnt
+|-mustrecharge|p2a: Slaking
+|faint|p1a: Mesprit
+|
+|upkeep
+|
+|switch|p1a: Oranguru|Oranguru, L92, M|315/315
+|turn|14
+|
+|cant|p2a: Slaking|recharge
+|move|p1a: Oranguru|Focus Blast|p2a: Slaking|[miss]
+|-miss|p1a: Oranguru|p2a: Slaking
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Slaking|Giga Impact|p1a: Oranguru
+|-damage|p1a: Oranguru|0 fnt
+|-mustrecharge|p2a: Slaking
+|faint|p1a: Oranguru
+|
+|upkeep
+|
+|switch|p1a: Chandelure|Chandelure, L83, M|235/235
+|turn|16
+|
+|move|p1a: Chandelure|Energy Ball|p2a: Slaking
+|-damage|p2a: Slaking|26/100
+|cant|p2a: Slaking|recharge
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Chandelure|Energy Ball|p2a: Slaking
+|-damage|p2a: Slaking|0 fnt
+|faint|p2a: Slaking
+|
+|upkeep
+|
+|switch|p2a: Dusknoir|Dusknoir, L89, F|100/100
+|-damage|p2a: Dusknoir|88/100|[from] Spikes
+|-item|p1a: Chandelure|Choice Scarf|[from] ability: Frisk|[of] p2a: Dusknoir
+|turn|18
+|
+|move|p1a: Chandelure|Energy Ball|p2a: Dusknoir
+|-damage|p2a: Dusknoir|60/100
+|move|p2a: Dusknoir|Poltergeist|p1a: Chandelure
+|-activate|p1a: Chandelure|move: Poltergeist|Choice Scarf
+|-supereffective|p1a: Chandelure
+|-damage|p1a: Chandelure|0 fnt
+|faint|p1a: Chandelure
+|
+|upkeep
+|
+|switch|p1a: Rotom|Rotom-Wash, L83|171/219
+|turn|19
+|
+|move|p1a: Rotom|Nasty Plot|p1a: Rotom
+|-boost|p1a: Rotom|spa|2
+|move|p2a: Dusknoir|Poltergeist|p1a: Rotom
+|-activate|p1a: Rotom|move: Poltergeist|Leftovers
+|-damage|p1a: Rotom|2/219
+|
+|-heal|p1a: Rotom|15/219|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Rotom|Nasty Plot|p1a: Rotom
+|-boost|p1a: Rotom|spa|2
+|move|p2a: Dusknoir|Poltergeist|p1a: Rotom
+|-activate|p1a: Rotom|move: Poltergeist|Leftovers
+|-damage|p1a: Rotom|0 fnt
+|faint|p1a: Rotom
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

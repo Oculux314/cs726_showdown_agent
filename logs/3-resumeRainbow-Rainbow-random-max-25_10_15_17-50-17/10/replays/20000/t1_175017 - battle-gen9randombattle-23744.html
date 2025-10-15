@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23744</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23744<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23744|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Meloetta|Meloetta, L82|298/298
+|switch|p2a: Iron Thorns|Iron Thorns, L83|100/100
+|-item|p2a: Iron Thorns|Air Balloon
+|turn|1
+|
+|switch|p1a: Luvdisc|Luvdisc, M|247/247
+|move|p2a: Iron Thorns|Stone Edge|p1a: Luvdisc
+|-damage|p1a: Luvdisc|75/247
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|14/247
+|move|p2a: Iron Thorns|Stone Edge|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Luvdisc|Ghost
+|move|p1a: Luvdisc|Surf|p2a: Iron Thorns
+|-supereffective|p2a: Iron Thorns
+|-damage|p2a: Iron Thorns|48/100
+|-enditem|p2a: Iron Thorns|Air Balloon
+|move|p2a: Iron Thorns|Stone Edge|p1a: Luvdisc|[miss]
+|-miss|p2a: Iron Thorns|p1a: Luvdisc
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Luvdisc|Surf|p2a: Iron Thorns
+|-supereffective|p2a: Iron Thorns
+|-damage|p2a: Iron Thorns|0 fnt
+|faint|p2a: Iron Thorns
+|-end|p2a: Iron Thorns|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p2a: Talonflame|Talonflame, L83, M|100/100
+|turn|5
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Luvdisc
+|-damage|p1a: Luvdisc|0 fnt
+|faint|p1a: Luvdisc
+|-damage|p2a: Talonflame|99/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Hatterene|Hatterene, L85, F|236/236
+|turn|6
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Hatterene
+|-damage|p1a: Hatterene|139/236
+|-damage|p2a: Talonflame|87/100|[from] Recoil
+|move|p1a: Hatterene|Psychic Noise|p2a: Talonflame
+|-damage|p2a: Talonflame|40/100
+|-start|p2a: Talonflame|move: Heal Block
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Hatterene
+|-damage|p1a: Hatterene|46/236
+|-status|p1a: Hatterene|brn
+|-damage|p2a: Talonflame|28/100|[from] Recoil
+|move|p1a: Hatterene|Draining Kiss|p2a: Talonflame
+|-resisted|p2a: Talonflame
+|-damage|p2a: Talonflame|10/100
+|-heal|p1a: Hatterene|81/236 brn|[from] drain|[of] p2a: Talonflame
+|
+|-damage|p1a: Hatterene|67/236 brn|[from] brn
+|-end|p2a: Talonflame|move: Heal Block
+|upkeep
+|turn|8
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Hatterene
+|-damage|p1a: Hatterene|0 fnt
+|faint|p1a: Hatterene
+|-damage|p2a: Talonflame|2/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Meloetta|Meloetta, L82|298/298
+|turn|9
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Meloetta
+|-damage|p1a: Meloetta|171/298
+|-status|p1a: Meloetta|brn
+|-damage|p2a: Talonflame|0 fnt|[from] Recoil
+|faint|p2a: Talonflame
+|move|p1a: Meloetta|Hyper Voice|p2: Talonflame|[notarget]
+|-fail|p1a: Meloetta
+|
+|-damage|p1a: Meloetta|153/298 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Espeon|Espeon, L84, M|100/100
+|turn|10
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Meloetta
+|-immune|p1a: Meloetta
+|move|p1a: Meloetta|Hyper Voice|p2a: Espeon
+|-damage|p2a: Espeon|42/100
+|-damage|p1a: Meloetta|124/298 brn|[from] item: Life Orb
+|
+|-damage|p1a: Meloetta|106/298 brn|[from] brn
+|upkeep
+|turn|11
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Meloetta
+|-immune|p1a: Meloetta
+|move|p1a: Meloetta|Hyper Voice|p2a: Espeon
+|-damage|p2a: Espeon|0 fnt
+|faint|p2a: Espeon
+|-damage|p1a: Meloetta|77/298 brn|[from] item: Life Orb
+|
+|-damage|p1a: Meloetta|59/298 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Walking Wake|Walking Wake, L79|100/100
+|turn|12
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Meloetta|[miss]
+|-miss|p2a: Walking Wake|p1a: Meloetta
+|move|p1a: Meloetta|Hyper Voice|p2a: Walking Wake
+|-damage|p2a: Walking Wake|43/100
+|-damage|p1a: Meloetta|30/298 brn|[from] item: Life Orb
+|
+|-damage|p1a: Meloetta|12/298 brn|[from] brn
+|upkeep
+|turn|13
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Meloetta
+|-damage|p1a: Meloetta|0 fnt
+|-unboost|p2a: Walking Wake|spa|2
+|faint|p1a: Meloetta
+|-damage|p2a: Walking Wake|33/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Volcarona|Volcarona, L77, M|257/257
+|turn|14
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Volcarona
+|-damage|p1a: Volcarona|158/257
+|-unboost|p2a: Walking Wake|spa|2
+|-damage|p2a: Walking Wake|23/100|[from] item: Life Orb
+|move|p1a: Volcarona|Tera Blast|p2a: Walking Wake
+|-damage|p2a: Walking Wake|0 fnt
+|faint|p2a: Walking Wake
+|-end|p2a: Walking Wake|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p2a: Whimsicott|Whimsicott, L84, F|100/100
+|turn|15
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Volcarona
+|-resisted|p1a: Volcarona
+|-damage|p1a: Volcarona|116/257
+|move|p1a: Volcarona|Tera Blast|p2a: Whimsicott
+|-damage|p2a: Whimsicott|69/100
+|
+|-heal|p2a: Whimsicott|74/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Volcarona
+|-resisted|p1a: Volcarona
+|-damage|p1a: Volcarona|77/257
+|move|p1a: Volcarona|Tera Blast|p2a: Whimsicott
+|-damage|p2a: Whimsicott|46/100
+|
+|-heal|p2a: Whimsicott|52/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Volcarona
+|-resisted|p1a: Volcarona
+|-damage|p1a: Volcarona|35/257
+|move|p1a: Volcarona|Tera Blast|p2a: Whimsicott
+|-damage|p2a: Whimsicott|22/100
+|
+|-heal|p2a: Whimsicott|28/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Volcarona
+|-resisted|p1a: Volcarona
+|-damage|p1a: Volcarona|0 fnt
+|faint|p1a: Volcarona
+|
+|-heal|p2a: Whimsicott|34/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Chien-Pao|Chien-Pao, L72|234/234
+|-ability|p1a: Chien-Pao|Sword of Ruin
+|turn|19
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Chien-Pao
+|-supereffective|p1a: Chien-Pao
+|-damage|p1a: Chien-Pao|0 fnt
+|faint|p1a: Chien-Pao
+|
+|-heal|p2a: Whimsicott|40/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Breloom|Breloom, L83, M|235/235
+|turn|20
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Breloom
+|-supereffective|p1a: Breloom
+|-damage|p1a: Breloom|23/235
+|move|p1a: Breloom|Swords Dance|p1a: Breloom
+|-boost|p1a: Breloom|atk|2
+|
+|-heal|p2a: Whimsicott|45/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Whimsicott|Moonblast|p1a: Breloom
+|-supereffective|p1a: Breloom
+|-damage|p1a: Breloom|0 fnt
+|faint|p1a: Breloom
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

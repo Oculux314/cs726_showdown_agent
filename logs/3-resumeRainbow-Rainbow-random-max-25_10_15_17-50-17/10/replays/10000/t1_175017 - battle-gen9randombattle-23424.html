@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23424</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23424<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23424|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Slaking|Slaking, L84, M|389/389
+|switch|p2a: Luxray|Luxray, L88, F|100/100
+|-ability|p2a: Luxray|Intimidate|boost
+|-unboost|p1a: Slaking|atk|1
+|turn|1
+|
+|switch|p1a: Umbreon|Umbreon, L84, F|297/297
+|move|p2a: Luxray|Wild Charge|p1a: Umbreon
+|-damage|p1a: Umbreon|191/297
+|-damage|p2a: Luxray|91/100|[from] Recoil
+|
+|-heal|p1a: Umbreon|209/297|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Luxray|Wild Charge|p1a: Umbreon
+|-damage|p1a: Umbreon|106/297
+|-damage|p2a: Luxray|82/100|[from] Recoil
+|move|p1a: Umbreon|Toxic|p2a: Luxray
+|-status|p2a: Luxray|tox
+|
+|-heal|p1a: Umbreon|124/297|[from] item: Leftovers
+|-damage|p2a: Luxray|76/100 tox|[from] psn
+|upkeep
+|turn|3
+|
+|move|p2a: Luxray|Wild Charge|p1a: Umbreon
+|-damage|p1a: Umbreon|18/297
+|-damage|p2a: Luxray|66/100 tox|[from] Recoil
+|move|p1a: Umbreon|Toxic|p2a: Luxray
+|-fail|p2a: Luxray|tox
+|
+|-heal|p1a: Umbreon|36/297|[from] item: Leftovers
+|-damage|p2a: Luxray|54/100 tox|[from] psn
+|upkeep
+|turn|4
+|
+|move|p2a: Luxray|Wild Charge|p1a: Umbreon
+|-damage|p1a: Umbreon|0 fnt
+|faint|p1a: Umbreon
+|-damage|p2a: Luxray|51/100 tox|[from] Recoil
+|
+|-damage|p2a: Luxray|33/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Gliscor|Gliscor, L76, F|239/239
+|turn|5
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Luxray|Wild Charge|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-damage|p2a: Luxray|9/100 tox|[from] psn
+|-status|p1a: Gliscor|tox|[from] item: Toxic Orb
+|upkeep
+|turn|6
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Luxray|Wild Charge|p1a: Gliscor
+|-immune|p1a: Gliscor
+|
+|-damage|p2a: Luxray|0 fnt|[from] psn
+|faint|p2a: Luxray
+|upkeep
+|
+|switch|p2a: Maushold|Maushold-Four, L76|100/100
+|turn|7
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|203/239 tox
+|
+|-heal|p1a: Gliscor|232/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|9
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-heal|p1a: Gliscor|239/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|10
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|205/239 tox
+|
+|-heal|p1a: Gliscor|234/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|11
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-heal|p1a: Gliscor|239/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|12
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|204/239 tox
+|
+|-heal|p1a: Gliscor|233/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|13
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-heal|p1a: Gliscor|239/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|14
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|200/239 tox
+|
+|-heal|p1a: Gliscor|229/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|15
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-heal|p1a: Gliscor|239/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|16
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|204/239 tox
+|
+|-heal|p1a: Gliscor|233/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|18
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-heal|p1a: Gliscor|239/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|19
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|201/239 tox
+|move|p1a: Gliscor|Toxic|p2a: Maushold
+|-status|p2a: Maushold|tox
+|
+|-damage|p2a: Maushold|95/100 tox|[from] psn
+|-heal|p1a: Gliscor|230/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|22
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-crit|p1a: Gliscor
+|-damage|p1a: Gliscor|179/239 tox
+|cant|p1a: Gliscor|flinch
+|
+|-damage|p2a: Maushold|83/100 tox|[from] psn
+|-heal|p1a: Gliscor|208/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|23
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|170/239 tox
+|move|p1a: Gliscor|Toxic|p2a: Maushold
+|-fail|p2a: Maushold|tox
+|
+|-damage|p2a: Maushold|65/100 tox|[from] psn
+|-heal|p1a: Gliscor|199/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|24
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|160/239 tox
+|cant|p1a: Gliscor|flinch
+|
+|-damage|p2a: Maushold|42/100 tox|[from] psn
+|-heal|p1a: Gliscor|189/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|25
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|153/239 tox
+|cant|p1a: Gliscor|flinch
+|
+|-damage|p2a: Maushold|12/100 tox|[from] psn
+|-heal|p1a: Gliscor|182/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|26
+|
+|move|p2a: Maushold|Bite|p1a: Gliscor
+|-damage|p1a: Gliscor|146/239 tox
+|move|p1a: Gliscor|Toxic|p2a: Maushold|[miss]
+|-miss|p1a: Gliscor|p2a: Maushold
+|
+|-damage|p2a: Maushold|0 fnt|[from] psn
+|faint|p2a: Maushold
+|-heal|p1a: Gliscor|175/239 tox|[from] ability: Poison Heal
+|upkeep
+|
+|switch|p2a: Pecharunt|Pecharunt, L77|100/100
+|turn|27
+|
+|move|p1a: Gliscor|Substitute|p1a: Gliscor
+|-start|p1a: Gliscor|Substitute
+|-damage|p1a: Gliscor|116/239 tox
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Substitute|[damage]
+|
+|-heal|p1a: Gliscor|145/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|28
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-end|p1a: Gliscor|Substitute
+|
+|-heal|p1a: Gliscor|174/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|29
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt|[miss]
+|-miss|p1a: Gliscor|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|123/239 tox
+|
+|-heal|p1a: Gliscor|152/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|30
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|98/239 tox
+|
+|-heal|p1a: Gliscor|127/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|31
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|73/239 tox
+|
+|-heal|p1a: Gliscor|102/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|32
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|54/239 tox
+|
+|-heal|p1a: Gliscor|83/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|33
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|28/239 tox
+|
+|-heal|p1a: Gliscor|57/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|34
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Malignant Chain|p1a: Gliscor
+|-resisted|p1a: Gliscor
+|-damage|p1a: Gliscor|8/239 tox
+|
+|-heal|p1a: Gliscor|37/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|35
+|
+|move|p1a: Gliscor|Toxic|p2a: Pecharunt
+|-immune|p2a: Pecharunt
+|move|p2a: Pecharunt|Shadow Ball|p1a: Gliscor
+|-damage|p1a: Gliscor|0 fnt
+|faint|p1a: Gliscor
+|
+|upkeep
+|
+|switch|p1a: Slaking|Slaking, L84, M|389/389
+|turn|36
+|
+|move|p1a: Slaking|Earthquake|p2a: Pecharunt
+|-supereffective|p2a: Pecharunt
+|-damage|p2a: Pecharunt|26/100
+|move|p2a: Pecharunt|Shadow Ball|p1a: Slaking
+|-immune|p1a: Slaking
+|
+|-heal|p2a: Pecharunt|32/100|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|cant|p1a: Slaking|ability: Truant
+|move|p2a: Pecharunt|Shadow Ball|p1a: Slaking
+|-immune|p1a: Slaking
+|
+|-heal|p2a: Pecharunt|38/100|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Slaking|Earthquake|p2a: Pecharunt
+|-supereffective|p2a: Pecharunt
+|-damage|p2a: Pecharunt|0 fnt
+|faint|p2a: Pecharunt
+|
+|upkeep
+|
+|switch|p2a: Iron Bundle|Iron Bundle, L77|100/100
+|turn|39
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Slaking
+|-damage|p1a: Slaking|172/389
+|cant|p1a: Slaking|ability: Truant
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Slaking|[miss]
+|-miss|p2a: Iron Bundle|p1a: Slaking
+|move|p1a: Slaking|Earthquake|p2a: Iron Bundle
+|-damage|p2a: Iron Bundle|33/100
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Slaking|[miss]
+|-miss|p2a: Iron Bundle|p1a: Slaking
+|cant|p1a: Slaking|ability: Truant
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Slaking
+|-damage|p1a: Slaking|0 fnt
+|faint|p1a: Slaking
+|
+|upkeep
+|
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|312/312
+|turn|43
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|233/312
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-status|p2a: Iron Bundle|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|252/312|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|271/312|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|290/312|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|309/312|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|-curestatus|p2a: Iron Bundle|slp|[msg]
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Brute Bonnet|[miss]
+|-miss|p2a: Iron Bundle|p1a: Brute Bonnet
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-status|p2a: Iron Bundle|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|upkeep
+|turn|49
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|upkeep
+|turn|50
+|
+|-curestatus|p2a: Iron Bundle|slp|[msg]
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|235/312
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-status|p2a: Iron Bundle|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|254/312|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|273/312|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|292/312|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|311/312|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|-curestatus|p2a: Iron Bundle|slp|[msg]
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|228/312
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-status|p2a: Iron Bundle|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|247/312|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|266/312|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|285/312|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|-curestatus|p2a: Iron Bundle|slp|[msg]
+|-activate|p2a: Iron Bundle|move: Struggle
+|move|p2a: Iron Bundle|Struggle|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|261/312
+|-damage|p2a: Iron Bundle|8/100|[from] recoil
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-status|p2a: Iron Bundle|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|280/312|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|299/312|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|cant|p2a: Iron Bundle|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Bundle
+|-fail|p2a: Iron Bundle|slp
+|
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|-curestatus|p2a: Iron Bundle|slp|[msg]
+|-activate|p2a: Iron Bundle|move: Struggle
+|move|p2a: Iron Bundle|Struggle|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|287/312
+|-damage|p2a: Iron Bundle|0 fnt|[from] recoil
+|faint|p2a: Iron Bundle
+|-end|p2a: Iron Bundle|Quark Drive|[silent]
+|move|p1a: Brute Bonnet|Spore|p2: Iron Bundle|[notarget]
+|-fail|p1a: Brute Bonnet
+|
+|-heal|p1a: Brute Bonnet|306/312|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Sunflora|Sunflora, F|100/100
+|turn|61
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam||[still]
+|-prepare|p2a: Sunflora|Solar Beam
+|
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|62
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam|p1a: Brute Bonnet|[from] lockedmove
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|187/312
+|-damage|p2a: Sunflora|91/100|[from] item: Life Orb
+|
+|-heal|p1a: Brute Bonnet|206/312|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam||[still]
+|-prepare|p2a: Sunflora|Solar Beam
+|
+|-heal|p1a: Brute Bonnet|225/312|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam|p1a: Brute Bonnet|[from] lockedmove
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|116/312
+|-damage|p2a: Sunflora|81/100|[from] item: Life Orb
+|
+|-heal|p1a: Brute Bonnet|135/312|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam||[still]
+|-prepare|p2a: Sunflora|Solar Beam
+|
+|-heal|p1a: Brute Bonnet|154/312|[from] item: Leftovers
+|upkeep
+|turn|66
+|
+|move|p1a: Brute Bonnet|Spore|p2a: Sunflora
+|-immune|p2a: Sunflora
+|move|p2a: Sunflora|Solar Beam|p1a: Brute Bonnet|[from] lockedmove
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|45/312
+|-damage|p2a: Sunflora|71/100|[from] item: Life Orb
+|
+|-heal|p1a: Brute Bonnet|64/312|[from] item: Leftovers
+|upkeep
+|turn|67
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Sunflora
+|-damage|p2a: Sunflora|41/100
+|move|p2a: Sunflora|Solar Beam||[still]
+|-prepare|p2a: Sunflora|Solar Beam
+|
+|-heal|p1a: Brute Bonnet|83/312|[from] item: Leftovers
+|upkeep
+|turn|68
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Sunflora
+|-damage|p2a: Sunflora|9/100
+|move|p2a: Sunflora|Solar Beam|p1a: Brute Bonnet|[from] lockedmove
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|0 fnt
+|faint|p1a: Brute Bonnet
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|-damage|p2a: Sunflora|0 fnt|[from] item: Life Orb
+|faint|p2a: Sunflora
+|
+|upkeep
+|
+|switch|p1a: Victreebel|Victreebel, L90, F|290/290
+|switch|p2a: Chien-Pao|Chien-Pao, L72|100/100
+|-ability|p2a: Chien-Pao|Sword of Ruin
+|turn|69
+|
+|move|p2a: Chien-Pao|Sacred Sword|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|227/290
+|move|p1a: Victreebel|Swords Dance|p1a: Victreebel
+|-boost|p1a: Victreebel|atk|2
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Chien-Pao|Sacred Sword|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|160/290
+|move|p1a: Victreebel|Swords Dance|p1a: Victreebel
+|-boost|p1a: Victreebel|atk|2
+|
+|upkeep
+|turn|71
+|
+|move|p2a: Chien-Pao|Sacred Sword|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|91/290
+|move|p1a: Victreebel|Swords Dance|p1a: Victreebel
+|-boost|p1a: Victreebel|atk|2
+|
+|upkeep
+|turn|72
+|
+|move|p2a: Chien-Pao|Sacred Sword|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|28/290
+|move|p1a: Victreebel|Power Whip|p2a: Chien-Pao
+|-damage|p2a: Chien-Pao|0 fnt
+|faint|p2a: Chien-Pao
+|-damage|p1a: Victreebel|0 fnt|[from] item: Life Orb
+|faint|p1a: Victreebel
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

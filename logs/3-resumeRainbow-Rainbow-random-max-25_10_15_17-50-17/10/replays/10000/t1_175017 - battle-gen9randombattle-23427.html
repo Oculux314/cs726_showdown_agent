@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23427</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23427<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23427|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Dunsparce|Dunsparce, L86, M|312/312
+|switch|p2a: Venomoth|Venomoth, L84, F|100/100
+|turn|1
+|
+|switch|p1a: Alomomola|Alomomola, L87, M|429/429
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-damage|p1a: Alomomola|275/429
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Alomomola|Steel
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Alomomola|Protect||[still]
+|-fail|p1a: Alomomola
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-immune|p1a: Alomomola
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Sludge Wave|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Alomomola|Protect|p1a: Alomomola
+|-singleturn|p1a: Alomomola|Protect
+|move|p2a: Venomoth|Bug Buzz|p1a: Alomomola
+|-activate|p1a: Alomomola|move: Protect
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Venomoth|Bug Buzz|p1a: Alomomola
+|-resisted|p1a: Alomomola
+|-damage|p1a: Alomomola|129/429
+|move|p1a: Alomomola|Scald|p2a: Venomoth
+|-damage|p2a: Venomoth|77/100
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Venomoth|Bug Buzz|p1a: Alomomola
+|-resisted|p1a: Alomomola
+|-damage|p1a: Alomomola|0 fnt
+|faint|p1a: Alomomola
+|
+|upkeep
+|
+|switch|p1a: Zapdos|Zapdos-Galar, L77|265/265
+|turn|20
+|
+|move|p1a: Zapdos|Close Combat|p2a: Venomoth
+|-resisted|p2a: Venomoth
+|-damage|p2a: Venomoth|60/100
+|-unboost|p1a: Zapdos|def|1
+|-unboost|p1a: Zapdos|spd|1
+|move|p2a: Venomoth|Bug Buzz|p1a: Zapdos
+|-resisted|p1a: Zapdos
+|-damage|p1a: Zapdos|197/265
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Zapdos|Close Combat|p2a: Venomoth
+|-resisted|p2a: Venomoth
+|-damage|p2a: Venomoth|43/100
+|-unboost|p1a: Zapdos|def|1
+|-unboost|p1a: Zapdos|spd|1
+|move|p2a: Venomoth|Bug Buzz|p1a: Zapdos
+|-resisted|p1a: Zapdos
+|-damage|p1a: Zapdos|99/265
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Zapdos|Close Combat|p2a: Venomoth
+|-resisted|p2a: Venomoth
+|-damage|p2a: Venomoth|26/100
+|-unboost|p1a: Zapdos|def|1
+|-unboost|p1a: Zapdos|spd|1
+|move|p2a: Venomoth|Bug Buzz|p1a: Zapdos
+|-resisted|p1a: Zapdos
+|-damage|p1a: Zapdos|0 fnt
+|faint|p1a: Zapdos
+|
+|upkeep
+|
+|switch|p1a: Dunsparce|Dunsparce, L86, M|312/312
+|turn|23
+|
+|move|p2a: Venomoth|Bug Buzz|p1a: Dunsparce
+|-damage|p1a: Dunsparce|231/312
+|-unboost|p1a: Dunsparce|spd|1
+|move|p1a: Dunsparce|Earthquake|p2a: Venomoth
+|-damage|p2a: Venomoth|0 fnt
+|faint|p2a: Venomoth
+|
+|upkeep
+|
+|switch|p2a: Bellossom|Bellossom, L84, F|100/100
+|turn|24
+|
+|move|p2a: Bellossom|Moonblast|p1a: Dunsparce
+|-damage|p1a: Dunsparce|155/312
+|move|p1a: Dunsparce|Earthquake|p2a: Bellossom
+|-resisted|p2a: Bellossom
+|-damage|p2a: Bellossom|90/100
+|
+|-heal|p2a: Bellossom|96/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Bellossom|Moonblast|p1a: Dunsparce
+|-damage|p1a: Dunsparce|81/312
+|-unboost|p1a: Dunsparce|spa|1
+|move|p1a: Dunsparce|Earthquake|p2a: Bellossom
+|-resisted|p2a: Bellossom
+|-damage|p2a: Bellossom|86/100
+|
+|-heal|p2a: Bellossom|92/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Bellossom|Moonblast|p1a: Dunsparce
+|-damage|p1a: Dunsparce|1/312
+|move|p1a: Dunsparce|Earthquake|p2a: Bellossom
+|-resisted|p2a: Bellossom
+|-damage|p2a: Bellossom|81/100
+|
+|-heal|p2a: Bellossom|87/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Bellossom|Moonblast|p1a: Dunsparce
+|-damage|p1a: Dunsparce|0 fnt
+|faint|p1a: Dunsparce
+|
+|-heal|p2a: Bellossom|93/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Lugia|Lugia, L73|275/275
+|turn|28
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|260/275
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|238/275
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|217/275
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|200/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|186/275
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|173/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|34
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|160/275
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|148/275
+|
+|upkeep
+|turn|36
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|136/275
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|123/275
+|
+|upkeep
+|turn|38
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|111/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|39
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|99/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|40
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|86/275
+|
+|upkeep
+|turn|41
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|73/275
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|61/275
+|
+|upkeep
+|turn|43
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|49/275
+|
+|upkeep
+|turn|44
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|37/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|45
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|25/275
+|
+|upkeep
+|turn|46
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|13/275
+|-unboost|p1a: Lugia|spa|1
+|
+|upkeep
+|turn|47
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Moonblast|p1a: Lugia
+|-damage|p1a: Lugia|1/275
+|
+|upkeep
+|turn|48
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|0
+|-boost|p1a: Lugia|spd|0
+|move|p2a: Bellossom|Giga Drain|p1a: Lugia
+|-resisted|p1a: Lugia
+|-damage|p1a: Lugia|0 fnt
+|faint|p1a: Lugia
+|
+|upkeep
+|
+|switch|p1a: Beartic|Beartic, L91, M|321/321
+|turn|49
+|
+|move|p1a: Beartic|Snowscape|p1a: Beartic
+|-weather|Snowscape
+|move|p2a: Bellossom|Giga Drain|p1a: Beartic
+|-damage|p1a: Beartic|240/321
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|50
+|
+|move|p1a: Beartic|Snowscape||[still]
+|-fail|p1a: Beartic
+|move|p2a: Bellossom|Giga Drain|p1a: Beartic
+|-damage|p1a: Beartic|165/321
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|51
+|
+|move|p1a: Beartic|Snowscape||[still]
+|-fail|p1a: Beartic
+|move|p2a: Bellossom|Giga Drain|p1a: Beartic
+|-damage|p1a: Beartic|95/321
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|52
+|
+|move|p1a: Beartic|Snowscape||[still]
+|-fail|p1a: Beartic
+|move|p2a: Bellossom|Giga Drain|p1a: Beartic
+|-damage|p1a: Beartic|20/321
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|53
+|
+|move|p1a: Beartic|Snowscape||[still]
+|-fail|p1a: Beartic
+|move|p2a: Bellossom|Giga Drain|p1a: Beartic
+|-damage|p1a: Beartic|0 fnt
+|faint|p1a: Beartic
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Pecharunt|Pecharunt, L77|262/262
+|turn|54
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|237/262
+|
+|-heal|p1a: Pecharunt|253/262|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|234/262
+|
+|-heal|p1a: Pecharunt|250/262|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|232/262
+|
+|-heal|p1a: Pecharunt|248/262|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|234/262
+|
+|-heal|p1a: Pecharunt|250/262|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|238/262
+|
+|-heal|p1a: Pecharunt|254/262|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|1
+|-unboost|p2a: Bellossom|spa|1
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|244/262
+|
+|-heal|p1a: Pecharunt|260/262|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|0
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|251/262
+|
+|-heal|p1a: Pecharunt|262/262|[from] item: Leftovers
+|upkeep
+|turn|61
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|0
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|251/262
+|
+|-heal|p1a: Pecharunt|262/262|[from] item: Leftovers
+|upkeep
+|turn|62
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|0
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|252/262
+|
+|-heal|p1a: Pecharunt|262/262|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|0
+|move|p2a: Bellossom|Giga Drain|p1a: Pecharunt
+|-resisted|p1a: Pecharunt
+|-damage|p1a: Pecharunt|252/262
+|
+|-heal|p1a: Pecharunt|262/262|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|0
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|
+|upkeep
+|turn|65
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|69
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|1
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|71
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|72
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|73
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|74
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|75
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|76
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|77
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|78
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|79
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|80
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|81
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|82
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|83
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|84
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|85
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|86
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Parting Shot|p2a: Bellossom
+|-unboost|p2a: Bellossom|atk|0
+|-unboost|p2a: Bellossom|spa|1
+|
+|upkeep
+|turn|87
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|95/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|88
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|95/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|89
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|95/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|90
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|95/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|91
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|1
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|92
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|93
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|94
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|95/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|95
+|
+|move|p2a: Bellossom|Quiver Dance|p2a: Bellossom
+|-boost|p2a: Bellossom|spa|1
+|-boost|p2a: Bellossom|spd|0
+|-boost|p2a: Bellossom|spe|0
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|96
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|
+|-heal|p2a: Bellossom|100/100|[from] item: Leftovers
+|upkeep
+|turn|97
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|98
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|-heal|p2a: Bellossom|100/100
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|93/100
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|99
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|-heal|p2a: Bellossom|100/100
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|94/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|100
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|-heal|p2a: Bellossom|100/100
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|93/100
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|101
+|
+|move|p2a: Bellossom|Strength Sap|p1a: Pecharunt
+|-unboost|p1a: Pecharunt|atk|1
+|-heal|p2a: Bellossom|100/100
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|93/100
+|
+|-heal|p2a: Bellossom|99/100|[from] item: Leftovers
+|upkeep
+|turn|102
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|91/100
+|
+|-heal|p2a: Bellossom|97/100|[from] item: Leftovers
+|upkeep
+|turn|103
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|89/100
+|
+|-heal|p2a: Bellossom|95/100|[from] item: Leftovers
+|upkeep
+|turn|104
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|86/100
+|
+|-heal|p2a: Bellossom|93/100|[from] item: Leftovers
+|upkeep
+|turn|105
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|85/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|91/100|[from] item: Leftovers
+|upkeep
+|turn|106
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|81/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|87/100|[from] item: Leftovers
+|upkeep
+|turn|107
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|76/100
+|
+|-heal|p2a: Bellossom|82/100|[from] item: Leftovers
+|upkeep
+|turn|108
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|70/100
+|
+|-heal|p2a: Bellossom|76/100|[from] item: Leftovers
+|upkeep
+|turn|109
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-damage|p2a: Bellossom|65/100
+|
+|-heal|p2a: Bellossom|71/100|[from] item: Leftovers
+|upkeep
+|turn|110
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Shadow Ball|p2a: Bellossom
+|-crit|p2a: Bellossom
+|-damage|p2a: Bellossom|37/100
+|-unboost|p2a: Bellossom|spd|1
+|
+|-heal|p2a: Bellossom|43/100|[from] item: Leftovers
+|upkeep
+|turn|111
+|
+|move|p2a: Bellossom|Strength Sap||[still]
+|-fail|p2a: Bellossom
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|-heal|p2a: Bellossom|49/100|[from] item: Leftovers
+|upkeep
+|turn|112
+|
+|-activate|p2a: Bellossom|move: Struggle
+|move|p2a: Bellossom|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|257/262
+|-damage|p2a: Bellossom|24/100|[from] recoil
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|-heal|p2a: Bellossom|30/100|[from] item: Leftovers
+|upkeep
+|turn|113
+|
+|-activate|p2a: Bellossom|move: Struggle
+|move|p2a: Bellossom|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|257/262
+|-damage|p2a: Bellossom|5/100|[from] recoil
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|-heal|p2a: Bellossom|11/100|[from] item: Leftovers
+|upkeep
+|turn|114
+|
+|-activate|p2a: Bellossom|move: Struggle
+|move|p2a: Bellossom|Struggle|p1a: Pecharunt
+|-damage|p1a: Pecharunt|256/262
+|-damage|p2a: Bellossom|0 fnt|[from] recoil
+|faint|p2a: Bellossom
+|move|p1a: Pecharunt|Recover|p1a: Pecharunt
+|-heal|p1a: Pecharunt|262/262
+|
+|upkeep
+|
+|switch|p2a: Annihilape|Annihilape, L76, F|100/100
+|turn|115
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|116
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|117
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Recover||[still]
+|-fail|p1a: Pecharunt|heal
+|
+|upkeep
+|turn|118
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|85/100
+|
+|upkeep
+|turn|119
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|69/100
+|
+|upkeep
+|turn|120
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|55/100
+|
+|upkeep
+|turn|121
+|
+|move|p2a: Annihilape|Drain Punch|p1a: Pecharunt
+|-immune|p1a: Pecharunt
+|move|p1a: Pecharunt|Malignant Chain|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|39/100
+|-status|p2a: Annihilape|tox
+|-start|p2a: Annihilape|confusion|[from] ability: Poison Puppeteer|[of] p1a: Pecharunt
+|
+|-damage|p2a: Annihilape|32/100 tox|[from] psn
+|upkeep
+|turn|122
+|
+|-activate|p2a: Annihilape|confusion
+|-damage|p2a: Annihilape|21/100 tox|[from] confusion
+|move|p1a: Pecharunt|Malignant Chain|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|5/100 tox
+|
+|-damage|p2a: Annihilape|0 fnt|[from] psn
+|faint|p2a: Annihilape
+|upkeep
+|
+|switch|p2a: Moltres|Moltres-Galar, L79|100/100
+|turn|123
+|
+|move|p2a: Moltres|Hurricane|p1a: Pecharunt
+|-damage|p1a: Pecharunt|148/262
+|-start|p1a: Pecharunt|confusion
+|-activate|p1a: Pecharunt|confusion
+|-damage|p1a: Pecharunt|144/262|[from] confusion
+|
+|-heal|p1a: Pecharunt|160/262|[from] item: Leftovers
+|upkeep
+|turn|124
+|
+|move|p2a: Moltres|Hurricane|p1a: Pecharunt
+|-damage|p1a: Pecharunt|54/262
+|-activate|p1a: Pecharunt|confusion
+|move|p1a: Pecharunt|Malignant Chain|p2a: Moltres
+|-damage|p2a: Moltres|78/100
+|
+|-heal|p1a: Pecharunt|70/262|[from] item: Leftovers
+|upkeep
+|turn|125
+|
+|move|p2a: Moltres|Hurricane|p1a: Pecharunt
+|-damage|p1a: Pecharunt|0 fnt
+|faint|p1a: Pecharunt
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

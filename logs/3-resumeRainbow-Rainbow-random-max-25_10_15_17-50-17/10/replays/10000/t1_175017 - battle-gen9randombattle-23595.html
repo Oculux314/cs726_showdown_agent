@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23595</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23595<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23595|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Furret|Furret, L94, M|312/312
+|switch|p2a: Froslass|Froslass, L87, F|100/100
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|turn|1
+|
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|move|p1a: Furret|U-turn|p2a: Froslass
+|-resisted|p2a: Froslass
+|-damage|p2a: Froslass|83/100
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263|[from] U-turn
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Furret|Furret, L94, M|312/312
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|move|p1a: Furret|U-turn|p2a: Froslass
+|-resisted|p2a: Froslass
+|-damage|p2a: Froslass|68/100
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263|[from] U-turn
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Furret|Furret, L94, M|312/312
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|move|p1a: Furret|U-turn|p2a: Froslass
+|-resisted|p2a: Froslass
+|-damage|p2a: Froslass|51/100
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263|[from] U-turn
+|
+|upkeep
+|turn|6
+|
+|switch|p1a: Furret|Furret, L94, M|312/312
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|move|p1a: Furret|U-turn|p2a: Froslass
+|-resisted|p2a: Froslass
+|-damage|p2a: Froslass|34/100
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263|[from] U-turn
+|
+|upkeep
+|turn|8
+|
+|switch|p1a: Furret|Furret, L94, M|312/312
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Froslass|Poltergeist|p1a: Furret
+|-immune|p1a: Furret
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Froslass|Triple Axel|p1a: Furret
+|-damage|p1a: Furret|290/312
+|-damage|p1a: Furret|241/312
+|-damage|p1a: Furret|177/312
+|-hitcount|p1a: Furret|3
+|move|p1a: Furret|U-turn|p2a: Froslass
+|-resisted|p2a: Froslass
+|-damage|p2a: Froslass|17/100
+|-start|p1a: Furret|Disable|U-turn|[from] ability: Cursed Body|[of] p2a: Froslass
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263|[from] U-turn
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Volbeat|Roost||[still]
+|-fail|p1a: Volbeat|heal
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|241/263
+|-damage|p1a: Volbeat|202/263
+|-hitcount|p1a: Volbeat|2
+|
+|upkeep
+|turn|11
+|
+|switch|p1a: Furret|Furret, L94, M|177/312
+|-item|p2a: Froslass|Wide Lens|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Froslass|Triple Axel|p1a: Furret
+|-crit|p1a: Furret
+|-damage|p1a: Furret|144/312
+|-damage|p1a: Furret|98/312
+|-crit|p1a: Furret
+|-damage|p1a: Furret|0 fnt
+|faint|p1a: Furret
+|-hitcount|p1: Furret|3
+|
+|upkeep
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|202/263
+|turn|12
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|244/263
+|-damage|p1a: Volbeat|199/263
+|-damage|p1a: Volbeat|141/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|242/263
+|-damage|p1a: Volbeat|197/263
+|-damage|p1a: Volbeat|130/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|262/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|241/263
+|-damage|p1a: Volbeat|198/263
+|-damage|p1a: Volbeat|135/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|241/263
+|-damage|p1a: Volbeat|199/263
+|-damage|p1a: Volbeat|142/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|244/263
+|-damage|p1a: Volbeat|202/263
+|-damage|p1a: Volbeat|135/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|239/263
+|-damage|p1a: Volbeat|196/263
+|-damage|p1a: Volbeat|139/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|242/263
+|-damage|p1a: Volbeat|203/263
+|-crit|p1a: Volbeat
+|-damage|p1a: Volbeat|104/263
+|-hitcount|p1a: Volbeat|3
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Froslass|Triple Axel|p1a: Volbeat
+|-damage|p1a: Volbeat|82/263
+|-damage|p1a: Volbeat|39/263
+|-damage|p1a: Volbeat|0 fnt
+|faint|p1a: Volbeat
+|-hitcount|p1: Volbeat|3
+|
+|upkeep
+|
+|switch|p1a: Falinks|Falinks, L84|246/246
+|turn|20
+|
+|move|p2a: Froslass|Triple Axel|p1a: Falinks
+|-damage|p1a: Falinks|227/246
+|-damage|p1a: Falinks|190/246
+|-damage|p1a: Falinks|138/246
+|-hitcount|p1a: Falinks|3
+|move|p1a: Falinks|Knock Off|p2a: Froslass
+|-supereffective|p2a: Froslass
+|-damage|p2a: Froslass|0 fnt
+|-enditem|p2a: Froslass|Wide Lens|[from] move: Knock Off|[of] p1a: Falinks
+|faint|p2a: Froslass
+|-damage|p1a: Falinks|114/246|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Tentacruel|Tentacruel, L84, M|100/100
+|turn|21
+|
+|move|p2a: Tentacruel|Surf|p1a: Falinks
+|-damage|p1a: Falinks|0 fnt
+|faint|p1a: Falinks
+|
+|upkeep
+|
+|switch|p1a: Toxicroak|Toxicroak, L84, F|277/277
+|turn|22
+|
+|move|p2a: Tentacruel|Surf|p1a: Toxicroak
+|-immune|p1a: Toxicroak|[from] ability: Dry Skin
+|move|p1a: Toxicroak|Close Combat|p2a: Tentacruel
+|-resisted|p2a: Tentacruel
+|-damage|p2a: Tentacruel|62/100
+|-unboost|p1a: Toxicroak|def|1
+|-unboost|p1a: Toxicroak|spd|1
+|-damage|p1a: Toxicroak|250/277|[from] item: Life Orb
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Tentacruel|Surf|p1a: Toxicroak
+|-heal|p1a: Toxicroak|277/277|[from] ability: Dry Skin|[of] p2a: Tentacruel
+|move|p1a: Toxicroak|Close Combat|p2a: Tentacruel
+|-resisted|p2a: Tentacruel
+|-damage|p2a: Tentacruel|24/100
+|-unboost|p1a: Toxicroak|def|1
+|-unboost|p1a: Toxicroak|spd|1
+|-damage|p1a: Toxicroak|250/277|[from] item: Life Orb
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Tentacruel|Surf|p1a: Toxicroak
+|-heal|p1a: Toxicroak|277/277|[from] ability: Dry Skin|[of] p2a: Tentacruel
+|move|p1a: Toxicroak|Close Combat|p2a: Tentacruel
+|-resisted|p2a: Tentacruel
+|-damage|p2a: Tentacruel|0 fnt
+|-unboost|p1a: Toxicroak|def|1
+|-unboost|p1a: Toxicroak|spd|1
+|faint|p2a: Tentacruel
+|-damage|p1a: Toxicroak|250/277|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Magearna|Magearna-Original, L77|100/100
+|turn|25
+|
+|move|p1a: Toxicroak|Close Combat|p2a: Magearna
+|-damage|p2a: Magearna|42/100
+|-unboost|p1a: Toxicroak|def|1
+|-unboost|p1a: Toxicroak|spd|1
+|-damage|p1a: Toxicroak|223/277|[from] item: Life Orb
+|move|p2a: Magearna|Fleur Cannon|p1a: Toxicroak
+|-damage|p1a: Toxicroak|0 fnt
+|-unboost|p2a: Magearna|spa|2
+|faint|p1a: Toxicroak
+|-ability|p2a: Magearna|Soul-Heart|boost
+|-boost|p2a: Magearna|spa|1
+|
+|upkeep
+|
+|switch|p1a: Weavile|Weavile, L79, M|239/239
+|turn|26
+|
+|move|p1a: Weavile|Low Kick|p2a: Magearna
+|-damage|p2a: Magearna|9/100
+|move|p2a: Magearna|Fleur Cannon|p1a: Weavile
+|-supereffective|p1a: Weavile
+|-damage|p1a: Weavile|27/239
+|-unboost|p2a: Magearna|spa|2
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Weavile|Low Kick|p2a: Magearna
+|-damage|p2a: Magearna|0 fnt
+|faint|p2a: Magearna
+|
+|upkeep
+|
+|switch|p2a: Giratina|Giratina, L75|100/100
+|-ability|p2a: Giratina|Pressure
+|turn|28
+|
+|move|p1a: Weavile|Low Kick|p2a: Giratina
+|-immune|p2a: Giratina
+|move|p2a: Giratina|Shadow Ball|p1a: Weavile
+|-resisted|p1a: Weavile
+|-damage|p1a: Weavile|0 fnt
+|faint|p1a: Weavile
+|
+|upkeep
+|
+|switch|p1a: Mightyena|Mightyena, L96, M|290/290
+|-ability|p1a: Mightyena|Intimidate|boost
+|-unboost|p2a: Giratina|atk|1
+|turn|29
+|
+|move|p1a: Mightyena|Play Rough|p2a: Giratina|[miss]
+|-miss|p1a: Mightyena|p2a: Giratina
+|move|p2a: Giratina|Shadow Ball|p1a: Mightyena
+|-resisted|p1a: Mightyena
+|-damage|p1a: Mightyena|252/290
+|-unboost|p1a: Mightyena|spd|1
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Mightyena|Play Rough|p2a: Giratina
+|-supereffective|p2a: Giratina
+|-damage|p2a: Giratina|37/100
+|move|p2a: Giratina|Shadow Ball|p1a: Mightyena
+|-resisted|p1a: Mightyena
+|-damage|p1a: Mightyena|192/290
+|
+|-heal|p2a: Giratina|43/100|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Mightyena|Play Rough|p2a: Giratina|[miss]
+|-miss|p1a: Mightyena|p2a: Giratina
+|move|p2a: Giratina|Shadow Ball|p1a: Mightyena
+|-resisted|p1a: Mightyena
+|-damage|p1a: Mightyena|127/290
+|
+|-heal|p2a: Giratina|49/100|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Mightyena|Play Rough|p2a: Giratina
+|-supereffective|p2a: Giratina
+|-damage|p2a: Giratina|0 fnt
+|faint|p2a: Giratina
+|
+|upkeep
+|
+|switch|p2a: Terrakion|Terrakion, L79|100/100
+|turn|33
+|
+|move|p2a: Terrakion|Close Combat|p1a: Mightyena
+|-supereffective|p1a: Mightyena
+|-damage|p1a: Mightyena|0 fnt
+|-unboost|p2a: Terrakion|def|1
+|-unboost|p2a: Terrakion|spd|1
+|faint|p1a: Mightyena
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

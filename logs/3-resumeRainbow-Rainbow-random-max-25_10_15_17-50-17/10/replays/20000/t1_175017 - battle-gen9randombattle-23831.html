@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23831</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23831<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23831|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Abomasnow|Abomasnow, L84, M|287/287
+|switch|p2a: Kricketune|Kricketune, L99, M|100/100
+|-weather|Snowscape|[from] ability: Snow Warning|[of] p1a: Abomasnow
+|turn|1
+|
+|switch|p1a: Basculegion|Basculegion, L80, M|323/323
+|move|p2a: Kricketune|Knock Off|p1a: Basculegion
+|-supereffective|p1a: Basculegion
+|-damage|p1a: Basculegion|105/323
+|-enditem|p1a: Basculegion|Assault Vest|[from] move: Knock Off|[of] p2a: Kricketune
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|2
+|
+|move|p2a: Kricketune|Knock Off|p1a: Basculegion
+|-supereffective|p1a: Basculegion
+|-damage|p1a: Basculegion|0 fnt
+|faint|p1a: Basculegion
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|
+|switch|p1a: Exeggutor|Exeggutor-Alola, L89, M|314/314
+|turn|3
+|
+|move|p2a: Kricketune|Knock Off|p1a: Exeggutor
+|-damage|p1a: Exeggutor|225/314
+|-enditem|p1a: Exeggutor|Sitrus Berry|[from] move: Knock Off|[of] p2a: Kricketune
+|move|p1a: Exeggutor|Wood Hammer|p2a: Kricketune
+|-resisted|p2a: Kricketune
+|-damage|p2a: Kricketune|72/100
+|-damage|p1a: Exeggutor|195/314|[from] Recoil
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|4
+|
+|move|p2a: Kricketune|Knock Off|p1a: Exeggutor
+|-damage|p1a: Exeggutor|136/314
+|move|p1a: Exeggutor|Flamethrower|p2a: Kricketune
+|-supereffective|p2a: Kricketune
+|-damage|p2a: Kricketune|3/100
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p2a: Kricketune|Knock Off|p1a: Exeggutor
+|-damage|p1a: Exeggutor|80/314
+|move|p1a: Exeggutor|Wood Hammer|p2a: Kricketune
+|-resisted|p2a: Kricketune
+|-damage|p2a: Kricketune|0 fnt
+|faint|p2a: Kricketune
+|-damage|p1a: Exeggutor|78/314|[from] Recoil
+|
+|-weather|none
+|upkeep
+|
+|switch|p2a: Florges|Florges-Blue, L85, F|100/100
+|turn|6
+|
+|move|p2a: Florges|Moonblast|p1a: Exeggutor
+|-supereffective|p1a: Exeggutor
+|-damage|p1a: Exeggutor|0 fnt
+|faint|p1a: Exeggutor
+|
+|upkeep
+|
+|switch|p1a: Orthworm|Orthworm, L88, F|266/266
+|turn|7
+|
+|move|p2a: Florges|Moonblast|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|190/266
+|move|p1a: Orthworm|Body Press|p2a: Florges
+|-resisted|p2a: Florges
+|-damage|p2a: Florges|81/100
+|
+|-heal|p2a: Florges|87/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|206/266|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Florges|Moonblast|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|131/266
+|-unboost|p1a: Orthworm|spa|1
+|move|p1a: Orthworm|Body Press|p2a: Florges
+|-resisted|p2a: Florges
+|-damage|p2a: Florges|66/100
+|
+|-heal|p2a: Florges|72/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|147/266|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Florges|Moonblast|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|70/266
+|move|p1a: Orthworm|Body Press|p2a: Florges
+|-resisted|p2a: Florges
+|-damage|p2a: Florges|51/100
+|
+|-heal|p2a: Florges|57/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|86/266|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Florges|Moonblast|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|10/266
+|move|p1a: Orthworm|Body Press|p2a: Florges
+|-resisted|p2a: Florges
+|-damage|p2a: Florges|37/100
+|
+|-heal|p2a: Florges|43/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|26/266|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Florges|Moonblast|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|0 fnt
+|faint|p1a: Orthworm
+|
+|-heal|p2a: Florges|49/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Arcanine|Arcanine-Hisui, L79, M|279/279
+|turn|12
+|
+|move|p1a: Arcanine|Flare Blitz|p2a: Florges
+|-damage|p2a: Florges|0 fnt
+|faint|p2a: Florges
+|
+|upkeep
+|
+|switch|p2a: Spectrier|Spectrier, L75|100/100
+|turn|13
+|
+|move|p2a: Spectrier|Dark Pulse|p1a: Arcanine
+|-damage|p1a: Arcanine|203/279
+|move|p1a: Arcanine|Flare Blitz|p2a: Spectrier
+|-damage|p2a: Spectrier|6/100
+|
+|-heal|p2a: Spectrier|12/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Spectrier|Dark Pulse|p1a: Arcanine
+|-damage|p1a: Arcanine|124/279
+|move|p1a: Arcanine|Flare Blitz|p2a: Spectrier
+|-damage|p2a: Spectrier|0 fnt
+|faint|p2a: Spectrier
+|
+|upkeep
+|
+|switch|p2a: Arceus|Arceus-Fire, L72|100/100
+|turn|15
+|
+|move|p2a: Arceus|Flare Blitz|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|90/279
+|-damage|p2a: Arceus|97/100|[from] Recoil
+|move|p1a: Arcanine|Flare Blitz|p2a: Arceus
+|-resisted|p2a: Arceus
+|-damage|p2a: Arceus|66/100
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Arceus|Flare Blitz|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|52/279
+|-damage|p2a: Arceus|61/100|[from] Recoil
+|move|p1a: Arcanine|Flare Blitz|p2a: Arceus
+|-resisted|p2a: Arceus
+|-damage|p2a: Arceus|33/100
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Arceus|Flare Blitz|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|17/279
+|-damage|p2a: Arceus|29/100|[from] Recoil
+|move|p1a: Arcanine|Flare Blitz|p2a: Arceus
+|-resisted|p2a: Arceus
+|-damage|p2a: Arceus|0 fnt
+|faint|p2a: Arceus
+|
+|upkeep
+|
+|switch|p2a: Vespiquen|Vespiquen, L99, F|100/100
+|-ability|p2a: Vespiquen|Pressure
+|turn|18
+|
+|move|p1a: Arcanine|Flare Blitz|p2a: Vespiquen
+|-supereffective|p2a: Vespiquen
+|-crit|p2a: Vespiquen
+|-damage|p2a: Vespiquen|0 fnt
+|faint|p2a: Vespiquen
+|
+|upkeep
+|
+|switch|p2a: Brambleghast|Brambleghast, L88, F|100/100
+|turn|19
+|
+|move|p2a: Brambleghast|Power Whip|p1a: Arcanine|[miss]
+|-miss|p2a: Brambleghast|p1a: Arcanine
+|move|p1a: Arcanine|Flare Blitz|p2a: Brambleghast
+|-supereffective|p2a: Brambleghast
+|-damage|p2a: Brambleghast|0 fnt
+|faint|p2a: Brambleghast
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

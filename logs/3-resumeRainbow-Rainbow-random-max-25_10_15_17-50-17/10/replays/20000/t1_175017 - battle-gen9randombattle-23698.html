@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23698</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23698<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23698|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Hariyama|Hariyama, L87, F|392/392
+|switch|p2a: Deoxys|Deoxys-Defense, L84|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|1
+|
+|switch|p1a: Krookodile|Krookodile, L80, F|283/283
+|-ability|p1a: Krookodile|Intimidate|boost
+|-unboost|p2a: Deoxys|atk|1
+|move|p2a: Deoxys|Stored Power|p1a: Krookodile
+|-immune|p1a: Krookodile
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Deoxys|Stored Power|p1a: Krookodile
+|-immune|p1a: Krookodile
+|move|p1a: Krookodile|Earthquake|p2a: Deoxys
+|-damage|p2a: Deoxys|59/100
+|-damage|p1a: Krookodile|255/283|[from] item: Life Orb
+|
+|-heal|p2a: Deoxys|65/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Deoxys|Stored Power|p1a: Krookodile
+|-immune|p1a: Krookodile
+|move|p1a: Krookodile|Earthquake|p2a: Deoxys
+|-damage|p2a: Deoxys|26/100
+|-damage|p1a: Krookodile|227/283|[from] item: Life Orb
+|
+|-heal|p2a: Deoxys|32/100|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Deoxys|Stored Power|p1a: Krookodile
+|-immune|p1a: Krookodile
+|move|p1a: Krookodile|Earthquake|p2a: Deoxys
+|-damage|p2a: Deoxys|0 fnt
+|faint|p2a: Deoxys
+|-damage|p1a: Krookodile|199/283|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Zamazenta|Zamazenta, L71|100/100
+|-ability|p2a: Zamazenta|Dauntless Shield|boost
+|-boost|p2a: Zamazenta|def|1
+|turn|5
+|
+|move|p2a: Zamazenta|Close Combat|p1a: Krookodile
+|-supereffective|p1a: Krookodile
+|-damage|p1a: Krookodile|0 fnt
+|-unboost|p2a: Zamazenta|def|1
+|-unboost|p2a: Zamazenta|spd|1
+|faint|p1a: Krookodile
+|
+|upkeep
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263
+|turn|6
+|
+|move|p1a: Froslass|Triple Axel|p2a: Zamazenta
+|-damage|p2a: Zamazenta|93/100
+|-damage|p2a: Zamazenta|78/100
+|-damage|p2a: Zamazenta|55/100
+|-hitcount|p2a: Zamazenta|3
+|move|p2a: Zamazenta|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Froslass|Triple Axel|p2a: Zamazenta
+|-damage|p2a: Zamazenta|46/100
+|-damage|p2a: Zamazenta|32/100
+|-damage|p2a: Zamazenta|8/100
+|-hitcount|p2a: Zamazenta|3
+|move|p2a: Zamazenta|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Froslass|Triple Axel|p2a: Zamazenta
+|-damage|p2a: Zamazenta|0 fnt
+|faint|p2a: Zamazenta
+|-hitcount|p2: Zamazenta|1
+|
+|upkeep
+|
+|switch|p2a: Ho-Oh|Ho-Oh, L71|100/100
+|turn|9
+|
+|move|p1a: Froslass|Triple Axel|p2a: Ho-Oh
+|-damage|p2a: Ho-Oh|90/100
+|-damage|p2a: Ho-Oh|74/100
+|-damage|p2a: Ho-Oh|49/100
+|-hitcount|p2a: Ho-Oh|3
+|move|p2a: Ho-Oh|Brave Bird|p1a: Froslass
+|-damage|p1a: Froslass|131/263
+|-start|p2a: Ho-Oh|Disable|Brave Bird|[from] ability: Cursed Body|[of] p1a: Froslass
+|-damage|p2a: Ho-Oh|32/100|[from] Recoil
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Froslass|Triple Axel|p2a: Ho-Oh
+|-damage|p2a: Ho-Oh|22/100
+|-damage|p2a: Ho-Oh|4/100
+|-damage|p2a: Ho-Oh|0 fnt
+|faint|p2a: Ho-Oh
+|-hitcount|p2: Ho-Oh|3
+|
+|upkeep
+|
+|switch|p2a: Scrafty|Scrafty, L84, M|100/100
+|-ability|p2a: Scrafty|Intimidate|boost
+|-unboost|p1a: Froslass|atk|1
+|turn|11
+|
+|move|p1a: Froslass|Poltergeist|p2a: Scrafty
+|-activate|p2a: Scrafty|move: Poltergeist|Life Orb
+|-resisted|p2a: Scrafty
+|-damage|p2a: Scrafty|89/100
+|move|p2a: Scrafty|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|upkeep
+|turn|12
+|
+|-terastallize|p1a: Froslass|Ice
+|move|p1a: Froslass|Taunt|p2a: Scrafty
+|-start|p2a: Scrafty|move: Taunt
+|move|p2a: Scrafty|Close Combat|p1a: Froslass
+|-supereffective|p1a: Froslass
+|-damage|p1a: Froslass|0 fnt
+|-unboost|p2a: Scrafty|def|1
+|-unboost|p2a: Scrafty|spd|1
+|faint|p1a: Froslass
+|-damage|p2a: Scrafty|79/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Hariyama|Hariyama, L87, F|392/392
+|turn|13
+|
+|move|p2a: Scrafty|Close Combat|p1a: Hariyama
+|-damage|p1a: Hariyama|188/392
+|-unboost|p2a: Scrafty|def|1
+|-unboost|p2a: Scrafty|spd|1
+|-damage|p2a: Scrafty|70/100|[from] item: Life Orb
+|move|p1a: Hariyama|Close Combat|p2a: Scrafty
+|-supereffective|p2a: Scrafty
+|-damage|p2a: Scrafty|0 fnt
+|-unboost|p1a: Hariyama|def|1
+|-unboost|p1a: Hariyama|spd|1
+|faint|p2a: Scrafty
+|
+|upkeep
+|
+|switch|p2a: Slowbro|Slowbro-Galar, L87, M|100/100
+|turn|14
+|
+|move|p1a: Hariyama|Close Combat|p2a: Slowbro
+|-resisted|p2a: Slowbro
+|-damage|p2a: Slowbro|88/100
+|-unboost|p1a: Hariyama|def|1
+|-unboost|p1a: Hariyama|spd|1
+|-damage|p1a: Hariyama|123/392|[from] item: Rocky Helmet|[of] p2a: Slowbro
+|move|p2a: Slowbro|Earthquake|p1a: Hariyama
+|-damage|p1a: Hariyama|0 fnt
+|faint|p1a: Hariyama
+|
+|upkeep
+|
+|switch|p1a: Glalie|Glalie, L96, F|309/309
+|turn|15
+|
+|move|p1a: Glalie|Spikes|p2a: Slowbro
+|-sidestart|p2: t2_175017|Spikes
+|move|p2a: Slowbro|Earthquake|p1a: Glalie
+|-damage|p1a: Glalie|237/309
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Glalie|Spikes|p2a: Slowbro
+|-sidestart|p2: t2_175017|Spikes
+|move|p2a: Slowbro|Earthquake|p1a: Glalie
+|-damage|p1a: Glalie|162/309
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Glalie|Spikes|p2a: Slowbro
+|-sidestart|p2: t2_175017|Spikes
+|move|p2a: Slowbro|Earthquake|p1a: Glalie
+|-damage|p1a: Glalie|87/309
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Glalie|Spikes||[still]
+|-fail|p1a: Glalie
+|move|p2a: Slowbro|Earthquake|p1a: Glalie
+|-damage|p1a: Glalie|10/309
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Glalie|Spikes||[still]
+|-fail|p1a: Glalie
+|move|p2a: Slowbro|Earthquake|p1a: Glalie
+|-damage|p1a: Glalie|0 fnt
+|faint|p1a: Glalie
+|
+|upkeep
+|
+|switch|p1a: Gliscor|Gliscor, L76, M|239/239
+|turn|20
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Slowbro|Earthquake|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|-status|p1a: Gliscor|tox|[from] item: Toxic Orb
+|upkeep
+|turn|21
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Slowbro|Earthquake|p1a: Gliscor
+|-immune|p1a: Gliscor
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Gliscor|Earthquake|p2a: Slowbro
+|-supereffective|p2a: Slowbro
+|-damage|p2a: Slowbro|41/100
+|move|p2a: Slowbro|Earthquake|p1a: Gliscor
+|-immune|p1a: Gliscor
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Gliscor|Protect|p1a: Gliscor
+|-singleturn|p1a: Gliscor|Protect
+|move|p2a: Slowbro|Earthquake|p1a: Gliscor
+|-activate|p1a: Gliscor|move: Protect
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Gliscor|Protect||[still]
+|-fail|p1a: Gliscor
+|move|p2a: Slowbro|Earthquake|p1a: Gliscor
+|-immune|p1a: Gliscor
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Gliscor|Earthquake|p2a: Slowbro
+|-supereffective|p2a: Slowbro
+|-damage|p2a: Slowbro|0 fnt
+|faint|p2a: Slowbro
+|
+|upkeep
+|
+|switch|p2a: Flapple|Flapple, L88, M|100/100
+|-damage|p2a: Flapple|76/100|[from] Spikes
+|turn|26
+|
+|move|p1a: Gliscor|Earthquake|p2a: Flapple
+|-resisted|p2a: Flapple
+|-damage|p2a: Flapple|60/100
+|move|p2a: Flapple|Outrage|p1a: Gliscor
+|-damage|p1a: Gliscor|58/239 tox
+|
+|-heal|p1a: Gliscor|87/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|27
+|
+|move|p1a: Gliscor|Earthquake|p2a: Flapple
+|-resisted|p2a: Flapple
+|-damage|p2a: Flapple|42/100
+|move|p2a: Flapple|Outrage|p1a: Gliscor|[from] lockedmove|[miss]
+|-miss|p2a: Flapple|p1a: Gliscor
+|
+|-heal|p1a: Gliscor|116/239 tox|[from] ability: Poison Heal
+|upkeep
+|turn|28
+|
+|move|p1a: Gliscor|Toxic|p2a: Flapple
+|-status|p2a: Flapple|tox
+|move|p2a: Flapple|Outrage|p1a: Gliscor
+|-damage|p1a: Gliscor|0 fnt
+|faint|p1a: Gliscor
+|
+|-damage|p2a: Flapple|36/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Rillaboom|Rillaboom, L79, M|288/288
+|-fieldstart|move: Grassy Terrain|[from] ability: Grassy Surge|[of] p1a: Rillaboom
+|turn|29
+|
+|move|p1a: Rillaboom|High Horsepower|p2a: Flapple
+|-resisted|p2a: Flapple
+|-damage|p2a: Flapple|18/100 tox
+|-damage|p1a: Rillaboom|260/288|[from] item: Life Orb
+|move|p2a: Flapple|Outrage|p1a: Rillaboom|[from] lockedmove
+|-damage|p1a: Rillaboom|29/288
+|
+|-heal|p1a: Rillaboom|47/288|[from] Grassy Terrain
+|-heal|p2a: Flapple|24/100 tox|[from] Grassy Terrain
+|-damage|p2a: Flapple|12/100 tox|[from] psn
+|upkeep
+|turn|30
+|
+|move|p1a: Rillaboom|High Horsepower|p2a: Flapple
+|-resisted|p2a: Flapple
+|-damage|p2a: Flapple|0 fnt
+|faint|p2a: Flapple
+|-damage|p1a: Rillaboom|19/288|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

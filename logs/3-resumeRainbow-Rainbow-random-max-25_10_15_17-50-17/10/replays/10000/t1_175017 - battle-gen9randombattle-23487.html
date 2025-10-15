@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23487</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23487<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23487|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Dondozo|Dondozo, L78, F|362/362
+|switch|p2a: Chi-Yu|Chi-Yu, L77|100/100
+|-ability|p2a: Chi-Yu|Beads of Ruin
+|turn|1
+|
+|switch|p1a: Eelektross|Eelektross, L87, M|290/290
+|move|p2a: Chi-Yu|Fire Blast|p1a: Eelektross
+|-crit|p1a: Eelektross
+|-damage|p1a: Eelektross|110/290
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Chi-Yu|Fire Blast|p1a: Eelektross
+|-damage|p1a: Eelektross|0 fnt
+|faint|p1a: Eelektross
+|
+|upkeep
+|
+|switch|p1a: Jolteon|Jolteon, L84, F|246/246
+|turn|3
+|
+|move|p1a: Jolteon|Shadow Ball|p2a: Chi-Yu
+|-resisted|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|84/100
+|-damage|p1a: Jolteon|222/246|[from] item: Life Orb
+|move|p2a: Chi-Yu|Fire Blast|p1a: Jolteon
+|-damage|p1a: Jolteon|59/246
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Jolteon|Shadow Ball|p2a: Chi-Yu
+|-resisted|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|67/100
+|-damage|p1a: Jolteon|35/246|[from] item: Life Orb
+|move|p2a: Chi-Yu|Fire Blast|p1a: Jolteon
+|-damage|p1a: Jolteon|0 fnt
+|faint|p1a: Jolteon
+|
+|upkeep
+|
+|switch|p1a: Dondozo|Dondozo, L78, F|362/362
+|turn|5
+|
+|switch|p1a: Metagross|Metagross, L79|256/256
+|move|p2a: Chi-Yu|Fire Blast|p1a: Metagross
+|-supereffective|p1a: Metagross
+|-damage|p1a: Metagross|0 fnt
+|faint|p1a: Metagross
+|
+|upkeep
+|
+|switch|p1a: Dondozo|Dondozo, L78, F|362/362
+|turn|6
+|
+|move|p2a: Chi-Yu|Fire Blast|p1a: Dondozo|[miss]
+|-miss|p2a: Chi-Yu|p1a: Dondozo
+|move|p1a: Dondozo|Wave Crash|p2a: Chi-Yu
+|-supereffective|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|0 fnt
+|faint|p2a: Chi-Yu
+|-damage|p1a: Dondozo|315/362|[from] Recoil
+|
+|-heal|p1a: Dondozo|337/362|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Meowstic|Meowstic, L89, M|100/100
+|turn|7
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|260/362
+|move|p1a: Dondozo|Wave Crash|p2a: Meowstic
+|-damage|p2a: Meowstic|56/100
+|-damage|p1a: Dondozo|219/362|[from] Recoil
+|
+|-heal|p1a: Dondozo|241/362|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|163/362
+|move|p1a: Dondozo|Wave Crash|p2a: Meowstic
+|-damage|p2a: Meowstic|10/100
+|-damage|p1a: Dondozo|121/362|[from] Recoil
+|
+|-heal|p1a: Dondozo|143/362|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|69/362
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|289/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|311/362 slp|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|239/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|261/362 slp|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|180/362 slp
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|282/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|304/362 slp|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|231/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|253/362 slp|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|174/362 slp
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|291/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|313/362 slp|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|232/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|254/362 slp|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|176/362 slp
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|290/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|312/362 slp|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|236/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|258/362 slp|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|178/362 slp
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Meowstic|Alluring Voice|p1a: Dondozo
+|-damage|p1a: Dondozo|288/362 slp
+|cant|p1a: Dondozo|slp
+|
+|-heal|p1a: Dondozo|310/362 slp|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Meowstic|Psychic Noise|p1a: Dondozo
+|-damage|p1a: Dondozo|201/362 slp
+|-start|p1a: Dondozo|move: Heal Block
+|cant|p1a: Dondozo|slp
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Meowstic|Psychic Noise|p1a: Dondozo
+|-damage|p1a: Dondozo|96/362 slp
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Wave Crash|p2a: Meowstic
+|-damage|p2a: Meowstic|0 fnt
+|faint|p2a: Meowstic
+|-damage|p1a: Dondozo|87/362|[from] Recoil
+|
+|-end|p1a: Dondozo|move: Heal Block
+|upkeep
+|
+|switch|p2a: Trevenant|Trevenant, L89, F|100/100
+|turn|25
+|
+|move|p2a: Trevenant|Wood Hammer|p1a: Dondozo
+|-supereffective|p1a: Dondozo
+|-damage|p1a: Dondozo|0 fnt
+|faint|p1a: Dondozo
+|-damage|p2a: Trevenant|91/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Regigigas|Regigigas, L84|322/322
+|-start|p1a: Regigigas|ability: Slow Start
+|turn|26
+|
+|move|p2a: Trevenant|Wood Hammer|p1a: Regigigas
+|-damage|p1a: Regigigas|136/322
+|-damage|p2a: Trevenant|70/100|[from] Recoil
+|move|p1a: Regigigas|Sleep Talk||[still]
+|-fail|p1a: Regigigas
+|
+|-heal|p1a: Regigigas|156/322|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Trevenant|Wood Hammer|p1a: Regigigas
+|-damage|p1a: Regigigas|0 fnt
+|faint|p1a: Regigigas
+|-end|p1a: Regigigas|Slow Start|[silent]
+|-damage|p2a: Trevenant|53/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Mightyena|Mightyena, L96, M|290/290
+|-ability|p1a: Mightyena|Intimidate|boost
+|-unboost|p2a: Trevenant|atk|1
+|turn|28
+|
+|move|p1a: Mightyena|Crunch|p2a: Trevenant
+|-supereffective|p2a: Trevenant
+|-damage|p2a: Trevenant|0 fnt
+|faint|p2a: Trevenant
+|
+|upkeep
+|
+|switch|p2a: Bisharp|Bisharp, L79, F|100/100
+|turn|29
+|
+|move|p1a: Mightyena|Crunch|p2a: Bisharp
+|-resisted|p2a: Bisharp
+|-damage|p2a: Bisharp|85/100
+|move|p2a: Bisharp|Iron Head|p1a: Mightyena
+|-damage|p1a: Mightyena|187/290
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Mightyena|Crunch|p2a: Bisharp
+|-resisted|p2a: Bisharp
+|-damage|p2a: Bisharp|69/100
+|move|p2a: Bisharp|Iron Head|p1a: Mightyena
+|-damage|p1a: Mightyena|100/290
+|
+|upkeep
+|turn|31
+|
+|-terastallize|p1a: Mightyena|Poison
+|move|p1a: Mightyena|Sucker Punch|p2a: Bisharp
+|-resisted|p2a: Bisharp
+|-damage|p2a: Bisharp|58/100
+|move|p2a: Bisharp|Iron Head|p1a: Mightyena
+|-damage|p1a: Mightyena|13/290
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Mightyena|Crunch|p2a: Bisharp
+|-resisted|p2a: Bisharp
+|-damage|p2a: Bisharp|44/100
+|move|p2a: Bisharp|Iron Head|p1a: Mightyena
+|-damage|p1a: Mightyena|0 fnt
+|faint|p1a: Mightyena
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23584</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23584<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23584|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Hitmontop|Hitmontop, L88, M|231/231
+|switch|p2a: Hawlucha|Hawlucha, L80, F|100/100
+|-ability|p1a: Hitmontop|Intimidate|boost
+|-unboost|p2a: Hawlucha|atk|1
+|-enditem|p2a: Hawlucha|White Herb
+|-clearnegativeboost|p2a: Hawlucha|[silent]
+|turn|1
+|
+|move|p2a: Hawlucha|Brave Bird|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|39/231
+|-damage|p2a: Hawlucha|76/100|[from] Recoil
+|move|p1a: Hitmontop|Stone Edge|p2a: Hawlucha|[miss]
+|-miss|p1a: Hitmontop|p2a: Hawlucha
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Hawlucha|Brave Bird|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|0 fnt
+|faint|p1a: Hitmontop
+|-damage|p2a: Hawlucha|71/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Bombirdier|Bombirdier, L85, F|258/258
+|turn|3
+|
+|move|p2a: Hawlucha|Brave Bird|p1a: Bombirdier
+|-crit|p1a: Bombirdier
+|-damage|p1a: Bombirdier|72/258
+|-damage|p2a: Hawlucha|47/100|[from] Recoil
+|move|p1a: Bombirdier|Stone Edge|p2a: Hawlucha
+|-damage|p2a: Hawlucha|0 fnt
+|faint|p2a: Hawlucha
+|
+|upkeep
+|
+|switch|p2a: Politoed|Politoed, L88, M|100/100
+|-weather|RainDance|[from] ability: Drizzle|[of] p2a: Politoed
+|turn|4
+|
+|move|p1a: Bombirdier|Stone Edge|p2a: Politoed
+|-damage|p2a: Politoed|40/100
+|move|p2a: Politoed|Focus Blast|p1a: Bombirdier|[miss]
+|-miss|p2a: Politoed|p1a: Bombirdier
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p1a: Bombirdier|Stone Edge|p2a: Politoed
+|-damage|p2a: Politoed|0 fnt
+|faint|p2a: Politoed
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p2a: Okidogi|Okidogi, L77, M|100/100
+|turn|6
+|
+|move|p1a: Bombirdier|Stone Edge|p2a: Okidogi
+|-resisted|p2a: Okidogi
+|-damage|p2a: Okidogi|73/100
+|move|p2a: Okidogi|Gunk Shot|p1a: Bombirdier
+|-damage|p1a: Bombirdier|0 fnt
+|faint|p1a: Bombirdier
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, M|225/225
+|-item|p2a: Okidogi|Assault Vest|[from] ability: Frisk|[of] p1a: Dusknoir
+|turn|7
+|
+|-terastallize|p1a: Dusknoir|Fighting
+|move|p2a: Okidogi|Gunk Shot|p1a: Dusknoir
+|-damage|p1a: Dusknoir|140/225
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-start|p1a: Dusknoir|Substitute
+|-damage|p1a: Dusknoir|84/225
+|
+|-weather|RainDance|[upkeep]
+|-heal|p1a: Dusknoir|98/225|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Okidogi|Gunk Shot|p1a: Dusknoir|[miss]
+|-miss|p2a: Okidogi|p1a: Dusknoir
+|move|p1a: Dusknoir|Poltergeist|p2a: Okidogi
+|-activate|p2a: Okidogi|move: Poltergeist|Assault Vest
+|-damage|p2a: Okidogi|31/100
+|
+|-weather|none
+|-heal|p1a: Dusknoir|112/225|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Okidogi|Gunk Shot|p1a: Dusknoir
+|-end|p1a: Dusknoir|Substitute
+|move|p1a: Dusknoir|Poltergeist|p2a: Okidogi
+|-activate|p2a: Okidogi|move: Poltergeist|Assault Vest
+|-damage|p2a: Okidogi|0 fnt
+|faint|p2a: Okidogi
+|
+|-heal|p1a: Dusknoir|126/225|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Munkidori|Munkidori, L79, M|100/100
+|turn|10
+|
+|move|p2a: Munkidori|Sludge Wave|p1a: Dusknoir
+|-damage|p1a: Dusknoir|47/225
+|move|p1a: Dusknoir|Poltergeist|p2a: Munkidori
+|-activate|p2a: Munkidori|move: Poltergeist|Assault Vest
+|-supereffective|p2a: Munkidori
+|-damage|p2a: Munkidori|0 fnt
+|faint|p2a: Munkidori
+|
+|-heal|p1a: Dusknoir|61/225|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Illumise|Illumise, L91, F|100/100
+|turn|11
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Dusknoir
+|-resisted|p1a: Dusknoir
+|-damage|p1a: Dusknoir|29/225
+|move|p1a: Dusknoir|Poltergeist|p2a: Illumise|[miss]
+|-miss|p1a: Dusknoir|p2a: Illumise
+|
+|-heal|p1a: Dusknoir|43/225|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Dusknoir
+|-resisted|p1a: Dusknoir
+|-damage|p1a: Dusknoir|13/225
+|move|p1a: Dusknoir|Poltergeist|p2a: Illumise
+|-activate|p2a: Illumise|move: Poltergeist|Heavy-Duty Boots
+|-damage|p2a: Illumise|48/100
+|
+|-heal|p1a: Dusknoir|27/225|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Dusknoir
+|-resisted|p1a: Dusknoir
+|-damage|p1a: Dusknoir|0 fnt
+|faint|p1a: Dusknoir
+|
+|upkeep
+|
+|switch|p1a: Latias|Latias, L79, F|256/256
+|turn|14
+|
+|move|p1a: Latias|Calm Mind|p1a: Latias
+|-boost|p1a: Latias|spa|1
+|-boost|p1a: Latias|spd|1
+|move|p2a: Illumise|Bug Buzz|p1a: Latias
+|-supereffective|p1a: Latias
+|-damage|p1a: Latias|158/256
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Latias|Calm Mind|p1a: Latias
+|-boost|p1a: Latias|spa|1
+|-boost|p1a: Latias|spd|1
+|move|p2a: Illumise|Bug Buzz|p1a: Latias
+|-supereffective|p1a: Latias
+|-damage|p1a: Latias|84/256
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Latias|Calm Mind|p1a: Latias
+|-boost|p1a: Latias|spa|1
+|-boost|p1a: Latias|spd|1
+|move|p2a: Illumise|Bug Buzz|p1a: Latias
+|-supereffective|p1a: Latias
+|-damage|p1a: Latias|22/256
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Latias|Calm Mind|p1a: Latias
+|-boost|p1a: Latias|spa|1
+|-boost|p1a: Latias|spd|1
+|move|p2a: Illumise|Bug Buzz|p1a: Latias
+|-supereffective|p1a: Latias
+|-crit|p1a: Latias
+|-damage|p1a: Latias|0 fnt
+|faint|p1a: Latias
+|
+|upkeep
+|
+|switch|p1a: Landorus|Landorus-Therian, L76, M|260/260
+|-ability|p1a: Landorus|Intimidate|boost
+|-unboost|p2a: Illumise|atk|1
+|turn|18
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Landorus
+|-resisted|p1a: Landorus
+|-damage|p1a: Landorus|203/260
+|move|p1a: Landorus|Earthquake|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|26/100
+|
+|-heal|p1a: Landorus|219/260|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Landorus
+|-resisted|p1a: Landorus
+|-damage|p1a: Landorus|163/260
+|move|p1a: Landorus|U-turn|p2a: Illumise
+|-damage|p2a: Illumise|6/100
+|
+|switch|p1a: Primarina|Primarina, L83, F|268/268|[from] U-turn
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|232/268
+|move|p1a: Primarina|Psychic Noise|p2a: Illumise
+|-damage|p2a: Illumise|0 fnt
+|faint|p2a: Illumise
+|
+|-heal|p1a: Primarina|248/268|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Bisharp|Bisharp, L79, F|100/100
+|turn|21
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|197/268
+|-start|p1a: Primarina|Throat Chop|[silent]
+|cant|p1a: Primarina|move: Throat Chop
+|
+|-heal|p1a: Primarina|213/268|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|162/268
+|move|p1a: Primarina|Calm Mind|p1a: Primarina
+|-boost|p1a: Primarina|spa|1
+|-boost|p1a: Primarina|spd|1
+|
+|-heal|p1a: Primarina|178/268|[from] item: Leftovers
+|-end|p1a: Primarina|Throat Chop|[silent]
+|upkeep
+|turn|23
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|124/268
+|-start|p1a: Primarina|Throat Chop|[silent]
+|cant|p1a: Primarina|move: Throat Chop
+|
+|-heal|p1a: Primarina|140/268|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|89/268
+|move|p1a: Primarina|Calm Mind|p1a: Primarina
+|-boost|p1a: Primarina|spa|1
+|-boost|p1a: Primarina|spd|1
+|
+|-heal|p1a: Primarina|105/268|[from] item: Leftovers
+|-end|p1a: Primarina|Throat Chop|[silent]
+|upkeep
+|turn|25
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|54/268
+|-start|p1a: Primarina|Throat Chop|[silent]
+|move|p1a: Primarina|Draining Kiss|p2a: Bisharp
+|-damage|p2a: Bisharp|51/100
+|-heal|p1a: Primarina|140/268|[from] drain|[of] p2a: Bisharp
+|
+|-heal|p1a: Primarina|156/268|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Bisharp|Throat Chop|p1a: Primarina
+|-resisted|p1a: Primarina
+|-damage|p1a: Primarina|102/268
+|move|p1a: Primarina|Draining Kiss|p2a: Bisharp
+|-crit|p2a: Bisharp
+|-damage|p2a: Bisharp|0 fnt
+|-heal|p1a: Primarina|190/268|[from] drain|[of] p2a: Bisharp
+|faint|p2a: Bisharp
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

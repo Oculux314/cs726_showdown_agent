@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23705</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23705<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23705|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|switch|p2a: Clawitzer|Clawitzer, L87, F|100/100
+|-ability|p1a: Rayquaza|Air Lock
+|turn|1
+|
+|switch|p1a: Eiscue|Eiscue, L88, F|274/274
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Eiscue
+|-damage|p1a: Eiscue|165/274
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Eiscue
+|-damage|p1a: Eiscue|64/274
+|-enditem|p1a: Eiscue|Sitrus Berry|[eat]
+|-heal|p1a: Eiscue|132/274|[from] item: Sitrus Berry
+|move|p1a: Eiscue|Liquidation|p2a: Clawitzer
+|-resisted|p2a: Clawitzer
+|-damage|p2a: Clawitzer|90/100
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Eiscue
+|-damage|p1a: Eiscue|29/274
+|move|p1a: Eiscue|Liquidation|p2a: Clawitzer
+|-resisted|p2a: Clawitzer
+|-damage|p2a: Clawitzer|79/100
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Eiscue
+|-damage|p1a: Eiscue|0 fnt
+|faint|p1a: Eiscue
+|
+|upkeep
+|
+|switch|p1a: Regidrago|Regidrago, L77|435/435
+|turn|5
+|
+|move|p1a: Regidrago|Dragon Dance|p1a: Regidrago
+|-boost|p1a: Regidrago|atk|1
+|-boost|p1a: Regidrago|spe|1
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Regidrago
+|-supereffective|p1a: Regidrago
+|-damage|p1a: Regidrago|71/435
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Regidrago|Dragon Dance|p1a: Regidrago
+|-boost|p1a: Regidrago|atk|1
+|-boost|p1a: Regidrago|spe|1
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Regidrago
+|-supereffective|p1a: Regidrago
+|-damage|p1a: Regidrago|0 fnt
+|faint|p1a: Regidrago
+|
+|upkeep
+|
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|-ability|p1a: Rayquaza|Air Lock
+|turn|7
+|
+|move|p1a: Rayquaza|U-turn|p2a: Clawitzer
+|-damage|p2a: Clawitzer|53/100
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263|[from] U-turn
+|move|p2a: Clawitzer|Dragon Pulse|p1a: Froslass
+|-damage|p1a: Froslass|126/263
+|
+|upkeep
+|turn|8
+|
+|-terastallize|p1a: Froslass|Ghost
+|move|p1a: Froslass|Poltergeist|p2a: Clawitzer
+|-activate|p2a: Clawitzer|move: Poltergeist|Assault Vest
+|-damage|p2a: Clawitzer|0 fnt
+|faint|p2a: Clawitzer
+|
+|upkeep
+|
+|switch|p2a: Lunala|Lunala, L70|100/100
+|turn|9
+|
+|move|p1a: Froslass|Triple Axel|p2a: Lunala
+|-damage|p2a: Lunala|96/100
+|-damage|p2a: Lunala|81/100
+|-damage|p2a: Lunala|59/100
+|-hitcount|p2a: Lunala|3
+|move|p2a: Lunala|Moongeist Beam|p1a: Froslass
+|-supereffective|p1a: Froslass
+|-damage|p1a: Froslass|0 fnt
+|-start|p2a: Lunala|Disable|Moongeist Beam|[from] ability: Cursed Body|[of] p1a: Froslass
+|faint|p1a: Froslass
+|
+|-heal|p2a: Lunala|65/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|-ability|p1a: Rayquaza|Air Lock
+|turn|10
+|
+|move|p1a: Rayquaza|U-turn|p2a: Lunala
+|-damage|p2a: Lunala|33/100
+|
+|switch|p1a: Stonjourner|Stonjourner, L91, M|330/330|[from] U-turn
+|move|p2a: Lunala|Psyshock|p1a: Stonjourner
+|-damage|p1a: Stonjourner|275/330
+|
+|-heal|p2a: Lunala|39/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Stonjourner|Heat Crash|p2a: Lunala
+|-damage|p2a: Lunala|0 fnt
+|faint|p2a: Lunala
+|-damage|p1a: Stonjourner|242/330|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Chi-Yu|Chi-Yu, L77|100/100
+|-ability|p2a: Chi-Yu|Beads of Ruin
+|turn|12
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Stonjourner
+|-resisted|p1a: Stonjourner
+|-damage|p1a: Stonjourner|0 fnt
+|-unboost|p2a: Chi-Yu|spa|2
+|faint|p1a: Stonjourner
+|
+|upkeep
+|
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|-ability|p1a: Rayquaza|Air Lock
+|turn|13
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Rayquaza|[miss]
+|-miss|p2a: Chi-Yu|p1a: Rayquaza
+|move|p1a: Rayquaza|U-turn|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|54/100
+|
+|switch|p1a: Mewtwo|Mewtwo, L72|272/272|[from] U-turn
+|-ability|p1a: Mewtwo|Unnerve
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Chi-Yu
+|-resisted|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|33/100
+|-damage|p1a: Mewtwo|245/272|[from] item: Life Orb
+|move|p2a: Chi-Yu|Overheat|p1a: Mewtwo
+|-damage|p1a: Mewtwo|71/272
+|-unboost|p2a: Chi-Yu|spa|2
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Chi-Yu
+|-resisted|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|10/100
+|-damage|p1a: Mewtwo|44/272|[from] item: Life Orb
+|move|p2a: Chi-Yu|Overheat|p1a: Mewtwo
+|-damage|p1a: Mewtwo|0 fnt
+|-unboost|p2a: Chi-Yu|spa|2
+|faint|p1a: Mewtwo
+|
+|upkeep
+|
+|switch|p1a: Rayquaza|Rayquaza, L72|270/270
+|-ability|p1a: Rayquaza|Air Lock
+|turn|16
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|225/270
+|move|p1a: Rayquaza|U-turn|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|0 fnt
+|faint|p2a: Chi-Yu
+|
+|upkeep
+|
+|switch|p2a: Ceruledge|Ceruledge, L78, M|100/100
+|turn|17
+|
+|move|p1a: Rayquaza|U-turn|p2a: Ceruledge
+|-resisted|p2a: Ceruledge
+|-damage|p2a: Ceruledge|92/100
+|-ability|p2a: Ceruledge|Weak Armor|boost
+|-unboost|p2a: Ceruledge|def|1
+|-boost|p2a: Ceruledge|spe|2
+|move|p2a: Ceruledge|Close Combat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|175/270
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Ceruledge|Close Combat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|119/270
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|move|p1a: Rayquaza|U-turn|p2a: Ceruledge
+|-resisted|p2a: Ceruledge
+|-damage|p2a: Ceruledge|68/100
+|-ability|p2a: Ceruledge|Weak Armor|boost
+|-unboost|p2a: Ceruledge|def|1
+|-boost|p2a: Ceruledge|spe|2
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Ceruledge|Close Combat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|69/270
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|move|p1a: Rayquaza|U-turn|p2a: Ceruledge
+|-resisted|p2a: Ceruledge
+|-damage|p2a: Ceruledge|36/100
+|-ability|p2a: Ceruledge|Weak Armor|boost
+|-unboost|p2a: Ceruledge|def|1
+|-boost|p2a: Ceruledge|spe|2
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Ceruledge|Close Combat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|17/270
+|-unboost|p2a: Ceruledge|spd|1
+|move|p1a: Rayquaza|U-turn|p2a: Ceruledge
+|-resisted|p2a: Ceruledge
+|-damage|p2a: Ceruledge|0 fnt
+|faint|p2a: Ceruledge
+|
+|upkeep
+|
+|switch|p2a: Lycanroc|Lycanroc-Dusk, L81, F|100/100
+|turn|21
+|
+|move|p2a: Lycanroc|Close Combat|p1a: Rayquaza
+|-resisted|p1a: Rayquaza
+|-damage|p1a: Rayquaza|0 fnt
+|-unboost|p2a: Lycanroc|def|1
+|-unboost|p2a: Lycanroc|spd|1
+|faint|p1a: Rayquaza
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

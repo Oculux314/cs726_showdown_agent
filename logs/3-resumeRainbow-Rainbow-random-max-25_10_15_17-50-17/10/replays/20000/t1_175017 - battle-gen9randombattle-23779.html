@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23779</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23779<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23779|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Tyranitar|Tyranitar, L78, F|284/284
+|switch|p2a: Sandy Shocks|Sandy Shocks, L80|100/100
+|-weather|Sandstorm|[from] ability: Sand Stream|[of] p1a: Tyranitar
+|turn|1
+|
+|move|p2a: Sandy Shocks|Earth Power|p1a: Tyranitar
+|-supereffective|p1a: Tyranitar
+|-damage|p1a: Tyranitar|140/284
+|move|p1a: Tyranitar|Dragon Dance|p1a: Tyranitar
+|-boost|p1a: Tyranitar|atk|1
+|-boost|p1a: Tyranitar|spe|1
+|
+|-weather|Sandstorm|[upkeep]
+|-heal|p1a: Tyranitar|157/284|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p1a: Tyranitar|Stone Edge|p2a: Sandy Shocks|[miss]
+|-miss|p1a: Tyranitar|p2a: Sandy Shocks
+|move|p2a: Sandy Shocks|Earth Power|p1a: Tyranitar
+|-supereffective|p1a: Tyranitar
+|-damage|p1a: Tyranitar|29/284
+|
+|-weather|Sandstorm|[upkeep]
+|-heal|p1a: Tyranitar|46/284|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Tyranitar|Stone Edge|p2a: Sandy Shocks
+|-resisted|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|69/100
+|move|p2a: Sandy Shocks|Earth Power|p1a: Tyranitar
+|-supereffective|p1a: Tyranitar
+|-damage|p1a: Tyranitar|0 fnt
+|faint|p1a: Tyranitar
+|
+|-weather|Sandstorm|[upkeep]
+|-heal|p2a: Sandy Shocks|75/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Leavanny|Leavanny, L86, F|269/269
+|turn|4
+|
+|move|p2a: Sandy Shocks|Earth Power|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|242/269
+|move|p1a: Leavanny|Bullet Seed|p2a: Sandy Shocks
+|-supereffective|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|51/100
+|-supereffective|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|29/100
+|-supereffective|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|6/100
+|-supereffective|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|0 fnt
+|faint|p2a: Sandy Shocks
+|-end|p2a: Sandy Shocks|Protosynthesis|[silent]
+|-hitcount|p2: Sandy Shocks|4
+|
+|-weather|Sandstorm|[upkeep]
+|-damage|p1a: Leavanny|226/269|[from] Sandstorm
+|upkeep
+|
+|switch|p2a: Torterra|Torterra, L78, M|100/100
+|turn|5
+|
+|-terastallize|p1a: Leavanny|Rock
+|move|p1a: Leavanny|Bullet Seed|p2a: Torterra
+|-damage|p2a: Torterra|90/100
+|-damage|p2a: Torterra|79/100
+|-damage|p2a: Torterra|68/100
+|-damage|p2a: Torterra|58/100
+|-hitcount|p2a: Torterra|4
+|move|p2a: Torterra|Headlong Rush|p1a: Leavanny
+|-supereffective|p1a: Leavanny
+|-damage|p1a: Leavanny|0 fnt
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|faint|p1a: Leavanny
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Hitmonchan|Hitmonchan, L87, M|229/229
+|turn|6
+|
+|move|p1a: Hitmonchan|Bulk Up|p1a: Hitmonchan
+|-boost|p1a: Hitmonchan|atk|1
+|-boost|p1a: Hitmonchan|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|138/229
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|-heal|p1a: Hitmonchan|152/229|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Hitmonchan|Bulk Up|p1a: Hitmonchan
+|-boost|p1a: Hitmonchan|atk|1
+|-boost|p1a: Hitmonchan|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|82/229
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|-heal|p1a: Hitmonchan|96/229|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Hitmonchan|Knock Off|p2a: Torterra
+|-damage|p2a: Torterra|0 fnt
+|-enditem|p2a: Torterra|Loaded Dice|[from] move: Knock Off|[of] p1a: Hitmonchan
+|faint|p2a: Torterra
+|
+|-heal|p1a: Hitmonchan|110/229|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Vespiquen|Vespiquen, L99, F|100/100
+|-ability|p2a: Vespiquen|Pressure
+|turn|9
+|
+|move|p1a: Hitmonchan|Knock Off|p2a: Vespiquen
+|-damage|p2a: Vespiquen|62/100
+|-enditem|p2a: Vespiquen|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Hitmonchan
+|move|p2a: Vespiquen|Air Slash|p1a: Hitmonchan
+|-supereffective|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|0 fnt
+|faint|p1a: Hitmonchan
+|
+|upkeep
+|
+|switch|p1a: Empoleon|Empoleon, L84, M|278/278
+|turn|10
+|
+|move|p1a: Empoleon|Yawn|p2a: Vespiquen
+|-start|p2a: Vespiquen|move: Yawn|[of] p1a: Empoleon
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|233/278
+|
+|-heal|p1a: Empoleon|250/278|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|235/278
+|
+|-heal|p1a: Empoleon|252/278|[from] item: Leftovers
+|-end|p2a: Vespiquen|move: Yawn|[silent]
+|-status|p2a: Vespiquen|slp
+|upkeep
+|turn|12
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|cant|p2a: Vespiquen|slp
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Empoleon|Yawn||[still]
+|-fail|p1a: Empoleon
+|cant|p2a: Vespiquen|slp
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Empoleon|Roost||[still]
+|-fail|p1a: Empoleon|heal
+|cant|p2a: Vespiquen|slp
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Empoleon|Roost||[still]
+|-fail|p1a: Empoleon|heal
+|-curestatus|p2a: Vespiquen|slp|[msg]
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|233/278
+|
+|-heal|p1a: Empoleon|250/278|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|238/278
+|
+|-heal|p1a: Empoleon|255/278|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|236/278
+|
+|-heal|p1a: Empoleon|253/278|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|232/278
+|
+|-heal|p1a: Empoleon|249/278|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Empoleon|Yawn|p2a: Vespiquen
+|-start|p2a: Vespiquen|move: Yawn|[of] p1a: Empoleon
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|210/278
+|
+|-heal|p1a: Empoleon|227/278|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Empoleon|Roost|p1a: Empoleon
+|-heal|p1a: Empoleon|278/278
+|-singleturn|p1a: Empoleon|move: Roost
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|237/278
+|
+|-heal|p1a: Empoleon|254/278|[from] item: Leftovers
+|-end|p2a: Vespiquen|move: Yawn|[silent]
+|-status|p2a: Vespiquen|slp
+|upkeep
+|turn|21
+|
+|move|p1a: Empoleon|Yawn||[still]
+|-fail|p1a: Empoleon
+|cant|p2a: Vespiquen|slp
+|
+|-heal|p1a: Empoleon|271/278|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Empoleon|Yawn||[still]
+|-fail|p1a: Empoleon
+|cant|p2a: Vespiquen|slp
+|
+|-heal|p1a: Empoleon|278/278|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Empoleon|Yawn||[still]
+|-fail|p1a: Empoleon
+|-curestatus|p2a: Vespiquen|slp|[msg]
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|233/278
+|
+|-heal|p1a: Empoleon|250/278|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Empoleon|Yawn|p2a: Vespiquen
+|-start|p2a: Vespiquen|move: Yawn|[of] p1a: Empoleon
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|209/278
+|
+|-heal|p1a: Empoleon|226/278|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Empoleon|Yawn||[still]
+|-fail|p1a: Empoleon
+|move|p2a: Vespiquen|Air Slash|p1a: Empoleon
+|-resisted|p1a: Empoleon
+|-damage|p1a: Empoleon|182/278
+|
+|-heal|p1a: Empoleon|199/278|[from] item: Leftovers
+|-end|p2a: Vespiquen|move: Yawn|[silent]
+|-status|p2a: Vespiquen|slp
+|upkeep
+|turn|26
+|
+|move|p1a: Empoleon|Flip Turn|p2a: Vespiquen
+|-damage|p2a: Vespiquen|48/100 slp
+|
+|switch|p1a: Vigoroth|Vigoroth, L85, M|275/275|[from] Flip Turn
+|cant|p2a: Vespiquen|slp
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Vigoroth|Bulk Up|p1a: Vigoroth
+|-boost|p1a: Vigoroth|atk|1
+|-boost|p1a: Vigoroth|def|1
+|-curestatus|p2a: Vespiquen|slp|[msg]
+|move|p2a: Vespiquen|Air Slash|p1a: Vigoroth
+|-damage|p1a: Vigoroth|187/275
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Vigoroth|Bulk Up|p1a: Vigoroth
+|-boost|p1a: Vigoroth|atk|1
+|-boost|p1a: Vigoroth|def|1
+|move|p2a: Vespiquen|Air Slash|p1a: Vigoroth
+|-damage|p1a: Vigoroth|102/275
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Vigoroth|Bulk Up|p1a: Vigoroth
+|-boost|p1a: Vigoroth|atk|1
+|-boost|p1a: Vigoroth|def|1
+|move|p2a: Vespiquen|Air Slash|p1a: Vigoroth
+|-damage|p1a: Vigoroth|17/275
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Vigoroth|Bulk Up|p1a: Vigoroth
+|-boost|p1a: Vigoroth|atk|1
+|-boost|p1a: Vigoroth|def|1
+|move|p2a: Vespiquen|Air Slash|p1a: Vigoroth
+|-damage|p1a: Vigoroth|0 fnt
+|faint|p1a: Vigoroth
+|
+|upkeep
+|
+|switch|p1a: Empoleon|Empoleon, L84, M|199/278
+|turn|31
+|
+|move|p1a: Empoleon|Flip Turn|p2a: Vespiquen
+|-damage|p2a: Vespiquen|33/100
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, F|312/312|[from] Flip Turn
+|move|p2a: Vespiquen|Air Slash|p1a: Honchkrow|[miss]
+|-miss|p2a: Vespiquen|p1a: Honchkrow
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Honchkrow|Sucker Punch|p2a: Vespiquen
+|-damage|p2a: Vespiquen|7/100
+|move|p2a: Vespiquen|Air Slash|p1a: Honchkrow
+|-damage|p1a: Honchkrow|171/312
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Honchkrow|Sucker Punch|p2a: Vespiquen
+|-damage|p2a: Vespiquen|0 fnt
+|faint|p2a: Vespiquen
+|-ability|p1a: Honchkrow|Moxie|boost
+|-boost|p1a: Honchkrow|atk|1
+|
+|upkeep
+|
+|switch|p2a: Mienshao|Mienshao, L83, M|100/100
+|turn|34
+|
+|move|p1a: Honchkrow|Sucker Punch|p2a: Mienshao
+|-resisted|p2a: Mienshao
+|-damage|p2a: Mienshao|64/100
+|move|p2a: Mienshao|Close Combat|p1a: Honchkrow
+|-damage|p1a: Honchkrow|0 fnt
+|-unboost|p2a: Mienshao|def|1
+|-unboost|p2a: Mienshao|spd|1
+|faint|p1a: Honchkrow
+|
+|upkeep
+|
+|switch|p1a: Empoleon|Empoleon, L84, M|199/278
+|turn|35
+|
+|move|p2a: Mienshao|Close Combat|p1a: Empoleon
+|-supereffective|p1a: Empoleon
+|-damage|p1a: Empoleon|0 fnt
+|-unboost|p2a: Mienshao|def|1
+|-unboost|p2a: Mienshao|spd|1
+|faint|p1a: Empoleon
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

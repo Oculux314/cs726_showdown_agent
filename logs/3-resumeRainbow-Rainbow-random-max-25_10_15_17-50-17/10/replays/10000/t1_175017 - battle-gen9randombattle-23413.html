@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23413</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23413<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23413|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|312/312
+|switch|p2a: Oinkologne|Oinkologne-F, L92, F|100/100
+|turn|1
+|
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|switch|p1a: Typhlosion|Typhlosion, L84, M|267/267
+|move|p2a: Oinkologne|High Horsepower|p1a: Typhlosion|[miss]
+|-miss|p2a: Oinkologne|p1a: Typhlosion
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Oinkologne
+|-damage|p2a: Oinkologne|82/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Typhlosion
+|-supereffective|p1a: Typhlosion
+|-damage|p1a: Typhlosion|103/267
+|
+|-heal|p2a: Oinkologne|88/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Oinkologne
+|-damage|p2a: Oinkologne|67/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Typhlosion
+|-supereffective|p1a: Typhlosion
+|-damage|p1a: Typhlosion|0 fnt
+|faint|p1a: Typhlosion
+|
+|-heal|p2a: Oinkologne|73/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Mightyena|Mightyena, L96, M|290/290
+|-ability|p1a: Mightyena|Intimidate|boost
+|-unboost|p2a: Oinkologne|atk|1
+|turn|4
+|
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|37/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|238/290
+|
+|-heal|p2a: Oinkologne|43/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|22/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|187/290
+|
+|-heal|p2a: Oinkologne|28/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|14/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|132/290
+|
+|-heal|p2a: Oinkologne|20/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|10/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|79/290
+|
+|-heal|p2a: Oinkologne|17/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|9/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|28/290
+|
+|-heal|p2a: Oinkologne|15/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|-terastallize|p1a: Mightyena|Fairy
+|move|p1a: Mightyena|Super Fang|p2a: Oinkologne
+|-damage|p2a: Oinkologne|8/100
+|move|p2a: Oinkologne|High Horsepower|p1a: Mightyena
+|-damage|p1a: Mightyena|0 fnt
+|faint|p1a: Mightyena
+|
+|-heal|p2a: Oinkologne|14/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|312/312
+|turn|10
+|
+|move|p2a: Oinkologne|High Horsepower|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|289/312
+|move|p1a: Brute Bonnet|Close Combat|p2a: Oinkologne
+|-supereffective|p2a: Oinkologne
+|-damage|p2a: Oinkologne|0 fnt
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|faint|p2a: Oinkologne
+|
+|-heal|p1a: Brute Bonnet|308/312|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Lumineon|Lumineon, L93, F|100/100
+|turn|11
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|225/312
+|move|p1a: Brute Bonnet|Close Combat|p2a: Lumineon
+|-damage|p2a: Lumineon|67/100
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|
+|-heal|p1a: Brute Bonnet|244/312|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|139/312
+|move|p1a: Brute Bonnet|Close Combat|p2a: Lumineon
+|-damage|p2a: Lumineon|30/100
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|
+|-heal|p1a: Brute Bonnet|158/312|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|37/312
+|move|p1a: Brute Bonnet|Close Combat|p2a: Lumineon
+|-damage|p2a: Lumineon|0 fnt
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|faint|p2a: Lumineon
+|
+|-heal|p1a: Brute Bonnet|56/312|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Sudowoodo|Sudowoodo, L94, M|100/100
+|turn|14
+|
+|move|p1a: Brute Bonnet|Close Combat|p2a: Sudowoodo
+|-supereffective|p2a: Sudowoodo
+|-crit|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|22/100
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|move|p2a: Sudowoodo|Head Smash|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|0 fnt
+|faint|p1a: Brute Bonnet
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|
+|-heal|p2a: Sudowoodo|28/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Shaymin|Shaymin, L82|298/298
+|turn|15
+|
+|move|p1a: Shaymin|Seed Flare|p2a: Sudowoodo
+|-supereffective|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|0 fnt
+|faint|p2a: Sudowoodo
+|
+|upkeep
+|
+|switch|p2a: Plusle|Plusle, L95, F|100/100
+|turn|16
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Shaymin
+|-resisted|p1a: Shaymin
+|-damage|p1a: Shaymin|227/298
+|-damage|p2a: Plusle|91/100|[from] item: Life Orb
+|move|p1a: Shaymin|Seed Flare|p2a: Plusle
+|-damage|p2a: Plusle|42/100
+|
+|-heal|p1a: Shaymin|245/298|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Shaymin
+|-resisted|p1a: Shaymin
+|-crit|p1a: Shaymin
+|-damage|p1a: Shaymin|144/298
+|-damage|p2a: Plusle|32/100|[from] item: Life Orb
+|move|p1a: Shaymin|Seed Flare|p2a: Plusle
+|-damage|p2a: Plusle|0 fnt
+|faint|p2a: Plusle
+|
+|-heal|p1a: Shaymin|162/298|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Calyrex|Calyrex-Ice, L72|100/100
+|-ability|p2a: Calyrex|As One
+|-ability|p2a: Calyrex|Unnerve
+|turn|18
+|
+|move|p1a: Shaymin|Seed Flare|p2a: Calyrex|[miss]
+|-miss|p1a: Shaymin|p2a: Calyrex
+|move|p2a: Calyrex|Close Combat|p1a: Shaymin
+|-damage|p1a: Shaymin|80/298
+|-unboost|p2a: Calyrex|def|1
+|-unboost|p2a: Calyrex|spd|1
+|
+|-heal|p1a: Shaymin|98/298|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Shaymin|Seed Flare|p2a: Calyrex|[miss]
+|-miss|p1a: Shaymin|p2a: Calyrex
+|move|p2a: Calyrex|Close Combat|p1a: Shaymin
+|-damage|p1a: Shaymin|11/298
+|-unboost|p2a: Calyrex|def|1
+|-unboost|p2a: Calyrex|spd|1
+|
+|-heal|p1a: Shaymin|29/298|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Shaymin|Seed Flare|p2a: Calyrex
+|-damage|p2a: Calyrex|20/100
+|-unboost|p2a: Calyrex|spd|2
+|move|p2a: Calyrex|Close Combat|p1a: Shaymin
+|-damage|p1a: Shaymin|0 fnt
+|-unboost|p2a: Calyrex|def|1
+|-unboost|p2a: Calyrex|spd|1
+|faint|p1a: Shaymin
+|-ability|p2a: Calyrex|Chilling Neigh|boost
+|-boost|p2a: Calyrex|atk|1
+|
+|upkeep
+|
+|switch|p1a: Sandaconda|Sandaconda, L84, M|258/258
+|turn|21
+|
+|move|p1a: Sandaconda|Coil|p1a: Sandaconda
+|-boost|p1a: Sandaconda|atk|1
+|-boost|p1a: Sandaconda|def|1
+|-boost|p1a: Sandaconda|accuracy|1
+|move|p2a: Calyrex|Close Combat|p1a: Sandaconda
+|-damage|p1a: Sandaconda|190/258
+|-unboost|p2a: Calyrex|def|1
+|-unboost|p2a: Calyrex|spd|1
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Sandaconda|Coil|p1a: Sandaconda
+|-boost|p1a: Sandaconda|atk|1
+|-boost|p1a: Sandaconda|def|1
+|-boost|p1a: Sandaconda|accuracy|1
+|move|p2a: Calyrex|Close Combat|p1a: Sandaconda
+|-damage|p1a: Sandaconda|137/258
+|-unboost|p2a: Calyrex|def|1
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Sandaconda|Coil|p1a: Sandaconda
+|-boost|p1a: Sandaconda|atk|1
+|-boost|p1a: Sandaconda|def|1
+|-boost|p1a: Sandaconda|accuracy|1
+|move|p2a: Calyrex|Close Combat|p1a: Sandaconda
+|-damage|p1a: Sandaconda|96/258
+|-unboost|p2a: Calyrex|def|1
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Sandaconda|Coil|p1a: Sandaconda
+|-boost|p1a: Sandaconda|atk|1
+|-boost|p1a: Sandaconda|def|1
+|-boost|p1a: Sandaconda|accuracy|1
+|move|p2a: Calyrex|Close Combat|p1a: Sandaconda
+|-damage|p1a: Sandaconda|58/258
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Sandaconda|Earthquake|p2a: Calyrex
+|-damage|p2a: Calyrex|0 fnt
+|faint|p2a: Calyrex
+|
+|upkeep
+|
+|switch|p2a: Deoxys|Deoxys, L74|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|26
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Sandaconda
+|-damage|p1a: Sandaconda|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Sandaconda
+|-damage|p2a: Deoxys|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263
+|turn|27
+|
+|move|p1a: Volbeat|Roost||[still]
+|-fail|p1a: Volbeat|heal
+|move|p2a: Deoxys|Psycho Boost|p1a: Volbeat
+|-damage|p1a: Volbeat|162/263
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|81/100|[from] item: Life Orb
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Deoxys|Psycho Boost|p1a: Volbeat
+|-damage|p1a: Volbeat|189/263
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|71/100|[from] item: Life Orb
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Deoxys|Psycho Boost|p1a: Volbeat
+|-damage|p1a: Volbeat|211/263
+|-damage|p2a: Deoxys|62/100|[from] item: Life Orb
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Deoxys|Psycho Boost|p1a: Volbeat|[miss]
+|-miss|p2a: Deoxys|p1a: Volbeat
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Volbeat
+|-damage|p1a: Volbeat|211/263
+|-damage|p2a: Deoxys|52/100|[from] item: Life Orb
+|move|p1a: Volbeat|Lunge|p2a: Deoxys
+|-supereffective|p2a: Deoxys
+|-damage|p2a: Deoxys|0 fnt
+|faint|p2a: Deoxys
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

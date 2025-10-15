@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23750</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23750<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23750|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Oricorio|Oricorio-Pom-Pom, L82, F|257/257
+|switch|p2a: Ceruledge|Ceruledge, L78, F|100/100
+|turn|1
+|
+|switch|p1a: Altaria|Altaria, L89, M|278/278
+|move|p2a: Ceruledge|Close Combat|p1a: Altaria
+|-resisted|p1a: Altaria
+|-damage|p1a: Altaria|239/278
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Altaria|Dragon Dance|p1a: Altaria
+|-boost|p1a: Altaria|atk|1
+|-boost|p1a: Altaria|spe|1
+|move|p2a: Ceruledge|Close Combat|p1a: Altaria
+|-resisted|p1a: Altaria
+|-damage|p1a: Altaria|197/278
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Lucario|Lucario, L84, M|255/255
+|move|p2a: Ceruledge|Close Combat|p1a: Lucario
+|-supereffective|p1a: Lucario
+|-damage|p1a: Lucario|47/255
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Lucario|Swords Dance|p1a: Lucario
+|-boost|p1a: Lucario|atk|2
+|move|p2a: Ceruledge|Close Combat|p1a: Lucario
+|-supereffective|p1a: Lucario
+|-damage|p1a: Lucario|0 fnt
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|faint|p1a: Lucario
+|
+|upkeep
+|
+|switch|p1a: Hitmontop|Hitmontop, L88, M|231/231
+|-ability|p1a: Hitmontop|Intimidate|boost
+|-unboost|p2a: Ceruledge|atk|1
+|turn|5
+|
+|-terastallize|p1a: Hitmontop|Steel
+|move|p1a: Hitmontop|Sucker Punch|p2a: Ceruledge
+|-supereffective|p2a: Ceruledge
+|-damage|p2a: Ceruledge|0 fnt
+|faint|p2a: Ceruledge
+|
+|upkeep
+|
+|switch|p2a: Swalot|Swalot, L90, F|100/100
+|turn|6
+|
+|move|p1a: Hitmontop|Stone Edge|p2a: Swalot
+|-crit|p2a: Swalot
+|-damage|p2a: Swalot|66/100
+|move|p2a: Swalot|Earthquake|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|109/231
+|
+|-heal|p2a: Swalot|72/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Hitmontop|Stone Edge|p2a: Swalot
+|-damage|p2a: Swalot|47/100
+|move|p2a: Swalot|Earthquake|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|0 fnt
+|faint|p1a: Hitmontop
+|
+|-heal|p2a: Swalot|53/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Oricorio|Oricorio-Pom-Pom, L82, F|257/257
+|turn|8
+|
+|move|p1a: Oricorio|Hurricane|p2a: Swalot|[miss]
+|-miss|p1a: Oricorio|p2a: Swalot
+|move|p2a: Swalot|Earthquake|p1a: Oricorio
+|-immune|p1a: Oricorio
+|
+|-heal|p2a: Swalot|59/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Oricorio|Hurricane|p2a: Swalot
+|-damage|p2a: Swalot|26/100
+|move|p2a: Swalot|Earthquake|p1a: Oricorio
+|-immune|p1a: Oricorio
+|
+|-heal|p2a: Swalot|32/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Oricorio|Hurricane|p2a: Swalot
+|-damage|p2a: Swalot|0 fnt
+|faint|p2a: Swalot
+|
+|upkeep
+|
+|switch|p2a: Bruxish|Bruxish, L85, M|100/100
+|turn|11
+|
+|move|p2a: Bruxish|Wave Crash|p1a: Oricorio
+|-damage|p1a: Oricorio|0 fnt
+|faint|p1a: Oricorio
+|-damage|p2a: Bruxish|67/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Altaria|Altaria, L89, M|197/278
+|turn|12
+|
+|move|p2a: Bruxish|Wave Crash|p1a: Altaria
+|-resisted|p1a: Altaria
+|-damage|p1a: Altaria|94/278
+|-damage|p2a: Bruxish|54/100|[from] Recoil
+|move|p1a: Altaria|Dragon Dance|p1a: Altaria
+|-boost|p1a: Altaria|atk|1
+|-boost|p1a: Altaria|spe|1
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Altaria|Dragon Dance|p1a: Altaria
+|-boost|p1a: Altaria|atk|1
+|-boost|p1a: Altaria|spe|1
+|move|p2a: Bruxish|Wave Crash|p1a: Altaria
+|-resisted|p1a: Altaria
+|-damage|p1a: Altaria|0 fnt
+|faint|p1a: Altaria
+|-damage|p2a: Bruxish|41/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Floatzel|Floatzel, L86, F|286/286
+|turn|14
+|
+|move|p1a: Floatzel|Wave Crash|p2a: Bruxish
+|-resisted|p2a: Bruxish
+|-damage|p2a: Bruxish|11/100
+|-damage|p1a: Floatzel|260/286|[from] Recoil
+|move|p2a: Bruxish|Wave Crash|p1a: Floatzel
+|-resisted|p1a: Floatzel
+|-damage|p1a: Floatzel|122/286
+|-damage|p2a: Bruxish|0 fnt|[from] Recoil
+|faint|p2a: Bruxish
+|
+|-heal|p1a: Floatzel|139/286|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Blastoise|Blastoise, L80, F|100/100
+|turn|15
+|
+|move|p1a: Floatzel|Wave Crash|p2a: Blastoise
+|-resisted|p2a: Blastoise
+|-damage|p2a: Blastoise|75/100
+|-damage|p1a: Floatzel|117/286|[from] Recoil
+|move|p2a: Blastoise|Hydro Pump|p1a: Floatzel
+|-resisted|p1a: Floatzel
+|-damage|p1a: Floatzel|53/286
+|
+|-heal|p1a: Floatzel|70/286|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Floatzel|Wave Crash|p2a: Blastoise
+|-resisted|p2a: Blastoise
+|-damage|p2a: Blastoise|47/100
+|-damage|p1a: Floatzel|46/286|[from] Recoil
+|move|p2a: Blastoise|Hydro Pump|p1a: Floatzel
+|-resisted|p1a: Floatzel
+|-damage|p1a: Floatzel|0 fnt
+|faint|p1a: Floatzel
+|
+|upkeep
+|
+|switch|p1a: Persian|Persian, L92, M|269/269
+|turn|17
+|
+|move|p1a: Persian|Knock Off|p2a: Blastoise
+|-damage|p2a: Blastoise|9/100
+|-enditem|p2a: Blastoise|White Herb|[from] move: Knock Off|[of] p1a: Persian
+|move|p2a: Blastoise|Hydro Pump|p1a: Persian
+|-damage|p1a: Persian|101/269
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Persian|Knock Off|p2a: Blastoise
+|-damage|p2a: Blastoise|0 fnt
+|faint|p2a: Blastoise
+|
+|upkeep
+|
+|switch|p2a: Cacturne|Cacturne, L92, M|100/100
+|turn|19
+|
+|move|p1a: Persian|Knock Off|p2a: Cacturne
+|-resisted|p2a: Cacturne
+|-damage|p2a: Cacturne|82/100
+|-enditem|p2a: Cacturne|Life Orb|[from] move: Knock Off|[of] p1a: Persian
+|move|p2a: Cacturne|Leaf Storm|p1a: Persian
+|-damage|p1a: Persian|0 fnt
+|-unboost|p2a: Cacturne|spa|2
+|faint|p1a: Persian
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

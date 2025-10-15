@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23497</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23497<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23497|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Leavanny|Leavanny, L86, M|269/269
+|switch|p2a: Lokix|Lokix, L82, F|100/100
+|turn|1
+|
+|switch|p1a: Hitmontop|Hitmontop, L88, M|231/231
+|move|p2a: Lokix|Leech Life|p1a: Hitmontop
+|-resisted|p1a: Hitmontop
+|-damage|p1a: Hitmontop|137/231
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|
+|-heal|p1a: Hitmontop|151/231|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Lokix|Leech Life|p1a: Hitmontop
+|-resisted|p1a: Hitmontop
+|-damage|p1a: Hitmontop|47/231
+|-heal|p2a: Lokix|100/100|[from] drain|[of] p1a: Hitmontop
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|move|p1a: Hitmontop|Close Combat|p2a: Lokix
+|-damage|p2a: Lokix|25/100
+|-unboost|p1a: Hitmontop|def|1
+|-unboost|p1a: Hitmontop|spd|1
+|
+|-heal|p1a: Hitmontop|61/231|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Lokix|Leech Life|p1a: Hitmontop
+|-resisted|p1a: Hitmontop
+|-damage|p1a: Hitmontop|0 fnt
+|-heal|p2a: Lokix|37/100|[from] drain|[of] p1a: Hitmontop
+|faint|p1a: Hitmontop
+|-damage|p2a: Lokix|27/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Entei|Entei, L78|307/307
+|turn|4
+|
+|move|p1a: Entei|Stomping Tantrum|p2a: Lokix
+|-resisted|p2a: Lokix
+|-damage|p2a: Lokix|10/100
+|move|p2a: Lokix|Leech Life|p1a: Entei
+|-resisted|p1a: Entei
+|-damage|p1a: Entei|187/307
+|-heal|p2a: Lokix|34/100|[from] drain|[of] p1a: Entei
+|-damage|p2a: Lokix|24/100|[from] item: Life Orb
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Entei|Stomping Tantrum|p2a: Lokix
+|-resisted|p2a: Lokix
+|-damage|p2a: Lokix|5/100
+|move|p2a: Lokix|Leech Life|p1a: Entei
+|-resisted|p1a: Entei
+|-damage|p1a: Entei|70/307
+|-heal|p2a: Lokix|29/100|[from] drain|[of] p1a: Entei
+|-damage|p2a: Lokix|19/100|[from] item: Life Orb
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Entei|Stomping Tantrum|p2a: Lokix
+|-resisted|p2a: Lokix
+|-crit|p2a: Lokix
+|-damage|p2a: Lokix|0 fnt
+|faint|p2a: Lokix
+|
+|upkeep
+|
+|switch|p2a: Kilowattrel|Kilowattrel, L83, F|100/100
+|turn|7
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Entei|[miss]
+|-miss|p2a: Kilowattrel|p1a: Entei
+|move|p1a: Entei|Stomping Tantrum|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Entei|[miss]
+|-miss|p2a: Kilowattrel|p1a: Entei
+|move|p1a: Entei|Stomping Tantrum|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Entei
+|-damage|p1a: Entei|0 fnt
+|faint|p1a: Entei
+|
+|upkeep
+|
+|switch|p1a: Leavanny|Leavanny, L86, M|269/269
+|turn|10
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Leavanny
+|-supereffective|p1a: Leavanny
+|-enditem|p1a: Leavanny|Focus Sash
+|-damage|p1a: Leavanny|1/269
+|move|p1a: Leavanny|Lunge|p2a: Kilowattrel
+|-resisted|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|61/100
+|-unboost|p2a: Kilowattrel|atk|1
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Leavanny|[miss]
+|-miss|p2a: Kilowattrel|p1a: Leavanny
+|move|p1a: Leavanny|Lunge|p2a: Kilowattrel
+|-resisted|p2a: Kilowattrel
+|-crit|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|2/100
+|-unboost|p2a: Kilowattrel|atk|1
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Leavanny
+|-supereffective|p1a: Leavanny
+|-damage|p1a: Leavanny|0 fnt
+|faint|p1a: Leavanny
+|
+|upkeep
+|
+|switch|p1a: Goodra|Goodra, L85, F|292/292
+|turn|13
+|
+|-terastallize|p1a: Goodra|Fire
+|move|p2a: Kilowattrel|Hurricane|p1a: Goodra
+|-damage|p1a: Goodra|234/292
+|-start|p1a: Goodra|confusion
+|-activate|p1a: Goodra|confusion
+|move|p1a: Goodra|Fire Blast|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|0 fnt
+|faint|p2a: Kilowattrel
+|
+|upkeep
+|
+|switch|p2a: Flamigo|Flamigo, L82, M|100/100
+|turn|14
+|
+|move|p2a: Flamigo|Close Combat|p1a: Goodra
+|-damage|p1a: Goodra|68/292
+|-unboost|p2a: Flamigo|def|1
+|-unboost|p2a: Flamigo|spd|1
+|-activate|p1a: Goodra|confusion
+|move|p1a: Goodra|Draco Meteor|p2a: Flamigo
+|-damage|p2a: Flamigo|0 fnt
+|-unboost|p1a: Goodra|spa|2
+|faint|p2a: Flamigo
+|
+|upkeep
+|
+|switch|p2a: Arcanine|Arcanine, L84, F|100/100
+|-ability|p2a: Arcanine|Intimidate|boost
+|-unboost|p1a: Goodra|atk|1
+|turn|15
+|
+|move|p2a: Arcanine|Flare Blitz|p1a: Goodra
+|-resisted|p1a: Goodra
+|-damage|p1a: Goodra|0 fnt
+|faint|p1a: Goodra
+|-damage|p2a: Arcanine|93/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Sawsbuck|Sawsbuck-Autumn, L88, F|284/284
+|turn|16
+|
+|move|p1a: Sawsbuck|High Horsepower|p2a: Arcanine
+|-supereffective|p2a: Arcanine
+|-damage|p2a: Arcanine|22/100
+|-damage|p1a: Sawsbuck|256/284|[from] item: Life Orb
+|move|p2a: Arcanine|Flare Blitz|p1a: Sawsbuck
+|-supereffective|p1a: Sawsbuck
+|-damage|p1a: Sawsbuck|0 fnt
+|faint|p1a: Sawsbuck
+|-damage|p2a: Arcanine|0 fnt|[from] Recoil
+|faint|p2a: Arcanine
+|
+|upkeep
+|
+|switch|p1a: Zacian|Zacian, L69|241/241
+|switch|p2a: Toedscruel|Toedscruel, L87, M|100/100
+|-ability|p1a: Zacian|Intrepid Sword|boost
+|-boost|p1a: Zacian|atk|1
+|turn|17
+|
+|move|p1a: Zacian|Psychic Fangs|p2a: Toedscruel
+|-damage|p2a: Toedscruel|55/100
+|move|p2a: Toedscruel|Leaf Storm|p1a: Zacian
+|-damage|p1a: Zacian|111/241
+|-unboost|p2a: Toedscruel|spa|2
+|
+|-heal|p2a: Toedscruel|61/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Zacian|Psychic Fangs|p2a: Toedscruel
+|-damage|p2a: Toedscruel|11/100
+|move|p2a: Toedscruel|Leaf Storm|p1a: Zacian
+|-damage|p1a: Zacian|45/241
+|-unboost|p2a: Toedscruel|spa|2
+|
+|-heal|p2a: Toedscruel|17/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Zacian|Psychic Fangs|p2a: Toedscruel
+|-damage|p2a: Toedscruel|0 fnt
+|faint|p2a: Toedscruel
+|
+|upkeep
+|
+|switch|p2a: Magnezone|Magnezone, L85|100/100
+|turn|20
+|
+|move|p1a: Zacian|Psychic Fangs|p2a: Magnezone
+|-resisted|p2a: Magnezone
+|-damage|p2a: Magnezone|84/100
+|move|p2a: Magnezone|Body Press|p1a: Zacian
+|-resisted|p1a: Zacian
+|-damage|p1a: Zacian|11/241
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Zacian|Psychic Fangs|p2a: Magnezone
+|-resisted|p2a: Magnezone
+|-damage|p2a: Magnezone|68/100
+|move|p2a: Magnezone|Body Press|p1a: Zacian
+|-resisted|p1a: Zacian
+|-crit|p1a: Zacian
+|-damage|p1a: Zacian|0 fnt
+|faint|p1a: Zacian
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

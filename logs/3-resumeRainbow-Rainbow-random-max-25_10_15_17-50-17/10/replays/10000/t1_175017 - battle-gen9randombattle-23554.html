@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23554</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23554<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23554|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Tauros|Tauros-Paldea-Aqua, L81, M|252/252
+|switch|p2a: Torterra|Torterra, L78, M|100/100
+|turn|1
+|
+|move|p1a: Tauros|Bulk Up|p1a: Tauros
+|-boost|p1a: Tauros|atk|1
+|-boost|p1a: Tauros|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Tauros
+|-damage|p1a: Tauros|176/252
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Tauros|Bulk Up|p1a: Tauros
+|-boost|p1a: Tauros|atk|1
+|-boost|p1a: Tauros|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Tauros
+|-damage|p1a: Tauros|119/252
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|-enditem|p1a: Tauros|Sitrus Berry|[eat]
+|-heal|p1a: Tauros|182/252|[from] item: Sitrus Berry
+|
+|upkeep
+|turn|3
+|
+|move|p1a: Tauros|Bulk Up|p1a: Tauros
+|-boost|p1a: Tauros|atk|1
+|-boost|p1a: Tauros|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Tauros
+|-damage|p1a: Tauros|139/252
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|-activate|p1a: Tauros|ability: Cud Chew
+|-enditem|p1a: Tauros|Sitrus Berry|[eat]
+|-heal|p1a: Tauros|202/252|[from] item: Sitrus Berry
+|upkeep
+|turn|4
+|
+|move|p1a: Tauros|Bulk Up|p1a: Tauros
+|-boost|p1a: Tauros|atk|1
+|-boost|p1a: Tauros|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Tauros
+|-damage|p1a: Tauros|166/252
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Tauros|Bulk Up|p1a: Tauros
+|-boost|p1a: Tauros|atk|1
+|-boost|p1a: Tauros|def|1
+|move|p2a: Torterra|Headlong Rush|p1a: Tauros
+|-damage|p1a: Tauros|133/252
+|-unboost|p2a: Torterra|def|1
+|-unboost|p2a: Torterra|spd|1
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Tauros|Close Combat|p2a: Torterra
+|-damage|p2a: Torterra|0 fnt
+|-unboost|p1a: Tauros|def|1
+|-unboost|p1a: Tauros|spd|1
+|faint|p2a: Torterra
+|
+|upkeep
+|
+|switch|p2a: Tsareena|Tsareena, L87, F|100/100
+|turn|7
+|
+|move|p1a: Tauros|Substitute|p1a: Tauros
+|-start|p1a: Tauros|Substitute
+|-damage|p1a: Tauros|70/252
+|move|p2a: Tsareena|Power Whip|p1a: Tauros|[miss]
+|-miss|p2a: Tsareena|p1a: Tauros
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Tauros|Substitute|p1a: Tauros
+|-fail|p1a: Tauros|move: Substitute
+|move|p2a: Tsareena|Power Whip|p1a: Tauros
+|-supereffective|p1a: Tauros
+|-end|p1a: Tauros|Substitute
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Tauros|Substitute|p1a: Tauros
+|-start|p1a: Tauros|Substitute
+|-damage|p1a: Tauros|7/252
+|move|p2a: Tsareena|Power Whip|p1a: Tauros
+|-supereffective|p1a: Tauros
+|-end|p1a: Tauros|Substitute
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Tauros|Close Combat|p2a: Tsareena
+|-damage|p2a: Tsareena|0 fnt
+|-unboost|p1a: Tauros|def|1
+|-unboost|p1a: Tauros|spd|1
+|faint|p2a: Tsareena
+|
+|upkeep
+|
+|switch|p2a: Glaceon|Glaceon, L94, M|100/100
+|turn|11
+|
+|move|p1a: Tauros|Close Combat|p2a: Glaceon
+|-supereffective|p2a: Glaceon
+|-damage|p2a: Glaceon|0 fnt
+|-unboost|p1a: Tauros|def|1
+|-unboost|p1a: Tauros|spd|1
+|faint|p2a: Glaceon
+|
+|upkeep
+|
+|switch|p2a: Maushold|Maushold-Four, L76|100/100
+|turn|12
+|
+|move|p2a: Maushold|Bite|p1a: Tauros
+|-resisted|p1a: Tauros
+|-damage|p1a: Tauros|0 fnt
+|faint|p1a: Tauros
+|
+|upkeep
+|
+|switch|p1a: Gurdurr|Gurdurr, L85, M|283/283
+|turn|13
+|
+|move|p1a: Gurdurr|Mach Punch|p2a: Maushold
+|-supereffective|p2a: Maushold
+|-damage|p2a: Maushold|48/100
+|move|p2a: Maushold|Bite|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-crit|p1a: Gurdurr
+|-damage|p1a: Gurdurr|260/283
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Maushold|Bite|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|245/283
+|move|p1a: Gurdurr|Knock Off|p2a: Maushold
+|-damage|p2a: Maushold|7/100
+|-enditem|p2a: Maushold|Wide Lens|[from] move: Knock Off|[of] p1a: Gurdurr
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Maushold|Bite|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|231/283
+|cant|p1a: Gurdurr|flinch
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Maushold|Bite|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|216/283
+|cant|p1a: Gurdurr|flinch
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Maushold|Bite|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|202/283
+|move|p1a: Gurdurr|Knock Off|p2a: Maushold
+|-damage|p2a: Maushold|0 fnt
+|faint|p2a: Maushold
+|
+|upkeep
+|
+|switch|p2a: Blaziken|Blaziken, L76, F|100/100
+|turn|18
+|
+|move|p2a: Blaziken|Flare Blitz|p1a: Gurdurr
+|-damage|p1a: Gurdurr|81/283
+|-status|p1a: Gurdurr|brn
+|-damage|p2a: Blaziken|84/100|[from] Recoil
+|-damage|p2a: Blaziken|75/100|[from] item: Life Orb
+|move|p1a: Gurdurr|Knock Off|p2a: Blaziken
+|-resisted|p2a: Blaziken
+|-damage|p2a: Blaziken|44/100
+|-enditem|p2a: Blaziken|Life Orb|[from] move: Knock Off|[of] p1a: Gurdurr
+|
+|-damage|p1a: Gurdurr|64/283 brn|[from] brn
+|-ability|p2a: Blaziken|Speed Boost|boost
+|-boost|p2a: Blaziken|spe|1
+|upkeep
+|turn|19
+|
+|move|p1a: Gurdurr|Mach Punch|p2a: Blaziken
+|-damage|p2a: Blaziken|7/100
+|move|p2a: Blaziken|Flare Blitz|p1a: Gurdurr
+|-damage|p1a: Gurdurr|0 fnt
+|faint|p1a: Gurdurr
+|-damage|p2a: Blaziken|0 fnt|[from] Recoil
+|faint|p2a: Blaziken
+|
+|upkeep
+|
+|switch|p2a: Roaring Moon|Roaring Moon, L72|100/100
+|switch|p1a: Gogoat|Gogoat, L88, M|360/360
+|turn|20
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gogoat
+|-damage|p1a: Gogoat|194/360
+|move|p1a: Gogoat|Bulk Up|p1a: Gogoat
+|-boost|p1a: Gogoat|atk|1
+|-boost|p1a: Gogoat|def|1
+|
+|-heal|p1a: Gogoat|216/360|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gogoat|[from] lockedmove
+|-damage|p1a: Gogoat|104/360
+|-start|p2a: Roaring Moon|confusion|[fatigue]
+|-enditem|p2a: Roaring Moon|Lum Berry|[eat]
+|-end|p2a: Roaring Moon|confusion
+|move|p1a: Gogoat|Bulk Up|p1a: Gogoat
+|-boost|p1a: Gogoat|atk|1
+|-boost|p1a: Gogoat|def|1
+|
+|-heal|p1a: Gogoat|126/360|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|-terastallize|p1a: Gogoat|Water
+|move|p2a: Roaring Moon|Outrage|p1a: Gogoat
+|-damage|p1a: Gogoat|54/360
+|move|p1a: Gogoat|Bulk Up|p1a: Gogoat
+|-boost|p1a: Gogoat|atk|1
+|-boost|p1a: Gogoat|def|1
+|
+|-heal|p1a: Gogoat|76/360|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gogoat|[from] lockedmove
+|-damage|p1a: Gogoat|12/360
+|move|p1a: Gogoat|Bulk Up|p1a: Gogoat
+|-boost|p1a: Gogoat|atk|1
+|-boost|p1a: Gogoat|def|1
+|
+|-heal|p1a: Gogoat|34/360|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|switch|p1a: Mewtwo|Mewtwo, L72|272/272
+|-ability|p1a: Mewtwo|Pressure
+|move|p2a: Roaring Moon|Outrage|p1a: Mewtwo|[from] lockedmove
+|-damage|p1a: Mewtwo|122/272
+|-start|p2a: Roaring Moon|confusion|[fatigue]
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Mewtwo|Aura Sphere|p2a: Roaring Moon
+|-supereffective|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|40/100
+|-damage|p1a: Mewtwo|95/272|[from] item: Life Orb
+|-activate|p2a: Roaring Moon|confusion
+|-damage|p2a: Roaring Moon|26/100|[from] confusion
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Mewtwo|Aura Sphere|p2a: Roaring Moon
+|-supereffective|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|0 fnt
+|faint|p2a: Roaring Moon
+|-end|p2a: Roaring Moon|Protosynthesis|[silent]
+|-damage|p1a: Mewtwo|68/272|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

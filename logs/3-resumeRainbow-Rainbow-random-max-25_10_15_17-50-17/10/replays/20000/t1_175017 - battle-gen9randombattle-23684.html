@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23684</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23684<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23684|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Florges|Florges-Orange, L85, F|271/271
+|switch|p2a: Rabsca|Rabsca, L91, M|100/100
+|turn|1
+|
+|switch|p1a: Lucario|Lucario, L84, M|255/255
+|move|p2a: Rabsca|Psychic|p1a: Lucario
+|-damage|p1a: Lucario|96/255
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Bellossom|Bellossom, L84, F|263/263
+|move|p2a: Rabsca|Psychic|p1a: Bellossom
+|-damage|p1a: Bellossom|140/263
+|
+|-heal|p1a: Bellossom|156/263|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Rabsca|Psychic|p1a: Bellossom
+|-damage|p1a: Bellossom|30/263
+|move|p1a: Bellossom|Quiver Dance|p1a: Bellossom
+|-boost|p1a: Bellossom|spa|1
+|-boost|p1a: Bellossom|spd|1
+|-boost|p1a: Bellossom|spe|1
+|
+|-heal|p1a: Bellossom|46/263|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Bellossom|Quiver Dance|p1a: Bellossom
+|-boost|p1a: Bellossom|spa|1
+|-boost|p1a: Bellossom|spd|1
+|-boost|p1a: Bellossom|spe|1
+|move|p2a: Rabsca|Psychic|p1a: Bellossom
+|-damage|p1a: Bellossom|0 fnt
+|faint|p1a: Bellossom
+|
+|upkeep
+|
+|switch|p1a: Luvdisc|Luvdisc, M|247/247
+|turn|5
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|186/247
+|move|p2a: Rabsca|Psychic|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|125/247
+|move|p2a: Rabsca|Psychic|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|64/247
+|move|p2a: Rabsca|Psychic|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|3/247
+|move|p2a: Rabsca|Psychic|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-fail|p1a: Luvdisc|move: Substitute|[weak]
+|move|p2a: Rabsca|Psychic|p1a: Luvdisc
+|-damage|p1a: Luvdisc|0 fnt
+|faint|p1a: Luvdisc
+|
+|upkeep
+|
+|switch|p1a: Florges|Florges-Orange, L85, F|271/271
+|turn|10
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|217/271
+|
+|-heal|p1a: Florges|233/271|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|190/271
+|
+|-heal|p1a: Florges|206/271|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-crit|p1a: Florges
+|-damage|p1a: Florges|95/271
+|
+|-heal|p1a: Florges|111/271|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|84/271
+|
+|-heal|p1a: Florges|100/271|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|75/271
+|
+|-heal|p1a: Florges|91/271|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|1
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|69/271
+|
+|-heal|p1a: Florges|85/271|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Psychic|p1a: Florges
+|-damage|p1a: Florges|63/271
+|
+|-heal|p1a: Florges|79/271|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|69/271
+|
+|-heal|p1a: Florges|85/271|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|75/271
+|
+|-heal|p1a: Florges|91/271|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|80/271
+|
+|-heal|p1a: Florges|96/271|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|84/271
+|
+|-heal|p1a: Florges|100/271|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|89/271
+|-unboost|p1a: Florges|spd|1
+|
+|-heal|p1a: Florges|105/271|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|95/271
+|
+|-heal|p1a: Florges|111/271|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|100/271
+|-unboost|p1a: Florges|spd|1
+|
+|-heal|p1a: Florges|116/271|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|106/271
+|
+|-heal|p1a: Florges|122/271|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|112/271
+|
+|-heal|p1a: Florges|128/271|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|116/271
+|
+|-heal|p1a: Florges|132/271|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|121/271
+|-unboost|p1a: Florges|spd|1
+|
+|-heal|p1a: Florges|137/271|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|126/271
+|
+|-heal|p1a: Florges|142/271|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|131/271
+|-unboost|p1a: Florges|spd|1
+|
+|-heal|p1a: Florges|147/271|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|1
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|137/271
+|
+|-heal|p1a: Florges|153/271|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|142/271
+|
+|-heal|p1a: Florges|158/271|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Bug Buzz|p1a: Florges
+|-resisted|p1a: Florges
+|-damage|p1a: Florges|148/271
+|
+|-heal|p1a: Florges|164/271|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|151/271
+|
+|-heal|p1a: Florges|167/271|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|152/271
+|
+|-heal|p1a: Florges|168/271|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|153/271
+|
+|-heal|p1a: Florges|169/271|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|154/271
+|
+|-heal|p1a: Florges|170/271|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|156/271
+|
+|-heal|p1a: Florges|172/271|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-crit|p1a: Florges
+|-damage|p1a: Florges|86/271
+|
+|-heal|p1a: Florges|102/271|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|87/271
+|
+|-heal|p1a: Florges|103/271|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|90/271
+|
+|-heal|p1a: Florges|106/271|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p1a: Florges|Calm Mind|p1a: Florges
+|-boost|p1a: Florges|spa|0
+|-boost|p1a: Florges|spd|0
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|92/271
+|
+|-heal|p1a: Florges|108/271|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p1a: Florges|Tera Blast|p2a: Rabsca
+|-damage|p2a: Rabsca|18/100
+|move|p2a: Rabsca|Earth Power|p1a: Florges
+|-damage|p1a: Florges|94/271
+|
+|-heal|p1a: Florges|110/271|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|-terastallize|p1a: Florges|Ground
+|move|p1a: Florges|Tera Blast|p2a: Rabsca|[anim] Tera Blast Ground
+|-resisted|p2a: Rabsca
+|-damage|p2a: Rabsca|0 fnt
+|faint|p2a: Rabsca
+|
+|-heal|p1a: Florges|126/271|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Volbeat|Volbeat, L90, M|100/100
+|turn|44
+|
+|move|p2a: Volbeat|U-turn|p1a: Florges
+|-damage|p1a: Florges|35/271
+|
+|switch|p2a: Fezandipiti|Fezandipiti, L82, M|100/100|[from] U-turn
+|move|p1a: Florges|Tera Blast|p2a: Fezandipiti|[anim] Tera Blast Ground
+|-supereffective|p2a: Fezandipiti
+|-damage|p2a: Fezandipiti|0 fnt
+|faint|p2a: Fezandipiti
+|
+|-heal|p1a: Florges|51/271|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Meloetta|Meloetta, L82|100/100
+|turn|45
+|
+|move|p2a: Meloetta|Focus Blast|p1a: Florges|[miss]
+|-miss|p2a: Meloetta|p1a: Florges
+|move|p1a: Florges|Tera Blast|p2a: Meloetta|[anim] Tera Blast Ground
+|-damage|p2a: Meloetta|0 fnt
+|faint|p2a: Meloetta
+|
+|-heal|p1a: Florges|67/271|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Rillaboom|Rillaboom, L79, M|100/100
+|-fieldstart|move: Grassy Terrain|[from] ability: Grassy Surge|[of] p2a: Rillaboom
+|turn|46
+|
+|move|p2a: Rillaboom|Wood Hammer|p1a: Florges
+|-supereffective|p1a: Florges
+|-damage|p1a: Florges|0 fnt
+|faint|p1a: Florges
+|-damage|p2a: Rillaboom|93/100|[from] Recoil
+|-damage|p2a: Rillaboom|83/100|[from] item: Life Orb
+|
+|-heal|p2a: Rillaboom|89/100|[from] Grassy Terrain
+|upkeep
+|
+|switch|p1a: Cryogonal|Cryogonal, L89|287/287
+|turn|47
+|
+|move|p1a: Cryogonal|Freeze-Dry|p2a: Rillaboom
+|-supereffective|p2a: Rillaboom
+|-damage|p2a: Rillaboom|14/100
+|move|p2a: Rillaboom|Wood Hammer|p1a: Cryogonal
+|-damage|p1a: Cryogonal|0 fnt
+|faint|p1a: Cryogonal
+|-damage|p2a: Rillaboom|0 fnt|[from] Recoil
+|faint|p2a: Rillaboom
+|
+|upkeep
+|
+|switch|p1a: Lucario|Lucario, L84, M|96/255
+|switch|p2a: Ursaluna|Ursaluna, L79, F|100/100
+|turn|48
+|
+|move|p1a: Lucario|Focus Blast|p2a: Ursaluna
+|-supereffective|p2a: Ursaluna
+|-damage|p2a: Ursaluna|0 fnt
+|faint|p2a: Ursaluna
+|-damage|p1a: Lucario|71/255|[from] item: Life Orb
+|
+|-heal|p1a: Lucario|86/255|[from] Grassy Terrain
+|upkeep
+|
+|switch|p2a: Volbeat|Volbeat, L90, M|100/100
+|turn|49
+|
+|move|p2a: Volbeat|U-turn|p1a: Lucario
+|-resisted|p1a: Lucario
+|-damage|p1a: Lucario|66/255
+|move|p1a: Lucario|Focus Blast|p2a: Volbeat
+|-resisted|p2a: Volbeat
+|-damage|p2a: Volbeat|66/100
+|-damage|p1a: Lucario|41/255|[from] item: Life Orb
+|
+|-heal|p2a: Volbeat|72/100|[from] Grassy Terrain
+|-heal|p1a: Lucario|56/255|[from] Grassy Terrain
+|upkeep
+|turn|50
+|
+|move|p2a: Volbeat|U-turn|p1a: Lucario
+|-resisted|p1a: Lucario
+|-damage|p1a: Lucario|37/255
+|move|p1a: Lucario|Focus Blast|p2a: Volbeat
+|-resisted|p2a: Volbeat
+|-damage|p2a: Volbeat|40/100
+|-damage|p1a: Lucario|12/255|[from] item: Life Orb
+|
+|-heal|p2a: Volbeat|47/100|[from] Grassy Terrain
+|-heal|p1a: Lucario|27/255|[from] Grassy Terrain
+|-fieldend|move: Grassy Terrain
+|upkeep
+|turn|51
+|
+|move|p2a: Volbeat|U-turn|p1a: Lucario
+|-resisted|p1a: Lucario
+|-damage|p1a: Lucario|6/255
+|move|p1a: Lucario|Focus Blast|p2a: Volbeat|[miss]
+|-miss|p1a: Lucario|p2a: Volbeat
+|
+|upkeep
+|turn|52
+|
+|move|p2a: Volbeat|U-turn|p1a: Lucario
+|-resisted|p1a: Lucario
+|-damage|p1a: Lucario|0 fnt
+|faint|p1a: Lucario
+|
+|upkeep
+|
+|switch|p1a: Drifblim|Drifblim, L86, M|396/396
+|turn|53
+|
+|move|p2a: Volbeat|U-turn|p1a: Drifblim
+|-resisted|p1a: Drifblim
+|-damage|p1a: Drifblim|370/396
+|move|p1a: Drifblim|Air Slash|p2a: Volbeat
+|-supereffective|p2a: Volbeat
+|-damage|p2a: Volbeat|0 fnt
+|faint|p2a: Volbeat
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23498</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23498<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23498|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Arceus|Arceus-Dark, L71|288/288
+|switch|p2a: Toxtricity|Toxtricity, L82, F|100/100
+|turn|1
+|
+|switch|p1a: Typhlosion|Typhlosion, L84, F|267/267
+|move|p2a: Toxtricity|Boomburst|p1a: Typhlosion
+|-damage|p1a: Typhlosion|66/267
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Toxtricity
+|-supereffective|p2a: Toxtricity
+|-damage|p2a: Toxtricity|0 fnt
+|faint|p2a: Toxtricity
+|
+|upkeep
+|
+|switch|p2a: Fezandipiti|Fezandipiti, L82, M|100/100
+|turn|3
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Fezandipiti
+|-supereffective|p2a: Fezandipiti
+|-damage|p2a: Fezandipiti|82/100
+|-status|p2a: Fezandipiti|brn
+|move|p2a: Fezandipiti|Gunk Shot|p1a: Typhlosion
+|-damage|p1a: Typhlosion|5/267
+|
+|-damage|p2a: Fezandipiti|76/100 brn|[from] brn
+|upkeep
+|turn|4
+|
+|-terastallize|p1a: Typhlosion|Fire
+|move|p1a: Typhlosion|Scorching Sands|p2a: Fezandipiti
+|-supereffective|p2a: Fezandipiti
+|-crit|p2a: Fezandipiti
+|-damage|p2a: Fezandipiti|46/100 brn
+|move|p2a: Fezandipiti|Gunk Shot|p1a: Typhlosion|[miss]
+|-miss|p2a: Fezandipiti|p1a: Typhlosion
+|
+|-damage|p2a: Fezandipiti|40/100 brn|[from] brn
+|upkeep
+|turn|5
+|
+|switch|p1a: Arceus|Arceus-Dark, L71|288/288
+|move|p2a: Fezandipiti|Gunk Shot|p1a: Arceus
+|-damage|p1a: Arceus|234/288
+|-status|p1a: Arceus|tox|[from] ability: Toxic Chain|[of] p2a: Fezandipiti
+|
+|-damage|p1a: Arceus|216/288 tox|[from] psn
+|-damage|p2a: Fezandipiti|34/100 brn|[from] brn
+|upkeep
+|turn|6
+|
+|move|p1a: Arceus|Sludge Bomb|p2a: Fezandipiti
+|-damage|p2a: Fezandipiti|23/100 brn
+|move|p2a: Fezandipiti|Gunk Shot|p1a: Arceus
+|-damage|p1a: Arceus|163/288 tox
+|
+|-damage|p1a: Arceus|127/288 tox|[from] psn
+|-damage|p2a: Fezandipiti|17/100 brn|[from] brn
+|upkeep
+|turn|7
+|
+|move|p1a: Arceus|Sludge Bomb|p2a: Fezandipiti
+|-damage|p2a: Fezandipiti|7/100 brn
+|move|p2a: Fezandipiti|Gunk Shot|p1a: Arceus
+|-damage|p1a: Arceus|78/288 tox
+|
+|-damage|p1a: Arceus|24/288 tox|[from] psn
+|-damage|p2a: Fezandipiti|0 fnt|[from] brn
+|faint|p2a: Fezandipiti
+|upkeep
+|
+|switch|p2a: Mandibuzz|Mandibuzz, L85, F|100/100
+|turn|8
+|
+|move|p1a: Arceus|Sludge Bomb|p2a: Mandibuzz
+|-damage|p2a: Mandibuzz|85/100
+|move|p2a: Mandibuzz|Brave Bird|p1a: Arceus
+|-damage|p1a: Arceus|0 fnt
+|faint|p1a: Arceus
+|-damage|p2a: Mandibuzz|83/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Decidueye|Decidueye, L88, M|281/281
+|turn|9
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Decidueye
+|-supereffective|p1a: Decidueye
+|-damage|p1a: Decidueye|81/281
+|-damage|p2a: Mandibuzz|63/100|[from] Recoil
+|move|p1a: Decidueye|Defog|p2a: Mandibuzz
+|-unboost|p2a: Mandibuzz|evasion|1
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Decidueye
+|-supereffective|p1a: Decidueye
+|-damage|p1a: Decidueye|0 fnt
+|faint|p1a: Decidueye
+|-damage|p2a: Mandibuzz|54/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Typhlosion|Typhlosion, L84, F, tera:Fire|5/267
+|turn|11
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Mandibuzz
+|-immune|p2a: Mandibuzz
+|move|p2a: Mandibuzz|Brave Bird|p1a: Typhlosion
+|-damage|p1a: Typhlosion|0 fnt
+|faint|p1a: Typhlosion
+|-damage|p2a: Mandibuzz|54/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Hitmonchan|Hitmonchan, L87, M|229/229
+|turn|12
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Hitmonchan
+|-supereffective|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|31/229
+|-damage|p2a: Mandibuzz|34/100|[from] Recoil
+|move|p1a: Hitmonchan|Poison Jab|p2a: Mandibuzz
+|-damage|p2a: Mandibuzz|17/100
+|
+|-heal|p1a: Hitmonchan|45/229|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Mandibuzz|Brave Bird|p1a: Hitmonchan
+|-supereffective|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|0 fnt
+|faint|p1a: Hitmonchan
+|-damage|p2a: Mandibuzz|13/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Donphan|Donphan, L84, F|288/288
+|turn|14
+|
+|move|p1a: Donphan|Ice Shard|p2a: Mandibuzz
+|-supereffective|p2a: Mandibuzz
+|-damage|p2a: Mandibuzz|0 fnt
+|faint|p2a: Mandibuzz
+|
+|upkeep
+|
+|switch|p2a: Poliwrath|Poliwrath, L88, M|100/100
+|turn|15
+|
+|move|p1a: Donphan|Ice Shard|p2a: Poliwrath
+|-resisted|p2a: Poliwrath
+|-damage|p2a: Poliwrath|95/100
+|move|p2a: Poliwrath|Close Combat|p1a: Donphan
+|-damage|p1a: Donphan|188/288
+|-unboost|p2a: Poliwrath|def|1
+|-unboost|p2a: Poliwrath|spd|1
+|
+|-heal|p1a: Donphan|206/288|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Donphan|Ice Shard|p2a: Poliwrath
+|-resisted|p2a: Poliwrath
+|-damage|p2a: Poliwrath|87/100
+|move|p2a: Poliwrath|Close Combat|p1a: Donphan
+|-damage|p1a: Donphan|101/288
+|-unboost|p2a: Poliwrath|def|1
+|-unboost|p2a: Poliwrath|spd|1
+|
+|-heal|p1a: Donphan|119/288|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Donphan|Ice Shard|p2a: Poliwrath
+|-resisted|p2a: Poliwrath
+|-damage|p2a: Poliwrath|78/100
+|move|p2a: Poliwrath|Close Combat|p1a: Donphan
+|-damage|p1a: Donphan|14/288
+|-unboost|p2a: Poliwrath|def|1
+|-unboost|p2a: Poliwrath|spd|1
+|
+|-heal|p1a: Donphan|32/288|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Donphan|Ice Shard|p2a: Poliwrath
+|-resisted|p2a: Poliwrath
+|-damage|p2a: Poliwrath|64/100
+|move|p2a: Poliwrath|Close Combat|p1a: Donphan
+|-damage|p1a: Donphan|0 fnt
+|-unboost|p2a: Poliwrath|def|1
+|-unboost|p2a: Poliwrath|spd|1
+|faint|p1a: Donphan
+|
+|upkeep
+|
+|switch|p1a: Brambleghast|Brambleghast, L88, M|240/240
+|turn|19
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|180/240
+|move|p2a: Poliwrath|Close Combat|p1a: Brambleghast
+|-immune|p1a: Brambleghast
+|
+|-heal|p1a: Brambleghast|195/240|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Close Combat|p1a: Brambleghast
+|-immune|p1a: Brambleghast
+|
+|-heal|p1a: Brambleghast|210/240|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Close Combat|p1a: Brambleghast
+|-immune|p1a: Brambleghast
+|
+|-heal|p1a: Brambleghast|225/240|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Close Combat|p1a: Brambleghast
+|-immune|p1a: Brambleghast
+|
+|-heal|p1a: Brambleghast|240/240|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|180/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|195/240|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|-heal|p1a: Brambleghast|210/240|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|150/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|165/240|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|-heal|p1a: Brambleghast|180/240|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|120/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|135/240|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|-heal|p1a: Brambleghast|150/240|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|90/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|105/240|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|-heal|p1a: Brambleghast|120/240|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|60/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|75/240|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-fail|p1a: Brambleghast|move: Substitute
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|
+|-heal|p1a: Brambleghast|90/240|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Brambleghast|Substitute|p1a: Brambleghast
+|-start|p1a: Brambleghast|Substitute
+|-damage|p1a: Brambleghast|30/240
+|move|p2a: Poliwrath|Liquidation|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-activate|p1a: Brambleghast|move: Substitute|[damage]
+|
+|-heal|p1a: Brambleghast|45/240|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Brambleghast|Poltergeist|p2a: Poliwrath
+|-activate|p2a: Poliwrath|move: Poltergeist|Assault Vest
+|-damage|p2a: Poliwrath|0 fnt
+|faint|p2a: Poliwrath
+|
+|-heal|p1a: Brambleghast|60/240|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Sunflora|Sunflora, M|100/100
+|turn|36
+|
+|move|p1a: Brambleghast|Poltergeist|p2a: Sunflora
+|-activate|p2a: Sunflora|move: Poltergeist|Choice Specs
+|-damage|p2a: Sunflora|42/100
+|move|p2a: Sunflora|Leaf Storm|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-end|p1a: Brambleghast|Substitute
+|-unboost|p2a: Sunflora|spa|2
+|
+|-heal|p1a: Brambleghast|75/240|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Brambleghast|Poltergeist|p2a: Sunflora
+|-activate|p2a: Sunflora|move: Poltergeist|Choice Specs
+|-damage|p2a: Sunflora|0 fnt
+|faint|p2a: Sunflora
+|
+|-heal|p1a: Brambleghast|90/240|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Ursaluna|Ursaluna, L79, F|100/100
+|turn|38
+|
+|move|p1a: Brambleghast|Poltergeist|p2a: Ursaluna
+|-immune|p2a: Ursaluna
+|move|p2a: Ursaluna|Headlong Rush|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-damage|p1a: Brambleghast|12/240
+|-unboost|p2a: Ursaluna|def|1
+|-unboost|p2a: Ursaluna|spd|1
+|
+|-heal|p1a: Brambleghast|27/240|[from] item: Leftovers
+|-status|p2a: Ursaluna|brn|[from] item: Flame Orb
+|upkeep
+|turn|39
+|
+|move|p1a: Brambleghast|Poltergeist|p2a: Ursaluna
+|-immune|p2a: Ursaluna
+|move|p2a: Ursaluna|Headlong Rush|p1a: Brambleghast
+|-resisted|p1a: Brambleghast
+|-damage|p1a: Brambleghast|0 fnt
+|-unboost|p2a: Ursaluna|def|1
+|-unboost|p2a: Ursaluna|spd|1
+|faint|p1a: Brambleghast
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

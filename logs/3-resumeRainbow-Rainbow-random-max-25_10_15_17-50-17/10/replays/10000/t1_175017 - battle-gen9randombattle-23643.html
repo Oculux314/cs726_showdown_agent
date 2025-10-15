@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23643</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23643<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23643|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Darkrai|Darkrai, L77|234/234
+|switch|p2a: Regirock|Regirock, L83|100/100
+|turn|1
+|
+|switch|p1a: Morpeko|Morpeko, L88, M|245/245
+|move|p2a: Regirock|Stone Edge|p1a: Morpeko|[miss]
+|-miss|p2a: Regirock|p1a: Morpeko
+|
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|2
+|
+|move|p1a: Morpeko|Aura Wheel|p2a: Regirock
+|-damage|p2a: Regirock|75/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Regirock|Stone Edge|p1a: Morpeko
+|-damage|p1a: Morpeko|104/245
+|
+|-heal|p1a: Morpeko|119/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko||[from] ability: Hunger Switch
+|upkeep
+|turn|3
+|
+|switch|p1a: Perrserker|Perrserker, L89, F|269/269
+|move|p2a: Regirock|Stone Edge|p1a: Perrserker
+|-resisted|p1a: Perrserker
+|-crit|p1a: Perrserker
+|-damage|p1a: Perrserker|203/269
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Morpeko|Morpeko, L88, M|119/245
+|move|p2a: Regirock|Stone Edge|p1a: Morpeko|[miss]
+|-miss|p2a: Regirock|p1a: Morpeko
+|
+|-heal|p1a: Morpeko|134/245|[from] item: Leftovers
+|-formechange|p1a: Morpeko|Morpeko-Hangry||[from] ability: Hunger Switch
+|upkeep
+|turn|5
+|
+|move|p1a: Morpeko|Aura Wheel|p2a: Regirock
+|-damage|p2a: Regirock|50/100
+|-boost|p1a: Morpeko|spe|1
+|move|p2a: Regirock|Stone Edge|p1a: Morpeko
+|-damage|p1a: Morpeko|0 fnt
+|faint|p1a: Morpeko
+|
+|upkeep
+|
+|switch|p1a: Pelipper|Pelipper, L86, M|243/243
+|-weather|RainDance|[from] ability: Drizzle|[of] p1a: Pelipper
+|turn|6
+|
+|move|p1a: Pelipper|Surf|p2a: Regirock
+|-supereffective|p2a: Regirock
+|-damage|p2a: Regirock|0 fnt
+|faint|p2a: Regirock
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p2a: Mew|Mew, L82|100/100
+|turn|7
+|
+|move|p2a: Mew|Close Combat|p1a: Pelipper
+|-resisted|p1a: Pelipper
+|-damage|p1a: Pelipper|195/243
+|-unboost|p2a: Mew|def|1
+|-unboost|p2a: Mew|spd|1
+|-damage|p2a: Mew|91/100|[from] item: Life Orb
+|move|p1a: Pelipper|Surf|p2a: Mew
+|-damage|p2a: Mew|24/100
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|8
+|
+|move|p2a: Mew|Close Combat|p1a: Pelipper
+|-resisted|p1a: Pelipper
+|-damage|p1a: Pelipper|151/243
+|-unboost|p2a: Mew|def|1
+|-unboost|p2a: Mew|spd|1
+|-damage|p2a: Mew|15/100|[from] item: Life Orb
+|move|p1a: Pelipper|Knock Off|p2a: Mew
+|-supereffective|p2a: Mew
+|-damage|p2a: Mew|0 fnt
+|-enditem|p2a: Mew|Life Orb|[from] move: Knock Off|[of] p1a: Pelipper
+|faint|p2a: Mew
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p2a: Lucario|Lucario, L84, M|100/100
+|turn|9
+|
+|move|p2a: Lucario|Focus Blast|p1a: Pelipper
+|-resisted|p1a: Pelipper
+|-damage|p1a: Pelipper|47/243
+|-damage|p2a: Lucario|91/100|[from] item: Life Orb
+|move|p1a: Pelipper|Knock Off|p2a: Lucario
+|-resisted|p2a: Lucario
+|-damage|p2a: Lucario|80/100
+|-enditem|p2a: Lucario|Life Orb|[from] move: Knock Off|[of] p1a: Pelipper
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|10
+|
+|move|p2a: Lucario|Focus Blast|p1a: Pelipper|[miss]
+|-miss|p2a: Lucario|p1a: Pelipper
+|move|p1a: Pelipper|Surf|p2a: Lucario
+|-damage|p2a: Lucario|13/100
+|
+|-weather|none
+|upkeep
+|turn|11
+|
+|move|p2a: Lucario|Focus Blast|p1a: Pelipper
+|-resisted|p1a: Pelipper
+|-crit|p1a: Pelipper
+|-damage|p1a: Pelipper|0 fnt
+|faint|p1a: Pelipper
+|
+|upkeep
+|
+|switch|p1a: Darkrai|Darkrai, L77|234/234
+|turn|12
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Lucario
+|-resisted|p2a: Lucario
+|-damage|p2a: Lucario|0 fnt
+|faint|p2a: Lucario
+|-damage|p1a: Darkrai|211/234|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Squawkabilly|Squawkabilly-Yellow, L89, F|100/100
+|turn|13
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Squawkabilly
+|-damage|p2a: Squawkabilly|41/100
+|-damage|p1a: Darkrai|188/234|[from] item: Life Orb
+|move|p2a: Squawkabilly|Brave Bird|p1a: Darkrai|[miss]
+|-miss|p2a: Squawkabilly|p1a: Darkrai
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Squawkabilly
+|-damage|p2a: Squawkabilly|0 fnt
+|faint|p2a: Squawkabilly
+|-damage|p1a: Darkrai|165/234|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Pyroar|Pyroar, L88, F|100/100
+|-ability|p2a: Pyroar|Unnerve
+|turn|15
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Pyroar
+|-damage|p2a: Pyroar|53/100
+|-damage|p1a: Darkrai|142/234|[from] item: Life Orb
+|cant|p2a: Pyroar|flinch
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Pyroar
+|-damage|p2a: Pyroar|6/100
+|-damage|p1a: Darkrai|119/234|[from] item: Life Orb
+|cant|p2a: Pyroar|flinch
+|
+|upkeep
+|turn|17
+|
+|-terastallize|p1a: Darkrai|Poison
+|move|p2a: Pyroar|Fire Blast|p1a: Darkrai|[miss]
+|-miss|p2a: Pyroar|p1a: Darkrai
+|move|p1a: Darkrai|Dark Pulse|p2a: Pyroar
+|-damage|p2a: Pyroar|0 fnt
+|faint|p2a: Pyroar
+|-damage|p1a: Darkrai|96/234|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Kyogre|Kyogre, L71|100/100
+|-weather|RainDance|[from] ability: Drizzle|[of] p2a: Kyogre
+|turn|18
+|
+|move|p1a: Darkrai|Dark Pulse|p2a: Kyogre
+|-damage|p2a: Kyogre|65/100
+|-damage|p1a: Darkrai|73/234|[from] item: Life Orb
+|move|p2a: Kyogre|Origin Pulse|p1a: Darkrai
+|-damage|p1a: Darkrai|0 fnt
+|faint|p1a: Darkrai
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Kyogre|72/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Oricorio|Oricorio-Pa'u, L87, M|272/272
+|turn|19
+|
+|move|p1a: Oricorio|Roost||[still]
+|-fail|p1a: Oricorio|heal
+|move|p2a: Kyogre|Origin Pulse|p1a: Oricorio
+|-damage|p1a: Oricorio|82/272
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Kyogre|78/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Oricorio|Roost|p1a: Oricorio
+|-heal|p1a: Oricorio|218/272
+|-singleturn|p1a: Oricorio|move: Roost
+|move|p2a: Kyogre|Origin Pulse|p1a: Oricorio
+|-damage|p1a: Oricorio|13/272
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Kyogre|84/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Oricorio|Roost|p1a: Oricorio
+|-heal|p1a: Oricorio|149/272
+|-singleturn|p1a: Oricorio|move: Roost
+|move|p2a: Kyogre|Origin Pulse|p1a: Oricorio
+|-damage|p1a: Oricorio|0 fnt
+|faint|p1a: Oricorio
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Kyogre|90/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Perrserker|Perrserker, L89, F|203/269
+|turn|22
+|
+|move|p2a: Kyogre|Origin Pulse|p1a: Perrserker
+|-damage|p1a: Perrserker|0 fnt
+|faint|p1a: Perrserker
+|
+|-weather|none
+|-heal|p2a: Kyogre|96/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Espeon|Espeon, L84, M|246/246
+|turn|23
+|
+|move|p1a: Espeon|Psychic|p2a: Kyogre
+|-damage|p2a: Kyogre|36/100
+|move|p2a: Kyogre|Origin Pulse|p1a: Espeon
+|-damage|p1a: Espeon|137/246
+|
+|-heal|p2a: Kyogre|42/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Espeon|Psychic|p2a: Kyogre
+|-damage|p2a: Kyogre|0 fnt
+|faint|p2a: Kyogre
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

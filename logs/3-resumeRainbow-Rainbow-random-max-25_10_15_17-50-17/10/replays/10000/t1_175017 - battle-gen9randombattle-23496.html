@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23496</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23496<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23496|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Venusaur|Venusaur, L84, F|272/272
+|switch|p2a: Inteleon|Inteleon, L81, M|100/100
+|turn|1
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-damage|p1a: Venusaur|188/272
+|move|p1a: Venusaur|Sludge Bomb|p2a: Inteleon
+|-damage|p2a: Inteleon|48/100
+|-status|p2a: Inteleon|psn
+|
+|-heal|p1a: Venusaur|205/272|[from] item: Leftovers
+|-damage|p2a: Inteleon|36/100 psn|[from] psn
+|upkeep
+|turn|2
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-damage|p1a: Venusaur|116/272
+|move|p1a: Venusaur|Leech Seed|p2a: Inteleon|[miss]
+|-miss|p1a: Venusaur|p2a: Inteleon
+|
+|-heal|p1a: Venusaur|133/272|[from] item: Leftovers
+|-damage|p2a: Inteleon|24/100 psn|[from] psn
+|upkeep
+|turn|3
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Venusaur|[miss]
+|-miss|p2a: Inteleon|p1a: Venusaur
+|move|p1a: Venusaur|Substitute|p1a: Venusaur
+|-start|p1a: Venusaur|Substitute
+|-damage|p1a: Venusaur|65/272
+|
+|-heal|p1a: Venusaur|82/272|[from] item: Leftovers
+|-damage|p2a: Inteleon|11/100 psn|[from] psn
+|upkeep
+|turn|4
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Venusaur
+|-resisted|p1a: Venusaur
+|-end|p1a: Venusaur|Substitute
+|move|p1a: Venusaur|Substitute|p1a: Venusaur
+|-start|p1a: Venusaur|Substitute
+|-damage|p1a: Venusaur|14/272
+|
+|-heal|p1a: Venusaur|31/272|[from] item: Leftovers
+|-damage|p2a: Inteleon|0 fnt|[from] psn
+|faint|p2a: Inteleon
+|upkeep
+|
+|switch|p2a: Gouging Fire|Gouging Fire, L74|100/100
+|turn|5
+|
+|move|p1a: Venusaur|Substitute|p1a: Venusaur
+|-fail|p1a: Venusaur|move: Substitute
+|move|p2a: Gouging Fire|Outrage|p1a: Venusaur
+|-end|p1a: Venusaur|Substitute
+|
+|-heal|p1a: Venusaur|48/272|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Venusaur|Substitute|p1a: Venusaur
+|-fail|p1a: Venusaur|move: Substitute|[weak]
+|move|p2a: Gouging Fire|Outrage|p1a: Venusaur|[from] lockedmove
+|-damage|p1a: Venusaur|0 fnt
+|faint|p1a: Venusaur
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|upkeep
+|
+|switch|p1a: Milotic|Milotic, L83, M|293/293
+|turn|7
+|
+|move|p1a: Milotic|Recover||[still]
+|-fail|p1a: Milotic|heal
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Milotic
+|-damage|p1a: Milotic|166/293
+|
+|-heal|p1a: Milotic|184/293|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Milotic|Recover|p1a: Milotic
+|-heal|p1a: Milotic|293/293
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Milotic|[from] lockedmove
+|-damage|p1a: Milotic|163/293
+|
+|-heal|p1a: Milotic|181/293|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Milotic|Recover|p1a: Milotic
+|-heal|p1a: Milotic|293/293
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|93/100|[from] confusion
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Milotic|Recover||[still]
+|-fail|p1a: Milotic|heal
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Milotic
+|-damage|p1a: Milotic|172/293
+|
+|-heal|p1a: Milotic|190/293|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Milotic|Recover|p1a: Milotic
+|-heal|p1a: Milotic|293/293
+|-end|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Milotic|[from] lockedmove
+|-damage|p1a: Milotic|170/293
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|-heal|p1a: Milotic|188/293|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Milotic|Recover|p1a: Milotic
+|-heal|p1a: Milotic|293/293
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|85/100|[from] confusion
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Milotic|Recover||[still]
+|-fail|p1a: Milotic|heal
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|76/100|[from] confusion
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Milotic|Recover||[still]
+|-fail|p1a: Milotic|heal
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|68/100|[from] confusion
+|
+|upkeep
+|turn|15
+|
+|-end|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Milotic
+|-damage|p1a: Milotic|166/293
+|move|p1a: Milotic|Dragon Tail|p2a: Gouging Fire
+|-supereffective|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|50/100
+|-end|p2a: Gouging Fire|Protosynthesis|[silent]
+|drag|p2a: Terapagos|Terapagos, L77, M|100/100
+|-activate|p2a: Terapagos|ability: Tera Shift
+|detailschange|p2a: Terapagos|Terapagos-Terastal, L77, M
+|-heal|p2a: Terapagos|100/100|[silent]
+|
+|-heal|p1a: Milotic|184/293|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Terapagos|Tera Starstorm|p1a: Milotic
+|-damage|p1a: Milotic|94/293
+|move|p1a: Milotic|Dragon Tail|p2a: Terapagos
+|-activate|p2a: Terapagos|ability: Tera Shell
+|-resisted|p2a: Terapagos
+|-damage|p2a: Terapagos|95/100
+|drag|p2a: Bombirdier|Bombirdier, L85, M|100/100
+|
+|-heal|p1a: Milotic|112/293|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Bombirdier|Brave Bird|p1a: Milotic
+|-damage|p1a: Milotic|0 fnt
+|faint|p1a: Milotic
+|-damage|p2a: Bombirdier|86/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Gurdurr|Gurdurr, L85, F|283/283
+|turn|18
+|
+|move|p2a: Bombirdier|Brave Bird|p1a: Gurdurr
+|-supereffective|p1a: Gurdurr
+|-damage|p1a: Gurdurr|113/283
+|-damage|p2a: Bombirdier|64/100|[from] Recoil
+|move|p1a: Gurdurr|Knock Off|p2a: Bombirdier
+|-resisted|p2a: Bombirdier
+|-damage|p2a: Bombirdier|49/100
+|-enditem|p2a: Bombirdier|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Gurdurr
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Bombirdier|Brave Bird|p1a: Gurdurr
+|-supereffective|p1a: Gurdurr
+|-crit|p1a: Gurdurr
+|-damage|p1a: Gurdurr|0 fnt
+|faint|p1a: Gurdurr
+|-damage|p2a: Bombirdier|35/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Seviper|Seviper, L93, F|287/287
+|turn|20
+|
+|move|p2a: Bombirdier|Brave Bird|p1a: Seviper
+|-damage|p1a: Seviper|115/287
+|-damage|p2a: Bombirdier|13/100|[from] Recoil
+|move|p1a: Seviper|Swords Dance|p1a: Seviper
+|-boost|p1a: Seviper|atk|2
+|
+|-heal|p1a: Seviper|132/287|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Bombirdier|Brave Bird|p1a: Seviper
+|-damage|p1a: Seviper|0 fnt
+|faint|p1a: Seviper
+|-damage|p2a: Bombirdier|0 fnt|[from] Recoil
+|faint|p2a: Bombirdier
+|
+|upkeep
+|
+|switch|p2a: Gouging Fire|Gouging Fire, L74|50/100
+|switch|p1a: Cresselia|Cresselia, L80, F|323/323
+|turn|22
+|
+|-terastallize|p1a: Cresselia|Electric
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-fail|p1a: Cresselia|heal
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia
+|-damage|p1a: Cresselia|217/323
+|
+|-heal|p1a: Cresselia|237/323|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia|[from] lockedmove
+|-damage|p1a: Cresselia|215/323
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|-heal|p1a: Cresselia|235/323|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia
+|-damage|p1a: Cresselia|221/323
+|
+|-heal|p1a: Cresselia|241/323|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|42/100|[from] confusion
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-fail|p1a: Cresselia|heal
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia
+|-damage|p1a: Cresselia|214/323
+|
+|-heal|p1a: Cresselia|234/323|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|-end|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia|[from] lockedmove
+|-damage|p1a: Cresselia|223/323
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|-heal|p1a: Cresselia|243/323|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia
+|-damage|p1a: Cresselia|226/323
+|
+|-heal|p1a: Cresselia|246/323|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Cresselia|Moonlight|p1a: Cresselia
+|-heal|p1a: Cresselia|323/323
+|-end|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Cresselia|[from] lockedmove
+|-damage|p1a: Cresselia|214/323
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|-heal|p1a: Cresselia|234/323|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Gouging Fire
+|-resisted|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|27/100
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|19/100|[from] confusion
+|
+|-heal|p1a: Cresselia|254/323|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Gouging Fire
+|-resisted|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|3/100
+|-activate|p2a: Gouging Fire|confusion
+|-damage|p2a: Gouging Fire|0 fnt|[from] confusion
+|faint|p2a: Gouging Fire
+|-end|p2a: Gouging Fire|Protosynthesis|[silent]
+|
+|-heal|p1a: Cresselia|274/323|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Terapagos|Terapagos-Terastal, L77, M|95/100
+|turn|32
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Terapagos
+|-damage|p2a: Terapagos|69/100
+|move|p2a: Terapagos|Tera Starstorm|p1a: Cresselia
+|-damage|p1a: Cresselia|177/323
+|
+|-heal|p1a: Cresselia|197/323|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Terapagos
+|-damage|p2a: Terapagos|43/100
+|move|p2a: Terapagos|Tera Starstorm|p1a: Cresselia
+|-damage|p1a: Cresselia|103/323
+|
+|-heal|p1a: Cresselia|123/323|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Terapagos
+|-damage|p2a: Terapagos|20/100
+|move|p2a: Terapagos|Tera Starstorm|p1a: Cresselia
+|-damage|p1a: Cresselia|29/323
+|
+|-heal|p1a: Cresselia|49/323|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Cresselia|Thunderbolt|p2a: Terapagos
+|-damage|p2a: Terapagos|0 fnt
+|faint|p2a: Terapagos
+|
+|-heal|p1a: Cresselia|69/323|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Zapdos|Zapdos, L78|100/100
+|turn|36
+|
+|move|p2a: Zapdos|Hurricane|p1a: Cresselia
+|-resisted|p1a: Cresselia
+|-damage|p1a: Cresselia|15/323
+|-start|p1a: Cresselia|confusion
+|-activate|p1a: Cresselia|confusion
+|move|p1a: Cresselia|Thunderbolt|p2a: Zapdos
+|-damage|p2a: Zapdos|73/100
+|
+|-heal|p1a: Cresselia|35/323|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Zapdos|Hurricane|p1a: Cresselia
+|-resisted|p1a: Cresselia
+|-damage|p1a: Cresselia|0 fnt
+|faint|p1a: Cresselia
+|
+|upkeep
+|
+|switch|p1a: Dialga|Dialga, L73|266/266
+|-ability|p1a: Dialga|Pressure
+|turn|38
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga|[miss]
+|-miss|p2a: Zapdos|p1a: Dialga
+|move|p1a: Dialga|Thunder Wave|p2a: Zapdos
+|-immune|p2a: Zapdos
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|200/266
+|-start|p1a: Dialga|confusion
+|-activate|p1a: Dialga|confusion
+|-damage|p1a: Dialga|176/266|[from] confusion
+|
+|-heal|p1a: Dialga|192/266|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga|[miss]
+|-miss|p2a: Zapdos|p1a: Dialga
+|-activate|p1a: Dialga|confusion
+|move|p1a: Dialga|Thunder Wave|p2a: Zapdos|[miss]
+|-miss|p1a: Dialga|p2a: Zapdos
+|
+|-heal|p1a: Dialga|208/266|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|142/266
+|-end|p1a: Dialga|confusion
+|move|p1a: Dialga|Thunder Wave|p2a: Zapdos
+|-immune|p2a: Zapdos
+|
+|-heal|p1a: Dialga|158/266|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|89/266
+|move|p1a: Dialga|Thunder Wave|p2a: Zapdos
+|-immune|p2a: Zapdos
+|
+|-heal|p1a: Dialga|105/266|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|39/266
+|-start|p1a: Dialga|confusion
+|-activate|p1a: Dialga|confusion
+|-damage|p1a: Dialga|15/266|[from] confusion
+|
+|-heal|p1a: Dialga|31/266|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p2a: Zapdos|Hurricane|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|0 fnt
+|faint|p1a: Dialga
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23712</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23712<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23712|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Drednaw|Drednaw, L81, F|278/278
+|switch|p2a: Haxorus|Haxorus, L77, F|100/100
+|-ability|p2a: Haxorus|Mold Breaker
+|turn|1
+|
+|switch|p1a: Sceptile|Sceptile, L87, F|264/264
+|move|p2a: Haxorus|Outrage|p1a: Sceptile
+|-damage|p1a: Sceptile|93/264
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Sceptile|Focus Blast|p2a: Haxorus
+|-damage|p2a: Haxorus|33/100
+|-damage|p1a: Sceptile|67/264|[from] item: Life Orb
+|move|p2a: Haxorus|Outrage|p1a: Sceptile|[from] lockedmove
+|-damage|p1a: Sceptile|0 fnt
+|faint|p1a: Sceptile
+|
+|upkeep
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, M|312/312
+|turn|3
+|
+|move|p2a: Haxorus|Outrage|p1a: Honchkrow|[from] lockedmove
+|-damage|p1a: Honchkrow|92/312
+|-start|p2a: Haxorus|confusion|[fatigue]
+|-enditem|p2a: Haxorus|Lum Berry|[eat]
+|-end|p2a: Haxorus|confusion
+|move|p1a: Honchkrow|Heat Wave|p2a: Haxorus
+|-resisted|p2a: Haxorus
+|-damage|p2a: Haxorus|13/100
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Ribombee|Ribombee, L83, M|235/235
+|move|p2a: Haxorus|Outrage|p1a: Ribombee
+|-immune|p1a: Ribombee
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Ribombee|Bug Buzz|p2a: Haxorus
+|-damage|p2a: Haxorus|0 fnt
+|faint|p2a: Haxorus
+|
+|upkeep
+|
+|switch|p2a: Manaphy|Manaphy, L78|100/100
+|turn|6
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, M|92/312
+|move|p2a: Manaphy|Energy Ball|p1a: Honchkrow
+|-resisted|p1a: Honchkrow
+|-damage|p1a: Honchkrow|52/312
+|
+|upkeep
+|turn|7
+|
+|switch|p1a: Ribombee|Ribombee, L83, M|235/235
+|move|p2a: Manaphy|Energy Ball|p1a: Ribombee
+|-resisted|p1a: Ribombee
+|-damage|p1a: Ribombee|199/235
+|
+|upkeep
+|turn|8
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, M|52/312
+|move|p2a: Manaphy|Energy Ball|p1a: Honchkrow
+|-resisted|p1a: Honchkrow
+|-damage|p1a: Honchkrow|12/312
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Honchkrow
+|-resisted|p1a: Honchkrow
+|-damage|p1a: Honchkrow|0 fnt
+|faint|p1a: Honchkrow
+|
+|upkeep
+|
+|switch|p1a: Ribombee|Ribombee, L83, M|199/235
+|turn|10
+|
+|move|p1a: Ribombee|Bug Buzz|p2a: Manaphy
+|-damage|p2a: Manaphy|67/100
+|move|p2a: Manaphy|Energy Ball|p1a: Ribombee
+|-resisted|p1a: Ribombee
+|-damage|p1a: Ribombee|164/235
+|
+|-heal|p2a: Manaphy|73/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Ribombee|Bug Buzz|p2a: Manaphy
+|-damage|p2a: Manaphy|42/100
+|move|p2a: Manaphy|Energy Ball|p1a: Ribombee
+|-resisted|p1a: Ribombee
+|-damage|p1a: Ribombee|131/235
+|
+|-heal|p2a: Manaphy|48/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Ribombee|Bug Buzz|p2a: Manaphy
+|-damage|p2a: Manaphy|15/100
+|move|p2a: Manaphy|Energy Ball|p1a: Ribombee
+|-resisted|p1a: Ribombee
+|-damage|p1a: Ribombee|100/235
+|
+|-heal|p2a: Manaphy|21/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Ribombee|Stun Spore|p2a: Manaphy|[miss]
+|-miss|p1a: Ribombee|p2a: Manaphy
+|move|p2a: Manaphy|Energy Ball|p1a: Ribombee
+|-resisted|p1a: Ribombee
+|-damage|p1a: Ribombee|69/235
+|
+|-heal|p2a: Manaphy|27/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Ribombee|Bug Buzz|p2a: Manaphy
+|-damage|p2a: Manaphy|0 fnt
+|faint|p2a: Manaphy
+|
+|upkeep
+|
+|switch|p2a: Grafaiai|Grafaiai, L86, M|100/100
+|turn|15
+|
+|move|p1a: Ribombee|Moonblast|p2a: Grafaiai
+|-resisted|p2a: Grafaiai
+|-damage|p2a: Grafaiai|79/100
+|move|p2a: Grafaiai|Gunk Shot|p1a: Ribombee
+|-supereffective|p1a: Ribombee
+|-damage|p1a: Ribombee|0 fnt
+|faint|p1a: Ribombee
+|
+|upkeep
+|
+|switch|p1a: Drednaw|Drednaw, L81, F|278/278
+|turn|16
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Drednaw
+|-resisted|p1a: Drednaw
+|-damage|p1a: Drednaw|209/278
+|move|p1a: Drednaw|Liquidation|p2a: Grafaiai
+|-damage|p2a: Grafaiai|28/100
+|
+|upkeep
+|turn|17
+|
+|-terastallize|p1a: Drednaw|Dark
+|move|p2a: Grafaiai|Gunk Shot|p1a: Drednaw
+|-damage|p1a: Drednaw|76/278
+|move|p1a: Drednaw|Stone Edge|p2a: Grafaiai|[miss]
+|-miss|p1a: Drednaw|p2a: Grafaiai
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Drednaw
+|-damage|p1a: Drednaw|0 fnt
+|faint|p1a: Drednaw
+|
+|upkeep
+|
+|switch|p1a: Orthworm|Orthworm, L88, F|266/266
+|turn|19
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Orthworm
+|-immune|p1a: Orthworm
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Orthworm
+|-immune|p1a: Orthworm
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Orthworm
+|-immune|p1a: Orthworm
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Grafaiai|Gunk Shot|p1a: Orthworm
+|-immune|p1a: Orthworm
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|250/266
+|-enditem|p1a: Orthworm|Chesto Berry|[from] move: Knock Off|[of] p2a: Grafaiai
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|240/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|1
+|-boost|p1a: Orthworm|def|1
+|-boost|p1a: Orthworm|accuracy|1
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|232/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|26
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|223/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|214/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|206/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|197/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|188/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|179/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|170/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|161/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|153/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|145/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|137/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-crit|p1a: Orthworm
+|-damage|p1a: Orthworm|90/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|81/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|72/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-crit|p1a: Orthworm
+|-damage|p1a: Orthworm|23/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|14/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|6/266
+|move|p1a: Orthworm|Coil|p1a: Orthworm
+|-boost|p1a: Orthworm|atk|0
+|-boost|p1a: Orthworm|def|0
+|-boost|p1a: Orthworm|accuracy|0
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Grafaiai|Knock Off|p1a: Orthworm
+|-damage|p1a: Orthworm|0 fnt
+|faint|p1a: Orthworm
+|
+|upkeep
+|
+|switch|p1a: Umbreon|Umbreon, L84, M|297/297
+|turn|44
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|45
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|46
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-resisted|p1a: Umbreon
+|-damage|p1a: Umbreon|268/297
+|-enditem|p1a: Umbreon|Leftovers|[from] move: Knock Off|[of] p2a: Grafaiai
+|
+|upkeep
+|turn|47
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|48
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-resisted|p1a: Umbreon
+|-damage|p1a: Umbreon|248/297
+|
+|upkeep
+|turn|49
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|50
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|51
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-resisted|p1a: Umbreon
+|-damage|p1a: Umbreon|227/297
+|
+|upkeep
+|turn|52
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|53
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-resisted|p1a: Umbreon
+|-damage|p1a: Umbreon|207/297
+|
+|upkeep
+|turn|54
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Knock Off|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|55
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|56
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|
+|upkeep
+|turn|57
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|58
+|
+|move|p1a: Umbreon|Protect||[still]
+|-fail|p1a: Umbreon
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|
+|upkeep
+|turn|59
+|
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|upkeep
+|turn|60
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|61
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|62
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|63
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|64
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|65
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai|[miss]
+|-miss|p1a: Umbreon|p2a: Grafaiai
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|69
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|71
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|72
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|73
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|74
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|75
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Toxic|p2a: Grafaiai
+|-immune|p2a: Grafaiai
+|
+|upkeep
+|turn|76
+|
+|move|p2a: Grafaiai|Parting Shot|p1a: Umbreon
+|-hint|Since gen 7, Dark is immune to Prankster moves.
+|-immune|p1a: Umbreon
+|move|p1a: Umbreon|Foul Play|p2a: Grafaiai
+|-damage|p2a: Grafaiai|0 fnt
+|faint|p2a: Grafaiai
+|
+|upkeep
+|
+|switch|p2a: Enamorus|Enamorus, L79, F|100/100
+|turn|77
+|
+|move|p2a: Enamorus|Moonblast|p1a: Umbreon
+|-supereffective|p1a: Umbreon
+|-damage|p1a: Umbreon|31/297
+|move|p1a: Umbreon|Foul Play|p2a: Enamorus
+|-resisted|p2a: Enamorus
+|-damage|p2a: Enamorus|77/100
+|-start|p1a: Umbreon|Attract|[from] ability: Cute Charm|[of] p2a: Enamorus
+|
+|-heal|p2a: Enamorus|83/100|[from] item: Leftovers
+|upkeep
+|turn|78
+|
+|move|p2a: Enamorus|Moonblast|p1a: Umbreon
+|-supereffective|p1a: Umbreon
+|-damage|p1a: Umbreon|0 fnt
+|faint|p1a: Umbreon
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

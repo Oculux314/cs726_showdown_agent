@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23730</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23730<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23730|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Bellibolt|Bellibolt, L84, M|320/320
+|switch|p2a: Houndstone|Houndstone, L86, M|100/100
+|turn|1
+|
+|switch|p1a: Banette|Banette, L93, F|270/270
+|move|p2a: Houndstone|Poltergeist|p1a: Banette
+|-activate|p1a: Banette|move: Poltergeist|Life Orb
+|-supereffective|p1a: Banette
+|-damage|p1a: Banette|0 fnt
+|faint|p1a: Banette
+|
+|upkeep
+|
+|switch|p1a: Terapagos|Terapagos, L77, F|265/265
+|-activate|p1a: Terapagos|ability: Tera Shift
+|detailschange|p1a: Terapagos|Terapagos-Terastal, L77, F
+|-heal|p1a: Terapagos|273/273|[silent]
+|turn|2
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Houndstone
+|-immune|p2a: Houndstone
+|move|p2a: Houndstone|Poltergeist|p1a: Terapagos
+|-immune|p1a: Terapagos
+|
+|upkeep
+|turn|3
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Houndstone
+|-immune|p2a: Houndstone
+|move|p2a: Houndstone|Poltergeist|p1a: Terapagos
+|-immune|p1a: Terapagos
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Houndstone
+|-immune|p2a: Houndstone
+|move|p2a: Houndstone|Poltergeist|p1a: Terapagos
+|-immune|p1a: Terapagos
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Houndstone
+|-immune|p2a: Houndstone
+|move|p2a: Houndstone|Poltergeist|p1a: Terapagos
+|-immune|p1a: Terapagos
+|
+|upkeep
+|turn|6
+|
+|switch|p1a: Goodra|Goodra, L85, F|292/292
+|move|p2a: Houndstone|Poltergeist|p1a: Goodra
+|-activate|p1a: Goodra|move: Poltergeist|Assault Vest
+|-damage|p1a: Goodra|147/292
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Goodra|Draco Meteor|p2a: Houndstone
+|-damage|p2a: Houndstone|43/100
+|-unboost|p1a: Goodra|spa|2
+|move|p2a: Houndstone|Poltergeist|p1a: Goodra
+|-activate|p1a: Goodra|move: Poltergeist|Assault Vest
+|-damage|p1a: Goodra|3/292
+|
+|-heal|p2a: Houndstone|49/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|switch|p1a: Torkoal|Torkoal, L88, M|266/266
+|-weather|SunnyDay|[from] ability: Drought|[of] p1a: Torkoal
+|move|p2a: Houndstone|Poltergeist|p1a: Torkoal
+|-activate|p1a: Torkoal|move: Poltergeist|Heavy-Duty Boots
+|-damage|p1a: Torkoal|190/266
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p2a: Houndstone|55/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Houndstone|Body Press|p1a: Torkoal
+|-damage|p1a: Torkoal|148/266
+|move|p1a: Torkoal|Yawn|p2a: Houndstone
+|-start|p2a: Houndstone|move: Yawn|[of] p1a: Torkoal
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p2a: Houndstone|61/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Houndstone|Body Press|p1a: Torkoal
+|-damage|p1a: Torkoal|109/266
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p2a: Houndstone|68/100|[from] item: Leftovers
+|-end|p2a: Houndstone|move: Yawn|[silent]
+|-status|p2a: Houndstone|slp
+|upkeep
+|turn|11
+|
+|cant|p2a: Houndstone|slp
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p2a: Houndstone|74/100 slp|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|cant|p2a: Houndstone|slp
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-weather|none
+|-heal|p2a: Houndstone|80/100 slp|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|-curestatus|p2a: Houndstone|slp|[msg]
+|move|p2a: Houndstone|Body Press|p1a: Torkoal
+|-damage|p1a: Torkoal|68/266
+|move|p1a: Torkoal|Yawn|p2a: Houndstone
+|-start|p2a: Houndstone|move: Yawn|[of] p1a: Torkoal
+|
+|-heal|p2a: Houndstone|86/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Houndstone|Body Press|p1a: Torkoal
+|-damage|p1a: Torkoal|26/266
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-heal|p2a: Houndstone|92/100|[from] item: Leftovers
+|-end|p2a: Houndstone|move: Yawn|[silent]
+|-status|p2a: Houndstone|slp
+|upkeep
+|turn|15
+|
+|cant|p2a: Houndstone|slp
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-heal|p2a: Houndstone|98/100 slp|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|cant|p2a: Houndstone|slp
+|move|p1a: Torkoal|Yawn||[still]
+|-fail|p1a: Torkoal
+|
+|-heal|p2a: Houndstone|100/100 slp|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|-curestatus|p2a: Houndstone|slp|[msg]
+|move|p2a: Houndstone|Body Press|p1a: Torkoal
+|-damage|p1a: Torkoal|0 fnt
+|faint|p1a: Torkoal
+|
+|upkeep
+|
+|switch|p1a: Bellibolt|Bellibolt, L84, M|320/320
+|turn|18
+|
+|move|p2a: Houndstone|Body Press|p1a: Bellibolt
+|-damage|p1a: Bellibolt|262/320
+|-start|p1a: Bellibolt|Charge|Body Press|[from] ability: Electromorphosis
+|move|p1a: Bellibolt|Thunderbolt|p2a: Houndstone
+|-damage|p2a: Houndstone|29/100
+|-end|p1a: Bellibolt|Charge|[silent]
+|
+|-heal|p2a: Houndstone|35/100|[from] item: Leftovers
+|-heal|p1a: Bellibolt|282/320|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|-terastallize|p1a: Bellibolt|Water
+|move|p2a: Houndstone|Body Press|p1a: Bellibolt
+|-damage|p1a: Bellibolt|221/320
+|-start|p1a: Bellibolt|Charge|Body Press|[from] ability: Electromorphosis
+|move|p1a: Bellibolt|Thunderbolt|p2a: Houndstone
+|-damage|p2a: Houndstone|0 fnt
+|faint|p2a: Houndstone
+|-end|p1a: Bellibolt|Charge|[silent]
+|
+|-heal|p1a: Bellibolt|241/320|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Frosmoth|Frosmoth, L82, M|100/100
+|turn|20
+|
+|switch|p1a: Terapagos|Terapagos-Terastal, L77, F|273/273
+|move|p2a: Frosmoth|Bug Buzz|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|224/273
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Frosmoth
+|-damage|p2a: Frosmoth|80/100
+|move|p2a: Frosmoth|Bug Buzz|p1a: Terapagos
+|-damage|p1a: Terapagos|127/273
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Frosmoth
+|-damage|p2a: Frosmoth|58/100
+|move|p2a: Frosmoth|Bug Buzz|p1a: Terapagos
+|-crit|p1a: Terapagos
+|-damage|p1a: Terapagos|0 fnt
+|faint|p1a: Terapagos
+|
+|upkeep
+|
+|switch|p1a: Goodra|Goodra, L85, F|3/292
+|turn|23
+|
+|move|p1a: Goodra|Draco Meteor|p2a: Frosmoth
+|-damage|p2a: Frosmoth|25/100
+|-unboost|p1a: Goodra|spa|2
+|move|p2a: Frosmoth|Bug Buzz|p1a: Goodra
+|-crit|p1a: Goodra
+|-damage|p1a: Goodra|0 fnt
+|faint|p1a: Goodra
+|
+|upkeep
+|
+|switch|p1a: Bellibolt|Bellibolt, L84, M, tera:Water|241/320
+|turn|24
+|
+|move|p2a: Frosmoth|Bug Buzz|p1a: Bellibolt
+|-damage|p1a: Bellibolt|124/320
+|-start|p1a: Bellibolt|Charge|Bug Buzz|[from] ability: Electromorphosis
+|move|p1a: Bellibolt|Thunderbolt|p2a: Frosmoth
+|-damage|p2a: Frosmoth|0 fnt
+|faint|p2a: Frosmoth
+|-end|p1a: Bellibolt|Charge|[silent]
+|
+|-heal|p1a: Bellibolt|144/320|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Tauros|Tauros-Paldea-Combat, L82, M|100/100
+|-ability|p2a: Tauros|Intimidate|boost
+|-unboost|p1a: Bellibolt|atk|1
+|turn|25
+|
+|move|p2a: Tauros|Close Combat|p1a: Bellibolt
+|-damage|p1a: Bellibolt|0 fnt
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|faint|p1a: Bellibolt
+|
+|upkeep
+|
+|switch|p1a: Hatterene|Hatterene, L85, F|236/236
+|turn|26
+|
+|move|p2a: Tauros|Close Combat|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|193/236
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|move|p1a: Hatterene|Draining Kiss|p2a: Tauros
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|0 fnt
+|-heal|p1a: Hatterene|236/236|[from] drain|[of] p2a: Tauros
+|faint|p2a: Tauros
+|
+|upkeep
+|
+|switch|p2a: Vileplume|Vileplume, L85, F|100/100
+|turn|27
+|
+|move|p2a: Vileplume|Sludge Bomb|p1a: Hatterene
+|-supereffective|p1a: Hatterene
+|-damage|p1a: Hatterene|36/236
+|move|p1a: Hatterene|Draining Kiss|p2a: Vileplume
+|-resisted|p2a: Vileplume
+|-crit|p2a: Vileplume
+|-damage|p2a: Vileplume|80/100
+|-heal|p1a: Hatterene|77/236|[from] drain|[of] p2a: Vileplume
+|
+|-heal|p2a: Vileplume|86/100|[from] item: Leftovers
+|-heal|p1a: Hatterene|91/236|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Vileplume|Sludge Bomb|p1a: Hatterene
+|-supereffective|p1a: Hatterene
+|-damage|p1a: Hatterene|0 fnt
+|faint|p1a: Hatterene
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

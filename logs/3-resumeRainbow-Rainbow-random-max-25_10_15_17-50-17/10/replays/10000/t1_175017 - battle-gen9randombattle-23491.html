@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23491</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23491<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23491|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Fezandipiti|Fezandipiti, L82, M|278/278
+|switch|p2a: Reshiram|Reshiram, L76|100/100
+|-ability|p2a: Reshiram|Turboblaze
+|turn|1
+|
+|switch|p1a: Passimian|Passimian, L83, F|302/302
+|move|p2a: Reshiram|Outrage|p1a: Passimian
+|-damage|p1a: Passimian|172/302
+|
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Passimian|Poison
+|move|p2a: Reshiram|Outrage|p1a: Passimian|[from] lockedmove
+|-damage|p1a: Passimian|51/302
+|-start|p2a: Reshiram|confusion|[fatigue]
+|move|p1a: Passimian|Knock Off|p2a: Reshiram
+|-damage|p2a: Reshiram|56/100
+|-enditem|p2a: Reshiram|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Passimian
+|
+|upkeep
+|turn|3
+|
+|-activate|p2a: Reshiram|confusion
+|move|p2a: Reshiram|Outrage|p1a: Passimian
+|-damage|p1a: Passimian|0 fnt
+|faint|p1a: Passimian
+|
+|upkeep
+|
+|switch|p1a: Hoopa|Hoopa-Unbound, L80|259/259
+|turn|4
+|
+|move|p1a: Hoopa|Gunk Shot|p2a: Reshiram
+|-damage|p2a: Reshiram|16/100
+|-activate|p2a: Reshiram|confusion
+|-damage|p2a: Reshiram|6/100|[from] confusion
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Hoopa|Gunk Shot|p2a: Reshiram
+|-damage|p2a: Reshiram|0 fnt
+|faint|p2a: Reshiram
+|
+|upkeep
+|
+|switch|p2a: Falinks|Falinks, L84|100/100
+|turn|6
+|
+|move|p1a: Hoopa|Gunk Shot|p2a: Falinks
+|-damage|p2a: Falinks|53/100
+|move|p2a: Falinks|Close Combat|p1a: Hoopa
+|-crit|p1a: Hoopa
+|-damage|p1a: Hoopa|0 fnt
+|-unboost|p2a: Falinks|def|1
+|-unboost|p2a: Falinks|spd|1
+|faint|p1a: Hoopa
+|-damage|p2a: Falinks|44/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Fezandipiti|Fezandipiti, L82, M|278/278
+|turn|7
+|
+|move|p1a: Fezandipiti|Heat Wave|p2a: Falinks
+|-damage|p2a: Falinks|6/100
+|move|p2a: Falinks|Close Combat|p1a: Fezandipiti
+|-resisted|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|234/278
+|-unboost|p2a: Falinks|def|1
+|-unboost|p2a: Falinks|spd|1
+|-damage|p2a: Falinks|0 fnt|[from] item: Life Orb
+|faint|p2a: Falinks
+|
+|upkeep
+|
+|switch|p2a: Palkia|Palkia-Origin, L72|100/100
+|-ability|p2a: Palkia|Pressure
+|turn|8
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|161/278
+|move|p1a: Fezandipiti|Heat Wave|p2a: Palkia
+|-resisted|p2a: Palkia
+|-damage|p2a: Palkia|96/100
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Fezandipiti|[miss]
+|-miss|p2a: Palkia|p1a: Fezandipiti
+|move|p1a: Fezandipiti|Heat Wave|p2a: Palkia
+|-resisted|p2a: Palkia
+|-damage|p2a: Palkia|92/100
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|86/278
+|move|p1a: Fezandipiti|Heat Wave|p2a: Palkia
+|-resisted|p2a: Palkia
+|-damage|p2a: Palkia|87/100
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|8/278
+|move|p1a: Fezandipiti|Heat Wave|p2a: Palkia
+|-resisted|p2a: Palkia
+|-damage|p2a: Palkia|83/100
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Fezandipiti
+|-damage|p1a: Fezandipiti|0 fnt
+|faint|p1a: Fezandipiti
+|
+|upkeep
+|
+|switch|p1a: Lurantis|Lurantis, L87, M|264/264
+|turn|13
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|220/264
+|move|p1a: Lurantis|Knock Off|p2a: Palkia
+|-damage|p2a: Palkia|61/100
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|173/264
+|move|p1a: Lurantis|Knock Off|p2a: Palkia
+|-damage|p2a: Palkia|39/100
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Palkia|Hydro Pump|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|128/264
+|move|p1a: Lurantis|Knock Off|p2a: Palkia
+|-damage|p2a: Palkia|16/100
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Palkia|Fire Blast|p1a: Lurantis
+|-supereffective|p1a: Lurantis
+|-damage|p1a: Lurantis|30/264
+|-status|p1a: Lurantis|brn
+|move|p1a: Lurantis|Knock Off|p2a: Palkia
+|-damage|p2a: Palkia|6/100
+|
+|-damage|p1a: Lurantis|14/264 brn|[from] brn
+|upkeep
+|turn|17
+|
+|move|p2a: Palkia|Fire Blast|p1a: Lurantis
+|-supereffective|p1a: Lurantis
+|-damage|p1a: Lurantis|0 fnt
+|faint|p1a: Lurantis
+|
+|upkeep
+|
+|switch|p1a: Porygon2|Porygon2, L81|270/270
+|-ability|p1a: Porygon2|Download|boost
+|-boost|p1a: Porygon2|atk|1
+|turn|18
+|
+|move|p2a: Palkia|Fire Blast|p1a: Porygon2
+|-damage|p1a: Porygon2|217/270
+|move|p1a: Porygon2|Tera Blast|p2a: Palkia
+|-damage|p2a: Palkia|0 fnt
+|faint|p2a: Palkia
+|
+|upkeep
+|
+|switch|p2a: Ho-Oh|Ho-Oh, L71|100/100
+|turn|19
+|
+|move|p2a: Ho-Oh|Brave Bird|p1a: Porygon2
+|-damage|p1a: Porygon2|135/270
+|-damage|p2a: Ho-Oh|90/100|[from] Recoil
+|move|p1a: Porygon2|Tera Blast|p2a: Ho-Oh
+|-damage|p2a: Ho-Oh|65/100
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Ho-Oh|Brave Bird|p1a: Porygon2
+|-damage|p1a: Porygon2|59/270
+|-damage|p2a: Ho-Oh|56/100|[from] Recoil
+|move|p1a: Porygon2|Tera Blast|p2a: Ho-Oh
+|-damage|p2a: Ho-Oh|31/100
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Ho-Oh|Brave Bird|p1a: Porygon2
+|-damage|p1a: Porygon2|0 fnt
+|faint|p1a: Porygon2
+|-damage|p2a: Ho-Oh|24/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Ludicolo|Ludicolo, L90, M|290/290
+|turn|22
+|
+|move|p1a: Ludicolo|Rain Dance|p1a: Ludicolo
+|-weather|RainDance
+|move|p2a: Ho-Oh|Brave Bird|p1a: Ludicolo
+|-supereffective|p1a: Ludicolo
+|-damage|p1a: Ludicolo|48/290
+|-damage|p2a: Ho-Oh|0 fnt|[from] Recoil
+|faint|p2a: Ho-Oh
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p2a: Bisharp|Bisharp, L79, F|100/100
+|turn|23
+|
+|move|p1a: Ludicolo|Ice Beam|p2a: Bisharp
+|-resisted|p2a: Bisharp
+|-damage|p2a: Bisharp|85/100
+|-damage|p1a: Ludicolo|19/290|[from] item: Life Orb
+|move|p2a: Bisharp|Iron Head|p1a: Ludicolo
+|-resisted|p1a: Ludicolo
+|-damage|p1a: Ludicolo|0 fnt
+|faint|p1a: Ludicolo
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

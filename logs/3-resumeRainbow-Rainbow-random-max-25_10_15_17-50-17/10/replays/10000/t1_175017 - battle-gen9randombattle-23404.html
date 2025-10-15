@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23404</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23404<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23404|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Lokix|Lokix, L82, M|251/251
+|switch|p2a: Annihilape|Annihilape, L76, F|100/100
+|turn|1
+|
+|-terastallize|p1a: Lokix|Dark
+|move|p1a: Lokix|Swords Dance|p1a: Lokix
+|-boost|p1a: Lokix|atk|2
+|move|p2a: Annihilape|Drain Punch|p1a: Lokix
+|-supereffective|p1a: Lokix
+|-damage|p1a: Lokix|71/251
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Lokix|Swords Dance|p1a: Lokix
+|-boost|p1a: Lokix|atk|2
+|move|p2a: Annihilape|Drain Punch|p1a: Lokix
+|-supereffective|p1a: Lokix
+|-damage|p1a: Lokix|0 fnt
+|faint|p1a: Lokix
+|
+|upkeep
+|
+|switch|p1a: Qwilfish|Qwilfish, L86, M|252/252
+|-ability|p1a: Qwilfish|Intimidate|boost
+|-unboost|p2a: Annihilape|atk|1
+|-ability|p2a: Annihilape|Defiant|boost
+|-boost|p2a: Annihilape|atk|2
+|turn|3
+|
+|move|p1a: Qwilfish|Gunk Shot|p2a: Annihilape|[miss]
+|-miss|p1a: Qwilfish|p2a: Annihilape
+|move|p2a: Annihilape|Drain Punch|p1a: Qwilfish
+|-resisted|p1a: Qwilfish
+|-crit|p1a: Qwilfish
+|-damage|p1a: Qwilfish|164/252
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Qwilfish|Gunk Shot|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|75/100
+|move|p2a: Annihilape|Drain Punch|p1a: Qwilfish
+|-resisted|p1a: Qwilfish
+|-damage|p1a: Qwilfish|103/252
+|-heal|p2a: Annihilape|85/100|[from] drain|[of] p1a: Qwilfish
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Qwilfish|Gunk Shot|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-damage|p2a: Annihilape|59/100
+|move|p2a: Annihilape|Drain Punch|p1a: Qwilfish
+|-resisted|p1a: Qwilfish
+|-damage|p1a: Qwilfish|45/252
+|-heal|p2a: Annihilape|69/100|[from] drain|[of] p1a: Qwilfish
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Qwilfish|Gunk Shot|p2a: Annihilape
+|-resisted|p2a: Annihilape
+|-crit|p2a: Annihilape
+|-damage|p2a: Annihilape|31/100
+|move|p2a: Annihilape|Drain Punch|p1a: Qwilfish
+|-resisted|p1a: Qwilfish
+|-damage|p1a: Qwilfish|0 fnt
+|-heal|p2a: Annihilape|39/100|[from] drain|[of] p1a: Qwilfish
+|faint|p1a: Qwilfish
+|
+|upkeep
+|
+|switch|p1a: Toxicroak|Toxicroak, L84, F|277/277
+|turn|7
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Annihilape
+|-damage|p2a: Annihilape|7/100
+|move|p2a: Annihilape|Drain Punch|p1a: Toxicroak
+|-resisted|p1a: Toxicroak
+|-damage|p1a: Toxicroak|201/277
+|-heal|p2a: Annihilape|20/100|[from] drain|[of] p1a: Toxicroak
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Annihilape
+|-damage|p2a: Annihilape|0 fnt
+|faint|p2a: Annihilape
+|
+|upkeep
+|
+|switch|p2a: Pachirisu|Pachirisu, L96, F|100/100
+|turn|9
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Pachirisu
+|-supereffective|p2a: Pachirisu
+|-damage|p2a: Pachirisu|41/100
+|move|p2a: Pachirisu|Discharge|p1a: Toxicroak
+|-damage|p1a: Toxicroak|119/277
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Pachirisu
+|-supereffective|p2a: Pachirisu
+|-damage|p2a: Pachirisu|0 fnt
+|faint|p2a: Pachirisu
+|
+|upkeep
+|
+|switch|p2a: Staraptor|Staraptor, L79, F|100/100
+|turn|11
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Staraptor
+|-immune|p2a: Staraptor
+|move|p2a: Staraptor|Close Combat|p1a: Toxicroak
+|-resisted|p1a: Toxicroak
+|-damage|p1a: Toxicroak|31/277
+|-unboost|p2a: Staraptor|def|1
+|-unboost|p2a: Staraptor|spd|1
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Toxicroak|Earthquake|p2a: Staraptor
+|-immune|p2a: Staraptor
+|move|p2a: Staraptor|Close Combat|p1a: Toxicroak
+|-resisted|p1a: Toxicroak
+|-damage|p1a: Toxicroak|0 fnt
+|-unboost|p2a: Staraptor|def|1
+|-unboost|p2a: Staraptor|spd|1
+|faint|p1a: Toxicroak
+|
+|upkeep
+|
+|switch|p1a: Arceus|Arceus-Dragon, L71|288/288
+|turn|13
+|
+|move|p1a: Arceus|Flare Blitz|p2a: Staraptor
+|-damage|p2a: Staraptor|31/100
+|-damage|p1a: Arceus|228/288|[from] Recoil
+|move|p2a: Staraptor|Close Combat|p1a: Arceus
+|-damage|p1a: Arceus|102/288
+|-unboost|p2a: Staraptor|def|1
+|-unboost|p2a: Staraptor|spd|1
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Arceus|Flare Blitz|p2a: Staraptor
+|-damage|p2a: Staraptor|0 fnt
+|faint|p2a: Staraptor
+|-damage|p1a: Arceus|76/288|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Ceruledge|Ceruledge, L78, F|100/100
+|turn|15
+|
+|move|p1a: Arceus|Flare Blitz|p2a: Ceruledge
+|-resisted|p2a: Ceruledge
+|-damage|p2a: Ceruledge|83/100
+|-ability|p2a: Ceruledge|Weak Armor|boost
+|-unboost|p2a: Ceruledge|def|1
+|-boost|p2a: Ceruledge|spe|2
+|-damage|p1a: Arceus|61/288|[from] Recoil
+|move|p2a: Ceruledge|Close Combat|p1a: Arceus
+|-damage|p1a: Arceus|0 fnt
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|faint|p1a: Arceus
+|
+|upkeep
+|
+|switch|p1a: Moltres|Moltres, L81|278/278
+|turn|16
+|
+|move|p2a: Ceruledge|Close Combat|p1a: Moltres
+|-resisted|p1a: Moltres
+|-damage|p1a: Moltres|229/278
+|-unboost|p2a: Ceruledge|def|1
+|-unboost|p2a: Ceruledge|spd|1
+|move|p1a: Moltres|Scorching Sands|p2a: Ceruledge
+|-supereffective|p2a: Ceruledge
+|-damage|p2a: Ceruledge|0 fnt
+|faint|p2a: Ceruledge
+|
+|upkeep
+|
+|switch|p2a: Araquanid|Araquanid, L82, M|100/100
+|turn|17
+|
+|move|p1a: Moltres|Scorching Sands|p2a: Araquanid
+|-resisted|p2a: Araquanid
+|-damage|p2a: Araquanid|92/100
+|move|p2a: Araquanid|Hydro Pump|p1a: Moltres
+|-supereffective|p1a: Moltres
+|-damage|p1a: Moltres|0 fnt
+|faint|p1a: Moltres
+|
+|upkeep
+|
+|switch|p1a: Scovillain|Scovillain, L91, F|266/266
+|turn|18
+|
+|move|p1a: Scovillain|Leech Seed|p2a: Araquanid|[miss]
+|-miss|p1a: Scovillain|p2a: Araquanid
+|move|p2a: Araquanid|Hydro Pump|p1a: Scovillain
+|-damage|p1a: Scovillain|115/266
+|
+|-heal|p1a: Scovillain|131/266|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Scovillain|Leech Seed|p2a: Araquanid
+|-start|p2a: Araquanid|move: Leech Seed
+|move|p2a: Araquanid|Hydro Pump|p1a: Scovillain
+|-damage|p1a: Scovillain|0 fnt
+|faint|p1a: Scovillain
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

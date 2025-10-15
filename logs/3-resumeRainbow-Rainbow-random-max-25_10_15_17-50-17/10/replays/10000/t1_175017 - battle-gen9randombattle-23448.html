@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23448</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23448<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23448|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Misdreavus|Misdreavus, L90, M|254/254
+|switch|p2a: Greninja|Greninja, L80, M|100/100
+|turn|1
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus
+|-resisted|p1a: Misdreavus
+|-damage|p1a: Misdreavus|212/254
+|-damage|p2a: Greninja|91/100|[from] item: Life Orb
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus
+|-resisted|p1a: Misdreavus
+|-damage|p1a: Misdreavus|173/254
+|-damage|p2a: Greninja|81/100|[from] item: Life Orb
+|move|p1a: Misdreavus|Draining Kiss|p2a: Greninja
+|-supereffective|p2a: Greninja
+|-damage|p2a: Greninja|26/100
+|-heal|p1a: Misdreavus|254/254|[from] drain|[of] p2a: Greninja
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus
+|-resisted|p1a: Misdreavus
+|-damage|p1a: Misdreavus|215/254
+|-status|p1a: Misdreavus|psn
+|-damage|p2a: Greninja|16/100|[from] item: Life Orb
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|
+|-damage|p1a: Misdreavus|184/254 psn|[from] psn
+|upkeep
+|turn|4
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus|[miss]
+|-miss|p2a: Greninja|p1a: Misdreavus
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|
+|-damage|p1a: Misdreavus|153/254 psn|[from] psn
+|upkeep
+|turn|5
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus
+|-resisted|p1a: Misdreavus
+|-damage|p1a: Misdreavus|114/254 psn
+|-damage|p2a: Greninja|6/100|[from] item: Life Orb
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|
+|-damage|p1a: Misdreavus|83/254 psn|[from] psn
+|upkeep
+|turn|6
+|
+|move|p2a: Greninja|Gunk Shot|p1a: Misdreavus
+|-resisted|p1a: Misdreavus
+|-damage|p1a: Misdreavus|45/254 psn
+|-damage|p2a: Greninja|0 fnt|[from] item: Life Orb
+|faint|p2a: Greninja
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|
+|-damage|p1a: Misdreavus|14/254 psn|[from] psn
+|upkeep
+|
+|switch|p2a: Lugia|Lugia, L73|100/100
+|turn|7
+|
+|move|p1a: Misdreavus|Calm Mind|p1a: Misdreavus
+|-boost|p1a: Misdreavus|spa|1
+|-boost|p1a: Misdreavus|spd|1
+|move|p2a: Lugia|Aeroblast|p1a: Misdreavus|[miss]
+|-miss|p2a: Lugia|p1a: Misdreavus
+|
+|-damage|p1a: Misdreavus|0 fnt|[from] psn
+|faint|p1a: Misdreavus
+|upkeep
+|
+|switch|p1a: Dudunsparce|Dudunsparce, L83, M|343/343
+|turn|8
+|
+|move|p2a: Lugia|Aeroblast|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|253/343
+|move|p1a: Dudunsparce|Boomburst|p2a: Lugia
+|-damage|p2a: Lugia|83/100
+|
+|-heal|p1a: Dudunsparce|274/343|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Lugia|Aeroblast|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|187/343
+|move|p1a: Dudunsparce|Boomburst|p2a: Lugia
+|-damage|p2a: Lugia|47/100
+|
+|-heal|p1a: Dudunsparce|208/343|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Lugia|Aeroblast|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|117/343
+|move|p1a: Dudunsparce|Boomburst|p2a: Lugia
+|-damage|p2a: Lugia|14/100
+|
+|-heal|p1a: Dudunsparce|138/343|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Lugia|Aeroblast|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|50/343
+|move|p1a: Dudunsparce|Boomburst|p2a: Lugia
+|-damage|p2a: Lugia|0 fnt
+|faint|p2a: Lugia
+|
+|-heal|p1a: Dudunsparce|71/343|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Palossand|Palossand, L89, F|100/100
+|turn|12
+|
+|move|p1a: Dudunsparce|Calm Mind|p1a: Dudunsparce
+|-boost|p1a: Dudunsparce|spa|1
+|-boost|p1a: Dudunsparce|spd|1
+|move|p2a: Palossand|Earth Power|p1a: Dudunsparce
+|-crit|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|0 fnt
+|faint|p1a: Dudunsparce
+|
+|upkeep
+|
+|switch|p1a: Jirachi|Jirachi, L80|291/291
+|turn|13
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|upkeep
+|turn|15
+|
+|-terastallize|p1a: Jirachi|Water
+|move|p1a: Jirachi|Body Slam|p2a: Palossand
+|-immune|p2a: Palossand
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-damage|p1a: Jirachi|183/291
+|
+|-heal|p1a: Jirachi|201/291|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|219/291|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-damage|p1a: Jirachi|114/291
+|
+|-heal|p1a: Jirachi|132/291|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|150/291|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|168/291|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-damage|p1a: Jirachi|63/291
+|
+|-heal|p1a: Jirachi|81/291|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|99/291|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Palossand|Earth Power|p1a: Jirachi
+|-damage|p1a: Jirachi|0 fnt
+|faint|p1a: Jirachi
+|
+|upkeep
+|
+|switch|p1a: Trevenant|Trevenant, L89, F|296/296
+|turn|23
+|
+|move|p1a: Trevenant|Poltergeist|p2a: Palossand|[miss]
+|-miss|p1a: Trevenant|p2a: Palossand
+|move|p2a: Palossand|Earth Power|p1a: Trevenant
+|-resisted|p1a: Trevenant
+|-damage|p1a: Trevenant|246/296
+|-unboost|p1a: Trevenant|spd|1
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Trevenant|Poltergeist|p2a: Palossand
+|-activate|p2a: Palossand|move: Poltergeist|Leftovers
+|-supereffective|p2a: Palossand
+|-crit|p2a: Palossand
+|-damage|p2a: Palossand|0 fnt
+|faint|p2a: Palossand
+|-damage|p1a: Trevenant|217/296|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Sandy Shocks|Sandy Shocks, L80|100/100
+|turn|25
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Trevenant
+|-resisted|p1a: Trevenant
+|-damage|p1a: Trevenant|142/296
+|move|p1a: Trevenant|Poltergeist|p2a: Sandy Shocks
+|-activate|p2a: Sandy Shocks|move: Poltergeist|Heavy-Duty Boots
+|-damage|p2a: Sandy Shocks|26/100
+|-damage|p1a: Trevenant|113/296|[from] item: Life Orb
+|
+|upkeep
+|turn|26
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Trevenant
+|-resisted|p1a: Trevenant
+|-damage|p1a: Trevenant|32/296
+|move|p1a: Trevenant|Poltergeist|p2a: Sandy Shocks
+|-activate|p2a: Sandy Shocks|move: Poltergeist|Heavy-Duty Boots
+|-damage|p2a: Sandy Shocks|0 fnt
+|faint|p2a: Sandy Shocks
+|-end|p2a: Sandy Shocks|Protosynthesis|[silent]
+|-damage|p1a: Trevenant|3/296|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Swalot|Swalot, L90, M|100/100
+|turn|27
+|
+|move|p1a: Trevenant|Horn Leech|p2a: Swalot
+|-resisted|p2a: Swalot
+|-damage|p2a: Swalot|82/100
+|-damage|p1a: Trevenant|0 fnt|[from] ability: Liquid Ooze|[of] p2a: Swalot
+|faint|p1a: Trevenant
+|move|p2a: Swalot|Gunk Shot|p1: Trevenant|[notarget]
+|-fail|p2a: Swalot
+|
+|-heal|p2a: Swalot|88/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Luvdisc|Luvdisc, M|247/247
+|turn|28
+|
+|move|p1a: Luvdisc|Endeavor|p2a: Swalot
+|-damage|p2a: Swalot|76/100
+|move|p2a: Swalot|Gunk Shot|p1a: Luvdisc|[miss]
+|-miss|p2a: Swalot|p1a: Luvdisc
+|
+|-heal|p2a: Swalot|82/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Luvdisc|Endeavor|p2a: Swalot
+|-damage|p2a: Swalot|76/100
+|move|p2a: Swalot|Gunk Shot|p1a: Luvdisc
+|-damage|p1a: Luvdisc|106/247
+|-status|p1a: Luvdisc|psn
+|
+|-heal|p2a: Swalot|82/100|[from] item: Leftovers
+|-damage|p1a: Luvdisc|76/247 psn|[from] psn
+|upkeep
+|turn|30
+|
+|move|p1a: Luvdisc|Substitute|p1a: Luvdisc
+|-start|p1a: Luvdisc|Substitute
+|-damage|p1a: Luvdisc|15/247 psn
+|move|p2a: Swalot|Gunk Shot|p1a: Luvdisc
+|-end|p1a: Luvdisc|Substitute
+|
+|-heal|p2a: Swalot|89/100|[from] item: Leftovers
+|-damage|p1a: Luvdisc|0 fnt|[from] psn
+|faint|p1a: Luvdisc
+|upkeep
+|
+|switch|p1a: Tauros|Tauros, L82, M|257/257
+|turn|31
+|
+|move|p1a: Tauros|Earthquake|p2a: Swalot
+|-supereffective|p2a: Swalot
+|-damage|p2a: Swalot|30/100
+|-damage|p1a: Tauros|232/257|[from] item: Life Orb
+|move|p2a: Swalot|Gunk Shot|p1a: Tauros
+|-damage|p1a: Tauros|121/257
+|-status|p1a: Tauros|psn
+|
+|-heal|p2a: Swalot|36/100|[from] item: Leftovers
+|-damage|p1a: Tauros|89/257 psn|[from] psn
+|upkeep
+|turn|32
+|
+|move|p1a: Tauros|Body Slam|p2a: Swalot
+|-damage|p2a: Swalot|0 fnt
+|faint|p2a: Swalot
+|
+|-damage|p1a: Tauros|57/257 psn|[from] psn
+|upkeep
+|
+|switch|p2a: Magearna|Magearna-Original, L77|100/100
+|turn|33
+|
+|move|p1a: Tauros|Earthquake|p2a: Magearna
+|-supereffective|p2a: Magearna
+|-damage|p2a: Magearna|40/100
+|-damage|p1a: Tauros|32/257 psn|[from] item: Life Orb
+|move|p2a: Magearna|Fleur Cannon|p1a: Tauros
+|-damage|p1a: Tauros|0 fnt
+|-unboost|p2a: Magearna|spa|2
+|faint|p1a: Tauros
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

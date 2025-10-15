@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23493</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23493<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_175017</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_175017</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23493|init|battle
+|title|t1_175017 vs. t2_175017
+|j|☆t1_175017
+|j|☆t2_175017
+|gametype|singles
+|player|p1|t1_175017|266|
+|player|p2|t2_175017|2|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Medicham|Medicham, L86, F|243/243
+|switch|p2a: Magnezone|Magnezone, L85|100/100
+|turn|1
+|
+|switch|p1a: Cinderace|Cinderace, L77, F|249/249
+|move|p2a: Magnezone|Thunderbolt|p1a: Cinderace
+|-damage|p1a: Cinderace|83/249
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Cinderace|Pyro Ball|p2a: Magnezone
+|-supereffective|p2a: Magnezone
+|-damage|p2a: Magnezone|28/100
+|move|p2a: Magnezone|Thunderbolt|p1a: Cinderace
+|-damage|p1a: Cinderace|0 fnt
+|faint|p1a: Cinderace
+|
+|upkeep
+|
+|switch|p1a: Arbok|Arbok, L87, F|246/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Magnezone|atk|1
+|turn|3
+|
+|move|p1a: Arbok|Sucker Punch|p2a: Magnezone
+|-damage|p2a: Magnezone|5/100
+|-damage|p1a: Arbok|222/246|[from] item: Life Orb
+|move|p2a: Magnezone|Thunderbolt|p1a: Arbok
+|-damage|p1a: Arbok|81/246
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Arbok|Sucker Punch|p2a: Magnezone
+|-damage|p2a: Magnezone|0 fnt
+|faint|p2a: Magnezone
+|-damage|p1a: Arbok|57/246|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Annihilape|Annihilape, L76, F|100/100
+|turn|5
+|
+|move|p1a: Arbok|Sucker Punch|p2a: Annihilape
+|-damage|p2a: Annihilape|71/100
+|-damage|p1a: Arbok|33/246|[from] item: Life Orb
+|move|p2a: Annihilape|Gunk Shot|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|0 fnt
+|faint|p1a: Arbok
+|
+|-heal|p2a: Annihilape|77/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Medicham|Medicham, L86, F|243/243
+|turn|6
+|
+|move|p1a: Medicham|Ice Punch|p2a: Annihilape
+|-damage|p2a: Annihilape|32/100
+|move|p2a: Annihilape|Gunk Shot|p1a: Medicham
+|-damage|p1a: Medicham|153/243
+|
+|-heal|p2a: Annihilape|39/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Medicham|Ice Punch|p2a: Annihilape
+|-damage|p2a: Annihilape|0 fnt
+|faint|p2a: Annihilape
+|
+|upkeep
+|
+|switch|p2a: Tauros|Tauros-Paldea-Combat, L82, M|100/100
+|-ability|p2a: Tauros|Intimidate|boost
+|-unboost|p1a: Medicham|atk|1
+|turn|8
+|
+|move|p2a: Tauros|Close Combat|p1a: Medicham
+|-resisted|p1a: Medicham
+|-damage|p1a: Medicham|36/243
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|move|p1a: Medicham|Ice Punch|p2a: Tauros
+|-damage|p2a: Tauros|60/100
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Tauros|Close Combat|p1a: Medicham
+|-resisted|p1a: Medicham
+|-damage|p1a: Medicham|0 fnt
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|faint|p1a: Medicham
+|
+|upkeep
+|
+|switch|p1a: Mesprit|Mesprit, L85|275/275
+|turn|10
+|
+|move|p2a: Tauros|Close Combat|p1a: Mesprit
+|-resisted|p1a: Mesprit
+|-damage|p1a: Mesprit|196/275
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|move|p1a: Mesprit|Psychic Noise|p2a: Tauros
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|0 fnt
+|faint|p2a: Tauros
+|
+|-heal|p1a: Mesprit|213/275|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Skarmory|Skarmory, L80, M|100/100
+|turn|11
+|
+|move|p1a: Mesprit|Psychic Noise|p2a: Skarmory
+|-resisted|p2a: Skarmory
+|-damage|p2a: Skarmory|79/100
+|-start|p2a: Skarmory|move: Heal Block
+|move|p2a: Skarmory|Brave Bird|p1a: Mesprit
+|-damage|p1a: Mesprit|117/275
+|-damage|p2a: Skarmory|65/100|[from] Recoil
+|
+|-heal|p1a: Mesprit|134/275|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Mesprit|Psychic Noise|p2a: Skarmory
+|-resisted|p2a: Skarmory
+|-damage|p2a: Skarmory|44/100
+|move|p2a: Skarmory|Brave Bird|p1a: Mesprit
+|-damage|p1a: Mesprit|47/275
+|-damage|p2a: Skarmory|32/100|[from] Recoil
+|
+|-heal|p1a: Mesprit|64/275|[from] item: Leftovers
+|-end|p2a: Skarmory|move: Heal Block
+|upkeep
+|turn|13
+|
+|move|p1a: Mesprit|Psychic Noise|p2a: Skarmory
+|-resisted|p2a: Skarmory
+|-damage|p2a: Skarmory|7/100
+|-start|p2a: Skarmory|move: Heal Block
+|move|p2a: Skarmory|Brave Bird|p1a: Mesprit
+|-damage|p1a: Mesprit|0 fnt
+|faint|p1a: Mesprit
+|-damage|p2a: Skarmory|0 fnt|[from] Recoil
+|faint|p2a: Skarmory
+|
+|upkeep
+|
+|switch|p1a: Exeggutor|Exeggutor-Alola, L89, F|314/314
+|switch|p2a: Torkoal|Torkoal, L88, F|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Torkoal
+|turn|14
+|
+|move|p1a: Exeggutor|Draco Meteor|p2a: Torkoal
+|-damage|p2a: Torkoal|27/100
+|-unboost|p1a: Exeggutor|spa|2
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|292/314
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|15
+|
+|move|p1a: Exeggutor|Wood Hammer|p2a: Torkoal
+|-resisted|p2a: Torkoal
+|-damage|p2a: Torkoal|8/100
+|-damage|p1a: Exeggutor|275/314|[from] Recoil
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|253/314
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|16
+|
+|move|p1a: Exeggutor|Wood Hammer|p2a: Torkoal
+|-resisted|p2a: Torkoal
+|-damage|p2a: Torkoal|0 fnt
+|faint|p2a: Torkoal
+|-damage|p1a: Exeggutor|247/314|[from] Recoil
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p2a: Meloetta|Meloetta, L82|100/100
+|turn|17
+|
+|move|p2a: Meloetta|Focus Blast|p1a: Exeggutor|[miss]
+|-miss|p2a: Meloetta|p1a: Exeggutor
+|move|p1a: Exeggutor|Wood Hammer|p2a: Meloetta
+|-damage|p2a: Meloetta|43/100
+|-damage|p1a: Exeggutor|191/314|[from] Recoil
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|18
+|
+|move|p2a: Meloetta|Focus Blast|p1a: Exeggutor
+|-damage|p1a: Exeggutor|37/314
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|115/314|[from] item: Sitrus Berry
+|move|p1a: Exeggutor|Wood Hammer|p2a: Meloetta
+|-damage|p2a: Meloetta|0 fnt
+|faint|p2a: Meloetta
+|-damage|p1a: Exeggutor|73/314|[from] Recoil
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>
