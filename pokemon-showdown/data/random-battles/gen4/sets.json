@@ -340,7 +340,7 @@
         ]
     },
     "alakazam": {
-        "level": 80,
+        "level": 81,
         "sets": [
             {
                 "role": "Fast Attacker",
@@ -774,7 +774,7 @@
         ]
     },
     "jolteon": {
-        "level": 78,
+        "level": 77,
         "sets": [
             {
                 "role": "Bulky Attacker",
@@ -1122,7 +1122,7 @@
         ]
     },
     "politoed": {
-        "level": 88,
+        "level": 87,
         "sets": [
             {
                 "role": "Bulky Attacker",
@@ -1153,7 +1153,7 @@
         ]
     },
     "sunflora": {
-        "level": 100,
+        "level": 99,
         "sets": [
             {
                 "role": "Wallbreaker",
@@ -1524,7 +1524,7 @@
         ]
     },
     "miltank": {
-        "level": 81,
+        "level": 83,
         "sets": [
             {
                 "role": "Bulky Attacker",
@@ -1534,7 +1534,7 @@
         ]
     },
     "blissey": {
-        "level": 80,
+        "level": 81,
         "sets": [
             {
                 "role": "Staller",
@@ -1610,7 +1610,7 @@
         ]
     },
     "lugia": {
-        "level": 72,
+        "level": 73,
         "sets": [
             {
                 "role": "Staller",
@@ -1893,7 +1893,7 @@
         ]
     },
     "shedinja": {
-        "level": 100,
+        "level": 99,
         "sets": [
             {
                 "role": "Setup Sweeper",
@@ -2363,7 +2363,7 @@
         ]
     },
     "tropius": {
-        "level": 97,
+        "level": 96,
         "sets": [
             {
                 "role": "Staller",
@@ -2378,7 +2378,7 @@
         ]
     },
     "chimecho": {
-        "level": 94,
+        "level": 93,
         "sets": [
             {
                 "role": "Bulky Support",
@@ -2551,7 +2551,7 @@
         ]
     },
     "registeel": {
-        "level": 81,
+        "level": 80,
         "sets": [
             {
                 "role": "Bulky Setup",
@@ -3320,7 +3320,7 @@
         ]
     },
     "glaceon": {
-        "level": 88,
+        "level": 87,
         "sets": [
             {
                 "role": "Bulky Support",
@@ -3525,7 +3525,7 @@
         ]
     },
     "mesprit": {
-        "level": 81,
+        "level": 82,
         "sets": [
             {
                 "role": "Fast Attacker",
@@ -3614,7 +3614,7 @@
         ]
     },
     "giratinaorigin": {
-        "level": 70,
+        "level": 71,
         "sets": [
             {
                 "role": "Fast Attacker",

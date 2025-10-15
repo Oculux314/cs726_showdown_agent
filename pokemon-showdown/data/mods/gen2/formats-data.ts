@@ -195,7 +195,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "ZUBL",
 	},
 	poliwhirl: {
-		tier: "PUBL",
+		tier: "PU",
 	},
 	poliwrath: {
 		tier: "NUBL",
@@ -534,7 +534,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "ZU",
 	},
 	feraligatr: {
-		tier: "UU",
+		tier: "NUBL",
 	},
 	sentret: {
 		tier: "LC",

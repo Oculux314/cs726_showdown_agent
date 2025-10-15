@@ -1,4 +1,0 @@
-poke_env==0.10.0
-Requests==2.32.5
-setuptools==59.6.0
-tabulate==0.9.0

@@ -15,7 +15,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 			return false;
 		},
-		shortDesc: "-50% damage from Fire and Ice. Burn immune.",
+		shortDesc: "Fire-/Ice-type moves against this Pokemon deal 1/2 damage. Burn immune.",
 	},
 	callillumise: {
 		onDamagePriority: -30,
@@ -141,7 +141,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				delete this.effectState.shortfuse;
 				this.actions.useMove('explosion', pokemon);
 			}
-			this.checkFainted();
 		},
 		flags: {
 			breakable: 1, failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1,
@@ -149,7 +148,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Short Fuse",
 		rating: 5,
 		num: -102,
-		shortDesc: "If KO'd, use Explosion instead.",
+		shortDesc: "When this Pokemon would be KOed, it instead uses Explosion.",
 	},
 	hydroelectricdam: {
 		// Copied from the code for Sand Spit
@@ -160,7 +159,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Hydroelectric Dam",
 		rating: 5,
 		num: -103,
-		shortDesc: "Starts Rain Dance when hit by an attack.",
+		shortDesc: "When this Pokemon is hit by an attack, the effect of Rain Dance begins.",
 	},
 	frozenarmor: {
 		onTryHit(target, source, move) {
@@ -188,7 +187,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Frozen Armor",
 		rating: 5,
 		num: -105,
-		shortDesc: "-20 BP on attacks targeting Glastrier, at 50% HP become Calyrex-Ice.",
+		shortDesc: "Incoming attacks have their BP reduced by 20. This Pokemon transforms into Calyrex-Ice below 50% HP.",
 	},
 	flipflop: {
 		onDamagingHitOrder: 1,
@@ -214,7 +213,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Flip Flop",
 		rating: 5,
 		num: -104,
-		shortDesc: "When hit by contact move, invert attacker’s stat boosts.",
+		shortDesc: "When hit by a contact move, the attacker’s stat changes are inverted.",
 	},
 
 	grasspelt: {
@@ -335,7 +334,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "King of the Hill",
 		rating: 5,
 		num: -108,
-		shortDesc: "Mountaineer + Sharpness. Opponent cannot ignore hazard damage.",
+		shortDesc: "Mountaineer + Sharpness. Prevents opposing Pokemon from ignoring hazard damage.",
 	},
 	// stockpile on hit
 	omnivore: {
@@ -349,7 +348,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Omnivore",
 		rating: 5,
 		num: -109,
-		shortDesc: "Gain Stockpile charge when hit by attack.",
+		shortDesc: "This Pokemon gains a Stockpile charge upon being hit by a damaging attack.",
 	},
 	// disguise clone
 	pseudowoodo: {
@@ -398,7 +397,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Pseudowoodo",
 		rating: 5,
 		num: -110,
-		shortDesc: "Disguise. Becomes Rock type when it breaks.",
+		shortDesc: "The first hit it takes is blocked, and it takes 1/8 HP damage instead and becomes Rock type.",
 	},
 	magicguard: {
 		onDamage(damage, target, source, effect) {
@@ -508,7 +507,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		rating: 4.5,
-		shortDesc: "Gen 8 Protean.",
+		shortDesc: "This Pokemon's type changes to the type of the move it is using.",
 	},
 	berserk: {
 		onUpdate(pokemon) {
@@ -604,7 +603,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Moves ignore charge/recharge turns.",
 	},
 	biogenesis: {
-		onSwitchInPriority: 1,
+		onSwitchInPriority: -1,
 		onBeforeSwitchIn(pokemon) {
 			if (pokemon.m.didRandomMoves) return;
 			const moves = this.dex.moves.all();
@@ -721,7 +720,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Brain Freeze",
 		rating: 5,
 		num: -114,
-		shortDesc: "If Snowscape or target is Frostbitten, attacks auto Crit.",
+		shortDesc: "This Pokemon's attacks are critical hits if the target is frostbitten or Snow is active.",
 	},
 	neutralizinggas: {
 		inherit: true,
@@ -731,9 +730,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 	},
 	terawheel: {
-		onStart(pokemon) {
-			pokemon.canTerastallize = null;
-		},
 		// copied from SSB High Performance Computing
 		onResidualOrder: 6,
 		onResidual(source) {
@@ -746,68 +742,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Tera Wheel",
 		rating: 5,
 		num: -115,
-		shortDesc: "End of turn: this Pokemon switches to a random type (including Stellar).",
-	},
-	download: {
-		inherit: true,
-		onUpdate(pokemon) {
-			if (pokemon.species.name === 'Genesect-Burn' && pokemon.terastallized) {
-				pokemon.setAbility('Drought', null, null, true);
-				pokemon.baseAbility = pokemon.ability;
-				this.add('-ability', pokemon, 'Drought');
-			}
-			if (pokemon.species.name === 'Genesect-Chill' && pokemon.terastallized) {
-				pokemon.setAbility('Snow Warning', null, null, true);
-				pokemon.baseAbility = pokemon.ability;
-				this.add('-ability', pokemon, 'Snow Warning');
-			}
-			if (pokemon.species.name === 'Genesect-Douse' && pokemon.terastallized) {
-				pokemon.setAbility('Drizzle', null, null, true);
-				pokemon.baseAbility = pokemon.ability;
-				this.add('-ability', pokemon, 'Drizzle');
-			}
-			if (pokemon.species.name === 'Genesect-Shock' && pokemon.terastallized) {
-				pokemon.setAbility('Electric Surge', null, null, true);
-				pokemon.baseAbility = pokemon.ability;
-				this.add('-ability', pokemon, 'Electric Surge');
-			}
-		},
-		shortDesc: "Download + Gets weather setting move when Tera.",
-	},
-	battlerage: {
-		onDamagingHit(damage, target, source, effect) {
-			this.boost({ atk: 1 });
-		},
-		flags: {},
-		name: "Battle Rage",
-		rating: 5,
-		num: -116,
-		shortDesc: "+1 Atk when hit by an attack.",
-	},
-	terrainshift: {
-		onStart(source) {
-			if (source.hp >= source.maxhp) {
-				source.setType("Electric");
-				this.field.setTerrain('electricterrain');
-				this.add('-start', source, 'typechange', 'Electric', '[silent]');
-			} else if (source.hp >= (2 * source.maxhp) / 3) {
-				source.setType("Fairy");
-				this.field.setTerrain('mistyterrain');
-				this.add('-start', source, 'typechange', 'Fairy', '[silent]');
-			} else if (source.hp >= source.maxhp / 3) {
-				source.setType("Grass");
-				this.field.setTerrain('grassyterrain');
-				this.add('-start', source, 'typechange', 'Grass', '[silent]');
-			} else {
-				source.setType("Psychic");
-				this.field.setTerrain('psychicterrain');
-				this.add('-start', source, 'typechange', 'Psychic', '[silent]');
-			}
-		},
-		flags: {},
-		name: "Terrain Shift",
-		rating: 5,
-		num: -117,
-		shortDesc: "Sets terrain depending on HP value.",
+		shortDesc: "At the end of each turn, this Pokemon switches to a random type (including Stellar).",
 	},
 };

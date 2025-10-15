@@ -46,7 +46,6 @@ export class RuleTable extends Map<string, string> {
 	complexBans: ComplexBan[];
 	complexTeamBans: ComplexTeamBan[];
 	checkCanLearn: [TeamValidator['checkCanLearn'], string] | null;
-	onChooseTeam: [NonNullable<Format['onChooseTeam']>, string] | null;
 	timer: [Partial<GameTimerSettings>, string] | null;
 	tagRules: string[];
 	valueRules: Map<string, string>;
@@ -69,7 +68,6 @@ export class RuleTable extends Map<string, string> {
 		this.complexBans = [];
 		this.complexTeamBans = [];
 		this.checkCanLearn = null;
-		this.onChooseTeam = null;
 		this.timer = null;
 		this.tagRules = [];
 		this.valueRules = new Map();
@@ -472,9 +470,6 @@ export class Format extends BasicEffect implements Readonly<BasicEffect> {
 	) => Species | void;
 	declare readonly onBattleStart?: (this: Battle) => void;
 	declare readonly onTeamPreview?: (this: Battle) => void;
-	declare readonly onChooseTeam?: (
-		this: Battle, positions: number[], pokemon: Pokemon[], autoChoose?: boolean
-	) => number[] | string | void;
 	declare readonly onValidateSet?: (
 		this: TeamValidator, set: PokemonSet, format: Format, setHas: AnyObject, teamHas: AnyObject
 	) => string[] | void;
@@ -755,9 +750,6 @@ export class DexFormats {
 		if (format.checkCanLearn) {
 			ruleTable.checkCanLearn = [format.checkCanLearn, format.name];
 		}
-		if (format.onChooseTeam) {
-			ruleTable.onChooseTeam = [format.onChooseTeam, format.name];
-		}
 
 		// apply rule repeals before other rules
 		// repeals is a ruleid:depth map (positive: unused, negative: used)
@@ -939,15 +931,6 @@ export class DexFormats {
 					);
 				}
 				ruleTable.checkCanLearn = subRuleTable.checkCanLearn;
-			}
-			if (subRuleTable.onChooseTeam) {
-				if (ruleTable.onChooseTeam) {
-					throw new Error(
-						`"${format.name}" has conflicting team selection rules from ` +
-						`"${ruleTable.onChooseTeam[1]}" and "${subRuleTable.onChooseTeam[1]}"`
-					);
-				}
-				ruleTable.onChooseTeam = subRuleTable.onChooseTeam;
 			}
 		}
 		if (!hasPokemonBans && warnForNoPokemonBans) {

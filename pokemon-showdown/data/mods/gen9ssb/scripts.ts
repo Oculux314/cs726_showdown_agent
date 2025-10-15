@@ -901,8 +901,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			} else {
 				this.battle.add(isDrag ? 'drag' : 'switch', pokemon, pokemon.getFullDetails);
 			}
-			pokemon.abilityState = this.battle.initEffectState({ id: pokemon.ability, target: pokemon });
-			pokemon.itemState = this.battle.initEffectState({ id: pokemon.item, target: pokemon });
+			pokemon.abilityState.effectOrder = this.battle.effectOrder++;
+			pokemon.itemState.effectOrder = this.battle.effectOrder++;
 			if (isDrag && this.battle.gen === 2) pokemon.draggedIn = this.battle.turn;
 			pokemon.previouslySwitchedIn++;
 

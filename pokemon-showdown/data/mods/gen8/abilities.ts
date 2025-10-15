@@ -283,6 +283,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon, this.dex.species.get(speciesid));
 			}
 		},
+		onFaint(target) {
+			delete this.effectState.busted;
+		},
 		rating: 3.5,
 	},
 	download: {

@@ -116,7 +116,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 	},
 	pikachustarter: {
 		isNonstandard: null,
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	raichu: {
@@ -138,7 +138,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		doublesTier: "DOU",
 	},
 	sandslashalola: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	nidoranf: {
@@ -186,7 +186,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	wigglytuff: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	zubat: {
@@ -203,7 +203,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "NFE",
 	},
 	vileplume: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	paras: {
@@ -227,7 +227,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	dugtrio: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	dugtrioalola: {
@@ -245,7 +245,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		doublesTier: "DOU",
 	},
 	persianalola: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	psyduck: {
@@ -266,7 +266,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	arcanine: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	poliwag: {
@@ -317,7 +317,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	tentacruel: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	geodude: {
@@ -401,7 +401,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	cloyster: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	gastly: {
@@ -433,7 +433,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	kingler: {
-		tier: "UU",
+		tier: "RU",
 		doublesTier: "DOU",
 	},
 	voltorb: {
@@ -492,7 +492,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		doublesTier: "DOU",
 	},
 	chansey: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	tangela: {
@@ -572,7 +572,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		doublesTier: "DOU",
 	},
 	lapras: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	ditto: {
@@ -584,7 +584,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 	},
 	eeveestarter: {
 		isNonstandard: null,
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	vaporeon: {
@@ -607,14 +607,14 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "LC",
 	},
 	omastar: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	kabuto: {
 		tier: "LC",
 	},
 	kabutops: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	aerodactyl: {
@@ -638,7 +638,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		doublesTier: "DOU",
 	},
 	moltres: {
-		tier: "RU",
+		tier: "UU",
 		doublesTier: "DOU",
 	},
 	dratini: {

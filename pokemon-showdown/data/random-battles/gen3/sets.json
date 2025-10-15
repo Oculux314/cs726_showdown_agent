@@ -1414,7 +1414,7 @@
         ]
     },
     "quagsire": {
-        "level": 84,
+        "level": 85,
         "sets": [
             {
                 "role": "Staller",
@@ -2547,7 +2547,7 @@
         ]
     },
     "camerupt": {
-        "level": 89,
+        "level": 88,
         "sets": [
             {
                 "role": "Wallbreaker",
@@ -3009,7 +3009,7 @@
         ]
     },
     "latias": {
-        "level": 66,
+        "level": 67,
         "sets": [
             {
                 "role": "Bulky Setup",

@@ -740,29 +740,33 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: 238,
 	},
 	cudchew: {
-		onEatItem(item, pokemon, source, effect) {
-			if (item.isBerry && (!effect || !['bugbite', 'pluck'].includes(effect.id))) {
-				this.effectState.berry = item;
-				this.effectState.counter = 2;
-				// This is needed in case the berry was eaten during residuals, preventing the timer from decreasing this turn
-				if (!this.queue.peek()) this.effectState.counter--;
+		onEatItem(item, pokemon) {
+			if (item.isBerry && pokemon.addVolatile('cudchew')) {
+				pokemon.volatiles['cudchew'].berry = item;
 			}
 		},
-		onResidualOrder: 28,
-		onResidualSubOrder: 2,
-		onResidual(pokemon) {
-			if (!this.effectState.berry || !pokemon.hp) return;
-			if (--this.effectState.counter <= 0) {
-				const item = this.effectState.berry;
-				this.add('-activate', pokemon, 'ability: Cud Chew');
-				this.add('-enditem', pokemon, item.name, '[eat]');
-				if (this.singleEvent('Eat', item, null, pokemon, null, null)) {
-					this.runEvent('EatItem', pokemon, null, null, item);
+		onEnd(pokemon) {
+			delete pokemon.volatiles['cudchew'];
+		},
+		condition: {
+			noCopy: true,
+			duration: 2,
+			onRestart() {
+				this.effectState.duration = 2;
+			},
+			onResidualOrder: 28,
+			onResidualSubOrder: 2,
+			onEnd(pokemon) {
+				if (pokemon.hp) {
+					const item = this.effectState.berry;
+					this.add('-activate', pokemon, 'ability: Cud Chew');
+					this.add('-enditem', pokemon, item.name, '[eat]');
+					if (this.singleEvent('Eat', item, null, pokemon, null, null)) {
+						this.runEvent('EatItem', pokemon, null, null, item);
+					}
+					if (item.onEat) pokemon.ateBerry = true;
 				}
-				if (item.onEat) pokemon.ateBerry = true;
-				delete this.effectState.berry;
-				delete this.effectState.counter;
-			}
+			},
 		},
 		flags: {},
 		name: "Cud Chew",
@@ -1162,8 +1166,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	embodyaspectcornerstone: {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Cornerstone-Tera' && pokemon.terastallized &&
-				!this.effectState.embodied) {
-				this.effectState.embodied = true;
+				this.effectState.embodied !== pokemon.previouslySwitchedIn) {
+				this.effectState.embodied = pokemon.previouslySwitchedIn;
 				this.boost({ def: 1 }, pokemon);
 			}
 		},
@@ -1175,8 +1179,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	embodyaspecthearthflame: {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Hearthflame-Tera' && pokemon.terastallized &&
-				!this.effectState.embodied) {
-				this.effectState.embodied = true;
+				this.effectState.embodied !== pokemon.previouslySwitchedIn) {
+				this.effectState.embodied = pokemon.previouslySwitchedIn;
 				this.boost({ atk: 1 }, pokemon);
 			}
 		},
@@ -1188,8 +1192,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	embodyaspectteal: {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Teal-Tera' && pokemon.terastallized &&
-				!this.effectState.embodied) {
-				this.effectState.embodied = true;
+				this.effectState.embodied !== pokemon.previouslySwitchedIn) {
+				this.effectState.embodied = pokemon.previouslySwitchedIn;
 				this.boost({ spe: 1 }, pokemon);
 			}
 		},
@@ -1201,8 +1205,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	embodyaspectwellspring: {
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Wellspring-Tera' && pokemon.terastallized &&
-				!this.effectState.embodied) {
-				this.effectState.embodied = true;
+				this.effectState.embodied !== pokemon.previouslySwitchedIn) {
+				this.effectState.embodied = pokemon.previouslySwitchedIn;
 				this.boost({ spd: 1 }, pokemon);
 			}
 		},
@@ -2259,12 +2263,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	libero: {
 		onPrepareHit(source, target, move) {
-			if (this.effectState.libero) return;
+			if (this.effectState.libero === source.previouslySwitchedIn) return;
 			if (move.hasBounced || move.flags['futuremove'] || move.sourceEffect === 'snatch' || move.callsMove) return;
 			const type = move.type;
 			if (type && type !== '???' && source.getTypes().join() !== type) {
 				if (!source.setType(type)) return;
-				this.effectState.libero = true;
+				this.effectState.libero = source.previouslySwitchedIn;
 				this.add('-start', source, 'typechange', type, '[from] ability: Libero');
 			}
 		},
@@ -3415,12 +3419,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	protean: {
 		onPrepareHit(source, target, move) {
-			if (this.effectState.protean) return;
+			if (this.effectState.protean === source.previouslySwitchedIn) return;
 			if (move.hasBounced || move.flags['futuremove'] || move.sourceEffect === 'snatch' || move.callsMove) return;
 			const type = move.type;
 			if (type && type !== '???' && source.getTypes().join() !== type) {
 				if (!source.setType(type)) return;
-				this.effectState.protean = true;
+				this.effectState.protean = source.previouslySwitchedIn;
 				this.add('-start', source, 'typechange', type, '[from] ability: Protean');
 			}
 		},
@@ -4229,30 +4233,34 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	slowstart: {
 		onStart(pokemon) {
-			this.add('-start', pokemon, 'ability: Slow Start');
-			this.effectState.counter = 5;
+			pokemon.addVolatile('slowstart');
 		},
-		onResidualOrder: 28,
-		onResidualSubOrder: 2,
-		onResidual(pokemon) {
-			if (pokemon.activeTurns && this.effectState.counter) {
-				this.effectState.counter--;
-				if (!this.effectState.counter) {
-					this.add('-end', pokemon, 'Slow Start');
-					delete this.effectState.counter;
+		onEnd(pokemon) {
+			delete pokemon.volatiles['slowstart'];
+			this.add('-end', pokemon, 'Slow Start', '[silent]');
+		},
+		condition: {
+			duration: 5,
+			onResidualOrder: 28,
+			onResidualSubOrder: 2,
+			onStart(target) {
+				this.add('-start', target, 'ability: Slow Start');
+			},
+			onResidual(pokemon) {
+				if (!pokemon.activeTurns) {
+					this.effectState.duration! += 1;
 				}
-			}
-		},
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (this.effectState.counter) {
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
 				return this.chainModify(0.5);
-			}
-		},
-		onModifySpe(spe, pokemon) {
-			if (this.effectState.counter) {
+			},
+			onModifySpe(spe, pokemon) {
 				return this.chainModify(0.5);
-			}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'Slow Start');
+			},
 		},
 		flags: {},
 		name: "Slow Start",
@@ -5552,14 +5560,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.baseSpecies.baseSpecies !== 'Palafin') return;
 			if (pokemon.species.forme !== 'Hero') {
 				pokemon.formeChange('Palafin-Hero', this.effect, true);
-				pokemon.heroMessageDisplayed = false;
 			}
 		},
 		onSwitchIn(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Palafin') return;
-			if (!pokemon.heroMessageDisplayed && pokemon.species.forme === 'Hero') {
+			if (!this.effectState.heroMessageDisplayed && pokemon.species.forme === 'Hero') {
 				this.add('-activate', pokemon, 'ability: Zero to Hero');
-				pokemon.heroMessageDisplayed = true;
+				this.effectState.heroMessageDisplayed = true;
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1, notransform: 1 },
