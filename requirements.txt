@@ -1,0 +1,13 @@
+dm_control==1.0.26
+gymnasium==1.1.1
+gymnasium[classic-control]==1.1.1
+gymnasium[mujoco]==1.1.1
+mujoco==3.2.6
+
+mediapy==1.1.9
+natsort==8.4.0
+
+opencv-contrib-python==4.6.0.66
+numpy==1.26.4
+pydantic==1.10.13
+torch==2.7.0
