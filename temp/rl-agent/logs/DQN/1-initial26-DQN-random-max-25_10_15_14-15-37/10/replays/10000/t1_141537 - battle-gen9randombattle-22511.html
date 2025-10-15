@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22511</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22511<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22511|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Magcargo|Magcargo, L95, M|268/268
+|switch|p2a: Meowstic|Meowstic-F, L89, F|100/100
+|turn|1
+|
+|switch|p1a: Pincurchin|Pincurchin, F|258/258
+|-fieldstart|move: Electric Terrain|[from] ability: Electric Surge|[of] p1a: Pincurchin
+|move|p2a: Meowstic|Psyshock|p1a: Pincurchin
+|-damage|p1a: Pincurchin|171/258
+|-damage|p2a: Meowstic|91/100|[from] item: Life Orb
+|
+|-heal|p1a: Pincurchin|187/258|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Meowstic|Psyshock|p1a: Pincurchin
+|-damage|p1a: Pincurchin|97/258
+|-damage|p2a: Meowstic|81/100|[from] item: Life Orb
+|move|p1a: Pincurchin|Zing Zap|p2a: Meowstic
+|-damage|p2a: Meowstic|20/100
+|
+|-heal|p1a: Pincurchin|113/258|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|switch|p1a: Wyrdeer|Wyrdeer, L87, F|321/321
+|-ability|p1a: Wyrdeer|Intimidate|boost
+|-unboost|p2a: Meowstic|atk|1
+|-ability|p2a: Meowstic|Competitive|boost
+|-boost|p2a: Meowstic|spa|2
+|move|p2a: Meowstic|Psyshock|p1a: Wyrdeer
+|-resisted|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|188/321
+|-damage|p2a: Meowstic|10/100|[from] item: Life Orb
+|
+|-heal|p1a: Wyrdeer|208/321|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Meowstic|Psyshock|p1a: Wyrdeer
+|-resisted|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|82/321
+|-damage|p2a: Meowstic|0 fnt|[from] item: Life Orb
+|faint|p2a: Meowstic
+|move|p1a: Wyrdeer|Megahorn|p2: Meowstic|[notarget]
+|-fail|p1a: Wyrdeer
+|
+|-heal|p1a: Wyrdeer|102/321|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Pawmot|Pawmot, L80, F|100/100
+|turn|5
+|
+|move|p2a: Pawmot|Close Combat|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|0 fnt
+|-unboost|p2a: Pawmot|def|1
+|-unboost|p2a: Pawmot|spd|1
+|faint|p1a: Wyrdeer
+|-damage|p2a: Pawmot|91/100|[from] item: Life Orb
+|
+|-fieldend|move: Electric Terrain
+|upkeep
+|
+|switch|p1a: Pincurchin|Pincurchin, F|113/258
+|-fieldstart|move: Electric Terrain|[from] ability: Electric Surge|[of] p1a: Pincurchin
+|turn|6
+|
+|switch|p1a: Magcargo|Magcargo, L95, M|268/268
+|move|p2a: Pawmot|Close Combat|p1a: Magcargo
+|-supereffective|p1a: Magcargo
+|-damage|p1a: Magcargo|11/268
+|-unboost|p2a: Pawmot|def|1
+|-unboost|p2a: Pawmot|spd|1
+|-ability|p1a: Magcargo|Weak Armor|boost
+|-unboost|p1a: Magcargo|def|1
+|-boost|p1a: Magcargo|spe|2
+|-damage|p2a: Pawmot|81/100|[from] item: Life Orb
+|
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Magcargo|Dragon
+|move|p1a: Magcargo|Fire Blast|p2a: Pawmot
+|-damage|p2a: Pawmot|0 fnt
+|faint|p2a: Pawmot
+|
+|upkeep
+|
+|switch|p2a: Clodsire|Clodsire, L81, F|100/100
+|turn|8
+|
+|move|p1a: Magcargo|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|55/100
+|move|p2a: Clodsire|Earthquake|p1a: Magcargo
+|-damage|p1a: Magcargo|0 fnt
+|faint|p1a: Magcargo
+|
+|-heal|p2a: Clodsire|61/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Pincurchin|Pincurchin, F|113/258
+|turn|9
+|
+|move|p1a: Pincurchin|Zing Zap|p2a: Clodsire
+|-immune|p2a: Clodsire
+|move|p2a: Clodsire|Earthquake|p1a: Pincurchin
+|-supereffective|p1a: Pincurchin
+|-damage|p1a: Pincurchin|0 fnt
+|faint|p1a: Pincurchin
+|
+|-heal|p2a: Clodsire|67/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|265/265
+|turn|10
+|
+|switch|p1a: Toedscruel|Toedscruel, L87, M|281/281
+|move|p2a: Clodsire|Earthquake|p1a: Toedscruel
+|-resisted|p1a: Toedscruel
+|-damage|p1a: Toedscruel|231/281
+|
+|-heal|p1a: Toedscruel|248/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|73/100|[from] item: Leftovers
+|-fieldend|move: Electric Terrain
+|upkeep
+|turn|11
+|
+|move|p2a: Clodsire|Earthquake|p1a: Toedscruel
+|-resisted|p1a: Toedscruel
+|-damage|p1a: Toedscruel|197/281
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-status|p2a: Clodsire|slp|[from] move: Spore
+|
+|-heal|p1a: Toedscruel|214/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|80/100 slp|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Toedscruel|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|32/100 slp
+|cant|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|231/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|38/100 slp|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|248/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|44/100 slp|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|-curestatus|p2a: Clodsire|slp|[msg]
+|move|p2a: Clodsire|Earthquake|p1a: Toedscruel
+|-resisted|p1a: Toedscruel
+|-damage|p1a: Toedscruel|203/281
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-status|p2a: Clodsire|slp|[from] move: Spore
+|
+|-heal|p1a: Toedscruel|220/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|50/100 slp|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|237/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|56/100 slp|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|254/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|62/100 slp|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Toedscruel|Earth Power|p2a: Clodsire
+|-supereffective|p2a: Clodsire
+|-damage|p2a: Clodsire|17/100 slp
+|cant|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|271/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|23/100 slp|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|-curestatus|p2a: Clodsire|slp|[msg]
+|move|p2a: Clodsire|Earthquake|p1a: Toedscruel
+|-resisted|p1a: Toedscruel
+|-damage|p1a: Toedscruel|220/281
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-status|p2a: Clodsire|slp|[from] move: Spore
+|
+|-heal|p1a: Toedscruel|237/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|29/100 slp|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|254/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|35/100 slp|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|-curestatus|p2a: Clodsire|slp|[msg]
+|move|p2a: Clodsire|Earthquake|p1a: Toedscruel
+|-resisted|p1a: Toedscruel
+|-damage|p1a: Toedscruel|206/281
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-status|p2a: Clodsire|slp|[from] move: Spore
+|
+|-heal|p1a: Toedscruel|223/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|41/100 slp|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|240/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|47/100 slp|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|257/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|54/100 slp|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|cant|p2a: Clodsire|slp
+|move|p1a: Toedscruel|Spore|p2a: Clodsire
+|-fail|p2a: Clodsire|slp
+|
+|-heal|p1a: Toedscruel|274/281|[from] item: Leftovers
+|-heal|p2a: Clodsire|60/100 slp|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|321/321
+|-curestatus|p2a: Clodsire|slp|[msg]
+|move|p2a: Clodsire|Earthquake|p1a: Amoonguss
+|-damage|p1a: Amoonguss|218/321
+|
+|-heal|p1a: Amoonguss|238/321|[from] item: Leftovers
+|-heal|p2a: Clodsire|66/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Amoonguss|Giga Drain|p2a: Clodsire
+|-damage|p2a: Clodsire|47/100
+|-heal|p1a: Amoonguss|270/321|[from] drain|[of] p2a: Clodsire
+|move|p2a: Clodsire|Earthquake|p1a: Amoonguss
+|-damage|p1a: Amoonguss|167/321
+|
+|-heal|p1a: Amoonguss|187/321|[from] item: Leftovers
+|-heal|p2a: Clodsire|53/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Amoonguss|Giga Drain|p2a: Clodsire
+|-damage|p2a: Clodsire|35/100
+|-heal|p1a: Amoonguss|219/321|[from] drain|[of] p2a: Clodsire
+|move|p2a: Clodsire|Earthquake|p1a: Amoonguss
+|-damage|p1a: Amoonguss|113/321
+|
+|-heal|p1a: Amoonguss|133/321|[from] item: Leftovers
+|-heal|p2a: Clodsire|41/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Amoonguss|Giga Drain|p2a: Clodsire
+|-damage|p2a: Clodsire|22/100
+|-heal|p1a: Amoonguss|165/321|[from] drain|[of] p2a: Clodsire
+|move|p2a: Clodsire|Earthquake|p1a: Amoonguss
+|-damage|p1a: Amoonguss|74/321
+|
+|-heal|p1a: Amoonguss|94/321|[from] item: Leftovers
+|-heal|p2a: Clodsire|28/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Amoonguss|Giga Drain|p2a: Clodsire
+|-damage|p2a: Clodsire|9/100
+|-heal|p1a: Amoonguss|127/321|[from] drain|[of] p2a: Clodsire
+|move|p2a: Clodsire|Earthquake|p1a: Amoonguss
+|-damage|p1a: Amoonguss|30/321
+|
+|-heal|p1a: Amoonguss|50/321|[from] item: Leftovers
+|-heal|p2a: Clodsire|15/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Amoonguss|Giga Drain|p2a: Clodsire
+|-damage|p2a: Clodsire|0 fnt
+|-heal|p1a: Amoonguss|76/321|[from] drain|[of] p2a: Clodsire
+|faint|p2a: Clodsire
+|
+|-heal|p1a: Amoonguss|96/321|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Komala|Komala, L89, M|100/100
+|-ability|p2a: Komala|Comatose
+|turn|30
+|
+|move|p2a: Komala|Superpower|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|27/321
+|-unboost|p2a: Komala|atk|1
+|-unboost|p2a: Komala|def|1
+|move|p1a: Amoonguss|Giga Drain|p2a: Komala
+|-damage|p2a: Komala|78/100
+|-heal|p1a: Amoonguss|56/321|[from] drain|[of] p2a: Komala
+|
+|-heal|p1a: Amoonguss|76/321|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|switch|p1a: Toedscruel|Toedscruel, L87, M|274/281
+|move|p2a: Komala|Superpower|p1a: Toedscruel
+|-damage|p1a: Toedscruel|186/281
+|-unboost|p2a: Komala|atk|1
+|-unboost|p2a: Komala|def|1
+|
+|-heal|p1a: Toedscruel|203/281|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Komala|Superpower|p1a: Toedscruel
+|-damage|p1a: Toedscruel|132/281
+|-unboost|p2a: Komala|atk|1
+|-unboost|p2a: Komala|def|1
+|move|p1a: Toedscruel|Knock Off|p2a: Komala
+|-damage|p2a: Komala|17/100
+|-enditem|p2a: Komala|Choice Scarf|[from] move: Knock Off|[of] p1a: Toedscruel
+|
+|-heal|p1a: Toedscruel|149/281|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Komala|Superpower|p1a: Toedscruel
+|-crit|p1a: Toedscruel
+|-damage|p1a: Toedscruel|0 fnt
+|-unboost|p2a: Komala|atk|1
+|-unboost|p2a: Komala|def|1
+|faint|p1a: Toedscruel
+|
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|183/321
+|turn|34
+|
+|move|p2a: Komala|Superpower|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|159/321
+|-unboost|p2a: Komala|atk|1
+|-unboost|p2a: Komala|def|1
+|move|p1a: Amoonguss|Stomping Tantrum|p2a: Komala
+|-damage|p2a: Komala|0 fnt
+|faint|p2a: Komala
+|
+|-heal|p1a: Amoonguss|179/321|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Haxorus|Haxorus, L77, F|100/100
+|-ability|p2a: Haxorus|Mold Breaker
+|turn|35
+|
+|move|p2a: Haxorus|Close Combat|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|123/321
+|-unboost|p2a: Haxorus|def|1
+|-unboost|p2a: Haxorus|spd|1
+|move|p1a: Amoonguss|Giga Drain|p2a: Haxorus
+|-resisted|p2a: Haxorus
+|-damage|p2a: Haxorus|72/100
+|-heal|p1a: Amoonguss|158/321|[from] drain|[of] p2a: Haxorus
+|
+|-heal|p1a: Amoonguss|178/321|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Haxorus|Close Combat|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|119/321
+|-unboost|p2a: Haxorus|def|1
+|-unboost|p2a: Haxorus|spd|1
+|move|p1a: Amoonguss|Giga Drain|p2a: Haxorus
+|-resisted|p2a: Haxorus
+|-damage|p2a: Haxorus|36/100
+|-heal|p1a: Amoonguss|163/321|[from] drain|[of] p2a: Haxorus
+|
+|-heal|p1a: Amoonguss|183/321|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Haxorus|Close Combat|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|120/321
+|-unboost|p2a: Haxorus|def|1
+|-unboost|p2a: Haxorus|spd|1
+|move|p1a: Amoonguss|Giga Drain|p2a: Haxorus
+|-resisted|p2a: Haxorus
+|-damage|p2a: Haxorus|0 fnt
+|-heal|p1a: Amoonguss|164/321|[from] drain|[of] p2a: Haxorus
+|faint|p2a: Haxorus
+|
+|-heal|p1a: Amoonguss|184/321|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Lumineon|Lumineon, L93, F|100/100
+|turn|38
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|109/321
+|-damage|p2a: Lumineon|91/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Lumineon
+|-damage|p2a: Lumineon|66/100
+|
+|-heal|p1a: Amoonguss|129/321|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|265/265
+|move|p2a: Lumineon|Hydro Pump|p1a: Talonflame
+|-supereffective|p1a: Talonflame
+|-damage|p1a: Talonflame|0 fnt
+|faint|p1a: Talonflame
+|-damage|p2a: Lumineon|56/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|236/321
+|turn|40
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|159/321
+|-damage|p2a: Lumineon|46/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Stomping Tantrum|p2a: Lumineon
+|-damage|p2a: Lumineon|29/100
+|
+|-heal|p1a: Amoonguss|179/321|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|97/321
+|-damage|p2a: Lumineon|19/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Giga Drain|p2a: Lumineon
+|-supereffective|p2a: Lumineon
+|-damage|p2a: Lumineon|0 fnt
+|-heal|p1a: Amoonguss|124/321|[from] drain|[of] p2a: Lumineon
+|faint|p2a: Lumineon
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

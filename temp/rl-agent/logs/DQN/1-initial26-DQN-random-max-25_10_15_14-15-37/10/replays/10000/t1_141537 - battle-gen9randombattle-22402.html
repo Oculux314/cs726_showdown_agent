@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22402</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22402<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22402|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Corviknight|Corviknight, L80, F|288/288
+|switch|p2a: Hoopa|Hoopa, L85|100/100
+|-ability|p1a: Corviknight|Pressure
+|turn|1
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Corviknight
+|-crit|p1a: Corviknight
+|-damage|p1a: Corviknight|74/288
+|move|p1a: Corviknight|Brave Bird|p2a: Hoopa
+|-crit|p2a: Hoopa
+|-damage|p2a: Hoopa|29/100
+|-damage|p1a: Corviknight|9/288|[from] Recoil
+|
+|-heal|p1a: Corviknight|27/288|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Corviknight
+|-damage|p1a: Corviknight|0 fnt
+|faint|p1a: Corviknight
+|
+|upkeep
+|
+|switch|p1a: Arbok|Arbok, L87, M|246/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Hoopa|atk|1
+|turn|3
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Arbok|[miss]
+|-miss|p2a: Hoopa|p1a: Arbok
+|move|p1a: Arbok|Toxic Spikes|p2a: Hoopa
+|-sidestart|p2: t2_141537|move: Toxic Spikes
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Arbok
+|-resisted|p1a: Arbok
+|-crit|p1a: Arbok
+|-damage|p1a: Arbok|150/246
+|move|p1a: Arbok|Toxic Spikes|p2a: Hoopa
+|-sidestart|p2: t2_141537|move: Toxic Spikes
+|
+|-heal|p1a: Arbok|165/246|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|99/246
+|move|p1a: Arbok|Toxic Spikes||[still]
+|-fail|p1a: Arbok
+|
+|-heal|p1a: Arbok|114/246|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p2a: Hoopa|Focus Blast|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|46/246
+|move|p1a: Arbok|Toxic Spikes||[still]
+|-fail|p1a: Arbok
+|
+|-heal|p1a: Arbok|61/246|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|-activate|p2a: Hoopa|move: Struggle
+|move|p2a: Hoopa|Struggle|p1a: Arbok
+|-damage|p1a: Arbok|33/246
+|-damage|p2a: Hoopa|4/100|[from] recoil
+|move|p1a: Arbok|Toxic Spikes||[still]
+|-fail|p1a: Arbok
+|
+|-heal|p1a: Arbok|48/246|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|-activate|p2a: Hoopa|move: Struggle
+|move|p2a: Hoopa|Struggle|p1a: Arbok
+|-damage|p1a: Arbok|22/246
+|-damage|p2a: Hoopa|0 fnt|[from] recoil
+|faint|p2a: Hoopa
+|move|p1a: Arbok|Toxic Spikes||[still]
+|-fail|p1a: Arbok
+|
+|-heal|p1a: Arbok|37/246|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Rhydon|Rhydon, L85, F|100/100
+|-status|p2a: Rhydon|tox
+|turn|9
+|
+|switch|p1a: Dondozo|Dondozo, L78, M|362/362
+|move|p2a: Rhydon|Megahorn|p1a: Dondozo|[miss]
+|-miss|p2a: Rhydon|p1a: Dondozo
+|
+|-damage|p2a: Rhydon|95/100 tox|[from] psn
+|upkeep
+|turn|10
+|
+|move|p2a: Rhydon|Megahorn|p1a: Dondozo
+|-damage|p1a: Dondozo|266/362
+|move|p1a: Dondozo|Wave Crash|p2a: Rhydon
+|-supereffective|p2a: Rhydon
+|-damage|p2a: Rhydon|18/100 tox
+|-damage|p1a: Dondozo|185/362|[from] Recoil
+|
+|-heal|p1a: Dondozo|207/362|[from] item: Leftovers
+|-damage|p2a: Rhydon|6/100 tox|[from] psn
+|upkeep
+|turn|11
+|
+|-terastallize|p1a: Dondozo|Fairy
+|move|p2a: Rhydon|Megahorn|p1a: Dondozo|[miss]
+|-miss|p2a: Rhydon|p1a: Dondozo
+|move|p1a: Dondozo|Rest|p1a: Dondozo
+|-status|p1a: Dondozo|slp|[from] move: Rest
+|-heal|p1a: Dondozo|362/362 slp|[silent]
+|
+|-damage|p2a: Rhydon|0 fnt|[from] psn
+|faint|p2a: Rhydon
+|upkeep
+|
+|switch|p2a: Dondozo|Dondozo, L78, F|100/100
+|-status|p2a: Dondozo|tox
+|turn|12
+|
+|cant|p1a: Dondozo|slp
+|move|p1a: Dondozo|Sleep Talk|p1a: Dondozo
+|move|p1a: Dondozo|Curse|p1a: Dondozo|[from] move: Sleep Talk
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|move|p2a: Dondozo|Wave Crash|p1a: Dondozo
+|-damage|p1a: Dondozo|263/362 slp
+|-damage|p2a: Dondozo|91/100 tox|[from] Recoil
+|
+|-heal|p2a: Dondozo|97/100 tox|[from] item: Leftovers
+|-heal|p1a: Dondozo|285/362 slp|[from] item: Leftovers
+|-damage|p2a: Dondozo|91/100 tox|[from] psn
+|upkeep
+|turn|13
+|
+|move|p2a: Dondozo|Wave Crash|p1a: Dondozo
+|-damage|p1a: Dondozo|192/362 slp
+|-damage|p2a: Dondozo|83/100 tox|[from] Recoil
+|cant|p1a: Dondozo|slp
+|
+|-heal|p2a: Dondozo|89/100 tox|[from] item: Leftovers
+|-heal|p1a: Dondozo|214/362 slp|[from] item: Leftovers
+|-damage|p2a: Dondozo|77/100 tox|[from] psn
+|upkeep
+|turn|14
+|
+|move|p2a: Dondozo|Wave Crash|p1a: Dondozo
+|-damage|p1a: Dondozo|111/362 slp
+|-damage|p2a: Dondozo|67/100 tox|[from] Recoil
+|-curestatus|p1a: Dondozo|slp|[msg]
+|move|p1a: Dondozo|Sleep Talk||[still]
+|-fail|p1a: Dondozo
+|
+|-heal|p2a: Dondozo|73/100 tox|[from] item: Leftovers
+|-heal|p1a: Dondozo|133/362|[from] item: Leftovers
+|-damage|p2a: Dondozo|55/100 tox|[from] psn
+|upkeep
+|turn|15
+|
+|move|p2a: Dondozo|Wave Crash|p1a: Dondozo
+|-crit|p1a: Dondozo
+|-damage|p1a: Dondozo|0 fnt
+|faint|p1a: Dondozo
+|-damage|p2a: Dondozo|43/100 tox|[from] Recoil
+|
+|-heal|p2a: Dondozo|49/100 tox|[from] item: Leftovers
+|-damage|p2a: Dondozo|25/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Dialga|Dialga, L73|266/266
+|-ability|p1a: Dialga|Pressure
+|turn|16
+|
+|switch|p1a: Gallade|Gallade, L80, M|240/240
+|move|p2a: Dondozo|Wave Crash|p1a: Gallade
+|-damage|p1a: Gallade|86/240
+|-damage|p2a: Dondozo|11/100 tox|[from] Recoil
+|
+|-heal|p2a: Dondozo|17/100 tox|[from] item: Leftovers
+|-damage|p2a: Dondozo|0 fnt|[from] psn
+|faint|p2a: Dondozo
+|upkeep
+|
+|switch|p2a: Cramorant|Cramorant, L86, F|100/100
+|turn|17
+|
+|move|p2a: Cramorant|Brave Bird|p1a: Gallade
+|-supereffective|p1a: Gallade
+|-damage|p1a: Gallade|0 fnt
+|faint|p1a: Gallade
+|-damage|p2a: Cramorant|90/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Zacian|Zacian, L69|241/241
+|-ability|p1a: Zacian|Intrepid Sword|boost
+|-boost|p1a: Zacian|atk|1
+|turn|18
+|
+|move|p1a: Zacian|Play Rough|p2a: Cramorant|[miss]
+|-miss|p1a: Zacian|p2a: Cramorant
+|move|p2a: Cramorant|Brave Bird|p1a: Zacian
+|-damage|p1a: Zacian|130/241
+|-damage|p2a: Cramorant|76/100|[from] Recoil
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Zacian|Play Rough|p2a: Cramorant
+|-damage|p2a: Cramorant|0 fnt
+|faint|p2a: Cramorant
+|-damage|p1a: Zacian|106/241|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Palossand|Palossand, L89, F|100/100
+|-status|p2a: Palossand|tox
+|turn|20
+|
+|move|p1a: Zacian|Play Rough|p2a: Palossand
+|-crit|p2a: Palossand
+|-damage|p2a: Palossand|38/100 tox
+|-damage|p1a: Zacian|82/241|[from] item: Life Orb
+|move|p2a: Palossand|Earth Power|p1a: Zacian
+|-damage|p1a: Zacian|0 fnt
+|faint|p1a: Zacian
+|
+|-heal|p2a: Palossand|44/100 tox|[from] item: Leftovers
+|-damage|p2a: Palossand|38/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Arbok|Arbok, L87, M|37/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Palossand|atk|1
+|turn|21
+|
+|move|p1a: Arbok|Toxic Spikes||[still]
+|-fail|p1a: Arbok
+|move|p2a: Palossand|Earth Power|p1a: Arbok
+|-supereffective|p1a: Arbok
+|-damage|p1a: Arbok|0 fnt
+|faint|p1a: Arbok
+|
+|-heal|p2a: Palossand|44/100 tox|[from] item: Leftovers
+|-damage|p2a: Palossand|32/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Dialga|Dialga, L73|266/266
+|-ability|p1a: Dialga|Pressure
+|turn|22
+|
+|move|p2a: Palossand|Earth Power|p1a: Dialga
+|-supereffective|p1a: Dialga
+|-damage|p1a: Dialga|122/266
+|move|p1a: Dialga|Dragon Tail|p2a: Palossand
+|-damage|p2a: Palossand|16/100 tox
+|drag|p2a: Rabsca|Rabsca, L91, M|100/100
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Dialga|Heavy Slam|p2a: Rabsca
+|-damage|p2a: Rabsca|62/100
+|move|p2a: Rabsca|Bug Buzz|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|79/266
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Dialga|Draco Meteor|p2a: Rabsca|[miss]
+|-miss|p1a: Dialga|p2a: Rabsca
+|move|p2a: Rabsca|Bug Buzz|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|32/266
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Rabsca|Bug Buzz|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|0 fnt
+|faint|p1a: Dialga
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22500</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22500<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22500|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Reshiram|Reshiram, L76|277/277
+|switch|p2a: Dragonite|Dragonite, L74, F|100/100
+|-ability|p1a: Reshiram|Turboblaze
+|turn|1
+|
+|move|p1a: Reshiram|Blue Flare|p2a: Dragonite
+|-resisted|p2a: Dragonite
+|-damage|p2a: Dragonite|67/100
+|move|p2a: Dragonite|Outrage|p1a: Reshiram
+|-supereffective|p1a: Reshiram
+|-damage|p1a: Reshiram|11/277
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Reshiram|Blue Flare|p2a: Dragonite
+|-resisted|p2a: Dragonite
+|-damage|p2a: Dragonite|32/100
+|-status|p2a: Dragonite|brn
+|move|p2a: Dragonite|Outrage|p1a: Reshiram|[from] lockedmove
+|-supereffective|p1a: Reshiram
+|-damage|p1a: Reshiram|0 fnt
+|faint|p1a: Reshiram
+|-start|p2a: Dragonite|confusion|[fatigue]
+|
+|-damage|p2a: Dragonite|25/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Skeledirge|Skeledirge, L79, F|294/294
+|turn|3
+|
+|-activate|p2a: Dragonite|confusion
+|-damage|p2a: Dragonite|13/100 brn|[from] confusion
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|-damage|p2a: Dragonite|7/100 brn|[from] brn
+|upkeep
+|turn|4
+|
+|switch|p1a: Gogoat|Gogoat, L88, F|360/360
+|-activate|p2a: Dragonite|confusion
+|-damage|p2a: Dragonite|0 fnt|[from] confusion
+|faint|p2a: Dragonite
+|
+|upkeep
+|
+|switch|p2a: Veluza|Veluza, L85, F|100/100
+|turn|5
+|
+|move|p1a: Gogoat|Milk Drink||[still]
+|-fail|p1a: Gogoat|heal
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|291/360
+|
+|-heal|p1a: Gogoat|313/360|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|-terastallize|p1a: Gogoat|Water
+|move|p1a: Gogoat|Earthquake|p2a: Veluza
+|-damage|p2a: Veluza|69/100
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|233/360
+|
+|-heal|p1a: Gogoat|255/360|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|290/360
+|
+|-heal|p1a: Gogoat|312/360|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|288/360
+|
+|-heal|p1a: Gogoat|310/360|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|291/360
+|
+|-heal|p1a: Gogoat|313/360|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-crit|p1a: Gogoat
+|-damage|p1a: Gogoat|252/360
+|
+|-heal|p1a: Gogoat|274/360|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|286/360
+|
+|-heal|p1a: Gogoat|308/360|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Gogoat|Earthquake|p2a: Veluza
+|-damage|p2a: Veluza|36/100
+|-enditem|p2a: Veluza|Sitrus Berry|[eat]
+|-heal|p2a: Veluza|61/100|[from] item: Sitrus Berry
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|241/360
+|
+|-heal|p1a: Gogoat|263/360|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Veluza|Aqua Cutter|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|288/360
+|
+|-heal|p1a: Gogoat|310/360|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Gogoat|Horn Leech|p2a: Veluza
+|-supereffective|p2a: Veluza
+|-damage|p2a: Veluza|0 fnt
+|-heal|p1a: Gogoat|360/360|[from] drain|[of] p2a: Veluza
+|faint|p2a: Veluza
+|
+|upkeep
+|
+|switch|p2a: Dialga|Dialga, L73|100/100
+|-ability|p2a: Dialga|Pressure
+|turn|15
+|
+|move|p2a: Dialga|Draco Meteor|p1a: Gogoat
+|-damage|p1a: Gogoat|219/360
+|-unboost|p2a: Dialga|spa|2
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|
+|upkeep
+|turn|16
+|
+|switch|p1a: Girafarig|Girafarig, L89, F|269/269
+|move|p2a: Dialga|Draco Meteor|p1a: Girafarig
+|-damage|p1a: Girafarig|208/269
+|-unboost|p2a: Dialga|spa|2
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Girafarig|Thunderbolt|p2a: Dialga
+|-resisted|p2a: Dialga
+|-damage|p2a: Dialga|93/100
+|move|p2a: Dialga|Draco Meteor|p1a: Girafarig
+|-damage|p1a: Girafarig|171/269
+|-unboost|p2a: Dialga|spa|2
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Girafarig|Thunderbolt|p2a: Dialga
+|-resisted|p2a: Dialga
+|-damage|p2a: Dialga|85/100
+|move|p2a: Dialga|Draco Meteor|p1a: Girafarig
+|-damage|p1a: Girafarig|140/269
+|
+|upkeep
+|turn|19
+|
+|switch|p1a: Gogoat|Gogoat, L88, F, tera:Water|360/360
+|move|p2a: Dialga|Draco Meteor|p1a: Gogoat
+|-damage|p1a: Gogoat|318/360
+|
+|-heal|p1a: Gogoat|340/360|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Dialga|Draco Meteor|p1a: Gogoat
+|-damage|p1a: Gogoat|300/360
+|move|p1a: Gogoat|Earthquake|p2a: Dialga
+|-supereffective|p2a: Dialga
+|-damage|p2a: Dialga|28/100
+|
+|-heal|p1a: Gogoat|322/360|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Dialga|Draco Meteor|p1a: Gogoat
+|-damage|p1a: Gogoat|283/360
+|move|p1a: Gogoat|Earthquake|p2a: Dialga
+|-supereffective|p2a: Dialga
+|-damage|p2a: Dialga|0 fnt
+|faint|p2a: Dialga
+|
+|-heal|p1a: Gogoat|305/360|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Vigoroth|Vigoroth, L85, M|100/100
+|turn|22
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Gogoat
+|-damage|p1a: Gogoat|205/360
+|move|p1a: Gogoat|Earthquake|p2a: Vigoroth
+|-damage|p2a: Vigoroth|80/100
+|
+|-heal|p1a: Gogoat|227/360|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Gogoat
+|-damage|p1a: Gogoat|134/360
+|-status|p1a: Gogoat|par
+|move|p1a: Gogoat|Earthquake|p2a: Vigoroth
+|-damage|p2a: Vigoroth|60/100
+|
+|-heal|p1a: Gogoat|156/360 par|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Gogoat
+|-damage|p1a: Gogoat|51/360 par
+|cant|p1a: Gogoat|par
+|
+|-heal|p1a: Gogoat|73/360 par|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Gogoat
+|-damage|p1a: Gogoat|0 fnt
+|faint|p1a: Gogoat
+|
+|upkeep
+|
+|switch|p1a: Skeledirge|Skeledirge, L79, F|294/294
+|turn|26
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Slack Off||[still]
+|-fail|p1a: Skeledirge|heal
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Hex|p2a: Vigoroth
+|-immune|p2a: Vigoroth
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Hex|p2a: Vigoroth
+|-immune|p2a: Vigoroth
+|
+|upkeep
+|turn|35
+|
+|switch|p1a: Girafarig|Girafarig, L89, F|140/269
+|move|p2a: Vigoroth|Body Slam|p1a: Girafarig
+|-damage|p1a: Girafarig|79/269
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Girafarig
+|-damage|p1a: Girafarig|16/269
+|move|p1a: Girafarig|Thunderbolt|p2a: Vigoroth
+|-damage|p2a: Vigoroth|40/100
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Girafarig|Thunderbolt|p2a: Vigoroth
+|-damage|p2a: Vigoroth|18/100
+|move|p2a: Vigoroth|Body Slam|p1a: Girafarig
+|-damage|p1a: Girafarig|0 fnt
+|faint|p1a: Girafarig
+|
+|upkeep
+|
+|switch|p1a: Altaria|Altaria, L89, M|278/278
+|turn|38
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|203/278
+|-status|p1a: Altaria|par
+|move|p1a: Altaria|Roost|p1a: Altaria
+|-heal|p1a: Altaria|278/278 par
+|-singleturn|p1a: Altaria|move: Roost
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|206/278 par
+|move|p1a: Altaria|Haze|p1a: Altaria
+|-clearallboost
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|136/278 par
+|move|p1a: Altaria|Haze|p1a: Altaria
+|-clearallboost
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|55/278 par
+|move|p1a: Altaria|Roost|p1a: Altaria
+|-heal|p1a: Altaria|194/278 par
+|-singleturn|p1a: Altaria|move: Roost
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|118/278 par
+|move|p1a: Altaria|Haze|p1a: Altaria
+|-clearallboost
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|46/278 par
+|move|p1a: Altaria|Haze|p1a: Altaria
+|-clearallboost
+|
+|upkeep
+|turn|44
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Altaria
+|-damage|p1a: Altaria|0 fnt
+|faint|p1a: Altaria
+|
+|upkeep
+|
+|switch|p1a: Skeledirge|Skeledirge, L79, F|294/294
+|turn|45
+|
+|move|p2a: Vigoroth|Body Slam|p1a: Skeledirge
+|-immune|p1a: Skeledirge
+|move|p1a: Skeledirge|Hex|p2a: Vigoroth
+|-immune|p2a: Vigoroth
+|
+|upkeep
+|turn|46
+|
+|move|p2a: Vigoroth|Knock Off|p1a: Skeledirge
+|-supereffective|p1a: Skeledirge
+|-damage|p1a: Skeledirge|176/294
+|-enditem|p1a: Skeledirge|Heavy-Duty Boots|[from] move: Knock Off|[of] p2a: Vigoroth
+|move|p1a: Skeledirge|Will-O-Wisp|p2a: Vigoroth
+|-status|p2a: Vigoroth|brn
+|
+|-damage|p2a: Vigoroth|11/100 brn|[from] brn
+|upkeep
+|turn|47
+|
+|move|p2a: Vigoroth|Knock Off|p1a: Skeledirge
+|-supereffective|p1a: Skeledirge
+|-crit|p1a: Skeledirge
+|-damage|p1a: Skeledirge|114/294
+|move|p1a: Skeledirge|Hex|p2a: Vigoroth
+|-immune|p2a: Vigoroth
+|
+|-damage|p2a: Vigoroth|5/100 brn|[from] brn
+|upkeep
+|turn|48
+|
+|move|p2a: Vigoroth|Knock Off|p1a: Skeledirge
+|-supereffective|p1a: Skeledirge
+|-damage|p1a: Skeledirge|74/294
+|move|p1a: Skeledirge|Hex|p2a: Vigoroth
+|-immune|p2a: Vigoroth
+|
+|-damage|p2a: Vigoroth|0 fnt|[from] brn
+|faint|p2a: Vigoroth
+|upkeep
+|
+|switch|p2a: Vespiquen|Vespiquen, L99, F|100/100
+|-ability|p2a: Vespiquen|Pressure
+|turn|49
+|
+|move|p1a: Skeledirge|Hex|p2a: Vespiquen
+|-damage|p2a: Vespiquen|83/100
+|move|p2a: Vespiquen|Hurricane|p1a: Skeledirge
+|-damage|p1a: Skeledirge|0 fnt
+|faint|p1a: Skeledirge
+|
+|upkeep
+|
+|switch|p1a: Luxray|Luxray, L88, F|284/284
+|-ability|p1a: Luxray|Intimidate|boost
+|-unboost|p2a: Vespiquen|atk|1
+|turn|50
+|
+|move|p1a: Luxray|Volt Switch|p2a: Vespiquen
+|-supereffective|p2a: Vespiquen
+|-damage|p2a: Vespiquen|45/100
+|move|p2a: Vespiquen|Hurricane|p1a: Luxray
+|-resisted|p1a: Luxray
+|-damage|p1a: Luxray|233/284
+|
+|upkeep
+|turn|51
+|
+|move|p1a: Luxray|Volt Switch|p2a: Vespiquen
+|-supereffective|p2a: Vespiquen
+|-damage|p2a: Vespiquen|3/100
+|move|p2a: Vespiquen|Hurricane|p1a: Luxray|[miss]
+|-miss|p2a: Vespiquen|p1a: Luxray
+|
+|upkeep
+|turn|52
+|
+|move|p1a: Luxray|Volt Switch|p2a: Vespiquen
+|-supereffective|p2a: Vespiquen
+|-damage|p2a: Vespiquen|0 fnt
+|faint|p2a: Vespiquen
+|
+|upkeep
+|
+|switch|p2a: Necrozma|Necrozma-Dawn-Wings, L76|100/100
+|turn|53
+|
+|move|p1a: Luxray|Volt Switch|p2a: Necrozma
+|-damage|p2a: Necrozma|76/100
+|move|p2a: Necrozma|Photon Geyser|p1a: Luxray
+|-damage|p1a: Luxray|112/284
+|-damage|p2a: Necrozma|66/100|[from] item: Life Orb
+|
+|upkeep
+|turn|54
+|
+|move|p1a: Luxray|Volt Switch|p2a: Necrozma
+|-crit|p2a: Necrozma
+|-damage|p2a: Necrozma|26/100
+|move|p2a: Necrozma|Photon Geyser|p1a: Luxray
+|-damage|p1a: Luxray|0 fnt
+|faint|p1a: Luxray
+|-damage|p2a: Necrozma|16/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

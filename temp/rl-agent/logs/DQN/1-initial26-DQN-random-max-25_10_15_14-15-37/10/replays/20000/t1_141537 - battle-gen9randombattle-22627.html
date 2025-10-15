@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22627</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22627<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22627|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Iron Crown|Iron Crown, L78|268/268
+|switch|p2a: Deoxys|Deoxys-Speed, L82|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|1
+|
+|-end|p1a: Iron Crown|Quark Drive|[silent]
+|switch|p1a: Luxray|Luxray, L88, M|284/284
+|-ability|p1a: Luxray|Intimidate|boost
+|-unboost|p2a: Deoxys|atk|1
+|move|p2a: Deoxys|Psycho Boost|p1a: Luxray
+|-damage|p1a: Luxray|194/284
+|-unboost|p2a: Deoxys|spa|2
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Iron Jugulis|Iron Jugulis, L78|275/275
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Jugulis
+|-immune|p1a: Iron Jugulis
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Jugulis
+|-immune|p1a: Iron Jugulis
+|move|p1a: Iron Jugulis|Meteor Beam||[still]
+|-prepare|p1a: Iron Jugulis|Meteor Beam
+|-boost|p1a: Iron Jugulis|spa|1
+|-enditem|p1a: Iron Jugulis|Power Herb
+|-anim|p1a: Iron Jugulis|Meteor Beam|p2a: Deoxys
+|-damage|p2a: Deoxys|42/100
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Jugulis
+|-immune|p1a: Iron Jugulis
+|move|p1a: Iron Jugulis|Meteor Beam||[still]
+|-prepare|p1a: Iron Jugulis|Meteor Beam
+|-boost|p1a: Iron Jugulis|spa|1
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Jugulis
+|-immune|p1a: Iron Jugulis
+|move|p1a: Iron Jugulis|Meteor Beam|p2a: Deoxys|[from] lockedmove
+|-damage|p2a: Deoxys|0 fnt
+|faint|p2a: Deoxys
+|
+|upkeep
+|
+|switch|p2a: Cinderace|Cinderace, L77, M|100/100
+|turn|6
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Iron Jugulis
+|-start|p2a: Cinderace|typechange|Fighting|[from] ability: Libero
+|-damage|p1a: Iron Jugulis|62/275
+|move|p1a: Iron Jugulis|Hurricane|p2a: Cinderace
+|-supereffective|p2a: Cinderace
+|-damage|p2a: Cinderace|0 fnt
+|faint|p2a: Cinderace
+|
+|upkeep
+|
+|switch|p2a: Miraidon|Miraidon, L65|100/100
+|-fieldstart|move: Electric Terrain|[from] ability: Hadron Engine|[of] p2a: Miraidon
+|-activate|p1a: Iron Jugulis|ability: Quark Drive
+|-start|p1a: Iron Jugulis|quarkdrivespa
+|turn|7
+|
+|-terastallize|p1a: Iron Jugulis|Dark
+|move|p1a: Iron Jugulis|Hurricane|p2a: Miraidon
+|-resisted|p2a: Miraidon
+|-damage|p2a: Miraidon|29/100
+|-start|p2a: Miraidon|confusion
+|-activate|p2a: Miraidon|confusion
+|move|p2a: Miraidon|Draco Meteor|p1a: Iron Jugulis
+|-damage|p1a: Iron Jugulis|0 fnt
+|-unboost|p2a: Miraidon|spa|2
+|faint|p1a: Iron Jugulis
+|-end|p1a: Iron Jugulis|Quark Drive|[silent]
+|
+|-heal|p2a: Miraidon|35/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Gengar|Gengar, L81, M|230/230
+|turn|8
+|
+|switch|p1a: Appletun|Appletun, L92, F|352/352
+|-activate|p2a: Miraidon|confusion
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|202/352
+|-unboost|p2a: Miraidon|spa|2
+|
+|-heal|p2a: Miraidon|41/100|[from] item: Leftovers
+|-heal|p1a: Appletun|224/352|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|-activate|p2a: Miraidon|confusion
+|-damage|p2a: Miraidon|34/100|[from] confusion
+|move|p1a: Appletun|Leech Seed|p2a: Miraidon
+|-start|p2a: Miraidon|move: Leech Seed
+|
+|-heal|p2a: Miraidon|40/100|[from] item: Leftovers
+|-heal|p1a: Appletun|246/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|28/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|275/352|[silent]
+|upkeep
+|turn|10
+|
+|-end|p2a: Miraidon|confusion
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun|[miss]
+|-miss|p2a: Miraidon|p1a: Appletun
+|move|p1a: Appletun|Leech Seed||[still]
+|-fail|p1a: Appletun
+|
+|-heal|p2a: Miraidon|34/100|[from] item: Leftovers
+|-heal|p1a: Appletun|297/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|22/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|326/352|[silent]
+|upkeep
+|turn|11
+|
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun|[miss]
+|-miss|p2a: Miraidon|p1a: Appletun
+|move|p1a: Appletun|Leech Seed||[still]
+|-fail|p1a: Appletun
+|
+|-heal|p2a: Miraidon|27/100|[from] item: Leftovers
+|-heal|p1a: Appletun|348/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|15/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|352/352|[silent]
+|-fieldend|move: Electric Terrain
+|upkeep
+|turn|12
+|
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|284/352
+|-unboost|p2a: Miraidon|spa|2
+|move|p1a: Appletun|Leech Seed||[still]
+|-fail|p1a: Appletun
+|
+|-heal|p2a: Miraidon|21/100|[from] item: Leftovers
+|-heal|p1a: Appletun|306/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|9/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|335/352|[silent]
+|upkeep
+|turn|13
+|
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|279/352
+|move|p1a: Appletun|Leech Seed||[still]
+|-fail|p1a: Appletun
+|
+|-heal|p2a: Miraidon|15/100|[from] item: Leftovers
+|-heal|p1a: Appletun|301/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|3/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|330/352|[silent]
+|upkeep
+|turn|14
+|
+|move|p2a: Miraidon|Draco Meteor|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|276/352
+|move|p1a: Appletun|Leech Seed||[still]
+|-fail|p1a: Appletun
+|
+|-heal|p2a: Miraidon|8/100|[from] item: Leftovers
+|-heal|p1a: Appletun|298/352|[from] item: Leftovers
+|-damage|p2a: Miraidon|0 fnt|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|317/352|[silent]
+|faint|p2a: Miraidon
+|upkeep
+|
+|switch|p2a: Ogerpon|Ogerpon-Wellspring, L76, F|100/100
+|turn|15
+|
+|switch|p1a: Luxray|Luxray, L88, M|194/284
+|-ability|p1a: Luxray|Intimidate|boost
+|-unboost|p2a: Ogerpon|atk|1
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Luxray|[anim] Ivy Cudgel Water
+|-damage|p1a: Luxray|112/284
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Luxray|[anim] Ivy Cudgel Water
+|-damage|p1a: Luxray|34/284
+|move|p1a: Luxray|Throat Chop|p2a: Ogerpon
+|-crit|p2a: Ogerpon
+|-damage|p2a: Ogerpon|53/100
+|-start|p2a: Ogerpon|Throat Chop|[silent]
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Luxray|[anim] Ivy Cudgel Water
+|-damage|p1a: Luxray|0 fnt
+|faint|p1a: Luxray
+|
+|-end|p2a: Ogerpon|Throat Chop|[silent]
+|upkeep
+|
+|switch|p1a: Iron Crown|Iron Crown, L78|268/268
+|turn|18
+|
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Iron Crown|[anim] Ivy Cudgel Water
+|-damage|p1a: Iron Crown|193/268
+|move|p1a: Iron Crown|Tachyon Cutter|p2a: Ogerpon
+|-resisted|p2a: Ogerpon
+|-damage|p2a: Ogerpon|37/100
+|-resisted|p2a: Ogerpon
+|-damage|p2a: Ogerpon|21/100
+|-hitcount|p2a: Ogerpon|2
+|
+|upkeep
+|turn|19
+|
+|-end|p1a: Iron Crown|Quark Drive|[silent]
+|switch|p1a: Tatsugiri|Tatsugiri-Stretchy, L87, M|260/260
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Tatsugiri|[anim] Ivy Cudgel Water
+|-ability|p1a: Tatsugiri|Storm Drain|boost
+|-boost|p1a: Tatsugiri|spa|1
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Ogerpon|Ivy Cudgel|p1a: Tatsugiri|[anim] Ivy Cudgel Water
+|-ability|p1a: Tatsugiri|Storm Drain|boost
+|-boost|p1a: Tatsugiri|spa|1
+|move|p1a: Tatsugiri|Draco Meteor|p2a: Ogerpon
+|-damage|p2a: Ogerpon|0 fnt
+|-unboost|p1a: Tatsugiri|spa|2
+|faint|p2a: Ogerpon
+|
+|upkeep
+|
+|switch|p2a: Chi-Yu|Chi-Yu, L77|100/100
+|-ability|p2a: Chi-Yu|Beads of Ruin
+|turn|21
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Tatsugiri|[miss]
+|-miss|p2a: Chi-Yu|p1a: Tatsugiri
+|move|p1a: Tatsugiri|Draco Meteor|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|28/100
+|-unboost|p1a: Tatsugiri|spa|2
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Chi-Yu|Overheat|p1a: Tatsugiri
+|-resisted|p1a: Tatsugiri
+|-damage|p1a: Tatsugiri|190/260
+|-unboost|p2a: Chi-Yu|spa|2
+|move|p1a: Tatsugiri|Draco Meteor|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|0 fnt
+|-unboost|p1a: Tatsugiri|spa|2
+|faint|p2a: Chi-Yu
+|
+|upkeep
+|
+|switch|p2a: Giratina|Giratina-Origin, L72|100/100
+|turn|23
+|
+|move|p1a: Tatsugiri|Draco Meteor|p2a: Giratina
+|-supereffective|p2a: Giratina
+|-damage|p2a: Giratina|66/100
+|-unboost|p1a: Tatsugiri|spa|2
+|move|p2a: Giratina|Draco Meteor|p1a: Tatsugiri
+|-supereffective|p1a: Tatsugiri
+|-damage|p1a: Tatsugiri|0 fnt
+|-unboost|p2a: Giratina|spa|2
+|faint|p1a: Tatsugiri
+|
+|upkeep
+|
+|switch|p1a: Iron Crown|Iron Crown, L78|193/268
+|turn|24
+|
+|move|p1a: Iron Crown|Tachyon Cutter|p2a: Giratina
+|-damage|p2a: Giratina|38/100
+|-damage|p2a: Giratina|13/100
+|-hitcount|p2a: Giratina|2
+|move|p2a: Giratina|Draco Meteor|p1a: Iron Crown
+|-resisted|p1a: Iron Crown
+|-damage|p1a: Iron Crown|160/268
+|-unboost|p2a: Giratina|spa|2
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Iron Crown|Tachyon Cutter|p2a: Giratina
+|-damage|p2a: Giratina|0 fnt
+|faint|p2a: Giratina
+|-hitcount|p2: Giratina|1
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

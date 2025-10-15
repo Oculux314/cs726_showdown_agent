@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23123</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23123<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23123|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Volbeat|Volbeat, L90, M|263/263
+|switch|p2a: Mamoswine|Mamoswine, L81, M|100/100
+|turn|1
+|
+|move|p1a: Volbeat|Roost||[still]
+|-fail|p1a: Volbeat|heal
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|166/263
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|170/263
+|
+|upkeep
+|turn|3
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|161/263
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|173/263
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|158/263
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|164/263
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|161/263
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Volbeat|Roost|p1a: Volbeat
+|-heal|p1a: Volbeat|263/263
+|-singleturn|p1a: Volbeat|move: Roost
+|move|p2a: Mamoswine|Earthquake|p1a: Volbeat
+|-resisted|p1a: Volbeat
+|-damage|p1a: Volbeat|171/263
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Volbeat|U-turn|p2a: Mamoswine
+|-damage|p2a: Mamoswine|76/100
+|
+|switch|p1a: Jumpluff|Jumpluff, L87, F|271/271|[from] U-turn
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Jumpluff|Encore|p2a: Mamoswine
+|-start|p2a: Mamoswine|Encore
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Jumpluff|Encore||[still]
+|-fail|p1a: Jumpluff
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Jumpluff|Encore||[still]
+|-fail|p1a: Jumpluff
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|-end|p2a: Mamoswine|Encore
+|upkeep
+|turn|13
+|
+|move|p1a: Jumpluff|Encore|p2a: Mamoswine
+|-start|p2a: Mamoswine|Encore
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Jumpluff|Encore||[still]
+|-fail|p1a: Jumpluff
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Jumpluff|Encore||[still]
+|-fail|p1a: Jumpluff
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|-end|p2a: Mamoswine|Encore
+|upkeep
+|turn|16
+|
+|move|p1a: Jumpluff|Encore|p2a: Mamoswine
+|-start|p2a: Mamoswine|Encore
+|move|p2a: Mamoswine|Earthquake|p1a: Jumpluff
+|-immune|p1a: Jumpluff
+|
+|-end|p2a: Mamoswine|Encore
+|upkeep
+|turn|17
+|
+|move|p1a: Jumpluff|Encore||[still]
+|-fail|p1a: Jumpluff
+|-activate|p2a: Mamoswine|move: Struggle
+|move|p2a: Mamoswine|Struggle|p1a: Jumpluff
+|-damage|p1a: Jumpluff|203/271
+|-damage|p2a: Mamoswine|51/100|[from] recoil
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Jumpluff|Strength Sap|p2a: Mamoswine
+|-unboost|p2a: Mamoswine|atk|1
+|-heal|p1a: Jumpluff|271/271
+|-activate|p2a: Mamoswine|move: Struggle
+|move|p2a: Mamoswine|Struggle|p1a: Jumpluff
+|-damage|p1a: Jumpluff|226/271
+|-damage|p2a: Mamoswine|26/100|[from] recoil
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Jumpluff|Strength Sap|p2a: Mamoswine
+|-unboost|p2a: Mamoswine|atk|1
+|-heal|p1a: Jumpluff|271/271
+|-activate|p2a: Mamoswine|move: Struggle
+|move|p2a: Mamoswine|Struggle|p1a: Jumpluff
+|-damage|p1a: Jumpluff|237/271
+|-damage|p2a: Mamoswine|1/100|[from] recoil
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Jumpluff|Strength Sap|p2a: Mamoswine
+|-unboost|p2a: Mamoswine|atk|1
+|-heal|p1a: Jumpluff|271/271
+|-activate|p2a: Mamoswine|move: Struggle
+|move|p2a: Mamoswine|Struggle|p1a: Jumpluff
+|-damage|p1a: Jumpluff|240/271
+|-damage|p2a: Mamoswine|0 fnt|[from] recoil
+|faint|p2a: Mamoswine
+|
+|upkeep
+|
+|switch|p2a: Raichu|Raichu, L88, F|100/100
+|turn|21
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Jumpluff
+|-damage|p1a: Jumpluff|104/271
+|move|p1a: Jumpluff|Strength Sap|p2a: Raichu
+|-unboost|p2a: Raichu|atk|1
+|-heal|p1a: Jumpluff|267/271
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Jumpluff
+|-damage|p1a: Jumpluff|140/271
+|move|p1a: Jumpluff|Strength Sap|p2a: Raichu
+|-unboost|p2a: Raichu|atk|1
+|-heal|p1a: Jumpluff|248/271
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Jumpluff
+|-damage|p1a: Jumpluff|106/271
+|move|p1a: Jumpluff|Strength Sap|p2a: Raichu
+|-unboost|p2a: Raichu|atk|1
+|-heal|p1a: Jumpluff|187/271
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Jumpluff
+|-damage|p1a: Jumpluff|42/271
+|move|p1a: Jumpluff|Strength Sap|p2a: Raichu
+|-unboost|p2a: Raichu|atk|1
+|-heal|p1a: Jumpluff|107/271
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Jumpluff
+|-damage|p1a: Jumpluff|0 fnt
+|faint|p1a: Jumpluff
+|
+|upkeep
+|
+|switch|p1a: Volbeat|Volbeat, L90, M|171/263
+|turn|26
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Volbeat
+|-damage|p1a: Volbeat|20/263
+|move|p1a: Volbeat|U-turn|p2a: Raichu
+|-damage|p2a: Raichu|63/100
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|265/265|[from] U-turn
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-ability|p2a: Raichu|Lightning Rod|boost
+|-boost|p2a: Raichu|spa|1
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|44
+|
+|move|p2a: Raichu|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|45
+|
+|-activate|p2a: Raichu|move: Struggle
+|move|p2a: Raichu|Struggle|p1a: Iron Treads
+|-damage|p1a: Iron Treads|256/265
+|-damage|p2a: Raichu|38/100|[from] recoil
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|46
+|
+|-activate|p2a: Raichu|move: Struggle
+|move|p2a: Raichu|Struggle|p1a: Iron Treads
+|-damage|p1a: Iron Treads|247/265
+|-damage|p2a: Raichu|13/100|[from] recoil
+|move|p1a: Iron Treads|Volt Switch|p2a: Raichu
+|-immune|p2a: Raichu|[from] ability: Lightning Rod
+|
+|upkeep
+|turn|47
+|
+|-activate|p2a: Raichu|move: Struggle
+|move|p2a: Raichu|Struggle|p1a: Iron Treads
+|-crit|p1a: Iron Treads
+|-damage|p1a: Iron Treads|206/265
+|-damage|p2a: Raichu|0 fnt|[from] recoil
+|faint|p2a: Raichu
+|move|p1a: Iron Treads|Volt Switch|p2: Raichu|[notarget]
+|-fail|p1a: Iron Treads
+|
+|upkeep
+|
+|switch|p2a: Hypno|Hypno, L95, F|100/100
+|turn|48
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Hypno
+|-crit|p2a: Hypno
+|-damage|p2a: Hypno|88/100
+|
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|switch|p1a: Volbeat|Volbeat, L90, M|20/263|[from] Volt Switch
+|move|p2a: Hypno|Psychic Noise|p1a: Volbeat
+|-crit|p1a: Volbeat
+|-damage|p1a: Volbeat|0 fnt
+|faint|p1a: Volbeat
+|
+|-heal|p2a: Hypno|94/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|206/265
+|turn|49
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Hypno
+|-damage|p2a: Hypno|86/100
+|
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|switch|p1a: Flamigo|Flamigo, L82, F|269/269|[from] Volt Switch
+|move|p2a: Hypno|Psychic Noise|p1a: Flamigo
+|-supereffective|p1a: Flamigo
+|-damage|p1a: Flamigo|65/269
+|-start|p1a: Flamigo|move: Heal Block
+|
+|-heal|p2a: Hypno|92/100|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|-terastallize|p1a: Flamigo|Steel
+|move|p1a: Flamigo|Swords Dance|p1a: Flamigo
+|-boost|p1a: Flamigo|atk|2
+|move|p2a: Hypno|Psychic Noise|p1a: Flamigo
+|-resisted|p1a: Flamigo
+|-damage|p1a: Flamigo|10/269
+|
+|-heal|p2a: Hypno|98/100|[from] item: Leftovers
+|-end|p1a: Flamigo|move: Heal Block
+|upkeep
+|turn|51
+|
+|move|p1a: Flamigo|Throat Chop|p2a: Hypno
+|-supereffective|p2a: Hypno
+|-damage|p2a: Hypno|0 fnt
+|faint|p2a: Hypno
+|-damage|p1a: Flamigo|0 fnt|[from] item: Life Orb
+|faint|p1a: Flamigo
+|
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|206/265
+|switch|p2a: Ariados|Ariados, L95, M|100/100
+|turn|52
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Ariados
+|-damage|p2a: Ariados|87/100
+|
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|switch|p1a: Hoopa|Hoopa, L85|275/275|[from] Volt Switch
+|move|p2a: Ariados|Megahorn|p1a: Hoopa
+|-damage|p1a: Hoopa|71/275
+|
+|upkeep
+|turn|53
+|
+|move|p1a: Hoopa|Psychic|p2a: Ariados
+|-supereffective|p2a: Ariados
+|-crit|p2a: Ariados
+|-damage|p2a: Ariados|0 fnt
+|faint|p2a: Ariados
+|
+|upkeep
+|
+|switch|p2a: Blastoise|Blastoise, L80, F|100/100
+|turn|54
+|
+|move|p1a: Hoopa|Psychic|p2a: Blastoise
+|-damage|p2a: Blastoise|48/100
+|move|p2a: Blastoise|Hydro Pump|p1a: Hoopa
+|-damage|p1a: Hoopa|0 fnt
+|faint|p1a: Hoopa
+|
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|206/265
+|turn|55
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Blastoise
+|-supereffective|p2a: Blastoise
+|-damage|p2a: Blastoise|24/100
+|
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|switch|p1a: Iron Thorns|Iron Thorns, L83|302/302|[from] Volt Switch
+|-enditem|p1a: Iron Thorns|Booster Energy
+|-activate|p1a: Iron Thorns|ability: Quark Drive|[fromitem]
+|-start|p1a: Iron Thorns|quarkdriveatk
+|move|p2a: Blastoise|Hydro Pump|p1a: Iron Thorns
+|-supereffective|p1a: Iron Thorns
+|-damage|p1a: Iron Thorns|0 fnt
+|faint|p1a: Iron Thorns
+|-end|p1a: Iron Thorns|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|206/265
+|turn|56
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Blastoise
+|-supereffective|p2a: Blastoise
+|-damage|p2a: Blastoise|0 fnt
+|faint|p2a: Blastoise
+|
+|upkeep
+|
+|switch|p2a: Masquerain|Masquerain, L87, M|100/100
+|-ability|p2a: Masquerain|Intimidate|boost
+|-unboost|p1a: Iron Treads|atk|1
+|turn|57
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Masquerain
+|-supereffective|p2a: Masquerain
+|-damage|p2a: Masquerain|75/100
+|move|p2a: Masquerain|Hydro Pump|p1a: Iron Treads
+|-supereffective|p1a: Iron Treads
+|-damage|p1a: Iron Treads|50/265
+|
+|upkeep
+|turn|58
+|
+|move|p1a: Iron Treads|Volt Switch|p2a: Masquerain
+|-supereffective|p2a: Masquerain
+|-damage|p2a: Masquerain|49/100
+|move|p2a: Masquerain|Hydro Pump|p1a: Iron Treads
+|-supereffective|p1a: Iron Treads
+|-damage|p1a: Iron Treads|0 fnt
+|faint|p1a: Iron Treads
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

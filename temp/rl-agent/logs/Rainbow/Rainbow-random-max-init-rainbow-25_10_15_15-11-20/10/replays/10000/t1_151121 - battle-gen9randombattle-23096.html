@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23096</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23096<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23096|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Coalossal|Coalossal, L89, M|341/341
+|switch|p2a: Torkoal|Torkoal, L88, F|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Torkoal
+|turn|1
+|
+|move|p1a: Coalossal|Stone Edge|p2a: Torkoal
+|-supereffective|p2a: Torkoal
+|-damage|p2a: Torkoal|52/100
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Coalossal
+|-damage|p1a: Coalossal|265/341
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|2
+|
+|move|p1a: Coalossal|Stone Edge|p2a: Torkoal|[miss]
+|-miss|p1a: Coalossal|p2a: Torkoal
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Coalossal
+|-damage|p1a: Coalossal|192/341
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|3
+|
+|move|p1a: Coalossal|Stone Edge|p2a: Torkoal|[miss]
+|-miss|p1a: Coalossal|p2a: Torkoal
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Coalossal
+|-damage|p1a: Coalossal|116/341
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|4
+|
+|move|p1a: Coalossal|Stone Edge|p2a: Torkoal
+|-supereffective|p2a: Torkoal
+|-damage|p2a: Torkoal|0 fnt
+|faint|p2a: Torkoal
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p2a: Archaludon|Archaludon, L78, F|100/100
+|turn|5
+|
+|move|p2a: Archaludon|Draco Meteor|p1a: Coalossal
+|-damage|p1a: Coalossal|0 fnt
+|-unboost|p2a: Archaludon|spa|2
+|faint|p1a: Coalossal
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Virizion|Virizion, L82|283/283
+|turn|6
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|2
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|225/283
+|-unboost|p2a: Archaludon|spa|2
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|2
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|189/283
+|-unboost|p2a: Archaludon|spa|2
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|2
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|161/283
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|131/283
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|101/283
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|73/283
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Draco Meteor|p1a: Virizion
+|-damage|p1a: Virizion|43/283
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|36/283
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|29/283
+|-status|p1a: Virizion|par
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|22/283 par
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|16/283 par
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|9/283 par
+|move|p1a: Virizion|Swords Dance|p1a: Virizion
+|-boost|p1a: Virizion|atk|0
+|
+|upkeep
+|turn|18
+|
+|-terastallize|p1a: Virizion|Rock
+|move|p2a: Archaludon|Thunderbolt|p1a: Virizion
+|-damage|p1a: Virizion|0 fnt
+|faint|p1a: Virizion
+|
+|upkeep
+|
+|switch|p1a: Iron Treads|Iron Treads, L77|265/265
+|turn|19
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|82/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|-enditem|p2a: Archaludon|Assault Vest|[from] move: Knock Off|[of] p1a: Iron Treads
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|74/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|67/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|61/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|56/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|52/100
+|-ability|p2a: Archaludon|Stamina|boost
+|-boost|p2a: Archaludon|def|1
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|48/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|45/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|41/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|37/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|33/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|30/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|26/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|23/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-crit|p2a: Archaludon
+|-damage|p2a: Archaludon|4/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|34
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|1/100
+|move|p2a: Archaludon|Thunderbolt|p1a: Iron Treads
+|-immune|p1a: Iron Treads
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Iron Treads|Knock Off|p2a: Archaludon
+|-damage|p2a: Archaludon|0 fnt
+|faint|p2a: Archaludon
+|
+|upkeep
+|
+|switch|p2a: Tauros|Tauros-Paldea-Blaze, L81, M|100/100
+|turn|36
+|
+|move|p2a: Tauros|Close Combat|p1a: Iron Treads
+|-supereffective|p1a: Iron Treads
+|-damage|p1a: Iron Treads|23/265
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|move|p1a: Iron Treads|Knock Off|p2a: Tauros
+|-resisted|p2a: Tauros
+|-damage|p2a: Tauros|82/100
+|-enditem|p2a: Tauros|Sitrus Berry|[from] move: Knock Off|[of] p1a: Iron Treads
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Tauros|Close Combat|p1a: Iron Treads
+|-supereffective|p1a: Iron Treads
+|-damage|p1a: Iron Treads|0 fnt
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|faint|p1a: Iron Treads
+|-end|p1a: Iron Treads|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p1a: Lokix|Lokix, L82, M|251/251
+|turn|38
+|
+|move|p1a: Lokix|Sucker Punch|p2a: Tauros
+|-resisted|p2a: Tauros
+|-damage|p2a: Tauros|9/100
+|-damage|p1a: Lokix|226/251|[from] item: Life Orb
+|move|p2a: Tauros|Close Combat|p1a: Lokix
+|-damage|p1a: Lokix|67/251
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Tauros|Close Combat|p1a: Lokix
+|-damage|p1a: Lokix|0 fnt
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|faint|p1a: Lokix
+|
+|upkeep
+|
+|switch|p1a: Flamigo|Flamigo, L82, F|269/269
+|turn|40
+|
+|move|p2a: Tauros|Close Combat|p1a: Flamigo
+|-resisted|p1a: Flamigo
+|-damage|p1a: Flamigo|191/269
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|move|p1a: Flamigo|Brave Bird|p2a: Tauros
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|0 fnt
+|faint|p2a: Tauros
+|-damage|p1a: Flamigo|184/269|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Iron Bundle|Iron Bundle, L77|100/100
+|turn|41
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Flamigo
+|-damage|p1a: Flamigo|31/269
+|move|p1a: Flamigo|Brave Bird|p2a: Iron Bundle
+|-damage|p2a: Iron Bundle|21/100
+|-damage|p1a: Flamigo|0 fnt|[from] Recoil
+|faint|p1a: Flamigo
+|
+|-heal|p2a: Iron Bundle|27/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Oricorio|Oricorio-Sensu, L85, M|266/266
+|turn|42
+|
+|move|p2a: Iron Bundle|Hydro Pump|p1a: Oricorio
+|-damage|p1a: Oricorio|124/266
+|move|p1a: Oricorio|Hurricane|p2a: Iron Bundle
+|-damage|p2a: Iron Bundle|0 fnt
+|faint|p2a: Iron Bundle
+|-end|p2a: Iron Bundle|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p2a: Flutter Mane|Flutter Mane, L74|100/100
+|turn|43
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Oricorio
+|-damage|p1a: Oricorio|0 fnt
+|faint|p1a: Oricorio
+|-damage|p2a: Flutter Mane|91/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

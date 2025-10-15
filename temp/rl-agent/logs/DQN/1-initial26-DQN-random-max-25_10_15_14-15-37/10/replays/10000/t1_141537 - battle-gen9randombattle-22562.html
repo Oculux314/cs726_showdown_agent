@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22562</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22562<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22562|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Zebstrika|Zebstrika, L87, F|272/272
+|switch|p2a: Mudsdale|Mudsdale, L83, F|100/100
+|turn|1
+|
+|move|p1a: Zebstrika|Volt Switch|p2a: Mudsdale
+|-immune|p2a: Mudsdale
+|move|p2a: Mudsdale|Earthquake|p1a: Zebstrika
+|-supereffective|p1a: Zebstrika
+|-damage|p1a: Zebstrika|0 fnt
+|faint|p1a: Zebstrika
+|
+|upkeep
+|
+|switch|p1a: Electrode|Electrode-Hisui, L87|246/246
+|turn|2
+|
+|move|p1a: Electrode|Thunderbolt|p2a: Mudsdale
+|-immune|p2a: Mudsdale
+|move|p2a: Mudsdale|Earthquake|p1a: Electrode
+|-damage|p1a: Electrode|107/246
+|
+|-heal|p1a: Electrode|122/246|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Electrode|Poison
+|move|p1a: Electrode|Leech Seed|p2a: Mudsdale
+|-start|p2a: Mudsdale|move: Leech Seed
+|move|p2a: Mudsdale|Earthquake|p1a: Electrode
+|-supereffective|p1a: Electrode
+|-damage|p1a: Electrode|0 fnt
+|faint|p1a: Electrode
+|
+|upkeep
+|
+|switch|p1a: Coalossal|Coalossal, L89, M|341/341
+|turn|4
+|
+|move|p2a: Mudsdale|Earthquake|p1a: Coalossal
+|-supereffective|p1a: Coalossal
+|-damage|p1a: Coalossal|0 fnt
+|faint|p1a: Coalossal
+|
+|upkeep
+|
+|switch|p1a: Diancie|Diancie, L82|219/219
+|turn|5
+|
+|switch|p1a: Diancie|Diancie, L82|216/216
+|move|p2a: Mudsdale|Earthquake|p1a: Diancie
+|-supereffective|p1a: Diancie
+|-damage|p1a: Diancie|36/216
+|
+|-heal|p1a: Diancie|49/216|[from] item: Leftovers
+|-damage|p2a: Mudsdale|88/100|[from] Leech Seed|[of] p1a: Diancie
+|-heal|p1a: Diancie|86/216|[silent]
+|upkeep
+|turn|6
+|
+|move|p1a: Diancie|Body Press|p2a: Mudsdale
+|-damage|p2a: Mudsdale|64/100
+|-ability|p2a: Mudsdale|Stamina|boost
+|-boost|p2a: Mudsdale|def|1
+|move|p2a: Mudsdale|Earthquake|p1a: Diancie
+|-supereffective|p1a: Diancie
+|-damage|p1a: Diancie|0 fnt
+|faint|p1a: Diancie
+|
+|-heal|p2a: Mudsdale|70/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, M|292/292
+|turn|7
+|
+|move|p1a: Veluza|Fillet Away|p1a: Veluza
+|-boost|p1a: Veluza|atk|2
+|-boost|p1a: Veluza|spa|2
+|-boost|p1a: Veluza|spe|2
+|-damage|p1a: Veluza|146/292
+|-enditem|p1a: Veluza|Sitrus Berry|[eat]
+|-heal|p1a: Veluza|219/292|[from] item: Sitrus Berry
+|move|p2a: Mudsdale|Earthquake|p1a: Veluza
+|-damage|p1a: Veluza|86/292
+|
+|-heal|p2a: Mudsdale|76/100|[from] item: Leftovers
+|-damage|p2a: Mudsdale|64/100|[from] Leech Seed|[of] p1a: Veluza
+|-heal|p1a: Veluza|123/292|[silent]
+|upkeep
+|turn|8
+|
+|move|p1a: Veluza|Aqua Cutter|p2a: Mudsdale
+|-supereffective|p2a: Mudsdale
+|-damage|p2a: Mudsdale|0 fnt
+|faint|p2a: Mudsdale
+|
+|upkeep
+|
+|switch|p2a: Swalot|Swalot, L90, F|100/100
+|turn|9
+|
+|move|p1a: Veluza|Fillet Away||[still]
+|-fail|p1a: Veluza
+|move|p2a: Swalot|Gunk Shot|p1a: Veluza
+|-damage|p1a: Veluza|0 fnt
+|faint|p1a: Veluza
+|
+|upkeep
+|
+|switch|p1a: Zoroark|Zoroark-Hisui, L80, F|219/219
+|turn|10
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot
+|-status|p2a: Swalot|brn
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark|[miss]
+|-miss|p2a: Swalot|p1a: Zoroark
+|
+|-damage|p2a: Swalot|94/100 brn|[from] brn
+|upkeep
+|turn|11
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot
+|-fail|p2a: Swalot|brn
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark
+|-resisted|p1a: Zoroark
+|-damage|p1a: Zoroark|182/219
+|
+|-heal|p2a: Swalot|100/100 brn|[from] item: Leftovers
+|-damage|p2a: Swalot|94/100 brn|[from] brn
+|upkeep
+|turn|12
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot
+|-fail|p2a: Swalot|brn
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark
+|-resisted|p1a: Zoroark
+|-damage|p1a: Zoroark|140/219
+|
+|-heal|p2a: Swalot|100/100 brn|[from] item: Leftovers
+|-damage|p2a: Swalot|94/100 brn|[from] brn
+|upkeep
+|turn|13
+|
+|move|p1a: Zoroark|Focus Blast|p2a: Swalot
+|-resisted|p2a: Swalot
+|-damage|p2a: Swalot|77/100 brn
+|-damage|p1a: Zoroark|119/219|[from] item: Life Orb
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark|[miss]
+|-miss|p2a: Swalot|p1a: Zoroark
+|
+|-heal|p2a: Swalot|83/100 brn|[from] item: Leftovers
+|-damage|p2a: Swalot|77/100 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot
+|-fail|p2a: Swalot|brn
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark
+|-resisted|p1a: Zoroark
+|-damage|p1a: Zoroark|77/219
+|
+|-heal|p2a: Swalot|83/100 brn|[from] item: Leftovers
+|-damage|p2a: Swalot|77/100 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot|[miss]
+|-miss|p1a: Zoroark|p2a: Swalot
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark
+|-resisted|p1a: Zoroark
+|-damage|p1a: Zoroark|34/219
+|
+|-heal|p2a: Swalot|83/100 brn|[from] item: Leftovers
+|-damage|p2a: Swalot|77/100 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p1a: Zoroark|Will-O-Wisp|p2a: Swalot
+|-fail|p2a: Swalot|brn
+|move|p2a: Swalot|Gunk Shot|p1a: Zoroark
+|-resisted|p1a: Zoroark
+|-damage|p1a: Zoroark|0 fnt
+|faint|p1a: Zoroark
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22456</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22456<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22456|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Arboliva|Arboliva, L91, M|290/290
+|switch|p2a: Cloyster|Cloyster, L80, M|100/100
+|turn|1
+|
+|move|p2a: Cloyster|Drill Run|p1a: Arboliva
+|-resisted|p1a: Arboliva
+|-damage|p1a: Arboliva|267/290
+|-fieldstart|move: Grassy Terrain|[from] ability: Seed Sower|[of] p1a: Arboliva
+|move|p1a: Arboliva|Hyper Voice|p2a: Cloyster
+|-damage|p2a: Cloyster|0 fnt
+|faint|p2a: Cloyster
+|
+|-heal|p1a: Arboliva|285/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|290/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Scream Tail|Scream Tail, L84|100/100
+|turn|2
+|
+|move|p2a: Scream Tail|Play Rough|p1a: Arboliva
+|-damage|p1a: Arboliva|230/290
+|-unboost|p1a: Arboliva|atk|1
+|move|p1a: Arboliva|Strength Sap|p2a: Scream Tail
+|-unboost|p2a: Scream Tail|atk|1
+|-heal|p1a: Arboliva|290/290
+|
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Arboliva|Grass
+|move|p2a: Scream Tail|Play Rough|p1a: Arboliva
+|-damage|p1a: Arboliva|245/290
+|move|p1a: Arboliva|Earth Power|p2a: Scream Tail
+|-crit|p2a: Scream Tail
+|-damage|p2a: Scream Tail|64/100
+|
+|-heal|p2a: Scream Tail|70/100|[from] Grassy Terrain
+|-heal|p2a: Scream Tail|77/100|[from] item: Leftovers
+|-heal|p1a: Arboliva|263/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|281/290|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Scream Tail|Play Rough|p1a: Arboliva
+|-damage|p1a: Arboliva|239/290
+|move|p1a: Arboliva|Hyper Voice|p2a: Scream Tail
+|-damage|p2a: Scream Tail|41/100
+|
+|-heal|p2a: Scream Tail|47/100|[from] Grassy Terrain
+|-heal|p2a: Scream Tail|53/100|[from] item: Leftovers
+|-heal|p1a: Arboliva|257/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|275/290|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Scream Tail|Play Rough|p1a: Arboliva
+|-damage|p1a: Arboliva|229/290
+|move|p1a: Arboliva|Hyper Voice|p2a: Scream Tail
+|-damage|p2a: Scream Tail|21/100
+|
+|-heal|p2a: Scream Tail|27/100|[from] Grassy Terrain
+|-heal|p2a: Scream Tail|33/100|[from] item: Leftovers
+|-heal|p1a: Arboliva|247/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|265/290|[from] item: Leftovers
+|-fieldend|move: Grassy Terrain
+|upkeep
+|turn|6
+|
+|move|p2a: Scream Tail|Play Rough|p1a: Arboliva
+|-damage|p1a: Arboliva|219/290
+|-unboost|p1a: Arboliva|atk|1
+|-fieldstart|move: Grassy Terrain|[from] ability: Seed Sower|[of] p1a: Arboliva
+|move|p1a: Arboliva|Hyper Voice|p2a: Scream Tail
+|-damage|p2a: Scream Tail|0 fnt
+|faint|p2a: Scream Tail
+|-end|p2a: Scream Tail|Protosynthesis|[silent]
+|
+|-heal|p1a: Arboliva|237/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|255/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Dunsparce|Dunsparce, L86, M|100/100
+|turn|7
+|
+|switch|p1a: Scream Tail|Scream Tail, L84|330/330
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-damage|p1a: Scream Tail|301/330
+|
+|-heal|p1a: Scream Tail|321/330|[from] Grassy Terrain
+|-heal|p1a: Scream Tail|330/330|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Scream Tail|Encore|p2a: Dunsparce
+|-start|p2a: Dunsparce|Encore
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-damage|p1a: Scream Tail|301/330
+|
+|-heal|p1a: Scream Tail|321/330|[from] Grassy Terrain
+|-heal|p1a: Scream Tail|330/330|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Scream Tail|Protect||[still]
+|-fail|p1a: Scream Tail
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-damage|p1a: Scream Tail|304/330
+|
+|-heal|p1a: Scream Tail|324/330|[from] Grassy Terrain
+|-heal|p1a: Scream Tail|330/330|[from] item: Leftovers
+|-end|p2a: Dunsparce|Encore
+|-fieldend|move: Grassy Terrain
+|upkeep
+|turn|11
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Dunsparce|Earthquake|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|upkeep
+|turn|13
+|
+|-end|p1a: Scream Tail|Protosynthesis|[silent]
+|switch|p1a: Bruxish|Bruxish, L85, F|254/254
+|move|p2a: Dunsparce|Earthquake|p1a: Bruxish
+|-damage|p1a: Bruxish|187/254
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Bruxish|Psychic Fangs|p2a: Dunsparce
+|-damage|p2a: Dunsparce|64/100
+|move|p2a: Dunsparce|Earthquake|p1a: Bruxish
+|-damage|p1a: Bruxish|113/254
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Bruxish|Psychic Fangs|p2a: Dunsparce
+|-damage|p2a: Dunsparce|26/100
+|move|p2a: Dunsparce|Earthquake|p1a: Bruxish
+|-damage|p1a: Bruxish|48/254
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Bruxish|Psychic Fangs|p2a: Dunsparce
+|-damage|p2a: Dunsparce|0 fnt
+|faint|p2a: Dunsparce
+|
+|upkeep
+|
+|switch|p2a: Raikou|Raikou, L81|100/100
+|-ability|p2a: Raikou|Pressure
+|turn|17
+|
+|move|p1a: Bruxish|Psychic Fangs|p2a: Raikou
+|-damage|p2a: Raikou|36/100
+|move|p2a: Raikou|Thunderbolt|p1a: Bruxish
+|-supereffective|p1a: Bruxish
+|-damage|p1a: Bruxish|0 fnt
+|faint|p1a: Bruxish
+|
+|upkeep
+|
+|switch|p1a: Giratina|Giratina, L75|349/349
+|-ability|p1a: Giratina|Pressure
+|turn|18
+|
+|move|p2a: Raikou|Thunderbolt|p1a: Giratina
+|-resisted|p1a: Giratina
+|-damage|p1a: Giratina|283/349
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|
+|-heal|p1a: Giratina|304/349|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|switch|p1a: Arboliva|Arboliva, L91, M, tera:Grass|255/290
+|move|p2a: Raikou|Thunderbolt|p1a: Arboliva
+|-resisted|p1a: Arboliva
+|-damage|p1a: Arboliva|190/290
+|-fieldstart|move: Grassy Terrain|[from] ability: Seed Sower|[of] p1a: Arboliva
+|
+|-heal|p2a: Raikou|42/100|[from] Grassy Terrain
+|-heal|p1a: Arboliva|208/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|226/290|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Raikou|Thunderbolt|p1a: Arboliva
+|-resisted|p1a: Arboliva
+|-damage|p1a: Arboliva|169/290
+|move|p1a: Arboliva|Energy Ball|p2a: Raikou
+|-damage|p2a: Raikou|0 fnt
+|faint|p2a: Raikou
+|
+|-heal|p1a: Arboliva|187/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|205/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Mewtwo|Mewtwo, L72|100/100
+|-ability|p2a: Mewtwo|Unnerve
+|turn|21
+|
+|move|p2a: Mewtwo|Fire Blast|p1a: Arboliva
+|-supereffective|p1a: Arboliva
+|-damage|p1a: Arboliva|41/290
+|-damage|p2a: Mewtwo|91/100|[from] item: Life Orb
+|move|p1a: Arboliva|Hyper Voice|p2a: Mewtwo
+|-damage|p2a: Mewtwo|31/100
+|
+|-heal|p2a: Mewtwo|37/100|[from] Grassy Terrain
+|-heal|p1a: Arboliva|59/290|[from] Grassy Terrain
+|-heal|p1a: Arboliva|77/290|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Mewtwo|Fire Blast|p1a: Arboliva
+|-supereffective|p1a: Arboliva
+|-damage|p1a: Arboliva|0 fnt
+|faint|p1a: Arboliva
+|-damage|p2a: Mewtwo|27/100|[from] item: Life Orb
+|
+|-heal|p2a: Mewtwo|33/100|[from] Grassy Terrain
+|upkeep
+|
+|switch|p1a: Scream Tail|Scream Tail, L84|330/330
+|turn|23
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p2a: Mewtwo|39/100|[from] Grassy Terrain
+|-fieldend|move: Grassy Terrain
+|upkeep
+|turn|24
+|
+|move|p1a: Scream Tail|Protect||[still]
+|-fail|p1a: Scream Tail
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-damage|p1a: Scream Tail|243/330
+|-status|p1a: Scream Tail|brn
+|-damage|p2a: Mewtwo|30/100|[from] item: Life Orb
+|
+|-heal|p1a: Scream Tail|263/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|243/330 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p1a: Scream Tail|263/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|243/330 brn|[from] brn
+|upkeep
+|turn|26
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p1a: Scream Tail|263/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|243/330 brn|[from] brn
+|upkeep
+|turn|27
+|
+|move|p1a: Scream Tail|Protect||[still]
+|-fail|p1a: Scream Tail
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-damage|p1a: Scream Tail|159/330 brn
+|-damage|p2a: Mewtwo|20/100|[from] item: Life Orb
+|
+|-heal|p1a: Scream Tail|179/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|159/330 brn|[from] brn
+|upkeep
+|turn|28
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Mewtwo|Fire Blast|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p1a: Scream Tail|179/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|159/330 brn|[from] brn
+|upkeep
+|turn|29
+|
+|move|p1a: Scream Tail|Dazzling Gleam|p2a: Mewtwo
+|-damage|p2a: Mewtwo|0 fnt
+|faint|p2a: Mewtwo
+|
+|-heal|p1a: Scream Tail|179/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|159/330 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Beartic|Beartic, L91, F|100/100
+|turn|30
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Beartic|Earthquake|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p1a: Scream Tail|179/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|159/330 brn|[from] brn
+|upkeep
+|turn|31
+|
+|move|p1a: Scream Tail|Protect||[still]
+|-fail|p1a: Scream Tail
+|move|p2a: Beartic|Earthquake|p1a: Scream Tail
+|-damage|p1a: Scream Tail|66/330 brn
+|
+|-heal|p1a: Scream Tail|86/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|66/330 brn|[from] brn
+|upkeep
+|turn|32
+|
+|move|p1a: Scream Tail|Protect|p1a: Scream Tail
+|-singleturn|p1a: Scream Tail|Protect
+|move|p2a: Beartic|Earthquake|p1a: Scream Tail
+|-activate|p1a: Scream Tail|move: Protect
+|
+|-heal|p1a: Scream Tail|86/330 brn|[from] item: Leftovers
+|-damage|p1a: Scream Tail|66/330 brn|[from] brn
+|upkeep
+|turn|33
+|
+|move|p1a: Scream Tail|Encore|p2a: Beartic
+|-start|p2a: Beartic|Encore
+|move|p2a: Beartic|Earthquake|p1a: Scream Tail
+|-damage|p1a: Scream Tail|0 fnt
+|faint|p1a: Scream Tail
+|-end|p1a: Scream Tail|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p1a: Magnezone|Magnezone, L85|258/258
+|turn|34
+|
+|move|p1a: Magnezone|Body Press|p2a: Beartic
+|-supereffective|p2a: Beartic
+|-crit|p2a: Beartic
+|-damage|p2a: Beartic|34/100
+|move|p2a: Beartic|Earthquake|p1a: Magnezone
+|-supereffective|p1a: Magnezone
+|-damage|p1a: Magnezone|0 fnt
+|faint|p1a: Magnezone
+|
+|upkeep
+|
+|switch|p1a: Giratina|Giratina, L75|304/349
+|-ability|p1a: Giratina|Pressure
+|turn|35
+|
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|move|p2a: Beartic|Earthquake|p1a: Giratina
+|-damage|p1a: Giratina|210/349
+|
+|-heal|p1a: Giratina|231/349|[from] item: Leftovers
+|-end|p2a: Beartic|Encore
+|upkeep
+|turn|36
+|
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|move|p2a: Beartic|Earthquake|p1a: Giratina
+|-damage|p1a: Giratina|145/349
+|
+|-heal|p1a: Giratina|166/349|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|move|p2a: Beartic|Earthquake|p1a: Giratina
+|-damage|p1a: Giratina|78/349
+|
+|-heal|p1a: Giratina|99/349|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|move|p2a: Beartic|Earthquake|p1a: Giratina
+|-damage|p1a: Giratina|9/349
+|
+|-heal|p1a: Giratina|30/349|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Giratina|Calm Mind|p1a: Giratina
+|-boost|p1a: Giratina|spa|1
+|-boost|p1a: Giratina|spd|1
+|move|p2a: Beartic|Earthquake|p1a: Giratina
+|-damage|p1a: Giratina|0 fnt
+|faint|p1a: Giratina
+|
+|upkeep
+|
+|switch|p1a: Walking Wake|Walking Wake, L79|286/286
+|turn|40
+|
+|move|p1a: Walking Wake|Hydro Steam|p2a: Beartic
+|-damage|p2a: Beartic|0 fnt
+|faint|p2a: Beartic
+|-damage|p1a: Walking Wake|258/286|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

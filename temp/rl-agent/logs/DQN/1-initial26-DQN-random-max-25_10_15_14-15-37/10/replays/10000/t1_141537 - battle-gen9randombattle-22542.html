@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22542</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22542<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22542|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Forretress|Forretress, L84, M|263/263
+|switch|p2a: Swalot|Swalot, L90, F|100/100
+|turn|1
+|
+|move|p2a: Swalot|Sludge Bomb|p1a: Forretress
+|-immune|p1a: Forretress
+|move|p1a: Forretress|Stealth Rock|p2a: Swalot
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Swalot|Sludge Bomb|p1a: Forretress
+|-immune|p1a: Forretress
+|move|p1a: Forretress|Rapid Spin|p2a: Swalot
+|-damage|p2a: Swalot|90/100
+|-boost|p1a: Forretress|spe|1
+|
+|-heal|p2a: Swalot|97/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|switch|p1a: Basculegion|Basculegion-F, L83, F|335/335
+|move|p2a: Swalot|Sludge Bomb|p1a: Basculegion
+|-resisted|p1a: Basculegion
+|-crit|p1a: Basculegion
+|-damage|p1a: Basculegion|260/335
+|-status|p1a: Basculegion|psn
+|
+|-heal|p2a: Swalot|100/100|[from] item: Leftovers
+|-damage|p1a: Basculegion|219/335 psn|[from] psn
+|upkeep
+|turn|4
+|
+|move|p1a: Basculegion|Hydro Pump|p2a: Swalot
+|-damage|p2a: Swalot|36/100
+|move|p2a: Swalot|Sludge Bomb|p1a: Basculegion
+|-resisted|p1a: Basculegion
+|-damage|p1a: Basculegion|169/335 psn
+|
+|-heal|p2a: Swalot|42/100|[from] item: Leftovers
+|-damage|p1a: Basculegion|128/335 psn|[from] psn
+|upkeep
+|turn|5
+|
+|move|p1a: Basculegion|Hydro Pump|p2a: Swalot
+|-damage|p2a: Swalot|0 fnt
+|faint|p2a: Swalot
+|
+|-damage|p1a: Basculegion|87/335 psn|[from] psn
+|upkeep
+|
+|switch|p2a: Charizard|Charizard, L85, F|100/100
+|turn|6
+|
+|switch|p1a: Whimsicott|Whimsicott, L84, M|238/238
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|179/238
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|193/238|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-activate|p1a: Whimsicott|move: Substitute|[damage]
+|
+|-heal|p1a: Whimsicott|207/238|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|221/238|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Whimsicott|Encore|p2a: Charizard
+|-start|p2a: Charizard|Encore
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|235/238|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|176/238
+|move|p2a: Charizard|Focus Blast|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|190/238|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|switch|p1a: Forretress|Forretress, L84, M|263/263
+|move|p2a: Charizard|Focus Blast|p1a: Forretress
+|-damage|p1a: Forretress|129/263
+|
+|-heal|p1a: Forretress|145/263|[from] item: Leftovers
+|-end|p2a: Charizard|Encore
+|upkeep
+|turn|13
+|
+|move|p2a: Charizard|Focus Blast|p1a: Forretress
+|-damage|p1a: Forretress|13/263
+|move|p1a: Forretress|Rapid Spin|p2a: Charizard
+|-damage|p2a: Charizard|86/100
+|-boost|p1a: Forretress|spe|1
+|
+|-heal|p1a: Forretress|29/263|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Charizard|Hurricane|p1a: Forretress
+|-damage|p1a: Forretress|0 fnt
+|faint|p1a: Forretress
+|
+|upkeep
+|
+|switch|p1a: Jumpluff|Jumpluff, L87, M|271/271
+|turn|15
+|
+|-terastallize|p1a: Jumpluff|Steel
+|move|p1a: Jumpluff|Acrobatics|p2a: Charizard
+|-damage|p2a: Charizard|55/100
+|move|p2a: Charizard|Hurricane|p1a: Jumpluff
+|-resisted|p1a: Jumpluff
+|-damage|p1a: Jumpluff|213/271
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Jumpluff|Sleep Powder|p2a: Charizard|[miss]
+|-miss|p1a: Jumpluff|p2a: Charizard
+|move|p2a: Charizard|Hurricane|p1a: Jumpluff|[miss]
+|-miss|p2a: Charizard|p1a: Jumpluff
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Jumpluff|Sleep Powder|p2a: Charizard
+|-status|p2a: Charizard|slp|[from] move: Sleep Powder
+|cant|p2a: Charizard|slp
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Jumpluff|Acrobatics|p2a: Charizard
+|-damage|p2a: Charizard|24/100 slp
+|cant|p2a: Charizard|slp
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Jumpluff|Sleep Powder|p2a: Charizard
+|-fail|p2a: Charizard|slp
+|cant|p2a: Charizard|slp
+|
+|upkeep
+|turn|20
+|
+|switch|p1a: Basculegion|Basculegion-F, L83, F|87/335 psn
+|-curestatus|p2a: Charizard|slp|[msg]
+|move|p2a: Charizard|Hurricane|p1a: Basculegion
+|-damage|p1a: Basculegion|0 fnt
+|faint|p1a: Basculegion
+|
+|upkeep
+|
+|switch|p1a: Whimsicott|Whimsicott, L84, M|190/238
+|turn|21
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|131/238
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|145/238|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Whimsicott|Encore|p2a: Charizard
+|-start|p2a: Charizard|Encore
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|159/238|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott|[miss]
+|-miss|p2a: Charizard|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|173/238|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott
+|-supereffective|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|187/238|[from] item: Leftovers
+|-end|p2a: Charizard|Encore
+|upkeep
+|turn|25
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|128/238
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott
+|-supereffective|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|142/238|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|83/238
+|move|p2a: Charizard|Hurricane|p1a: Whimsicott
+|-supereffective|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|97/238|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|switch|p1a: Chansey|Chansey, L85, F|564/564
+|move|p2a: Charizard|Hurricane|p1a: Chansey
+|-damage|p1a: Chansey|491/564
+|-start|p1a: Chansey|confusion
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Charizard|Hurricane|p1a: Chansey
+|-damage|p1a: Chansey|419/564
+|-activate|p1a: Chansey|confusion
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Charizard|Hurricane|p1a: Chansey
+|-damage|p1a: Chansey|483/564
+|-activate|p1a: Chansey|confusion
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Charizard|Hurricane|p1a: Chansey|[miss]
+|-miss|p2a: Charizard|p1a: Chansey
+|-end|p1a: Chansey|confusion
+|move|p1a: Chansey|Soft-Boiled||[still]
+|-fail|p1a: Chansey|heal
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Charizard|Hurricane|p1a: Chansey
+|-damage|p1a: Chansey|492/564
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Charizard|Hurricane|p1a: Chansey
+|-damage|p1a: Chansey|494/564
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Charizard|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|419/564
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Charizard|Earthquake|p1a: Chansey
+|-crit|p1a: Chansey
+|-damage|p1a: Chansey|326/564
+|move|p1a: Chansey|Thunder Wave|p2a: Charizard
+|-status|p2a: Charizard|par
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|move|p2a: Charizard|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|422/564
+|
+|upkeep
+|turn|36
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|cant|p2a: Charizard|par
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Chansey|Seismic Toss|p2a: Charizard
+|-damage|p2a: Charizard|0 fnt
+|faint|p2a: Charizard
+|
+|upkeep
+|
+|switch|p2a: Plusle|Plusle, L95, F|100/100
+|-damage|p2a: Plusle|88/100|[from] Stealth Rock
+|turn|38
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|474/564
+|-damage|p2a: Plusle|78/100|[from] item: Life Orb
+|move|p1a: Chansey|Heal Bell||[still]
+|-activate|p1a: Chansey|move: Heal Bell
+|-fail|p1a: Chansey
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|384/564
+|-status|p1a: Chansey|par
+|-damage|p2a: Plusle|69/100|[from] item: Life Orb
+|cant|p1a: Chansey|par
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|306/564 par
+|-damage|p2a: Plusle|59/100|[from] item: Life Orb
+|cant|p1a: Chansey|par
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|220/564 par
+|-damage|p2a: Plusle|49/100|[from] item: Life Orb
+|cant|p1a: Chansey|par
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|142/564 par
+|-damage|p2a: Plusle|40/100|[from] item: Life Orb
+|cant|p1a: Chansey|par
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Chansey
+|-damage|p1a: Chansey|67/564 par
+|-damage|p2a: Plusle|30/100|[from] item: Life Orb
+|move|p1a: Chansey|Seismic Toss|p2a: Plusle
+|-damage|p2a: Plusle|0 fnt
+|faint|p2a: Plusle
+|
+|upkeep
+|
+|switch|p2a: Whiscash|Whiscash, L88, F|100/100
+|-damage|p2a: Whiscash|94/100|[from] Stealth Rock
+|turn|44
+|
+|move|p2a: Whiscash|Hydro Pump|p1a: Chansey
+|-damage|p1a: Chansey|7/564 par
+|move|p1a: Chansey|Seismic Toss|p2a: Whiscash
+|-damage|p2a: Whiscash|69/100
+|
+|-heal|p2a: Whiscash|75/100|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p2a: Whiscash|Hydro Pump|p1a: Chansey
+|-damage|p1a: Chansey|0 fnt
+|faint|p1a: Chansey
+|
+|-heal|p2a: Whiscash|82/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Whimsicott|Whimsicott, L84, M|97/238
+|turn|46
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|38/238
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|52/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|88/100|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute|[weak]
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott|[miss]
+|-miss|p2a: Whiscash|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|66/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|94/100|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-start|p1a: Whimsicott|Substitute
+|-damage|p1a: Whimsicott|7/238
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-activate|p1a: Whimsicott|move: Substitute|[damage]
+|
+|-heal|p1a: Whimsicott|21/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|99/100|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p1a: Whimsicott|Moonblast|p2a: Whiscash
+|-damage|p2a: Whiscash|73/100
+|-unboost|p2a: Whiscash|spa|1
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott|[miss]
+|-miss|p2a: Whiscash|p1a: Whimsicott
+|
+|-heal|p1a: Whimsicott|35/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|80/100|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-end|p1a: Whimsicott|Substitute
+|
+|-heal|p1a: Whimsicott|49/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|86/100|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute|[weak]
+|move|p2a: Whiscash|Hydro Pump|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-damage|p1a: Whimsicott|7/238
+|
+|-heal|p1a: Whimsicott|21/238|[from] item: Leftovers
+|-heal|p2a: Whiscash|92/100|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|switch|p1a: Muk|Muk, L86, M|321/321
+|move|p2a: Whiscash|Earthquake|p1a: Muk
+|-supereffective|p1a: Muk
+|-damage|p1a: Muk|117/321
+|
+|-heal|p2a: Whiscash|98/100|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p1a: Muk|Shadow Sneak|p2a: Whiscash
+|-damage|p2a: Whiscash|87/100
+|move|p2a: Whiscash|Earthquake|p1a: Muk
+|-supereffective|p1a: Muk
+|-damage|p1a: Muk|0 fnt
+|faint|p1a: Muk
+|
+|-heal|p2a: Whiscash|94/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Jumpluff|Jumpluff, L87, M, tera:Steel|213/271
+|turn|54
+|
+|move|p1a: Jumpluff|Sleep Powder|p2a: Whiscash
+|-status|p2a: Whiscash|slp|[from] move: Sleep Powder
+|cant|p2a: Whiscash|slp
+|
+|-heal|p2a: Whiscash|99/100 slp|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p1a: Jumpluff|Sleep Powder|p2a: Whiscash
+|-fail|p2a: Whiscash|slp
+|-curestatus|p2a: Whiscash|slp|[msg]
+|move|p2a: Whiscash|Earthquake|p1a: Jumpluff
+|-supereffective|p1a: Jumpluff
+|-damage|p1a: Jumpluff|1/271
+|
+|-heal|p2a: Whiscash|100/100|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p1a: Jumpluff|Encore|p2a: Whiscash
+|-start|p2a: Whiscash|Encore
+|move|p2a: Whiscash|Earthquake|p1a: Jumpluff
+|-supereffective|p1a: Jumpluff
+|-damage|p1a: Jumpluff|0 fnt
+|faint|p1a: Jumpluff
+|
+|upkeep
+|
+|switch|p1a: Whimsicott|Whimsicott, L84, M|21/238
+|turn|57
+|
+|move|p1a: Whimsicott|Substitute|p1a: Whimsicott
+|-fail|p1a: Whimsicott|move: Substitute|[weak]
+|move|p2a: Whiscash|Earthquake|p1a: Whimsicott
+|-resisted|p1a: Whimsicott
+|-damage|p1a: Whimsicott|0 fnt
+|faint|p1a: Whimsicott
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

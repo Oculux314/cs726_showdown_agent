@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22708</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22708<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22708|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rampardos|Rampardos, L90, M|321/321
+|switch|p2a: Umbreon|Umbreon, L84, F|100/100
+|turn|1
+|
+|move|p2a: Umbreon|Foul Play|p1a: Rampardos
+|-damage|p1a: Rampardos|101/321
+|move|p1a: Rampardos|Earthquake|p2a: Umbreon
+|-damage|p2a: Umbreon|52/100
+|-damage|p1a: Rampardos|69/321|[from] item: Life Orb
+|
+|-heal|p2a: Umbreon|58/100|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Umbreon|Foul Play|p1a: Rampardos
+|-damage|p1a: Rampardos|0 fnt
+|faint|p1a: Rampardos
+|
+|-heal|p2a: Umbreon|64/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Poliwrath|Poliwrath, L88, F|302/302
+|turn|3
+|
+|move|p2a: Umbreon|Foul Play|p1a: Poliwrath
+|-resisted|p1a: Poliwrath
+|-damage|p1a: Poliwrath|254/302
+|move|p1a: Poliwrath|Circle Throw|p2a: Umbreon
+|-supereffective|p2a: Umbreon
+|-damage|p2a: Umbreon|27/100
+|drag|p2a: Altaria|Altaria, L89, M|100/100
+|
+|upkeep
+|turn|4
+|
+|-terastallize|p1a: Poliwrath|Steel
+|move|p2a: Altaria|Brave Bird|p1a: Poliwrath
+|-resisted|p1a: Poliwrath
+|-damage|p1a: Poliwrath|203/302
+|-damage|p2a: Altaria|94/100|[from] Recoil
+|move|p1a: Poliwrath|Close Combat|p2a: Altaria
+|-resisted|p2a: Altaria
+|-damage|p2a: Altaria|71/100
+|-unboost|p1a: Poliwrath|def|1
+|-unboost|p1a: Poliwrath|spd|1
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Altaria|Brave Bird|p1a: Poliwrath
+|-resisted|p1a: Poliwrath
+|-damage|p1a: Poliwrath|128/302
+|-damage|p2a: Altaria|62/100|[from] Recoil
+|move|p1a: Poliwrath|Knock Off|p2a: Altaria
+|-damage|p2a: Altaria|39/100
+|-enditem|p2a: Altaria|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Poliwrath
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Altaria|Brave Bird|p1a: Poliwrath
+|-resisted|p1a: Poliwrath
+|-damage|p1a: Poliwrath|51/302
+|-damage|p2a: Altaria|30/100|[from] Recoil
+|move|p1a: Poliwrath|Liquidation|p2a: Altaria
+|-resisted|p2a: Altaria
+|-damage|p2a: Altaria|13/100
+|-unboost|p2a: Altaria|def|1
+|
+|upkeep
+|turn|7
+|
+|switch|p1a: Revavroom|Revavroom, L79, F|256/256
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|202/256
+|-damage|p2a: Altaria|6/100|[from] Recoil
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|142/256
+|-damage|p2a: Altaria|0 fnt|[from] Recoil
+|faint|p2a: Altaria
+|move|p1a: Revavroom|Iron Head|p2: Altaria|[notarget]
+|-fail|p1a: Revavroom
+|
+|upkeep
+|
+|switch|p2a: Umbreon|Umbreon, L84, F|27/100
+|turn|9
+|
+|move|p1a: Revavroom|Shift Gear|p1a: Revavroom
+|-boost|p1a: Revavroom|spe|2
+|-boost|p1a: Revavroom|atk|1
+|move|p2a: Umbreon|Foul Play|p1a: Revavroom
+|-damage|p1a: Revavroom|0 fnt
+|faint|p1a: Revavroom
+|
+|-heal|p2a: Umbreon|33/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361
+|turn|10
+|
+|move|p1a: Oinkologne|Body Slam|p2a: Umbreon
+|-damage|p2a: Umbreon|4/100
+|move|p2a: Umbreon|Foul Play|p1a: Oinkologne
+|-crit|p1a: Oinkologne
+|-damage|p1a: Oinkologne|199/361
+|
+|-heal|p1a: Oinkologne|221/361|[from] item: Leftovers
+|-heal|p2a: Umbreon|10/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Oinkologne|Body Slam|p2a: Umbreon
+|-damage|p2a: Umbreon|0 fnt
+|faint|p2a: Umbreon
+|
+|-heal|p1a: Oinkologne|243/361|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Lilligant|Lilligant, L86, F|100/100
+|turn|12
+|
+|move|p2a: Lilligant|Tera Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|170/361
+|-damage|p2a: Lilligant|91/100|[from] item: Life Orb
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|upkeep
+|turn|13
+|
+|switch|p1a: Regidrago|Regidrago, L77|435/435
+|move|p2a: Lilligant|Tera Blast|p1a: Regidrago
+|-damage|p1a: Regidrago|306/435
+|-damage|p2a: Lilligant|81/100|[from] item: Life Orb
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Lilligant|Tera Blast|p1a: Regidrago
+|-damage|p1a: Regidrago|163/435
+|-damage|p2a: Lilligant|71/100|[from] item: Life Orb
+|move|p1a: Regidrago|Earthquake|p2a: Lilligant
+|-resisted|p2a: Lilligant
+|-damage|p2a: Lilligant|55/100
+|-damage|p1a: Regidrago|120/435|[from] item: Life Orb
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Lilligant|Tera Blast|p1a: Regidrago
+|-damage|p1a: Regidrago|0 fnt
+|faint|p1a: Regidrago
+|-damage|p2a: Lilligant|45/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Granbull|Granbull, L88, M|302/302
+|-ability|p1a: Granbull|Intimidate|boost
+|-unboost|p2a: Lilligant|atk|1
+|turn|16
+|
+|move|p2a: Lilligant|Tera Blast|p1a: Granbull
+|-damage|p1a: Granbull|194/302
+|-damage|p2a: Lilligant|35/100|[from] item: Life Orb
+|move|p1a: Granbull|Earthquake|p2a: Lilligant
+|-resisted|p2a: Lilligant
+|-damage|p2a: Lilligant|17/100
+|
+|-heal|p1a: Granbull|212/302|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Lilligant|Tera Blast|p1a: Granbull
+|-damage|p1a: Granbull|108/302
+|-damage|p2a: Lilligant|7/100|[from] item: Life Orb
+|move|p1a: Granbull|Earthquake|p2a: Lilligant
+|-resisted|p2a: Lilligant
+|-damage|p2a: Lilligant|0 fnt
+|faint|p2a: Lilligant
+|
+|-heal|p1a: Granbull|126/302|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Bastiodon|Bastiodon, L89, F|100/100
+|turn|18
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361 slp
+|move|p2a: Bastiodon|Foul Play|p1a: Oinkologne
+|-damage|p1a: Oinkologne|282/361 slp
+|
+|-heal|p1a: Oinkologne|304/361 slp|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|switch|p1a: Poliwrath|Poliwrath, L88, F, tera:Steel|51/302
+|move|p2a: Bastiodon|Foul Play|p1a: Poliwrath
+|-damage|p1a: Poliwrath|0 fnt
+|faint|p1a: Poliwrath
+|
+|upkeep
+|
+|switch|p1a: Granbull|Granbull, L88, M|126/302
+|-ability|p1a: Granbull|Intimidate|boost
+|-unboost|p2a: Bastiodon|atk|1
+|turn|20
+|
+|move|p1a: Granbull|Earthquake|p2a: Bastiodon
+|-supereffective|p2a: Bastiodon
+|-damage|p2a: Bastiodon|13/100
+|move|p2a: Bastiodon|Foul Play|p1a: Granbull
+|-resisted|p1a: Granbull
+|-damage|p1a: Granbull|82/302
+|
+|-heal|p1a: Granbull|100/302|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Granbull|Thunder Wave|p2a: Bastiodon
+|-status|p2a: Bastiodon|par
+|move|p2a: Bastiodon|Foul Play|p1a: Granbull
+|-resisted|p1a: Granbull
+|-crit|p1a: Granbull
+|-damage|p1a: Granbull|30/302
+|
+|-heal|p1a: Granbull|48/302|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Granbull|Earthquake|p2a: Bastiodon
+|-supereffective|p2a: Bastiodon
+|-damage|p2a: Bastiodon|0 fnt
+|faint|p2a: Bastiodon
+|
+|-heal|p1a: Granbull|66/302|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Gothitelle|Gothitelle, L90, F|100/100
+|turn|23
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Granbull
+|-resisted|p1a: Granbull
+|-damage|p1a: Granbull|8/302
+|move|p1a: Granbull|Earthquake|p2a: Gothitelle
+|-crit|p2a: Gothitelle
+|-damage|p2a: Gothitelle|57/100
+|
+|-heal|p2a: Gothitelle|63/100|[from] item: Leftovers
+|-heal|p1a: Granbull|26/302|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Granbull
+|-resisted|p1a: Granbull
+|-damage|p1a: Granbull|0 fnt
+|faint|p1a: Granbull
+|
+|-heal|p2a: Gothitelle|69/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|304/361 slp
+|turn|25
+|
+|cant|p1a: Oinkologne|slp
+|move|p2a: Gothitelle|Focus Blast|p1a: Oinkologne
+|-supereffective|p1a: Oinkologne
+|-damage|p1a: Oinkologne|146/361 slp
+|
+|-heal|p1a: Oinkologne|168/361 slp|[from] item: Leftovers
+|-heal|p2a: Gothitelle|75/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|cant|p1a: Oinkologne|slp
+|move|p2a: Gothitelle|Focus Blast|p1a: Oinkologne
+|-supereffective|p1a: Oinkologne
+|-damage|p1a: Oinkologne|4/361 slp
+|
+|-heal|p1a: Oinkologne|26/361 slp|[from] item: Leftovers
+|-heal|p2a: Gothitelle|82/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Body Slam|p2a: Gothitelle
+|-damage|p2a: Gothitelle|47/100
+|move|p2a: Gothitelle|Focus Blast|p1a: Oinkologne
+|-supereffective|p1a: Oinkologne
+|-damage|p1a: Oinkologne|0 fnt
+|faint|p1a: Oinkologne
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

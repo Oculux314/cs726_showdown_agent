@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22494</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22494<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22494|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Bastiodon|Bastiodon, L89, M|252/252
+|switch|p2a: Mew|Mew, L82|100/100
+|turn|1
+|
+|switch|p1a: Zangoose|Zangoose, L85, F|263/263
+|move|p2a: Mew|Psychic Noise|p1a: Zangoose
+|-damage|p1a: Zangoose|160/263
+|-start|p1a: Zangoose|move: Heal Block
+|
+|-status|p1a: Zangoose|tox|[from] item: Toxic Orb
+|upkeep
+|turn|2
+|
+|move|p2a: Mew|Psychic Noise|p1a: Zangoose
+|-damage|p1a: Zangoose|58/263 tox
+|move|p1a: Zangoose|Facade|p2a: Mew
+|-damage|p2a: Mew|24/100
+|
+|-heal|p2a: Mew|30/100|[from] item: Leftovers
+|-damage|p1a: Zangoose|42/263 tox|[from] psn
+|-end|p1a: Zangoose|move: Heal Block
+|upkeep
+|turn|3
+|
+|move|p2a: Mew|Psychic Noise|p1a: Zangoose
+|-damage|p1a: Zangoose|0 fnt
+|faint|p1a: Zangoose
+|
+|-heal|p2a: Mew|36/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Blaziken|Blaziken, L76, F|247/247
+|turn|4
+|
+|move|p2a: Mew|Psychic Noise|p1a: Blaziken
+|-supereffective|p1a: Blaziken
+|-damage|p1a: Blaziken|55/247
+|-start|p1a: Blaziken|move: Heal Block
+|move|p1a: Blaziken|Knock Off|p2a: Mew
+|-supereffective|p2a: Mew
+|-damage|p2a: Mew|0 fnt
+|-enditem|p2a: Mew|Leftovers|[from] move: Knock Off|[of] p1a: Blaziken
+|faint|p2a: Mew
+|-damage|p1a: Blaziken|31/247|[from] item: Life Orb
+|
+|-ability|p1a: Blaziken|Speed Boost|boost
+|-boost|p1a: Blaziken|spe|1
+|upkeep
+|
+|switch|p2a: Iron Treads|Iron Treads, L77|100/100
+|turn|5
+|
+|move|p1a: Blaziken|Knock Off|p2a: Iron Treads
+|-damage|p2a: Iron Treads|70/100
+|-enditem|p2a: Iron Treads|Assault Vest|[from] move: Knock Off|[of] p1a: Blaziken
+|-damage|p1a: Blaziken|7/247|[from] item: Life Orb
+|move|p2a: Iron Treads|Earthquake|p1a: Blaziken
+|-supereffective|p1a: Blaziken
+|-damage|p1a: Blaziken|0 fnt
+|faint|p1a: Blaziken
+|
+|upkeep
+|
+|switch|p1a: Annihilape|Annihilape, L76, F|292/292
+|turn|6
+|
+|move|p2a: Iron Treads|Earthquake|p1a: Annihilape
+|-damage|p1a: Annihilape|171/292
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|
+|-heal|p1a: Annihilape|189/292|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Annihilape|Fairy
+|move|p2a: Iron Treads|Earthquake|p1a: Annihilape
+|-damage|p1a: Annihilape|113/292
+|move|p1a: Annihilape|Gunk Shot|p2a: Iron Treads
+|-immune|p2a: Iron Treads
+|
+|-heal|p1a: Annihilape|131/292|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Iron Treads|Earthquake|p1a: Annihilape
+|-damage|p1a: Annihilape|58/292
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|
+|-heal|p1a: Annihilape|76/292|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Iron Treads|Earthquake|p1a: Annihilape
+|-damage|p1a: Annihilape|21/292
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|
+|-heal|p1a: Annihilape|39/292|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Iron Treads|Earthquake|p1a: Annihilape
+|-damage|p1a: Annihilape|0 fnt
+|faint|p1a: Annihilape
+|
+|upkeep
+|
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|312/312
+|turn|11
+|
+|move|p2a: Iron Treads|Earthquake|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|266/312
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Treads
+|-status|p2a: Iron Treads|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|285/312|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|cant|p2a: Iron Treads|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Treads
+|-fail|p2a: Iron Treads|slp
+|
+|-heal|p1a: Brute Bonnet|304/312|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|cant|p2a: Iron Treads|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Treads
+|-fail|p2a: Iron Treads|slp
+|
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|-curestatus|p2a: Iron Treads|slp|[msg]
+|move|p2a: Iron Treads|Earthquake|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|266/312
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Treads
+|-status|p2a: Iron Treads|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|285/312|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Iron Treads
+|-damage|p2a: Iron Treads|44/100 slp
+|cant|p2a: Iron Treads|slp
+|
+|-heal|p1a: Brute Bonnet|304/312|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|cant|p2a: Iron Treads|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Iron Treads
+|-fail|p2a: Iron Treads|slp
+|
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|-curestatus|p2a: Iron Treads|slp|[msg]
+|move|p2a: Iron Treads|Earthquake|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|262/312
+|move|p1a: Brute Bonnet|Seed Bomb|p2a: Iron Treads
+|-damage|p2a: Iron Treads|14/100
+|
+|-heal|p1a: Brute Bonnet|281/312|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|switch|p1a: Spectrier|Spectrier, L75|274/274
+|move|p2a: Iron Treads|Earthquake|p1a: Spectrier
+|-damage|p1a: Spectrier|132/274
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Spectrier|Shadow Ball|p2a: Iron Treads
+|-damage|p2a: Iron Treads|0 fnt
+|faint|p2a: Iron Treads
+|-end|p2a: Iron Treads|Quark Drive|[silent]
+|-ability|p1a: Spectrier|Grim Neigh|boost
+|-boost|p1a: Spectrier|spa|1
+|-damage|p1a: Spectrier|105/274|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Tentacruel|Tentacruel, L84, M|100/100
+|turn|20
+|
+|move|p1a: Spectrier|Shadow Ball|p2a: Tentacruel
+|-damage|p2a: Tentacruel|45/100
+|-damage|p1a: Spectrier|78/274|[from] item: Life Orb
+|move|p2a: Tentacruel|Surf|p1a: Spectrier
+|-damage|p1a: Spectrier|0 fnt
+|faint|p1a: Spectrier
+|
+|-heal|p2a: Tentacruel|51/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Bastiodon|Bastiodon, L89, M|252/252
+|turn|21
+|
+|move|p2a: Tentacruel|Surf|p1a: Bastiodon
+|-supereffective|p1a: Bastiodon
+|-damage|p1a: Bastiodon|144/252
+|move|p1a: Bastiodon|Iron Defense|p1a: Bastiodon
+|-boost|p1a: Bastiodon|def|2
+|
+|-heal|p2a: Tentacruel|57/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Tentacruel|Surf|p1a: Bastiodon
+|-supereffective|p1a: Bastiodon
+|-damage|p1a: Bastiodon|28/252
+|move|p1a: Bastiodon|Iron Defense|p1a: Bastiodon
+|-boost|p1a: Bastiodon|def|2
+|
+|-heal|p2a: Tentacruel|63/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Tentacruel|Surf|p1a: Bastiodon
+|-supereffective|p1a: Bastiodon
+|-damage|p1a: Bastiodon|0 fnt
+|faint|p1a: Bastiodon
+|
+|-heal|p2a: Tentacruel|70/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|281/312
+|turn|24
+|
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|239/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p2a: Tentacruel|76/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|258/312|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|82/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|277/312|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|88/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|296/312|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|95/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|276/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p2a: Tentacruel|100/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|295/312|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Tentacruel
+|-damage|p2a: Tentacruel|62/100 slp
+|cant|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|68/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|274/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p2a: Tentacruel|74/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|293/312|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|81/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|87/100 slp|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|272/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p2a: Tentacruel|93/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|291/312|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|99/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|310/312|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|100/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|upkeep
+|turn|37
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|275/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|294/312|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Seed Bomb|p2a: Tentacruel
+|-damage|p2a: Tentacruel|57/100 slp
+|
+|-heal|p2a: Tentacruel|63/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|274/312
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-status|p2a: Tentacruel|slp|[from] move: Spore
+|
+|-heal|p2a: Tentacruel|70/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|293/312|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Tentacruel
+|-fail|p2a: Tentacruel|slp
+|
+|-heal|p2a: Tentacruel|76/100 slp|[from] item: Leftovers
+|-heal|p1a: Brute Bonnet|312/312|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|cant|p2a: Tentacruel|slp
+|move|p1a: Brute Bonnet|Crunch|p2a: Tentacruel
+|-damage|p2a: Tentacruel|30/100 slp
+|
+|-heal|p2a: Tentacruel|36/100 slp|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|-curestatus|p2a: Tentacruel|slp|[msg]
+|move|p2a: Tentacruel|Surf|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|271/312
+|move|p1a: Brute Bonnet|Crunch|p2a: Tentacruel
+|-damage|p2a: Tentacruel|0 fnt
+|faint|p2a: Tentacruel
+|
+|-heal|p1a: Brute Bonnet|290/312|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Volcanion|Volcanion, L79|100/100
+|turn|43
+|
+|move|p2a: Volcanion|Steam Eruption|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|232/312
+|-status|p1a: Brute Bonnet|brn
+|move|p1a: Brute Bonnet|Spore|p2a: Volcanion
+|-status|p2a: Volcanion|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|251/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|232/312 brn|[from] brn
+|upkeep
+|turn|44
+|
+|cant|p2a: Volcanion|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Volcanion
+|-fail|p2a: Volcanion|slp
+|
+|-heal|p1a: Brute Bonnet|251/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|232/312 brn|[from] brn
+|upkeep
+|turn|45
+|
+|cant|p2a: Volcanion|slp
+|move|p1a: Brute Bonnet|Spore|p2a: Volcanion
+|-fail|p2a: Volcanion|slp
+|
+|-heal|p1a: Brute Bonnet|251/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|232/312 brn|[from] brn
+|upkeep
+|turn|46
+|
+|-curestatus|p2a: Volcanion|slp|[msg]
+|move|p2a: Volcanion|Steam Eruption|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|173/312 brn
+|move|p1a: Brute Bonnet|Spore|p2a: Volcanion
+|-status|p2a: Volcanion|slp|[from] move: Spore
+|
+|-heal|p1a: Brute Bonnet|192/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|173/312 brn|[from] brn
+|upkeep
+|turn|47
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Volcanion
+|-damage|p2a: Volcanion|87/100 slp
+|cant|p2a: Volcanion|slp
+|
+|-heal|p1a: Brute Bonnet|192/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|173/312 brn|[from] brn
+|upkeep
+|turn|48
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Volcanion
+|-damage|p2a: Volcanion|72/100 slp
+|-curestatus|p2a: Volcanion|slp|[msg]
+|move|p2a: Volcanion|Steam Eruption|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|115/312 brn
+|
+|-heal|p1a: Brute Bonnet|134/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|115/312 brn|[from] brn
+|upkeep
+|turn|49
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Volcanion
+|-damage|p2a: Volcanion|57/100
+|move|p2a: Volcanion|Steam Eruption|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|50/312 brn
+|
+|-heal|p1a: Brute Bonnet|69/312 brn|[from] item: Leftovers
+|-damage|p1a: Brute Bonnet|50/312 brn|[from] brn
+|upkeep
+|turn|50
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Volcanion
+|-damage|p2a: Volcanion|43/100
+|move|p2a: Volcanion|Steam Eruption|p1a: Brute Bonnet
+|-resisted|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|0 fnt
+|faint|p1a: Brute Bonnet
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

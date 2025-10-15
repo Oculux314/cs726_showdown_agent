@@ -1,0 +1,237 @@
+{
+    "roomid": "battle-gen9ubers-17217",
+    "title": "nwil508 vs. max_damage-nu",
+    "format": "gen9ubers",
+    "turn": 3,
+    "started": true,
+    "ended": false,
+    "winner": null,
+    "requestState": "",
+    "sides": [
+        {
+        "name": "nwil508",
+        "pokemon": [
+            {
+            "name": "p1: Flutter Mane",
+            "species": "Flutter Mane",
+            "level": 50,
+            "hp": 226,
+            "maxhp": 251,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "moonblast",
+                "shadowball",
+                "energyball",
+                "powergem"
+            ]
+            },
+            {
+            "name": "p1: Koraidon",
+            "species": "Koraidon",
+            "level": 50,
+            "hp": 341,
+            "maxhp": 341,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "flareblitz",
+                "closecombat",
+                "outrage",
+                "zenheadbutt"
+            ]
+            },
+            {
+            "name": "p1: Arceus",
+            "species": "Arceus-Ground",
+            "level": 50,
+            "hp": 443,
+            "maxhp": 443,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "judgment",
+                "icebeam",
+                "recover",
+                "earthpower"
+            ]
+            },
+            {
+            "name": "p1: Necrozma",
+            "species": "Necrozma-Dusk-Mane",
+            "level": 50,
+            "hp": 398,
+            "maxhp": 398,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "sunsteelstrike",
+                "earthquake",
+                "morningsun",
+                "stealthrock"
+            ]
+            },
+            {
+            "name": "p1: Kyogre",
+            "species": "Kyogre",
+            "level": 50,
+            "hp": 341,
+            "maxhp": 341,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "waterspout",
+                "originpulse",
+                "icebeam",
+                "thunder"
+            ]
+            },
+            {
+            "name": "p1: Ting-Lu",
+            "species": "Ting-Lu",
+            "level": 50,
+            "hp": 514,
+            "maxhp": 514,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "earthquake",
+                "ruination",
+                "bodypress",
+                "heavyslam"
+            ]
+            }
+        ],
+        "active": [
+            {
+            "name": "p1: Flutter Mane",
+            "species": "Flutter Mane",
+            "hp": 100,
+            "maxhp": 251,
+            "fainted": false
+            }
+        ]
+        },
+        {
+        "name": "max_damage-nu",
+        "pokemon": [
+            {
+            "name": "p2: Muk",
+            "species": "Muk-Alola",
+            "level": 50,
+            "hp": 1,
+            "maxhp": 414,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "poisonjab",
+                "knockoff",
+                "rest",
+                "sleeptalk"
+            ]
+            },
+            {
+            "name": "p2: Zapdos",
+            "species": "Zapdos-Galar",
+            "level": 50,
+            "hp": 321,
+            "maxhp": 321,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "bravebird",
+                "closecombat",
+                "knockoff",
+                "uturn"
+            ]
+            },
+            {
+            "name": "p2: Entei",
+            "species": "Entei",
+            "level": 50,
+            "hp": 371,
+            "maxhp": 371,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "extremespeed",
+                "sacredfire",
+                "stoneedge",
+                "doubleedge"
+            ]
+            },
+            {
+            "name": "p2: Bronzong",
+            "species": "Bronzong",
+            "level": 50,
+            "hp": 338,
+            "maxhp": 338,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "bodypress",
+                "psychicnoise",
+                "irondefense",
+                "stealthrock"
+            ]
+            },
+            {
+            "name": "p2: Chesnaught",
+            "species": "Chesnaught",
+            "level": 50,
+            "hp": 0,
+            "maxhp": null,
+            "fainted": true,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "bodypress",
+                "knockoff",
+                "spikes",
+                "synthesis"
+            ]
+            },
+            {
+            "name": "p2: Volcanion",
+            "species": "Volcanion",
+            "level": 50,
+            "hp": 302,
+            "maxhp": 302,
+            "fainted": false,
+            "status": "",
+            "boosts": {},
+            "moves": [
+                "flamethrower",
+                "steameruption",
+                "roar",
+                "earthpower"
+            ]
+            }
+        ],
+        "active": [
+            {
+            "name": "p2: Muk",
+            "species": "Muk-Alola",
+            "hp": 414,
+            "maxhp": 414,
+            "fainted": false
+            }
+        ]
+        }
+    ],
+    "field": {
+        "weather": null,
+        "terrain": null,
+        "pseudoWeather": {}
+    }
+}

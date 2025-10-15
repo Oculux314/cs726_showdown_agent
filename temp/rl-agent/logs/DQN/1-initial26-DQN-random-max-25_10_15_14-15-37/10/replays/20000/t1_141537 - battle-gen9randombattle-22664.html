@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22664</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22664<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22664|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Regice|Regice, L88|284/284
+|switch|p2a: Minun|Minun, L95, F|100/100
+|turn|1
+|
+|switch|p1a: Hypno|Hypno, L95, F|315/315
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-damage|p1a: Hypno|228/315
+|-damage|p2a: Minun|91/100|[from] item: Life Orb
+|
+|-heal|p1a: Hypno|247/315|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p1a: Hypno|Protect|p1a: Hypno
+|-singleturn|p1a: Hypno|Protect
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-activate|p1a: Hypno|move: Protect
+|
+|-heal|p1a: Hypno|266/315|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-damage|p1a: Hypno|171/315
+|-damage|p2a: Minun|81/100|[from] item: Life Orb
+|move|p1a: Hypno|Toxic|p2a: Minun
+|-status|p2a: Minun|tox
+|
+|-heal|p1a: Hypno|190/315|[from] item: Leftovers
+|-damage|p2a: Minun|75/100 tox|[from] psn
+|upkeep
+|turn|4
+|
+|move|p1a: Hypno|Protect|p1a: Hypno
+|-singleturn|p1a: Hypno|Protect
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-activate|p1a: Hypno|move: Protect
+|
+|-heal|p1a: Hypno|209/315|[from] item: Leftovers
+|-damage|p2a: Minun|63/100 tox|[from] psn
+|upkeep
+|turn|5
+|
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-damage|p1a: Hypno|115/315
+|-damage|p2a: Minun|53/100 tox|[from] item: Life Orb
+|move|p1a: Hypno|Toxic|p2a: Minun
+|-fail|p2a: Minun|tox
+|
+|-heal|p1a: Hypno|134/315|[from] item: Leftovers
+|-damage|p2a: Minun|36/100 tox|[from] psn
+|upkeep
+|turn|6
+|
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-damage|p1a: Hypno|43/315
+|-status|p1a: Hypno|par
+|-damage|p2a: Minun|26/100 tox|[from] item: Life Orb
+|move|p1a: Hypno|Toxic|p2a: Minun
+|-fail|p2a: Minun|tox
+|
+|-heal|p1a: Hypno|62/315 par|[from] item: Leftovers
+|-damage|p2a: Minun|2/100 tox|[from] psn
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Hypno|Dark
+|cant|p1a: Hypno|par
+|move|p2a: Minun|Thunderbolt|p1a: Hypno
+|-damage|p1a: Hypno|0 fnt
+|faint|p1a: Hypno
+|-damage|p2a: Minun|0 fnt|[from] item: Life Orb
+|faint|p2a: Minun
+|
+|upkeep
+|
+|switch|p2a: Chimecho|Chimecho, L93, F|100/100
+|switch|p1a: Maushold|Maushold, L76|238/238
+|turn|8
+|
+|move|p1a: Maushold|Encore||[still]
+|-fail|p1a: Maushold
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Maushold
+|-damage|p1a: Maushold|148/238
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Maushold|Encore|p2a: Chimecho
+|-start|p2a: Chimecho|Encore
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Maushold
+|-damage|p1a: Maushold|68/238
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Maushold|Encore||[still]
+|-fail|p1a: Maushold
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Maushold
+|-damage|p1a: Maushold|0 fnt
+|faint|p1a: Maushold
+|
+|upkeep
+|
+|switch|p1a: Lanturn|Lanturn, L89, M|367/367
+|turn|11
+|
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|298/367
+|move|p1a: Lanturn|Volt Switch|p2a: Chimecho
+|-damage|p2a: Chimecho|80/100
+|
+|switch|p1a: Gyarados|Gyarados, L79, F|280/280|[from] Volt Switch
+|-ability|p1a: Gyarados|Intimidate|boost
+|-unboost|p2a: Chimecho|atk|1
+|
+|-heal|p2a: Chimecho|86/100|[from] item: Leftovers
+|-end|p2a: Chimecho|Encore
+|upkeep
+|turn|12
+|
+|move|p1a: Gyarados|Earthquake|p2a: Chimecho
+|-immune|p2a: Chimecho|[from] ability: Levitate
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Gyarados
+|-damage|p1a: Gyarados|210/280
+|
+|-heal|p2a: Chimecho|92/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|switch|p1a: Lanturn|Lanturn, L89, M|298/367
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|223/367
+|
+|-heal|p2a: Chimecho|98/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|switch|p1a: Gyarados|Gyarados, L79, F|210/280
+|-ability|p1a: Gyarados|Intimidate|boost
+|-unboost|p2a: Chimecho|atk|1
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Gyarados
+|-damage|p1a: Gyarados|147/280
+|
+|-heal|p2a: Chimecho|100/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Gyarados|Earthquake|p2a: Chimecho
+|-immune|p2a: Chimecho|[from] ability: Levitate
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Gyarados
+|-damage|p1a: Gyarados|84/280
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Gyarados|Earthquake|p2a: Chimecho
+|-immune|p2a: Chimecho|[from] ability: Levitate
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Gyarados
+|-damage|p1a: Gyarados|15/280
+|
+|upkeep
+|turn|17
+|
+|switch|p1a: Avalugg|Avalugg-Hisui, L90, M|317/317
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Avalugg
+|-damage|p1a: Avalugg|201/317
+|
+|upkeep
+|turn|18
+|
+|switch|p1a: Gyarados|Gyarados, L79, F|15/280
+|-ability|p1a: Gyarados|Intimidate|boost
+|-unboost|p2a: Chimecho|atk|1
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Gyarados
+|-damage|p1a: Gyarados|0 fnt
+|faint|p1a: Gyarados
+|
+|upkeep
+|
+|switch|p1a: Lanturn|Lanturn, L89, M|223/367
+|turn|19
+|
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|148/367
+|move|p1a: Lanturn|Thunder Wave|p2a: Chimecho|[miss]
+|-miss|p1a: Lanturn|p2a: Chimecho
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|73/367
+|move|p1a: Lanturn|Thunder Wave|p2a: Chimecho
+|-status|p2a: Chimecho|par
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Lanturn|Thunder Wave|p2a: Chimecho
+|-fail|p2a: Chimecho|par
+|cant|p2a: Chimecho|par
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Lanturn|Thunder Wave|p2a: Chimecho
+|-fail|p2a: Chimecho|par
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|2/367
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Lanturn|Thunder Wave|p2a: Chimecho
+|-fail|p2a: Chimecho|par
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Lanturn
+|-damage|p1a: Lanturn|0 fnt
+|faint|p1a: Lanturn
+|
+|upkeep
+|
+|switch|p1a: Avalugg|Avalugg-Hisui, L90, M|201/317
+|turn|24
+|
+|move|p1a: Avalugg|Rapid Spin|p2a: Chimecho
+|-damage|p2a: Chimecho|84/100 par
+|-boost|p1a: Avalugg|spe|1
+|move|p2a: Chimecho|Dazzling Gleam|p1a: Avalugg
+|-damage|p1a: Avalugg|80/317
+|
+|-heal|p2a: Chimecho|90/100 par|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Avalugg|Rapid Spin|p2a: Chimecho
+|-damage|p2a: Chimecho|74/100 par
+|-boost|p1a: Avalugg|spe|1
+|move|p2a: Chimecho|Psychic Noise|p1a: Avalugg
+|-damage|p1a: Avalugg|0 fnt
+|faint|p1a: Avalugg
+|
+|-heal|p2a: Chimecho|80/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Regice|Regice, L88|284/284
+|turn|26
+|
+|move|p1a: Regice|Ice Beam|p2a: Chimecho
+|-damage|p2a: Chimecho|49/100 par
+|move|p2a: Chimecho|Psychic Noise|p1a: Regice
+|-damage|p1a: Regice|235/284
+|-start|p1a: Regice|move: Heal Block
+|
+|-heal|p2a: Chimecho|55/100 par|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Regice|Ice Beam|p2a: Chimecho
+|-damage|p2a: Chimecho|22/100 par
+|move|p2a: Chimecho|Psychic Noise|p1a: Regice
+|-damage|p1a: Regice|190/284
+|
+|-heal|p2a: Chimecho|28/100 par|[from] item: Leftovers
+|-end|p1a: Regice|move: Heal Block
+|upkeep
+|turn|28
+|
+|move|p1a: Regice|Ice Beam|p2a: Chimecho
+|-damage|p2a: Chimecho|0 fnt
+|faint|p2a: Chimecho
+|
+|upkeep
+|
+|switch|p2a: Scizor|Scizor, L79, M|100/100
+|turn|29
+|
+|move|p2a: Scizor|Close Combat|p1a: Regice
+|-supereffective|p1a: Regice
+|-damage|p1a: Regice|0 fnt
+|-unboost|p2a: Scizor|def|1
+|-unboost|p2a: Scizor|spd|1
+|faint|p1a: Regice
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

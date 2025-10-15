@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22595</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22595<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22595|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Probopass|Probopass, L92, M|260/260
+|switch|p2a: Chandelure|Chandelure, L83, M|100/100
+|turn|1
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Probopass
+|-crit|p1a: Probopass
+|-damage|p1a: Probopass|125/260
+|move|p1a: Probopass|Body Press|p2a: Chandelure
+|-immune|p2a: Chandelure
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Probopass
+|-damage|p1a: Probopass|37/260
+|move|p1a: Probopass|Body Press|p2a: Chandelure
+|-immune|p2a: Chandelure
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Probopass|[miss]
+|-miss|p2a: Chandelure|p1a: Probopass
+|move|p1a: Probopass|Body Press|p2a: Chandelure
+|-immune|p2a: Chandelure
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Probopass
+|-damage|p1a: Probopass|0 fnt
+|faint|p1a: Probopass
+|
+|upkeep
+|
+|switch|p1a: Sneasler|Sneasler, L74, F|240/240
+|turn|5
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Sneasler
+|-damage|p1a: Sneasler|32/240
+|move|p1a: Sneasler|Close Combat|p2a: Chandelure
+|-immune|p2a: Chandelure
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Sneasler
+|-damage|p1a: Sneasler|0 fnt
+|faint|p1a: Sneasler
+|
+|upkeep
+|
+|switch|p1a: Charizard|Charizard, L85, F|271/271
+|turn|7
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Charizard
+|-resisted|p1a: Charizard
+|-damage|p1a: Charizard|196/271
+|move|p1a: Charizard|Earthquake|p2a: Chandelure
+|-supereffective|p2a: Chandelure
+|-damage|p2a: Chandelure|48/100
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Chandelure|Fire Blast|p1a: Charizard
+|-resisted|p1a: Charizard
+|-damage|p1a: Charizard|121/271
+|move|p1a: Charizard|Earthquake|p2a: Chandelure
+|-supereffective|p2a: Chandelure
+|-damage|p2a: Chandelure|0 fnt
+|faint|p2a: Chandelure
+|
+|upkeep
+|
+|switch|p2a: Ludicolo|Ludicolo, L90, F|100/100
+|turn|9
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, M|321/321
+|move|p2a: Ludicolo|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|263/321
+|-unboost|p2a: Ludicolo|spa|2
+|
+|-heal|p1a: Amoonguss|283/321|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Ludicolo|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|254/321
+|-unboost|p2a: Ludicolo|spa|2
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Ludicolo
+|-supereffective|p2a: Ludicolo
+|-damage|p2a: Ludicolo|50/100
+|
+|-heal|p1a: Amoonguss|274/321|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Ludicolo|Leaf Storm|p1a: Amoonguss|[miss]
+|-miss|p2a: Ludicolo|p1a: Amoonguss
+|move|p1a: Amoonguss|Toxic|p2a: Ludicolo
+|-status|p2a: Ludicolo|tox
+|
+|-heal|p1a: Amoonguss|294/321|[from] item: Leftovers
+|-damage|p2a: Ludicolo|44/100 tox|[from] psn
+|upkeep
+|turn|12
+|
+|-terastallize|p1a: Amoonguss|Steel
+|move|p2a: Ludicolo|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|256/321
+|-unboost|p2a: Ludicolo|spa|2
+|move|p1a: Amoonguss|Giga Drain|p2a: Ludicolo
+|-damage|p2a: Ludicolo|24/100 tox
+|-heal|p1a: Amoonguss|285/321|[from] drain|[of] p2a: Ludicolo
+|
+|-heal|p1a: Amoonguss|305/321|[from] item: Leftovers
+|-damage|p2a: Ludicolo|12/100 tox|[from] psn
+|upkeep
+|turn|13
+|
+|move|p2a: Ludicolo|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|275/321
+|move|p1a: Amoonguss|Toxic|p2a: Ludicolo
+|-fail|p2a: Ludicolo|tox
+|
+|-heal|p1a: Amoonguss|295/321|[from] item: Leftovers
+|-damage|p2a: Ludicolo|0 fnt|[from] psn
+|faint|p2a: Ludicolo
+|upkeep
+|
+|switch|p2a: Ninetales|Ninetales, L85, F|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Ninetales
+|turn|14
+|
+|move|p2a: Ninetales|Solar Beam||[still]
+|-prepare|p2a: Ninetales|Solar Beam
+|-anim|p2a: Ninetales|Solar Beam|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|256/321
+|move|p1a: Amoonguss|Toxic|p2a: Ninetales
+|-status|p2a: Ninetales|tox
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Amoonguss|276/321|[from] item: Leftovers
+|-damage|p2a: Ninetales|94/100 tox|[from] psn
+|upkeep
+|turn|15
+|
+|switch|p1a: Floatzel|Floatzel, L86, M|286/286
+|move|p2a: Ninetales|Solar Beam||[still]
+|-prepare|p2a: Ninetales|Solar Beam
+|-anim|p2a: Ninetales|Solar Beam|p1a: Floatzel
+|-supereffective|p1a: Floatzel
+|-damage|p1a: Floatzel|78/286
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Floatzel|95/286|[from] item: Leftovers
+|-damage|p2a: Ninetales|82/100 tox|[from] psn
+|upkeep
+|turn|16
+|
+|move|p1a: Floatzel|Taunt|p2a: Ninetales
+|-start|p2a: Ninetales|move: Taunt
+|move|p2a: Ninetales|Solar Beam||[still]
+|-prepare|p2a: Ninetales|Solar Beam
+|-anim|p2a: Ninetales|Solar Beam|p1a: Floatzel
+|-supereffective|p1a: Floatzel
+|-damage|p1a: Floatzel|0 fnt
+|faint|p1a: Floatzel
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Ninetales|64/100 tox|[from] psn
+|upkeep
+|
+|switch|p1a: Charizard|Charizard, L85, F|121/271
+|turn|17
+|
+|move|p2a: Ninetales|Solar Beam||[still]
+|-prepare|p2a: Ninetales|Solar Beam
+|-anim|p2a: Ninetales|Solar Beam|p1a: Charizard
+|-resisted|p1a: Charizard
+|-damage|p1a: Charizard|103/271
+|move|p1a: Charizard|Earthquake|p2a: Ninetales
+|-supereffective|p2a: Ninetales
+|-damage|p2a: Ninetales|5/100 tox
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Ninetales|0 fnt|[from] psn
+|faint|p2a: Ninetales
+|upkeep
+|
+|switch|p2a: Samurott|Samurott, L88, F|100/100
+|turn|18
+|
+|move|p1a: Charizard|Earthquake|p2a: Samurott
+|-damage|p2a: Samurott|81/100
+|move|p2a: Samurott|Hydro Pump|p1a: Charizard
+|-supereffective|p1a: Charizard
+|-damage|p1a: Charizard|0 fnt
+|faint|p1a: Charizard
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Uxie|Uxie, L83|260/260
+|turn|19
+|
+|move|p1a: Uxie|Encore|p2a: Samurott
+|-start|p2a: Samurott|Encore
+|move|p2a: Samurott|Hydro Pump|p1a: Uxie
+|-damage|p1a: Uxie|161/260
+|
+|-heal|p1a: Uxie|177/260|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Uxie|Encore||[still]
+|-fail|p1a: Uxie
+|move|p2a: Samurott|Hydro Pump|p1a: Uxie
+|-damage|p1a: Uxie|71/260
+|
+|-heal|p1a: Uxie|87/260|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Uxie|Encore||[still]
+|-fail|p1a: Uxie
+|move|p2a: Samurott|Hydro Pump|p1a: Uxie
+|-damage|p1a: Uxie|0 fnt
+|faint|p1a: Uxie
+|
+|-end|p2a: Samurott|Encore
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, M, tera:Steel|321/321
+|turn|22
+|
+|move|p2a: Samurott|Hydro Pump|p1a: Amoonguss
+|-damage|p1a: Amoonguss|180/321
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Samurott
+|-damage|p2a: Samurott|59/100
+|
+|-heal|p1a: Amoonguss|200/321|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Samurott|Hydro Pump|p1a: Amoonguss
+|-damage|p1a: Amoonguss|40/321
+|move|p1a: Amoonguss|Spore|p2a: Samurott
+|-status|p2a: Samurott|slp|[from] move: Spore
+|
+|-heal|p1a: Amoonguss|60/321|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|cant|p2a: Samurott|slp
+|move|p1a: Amoonguss|Toxic||[still]
+|-fail|p1a: Amoonguss
+|
+|-heal|p1a: Amoonguss|80/321|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|-curestatus|p2a: Samurott|slp|[msg]
+|move|p2a: Samurott|Hydro Pump|p1a: Amoonguss
+|-damage|p1a: Amoonguss|0 fnt
+|faint|p1a: Amoonguss
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

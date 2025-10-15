@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22513</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22513<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22513|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Deoxys|Deoxys-Defense, L84|221/221
+|switch|p2a: Amoonguss|Amoonguss, L82, M|100/100
+|-ability|p1a: Deoxys|Pressure
+|turn|1
+|
+|move|p1a: Deoxys|Recover||[still]
+|-fail|p1a: Deoxys|heal
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Deoxys
+|-damage|p1a: Deoxys|170/221
+|
+|-heal|p1a: Deoxys|183/221|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|switch|p1a: Seviper|Seviper, L93, M|287/287
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Seviper
+|-resisted|p1a: Seviper
+|-damage|p1a: Seviper|234/287
+|
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Seviper|Ground
+|move|p1a: Seviper|Giga Drain|p2a: Amoonguss
+|-resisted|p2a: Amoonguss
+|-damage|p2a: Amoonguss|95/100
+|-heal|p1a: Seviper|243/287|[from] drain|[of] p2a: Amoonguss
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Seviper
+|-resisted|p1a: Seviper
+|-damage|p1a: Seviper|192/287
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Seviper|Giga Drain|p2a: Amoonguss
+|-resisted|p2a: Amoonguss
+|-damage|p2a: Amoonguss|90/100
+|-heal|p1a: Seviper|201/287|[from] drain|[of] p2a: Amoonguss
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Seviper
+|-resisted|p1a: Seviper
+|-damage|p1a: Seviper|151/287
+|
+|upkeep
+|turn|5
+|
+|move|p1a: Seviper|Giga Drain|p2a: Amoonguss
+|-resisted|p2a: Amoonguss
+|-damage|p2a: Amoonguss|84/100
+|-heal|p1a: Seviper|160/287|[from] drain|[of] p2a: Amoonguss
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Seviper
+|-resisted|p1a: Seviper
+|-damage|p1a: Seviper|114/287
+|
+|upkeep
+|turn|6
+|
+|switch|p1a: Staraptor|Staraptor, L79, F|263/263
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Staraptor
+|-damage|p1a: Staraptor|139/263
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Staraptor|Brave Bird|p2a: Amoonguss
+|-supereffective|p2a: Amoonguss
+|-damage|p2a: Amoonguss|0 fnt
+|-damage|p1a: Staraptor|96/263|[from] item: Rocky Helmet|[of] p2a: Amoonguss
+|faint|p2a: Amoonguss
+|-damage|p1a: Staraptor|7/263|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Cinderace|Cinderace, L77, M|100/100
+|turn|8
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Staraptor
+|-start|p2a: Cinderace|typechange|Fighting|[from] ability: Libero
+|-damage|p1a: Staraptor|0 fnt
+|faint|p1a: Staraptor
+|
+|upkeep
+|
+|switch|p1a: Serperior|Serperior, L79, M|248/248
+|turn|9
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Serperior
+|-damage|p1a: Serperior|34/248
+|move|p1a: Serperior|Leaf Storm|p2a: Cinderace
+|-damage|p2a: Cinderace|36/100
+|-boost|p1a: Serperior|spa|2
+|-damage|p1a: Serperior|10/248|[from] item: Life Orb
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Serperior|[miss]
+|-miss|p2a: Cinderace|p1a: Serperior
+|-damage|p2a: Cinderace|0 fnt|[from] highjumpkick
+|faint|p2a: Cinderace
+|move|p1a: Serperior|Tera Blast|p2: Cinderace|[notarget]
+|-fail|p1a: Serperior
+|
+|upkeep
+|
+|switch|p2a: Darkrai|Darkrai, L77|100/100
+|turn|11
+|
+|switch|p1a: Arcanine|Arcanine-Hisui, L79, F|280/280
+|move|p2a: Darkrai|Sludge Bomb|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|233/280
+|-status|p1a: Arcanine|psn
+|-damage|p2a: Darkrai|91/100|[from] item: Life Orb
+|
+|-damage|p1a: Arcanine|198/280 psn|[from] psn
+|upkeep
+|turn|12
+|
+|move|p2a: Darkrai|Sludge Bomb|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|150/280 psn
+|-damage|p2a: Darkrai|81/100|[from] item: Life Orb
+|move|p1a: Arcanine|Head Smash|p2a: Darkrai
+|-damage|p2a: Darkrai|7/100
+|
+|-damage|p1a: Arcanine|115/280 psn|[from] psn
+|upkeep
+|turn|13
+|
+|move|p2a: Darkrai|Sludge Bomb|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|64/280 psn
+|-damage|p2a: Darkrai|0 fnt|[from] item: Life Orb
+|faint|p2a: Darkrai
+|move|p1a: Arcanine|Flare Blitz|p2: Darkrai|[notarget]
+|-fail|p1a: Arcanine
+|
+|-damage|p1a: Arcanine|29/280 psn|[from] psn
+|upkeep
+|
+|switch|p2a: Oricorio|Oricorio-Pom-Pom, L82, M|100/100
+|turn|14
+|
+|move|p2a: Oricorio|Hurricane|p1a: Arcanine
+|-resisted|p1a: Arcanine
+|-damage|p1a: Arcanine|0 fnt
+|faint|p1a: Arcanine
+|
+|upkeep
+|
+|switch|p1a: Seviper|Seviper, L93, M, tera:Ground|114/287
+|turn|15
+|
+|move|p1a: Seviper|Switcheroo|p2a: Oricorio
+|-activate|p1a: Seviper|move: Trick|[of] p2a: Oricorio
+|-item|p2a: Oricorio|Choice Scarf|[from] move: Switcheroo
+|-item|p1a: Seviper|Heavy-Duty Boots|[from] move: Switcheroo
+|move|p2a: Oricorio|Hurricane|p1a: Seviper
+|-damage|p1a: Seviper|0 fnt
+|faint|p1a: Seviper
+|
+|upkeep
+|
+|switch|p1a: Ariados|Ariados, L95, F|287/287
+|turn|16
+|
+|move|p1a: Ariados|Sucker Punch|p2a: Oricorio
+|-damage|p2a: Oricorio|73/100
+|move|p2a: Oricorio|Hurricane|p1a: Ariados
+|-supereffective|p1a: Ariados
+|-damage|p1a: Ariados|69/287
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Ariados|Sucker Punch|p2a: Oricorio
+|-damage|p2a: Oricorio|44/100
+|move|p2a: Oricorio|Hurricane|p1a: Ariados
+|-supereffective|p1a: Ariados
+|-damage|p1a: Ariados|0 fnt
+|faint|p1a: Ariados
+|
+|upkeep
+|
+|switch|p1a: Serperior|Serperior, L79, M|10/248
+|turn|18
+|
+|switch|p1a: Deoxys|Deoxys-Defense, L84|183/221
+|-ability|p1a: Deoxys|Pressure
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys
+|-damage|p1a: Deoxys|113/221
+|-start|p1a: Deoxys|confusion
+|
+|-heal|p1a: Deoxys|126/221|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys
+|-damage|p1a: Deoxys|59/221
+|-activate|p1a: Deoxys|confusion
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|170/221
+|
+|-heal|p1a: Deoxys|183/221|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys
+|-damage|p1a: Deoxys|117/221
+|-activate|p1a: Deoxys|confusion
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|221/221
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys|[miss]
+|-miss|p2a: Oricorio|p1a: Deoxys
+|-activate|p1a: Deoxys|confusion
+|move|p1a: Deoxys|Recover||[still]
+|-fail|p1a: Deoxys|heal
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys
+|-damage|p1a: Deoxys|148/221
+|-activate|p1a: Deoxys|confusion
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|221/221
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Oricorio|Hurricane|p1a: Deoxys|[miss]
+|-miss|p2a: Oricorio|p1a: Deoxys
+|-end|p1a: Deoxys|confusion
+|move|p1a: Deoxys|Cosmic Power|p1a: Deoxys
+|-boost|p1a: Deoxys|def|1
+|-boost|p1a: Deoxys|spd|1
+|
+|upkeep
+|turn|24
+|
+|-activate|p2a: Oricorio|move: Struggle
+|move|p2a: Oricorio|Struggle|p1a: Deoxys
+|-damage|p1a: Deoxys|212/221
+|-damage|p2a: Oricorio|19/100|[from] recoil
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|221/221
+|
+|upkeep
+|turn|25
+|
+|-activate|p2a: Oricorio|move: Struggle
+|move|p2a: Oricorio|Struggle|p1a: Deoxys
+|-damage|p1a: Deoxys|213/221
+|-damage|p2a: Oricorio|0 fnt|[from] recoil
+|faint|p2a: Oricorio
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|221/221
+|
+|upkeep
+|
+|switch|p2a: Zacian|Zacian-Crowned, L64|100/100
+|-ability|p2a: Zacian|Intrepid Sword|boost
+|-boost|p2a: Zacian|atk|1
+|turn|26
+|
+|move|p2a: Zacian|Close Combat|p1a: Deoxys
+|-resisted|p1a: Deoxys
+|-damage|p1a: Deoxys|199/221
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Deoxys|Recover|p1a: Deoxys
+|-heal|p1a: Deoxys|221/221
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Zacian|Close Combat|p1a: Deoxys
+|-resisted|p1a: Deoxys
+|-damage|p1a: Deoxys|198/221
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Deoxys|Stored Power|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|76/100
+|
+|-heal|p1a: Deoxys|211/221|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Zacian|Close Combat|p1a: Deoxys
+|-resisted|p1a: Deoxys
+|-damage|p1a: Deoxys|187/221
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Deoxys|Stored Power|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|46/100
+|
+|-heal|p1a: Deoxys|200/221|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Zacian|Close Combat|p1a: Deoxys
+|-resisted|p1a: Deoxys
+|-damage|p1a: Deoxys|179/221
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Deoxys|Stored Power|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|12/100
+|
+|-heal|p1a: Deoxys|192/221|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Zacian|Behemoth Blade|p1a: Deoxys
+|-damage|p1a: Deoxys|134/221
+|move|p1a: Deoxys|Stored Power|p2a: Zacian
+|-resisted|p2a: Zacian
+|-damage|p2a: Zacian|0 fnt
+|faint|p2a: Zacian
+|
+|-heal|p1a: Deoxys|147/221|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Shiftry|Shiftry, L89, M|100/100
+|turn|31
+|
+|move|p1a: Deoxys|Stored Power|p2a: Shiftry
+|-immune|p2a: Shiftry
+|move|p2a: Shiftry|Leaf Blade|p1a: Deoxys
+|-damage|p1a: Deoxys|91/221
+|-damage|p2a: Shiftry|91/100|[from] item: Life Orb
+|
+|-heal|p1a: Deoxys|104/221|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Deoxys|Stored Power|p2a: Shiftry
+|-immune|p2a: Shiftry
+|move|p2a: Shiftry|Leaf Blade|p1a: Deoxys
+|-crit|p1a: Deoxys
+|-damage|p1a: Deoxys|0 fnt
+|faint|p1a: Deoxys
+|-damage|p2a: Shiftry|81/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Serperior|Serperior, L79, M|10/248
+|turn|33
+|
+|move|p1a: Serperior|Leaf Storm|p2a: Shiftry
+|-resisted|p2a: Shiftry
+|-damage|p2a: Shiftry|55/100
+|-boost|p1a: Serperior|spa|2
+|-damage|p1a: Serperior|0 fnt|[from] item: Life Orb
+|faint|p1a: Serperior
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

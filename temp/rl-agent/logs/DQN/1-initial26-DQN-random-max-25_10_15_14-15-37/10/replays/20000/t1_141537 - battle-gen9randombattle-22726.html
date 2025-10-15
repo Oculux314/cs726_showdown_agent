@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22726</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22726<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22726|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Ludicolo|Ludicolo, L90, M|290/290
+|switch|p2a: Dodrio|Dodrio, L85, M|100/100
+|turn|1
+|
+|switch|p1a: Koraidon|Koraidon, L64|235/235
+|-weather|SunnyDay|[from] ability: Orichalcum Pulse|[of] p1a: Koraidon
+|-activate|p1a: Koraidon|Orichalcum Pulse|[source]
+|move|p2a: Dodrio|Brave Bird|p1a: Koraidon
+|-supereffective|p1a: Koraidon
+|-damage|p1a: Koraidon|0 fnt
+|faint|p1a: Koraidon
+|-damage|p2a: Dodrio|68/100|[from] Recoil
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Hitmontop|Hitmontop, L88, M|231/231
+|-ability|p1a: Hitmontop|Intimidate|boost
+|-unboost|p2a: Dodrio|atk|1
+|turn|2
+|
+|move|p2a: Dodrio|Brave Bird|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|61/231
+|-damage|p2a: Dodrio|45/100|[from] Recoil
+|move|p1a: Hitmontop|Rapid Spin|p2a: Dodrio
+|-damage|p2a: Dodrio|25/100
+|-boost|p1a: Hitmontop|spe|1
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|3
+|
+|move|p1a: Hitmontop|Rapid Spin|p2a: Dodrio
+|-damage|p2a: Dodrio|8/100
+|-boost|p1a: Hitmontop|spe|1
+|move|p2a: Dodrio|Brave Bird|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|0 fnt
+|faint|p1a: Hitmontop
+|-damage|p2a: Dodrio|0 fnt|[from] Recoil
+|faint|p2a: Dodrio
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p2a: Rotom|Rotom-Fan, L86|100/100
+|switch|p1a: Regice|Regice, L88|284/284
+|turn|4
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Regice
+|-damage|p1a: Regice|230/284
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|5
+|
+|switch|p1a: Ludicolo|Ludicolo, L90, M|290/290
+|move|p2a: Rotom|Thunderbolt|p1a: Ludicolo
+|-damage|p1a: Ludicolo|203/290
+|
+|-weather|none
+|upkeep
+|turn|6
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Ludicolo
+|-damage|p1a: Ludicolo|113/290
+|move|p1a: Ludicolo|Ice Beam|p2a: Rotom
+|-supereffective|p2a: Rotom
+|-crit|p2a: Rotom
+|-damage|p2a: Rotom|0 fnt
+|faint|p2a: Rotom
+|
+|upkeep
+|
+|switch|p2a: Pikachu|Pikachu-Original, L93, M|100/100
+|turn|7
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Ludicolo
+|-damage|p1a: Ludicolo|0 fnt
+|faint|p1a: Ludicolo
+|-damage|p2a: Pikachu|83/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Regice|Regice, L88|284/284 slp
+|turn|8
+|
+|-terastallize|p1a: Regice|Electric
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|200/284 slp
+|-damage|p2a: Pikachu|70/100|[from] Recoil
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|106/284 slp
+|-damage|p2a: Pikachu|56/100|[from] Recoil
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|10/284 slp
+|-damage|p2a: Pikachu|41/100|[from] Recoil
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|195/284 slp
+|-damage|p2a: Pikachu|28/100|[from] Recoil
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|104/284 slp
+|-damage|p2a: Pikachu|14/100|[from] Recoil
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Pikachu|Volt Tackle|p1a: Regice
+|-resisted|p1a: Regice
+|-damage|p1a: Regice|10/284 slp
+|-damage|p2a: Pikachu|0 fnt|[from] Recoil
+|faint|p2a: Pikachu
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|
+|switch|p2a: Lumineon|Lumineon, L93, F|100/100
+|turn|14
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-crit|p1a: Regice
+|-damage|p1a: Regice|197/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|140/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-crit|p1a: Regice
+|-damage|p1a: Regice|56/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|229/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|177/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|125/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|229/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Lumineon|Hydro Pump|p1a: Regice
+|-damage|p1a: Regice|178/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|147/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Sleep Talk||[still]
+|-fail|p1a: Regice
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|118/284
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|253/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|221/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|26
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|193/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|254/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|225/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|193/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Sleep Talk||[still]
+|-fail|p1a: Regice
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|161/284
+|move|p1a: Regice|Rest|p1a: Regice
+|-status|p1a: Regice|slp|[from] move: Rest
+|-heal|p1a: Regice|284/284 slp|[silent]
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|252/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|224/284 slp
+|cant|p1a: Regice|slp
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-crit|p1a: Regice
+|-damage|p1a: Regice|176/284 slp
+|-curestatus|p1a: Regice|slp|[msg]
+|move|p1a: Regice|Ice Beam|p2a: Lumineon
+|-resisted|p2a: Lumineon
+|-damage|p2a: Lumineon|83/100
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|145/284
+|move|p1a: Regice|Ice Beam|p2a: Lumineon
+|-resisted|p2a: Lumineon
+|-damage|p2a: Lumineon|67/100
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|117/284
+|-status|p1a: Regice|frz
+|cant|p1a: Regice|frz
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-crit|p1a: Regice
+|-damage|p1a: Regice|68/284 frz
+|cant|p1a: Regice|frz
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Lumineon|Ice Beam|p1a: Regice
+|-damage|p1a: Regice|38/284 frz
+|cant|p1a: Regice|frz
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Lumineon|U-turn|p1a: Regice
+|-damage|p1a: Regice|0 fnt
+|faint|p1a: Regice
+|
+|switch|p2a: Poliwrath|Poliwrath, L88, M|100/100|[from] U-turn
+|
+|upkeep
+|
+|switch|p1a: Banette|Banette, L93, M|270/270
+|turn|39
+|
+|move|p1a: Banette|Gunk Shot|p2a: Poliwrath
+|-damage|p2a: Poliwrath|58/100
+|-status|p2a: Poliwrath|psn
+|-damage|p1a: Banette|243/270|[from] item: Life Orb
+|move|p2a: Poliwrath|Liquidation|p1a: Banette
+|-damage|p1a: Banette|125/270
+|-start|p2a: Poliwrath|Disable|Liquidation|[from] ability: Cursed Body|[of] p1a: Banette
+|
+|-heal|p2a: Poliwrath|64/100 psn|[from] item: Leftovers
+|-damage|p2a: Poliwrath|51/100 psn|[from] psn
+|upkeep
+|turn|40
+|
+|move|p1a: Banette|Gunk Shot|p2a: Poliwrath
+|-damage|p2a: Poliwrath|2/100 psn
+|-damage|p1a: Banette|98/270|[from] item: Life Orb
+|move|p2a: Poliwrath|Poison Jab|p1a: Banette
+|-resisted|p1a: Banette
+|-crit|p1a: Banette
+|-damage|p1a: Banette|50/270
+|-status|p1a: Banette|psn
+|
+|-heal|p2a: Poliwrath|8/100 psn|[from] item: Leftovers
+|-damage|p1a: Banette|17/270 psn|[from] psn
+|-damage|p2a: Poliwrath|0 fnt|[from] psn
+|faint|p2a: Poliwrath
+|upkeep
+|
+|switch|p2a: Lumineon|Lumineon, L93, F|67/100
+|turn|41
+|
+|move|p2a: Lumineon|U-turn|p1a: Banette
+|-resisted|p1a: Banette
+|-damage|p1a: Banette|0 fnt
+|faint|p1a: Banette
+|
+|switch|p2a: Spectrier|Spectrier, L75|100/100|[from] U-turn
+|
+|upkeep
+|
+|switch|p1a: Oricorio|Oricorio-Sensu, L85, M|266/266
+|turn|42
+|
+|move|p2a: Spectrier|Shadow Ball|p1a: Oricorio
+|-supereffective|p1a: Oricorio
+|-damage|p1a: Oricorio|32/266
+|move|p1a: Oricorio|Quiver Dance|p1a: Oricorio
+|-boost|p1a: Oricorio|spa|1
+|-boost|p1a: Oricorio|spd|1
+|-boost|p1a: Oricorio|spe|1
+|
+|upkeep
+|turn|43
+|
+|move|p1a: Oricorio|Quiver Dance|p1a: Oricorio
+|-boost|p1a: Oricorio|spa|1
+|-boost|p1a: Oricorio|spd|1
+|-boost|p1a: Oricorio|spe|1
+|move|p2a: Spectrier|Shadow Ball|p1a: Oricorio
+|-supereffective|p1a: Oricorio
+|-damage|p1a: Oricorio|0 fnt
+|faint|p1a: Oricorio
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

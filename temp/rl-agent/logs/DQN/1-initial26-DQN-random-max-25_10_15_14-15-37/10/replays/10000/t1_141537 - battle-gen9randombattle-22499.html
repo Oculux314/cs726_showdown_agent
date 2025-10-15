@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22499</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22499<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22499|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Whiscash|Whiscash, L88, F|337/337
+|switch|p2a: Dragonite|Dragonite, L74, M|100/100
+|turn|1
+|
+|-terastallize|p1a: Whiscash|Ground
+|move|p2a: Dragonite|Outrage|p1a: Whiscash
+|-damage|p1a: Whiscash|196/337
+|move|p1a: Whiscash|Dragon Dance|p1a: Whiscash
+|-boost|p1a: Whiscash|atk|1
+|-boost|p1a: Whiscash|spe|1
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Whiscash|Liquidation|p2a: Dragonite
+|-resisted|p2a: Dragonite
+|-damage|p2a: Dragonite|85/100
+|-damage|p1a: Whiscash|163/337|[from] item: Life Orb
+|move|p2a: Dragonite|Outrage|p1a: Whiscash|[from] lockedmove
+|-damage|p1a: Whiscash|34/337
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Oranguru|Oranguru, L92, F|315/315
+|move|p2a: Dragonite|Outrage|p1a: Oranguru|[from] lockedmove
+|-damage|p1a: Oranguru|179/315
+|-start|p2a: Dragonite|confusion|[fatigue]
+|
+|-heal|p1a: Oranguru|198/315|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|switch|p1a: Donphan|Donphan, L84, M|288/288
+|-activate|p2a: Dragonite|confusion
+|move|p2a: Dragonite|Outrage|p1a: Donphan
+|-damage|p1a: Donphan|182/288
+|
+|upkeep
+|turn|5
+|
+|-activate|p2a: Dragonite|confusion
+|move|p2a: Dragonite|Outrage|p1a: Donphan|[from] lockedmove
+|-damage|p1a: Donphan|89/288
+|move|p1a: Donphan|Rapid Spin|p2a: Dragonite
+|-damage|p2a: Dragonite|68/100
+|-boost|p1a: Donphan|spe|1
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Donphan|Earthquake|p2a: Dragonite
+|-immune|p2a: Dragonite
+|-end|p2a: Dragonite|confusion
+|move|p2a: Dragonite|Outrage|p1a: Donphan
+|-damage|p1a: Donphan|0 fnt
+|faint|p1a: Donphan
+|
+|upkeep
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, F|231/231
+|turn|7
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361
+|move|p2a: Dragonite|Outrage|p1a: Oinkologne|[from] lockedmove
+|-damage|p1a: Oinkologne|213/361
+|
+|-heal|p1a: Oinkologne|235/361|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|move|p2a: Dragonite|Outrage|p1a: Oinkologne|[from] lockedmove
+|-damage|p1a: Oinkologne|138/361
+|-start|p2a: Dragonite|confusion|[fatigue]
+|
+|-heal|p1a: Oinkologne|160/361|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|-activate|p2a: Dragonite|confusion
+|-damage|p2a: Dragonite|57/100|[from] confusion
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|upkeep
+|turn|10
+|
+|-activate|p2a: Dragonite|confusion
+|-damage|p2a: Dragonite|44/100|[from] confusion
+|cant|p1a: Oinkologne|slp
+|
+|upkeep
+|turn|11
+|
+|-activate|p2a: Dragonite|confusion
+|move|p2a: Dragonite|Outrage|p1a: Oinkologne
+|-damage|p1a: Oinkologne|262/361 slp
+|cant|p1a: Oinkologne|slp
+|
+|-heal|p1a: Oinkologne|284/361 slp|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|-activate|p2a: Dragonite|confusion
+|move|p2a: Dragonite|Outrage|p1a: Oinkologne|[from] lockedmove
+|-damage|p1a: Oinkologne|187/361 slp
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Body Slam|p2a: Dragonite
+|-damage|p2a: Dragonite|0 fnt
+|faint|p2a: Dragonite
+|
+|-heal|p1a: Oinkologne|209/361|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Politoed|Politoed, L88, F|100/100
+|-weather|RainDance|[from] ability: Drizzle|[of] p2a: Politoed
+|turn|13
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oinkologne
+|-damage|p1a: Oinkologne|34/361
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|14
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oinkologne
+|-damage|p1a: Oinkologne|208/361 slp
+|cant|p1a: Oinkologne|slp
+|
+|-weather|RainDance|[upkeep]
+|-heal|p1a: Oinkologne|230/361 slp|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oinkologne|[miss]
+|-miss|p2a: Politoed|p1a: Oinkologne
+|cant|p1a: Oinkologne|slp
+|
+|-weather|RainDance|[upkeep]
+|-heal|p1a: Oinkologne|252/361 slp|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|switch|p1a: Whiscash|Whiscash, L88, F, tera:Ground|34/337
+|move|p2a: Politoed|Hydro Pump|p1a: Whiscash
+|-supereffective|p1a: Whiscash
+|-damage|p1a: Whiscash|0 fnt
+|faint|p1a: Whiscash
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p1a: Oranguru|Oranguru, L92, F|198/315
+|turn|17
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oranguru|[miss]
+|-miss|p2a: Politoed|p1a: Oranguru
+|move|p1a: Oranguru|Psychic|p2a: Politoed
+|-damage|p2a: Politoed|71/100
+|
+|-weather|none
+|-heal|p1a: Oranguru|217/315|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oranguru
+|-damage|p1a: Oranguru|126/315
+|move|p1a: Oranguru|Psychic|p2a: Politoed
+|-crit|p2a: Politoed
+|-damage|p2a: Politoed|25/100
+|
+|-heal|p1a: Oranguru|145/315|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Politoed|Hydro Pump|p1a: Oranguru
+|-damage|p1a: Oranguru|49/315
+|move|p1a: Oranguru|Psychic|p2a: Politoed
+|-damage|p2a: Politoed|0 fnt
+|faint|p2a: Politoed
+|
+|-heal|p1a: Oranguru|68/315|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Typhlosion|Typhlosion-Hisui, L83, F|100/100
+|turn|20
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oranguru
+|-damage|p1a: Oranguru|0 fnt
+|faint|p1a: Oranguru
+|
+|upkeep
+|
+|switch|p1a: Orthworm|Orthworm, L88, M|266/266
+|turn|21
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|252/361 slp
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|191/361 slp
+|
+|-heal|p1a: Oinkologne|213/361 slp|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne|[miss]
+|-miss|p2a: Typhlosion|p1a: Oinkologne
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|301/361 slp
+|cant|p1a: Oinkologne|slp
+|
+|-heal|p1a: Oinkologne|323/361 slp|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|265/361 slp
+|cant|p1a: Oinkologne|slp
+|move|p1a: Oinkologne|Sleep Talk|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne|[from] move: Sleep Talk
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|-heal|p1a: Oinkologne|287/361 slp|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|227/361 slp
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p1a: Oinkologne|249/361|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|182/361
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Typhlosion|Fire Blast|p1a: Oinkologne
+|-damage|p1a: Oinkologne|297/361 slp
+|cant|p1a: Oinkologne|slp
+|
+|-heal|p1a: Oinkologne|319/361 slp|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|cant|p1a: Oinkologne|slp
+|
+|-heal|p1a: Oinkologne|341/361 slp|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-status|p1a: Oinkologne|slp|[from] move: Rest
+|-heal|p1a: Oinkologne|361/361 slp|[silent]
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|cant|p1a: Oinkologne|slp
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|cant|p1a: Oinkologne|slp
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|-curestatus|p1a: Oinkologne|slp|[msg]
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-fail|p1a: Oinkologne|heal
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-fail|p1a: Oinkologne|heal
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Rest|p1a: Oinkologne
+|-fail|p1a: Oinkologne|heal
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|upkeep
+|turn|44
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|upkeep
+|turn|45
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, F|231/231
+|move|p2a: Typhlosion|Shadow Ball|p1a: Barraskewda
+|-crit|p1a: Barraskewda
+|-damage|p1a: Barraskewda|0 fnt
+|faint|p1a: Barraskewda
+|
+|upkeep
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361
+|turn|46
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|47
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|48
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|49
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|50
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|51
+|
+|move|p2a: Typhlosion|Shadow Ball|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|52
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-start|p2a: Typhlosion|Substitute
+|-damage|p2a: Typhlosion|76/100
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|82/100|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|88/100|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|94/100|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|100/100|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|57
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|58
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|59
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|60
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|61
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|62
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|63
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|64
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|65
+|
+|switch|p1a: Orthworm|Orthworm, L88, M|266/266
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|
+|upkeep
+|turn|66
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Typhlosion|Substitute|p2a: Typhlosion
+|-fail|p2a: Typhlosion|move: Substitute
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|69
+|
+|switch|p1a: Orthworm|Orthworm, L88, M|266/266
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|71
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|72
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|73
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|1
+|-boost|p2a: Typhlosion|spd|1
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|74
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|75
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|76
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|77
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Stealth Rock|p2a: Typhlosion
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|upkeep
+|turn|78
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|79
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|80
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|81
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|82
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|83
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|84
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|85
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|86
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Body Press|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|87
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Heavy Slam|p2a: Typhlosion
+|-resisted|p2a: Typhlosion
+|-activate|p2a: Typhlosion|move: Substitute|[damage]
+|
+|upkeep
+|turn|88
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Heavy Slam|p2a: Typhlosion
+|-resisted|p2a: Typhlosion
+|-end|p2a: Typhlosion|Substitute
+|
+|upkeep
+|turn|89
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Heavy Slam|p2a: Typhlosion
+|-resisted|p2a: Typhlosion
+|-damage|p2a: Typhlosion|78/100
+|
+|-heal|p2a: Typhlosion|85/100|[from] item: Leftovers
+|upkeep
+|turn|90
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Orthworm|Heavy Slam|p2a: Typhlosion
+|-resisted|p2a: Typhlosion
+|-damage|p2a: Typhlosion|64/100
+|
+|-heal|p2a: Typhlosion|70/100|[from] item: Leftovers
+|upkeep
+|turn|91
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|361/361
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|
+|-heal|p2a: Typhlosion|76/100|[from] item: Leftovers
+|upkeep
+|turn|92
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|82/100|[from] item: Leftovers
+|upkeep
+|turn|93
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|88/100|[from] item: Leftovers
+|upkeep
+|turn|94
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|95/100|[from] item: Leftovers
+|upkeep
+|turn|95
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|-heal|p2a: Typhlosion|100/100|[from] item: Leftovers
+|upkeep
+|turn|96
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|97
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|98
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Body Slam|p2a: Typhlosion
+|-immune|p2a: Typhlosion
+|
+|upkeep
+|turn|99
+|
+|move|p2a: Typhlosion|Calm Mind|p2a: Typhlosion
+|-boost|p2a: Typhlosion|spa|0
+|-boost|p2a: Typhlosion|spd|0
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|upkeep
+|turn|100
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|336/361
+|-damage|p2a: Typhlosion|76/100|[from] recoil
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|82/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|358/361|[from] item: Leftovers
+|upkeep
+|turn|101
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|334/361
+|-damage|p2a: Typhlosion|57/100|[from] recoil
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|63/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|356/361|[from] item: Leftovers
+|upkeep
+|turn|102
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|330/361
+|-damage|p2a: Typhlosion|38/100|[from] recoil
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|44/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|352/361|[from] item: Leftovers
+|upkeep
+|turn|103
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|327/361
+|-damage|p2a: Typhlosion|20/100|[from] recoil
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|26/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|349/361|[from] item: Leftovers
+|upkeep
+|turn|104
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|324/361
+|-damage|p2a: Typhlosion|1/100|[from] recoil
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Typhlosion|7/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|346/361|[from] item: Leftovers
+|upkeep
+|turn|105
+|
+|-activate|p2a: Typhlosion|move: Struggle
+|move|p2a: Typhlosion|Struggle|p1a: Oinkologne
+|-damage|p1a: Oinkologne|321/361
+|-damage|p2a: Typhlosion|0 fnt|[from] recoil
+|faint|p2a: Typhlosion
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|343/361|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Manaphy|Manaphy, L78|100/100
+|-damage|p2a: Manaphy|88/100|[from] Stealth Rock
+|turn|106
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|291/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Manaphy|94/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|313/361|[from] item: Leftovers
+|upkeep
+|turn|107
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|260/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Manaphy|99/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|282/361|[from] item: Leftovers
+|upkeep
+|turn|108
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|232/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p2a: Manaphy|100/100|[from] item: Leftovers
+|-heal|p1a: Oinkologne|254/361|[from] item: Leftovers
+|upkeep
+|turn|109
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|202/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|224/361|[from] item: Leftovers
+|upkeep
+|turn|110
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|172/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|194/361|[from] item: Leftovers
+|upkeep
+|turn|111
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-crit|p1a: Oinkologne
+|-damage|p1a: Oinkologne|118/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|140/361|[from] item: Leftovers
+|upkeep
+|turn|112
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Oinkologne
+|-damage|p1a: Oinkologne|87/361
+|move|p1a: Oinkologne|Sleep Talk||[still]
+|-fail|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|109/361|[from] item: Leftovers
+|upkeep
+|turn|113
+|
+|switch|p1a: Orthworm|Orthworm, L88, M|266/266
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|225/266
+|
+|-heal|p1a: Orthworm|241/266|[from] item: Leftovers
+|upkeep
+|turn|114
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|201/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|80/100
+|
+|-heal|p2a: Manaphy|86/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|217/266|[from] item: Leftovers
+|upkeep
+|turn|115
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|181/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|65/100
+|
+|-heal|p2a: Manaphy|71/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|197/266|[from] item: Leftovers
+|upkeep
+|turn|116
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|156/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|49/100
+|
+|-heal|p2a: Manaphy|55/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|172/266|[from] item: Leftovers
+|upkeep
+|turn|117
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|134/266
+|-unboost|p1a: Orthworm|spd|1
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|35/100
+|
+|-heal|p2a: Manaphy|41/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|150/266|[from] item: Leftovers
+|upkeep
+|turn|118
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|96/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|20/100
+|
+|-heal|p2a: Manaphy|26/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|112/266|[from] item: Leftovers
+|upkeep
+|turn|119
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|55/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|4/100
+|
+|-heal|p2a: Manaphy|10/100|[from] item: Leftovers
+|-heal|p1a: Orthworm|71/266|[from] item: Leftovers
+|upkeep
+|turn|120
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Orthworm
+|-resisted|p1a: Orthworm
+|-damage|p1a: Orthworm|15/266
+|move|p1a: Orthworm|Heavy Slam|p2a: Manaphy
+|-resisted|p2a: Manaphy
+|-damage|p2a: Manaphy|0 fnt
+|faint|p2a: Manaphy
+|
+|-heal|p1a: Orthworm|31/266|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Trevenant|Trevenant, L89, F|100/100
+|-damage|p2a: Trevenant|88/100|[from] Stealth Rock
+|turn|121
+|
+|move|p1a: Orthworm|Heavy Slam|p2a: Trevenant
+|-crit|p2a: Trevenant
+|-damage|p2a: Trevenant|29/100
+|-enditem|p2a: Trevenant|Sitrus Berry|[eat]
+|-heal|p2a: Trevenant|54/100|[from] item: Sitrus Berry
+|move|p2a: Trevenant|Poltergeist|p1a: Orthworm
+|-activate|p1a: Orthworm|move: Poltergeist|Leftovers
+|-damage|p1a: Orthworm|0 fnt
+|faint|p1a: Orthworm
+|
+|-item|p2a: Trevenant|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|
+|switch|p1a: Oinkologne|Oinkologne-F, L92, F|109/361
+|turn|122
+|
+|-activate|p1a: Oinkologne|move: Struggle
+|move|p1a: Oinkologne|Struggle|p2a: Trevenant
+|-damage|p2a: Trevenant|40/100
+|-enditem|p2a: Trevenant|Sitrus Berry|[eat]
+|-heal|p2a: Trevenant|65/100|[from] item: Sitrus Berry
+|-damage|p1a: Oinkologne|19/361|[from] recoil
+|move|p2a: Trevenant|Poltergeist|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|41/361|[from] item: Leftovers
+|upkeep
+|turn|123
+|
+|-activate|p1a: Oinkologne|move: Struggle
+|move|p1a: Oinkologne|Struggle|p2a: Trevenant
+|-damage|p2a: Trevenant|50/100
+|-damage|p1a: Oinkologne|0 fnt|[from] recoil
+|faint|p1a: Oinkologne
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

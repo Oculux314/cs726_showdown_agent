@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22564</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22564<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22564|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Honchkrow|Honchkrow, L86, M|312/312
+|switch|p2a: Garganacl|Garganacl, L80, F|100/100
+|turn|1
+|
+|switch|p1a: Umbreon|Umbreon, L84, F|297/297
+|move|p2a: Garganacl|Earthquake|p1a: Umbreon
+|-damage|p1a: Umbreon|239/297
+|
+|-heal|p1a: Umbreon|257/297|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p1a: Umbreon|Foul Play|p2a: Garganacl
+|-damage|p2a: Garganacl|76/100
+|move|p2a: Garganacl|Earthquake|p1a: Umbreon
+|-damage|p1a: Umbreon|201/297
+|
+|-heal|p1a: Umbreon|219/297|[from] item: Leftovers
+|-heal|p2a: Garganacl|83/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|-terastallize|p1a: Umbreon|Poison
+|move|p1a: Umbreon|Protect|p1a: Umbreon
+|-singleturn|p1a: Umbreon|Protect
+|move|p2a: Garganacl|Earthquake|p1a: Umbreon
+|-activate|p1a: Umbreon|move: Protect
+|
+|-heal|p1a: Umbreon|237/297|[from] item: Leftovers
+|-heal|p2a: Garganacl|89/100|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Umbreon|Foul Play|p2a: Garganacl
+|-damage|p2a: Garganacl|62/100
+|move|p2a: Garganacl|Earthquake|p1a: Umbreon
+|-supereffective|p1a: Umbreon
+|-crit|p1a: Umbreon
+|-damage|p1a: Umbreon|55/297
+|
+|-heal|p1a: Umbreon|73/297|[from] item: Leftovers
+|-heal|p2a: Garganacl|68/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Umbreon|Foul Play|p2a: Garganacl
+|-damage|p2a: Garganacl|43/100
+|move|p2a: Garganacl|Earthquake|p1a: Umbreon
+|-supereffective|p1a: Umbreon
+|-damage|p1a: Umbreon|0 fnt
+|faint|p1a: Umbreon
+|
+|-heal|p2a: Garganacl|50/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Snorlax|Snorlax, L82, F|397/397
+|turn|6
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|311/397
+|move|p1a: Snorlax|Rest|p1a: Snorlax
+|-status|p1a: Snorlax|slp|[from] move: Rest
+|-heal|p1a: Snorlax|397/397 slp|[silent]
+|
+|-heal|p2a: Garganacl|56/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|319/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|62/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|343/397 slp|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|257/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|68/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|281/397 slp|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|203/397 slp
+|-curestatus|p1a: Snorlax|slp|[msg]
+|move|p1a: Snorlax|Rest|p1a: Snorlax
+|-status|p1a: Snorlax|slp|[from] move: Rest
+|-heal|p1a: Snorlax|397/397 slp|[silent]
+|
+|-heal|p2a: Garganacl|74/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|310/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|81/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|334/397 slp|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|254/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|87/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|278/397 slp|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|188/397 slp
+|-curestatus|p1a: Snorlax|slp|[msg]
+|move|p1a: Snorlax|Rest|p1a: Snorlax
+|-status|p1a: Snorlax|slp|[from] move: Rest
+|-heal|p1a: Snorlax|397/397 slp|[silent]
+|
+|-heal|p2a: Garganacl|93/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|306/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|99/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|330/397 slp|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|247/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p2a: Garganacl|100/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|271/397 slp|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|193/397 slp
+|-curestatus|p1a: Snorlax|slp|[msg]
+|move|p1a: Snorlax|Sleep Talk||[still]
+|-fail|p1a: Snorlax
+|
+|-heal|p1a: Snorlax|217/397|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Garganacl|Earthquake|p1a: Snorlax
+|-damage|p1a: Snorlax|126/397
+|move|p1a: Snorlax|Rest|p1a: Snorlax
+|-status|p1a: Snorlax|slp|[from] move: Rest
+|-heal|p1a: Snorlax|397/397 slp|[silent]
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Garganacl|Salt Cure|p1a: Snorlax
+|-damage|p1a: Snorlax|346/397 slp
+|-start|p1a: Snorlax|Salt Cure
+|cant|p1a: Snorlax|slp
+|
+|-heal|p1a: Snorlax|370/397 slp|[from] item: Leftovers
+|-damage|p1a: Snorlax|321/397 slp|[from] Salt Cure
+|upkeep
+|turn|18
+|
+|move|p2a: Garganacl|Salt Cure|p1a: Snorlax
+|-damage|p1a: Snorlax|272/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p1a: Snorlax|296/397 slp|[from] item: Leftovers
+|-damage|p1a: Snorlax|247/397 slp|[from] Salt Cure
+|upkeep
+|turn|19
+|
+|move|p2a: Garganacl|Salt Cure|p1a: Snorlax
+|-damage|p1a: Snorlax|196/397 slp
+|-curestatus|p1a: Snorlax|slp|[msg]
+|move|p1a: Snorlax|Rest|p1a: Snorlax
+|-status|p1a: Snorlax|slp|[from] move: Rest
+|-heal|p1a: Snorlax|397/397 slp|[silent]
+|
+|-damage|p1a: Snorlax|348/397 slp|[from] Salt Cure
+|upkeep
+|turn|20
+|
+|move|p2a: Garganacl|Salt Cure|p1a: Snorlax
+|-damage|p1a: Snorlax|293/397 slp
+|cant|p1a: Snorlax|slp
+|
+|-heal|p1a: Snorlax|317/397 slp|[from] item: Leftovers
+|-damage|p1a: Snorlax|268/397 slp|[from] Salt Cure
+|upkeep
+|turn|21
+|
+|move|p2a: Garganacl|Salt Cure|p1a: Snorlax
+|-damage|p1a: Snorlax|214/397 slp
+|cant|p1a: Snorlax|slp
+|move|p1a: Snorlax|Sleep Talk|p1a: Snorlax
+|move|p1a: Snorlax|Body Slam|p2a: Garganacl|[from] move: Sleep Talk
+|-resisted|p2a: Garganacl
+|-damage|p2a: Garganacl|89/100
+|
+|-heal|p2a: Garganacl|95/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|238/397 slp|[from] item: Leftovers
+|-damage|p1a: Snorlax|189/397 slp|[from] Salt Cure
+|upkeep
+|turn|22
+|
+|switch|p1a: Gogoat|Gogoat, L88, M|360/360
+|move|p2a: Garganacl|Salt Cure|p1a: Gogoat
+|-damage|p1a: Gogoat|312/360
+|-start|p1a: Gogoat|Salt Cure
+|
+|-heal|p1a: Gogoat|334/360|[from] item: Leftovers
+|-heal|p2a: Garganacl|100/100|[from] item: Leftovers
+|-damage|p1a: Gogoat|289/360|[from] Salt Cure
+|upkeep
+|turn|23
+|
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|move|p2a: Garganacl|Salt Cure|p1a: Gogoat
+|-damage|p1a: Gogoat|308/360
+|
+|-heal|p1a: Gogoat|330/360|[from] item: Leftovers
+|-damage|p1a: Gogoat|285/360|[from] Salt Cure
+|upkeep
+|turn|24
+|
+|move|p1a: Gogoat|Bulk Up|p1a: Gogoat
+|-boost|p1a: Gogoat|atk|1
+|-boost|p1a: Gogoat|def|1
+|move|p2a: Garganacl|Salt Cure|p1a: Gogoat
+|-damage|p1a: Gogoat|249/360
+|
+|-heal|p1a: Gogoat|271/360|[from] item: Leftovers
+|-damage|p1a: Gogoat|226/360|[from] Salt Cure
+|upkeep
+|turn|25
+|
+|switch|p1a: Florges|Florges-Yellow, L85, F|271/271
+|move|p2a: Garganacl|Salt Cure|p1a: Florges
+|-damage|p1a: Florges|222/271
+|-start|p1a: Florges|Salt Cure
+|
+|-heal|p1a: Florges|238/271|[from] item: Leftovers
+|-damage|p1a: Florges|205/271|[from] Salt Cure
+|upkeep
+|turn|26
+|
+|move|p1a: Florges|Moonblast|p2a: Garganacl
+|-damage|p2a: Garganacl|59/100
+|move|p2a: Garganacl|Salt Cure|p1a: Florges
+|-damage|p1a: Florges|151/271
+|
+|-heal|p1a: Florges|167/271|[from] item: Leftovers
+|-heal|p2a: Garganacl|65/100|[from] item: Leftovers
+|-damage|p1a: Florges|134/271|[from] Salt Cure
+|upkeep
+|turn|27
+|
+|move|p1a: Florges|Moonblast|p2a: Garganacl
+|-damage|p2a: Garganacl|24/100
+|move|p2a: Garganacl|Salt Cure|p1a: Florges
+|-damage|p1a: Florges|83/271
+|
+|-heal|p1a: Florges|99/271|[from] item: Leftovers
+|-heal|p2a: Garganacl|30/100|[from] item: Leftovers
+|-damage|p1a: Florges|66/271|[from] Salt Cure
+|upkeep
+|turn|28
+|
+|move|p1a: Florges|Moonblast|p2a: Garganacl
+|-damage|p2a: Garganacl|0 fnt
+|faint|p2a: Garganacl
+|
+|-heal|p1a: Florges|82/271|[from] item: Leftovers
+|-damage|p1a: Florges|49/271|[from] Salt Cure
+|upkeep
+|
+|switch|p2a: Palafin|Palafin, L77, F|100/100
+|turn|29
+|
+|move|p2a: Palafin|Wave Crash|p1a: Florges
+|-damage|p1a: Florges|0 fnt
+|faint|p1a: Florges
+|-damage|p2a: Palafin|95/100|[from] Recoil
+|
+|-heal|p2a: Palafin|100/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Gallade|Gallade, L80, M|240/240
+|turn|30
+|
+|switch|p1a: Gogoat|Gogoat, L88, M|226/360
+|move|p2a: Palafin|Wave Crash|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|178/360
+|-damage|p2a: Palafin|95/100|[from] Recoil
+|
+|-heal|p2a: Palafin|100/100|[from] item: Leftovers
+|-heal|p1a: Gogoat|200/360|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Palafin|Wave Crash|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|153/360
+|-damage|p2a: Palafin|95/100|[from] Recoil
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|333/360
+|
+|-heal|p2a: Palafin|100/100|[from] item: Leftovers
+|-heal|p1a: Gogoat|355/360|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Palafin|Wave Crash|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-crit|p1a: Gogoat
+|-damage|p1a: Gogoat|274/360
+|-damage|p2a: Palafin|91/100|[from] Recoil
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|
+|-heal|p2a: Palafin|97/100|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Palafin|Wave Crash|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|313/360
+|-damage|p2a: Palafin|91/100|[from] Recoil
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|360/360
+|
+|-heal|p2a: Palafin|97/100|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p2a: Palafin|Wave Crash|p1a: Gogoat
+|-resisted|p1a: Gogoat
+|-damage|p1a: Gogoat|309/360
+|-damage|p2a: Palafin|91/100|[from] Recoil
+|move|p1a: Gogoat|Earthquake|p2a: Palafin
+|-damage|p2a: Palafin|56/100
+|
+|-heal|p2a: Palafin|62/100|[from] item: Leftovers
+|-heal|p1a: Gogoat|331/360|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|switch|p1a: Snorlax|Snorlax, L82, F|189/397 slp
+|move|p2a: Palafin|Wave Crash|p1a: Snorlax
+|-damage|p1a: Snorlax|90/397 slp
+|-damage|p2a: Palafin|51/100|[from] Recoil
+|
+|-heal|p2a: Palafin|57/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|114/397 slp|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Palafin|Wave Crash|p1a: Snorlax
+|-damage|p1a: Snorlax|8/397 slp
+|-damage|p2a: Palafin|44/100|[from] Recoil
+|-curestatus|p1a: Snorlax|slp|[msg]
+|move|p1a: Snorlax|Sleep Talk||[still]
+|-fail|p1a: Snorlax
+|
+|-heal|p2a: Palafin|50/100|[from] item: Leftovers
+|-heal|p1a: Snorlax|32/397|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Palafin|Wave Crash|p1a: Snorlax
+|-damage|p1a: Snorlax|0 fnt
+|faint|p1a: Snorlax
+|-damage|p2a: Palafin|46/100|[from] Recoil
+|
+|-heal|p2a: Palafin|52/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, M|312/312
+|turn|38
+|
+|move|p2a: Palafin|Wave Crash|p1a: Honchkrow
+|-damage|p1a: Honchkrow|197/312
+|-damage|p2a: Palafin|39/100|[from] Recoil
+|move|p1a: Honchkrow|Heat Wave|p2a: Palafin
+|-resisted|p2a: Palafin
+|-damage|p2a: Palafin|20/100
+|
+|-heal|p2a: Palafin|26/100|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p2a: Palafin|Wave Crash|p1a: Honchkrow
+|-damage|p1a: Honchkrow|70/312
+|-damage|p2a: Palafin|11/100|[from] Recoil
+|move|p1a: Honchkrow|Heat Wave|p2a: Palafin
+|-resisted|p2a: Palafin
+|-damage|p2a: Palafin|0 fnt
+|faint|p2a: Palafin
+|-ability|p1a: Honchkrow|Moxie|boost
+|-boost|p1a: Honchkrow|atk|1
+|
+|upkeep
+|
+|switch|p2a: Glaceon|Glaceon, L94, F|100/100
+|turn|40
+|
+|move|p2a: Glaceon|Freeze-Dry|p1a: Honchkrow
+|-supereffective|p1a: Honchkrow
+|-crit|p1a: Honchkrow
+|-damage|p1a: Honchkrow|0 fnt
+|faint|p1a: Honchkrow
+|
+|upkeep
+|
+|switch|p1a: Gallade|Gallade, L80, M|240/240
+|turn|41
+|
+|move|p2a: Glaceon|Freeze-Dry|p1a: Gallade
+|-damage|p1a: Gallade|135/240
+|move|p1a: Gallade|Sacred Sword|p2a: Glaceon
+|-supereffective|p2a: Glaceon
+|-crit|p2a: Glaceon
+|-damage|p2a: Glaceon|0 fnt
+|faint|p2a: Glaceon
+|-damage|p1a: Gallade|111/240|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Indeedee|Indeedee-F, L90, F|100/100
+|-fieldstart|move: Psychic Terrain|[from] ability: Psychic Surge|[of] p2a: Indeedee
+|turn|42
+|
+|switch|p1a: Gogoat|Gogoat, L88, M|331/360
+|move|p2a: Indeedee|Hyper Voice|p1a: Gogoat
+|-damage|p1a: Gogoat|154/360
+|
+|-heal|p1a: Gogoat|176/360|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p2a: Indeedee|Hyper Voice|p1a: Gogoat
+|-damage|p1a: Gogoat|4/360
+|move|p1a: Gogoat|Milk Drink|p1a: Gogoat
+|-heal|p1a: Gogoat|184/360
+|
+|-heal|p1a: Gogoat|206/360|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p2a: Indeedee|Hyper Voice|p1a: Gogoat
+|-damage|p1a: Gogoat|44/360
+|move|p1a: Gogoat|Horn Leech|p2a: Indeedee
+|-damage|p2a: Indeedee|59/100
+|-heal|p1a: Gogoat|101/360|[from] drain|[of] p2a: Indeedee
+|
+|-heal|p1a: Gogoat|123/360|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p2a: Indeedee|Hyper Voice|p1a: Gogoat
+|-damage|p1a: Gogoat|0 fnt
+|faint|p1a: Gogoat
+|
+|upkeep
+|
+|switch|p1a: Gallade|Gallade, L80, M|111/240
+|turn|46
+|
+|move|p2a: Indeedee|Hyper Voice|p1a: Gallade
+|-damage|p1a: Gallade|0 fnt
+|faint|p1a: Gallade
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

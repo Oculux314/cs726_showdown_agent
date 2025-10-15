@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22339</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22339<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22339|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Kricketune|Kricketune, L99, M|311/311
+|switch|p2a: Polteageist|Polteageist-Antique, L78|100/100
+|turn|1
+|
+|switch|p1a: Dugtrio|Dugtrio-Alola, L84, M|196/196
+|move|p2a: Polteageist|Shadow Ball|p1a: Dugtrio
+|-damage|p1a: Dugtrio|76/196
+|-unboost|p1a: Dugtrio|spd|1
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Dugtrio|Iron Head|p2a: Polteageist
+|-damage|p2a: Polteageist|38/100
+|-start|p1a: Dugtrio|Disable|Iron Head|[from] ability: Cursed Body|[of] p2a: Polteageist
+|-damage|p1a: Dugtrio|57/196|[from] item: Life Orb
+|move|p2a: Polteageist|Shadow Ball|p1a: Dugtrio
+|-damage|p1a: Dugtrio|0 fnt
+|faint|p1a: Dugtrio
+|
+|upkeep
+|
+|switch|p1a: Inteleon|Inteleon, L81, M|246/246
+|turn|3
+|
+|move|p1a: Inteleon|Hydro Pump|p2a: Polteageist
+|-damage|p2a: Polteageist|0 fnt
+|faint|p2a: Polteageist
+|
+|upkeep
+|
+|switch|p2a: Gliscor|Gliscor, L76, M|100/100
+|turn|4
+|
+|move|p1a: Inteleon|Hydro Pump|p2a: Gliscor
+|-supereffective|p2a: Gliscor
+|-damage|p2a: Gliscor|0 fnt
+|faint|p2a: Gliscor
+|
+|upkeep
+|
+|switch|p2a: Mudsdale|Mudsdale, L83, F|100/100
+|turn|5
+|
+|move|p1a: Inteleon|Hydro Pump|p2a: Mudsdale
+|-supereffective|p2a: Mudsdale
+|-damage|p2a: Mudsdale|0 fnt
+|faint|p2a: Mudsdale
+|
+|upkeep
+|
+|switch|p2a: Drednaw|Drednaw, L81, F|100/100
+|turn|6
+|
+|move|p1a: Inteleon|Hydro Pump|p2a: Drednaw
+|-damage|p2a: Drednaw|18/100
+|move|p2a: Drednaw|Stone Edge|p1a: Inteleon
+|-damage|p1a: Inteleon|110/246
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Inteleon|Hydro Pump|p2a: Drednaw
+|-damage|p2a: Drednaw|0 fnt
+|faint|p2a: Drednaw
+|
+|upkeep
+|
+|switch|p2a: Persian|Persian-Alola, L86, M|100/100
+|turn|8
+|
+|move|p2a: Persian|Thunderbolt|p1a: Inteleon
+|-supereffective|p1a: Inteleon
+|-damage|p1a: Inteleon|0 fnt
+|faint|p1a: Inteleon
+|
+|upkeep
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, F|364/364
+|turn|9
+|
+|move|p2a: Persian|Thunderbolt|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-damage|p1a: Vaporeon|268/364
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|
+|-heal|p1a: Vaporeon|290/364|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Persian|Thunderbolt|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-crit|p1a: Vaporeon
+|-damage|p1a: Vaporeon|134/364
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|
+|-heal|p1a: Vaporeon|156/364|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Persian|Thunderbolt|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-crit|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|
+|upkeep
+|
+|switch|p1a: Kricketune|Kricketune, L99, M|311/311
+|turn|12
+|
+|move|p2a: Persian|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|238/311
+|move|p1a: Kricketune|Knock Off|p2a: Persian
+|-resisted|p2a: Persian
+|-damage|p2a: Persian|89/100
+|-enditem|p2a: Persian|Leftovers|[from] move: Knock Off|[of] p1a: Kricketune
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Persian|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|168/311
+|-status|p1a: Kricketune|par
+|move|p1a: Kricketune|Knock Off|p2a: Persian
+|-resisted|p2a: Persian
+|-damage|p2a: Persian|82/100
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Persian|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|103/311 par
+|cant|p1a: Kricketune|par
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Persian|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|34/311 par
+|move|p1a: Kricketune|Knock Off|p2a: Persian
+|-resisted|p2a: Persian
+|-damage|p2a: Persian|75/100
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Persian|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|0 fnt
+|faint|p1a: Kricketune
+|
+|upkeep
+|
+|switch|p1a: Lurantis|Lurantis, L87, M|264/264
+|turn|17
+|
+|move|p2a: Persian|Thunderbolt|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|245/264
+|move|p1a: Lurantis|Leech Life|p2a: Persian
+|-supereffective|p2a: Persian
+|-damage|p2a: Persian|40/100
+|-heal|p1a: Lurantis|264/264|[from] drain|[of] p2a: Persian
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Persian|Thunderbolt|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|247/264
+|move|p1a: Lurantis|Leech Life|p2a: Persian
+|-supereffective|p2a: Persian
+|-damage|p2a: Persian|8/100
+|-heal|p1a: Lurantis|264/264|[from] drain|[of] p2a: Persian
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Persian|Thunderbolt|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|248/264
+|move|p1a: Lurantis|Leech Life|p2a: Persian
+|-supereffective|p2a: Persian
+|-damage|p2a: Persian|0 fnt
+|-heal|p1a: Lurantis|258/264|[from] drain|[of] p2a: Persian
+|faint|p2a: Persian
+|
+|upkeep
+|
+|switch|p2a: Sableye|Sableye, L88, M|100/100
+|turn|20
+|
+|move|p2a: Sableye|Knock Off|p1a: Lurantis
+|-crit|p1a: Lurantis
+|-damage|p1a: Lurantis|125/264
+|-enditem|p1a: Lurantis|Assault Vest|[from] move: Knock Off|[of] p2a: Sableye
+|move|p1a: Lurantis|Leech Life|p2a: Sableye
+|-crit|p2a: Sableye
+|-damage|p2a: Sableye|58/100
+|-heal|p1a: Lurantis|174/264|[from] drain|[of] p2a: Sableye
+|
+|-heal|p2a: Sableye|64/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Sableye|Knock Off|p1a: Lurantis
+|-damage|p1a: Lurantis|119/264
+|move|p1a: Lurantis|Leech Life|p2a: Sableye
+|-damage|p2a: Sableye|33/100
+|-heal|p1a: Lurantis|155/264|[from] drain|[of] p2a: Sableye
+|
+|-heal|p2a: Sableye|39/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Sableye|Knock Off|p1a: Lurantis
+|-damage|p1a: Lurantis|100/264
+|move|p1a: Lurantis|Leech Life|p2a: Sableye
+|-damage|p2a: Sableye|9/100
+|-heal|p1a: Lurantis|135/264|[from] drain|[of] p2a: Sableye
+|
+|-heal|p2a: Sableye|15/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Sableye|Knock Off|p1a: Lurantis
+|-damage|p1a: Lurantis|74/264
+|move|p1a: Lurantis|Leech Life|p2a: Sableye
+|-crit|p2a: Sableye
+|-damage|p2a: Sableye|0 fnt
+|-heal|p1a: Lurantis|91/264|[from] drain|[of] p2a: Sableye
+|faint|p2a: Sableye
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

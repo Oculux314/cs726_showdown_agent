@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22716</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22716<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22716|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Chimecho|Chimecho, L93, M|290/290
+|switch|p2a: Carbink|Carbink, L90|100/100
+|turn|1
+|
+|switch|p1a: Terapagos|Terapagos, L77, F|265/265
+|-activate|p1a: Terapagos|ability: Tera Shift
+|detailschange|p1a: Terapagos|Terapagos-Terastal, L77, F
+|-heal|p1a: Terapagos|273/273|[silent]
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|238/273
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Terapagos|Rest|p1a: Terapagos
+|-status|p1a: Terapagos|slp|[from] move: Rest
+|-heal|p1a: Terapagos|273/273 slp|[silent]
+|-enditem|p1a: Terapagos|Chesto Berry|[eat]
+|-curestatus|p1a: Terapagos|slp|[msg]
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|241/273
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Spectrier|Spectrier, L75|274/274
+|move|p2a: Carbink|Moonblast|p1a: Spectrier
+|-damage|p1a: Spectrier|184/274
+|-unboost|p1a: Spectrier|spa|1
+|
+|-heal|p1a: Spectrier|201/274|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Spectrier|Shadow Ball|p2a: Carbink
+|-damage|p2a: Carbink|83/100
+|move|p2a: Carbink|Moonblast|p1a: Spectrier
+|-damage|p1a: Spectrier|119/274
+|
+|-heal|p1a: Spectrier|136/274|[from] item: Leftovers
+|-heal|p2a: Carbink|89/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|switch|p1a: Terapagos|Terapagos-Terastal, L77, F|241/273
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-damage|p1a: Terapagos|177/273
+|-unboost|p1a: Terapagos|spa|1
+|
+|-heal|p2a: Carbink|95/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, F|225/225
+|-item|p2a: Carbink|Leftovers|[from] ability: Frisk|[of] p1a: Dusknoir
+|move|p2a: Carbink|Moonblast|p1a: Dusknoir
+|-damage|p1a: Dusknoir|171/225
+|
+|-heal|p2a: Carbink|100/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|185/225|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Dusknoir|Fighting
+|move|p2a: Carbink|Moonblast|p1a: Dusknoir
+|-supereffective|p1a: Dusknoir
+|-damage|p1a: Dusknoir|81/225
+|move|p1a: Dusknoir|Pain Split|p2a: Carbink
+|-sethp|p2a: Carbink|67/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|158/225|[from] move: Pain Split
+|
+|-heal|p2a: Carbink|73/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|172/225|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Carbink|Moonblast|p1a: Dusknoir
+|-supereffective|p1a: Dusknoir
+|-crit|p1a: Dusknoir
+|-damage|p1a: Dusknoir|20/225
+|move|p1a: Dusknoir|Pain Split|p2a: Carbink
+|-sethp|p2a: Carbink|41/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|96/225|[from] move: Pain Split
+|
+|-heal|p2a: Carbink|47/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|110/225|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Carbink|Moonblast|p1a: Dusknoir
+|-supereffective|p1a: Dusknoir
+|-crit|p1a: Dusknoir
+|-damage|p1a: Dusknoir|0 fnt
+|faint|p1a: Dusknoir
+|
+|-heal|p2a: Carbink|53/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Heracross|Heracross, L80, M|259/259
+|turn|10
+|
+|move|p1a: Heracross|Facade|p2a: Carbink
+|-resisted|p2a: Carbink
+|-damage|p2a: Carbink|46/100
+|move|p2a: Carbink|Moonblast|p1a: Heracross
+|-supereffective|p1a: Heracross
+|-damage|p1a: Heracross|125/259
+|
+|-heal|p2a: Carbink|52/100|[from] item: Leftovers
+|-status|p1a: Heracross|brn|[from] item: Flame Orb
+|upkeep
+|turn|11
+|
+|switch|p1a: Spectrier|Spectrier, L75|136/274
+|move|p2a: Carbink|Moonblast|p1a: Spectrier
+|-damage|p1a: Spectrier|55/274
+|
+|-heal|p1a: Spectrier|72/274|[from] item: Leftovers
+|-heal|p2a: Carbink|58/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Spectrier|Shadow Ball|p2a: Carbink
+|-damage|p2a: Carbink|32/100
+|move|p2a: Carbink|Moonblast|p1a: Spectrier
+|-damage|p1a: Spectrier|0 fnt
+|faint|p1a: Spectrier
+|
+|-heal|p2a: Carbink|38/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Terapagos|Terapagos-Terastal, L77, F|177/273
+|turn|13
+|
+|move|p1a: Terapagos|Rest|p1a: Terapagos
+|-status|p1a: Terapagos|slp|[from] move: Rest
+|-heal|p1a: Terapagos|273/273 slp|[silent]
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|242/273 slp
+|
+|-heal|p2a: Carbink|44/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|cant|p1a: Terapagos|slp
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-damage|p1a: Terapagos|175/273 slp
+|
+|-heal|p2a: Carbink|50/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|cant|p1a: Terapagos|slp
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-damage|p1a: Terapagos|111/273 slp
+|-unboost|p1a: Terapagos|spa|1
+|
+|-heal|p2a: Carbink|56/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|-curestatus|p1a: Terapagos|slp|[msg]
+|move|p1a: Terapagos|Rest|p1a: Terapagos
+|-status|p1a: Terapagos|slp|[from] move: Rest
+|-heal|p1a: Terapagos|273/273 slp|[silent]
+|move|p2a: Carbink|Moonblast|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|237/273 slp
+|
+|-heal|p2a: Carbink|62/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|switch|p1a: Rotom|Rotom-Wash, L83|219/219
+|move|p2a: Carbink|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|152/219
+|-unboost|p1a: Rotom|spa|1
+|
+|-heal|p2a: Carbink|68/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Rotom|Thunderbolt|p2a: Carbink
+|-damage|p2a: Carbink|51/100
+|move|p2a: Carbink|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|82/219
+|
+|-heal|p2a: Carbink|57/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Rotom|Thunderbolt|p2a: Carbink
+|-damage|p2a: Carbink|40/100
+|move|p2a: Carbink|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|18/219
+|-unboost|p1a: Rotom|spa|1
+|
+|-heal|p2a: Carbink|46/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Rotom|Thunderbolt|p2a: Carbink
+|-damage|p2a: Carbink|34/100
+|-status|p2a: Carbink|par
+|cant|p2a: Carbink|par
+|
+|-heal|p2a: Carbink|39/100 par|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Rotom|Thunderbolt|p2a: Carbink
+|-damage|p2a: Carbink|25/100 par
+|move|p2a: Carbink|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|0 fnt
+|faint|p1a: Rotom
+|
+|-heal|p2a: Carbink|31/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Chimecho|Chimecho, L93, M|290/290
+|turn|22
+|
+|move|p1a: Chimecho|Dazzling Gleam|p2a: Carbink
+|-damage|p2a: Carbink|13/100 par
+|move|p2a: Carbink|Moonblast|p1a: Chimecho
+|-damage|p1a: Chimecho|220/290
+|
+|-heal|p1a: Chimecho|238/290|[from] item: Leftovers
+|-heal|p2a: Carbink|19/100 par|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Chimecho|Stored Power|p2a: Carbink
+|-damage|p2a: Carbink|11/100 par
+|move|p2a: Carbink|Moonblast|p1a: Chimecho
+|-damage|p1a: Chimecho|175/290
+|-unboost|p1a: Chimecho|spa|1
+|
+|-heal|p1a: Chimecho|193/290|[from] item: Leftovers
+|-heal|p2a: Carbink|17/100 par|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Chimecho|Dazzling Gleam|p2a: Carbink
+|-damage|p2a: Carbink|4/100 par
+|move|p2a: Carbink|Moonblast|p1a: Chimecho
+|-damage|p1a: Chimecho|124/290
+|
+|-heal|p1a: Chimecho|142/290|[from] item: Leftovers
+|-heal|p2a: Carbink|10/100 par|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Chimecho|Dazzling Gleam|p2a: Carbink
+|-damage|p2a: Carbink|0 fnt
+|faint|p2a: Carbink
+|
+|-heal|p1a: Chimecho|160/290|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Charizard|Charizard, L85, M|100/100
+|turn|26
+|
+|move|p2a: Charizard|Hurricane|p1a: Chimecho
+|-damage|p1a: Chimecho|51/290
+|move|p1a: Chimecho|Dazzling Gleam|p2a: Charizard
+|-resisted|p2a: Charizard
+|-damage|p2a: Charizard|92/100
+|
+|-heal|p1a: Chimecho|69/290|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Charizard|Hurricane|p1a: Chimecho
+|-damage|p1a: Chimecho|0 fnt
+|faint|p1a: Chimecho
+|
+|upkeep
+|
+|switch|p1a: Heracross|Heracross, L80, M|125/259 brn
+|turn|28
+|
+|move|p2a: Charizard|Hurricane|p1a: Heracross
+|-supereffective|p1a: Heracross
+|-damage|p1a: Heracross|0 fnt
+|faint|p1a: Heracross
+|
+|upkeep
+|
+|switch|p1a: Terapagos|Terapagos-Terastal, L77, F|237/273 slp
+|turn|29
+|
+|move|p2a: Charizard|Hurricane|p1a: Terapagos
+|-damage|p1a: Terapagos|122/273 slp
+|-start|p1a: Terapagos|confusion
+|cant|p1a: Terapagos|slp
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Charizard|Hurricane|p1a: Terapagos
+|-damage|p1a: Terapagos|0 fnt
+|faint|p1a: Terapagos
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

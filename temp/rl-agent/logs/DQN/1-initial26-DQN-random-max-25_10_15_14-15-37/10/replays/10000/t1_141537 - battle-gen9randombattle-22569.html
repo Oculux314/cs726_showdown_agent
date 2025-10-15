@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22569</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22569<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22569|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Talonflame|Talonflame, L83, F|265/265
+|switch|p2a: Crabominable|Crabominable, L90, M|100/100
+|turn|1
+|
+|move|p1a: Talonflame|Swords Dance|p1a: Talonflame
+|-boost|p1a: Talonflame|atk|2
+|move|p2a: Crabominable|Close Combat|p1a: Talonflame
+|-resisted|p1a: Talonflame
+|-damage|p1a: Talonflame|92/265
+|-unboost|p2a: Crabominable|def|1
+|-unboost|p2a: Crabominable|spd|1
+|
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Talonflame|Ground
+|move|p1a: Talonflame|Flare Blitz|p2a: Crabominable
+|-supereffective|p2a: Crabominable
+|-damage|p2a: Crabominable|0 fnt
+|faint|p2a: Crabominable
+|-damage|p1a: Talonflame|0 fnt|[from] Recoil
+|faint|p1a: Talonflame
+|
+|upkeep
+|
+|switch|p1a: Alcremie|Alcremie, L88, F|258/258
+|switch|p2a: Wugtrio|Wugtrio, L91, F|100/100
+|turn|3
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Alcremie
+|-damage|p1a: Alcremie|98/258
+|move|p1a: Alcremie|Dazzling Gleam|p2a: Wugtrio
+|-damage|p2a: Wugtrio|50/100
+|
+|-heal|p1a: Alcremie|114/258|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Alcremie
+|-damage|p1a: Alcremie|0 fnt
+|faint|p1a: Alcremie
+|
+|upkeep
+|
+|switch|p1a: Tropius|Tropius, L91, M|328/328
+|turn|5
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Tropius
+|-resisted|p1a: Tropius
+|-damage|p1a: Tropius|247/328
+|move|p1a: Tropius|Air Slash|p2a: Wugtrio
+|-damage|p2a: Wugtrio|13/100
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Tropius
+|-resisted|p1a: Tropius
+|-damage|p1a: Tropius|170/328
+|move|p1a: Tropius|Air Slash|p2a: Wugtrio
+|-damage|p2a: Wugtrio|0 fnt
+|faint|p2a: Wugtrio
+|
+|upkeep
+|
+|switch|p2a: Copperajah|Copperajah, L86, F|100/100
+|turn|7
+|
+|move|p1a: Tropius|Air Slash|p2a: Copperajah
+|-resisted|p2a: Copperajah
+|-damage|p2a: Copperajah|88/100
+|move|p2a: Copperajah|Superpower|p1a: Tropius
+|-resisted|p1a: Tropius
+|-damage|p1a: Tropius|95/328
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|177/328|[from] item: Sitrus Berry
+|-damage|p2a: Copperajah|78/100|[from] item: Life Orb
+|
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|8
+|
+|move|p1a: Tropius|Substitute|p1a: Tropius
+|-start|p1a: Tropius|Substitute
+|-damage|p1a: Tropius|95/328
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|177/328|[from] item: Sitrus Berry
+|move|p2a: Copperajah|Superpower|p1a: Tropius
+|-resisted|p1a: Tropius
+|-activate|p1a: Tropius|move: Substitute|[damage]
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-damage|p2a: Copperajah|68/100|[from] item: Life Orb
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Tropius|Air Slash|p2a: Copperajah
+|-resisted|p2a: Copperajah
+|-damage|p2a: Copperajah|54/100
+|move|p2a: Copperajah|Superpower|p1a: Tropius
+|-resisted|p1a: Tropius
+|-activate|p1a: Tropius|move: Substitute|[damage]
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-damage|p2a: Copperajah|44/100|[from] item: Life Orb
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Tropius|Substitute|p1a: Tropius
+|-fail|p1a: Tropius|move: Substitute
+|move|p2a: Copperajah|Superpower|p1a: Tropius
+|-resisted|p1a: Tropius
+|-end|p1a: Tropius|Substitute
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-damage|p2a: Copperajah|34/100|[from] item: Life Orb
+|
+|upkeep
+|turn|11
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, F|364/364
+|move|p2a: Copperajah|Superpower|p1a: Vaporeon
+|-damage|p1a: Vaporeon|296/364
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-damage|p2a: Copperajah|24/100|[from] item: Life Orb
+|
+|-heal|p1a: Vaporeon|318/364|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|move|p2a: Copperajah|Superpower|p1a: Vaporeon
+|-damage|p1a: Vaporeon|266/364
+|-unboost|p2a: Copperajah|atk|1
+|-unboost|p2a: Copperajah|def|1
+|-damage|p2a: Copperajah|14/100|[from] item: Life Orb
+|
+|-heal|p1a: Vaporeon|288/364|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Vaporeon|Protect|p1a: Vaporeon
+|-singleturn|p1a: Vaporeon|Protect
+|move|p2a: Copperajah|Superpower|p1a: Vaporeon
+|-activate|p1a: Vaporeon|move: Protect
+|
+|-heal|p1a: Vaporeon|310/364|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|switch|p1a: Magcargo|Magcargo, L95, F|268/268
+|move|p2a: Copperajah|Superpower|p1a: Magcargo
+|-supereffective|p1a: Magcargo
+|-damage|p1a: Magcargo|216/268
+|-damage|p2a: Copperajah|4/100|[from] item: Life Orb
+|
+|upkeep
+|turn|15
+|
+|switch|p1a: Excadrill|Excadrill, L79, F|303/303
+|-ability|p1a: Excadrill|Mold Breaker
+|move|p2a: Copperajah|Play Rough|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|280/303
+|
+|-heal|p1a: Excadrill|298/303|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Excadrill|Earthquake|p2a: Copperajah
+|-supereffective|p2a: Copperajah
+|-damage|p2a: Copperajah|0 fnt
+|faint|p2a: Copperajah
+|
+|-heal|p1a: Excadrill|303/303|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Camerupt|Camerupt, L91, F|100/100
+|turn|17
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Camerupt
+|-damage|p2a: Camerupt|86/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Camerupt|Overheat|p1a: Excadrill
+|-supereffective|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|-unboost|p2a: Camerupt|spa|2
+|faint|p1a: Excadrill
+|
+|-heal|p2a: Camerupt|92/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Magcargo|Magcargo, L95, F|216/268
+|turn|18
+|
+|move|p2a: Camerupt|Overheat|p1a: Magcargo
+|-resisted|p1a: Magcargo
+|-damage|p1a: Magcargo|197/268
+|-unboost|p2a: Camerupt|spa|2
+|move|p1a: Magcargo|Yawn|p2a: Camerupt
+|-start|p2a: Camerupt|move: Yawn|[of] p1a: Magcargo
+|
+|-heal|p2a: Camerupt|98/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Camerupt|Overheat|p1a: Magcargo|[miss]
+|-miss|p2a: Camerupt|p1a: Magcargo
+|move|p1a: Magcargo|Yawn||[still]
+|-fail|p1a: Magcargo
+|
+|-heal|p2a: Camerupt|100/100|[from] item: Leftovers
+|-end|p2a: Camerupt|move: Yawn|[silent]
+|-status|p2a: Camerupt|slp
+|upkeep
+|turn|20
+|
+|cant|p2a: Camerupt|slp
+|move|p1a: Magcargo|Yawn||[still]
+|-fail|p1a: Magcargo
+|
+|upkeep
+|turn|21
+|
+|cant|p2a: Camerupt|slp
+|move|p1a: Magcargo|Yawn||[still]
+|-fail|p1a: Magcargo
+|
+|upkeep
+|turn|22
+|
+|-curestatus|p2a: Camerupt|slp|[msg]
+|move|p2a: Camerupt|Overheat|p1a: Magcargo
+|-resisted|p1a: Magcargo
+|-damage|p1a: Magcargo|183/268
+|-unboost|p2a: Camerupt|spa|2
+|move|p1a: Magcargo|Yawn|p2a: Camerupt
+|-start|p2a: Camerupt|move: Yawn|[of] p1a: Magcargo
+|
+|upkeep
+|turn|23
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, F|310/364
+|move|p2a: Camerupt|Overheat|p1a: Vaporeon|[miss]
+|-miss|p2a: Camerupt|p1a: Vaporeon
+|
+|-heal|p1a: Vaporeon|332/364|[from] item: Leftovers
+|-end|p2a: Camerupt|move: Yawn|[silent]
+|-status|p2a: Camerupt|slp
+|upkeep
+|turn|24
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|cant|p2a: Camerupt|slp
+|
+|-heal|p1a: Vaporeon|354/364|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|cant|p2a: Camerupt|slp
+|
+|-heal|p1a: Vaporeon|364/364|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|cant|p2a: Camerupt|slp
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|-curestatus|p2a: Camerupt|slp|[msg]
+|move|p2a: Camerupt|Overheat|p1a: Vaporeon
+|-resisted|p1a: Vaporeon
+|-damage|p1a: Vaporeon|357/364
+|
+|-heal|p1a: Vaporeon|364/364|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|move|p2a: Camerupt|Overheat|p1a: Vaporeon|[miss]
+|-miss|p2a: Camerupt|p1a: Vaporeon
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|1
+|-boost|p1a: Vaporeon|spd|1
+|move|p2a: Camerupt|Overheat|p1a: Vaporeon
+|-resisted|p1a: Vaporeon
+|-damage|p1a: Vaporeon|359/364
+|
+|-heal|p1a: Vaporeon|364/364|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|0
+|-boost|p1a: Vaporeon|spd|0
+|move|p2a: Camerupt|Earthquake|p1a: Vaporeon
+|-damage|p1a: Vaporeon|202/364
+|
+|-heal|p1a: Vaporeon|224/364|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|0
+|-boost|p1a: Vaporeon|spd|0
+|move|p2a: Camerupt|Earthquake|p1a: Vaporeon
+|-damage|p1a: Vaporeon|46/364
+|
+|-heal|p1a: Vaporeon|68/364|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Vaporeon|Calm Mind|p1a: Vaporeon
+|-boost|p1a: Vaporeon|spa|0
+|-boost|p1a: Vaporeon|spd|0
+|move|p2a: Camerupt|Earthquake|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|
+|upkeep
+|
+|switch|p1a: Tropius|Tropius, L91, M|177/328
+|turn|33
+|
+|move|p1a: Tropius|Air Slash|p2a: Camerupt
+|-damage|p2a: Camerupt|73/100
+|move|p2a: Camerupt|Earthquake|p1a: Tropius
+|-immune|p1a: Tropius
+|
+|-heal|p2a: Camerupt|79/100|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Tropius|Air Slash|p2a: Camerupt
+|-damage|p2a: Camerupt|52/100
+|cant|p2a: Camerupt|flinch
+|
+|-heal|p2a: Camerupt|58/100|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Tropius|Air Slash|p2a: Camerupt
+|-damage|p2a: Camerupt|32/100
+|move|p2a: Camerupt|Earthquake|p1a: Tropius
+|-immune|p1a: Tropius
+|
+|-heal|p2a: Camerupt|38/100|[from] item: Leftovers
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|36
+|
+|move|p1a: Tropius|Air Slash|p2a: Camerupt
+|-damage|p2a: Camerupt|10/100
+|move|p2a: Camerupt|Earthquake|p1a: Tropius
+|-immune|p1a: Tropius
+|
+|-heal|p2a: Camerupt|16/100|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Tropius|Air Slash|p2a: Camerupt
+|-damage|p2a: Camerupt|0 fnt
+|faint|p2a: Camerupt
+|
+|upkeep
+|
+|switch|p2a: Sandy Shocks|Sandy Shocks, L80|100/100
+|turn|38
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-damage|p1a: Tropius|83/328
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|165/328|[from] item: Sitrus Berry
+|move|p1a: Tropius|Substitute|p1a: Tropius
+|-start|p1a: Tropius|Substitute
+|-damage|p1a: Tropius|83/328
+|
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|165/328|[from] item: Sitrus Berry
+|turn|39
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-end|p1a: Tropius|Substitute
+|move|p1a: Tropius|Leech Seed|p2a: Sandy Shocks
+|-start|p2a: Sandy Shocks|move: Leech Seed
+|
+|-damage|p2a: Sandy Shocks|88/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|198/328|[silent]
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|40
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-damage|p1a: Tropius|107/328
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|189/328|[from] item: Sitrus Berry
+|move|p1a: Tropius|Air Slash|p2a: Sandy Shocks
+|-resisted|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|74/100
+|
+|-heal|p2a: Sandy Shocks|80/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|67/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|222/328|[silent]
+|upkeep
+|turn|41
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-damage|p1a: Tropius|119/328
+|move|p1a: Tropius|Substitute|p1a: Tropius
+|-start|p1a: Tropius|Substitute
+|-damage|p1a: Tropius|37/328
+|
+|-heal|p2a: Sandy Shocks|73/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|61/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|70/328|[silent]
+|upkeep
+|turn|42
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-crit|p1a: Tropius
+|-end|p1a: Tropius|Substitute
+|move|p1a: Tropius|Air Slash|p2a: Sandy Shocks
+|-resisted|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|45/100
+|
+|-heal|p2a: Sandy Shocks|51/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|39/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|103/328|[silent]
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|185/328|[from] item: Sitrus Berry
+|turn|43
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-damage|p1a: Tropius|82/328
+|move|p1a: Tropius|Leech Seed||[still]
+|-fail|p1a: Tropius
+|
+|-heal|p2a: Sandy Shocks|45/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|32/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|115/328|[silent]
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|197/328|[from] item: Sitrus Berry
+|turn|44
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Tropius
+|-damage|p1a: Tropius|107/328
+|move|p1a: Tropius|Air Slash|p2a: Sandy Shocks
+|-resisted|p2a: Sandy Shocks
+|-damage|p2a: Sandy Shocks|18/100
+|
+|-heal|p2a: Sandy Shocks|24/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|11/100|[from] Leech Seed|[of] p1a: Tropius
+|-heal|p1a: Tropius|140/328|[silent]
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|222/328|[from] item: Sitrus Berry
+|turn|45
+|
+|switch|p1a: Magcargo|Magcargo, L95, F|183/268
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Magcargo
+|-damage|p1a: Magcargo|77/268
+|
+|-heal|p2a: Sandy Shocks|17/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|5/100|[from] Leech Seed|[of] p1a: Magcargo
+|-heal|p1a: Magcargo|110/268|[silent]
+|upkeep
+|turn|46
+|
+|move|p2a: Sandy Shocks|Thunderbolt|p1a: Magcargo
+|-damage|p1a: Magcargo|11/268
+|move|p1a: Magcargo|Yawn|p2a: Sandy Shocks
+|-start|p2a: Sandy Shocks|move: Yawn|[of] p1a: Magcargo
+|
+|-heal|p2a: Sandy Shocks|11/100|[from] item: Leftovers
+|-damage|p2a: Sandy Shocks|0 fnt|[from] Leech Seed|[of] p1a: Magcargo
+|-heal|p1a: Magcargo|39/268|[silent]
+|faint|p2a: Sandy Shocks
+|-end|p2a: Sandy Shocks|Protosynthesis|[silent]
+|upkeep
+|
+|switch|p2a: Primarina|Primarina, L83, F|100/100
+|turn|47
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Magcargo
+|-supereffective|p1a: Magcargo
+|-damage|p1a: Magcargo|0 fnt
+|faint|p1a: Magcargo
+|
+|upkeep
+|
+|switch|p1a: Tropius|Tropius, L91, M|222/328
+|turn|48
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius|[miss]
+|-miss|p2a: Primarina|p1a: Tropius
+|move|p1a: Tropius|Air Slash|p2a: Primarina
+|-damage|p2a: Primarina|76/100
+|
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|49
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius|[miss]
+|-miss|p2a: Primarina|p1a: Tropius
+|move|p1a: Tropius|Air Slash|p2a: Primarina
+|-damage|p2a: Primarina|51/100
+|
+|upkeep
+|turn|50
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius
+|-resisted|p1a: Tropius
+|-damage|p1a: Tropius|115/328
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|197/328|[from] item: Sitrus Berry
+|move|p1a: Tropius|Air Slash|p2a: Primarina
+|-damage|p2a: Primarina|28/100
+|
+|upkeep
+|turn|51
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius|[miss]
+|-miss|p2a: Primarina|p1a: Tropius
+|move|p1a: Tropius|Air Slash|p2a: Primarina
+|-damage|p2a: Primarina|4/100
+|
+|-item|p1a: Tropius|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|52
+|
+|move|p1a: Tropius|Protect|p1a: Tropius
+|-singleturn|p1a: Tropius|Protect
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius
+|-activate|p1a: Tropius|move: Protect
+|
+|upkeep
+|turn|53
+|
+|move|p2a: Primarina|Hydro Pump|p1a: Tropius
+|-resisted|p1a: Tropius
+|-damage|p1a: Tropius|49/328
+|-enditem|p1a: Tropius|Sitrus Berry|[eat]
+|-heal|p1a: Tropius|131/328|[from] item: Sitrus Berry
+|move|p1a: Tropius|Air Slash|p2a: Primarina
+|-damage|p2a: Primarina|0 fnt
+|faint|p2a: Primarina
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

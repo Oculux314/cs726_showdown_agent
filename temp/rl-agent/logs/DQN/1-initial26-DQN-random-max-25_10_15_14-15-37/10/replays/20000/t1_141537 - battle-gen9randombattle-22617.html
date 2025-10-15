@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22617</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22617<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22617|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Flapple|Flapple, L88, F|266/266
+|switch|p2a: Rabsca|Rabsca, L91, M|100/100
+|turn|1
+|
+|switch|p1a: Ursaluna|Ursaluna-Bloodmoon, L79, M|308/308
+|move|p2a: Rabsca|Earth Power|p1a: Ursaluna
+|-damage|p1a: Ursaluna|194/308
+|
+|-heal|p1a: Ursaluna|213/308|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Rabsca|Earth Power|p1a: Ursaluna
+|-damage|p1a: Ursaluna|102/308
+|move|p1a: Ursaluna|Calm Mind|p1a: Ursaluna
+|-boost|p1a: Ursaluna|spa|1
+|-boost|p1a: Ursaluna|spd|1
+|
+|-heal|p1a: Ursaluna|121/308|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Rabsca|Earth Power|p1a: Ursaluna
+|-damage|p1a: Ursaluna|44/308
+|move|p1a: Ursaluna|Calm Mind|p1a: Ursaluna
+|-boost|p1a: Ursaluna|spa|1
+|-boost|p1a: Ursaluna|spd|1
+|
+|-heal|p1a: Ursaluna|63/308|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Rabsca|Earth Power|p1a: Ursaluna
+|-damage|p1a: Ursaluna|3/308
+|-unboost|p1a: Ursaluna|spd|1
+|move|p1a: Ursaluna|Calm Mind|p1a: Ursaluna
+|-boost|p1a: Ursaluna|spa|1
+|-boost|p1a: Ursaluna|spd|1
+|
+|-heal|p1a: Ursaluna|22/308|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Rabsca|Earth Power|p1a: Ursaluna
+|-damage|p1a: Ursaluna|0 fnt
+|faint|p1a: Ursaluna
+|
+|upkeep
+|
+|switch|p1a: Annihilape|Annihilape, L76, M|292/292
+|turn|6
+|
+|move|p1a: Annihilape|Rage Fist|p2a: Rabsca
+|-supereffective|p2a: Rabsca
+|-damage|p2a: Rabsca|65/100
+|move|p2a: Rabsca|Earth Power|p1a: Annihilape
+|-damage|p1a: Annihilape|204/292
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Annihilape|Rage Fist|p2a: Rabsca
+|-supereffective|p2a: Rabsca
+|-damage|p2a: Rabsca|0 fnt
+|faint|p2a: Rabsca
+|
+|upkeep
+|
+|switch|p2a: Regice|Regice, L88|100/100
+|turn|8
+|
+|move|p1a: Annihilape|Rage Fist|p2a: Regice
+|-damage|p2a: Regice|67/100
+|move|p2a: Regice|Thunderbolt|p1a: Annihilape
+|-damage|p1a: Annihilape|124/292
+|-status|p1a: Annihilape|par
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Regice|Thunderbolt|p1a: Annihilape
+|-damage|p1a: Annihilape|45/292 par
+|move|p1a: Annihilape|Rage Fist|p2a: Regice
+|-damage|p2a: Regice|8/100
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Regice|Thunderbolt|p1a: Annihilape
+|-damage|p1a: Annihilape|0 fnt
+|faint|p1a: Annihilape
+|
+|upkeep
+|
+|switch|p1a: Flapple|Flapple, L88, F|266/266
+|turn|11
+|
+|-terastallize|p1a: Flapple|Fire
+|move|p1a: Flapple|Outrage|p2a: Regice
+|-damage|p2a: Regice|0 fnt
+|faint|p2a: Regice
+|
+|upkeep
+|
+|switch|p2a: Dewgong|Dewgong, L94, M|100/100
+|turn|12
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Flapple|[miss]
+|-miss|p2a: Dewgong|p1a: Flapple
+|move|p1a: Flapple|Outrage|p2a: Dewgong|[from] lockedmove|[miss]
+|-miss|p1a: Flapple|p2a: Dewgong
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Flapple|[miss]
+|-miss|p2a: Dewgong|p1a: Flapple
+|move|p1a: Flapple|Outrage|p2a: Dewgong
+|-damage|p2a: Dewgong|34/100
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Flapple
+|-supereffective|p1a: Flapple
+|-damage|p1a: Flapple|0 fnt
+|faint|p1a: Flapple
+|
+|upkeep
+|
+|switch|p1a: Pecharunt|Pecharunt, L77|262/262
+|turn|15
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Pecharunt
+|-damage|p1a: Pecharunt|133/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Dewgong
+|-damage|p2a: Dewgong|23/100
+|
+|-heal|p1a: Pecharunt|149/262|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Pecharunt
+|-damage|p1a: Pecharunt|31/262
+|move|p1a: Pecharunt|Shadow Ball|p2a: Dewgong
+|-damage|p2a: Dewgong|11/100
+|
+|-heal|p1a: Pecharunt|47/262|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Pecharunt
+|-damage|p1a: Pecharunt|0 fnt
+|faint|p1a: Pecharunt
+|
+|upkeep
+|
+|switch|p1a: Zekrom|Zekrom, L71|259/259
+|-ability|p1a: Zekrom|Teravolt
+|turn|18
+|
+|move|p2a: Dewgong|Hydro Pump|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-damage|p1a: Zekrom|200/259
+|move|p1a: Zekrom|Outrage|p2a: Dewgong
+|-damage|p2a: Dewgong|0 fnt
+|faint|p2a: Dewgong
+|
+|-heal|p1a: Zekrom|216/259|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Zacian|Zacian-Crowned, L64|100/100
+|-ability|p2a: Zacian|Intrepid Sword|boost
+|-boost|p2a: Zacian|atk|1
+|turn|19
+|
+|move|p2a: Zacian|Close Combat|p1a: Zekrom
+|-damage|p1a: Zekrom|114/259
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Zekrom|Outrage|p2a: Zacian|[from] lockedmove
+|-immune|p2a: Zacian
+|
+|-heal|p1a: Zekrom|130/259|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Zacian|Close Combat|p1a: Zekrom
+|-damage|p1a: Zekrom|38/259
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|move|p1a: Zekrom|Outrage|p2a: Zacian
+|-immune|p2a: Zacian
+|
+|-heal|p1a: Zekrom|54/259|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Zacian|Close Combat|p1a: Zekrom
+|-damage|p1a: Zekrom|0 fnt
+|-unboost|p2a: Zacian|def|1
+|-unboost|p2a: Zacian|spd|1
+|faint|p1a: Zekrom
+|
+|upkeep
+|
+|switch|p1a: Rampardos|Rampardos, L90, F|321/321
+|turn|22
+|
+|move|p1a: Rampardos|Earthquake|p2a: Zacian
+|-supereffective|p2a: Zacian
+|-damage|p2a: Zacian|0 fnt
+|faint|p2a: Zacian
+|
+|upkeep
+|
+|switch|p2a: Regidrago|Regidrago, L77|100/100
+|turn|23
+|
+|move|p2a: Regidrago|Dragon Energy|p1a: Rampardos
+|-damage|p1a: Rampardos|29/321
+|move|p1a: Rampardos|Earthquake|p2a: Regidrago
+|-damage|p2a: Regidrago|55/100
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Regidrago|Dragon Energy|p1a: Rampardos
+|-damage|p1a: Rampardos|0 fnt
+|faint|p1a: Rampardos
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

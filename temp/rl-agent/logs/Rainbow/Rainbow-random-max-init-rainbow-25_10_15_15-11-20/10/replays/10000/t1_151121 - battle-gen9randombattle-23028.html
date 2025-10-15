@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23028</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23028<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23028|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Skarmory|Skarmory, L80, F|235/235
+|switch|p2a: Tauros|Tauros-Paldea-Blaze, L81, M|100/100
+|turn|1
+|
+|switch|p1a: Ceruledge|Ceruledge, L78, M|245/245
+|move|p2a: Tauros|Close Combat|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Tauros|Close Combat|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Close Combat|p2a: Tauros
+|-damage|p2a: Tauros|70/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Tauros|Close Combat|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Close Combat|p2a: Tauros
+|-crit|p2a: Tauros
+|-damage|p2a: Tauros|19/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|-enditem|p2a: Tauros|Sitrus Berry|[eat]
+|-heal|p2a: Tauros|44/100|[from] item: Sitrus Berry
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Tauros|Close Combat|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Close Combat|p2a: Tauros
+|-damage|p2a: Tauros|10/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|-activate|p2a: Tauros|ability: Cud Chew
+|-enditem|p2a: Tauros|Sitrus Berry|[eat]
+|-heal|p2a: Tauros|35/100|[from] item: Sitrus Berry
+|upkeep
+|turn|5
+|
+|switch|p1a: Skarmory|Skarmory, L80, F|235/235
+|move|p2a: Tauros|Close Combat|p1a: Skarmory
+|-damage|p1a: Skarmory|147/235
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|-damage|p2a: Tauros|18/100|[from] item: Rocky Helmet|[of] p1a: Skarmory
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Tauros|Close Combat|p1a: Skarmory
+|-damage|p1a: Skarmory|45/235
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|-damage|p2a: Tauros|2/100|[from] item: Rocky Helmet|[of] p1a: Skarmory
+|move|p1a: Skarmory|Brave Bird|p2a: Tauros
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|0 fnt
+|faint|p2a: Tauros
+|-damage|p1a: Skarmory|44/235|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Illumise|Illumise, L91, F|100/100
+|turn|7
+|
+|switch|p1a: Ceruledge|Ceruledge, L78, M|245/245
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|224/245
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|203/245
+|move|p1a: Ceruledge|Close Combat|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|84/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|170/245
+|-unboost|p1a: Ceruledge|spd|1
+|move|p1a: Ceruledge|Close Combat|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|66/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|116/245
+|move|p1a: Ceruledge|Close Combat|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|47/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|47/245
+|move|p1a: Ceruledge|Close Combat|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|28/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|12
+|
+|switch|p1a: Skarmory|Skarmory, L80, F|44/235
+|move|p2a: Illumise|Bug Buzz|p1a: Skarmory
+|-resisted|p1a: Skarmory
+|-damage|p1a: Skarmory|14/235
+|
+|upkeep
+|turn|13
+|
+|switch|p1a: Ceruledge|Ceruledge, L78, M|47/245
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|24/245
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|3/245
+|move|p1a: Ceruledge|Close Combat|p2a: Illumise
+|-resisted|p2a: Illumise
+|-damage|p2a: Illumise|10/100
+|-unboost|p1a: Ceruledge|def|1
+|-unboost|p1a: Ceruledge|spd|1
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|0 fnt
+|faint|p1a: Ceruledge
+|
+|upkeep
+|
+|switch|p1a: Alcremie|Alcremie-Mint-Cream, L88, F|258/258
+|turn|16
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Alcremie
+|-resisted|p1a: Alcremie
+|-damage|p1a: Alcremie|225/258
+|-unboost|p1a: Alcremie|spd|1
+|move|p1a: Alcremie|Recover|p1a: Alcremie
+|-heal|p1a: Alcremie|258/258
+|
+|upkeep
+|turn|17
+|
+|switch|p1a: Skarmory|Skarmory, L80, F|14/235
+|move|p2a: Illumise|Bug Buzz|p1a: Skarmory
+|-resisted|p1a: Skarmory
+|-damage|p1a: Skarmory|0 fnt
+|faint|p1a: Skarmory
+|
+|upkeep
+|
+|switch|p1a: Brambleghast|Brambleghast, L88, F|240/240
+|turn|18
+|
+|-terastallize|p1a: Brambleghast|Water
+|move|p1a: Brambleghast|Strength Sap|p2a: Illumise
+|-unboost|p2a: Illumise|atk|1
+|move|p2a: Illumise|Bug Buzz|p1a: Brambleghast
+|-damage|p1a: Brambleghast|137/240
+|
+|-heal|p1a: Brambleghast|152/240|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Brambleghast|Strength Sap|p2a: Illumise
+|-unboost|p2a: Illumise|atk|1
+|-heal|p1a: Brambleghast|212/240
+|move|p2a: Illumise|Bug Buzz|p1a: Brambleghast
+|-damage|p1a: Brambleghast|107/240
+|
+|-heal|p1a: Brambleghast|122/240|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Brambleghast|Strength Sap|p2a: Illumise
+|-unboost|p2a: Illumise|atk|1
+|-heal|p1a: Brambleghast|167/240
+|move|p2a: Illumise|Bug Buzz|p1a: Brambleghast
+|-damage|p1a: Brambleghast|68/240
+|
+|-heal|p1a: Brambleghast|83/240|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Brambleghast|Strength Sap|p2a: Illumise
+|-unboost|p2a: Illumise|atk|1
+|-heal|p1a: Brambleghast|119/240
+|move|p2a: Illumise|Bug Buzz|p1a: Brambleghast
+|-damage|p1a: Brambleghast|7/240
+|
+|-heal|p1a: Brambleghast|22/240|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Brambleghast|Strength Sap|p2a: Illumise
+|-unboost|p2a: Illumise|atk|1
+|-heal|p1a: Brambleghast|52/240
+|move|p2a: Illumise|Bug Buzz|p1a: Brambleghast
+|-damage|p1a: Brambleghast|0 fnt
+|faint|p1a: Brambleghast
+|
+|upkeep
+|
+|switch|p1a: Alcremie|Alcremie-Mint-Cream, L88, F|258/258
+|turn|23
+|
+|move|p2a: Illumise|Roost|p2a: Illumise
+|-heal|p2a: Illumise|60/100
+|-singleturn|p2a: Illumise|move: Roost
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Illumise|Roost|p2a: Illumise
+|-heal|p2a: Illumise|100/100
+|-singleturn|p2a: Illumise|move: Roost
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|upkeep
+|turn|26
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Illumise|Roost||[still]
+|-fail|p2a: Illumise|heal
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-status|p1a: Alcremie|par
+|move|p1a: Alcremie|Recover||[still]
+|-fail|p1a: Alcremie|heal
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie|[miss]
+|-miss|p2a: Illumise|p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie|[miss]
+|-miss|p2a: Illumise|p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie|[miss]
+|-miss|p2a: Illumise|p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|44
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|45
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie|[miss]
+|-miss|p2a: Illumise|p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|46
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|47
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|48
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|49
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|50
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|51
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|52
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie|[miss]
+|-miss|p2a: Illumise|p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|53
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|54
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|55
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|56
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|57
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|58
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|59
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|60
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|61
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|62
+|
+|move|p2a: Illumise|Thunder Wave|p1a: Alcremie
+|-fail|p1a: Alcremie|par
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|63
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|64
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|65
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|cant|p1a: Alcremie|par
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|69
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Illumise|Encore|p1a: Alcremie
+|-block|p1a: Alcremie|ability: Aroma Veil|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|upkeep
+|turn|71
+|
+|-activate|p2a: Illumise|move: Struggle
+|move|p2a: Illumise|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|256/258 par
+|-damage|p2a: Illumise|75/100|[from] recoil
+|cant|p1a: Alcremie|par
+|
+|-heal|p1a: Alcremie|258/258 par|[from] item: Leftovers
+|upkeep
+|turn|72
+|
+|-activate|p2a: Illumise|move: Struggle
+|move|p2a: Illumise|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|256/258 par
+|-damage|p2a: Illumise|50/100|[from] recoil
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|258/258 par|[from] item: Leftovers
+|upkeep
+|turn|73
+|
+|-activate|p2a: Illumise|move: Struggle
+|move|p2a: Illumise|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|256/258 par
+|-damage|p2a: Illumise|25/100|[from] recoil
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|258/258 par|[from] item: Leftovers
+|upkeep
+|turn|74
+|
+|-activate|p2a: Illumise|move: Struggle
+|move|p2a: Illumise|Struggle|p1a: Alcremie
+|-damage|p1a: Alcremie|256/258 par
+|-damage|p2a: Illumise|0 fnt|[from] recoil
+|faint|p2a: Illumise
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|258/258 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Shiftry|Shiftry, L89, M|100/100
+|turn|75
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|219/258 par
+|-damage|p2a: Shiftry|91/100|[from] item: Life Orb
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|235/258 par|[from] item: Leftovers
+|upkeep
+|turn|76
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|195/258 par
+|-damage|p2a: Shiftry|81/100|[from] item: Life Orb
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|211/258 par|[from] item: Leftovers
+|upkeep
+|turn|77
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|175/258 par
+|-damage|p2a: Shiftry|71/100|[from] item: Life Orb
+|cant|p1a: Alcremie|par
+|
+|-heal|p1a: Alcremie|191/258 par|[from] item: Leftovers
+|upkeep
+|turn|78
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|151/258 par
+|-damage|p2a: Shiftry|61/100|[from] item: Life Orb
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|-heal|p1a: Alcremie|167/258 par|[from] item: Leftovers
+|upkeep
+|turn|79
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|128/258 par
+|-damage|p2a: Shiftry|51/100|[from] item: Life Orb
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|144/258 par|[from] item: Leftovers
+|upkeep
+|turn|80
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|101/258 par
+|-damage|p2a: Shiftry|41/100|[from] item: Life Orb
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|-heal|p1a: Alcremie|117/258 par|[from] item: Leftovers
+|upkeep
+|turn|81
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|77/258 par
+|-damage|p2a: Shiftry|32/100|[from] item: Life Orb
+|cant|p1a: Alcremie|par
+|
+|-heal|p1a: Alcremie|93/258 par|[from] item: Leftovers
+|upkeep
+|turn|82
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|54/258 par
+|-damage|p2a: Shiftry|22/100|[from] item: Life Orb
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|-heal|p1a: Alcremie|70/258 par|[from] item: Leftovers
+|upkeep
+|turn|83
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|35/258 par
+|-damage|p2a: Shiftry|12/100|[from] item: Life Orb
+|cant|p1a: Alcremie|par
+|
+|-heal|p1a: Alcremie|51/258 par|[from] item: Leftovers
+|upkeep
+|turn|84
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|12/258 par
+|-damage|p2a: Shiftry|2/100|[from] item: Life Orb
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|-heal|p1a: Alcremie|28/258 par|[from] item: Leftovers
+|upkeep
+|turn|85
+|
+|move|p2a: Shiftry|Leaf Blade|p1a: Alcremie
+|-damage|p1a: Alcremie|0 fnt
+|faint|p1a: Alcremie
+|-damage|p2a: Shiftry|0 fnt|[from] item: Life Orb
+|faint|p2a: Shiftry
+|
+|upkeep
+|
+|switch|p2a: Talonflame|Talonflame, L83, F|100/100
+|switch|p1a: Excadrill|Excadrill, L79, M|303/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|86
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|224/303
+|-damage|p2a: Talonflame|91/100|[from] Recoil
+|move|p1a: Excadrill|Iron Head|p2a: Talonflame
+|-resisted|p2a: Talonflame
+|-damage|p2a: Talonflame|70/100
+|
+|upkeep
+|turn|87
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|152/303
+|-damage|p2a: Talonflame|61/100|[from] Recoil
+|move|p1a: Excadrill|Iron Head|p2a: Talonflame
+|-resisted|p2a: Talonflame
+|-damage|p2a: Talonflame|40/100
+|-status|p1a: Excadrill|brn|[from] ability: Flame Body|[of] p2a: Talonflame
+|
+|-damage|p1a: Excadrill|134/303 brn|[from] brn
+|upkeep
+|turn|88
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|53/303 brn
+|-damage|p2a: Talonflame|30/100|[from] Recoil
+|move|p1a: Excadrill|Iron Head|p2a: Talonflame
+|-resisted|p2a: Talonflame
+|-damage|p2a: Talonflame|20/100
+|
+|-damage|p1a: Excadrill|35/303 brn|[from] brn
+|upkeep
+|turn|89
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|faint|p1a: Excadrill
+|-damage|p2a: Talonflame|15/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Landorus|Landorus, L75, M|257/257
+|turn|90
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Landorus
+|-damage|p1a: Landorus|142/257
+|-damage|p2a: Talonflame|1/100|[from] Recoil
+|move|p1a: Landorus|Nasty Plot|p1a: Landorus
+|-boost|p1a: Landorus|spa|2
+|
+|upkeep
+|turn|91
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Landorus
+|-damage|p1a: Landorus|22/257
+|-damage|p2a: Talonflame|0 fnt|[from] Recoil
+|faint|p2a: Talonflame
+|move|p1a: Landorus|Earth Power|p2: Talonflame|[notarget]
+|-fail|p1a: Landorus
+|
+|upkeep
+|
+|switch|p2a: Samurott|Samurott-Hisui, L77, F|100/100
+|turn|92
+|
+|move|p1a: Landorus|Nasty Plot|p1a: Landorus
+|-boost|p1a: Landorus|spa|2
+|move|p2a: Samurott|Razor Shell|p1a: Landorus
+|-supereffective|p1a: Landorus
+|-damage|p1a: Landorus|0 fnt
+|faint|p1a: Landorus
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

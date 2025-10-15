@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22546</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22546<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22546|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Pyroar|Pyroar, L88, M|295/295
+|switch|p2a: Banette|Banette, L93, M|100/100
+|-ability|p1a: Pyroar|Unnerve
+|turn|1
+|
+|move|p1a: Pyroar|Hyper Voice|p2a: Banette
+|-immune|p2a: Banette
+|move|p2a: Banette|Gunk Shot|p1a: Pyroar
+|-damage|p1a: Pyroar|134/295
+|-damage|p2a: Banette|90/100|[from] item: Life Orb
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Pyroar|Work Up|p1a: Pyroar
+|-boost|p1a: Pyroar|atk|1
+|-boost|p1a: Pyroar|spa|1
+|move|p2a: Banette|Gunk Shot|p1a: Pyroar
+|-damage|p1a: Pyroar|0 fnt
+|faint|p1a: Pyroar
+|-damage|p2a: Banette|80/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Glastrier|Glastrier, L86|312/312
+|turn|3
+|
+|-terastallize|p1a: Glastrier|Fighting
+|move|p2a: Banette|Gunk Shot|p1a: Glastrier
+|-damage|p1a: Glastrier|194/312
+|-damage|p2a: Banette|70/100|[from] item: Life Orb
+|move|p1a: Glastrier|Icicle Crash|p2a: Banette
+|-crit|p2a: Banette
+|-damage|p2a: Banette|0 fnt
+|faint|p2a: Banette
+|-ability|p1a: Glastrier|Chilling Neigh|boost
+|-boost|p1a: Glastrier|atk|1
+|
+|upkeep
+|
+|switch|p2a: Cresselia|Cresselia, L80, F|100/100
+|turn|4
+|
+|move|p2a: Cresselia|Moonblast|p1a: Glastrier
+|-supereffective|p1a: Glastrier
+|-damage|p1a: Glastrier|102/312
+|move|p1a: Glastrier|Close Combat|p2a: Cresselia
+|-resisted|p2a: Cresselia
+|-damage|p2a: Cresselia|62/100
+|-unboost|p1a: Glastrier|def|1
+|-unboost|p1a: Glastrier|spd|1
+|
+|-heal|p2a: Cresselia|69/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|switch|p1a: Hariyama|Hariyama, L87, M|392/392
+|move|p2a: Cresselia|Moonblast|p1a: Hariyama
+|-supereffective|p1a: Hariyama
+|-damage|p1a: Hariyama|258/392
+|
+|-heal|p2a: Cresselia|75/100|[from] item: Leftovers
+|-status|p1a: Hariyama|brn|[from] item: Flame Orb
+|upkeep
+|turn|6
+|
+|switch|p1a: Glastrier|Glastrier, L86, tera:Fighting|102/312
+|move|p2a: Cresselia|Moonblast|p1a: Glastrier
+|-supereffective|p1a: Glastrier
+|-damage|p1a: Glastrier|20/312
+|
+|-heal|p2a: Cresselia|81/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Cresselia|Moonblast|p1a: Glastrier
+|-supereffective|p1a: Glastrier
+|-damage|p1a: Glastrier|0 fnt
+|faint|p1a: Glastrier
+|
+|-heal|p2a: Cresselia|87/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Ariados|Ariados, L95, M|287/287
+|turn|8
+|
+|move|p2a: Cresselia|Moonblast|p1a: Ariados
+|-resisted|p1a: Ariados
+|-damage|p1a: Ariados|259/287
+|move|p1a: Ariados|Poison Jab|p2a: Cresselia
+|-damage|p2a: Cresselia|59/100
+|
+|-heal|p2a: Cresselia|66/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Hariyama|Hariyama, L87, M|258/392 brn
+|move|p2a: Cresselia|Moonblast|p1a: Hariyama
+|-supereffective|p1a: Hariyama
+|-damage|p1a: Hariyama|130/392 brn
+|
+|-heal|p2a: Cresselia|72/100|[from] item: Leftovers
+|-damage|p1a: Hariyama|106/392 brn|[from] brn
+|upkeep
+|turn|10
+|
+|switch|p1a: Ariados|Ariados, L95, M|259/287
+|move|p2a: Cresselia|Moonblast|p1a: Ariados
+|-resisted|p1a: Ariados
+|-damage|p1a: Ariados|231/287
+|
+|-heal|p2a: Cresselia|78/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|switch|p1a: Wigglytuff|Wigglytuff, L96, F|424/424
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|353/424
+|-unboost|p1a: Wigglytuff|spa|1
+|-ability|p1a: Wigglytuff|Competitive|boost
+|-boost|p1a: Wigglytuff|spa|2
+|
+|-heal|p2a: Cresselia|84/100|[from] item: Leftovers
+|-heal|p1a: Wigglytuff|379/424|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|315/424
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p2a: Cresselia|90/100|[from] item: Leftovers
+|-heal|p1a: Wigglytuff|341/424|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|271/424
+|-unboost|p1a: Wigglytuff|spa|1
+|-ability|p1a: Wigglytuff|Competitive|boost
+|-boost|p1a: Wigglytuff|spa|2
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|424/424|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p2a: Cresselia|96/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|switch|p1a: Raichu|Raichu-Alola, L87, F|246/246
+|move|p2a: Cresselia|Moonblast|p1a: Raichu
+|-damage|p1a: Raichu|194/246
+|
+|-heal|p2a: Cresselia|100/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Raichu|Thunderbolt|p2a: Cresselia
+|-damage|p2a: Cresselia|65/100
+|-damage|p1a: Raichu|170/246|[from] item: Life Orb
+|move|p2a: Cresselia|Moonblast|p1a: Raichu
+|-damage|p1a: Raichu|117/246
+|
+|-heal|p2a: Cresselia|71/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Raichu|Thunderbolt|p2a: Cresselia
+|-damage|p2a: Cresselia|38/100
+|-damage|p1a: Raichu|93/246|[from] item: Life Orb
+|move|p2a: Cresselia|Moonblast|p1a: Raichu
+|-damage|p1a: Raichu|43/246
+|
+|-heal|p2a: Cresselia|44/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Raichu|Thunderbolt|p2a: Cresselia
+|-damage|p2a: Cresselia|9/100
+|-damage|p1a: Raichu|19/246|[from] item: Life Orb
+|move|p2a: Cresselia|Moonblast|p1a: Raichu
+|-damage|p1a: Raichu|0 fnt
+|faint|p1a: Raichu
+|
+|-heal|p2a: Cresselia|15/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Wigglytuff|Wigglytuff, L96, F|424/424
+|turn|18
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|355/424
+|-unboost|p1a: Wigglytuff|spa|1
+|-ability|p1a: Wigglytuff|Competitive|boost
+|-boost|p1a: Wigglytuff|spa|2
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p2a: Cresselia|22/100|[from] item: Leftovers
+|-heal|p1a: Wigglytuff|381/424|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|319/424
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|424/424|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p2a: Cresselia|28/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|355/424
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p2a: Cresselia|34/100|[from] item: Leftovers
+|-heal|p1a: Wigglytuff|381/424|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|315/424
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|424/424|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p2a: Cresselia|40/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Cresselia|Moonblast|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|358/424
+|-unboost|p1a: Wigglytuff|spa|1
+|-ability|p1a: Wigglytuff|Competitive|boost
+|-boost|p1a: Wigglytuff|spa|2
+|move|p1a: Wigglytuff|Alluring Voice|p2a: Cresselia
+|-damage|p2a: Cresselia|0 fnt
+|faint|p2a: Cresselia
+|
+|-heal|p1a: Wigglytuff|384/424|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Vaporeon|Vaporeon, L86, F|100/100
+|turn|23
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|254/424
+|-status|p1a: Wigglytuff|brn
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|280/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|254/424 brn|[from] brn
+|upkeep
+|turn|24
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|125/424 brn
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|337/424 brn|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p1a: Wigglytuff|363/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|337/424 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|210/424 brn
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|236/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|210/424 brn|[from] brn
+|upkeep
+|turn|26
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|74/424 brn
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|286/424 brn|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p1a: Wigglytuff|312/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|286/424 brn|[from] brn
+|upkeep
+|turn|27
+|
+|switch|p1a: Hariyama|Hariyama, L87, M|106/392 brn
+|move|p2a: Vaporeon|Scald|p1a: Hariyama
+|-damage|p1a: Hariyama|0 fnt
+|faint|p1a: Hariyama
+|
+|upkeep
+|
+|switch|p1a: Wigglytuff|Wigglytuff, L96, F|286/424 brn
+|turn|28
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|148/424 brn
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|174/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|148/424 brn|[from] brn
+|upkeep
+|turn|29
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|12/424 brn
+|move|p1a: Wigglytuff|Wish||[still]
+|-fail|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|224/424 brn|[from] move: Wish|[wisher] Wigglytuff
+|-heal|p1a: Wigglytuff|250/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|224/424 brn|[from] brn
+|upkeep
+|turn|30
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|97/424 brn
+|move|p1a: Wigglytuff|Wish|p1a: Wigglytuff
+|
+|-heal|p1a: Wigglytuff|123/424 brn|[from] item: Leftovers
+|-damage|p1a: Wigglytuff|97/424 brn|[from] brn
+|upkeep
+|turn|31
+|
+|move|p2a: Vaporeon|Scald|p1a: Wigglytuff
+|-damage|p1a: Wigglytuff|0 fnt
+|faint|p1a: Wigglytuff
+|
+|upkeep
+|
+|switch|p1a: Ariados|Ariados, L95, M|231/287
+|turn|32
+|
+|move|p2a: Vaporeon|Scald|p1a: Ariados
+|-damage|p1a: Ariados|122/287
+|-status|p1a: Ariados|brn
+|move|p1a: Ariados|Poison Jab|p2a: Vaporeon
+|-damage|p2a: Vaporeon|83/100
+|
+|-heal|p2a: Vaporeon|89/100|[from] item: Leftovers
+|-damage|p1a: Ariados|105/287 brn|[from] brn
+|upkeep
+|turn|33
+|
+|move|p2a: Vaporeon|Scald|p1a: Ariados
+|-damage|p1a: Ariados|8/287 brn
+|move|p1a: Ariados|Poison Jab|p2a: Vaporeon
+|-damage|p2a: Vaporeon|69/100
+|-status|p2a: Vaporeon|psn
+|
+|-heal|p2a: Vaporeon|75/100 psn|[from] item: Leftovers
+|-damage|p2a: Vaporeon|63/100 psn|[from] psn
+|-damage|p1a: Ariados|0 fnt|[from] brn
+|faint|p1a: Ariados
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22711</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22711<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22711|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rhydon|Rhydon, L85, M|317/317
+|switch|p2a: Hydrapple|Hydrapple, L83, M|100/100
+|turn|1
+|
+|switch|p1a: Salamence|Salamence, L77, F|273/273
+|-ability|p1a: Salamence|Intimidate|boost
+|-unboost|p2a: Hydrapple|atk|1
+|move|p2a: Hydrapple|Leaf Storm|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|203/273
+|-unboost|p2a: Hydrapple|spa|2
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Bronzong|Bronzong, L88|261/261
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|215/261
+|-unboost|p2a: Hydrapple|spa|2
+|
+|-heal|p1a: Bronzong|231/261|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|201/261
+|-unboost|p2a: Hydrapple|spa|2
+|move|p1a: Bronzong|Iron Head|p2a: Hydrapple
+|-damage|p2a: Hydrapple|76/100
+|
+|-heal|p1a: Bronzong|217/261|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|195/261
+|move|p1a: Bronzong|Iron Head|p2a: Hydrapple
+|-damage|p2a: Hydrapple|54/100
+|
+|-heal|p1a: Bronzong|211/261|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|187/261
+|move|p1a: Bronzong|Iron Head|p2a: Hydrapple
+|-damage|p2a: Hydrapple|30/100
+|
+|-heal|p1a: Bronzong|203/261|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|-terastallize|p1a: Bronzong|Water
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-supereffective|p1a: Bronzong
+|-damage|p1a: Bronzong|107/261
+|move|p1a: Bronzong|Stealth Rock|p2a: Hydrapple
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|-heal|p1a: Bronzong|123/261|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Hydrapple|Leaf Storm|p1a: Bronzong
+|-supereffective|p1a: Bronzong
+|-damage|p1a: Bronzong|33/261
+|move|p1a: Bronzong|Iron Head|p2a: Hydrapple
+|-crit|p2a: Hydrapple
+|-damage|p2a: Hydrapple|0 fnt
+|faint|p2a: Hydrapple
+|
+|-heal|p1a: Bronzong|49/261|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Kingdra|Kingdra, L84, F|100/100
+|-damage|p2a: Kingdra|88/100|[from] Stealth Rock
+|turn|8
+|
+|move|p2a: Kingdra|Outrage|p1a: Bronzong
+|-damage|p1a: Bronzong|0 fnt
+|faint|p1a: Bronzong
+|
+|upkeep
+|
+|switch|p1a: Azumarill|Azumarill, L82, F|298/298
+|turn|9
+|
+|move|p2a: Kingdra|Outrage|p1a: Azumarill|[from] lockedmove
+|-immune|p1a: Azumarill
+|-start|p2a: Kingdra|confusion|[fatigue]
+|-enditem|p2a: Kingdra|Lum Berry|[eat]
+|-end|p2a: Kingdra|confusion
+|move|p1a: Azumarill|Play Rough|p2a: Kingdra
+|-supereffective|p2a: Kingdra
+|-damage|p2a: Kingdra|0 fnt
+|faint|p2a: Kingdra
+|
+|upkeep
+|
+|switch|p2a: Eiscue|Eiscue, L88, F|100/100
+|-damage|p2a: Eiscue|76/100|[from] Stealth Rock
+|turn|10
+|
+|switch|p1a: Lilligant|Lilligant, L86, F|261/261
+|move|p2a: Eiscue|Liquidation|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|229/261
+|
+|upkeep
+|turn|11
+|
+|switch|p1a: Azumarill|Azumarill, L82, F|298/298
+|move|p2a: Eiscue|Liquidation|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|269/298
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Eiscue|Liquidation|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|237/298
+|move|p1a: Azumarill|Play Rough|p2a: Eiscue
+|-activate|p2a: Eiscue|ability: Ice Face
+|-damage|p2a: Eiscue|76/100
+|-unboost|p2a: Eiscue|atk|1
+|detailschange|p2a: Eiscue|Eiscue-Noice, L88, F
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Eiscue|Liquidation|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|216/298
+|move|p1a: Azumarill|Play Rough|p2a: Eiscue
+|-damage|p2a: Eiscue|2/100
+|-enditem|p2a: Eiscue|Sitrus Berry|[eat]
+|-heal|p2a: Eiscue|27/100|[from] item: Sitrus Berry
+|
+|upkeep
+|turn|14
+|
+|switch|p1a: Salamence|Salamence, L77, F|203/273
+|-ability|p1a: Salamence|Intimidate|boost
+|-unboost|p2a: Eiscue|atk|1
+|move|p2a: Eiscue|Liquidation|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|187/273
+|-unboost|p1a: Salamence|def|1
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Eiscue|Liquidation|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|164/273
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Eiscue|Liquidation|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|249/273
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|
+|upkeep
+|turn|17
+|
+|switch|p1a: Azumarill|Azumarill, L82, F|216/298
+|move|p2a: Eiscue|Liquidation|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|201/298
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Eiscue|Liquidation|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|186/298
+|-unboost|p1a: Azumarill|def|1
+|move|p1a: Azumarill|Play Rough|p2a: Eiscue
+|-damage|p2a: Eiscue|0 fnt
+|faint|p2a: Eiscue
+|
+|upkeep
+|
+|switch|p2a: Dugtrio|Dugtrio, L84, M|100/100
+|-damage|p2a: Dugtrio|94/100|[from] Stealth Rock
+|turn|19
+|
+|move|p2a: Dugtrio|Stone Edge|p1a: Azumarill
+|-damage|p1a: Azumarill|27/298
+|-damage|p2a: Dugtrio|85/100|[from] item: Life Orb
+|move|p1a: Azumarill|Play Rough|p2a: Dugtrio
+|-damage|p2a: Dugtrio|0 fnt
+|faint|p2a: Dugtrio
+|
+|upkeep
+|
+|switch|p2a: Volcarona|Volcarona, L77, F|100/100
+|turn|20
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Azumarill
+|-resisted|p1a: Azumarill
+|-damage|p1a: Azumarill|0 fnt
+|faint|p1a: Azumarill
+|
+|upkeep
+|
+|switch|p1a: Rhydon|Rhydon, L85, M|317/317
+|turn|21
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Rhydon
+|-resisted|p1a: Rhydon
+|-damage|p1a: Rhydon|254/317
+|-status|p1a: Rhydon|brn
+|move|p1a: Rhydon|Swords Dance|p1a: Rhydon
+|-boost|p1a: Rhydon|atk|2
+|
+|-damage|p1a: Rhydon|235/317 brn|[from] brn
+|upkeep
+|turn|22
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Rhydon
+|-resisted|p1a: Rhydon
+|-damage|p1a: Rhydon|175/317 brn
+|move|p1a: Rhydon|Swords Dance|p1a: Rhydon
+|-boost|p1a: Rhydon|atk|2
+|
+|-damage|p1a: Rhydon|156/317 brn|[from] brn
+|upkeep
+|turn|23
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Rhydon
+|-resisted|p1a: Rhydon
+|-damage|p1a: Rhydon|90/317 brn
+|move|p1a: Rhydon|Swords Dance|p1a: Rhydon
+|-boost|p1a: Rhydon|atk|2
+|
+|-damage|p1a: Rhydon|71/317 brn|[from] brn
+|upkeep
+|turn|24
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Rhydon
+|-resisted|p1a: Rhydon
+|-damage|p1a: Rhydon|10/317 brn
+|move|p1a: Rhydon|Swords Dance|p1a: Rhydon
+|-boost|p1a: Rhydon|atk|0
+|
+|-damage|p1a: Rhydon|0 fnt|[from] brn
+|faint|p1a: Rhydon
+|upkeep
+|
+|switch|p1a: Alcremie|Alcremie-Ruby-Cream, L88, F|258/258
+|turn|25
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Alcremie
+|-damage|p1a: Alcremie|171/258
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|-heal|p1a: Alcremie|187/258|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Alcremie|[miss]
+|-miss|p2a: Volcarona|p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|-heal|p1a: Alcremie|203/258|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Volcarona|Fire Blast|p1a: Alcremie
+|-damage|p1a: Alcremie|107/258
+|move|p1a: Alcremie|Dazzling Gleam|p2a: Volcarona
+|-resisted|p2a: Volcarona
+|-damage|p2a: Volcarona|81/100
+|
+|-heal|p1a: Alcremie|123/258|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Volcarona|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|83/258
+|-heal|p2a: Volcarona|88/100|[from] drain|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|2
+|
+|-heal|p1a: Alcremie|99/258|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Volcarona|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|57/258
+|-heal|p2a: Volcarona|97/100|[from] drain|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|73/258|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Volcarona|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|28/258
+|-heal|p2a: Volcarona|100/100|[from] drain|[of] p1a: Alcremie
+|move|p1a: Alcremie|Acid Armor|p1a: Alcremie
+|-boost|p1a: Alcremie|def|0
+|
+|-heal|p1a: Alcremie|44/258|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Volcarona|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|2/258
+|move|p1a: Alcremie|Calm Mind|p1a: Alcremie
+|-boost|p1a: Alcremie|spa|1
+|-boost|p1a: Alcremie|spd|1
+|
+|-heal|p1a: Alcremie|18/258|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Volcarona|Giga Drain|p1a: Alcremie
+|-damage|p1a: Alcremie|0 fnt
+|faint|p1a: Alcremie
+|
+|upkeep
+|
+|switch|p1a: Lilligant|Lilligant, L86, F|229/261
+|turn|33
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|207/261
+|
+|upkeep
+|turn|34
+|
+|move|p1a: Lilligant|Sleep Powder|p2a: Volcarona
+|-status|p2a: Volcarona|slp|[from] move: Sleep Powder
+|cant|p2a: Volcarona|slp
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|cant|p2a: Volcarona|slp
+|
+|upkeep
+|turn|36
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|-curestatus|p2a: Volcarona|slp|[msg]
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|195/261
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|184/261
+|
+|upkeep
+|turn|38
+|
+|move|p1a: Lilligant|Sleep Powder|p2a: Volcarona|[miss]
+|-miss|p1a: Lilligant|p2a: Volcarona
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|173/261
+|
+|upkeep
+|turn|39
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|164/261
+|
+|upkeep
+|turn|40
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|1
+|-boost|p1a: Lilligant|spd|1
+|-boost|p1a: Lilligant|spe|1
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|156/261
+|
+|upkeep
+|turn|41
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|0
+|-boost|p1a: Lilligant|spd|0
+|-boost|p1a: Lilligant|spe|0
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|149/261
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|0
+|-boost|p1a: Lilligant|spd|0
+|-boost|p1a: Lilligant|spe|0
+|move|p2a: Volcarona|Giga Drain|p1a: Lilligant
+|-resisted|p1a: Lilligant
+|-damage|p1a: Lilligant|142/261
+|
+|upkeep
+|turn|43
+|
+|move|p1a: Lilligant|Tera Blast|p2a: Volcarona
+|-damage|p2a: Volcarona|0 fnt
+|faint|p2a: Volcarona
+|-damage|p1a: Lilligant|116/261|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Armarouge|Armarouge, L80, M|100/100
+|-damage|p2a: Armarouge|76/100|[from] Stealth Rock
+|turn|44
+|
+|move|p1a: Lilligant|Quiver Dance|p1a: Lilligant
+|-boost|p1a: Lilligant|spa|0
+|-boost|p1a: Lilligant|spd|0
+|-boost|p1a: Lilligant|spe|0
+|move|p2a: Armarouge|Armor Cannon|p1a: Lilligant
+|-supereffective|p1a: Lilligant
+|-damage|p1a: Lilligant|0 fnt
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|faint|p1a: Lilligant
+|
+|upkeep
+|
+|switch|p1a: Salamence|Salamence, L77, F|249/273
+|-ability|p1a: Salamence|Intimidate|boost
+|-unboost|p2a: Armarouge|atk|1
+|turn|45
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|159/273
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|
+|upkeep
+|turn|46
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|142/273
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|
+|upkeep
+|turn|47
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|149/273
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|
+|upkeep
+|turn|48
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|150/273
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|
+|upkeep
+|turn|49
+|
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|26/273
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|
+|upkeep
+|turn|50
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|163/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|44/273
+|
+|upkeep
+|turn|51
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|181/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Armarouge|Armor Cannon|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|67/273
+|
+|upkeep
+|turn|52
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|204/273
+|-singleturn|p1a: Salamence|move: Roost
+|-activate|p2a: Armarouge|move: Struggle
+|move|p2a: Armarouge|Struggle|p1a: Salamence
+|-damage|p1a: Salamence|191/273
+|-damage|p2a: Armarouge|51/100|[from] recoil
+|
+|upkeep
+|turn|53
+|
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|-activate|p2a: Armarouge|move: Struggle
+|move|p2a: Armarouge|Struggle|p1a: Salamence
+|-damage|p1a: Salamence|179/273
+|-damage|p2a: Armarouge|26/100|[from] recoil
+|
+|upkeep
+|turn|54
+|
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|-activate|p2a: Armarouge|move: Struggle
+|move|p2a: Armarouge|Struggle|p1a: Salamence
+|-damage|p1a: Salamence|166/273
+|-damage|p2a: Armarouge|0 fnt|[from] recoil
+|faint|p2a: Armarouge
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

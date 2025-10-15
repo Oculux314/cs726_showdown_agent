@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23016</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23016<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23016|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Salamence|Salamence, L77, F|273/273
+|switch|p2a: Comfey|Comfey, L85, M|100/100
+|turn|1
+|
+|switch|p1a: Ceruledge|Ceruledge, L78, M|245/245
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|2
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|2
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|2
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Comfey|Tera Blast|p1a: Ceruledge
+|-immune|p1a: Ceruledge
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|223/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|200/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|174/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|150/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-crit|p1a: Ceruledge
+|-damage|p1a: Ceruledge|114/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|90/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|65/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|43/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|19/245
+|move|p1a: Ceruledge|Swords Dance|p1a: Ceruledge
+|-boost|p1a: Ceruledge|atk|0
+|
+|upkeep
+|turn|26
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Ceruledge
+|-resisted|p1a: Ceruledge
+|-damage|p1a: Ceruledge|0 fnt
+|faint|p1a: Ceruledge
+|
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|265/265
+|turn|27
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Talonflame
+|-resisted|p1a: Talonflame
+|-damage|p1a: Talonflame|235/265
+|-status|p2a: Comfey|brn|[from] ability: Flame Body|[of] p1a: Talonflame
+|move|p1a: Talonflame|U-turn|p2a: Comfey
+|-resisted|p2a: Comfey
+|-damage|p2a: Comfey|92/100 brn
+|
+|switch|p1a: Pachirisu|Pachirisu, L96, M|271/271|[from] U-turn
+|
+|-heal|p2a: Comfey|98/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|92/100 brn|[from] brn
+|upkeep
+|turn|28
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Pachirisu
+|-crit|p1a: Pachirisu
+|-damage|p1a: Pachirisu|205/271
+|-heal|p2a: Comfey|100/100 brn|[from] drain|[of] p1a: Pachirisu
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|77/100 brn
+|
+|-heal|p2a: Comfey|84/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|77/100 brn|[from] brn
+|upkeep
+|turn|29
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Pachirisu
+|-damage|p1a: Pachirisu|160/271
+|-heal|p2a: Comfey|92/100 brn|[from] drain|[of] p1a: Pachirisu
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|67/100 brn
+|
+|-heal|p2a: Comfey|73/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|67/100 brn|[from] brn
+|upkeep
+|turn|30
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Pachirisu
+|-damage|p1a: Pachirisu|120/271
+|-heal|p2a: Comfey|80/100 brn|[from] drain|[of] p1a: Pachirisu
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|57/100 brn
+|
+|-heal|p2a: Comfey|64/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|57/100 brn|[from] brn
+|upkeep
+|turn|31
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Pachirisu
+|-damage|p1a: Pachirisu|80/271
+|-heal|p2a: Comfey|71/100 brn|[from] drain|[of] p1a: Pachirisu
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|45/100 brn
+|
+|-heal|p2a: Comfey|52/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|45/100 brn|[from] brn
+|upkeep
+|turn|32
+|
+|move|p2a: Comfey|Draining Kiss|p1a: Pachirisu
+|-damage|p1a: Pachirisu|37/271
+|-heal|p2a: Comfey|60/100 brn|[from] drain|[of] p1a: Pachirisu
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|34/100 brn
+|
+|-heal|p2a: Comfey|40/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|34/100 brn|[from] brn
+|upkeep
+|turn|33
+|
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|10/100 brn
+|move|p2a: Comfey|Calm Mind|p2a: Comfey
+|-boost|p2a: Comfey|spa|1
+|-boost|p2a: Comfey|spd|1
+|
+|-heal|p2a: Comfey|16/100 brn|[from] item: Leftovers
+|-damage|p2a: Comfey|10/100 brn|[from] brn
+|upkeep
+|turn|34
+|
+|move|p1a: Pachirisu|Discharge|p2a: Comfey
+|-damage|p2a: Comfey|0 fnt
+|faint|p2a: Comfey
+|
+|upkeep
+|
+|switch|p2a: Dusknoir|Dusknoir, L89, F|100/100
+|-item|p1a: Pachirisu|Heavy-Duty Boots|[from] ability: Frisk|[of] p2a: Dusknoir
+|turn|35
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|79/100
+|-status|p2a: Dusknoir|par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|85/100 par|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|66/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|72/100 par|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|52/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|59/100 par|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|39/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|45/100 par|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|switch|p1a: Shiftry|Shiftry, L89, F|305/305
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p2a: Dusknoir|Focus Punch|p1a: Shiftry
+|-supereffective|p1a: Shiftry
+|-damage|p1a: Shiftry|15/305
+|
+|-heal|p2a: Dusknoir|51/100 par|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Shiftry|Leaf Blade|p2a: Dusknoir
+|-damage|p2a: Dusknoir|9/100 par
+|-damage|p1a: Shiftry|0 fnt|[from] item: Life Orb
+|faint|p1a: Shiftry
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|16/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|235/265
+|turn|41
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|9/100 par
+|
+|switch|p1a: Salamence|Salamence, L77, F|273/273|[from] U-turn
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|15/100 par|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost||[still]
+|-fail|p1a: Salamence|heal
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|204/273
+|
+|-heal|p2a: Dusknoir|21/100 par|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-damage|p1a: Salamence|143/273
+|
+|-heal|p2a: Dusknoir|28/100 par|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-damage|p1a: Salamence|140/273
+|
+|-heal|p2a: Dusknoir|34/100 par|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-damage|p1a: Salamence|143/273
+|
+|-heal|p2a: Dusknoir|40/100 par|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-damage|p1a: Salamence|124/273
+|
+|-heal|p2a: Dusknoir|46/100 par|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|261/273
+|-singleturn|p1a: Salamence|move: Roost
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|52/100 par|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|59/100 par|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Roost||[still]
+|-fail|p1a: Salamence|heal
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|65/100 par|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|199/273
+|
+|-heal|p2a: Dusknoir|71/100 par|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|134/273
+|
+|-heal|p2a: Dusknoir|77/100 par|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|84/100 par|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|64/273
+|
+|-heal|p2a: Dusknoir|90/100 par|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Salamence|Dragon Dance|p1a: Salamence
+|-boost|p1a: Salamence|atk|1
+|-boost|p1a: Salamence|spe|1
+|move|p2a: Dusknoir|Focus Punch|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|0 fnt
+|faint|p1a: Salamence
+|
+|-heal|p2a: Dusknoir|96/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|235/265
+|turn|55
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|89/100 par
+|
+|switch|p1a: Pachirisu|Pachirisu, L96, M|37/271|[from] U-turn
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|96/100 par|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|75/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|81/100 par|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Discharge|p2a: Dusknoir
+|-damage|p2a: Dusknoir|61/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|67/100 par|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|-terastallize|p1a: Pachirisu|Flying
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Pachirisu|Super Fang|p2a: Dusknoir
+|-immune|p2a: Dusknoir
+|move|p2a: Dusknoir|Focus Punch|p1a: Pachirisu
+|-resisted|p1a: Pachirisu
+|-damage|p1a: Pachirisu|0 fnt
+|faint|p1a: Pachirisu
+|
+|-heal|p2a: Dusknoir|73/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|235/265
+|turn|59
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-crit|p2a: Dusknoir
+|-damage|p2a: Dusknoir|63/100 par
+|
+|switch|p1a: Samurott|Samurott, L88, F|310/310|[from] U-turn
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|69/100 par|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Samurott|Hydro Pump|p2a: Dusknoir|[miss]
+|-miss|p1a: Samurott|p2a: Dusknoir
+|move|p2a: Dusknoir|Focus Punch|p1a: Samurott
+|-damage|p1a: Samurott|198/310
+|
+|-heal|p2a: Dusknoir|76/100 par|[from] item: Leftovers
+|upkeep
+|turn|61
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Samurott|Hydro Pump|p2a: Dusknoir
+|-damage|p2a: Dusknoir|36/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|43/100 par|[from] item: Leftovers
+|upkeep
+|turn|62
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Samurott|Hydro Pump|p2a: Dusknoir|[miss]
+|-miss|p1a: Samurott|p2a: Dusknoir
+|move|p2a: Dusknoir|Focus Punch|p1a: Samurott
+|-damage|p1a: Samurott|82/310
+|
+|-heal|p2a: Dusknoir|49/100 par|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Samurott|Hydro Pump|p2a: Dusknoir|[miss]
+|-miss|p1a: Samurott|p2a: Dusknoir
+|move|p2a: Dusknoir|Focus Punch|p1a: Samurott
+|-damage|p1a: Samurott|0 fnt
+|faint|p1a: Samurott
+|
+|-heal|p2a: Dusknoir|55/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|235/265
+|turn|64
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|48/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|54/100 par|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|48/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|54/100 par|[from] item: Leftovers
+|upkeep
+|turn|66
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|67
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|68
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|69
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|70
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|71
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|47/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|72
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|Brave Bird|p2a: Dusknoir
+|-damage|p2a: Dusknoir|17/100 par
+|-damage|p1a: Talonflame|208/265|[from] Recoil
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|23/100 par|[from] item: Leftovers
+|upkeep
+|turn|73
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|16/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|23/100 par|[from] item: Leftovers
+|upkeep
+|turn|74
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|16/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|22/100 par|[from] item: Leftovers
+|upkeep
+|turn|75
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|15/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|21/100 par|[from] item: Leftovers
+|upkeep
+|turn|76
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|15/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|21/100 par|[from] item: Leftovers
+|upkeep
+|turn|77
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|15/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|21/100 par|[from] item: Leftovers
+|upkeep
+|turn|78
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|14/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|79
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|14/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|80
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|13/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|81
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|14/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|82
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|14/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|83
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-crit|p2a: Dusknoir
+|-damage|p2a: Dusknoir|10/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|16/100 par|[from] item: Leftovers
+|upkeep
+|turn|84
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|9/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|15/100 par|[from] item: Leftovers
+|upkeep
+|turn|85
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|9/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|16/100 par|[from] item: Leftovers
+|upkeep
+|turn|86
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|9/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|15/100 par|[from] item: Leftovers
+|upkeep
+|turn|87
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|15/100 par|[from] item: Leftovers
+|upkeep
+|turn|88
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|14/100 par|[from] item: Leftovers
+|upkeep
+|turn|89
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|14/100 par|[from] item: Leftovers
+|upkeep
+|turn|90
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Dusknoir|14/100 par|[from] item: Leftovers
+|upkeep
+|turn|91
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|14/100 par|[from] item: Leftovers
+|upkeep
+|turn|92
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|U-turn|p2a: Dusknoir
+|-resisted|p2a: Dusknoir
+|-damage|p2a: Dusknoir|8/100 par
+|cant|p2a: Dusknoir|par
+|
+|-heal|p2a: Dusknoir|14/100 par|[from] item: Leftovers
+|upkeep
+|turn|93
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|Roost|p1a: Talonflame
+|-heal|p1a: Talonflame|265/265
+|-singleturn|p1a: Talonflame|move: Roost
+|move|p2a: Dusknoir|Focus Punch|p1a: Talonflame
+|-damage|p1a: Talonflame|114/265
+|
+|-heal|p2a: Dusknoir|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|94
+|
+|-singleturn|p2a: Dusknoir|move: Focus Punch
+|move|p1a: Talonflame|Brave Bird|p2a: Dusknoir
+|-damage|p2a: Dusknoir|0 fnt
+|faint|p2a: Dusknoir
+|-damage|p1a: Talonflame|99/265|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Lokix|Lokix, L82, F|100/100
+|turn|95
+|
+|move|p2a: Lokix|First Impression|p1a: Talonflame
+|-resisted|p1a: Talonflame
+|-damage|p1a: Talonflame|29/265
+|-damage|p2a: Lokix|91/100|[from] item: Life Orb
+|move|p1a: Talonflame|Roost|p1a: Talonflame
+|-heal|p1a: Talonflame|162/265
+|-singleturn|p1a: Talonflame|move: Roost
+|
+|upkeep
+|turn|96
+|
+|move|p2a: Lokix|First Impression||[still]
+|-hint|First Impression only works on your first turn out.
+|-fail|p2a: Lokix
+|move|p1a: Talonflame|Brave Bird|p2a: Lokix
+|-supereffective|p2a: Lokix
+|-damage|p2a: Lokix|0 fnt
+|faint|p2a: Lokix
+|-damage|p1a: Talonflame|87/265|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Arceus|Arceus-Water, L71|100/100
+|turn|97
+|
+|move|p1a: Talonflame|Roost|p1a: Talonflame
+|-heal|p1a: Talonflame|220/265
+|-singleturn|p1a: Talonflame|move: Roost
+|move|p2a: Arceus|Judgment|p1a: Talonflame
+|-supereffective|p1a: Talonflame
+|-damage|p1a: Talonflame|0 fnt
+|faint|p1a: Talonflame
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

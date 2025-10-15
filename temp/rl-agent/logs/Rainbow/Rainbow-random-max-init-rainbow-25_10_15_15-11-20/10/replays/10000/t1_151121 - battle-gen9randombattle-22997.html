@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22997</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22997<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22997|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Veluza|Veluza, L85, M|292/292
+|switch|p2a: Maushold|Maushold, L76|100/100
+|turn|1
+|
+|switch|p1a: Lapras|Lapras, L87, F|367/367
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|321/367
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|278/367
+|cant|p1a: Lapras|flinch
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|234/367
+|move|p1a: Lapras|Icicle Spear|p2a: Maushold
+|-damage|p2a: Maushold|87/100
+|-damage|p2a: Maushold|73/100
+|-damage|p2a: Maushold|60/100
+|-damage|p2a: Maushold|47/100
+|-damage|p2a: Maushold|32/100
+|-hitcount|p2a: Maushold|5
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|189/367
+|cant|p1a: Lapras|flinch
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|144/367
+|cant|p1a: Lapras|flinch
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Maushold|Bite|p1a: Lapras
+|-damage|p1a: Lapras|96/367
+|move|p1a: Lapras|Icicle Spear|p2a: Maushold
+|-crit|p2a: Maushold
+|-damage|p2a: Maushold|11/100
+|-damage|p2a: Maushold|0 fnt
+|faint|p2a: Maushold
+|-hitcount|p2: Maushold|2
+|
+|upkeep
+|
+|switch|p2a: Raging Bolt|Raging Bolt, L78|100/100
+|turn|7
+|
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Lapras
+|-damage|p1a: Lapras|0 fnt
+|-unboost|p2a: Raging Bolt|spa|2
+|faint|p1a: Lapras
+|
+|upkeep
+|
+|switch|p1a: Illumise|Illumise, L91, F|266/266
+|turn|8
+|
+|move|p1a: Illumise|Roost||[still]
+|-fail|p1a: Illumise|heal
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-damage|p1a: Illumise|190/266
+|-unboost|p2a: Raging Bolt|spa|2
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-crit|p1a: Illumise
+|-damage|p1a: Illumise|28/266
+|-unboost|p2a: Raging Bolt|spa|2
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|161/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-damage|p1a: Illumise|119/266
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|252/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-damage|p1a: Illumise|213/266
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-damage|p1a: Illumise|174/266
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise|[miss]
+|-miss|p2a: Raging Bolt|p1a: Illumise
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt|[miss]
+|-miss|p1a: Illumise|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Draco Meteor|p1a: Illumise
+|-damage|p1a: Illumise|138/266
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|238/266
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|211/266
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|241/266
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|238/266
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|213/266
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|239/266
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|214/266
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|186/266
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|156/266
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|131/266
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|104/266
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|76/266
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|48/266
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|23/266
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Raging Bolt
+|-immune|p2a: Raging Bolt
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Illumise
+|-damage|p1a: Illumise|0 fnt
+|faint|p1a: Illumise
+|
+|upkeep
+|
+|switch|p1a: Kricketune|Kricketune, L99, F|312/312
+|turn|30
+|
+|move|p1a: Kricketune|Sticky Web|p2a: Raging Bolt
+|-sidestart|p2: t2_151121|move: Sticky Web
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|275/312
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Kricketune|Sticky Web||[still]
+|-fail|p1a: Kricketune
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|239/312
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Kricketune|Sticky Web||[still]
+|-fail|p1a: Kricketune
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|203/312
+|-status|p1a: Kricketune|par
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|167/312 par
+|move|p1a: Kricketune|Sticky Web||[still]
+|-fail|p1a: Kricketune
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|134/312 par
+|cant|p1a: Kricketune|par
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|98/312 par
+|cant|p1a: Kricketune|par
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|65/312 par
+|move|p1a: Kricketune|Sticky Web||[still]
+|-fail|p1a: Kricketune
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|28/312 par
+|cant|p1a: Kricketune|par
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Raging Bolt|Thunderbolt|p1a: Kricketune
+|-damage|p1a: Kricketune|0 fnt
+|faint|p1a: Kricketune
+|
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, M|292/292
+|turn|39
+|
+|move|p2a: Raging Bolt|Thunderclap|p1a: Veluza
+|-supereffective|p1a: Veluza
+|-damage|p1a: Veluza|242/292
+|move|p1a: Veluza|Aqua Cutter|p2a: Raging Bolt
+|-resisted|p2a: Raging Bolt
+|-damage|p2a: Raging Bolt|73/100
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Raging Bolt|Thunderclap|p1a: Veluza
+|-supereffective|p1a: Veluza
+|-damage|p1a: Veluza|192/292
+|move|p1a: Veluza|Aqua Cutter|p2a: Raging Bolt
+|-resisted|p2a: Raging Bolt
+|-damage|p2a: Raging Bolt|44/100
+|
+|upkeep
+|turn|41
+|
+|move|p2a: Raging Bolt|Thunderclap|p1a: Veluza
+|-supereffective|p1a: Veluza
+|-damage|p1a: Veluza|142/292
+|move|p1a: Veluza|Aqua Cutter|p2a: Raging Bolt
+|-resisted|p2a: Raging Bolt
+|-damage|p2a: Raging Bolt|13/100
+|
+|upkeep
+|turn|42
+|
+|switch|p1a: Cinccino|Cinccino, L83, M|260/260
+|move|p2a: Raging Bolt|Thunderclap||[still]
+|-fail|p2a: Raging Bolt
+|
+|upkeep
+|turn|43
+|
+|-terastallize|p1a: Cinccino|Normal
+|move|p2a: Raging Bolt|Thunderclap|p1a: Cinccino
+|-damage|p1a: Cinccino|233/260
+|move|p1a: Cinccino|Tail Slap|p2a: Raging Bolt
+|-damage|p2a: Raging Bolt|0 fnt
+|faint|p2a: Raging Bolt
+|-end|p2a: Raging Bolt|Protosynthesis|[silent]
+|-hitcount|p2: Raging Bolt|1
+|
+|upkeep
+|
+|switch|p2a: Reshiram|Reshiram, L76|100/100
+|-ability|p2a: Reshiram|Turboblaze
+|turn|44
+|
+|move|p1a: Cinccino|Tail Slap|p2a: Reshiram
+|-damage|p2a: Reshiram|82/100
+|-damage|p2a: Reshiram|62/100
+|-crit|p2a: Reshiram
+|-damage|p2a: Reshiram|36/100
+|-damage|p2a: Reshiram|17/100
+|-hitcount|p2a: Reshiram|4
+|move|p2a: Reshiram|Blue Flare|p1a: Cinccino|[miss]
+|-miss|p2a: Reshiram|p1a: Cinccino
+|
+|upkeep
+|turn|45
+|
+|move|p1a: Cinccino|Tail Slap|p2a: Reshiram
+|-damage|p2a: Reshiram|0 fnt
+|faint|p2a: Reshiram
+|-hitcount|p2: Reshiram|1
+|
+|upkeep
+|
+|switch|p2a: Reuniclus|Reuniclus, L88, F|100/100
+|-activate|p2a: Reuniclus|move: Sticky Web
+|-unboost|p2a: Reuniclus|spe|1
+|turn|46
+|
+|move|p1a: Cinccino|Tail Slap|p2a: Reuniclus
+|-damage|p2a: Reuniclus|82/100
+|-damage|p2a: Reuniclus|64/100
+|-damage|p2a: Reuniclus|48/100
+|-damage|p2a: Reuniclus|32/100
+|-damage|p2a: Reuniclus|14/100
+|-hitcount|p2a: Reuniclus|5
+|move|p2a: Reuniclus|Focus Blast|p1a: Cinccino|[miss]
+|-miss|p2a: Reuniclus|p1a: Cinccino
+|
+|upkeep
+|turn|47
+|
+|move|p1a: Cinccino|Tail Slap|p2a: Reuniclus|[miss]
+|-miss|p1a: Cinccino|p2a: Reuniclus
+|move|p2a: Reuniclus|Focus Blast|p1a: Cinccino|[miss]
+|-miss|p2a: Reuniclus|p1a: Cinccino
+|
+|upkeep
+|turn|48
+|
+|move|p1a: Cinccino|Tail Slap|p2a: Reuniclus|[miss]
+|-miss|p1a: Cinccino|p2a: Reuniclus
+|move|p2a: Reuniclus|Focus Blast|p1a: Cinccino
+|-supereffective|p1a: Cinccino
+|-crit|p1a: Cinccino
+|-damage|p1a: Cinccino|0 fnt
+|faint|p1a: Cinccino
+|
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, M|142/292
+|turn|49
+|
+|move|p1a: Veluza|Aqua Cutter|p2a: Reuniclus
+|-damage|p2a: Reuniclus|0 fnt
+|faint|p2a: Reuniclus
+|
+|upkeep
+|
+|switch|p2a: Gothitelle|Gothitelle, L90, M|100/100
+|-activate|p2a: Gothitelle|move: Sticky Web
+|-unboost|p2a: Gothitelle|spe|1
+|turn|50
+|
+|move|p1a: Veluza|Aqua Cutter|p2a: Gothitelle
+|-crit|p2a: Gothitelle
+|-damage|p2a: Gothitelle|13/100
+|move|p2a: Gothitelle|Thunderbolt|p1a: Veluza
+|-supereffective|p1a: Veluza
+|-damage|p1a: Veluza|0 fnt
+|faint|p1a: Veluza
+|
+|-heal|p2a: Gothitelle|20/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Jirachi|Jirachi, L80|291/291
+|turn|51
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p2a: Gothitelle|26/100|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|222/291
+|
+|-heal|p1a: Jirachi|240/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|32/100|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|258/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|38/100|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p1a: Jirachi|Body Slam|p2a: Gothitelle
+|-damage|p2a: Gothitelle|20/100
+|-status|p2a: Gothitelle|par
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|191/291
+|
+|-heal|p1a: Jirachi|209/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|26/100 par|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p1a: Jirachi|Wish|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|144/291
+|
+|-heal|p1a: Jirachi|162/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|32/100 par|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|291/291|[from] move: Wish|[wisher] Jirachi
+|-heal|p2a: Gothitelle|38/100 par|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|225/291
+|
+|-heal|p1a: Jirachi|243/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|45/100 par|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|261/291|[from] item: Leftovers
+|-heal|p2a: Gothitelle|51/100 par|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|186/291
+|-status|p1a: Jirachi|par
+|
+|-heal|p1a: Jirachi|204/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|57/100 par|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|222/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|63/100 par|[from] item: Leftovers
+|upkeep
+|turn|61
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|147/291 par
+|
+|-heal|p1a: Jirachi|165/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|70/100 par|[from] item: Leftovers
+|upkeep
+|turn|62
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|43/100 par
+|cant|p2a: Gothitelle|par
+|
+|-heal|p1a: Jirachi|183/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|49/100 par|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|cant|p2a: Gothitelle|par
+|
+|-heal|p1a: Jirachi|201/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|56/100 par|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|cant|p2a: Gothitelle|par
+|
+|-heal|p1a: Jirachi|219/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|62/100 par|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|cant|p1a: Jirachi|par
+|cant|p2a: Gothitelle|par
+|
+|-heal|p1a: Jirachi|237/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|68/100 par|[from] item: Leftovers
+|upkeep
+|turn|66
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|255/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|74/100 par|[from] item: Leftovers
+|upkeep
+|turn|67
+|
+|move|p1a: Jirachi|Protect||[still]
+|-fail|p1a: Jirachi
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|182/291 par
+|
+|-heal|p1a: Jirachi|200/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|81/100 par|[from] item: Leftovers
+|upkeep
+|turn|68
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|53/100 par
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|127/291 par
+|
+|-heal|p1a: Jirachi|145/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|59/100 par|[from] item: Leftovers
+|upkeep
+|turn|69
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|163/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|66/100 par|[from] item: Leftovers
+|upkeep
+|turn|70
+|
+|move|p1a: Jirachi|Protect|p1a: Jirachi
+|-singleturn|p1a: Jirachi|Protect
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-activate|p1a: Jirachi|move: Protect
+|
+|-heal|p1a: Jirachi|181/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|72/100 par|[from] item: Leftovers
+|upkeep
+|turn|71
+|
+|cant|p1a: Jirachi|par
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-damage|p1a: Jirachi|115/291 par
+|
+|-heal|p1a: Jirachi|133/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|78/100 par|[from] item: Leftovers
+|upkeep
+|turn|72
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|53/100 par
+|cant|p2a: Gothitelle|flinch
+|
+|-heal|p1a: Jirachi|151/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|60/100 par|[from] item: Leftovers
+|upkeep
+|turn|73
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|33/100 par
+|move|p2a: Gothitelle|Thunderbolt|p1a: Jirachi
+|-crit|p1a: Jirachi
+|-damage|p1a: Jirachi|39/291 par
+|
+|-heal|p1a: Jirachi|57/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|39/100 par|[from] item: Leftovers
+|upkeep
+|turn|74
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|14/100 par
+|cant|p2a: Gothitelle|flinch
+|
+|-heal|p1a: Jirachi|75/291 par|[from] item: Leftovers
+|-heal|p2a: Gothitelle|20/100 par|[from] item: Leftovers
+|upkeep
+|turn|75
+|
+|move|p1a: Jirachi|Iron Head|p2a: Gothitelle
+|-damage|p2a: Gothitelle|0 fnt
+|faint|p2a: Gothitelle
+|
+|-heal|p1a: Jirachi|93/291 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Ninetales|Ninetales-Alola, L78, M|100/100
+|-activate|p2a: Ninetales|move: Sticky Web
+|-unboost|p2a: Ninetales|spe|1
+|-weather|Snowscape|[from] ability: Snow Warning|[of] p2a: Ninetales
+|turn|76
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|52/291 par
+|move|p1a: Jirachi|Wish|p1a: Jirachi
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Jirachi|70/291 par|[from] item: Leftovers
+|upkeep
+|turn|77
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|31/291 par
+|move|p1a: Jirachi|Wish||[still]
+|-fail|p1a: Jirachi
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Jirachi|176/291 par|[from] move: Wish|[wisher] Jirachi
+|-heal|p1a: Jirachi|194/291 par|[from] item: Leftovers
+|upkeep
+|turn|78
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|153/291 par
+|cant|p1a: Jirachi|par
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Jirachi|171/291 par|[from] item: Leftovers
+|upkeep
+|turn|79
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|127/291 par
+|move|p1a: Jirachi|Wish|p1a: Jirachi
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Jirachi|145/291 par|[from] item: Leftovers
+|upkeep
+|turn|80
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|103/291 par
+|cant|p1a: Jirachi|par
+|
+|-weather|none
+|-heal|p1a: Jirachi|248/291 par|[from] move: Wish|[wisher] Jirachi
+|-heal|p1a: Jirachi|266/291 par|[from] item: Leftovers
+|upkeep
+|turn|81
+|
+|move|p2a: Ninetales|Blizzard|p1a: Jirachi
+|-resisted|p1a: Jirachi
+|-damage|p1a: Jirachi|222/291 par
+|move|p1a: Jirachi|Iron Head|p2a: Ninetales
+|-supereffective|p2a: Ninetales
+|-damage|p2a: Ninetales|0 fnt
+|faint|p2a: Ninetales
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

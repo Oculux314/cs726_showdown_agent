@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23042</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23042<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23042|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Phione|Phione, L91|293/293
+|switch|p2a: Regieleki|Regieleki, L79|100/100
+|turn|1
+|
+|move|p2a: Regieleki|Explosion|p1a: Phione
+|-damage|p1a: Phione|137/293
+|faint|p2a: Regieleki
+|move|p1a: Phione|Take Heart|p1a: Phione
+|-boost|p1a: Phione|spa|1
+|-boost|p1a: Phione|spd|1
+|
+|-heal|p1a: Phione|155/293|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Sandaconda|Sandaconda, L84, F|100/100
+|turn|2
+|
+|move|p1a: Phione|Take Heart|p1a: Phione
+|-boost|p1a: Phione|spa|1
+|-boost|p1a: Phione|spd|1
+|move|p2a: Sandaconda|Earthquake|p1a: Phione
+|-damage|p1a: Phione|40/293
+|
+|-heal|p1a: Phione|58/293|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Phione|Take Heart|p1a: Phione
+|-boost|p1a: Phione|spa|1
+|-boost|p1a: Phione|spd|1
+|move|p2a: Sandaconda|Earthquake|p1a: Phione
+|-crit|p1a: Phione
+|-damage|p1a: Phione|0 fnt
+|faint|p1a: Phione
+|
+|upkeep
+|
+|switch|p1a: Porygon2|Porygon2, L81|270/270
+|-ability|p1a: Porygon2|Download|boost
+|-boost|p1a: Porygon2|spa|1
+|turn|4
+|
+|move|p2a: Sandaconda|Earthquake|p1a: Porygon2
+|-damage|p1a: Porygon2|194/270
+|move|p1a: Porygon2|Thunder Wave|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Sandaconda|Earthquake|p1a: Porygon2
+|-damage|p1a: Porygon2|119/270
+|move|p1a: Porygon2|Thunder Wave|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Sandaconda|Earthquake|p1a: Porygon2
+|-damage|p1a: Porygon2|41/270
+|move|p1a: Porygon2|Thunder Wave|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Porygon2|Fairy
+|move|p2a: Sandaconda|Earthquake|p1a: Porygon2
+|-damage|p1a: Porygon2|0 fnt
+|faint|p1a: Porygon2
+|
+|upkeep
+|
+|switch|p1a: Swanna|Swanna, L89, F|278/278
+|turn|8
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Swanna|Defog|p2a: Sandaconda
+|-unboost|p2a: Sandaconda|evasion|1
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Earthquake|p1a: Swanna
+|-immune|p1a: Swanna
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Stone Edge|p1a: Swanna
+|-supereffective|p1a: Swanna
+|-damage|p1a: Swanna|106/278
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Swanna|Defog||[still]
+|-unboost|p2a: Sandaconda|evasion|0
+|-fail|p1a: Swanna
+|move|p2a: Sandaconda|Stone Edge|p1a: Swanna
+|-supereffective|p1a: Swanna
+|-damage|p1a: Swanna|0 fnt
+|faint|p1a: Swanna
+|
+|upkeep
+|
+|switch|p1a: Sudowoodo|Sudowoodo, L94, M|284/284
+|turn|20
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Sandaconda
+|-damage|p2a: Sandaconda|75/100
+|move|p2a: Sandaconda|Stone Edge|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|231/284
+|
+|-heal|p2a: Sandaconda|81/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Sandaconda
+|-damage|p2a: Sandaconda|54/100
+|move|p2a: Sandaconda|Stone Edge|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|178/284
+|
+|-heal|p2a: Sandaconda|60/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Sandaconda
+|-damage|p2a: Sandaconda|30/100
+|move|p2a: Sandaconda|Stone Edge|p1a: Sudowoodo|[miss]
+|-miss|p2a: Sandaconda|p1a: Sudowoodo
+|
+|-heal|p2a: Sandaconda|36/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Sandaconda
+|-damage|p2a: Sandaconda|10/100
+|move|p2a: Sandaconda|Stone Edge|p1a: Sudowoodo|[miss]
+|-miss|p2a: Sandaconda|p1a: Sudowoodo
+|
+|-heal|p2a: Sandaconda|16/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Sandaconda
+|-damage|p2a: Sandaconda|0 fnt
+|faint|p2a: Sandaconda
+|
+|upkeep
+|
+|switch|p2a: Palkia|Palkia, L75|100/100
+|-ability|p2a: Palkia|Pressure
+|turn|25
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Palkia
+|-damage|p2a: Palkia|66/100
+|move|p2a: Palkia|Draco Meteor|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|13/284
+|-unboost|p2a: Palkia|spa|2
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Sudowoodo|Sucker Punch|p2a: Palkia
+|-damage|p2a: Palkia|28/100
+|move|p2a: Palkia|Draco Meteor|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|0 fnt
+|-unboost|p2a: Palkia|spa|2
+|faint|p1a: Sudowoodo
+|
+|upkeep
+|
+|switch|p1a: Indeedee|Indeedee-F, L90, F|272/272
+|-fieldstart|move: Psychic Terrain|[from] ability: Psychic Surge|[of] p1a: Indeedee
+|turn|27
+|
+|move|p2a: Palkia|Draco Meteor|p1a: Indeedee
+|-damage|p1a: Indeedee|226/272
+|-unboost|p2a: Palkia|spa|2
+|move|p1a: Indeedee|Psyshock|p2a: Palkia
+|-crit|p2a: Palkia
+|-damage|p2a: Palkia|0 fnt
+|faint|p2a: Palkia
+|
+|upkeep
+|
+|switch|p2a: Metagross|Metagross, L79|100/100
+|turn|28
+|
+|move|p1a: Indeedee|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|87/100
+|move|p2a: Metagross|Earthquake|p1a: Indeedee
+|-damage|p1a: Indeedee|132/272
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Indeedee|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|74/100
+|move|p2a: Metagross|Earthquake|p1a: Indeedee
+|-damage|p1a: Indeedee|29/272
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Indeedee|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|59/100
+|move|p2a: Metagross|Earthquake|p1a: Indeedee
+|-damage|p1a: Indeedee|0 fnt
+|faint|p1a: Indeedee
+|
+|upkeep
+|
+|switch|p1a: Exeggutor|Exeggutor, L89, F|312/312
+|turn|31
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|276/312
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|
+|-fieldend|move: Psychic Terrain
+|upkeep
+|turn|32
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|237/312
+|move|p1a: Exeggutor|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|47/100
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|194/312
+|move|p1a: Exeggutor|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|34/100
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|155/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|233/312|[from] item: Sitrus Berry
+|move|p1a: Exeggutor|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|21/100
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|35
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|194/312
+|move|p1a: Exeggutor|Substitute|p1a: Exeggutor
+|-start|p1a: Exeggutor|Substitute
+|-damage|p1a: Exeggutor|116/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|194/312|[from] item: Sitrus Berry
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-activate|p1a: Exeggutor|move: Substitute|[damage]
+|move|p1a: Exeggutor|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|8/100
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-end|p1a: Exeggutor|Substitute
+|move|p1a: Exeggutor|Substitute|p1a: Exeggutor
+|-start|p1a: Exeggutor|Substitute
+|-damage|p1a: Exeggutor|116/312
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Metagross|Earthquake|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-activate|p1a: Exeggutor|move: Substitute|[damage]
+|move|p1a: Exeggutor|Psyshock|p2a: Metagross
+|-resisted|p2a: Metagross
+|-damage|p2a: Metagross|0 fnt
+|faint|p2a: Metagross
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|194/312|[from] item: Sitrus Berry
+|
+|switch|p2a: Avalugg|Avalugg, L88, F|100/100
+|turn|39
+|
+|move|p1a: Exeggutor|Psyshock|p2a: Avalugg
+|-crit|p2a: Avalugg
+|-damage|p2a: Avalugg|58/100
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-end|p1a: Exeggutor|Substitute
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|40
+|
+|move|p1a: Exeggutor|Psyshock|p2a: Avalugg
+|-damage|p2a: Avalugg|31/100
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|143/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|221/312|[from] item: Sitrus Berry
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|41
+|
+|move|p1a: Exeggutor|Psyshock|p2a: Avalugg
+|-damage|p2a: Avalugg|2/100
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|174/312
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|125/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|203/312|[from] item: Sitrus Berry
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|43
+|
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|149/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|227/312|[from] item: Sitrus Berry
+|
+|upkeep
+|turn|44
+|
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|172/312
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|45
+|
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|123/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|201/312|[from] item: Sitrus Berry
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|46
+|
+|move|p1a: Exeggutor|Calm Mind|p1a: Exeggutor
+|-boost|p1a: Exeggutor|spa|1
+|-boost|p1a: Exeggutor|spd|1
+|move|p2a: Avalugg|Body Press|p1a: Exeggutor
+|-resisted|p1a: Exeggutor
+|-damage|p1a: Exeggutor|150/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|228/312|[from] item: Sitrus Berry
+|
+|-item|p1a: Exeggutor|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|turn|47
+|
+|move|p1a: Exeggutor|Psyshock|p2a: Avalugg
+|-damage|p2a: Avalugg|0 fnt
+|faint|p2a: Avalugg
+|
+|upkeep
+|
+|switch|p2a: Ho-Oh|Ho-Oh, L71|100/100
+|turn|48
+|
+|move|p2a: Ho-Oh|Brave Bird|p1a: Exeggutor
+|-supereffective|p1a: Exeggutor
+|-damage|p1a: Exeggutor|10/312
+|-enditem|p1a: Exeggutor|Sitrus Berry|[eat]
+|-heal|p1a: Exeggutor|88/312|[from] item: Sitrus Berry
+|-damage|p2a: Ho-Oh|74/100|[from] Recoil
+|move|p1a: Exeggutor|Psyshock|p2a: Ho-Oh
+|-damage|p2a: Ho-Oh|0 fnt
+|faint|p2a: Ho-Oh
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

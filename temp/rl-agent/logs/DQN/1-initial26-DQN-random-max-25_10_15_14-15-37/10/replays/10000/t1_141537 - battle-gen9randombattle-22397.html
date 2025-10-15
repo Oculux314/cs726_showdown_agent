@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22397</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22397<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22397|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Chimecho|Chimecho, L93, F|290/290
+|switch|p2a: Ninetales|Ninetales-Alola, L78, F|100/100
+|-weather|Snowscape|[from] ability: Snow Warning|[of] p2a: Ninetales
+|turn|1
+|
+|move|p2a: Ninetales|Blizzard|p1a: Chimecho
+|-damage|p1a: Chimecho|205/290
+|move|p1a: Chimecho|Stored Power|p2a: Ninetales
+|-damage|p2a: Ninetales|89/100
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Chimecho|223/290|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Ninetales|Blizzard|p1a: Chimecho
+|-crit|p1a: Chimecho
+|-damage|p1a: Chimecho|111/290
+|move|p1a: Chimecho|Stored Power|p2a: Ninetales
+|-damage|p2a: Ninetales|79/100
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Chimecho|129/290|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Ninetales|Blizzard|p1a: Chimecho
+|-damage|p1a: Chimecho|51/290
+|move|p1a: Chimecho|Cosmic Power|p1a: Chimecho
+|-boost|p1a: Chimecho|def|1
+|-boost|p1a: Chimecho|spd|1
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Chimecho|69/290|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Ninetales|Blizzard|p1a: Chimecho
+|-damage|p1a: Chimecho|12/290
+|move|p1a: Chimecho|Stored Power|p2a: Ninetales
+|-damage|p2a: Ninetales|48/100
+|
+|-weather|Snowscape|[upkeep]
+|-heal|p1a: Chimecho|30/290|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Ninetales|Blizzard|p1a: Chimecho
+|-damage|p1a: Chimecho|0 fnt
+|faint|p1a: Chimecho
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Diancie|Diancie, L82|216/216
+|turn|6
+|
+|move|p2a: Ninetales|Blizzard|p1a: Diancie|[miss]
+|-miss|p2a: Ninetales|p1a: Diancie
+|move|p1a: Diancie|Calm Mind|p1a: Diancie
+|-boost|p1a: Diancie|spa|1
+|-boost|p1a: Diancie|spd|1
+|
+|upkeep
+|turn|7
+|
+|-terastallize|p1a: Diancie|Water
+|move|p2a: Ninetales|Blizzard|p1a: Diancie|[miss]
+|-miss|p2a: Ninetales|p1a: Diancie
+|move|p1a: Diancie|Earth Power|p2a: Ninetales
+|-damage|p2a: Ninetales|13/100
+|
+|upkeep
+|turn|8
+|
+|switch|p1a: Weavile|Weavile, L79, M|239/239
+|move|p2a: Ninetales|Blizzard|p1a: Weavile
+|-resisted|p1a: Weavile
+|-damage|p1a: Weavile|192/239
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Weavile|Ice Shard|p2a: Ninetales
+|-resisted|p2a: Ninetales
+|-damage|p2a: Ninetales|0 fnt
+|faint|p2a: Ninetales
+|
+|upkeep
+|
+|switch|p2a: Abomasnow|Abomasnow, L84, M|100/100
+|-weather|Snowscape|[from] ability: Snow Warning|[of] p2a: Abomasnow
+|turn|10
+|
+|move|p1a: Weavile|Ice Shard|p2a: Abomasnow
+|-damage|p2a: Abomasnow|84/100
+|move|p2a: Abomasnow|Wood Hammer|p1a: Weavile
+|-damage|p1a: Weavile|81/239
+|-damage|p2a: Abomasnow|71/100|[from] Recoil
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|11
+|
+|move|p1a: Weavile|Ice Shard|p2a: Abomasnow
+|-damage|p2a: Abomasnow|53/100
+|move|p2a: Abomasnow|Wood Hammer|p1a: Weavile
+|-damage|p1a: Weavile|0 fnt
+|faint|p1a: Weavile
+|-damage|p2a: Abomasnow|44/100|[from] Recoil
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|
+|switch|p1a: Dialga|Dialga-Origin, L73|266/266
+|-ability|p1a: Dialga|Pressure
+|turn|12
+|
+|move|p1a: Dialga|Thunder Wave|p2a: Abomasnow
+|-status|p2a: Abomasnow|par
+|move|p2a: Abomasnow|Wood Hammer|p1a: Dialga
+|-resisted|p1a: Dialga
+|-damage|p1a: Dialga|239/266
+|-damage|p2a: Abomasnow|41/100 par|[from] Recoil
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|turn|13
+|
+|move|p1a: Dialga|Flash Cannon|p2a: Abomasnow
+|-supereffective|p2a: Abomasnow
+|-damage|p2a: Abomasnow|0 fnt
+|faint|p2a: Abomasnow
+|
+|-weather|Snowscape|[upkeep]
+|upkeep
+|
+|switch|p2a: Groudon|Groudon, L72|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Groudon
+|turn|14
+|
+|move|p1a: Dialga|Thunder Wave|p2a: Groudon
+|-immune|p2a: Groudon
+|move|p2a: Groudon|Precipice Blades|p1a: Dialga
+|-supereffective|p1a: Dialga
+|-damage|p1a: Dialga|0 fnt
+|faint|p1a: Dialga
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Diancie|Diancie, L82, tera:Water|216/216
+|turn|15
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Diancie
+|-damage|p1a: Diancie|122/216
+|move|p1a: Diancie|Calm Mind|p1a: Diancie
+|-boost|p1a: Diancie|spa|1
+|-boost|p1a: Diancie|spd|1
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Diancie|135/216|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Diancie
+|-crit|p1a: Diancie
+|-damage|p1a: Diancie|5/216
+|move|p1a: Diancie|Calm Mind|p1a: Diancie
+|-boost|p1a: Diancie|spa|1
+|-boost|p1a: Diancie|spd|1
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Diancie|18/216|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Diancie
+|-damage|p1a: Diancie|0 fnt
+|faint|p1a: Diancie
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Ariados|Ariados, L95, M|287/287
+|turn|18
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Ariados|[miss]
+|-miss|p2a: Groudon|p1a: Ariados
+|move|p1a: Ariados|Sticky Web|p2a: Groudon
+|-sidestart|p2: t2_141537|move: Sticky Web
+|
+|-weather|none
+|upkeep
+|turn|19
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Ariados
+|-damage|p1a: Ariados|142/287
+|move|p1a: Ariados|Sticky Web||[still]
+|-fail|p1a: Ariados
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Ariados
+|-damage|p1a: Ariados|15/287
+|move|p1a: Ariados|Sticky Web||[still]
+|-fail|p1a: Ariados
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Ariados
+|-damage|p1a: Ariados|0 fnt
+|faint|p1a: Ariados
+|
+|upkeep
+|
+|switch|p1a: Haxorus|Haxorus, L77, M|244/244
+|-ability|p1a: Haxorus|Mold Breaker
+|turn|22
+|
+|move|p1a: Haxorus|Iron Head|p2a: Groudon
+|-damage|p2a: Groudon|82/100
+|cant|p2a: Groudon|flinch
+|
+|-heal|p2a: Groudon|88/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Haxorus|Iron Head|p2a: Groudon
+|-damage|p2a: Groudon|69/100
+|cant|p2a: Groudon|flinch
+|
+|-heal|p2a: Groudon|75/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Haxorus|Iron Head|p2a: Groudon
+|-damage|p2a: Groudon|54/100
+|move|p2a: Groudon|Precipice Blades|p1a: Haxorus
+|-damage|p1a: Haxorus|106/244
+|
+|-heal|p2a: Groudon|61/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Haxorus|Iron Head|p2a: Groudon
+|-damage|p2a: Groudon|41/100
+|move|p2a: Groudon|Precipice Blades|p1a: Haxorus
+|-damage|p1a: Haxorus|0 fnt
+|faint|p1a: Haxorus
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

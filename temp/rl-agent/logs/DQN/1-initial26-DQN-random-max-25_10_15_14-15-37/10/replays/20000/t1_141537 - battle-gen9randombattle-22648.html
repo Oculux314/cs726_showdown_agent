@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22648</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22648<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22648|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Toxtricity|Toxtricity, L82, M|257/257
+|switch|p2a: Plusle|Plusle, L95, M|100/100
+|turn|1
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Toxtricity
+|-resisted|p1a: Toxtricity
+|-damage|p1a: Toxtricity|175/257
+|-damage|p2a: Plusle|91/100|[from] item: Life Orb
+|move|p1a: Toxtricity|Sludge Wave|p2a: Plusle
+|-damage|p2a: Plusle|31/100
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Plusle|Thunderbolt|p1a: Toxtricity
+|-resisted|p1a: Toxtricity
+|-damage|p1a: Toxtricity|94/257
+|-damage|p2a: Plusle|22/100|[from] item: Life Orb
+|move|p1a: Toxtricity|Sludge Wave|p2a: Plusle
+|-damage|p2a: Plusle|0 fnt
+|faint|p2a: Plusle
+|
+|upkeep
+|
+|switch|p2a: Chimecho|Chimecho, L93, M|100/100
+|turn|3
+|
+|switch|p1a: Talonflame|Talonflame, L83, F|265/265
+|move|p2a: Chimecho|Psychic Noise|p1a: Talonflame
+|-damage|p1a: Talonflame|138/265
+|-start|p1a: Talonflame|move: Heal Block
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Talonflame|Overheat|p2a: Chimecho
+|-damage|p2a: Chimecho|65/100
+|-unboost|p1a: Talonflame|spa|2
+|move|p2a: Chimecho|Psychic Noise|p1a: Talonflame
+|-damage|p1a: Talonflame|30/265
+|
+|-heal|p2a: Chimecho|72/100|[from] item: Leftovers
+|-end|p1a: Talonflame|move: Heal Block
+|upkeep
+|turn|5
+|
+|move|p1a: Talonflame|Roost|p1a: Talonflame
+|-heal|p1a: Talonflame|163/265
+|-singleturn|p1a: Talonflame|move: Roost
+|move|p2a: Chimecho|Psychic Noise|p1a: Talonflame
+|-damage|p1a: Talonflame|45/265
+|-start|p1a: Talonflame|move: Heal Block
+|
+|-heal|p2a: Chimecho|78/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Talonflame|Overheat|p2a: Chimecho
+|-damage|p2a: Chimecho|60/100
+|-unboost|p1a: Talonflame|spa|2
+|move|p2a: Chimecho|Psychic Noise|p1a: Talonflame
+|-damage|p1a: Talonflame|0 fnt
+|faint|p1a: Talonflame
+|
+|-heal|p2a: Chimecho|66/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Mewtwo|Mewtwo, L72|272/272
+|-ability|p1a: Mewtwo|Pressure
+|turn|7
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Chimecho
+|-damage|p2a: Chimecho|28/100
+|move|p2a: Chimecho|Psychic Noise|p1a: Mewtwo
+|-resisted|p1a: Mewtwo
+|-damage|p1a: Mewtwo|218/272
+|-start|p1a: Mewtwo|move: Heal Block
+|
+|-heal|p2a: Chimecho|34/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Chimecho
+|-damage|p2a: Chimecho|0 fnt
+|faint|p2a: Chimecho
+|
+|-end|p1a: Mewtwo|move: Heal Block
+|upkeep
+|
+|switch|p2a: Regirock|Regirock, L83|100/100
+|turn|9
+|
+|switch|p1a: Spidops|Spidops, L96, F|271/271
+|move|p2a: Regirock|Stone Edge|p1a: Spidops
+|-supereffective|p1a: Spidops
+|-damage|p1a: Spidops|85/271
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Regirock|Stone Edge|p1a: Spidops
+|-supereffective|p1a: Spidops
+|-damage|p1a: Spidops|0 fnt
+|faint|p1a: Spidops
+|
+|upkeep
+|
+|switch|p1a: Stonjourner|Stonjourner, L91, F|330/330
+|turn|11
+|
+|-terastallize|p1a: Stonjourner|Fire
+|move|p1a: Stonjourner|Rock Polish|p1a: Stonjourner
+|-boost|p1a: Stonjourner|spe|2
+|move|p2a: Regirock|Stone Edge|p1a: Stonjourner|[miss]
+|-miss|p2a: Regirock|p1a: Stonjourner
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Stonjourner|Earthquake|p2a: Regirock
+|-supereffective|p2a: Regirock
+|-damage|p2a: Regirock|52/100
+|-damage|p1a: Stonjourner|297/330|[from] item: Life Orb
+|move|p2a: Regirock|Stone Edge|p1a: Stonjourner
+|-supereffective|p1a: Stonjourner
+|-damage|p1a: Stonjourner|159/330
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Stonjourner|Stone Edge|p2a: Regirock|[miss]
+|-miss|p1a: Stonjourner|p2a: Regirock
+|move|p2a: Regirock|Stone Edge|p1a: Stonjourner
+|-supereffective|p1a: Stonjourner
+|-damage|p1a: Stonjourner|21/330
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Stonjourner|Stone Edge|p2a: Regirock
+|-damage|p2a: Regirock|16/100
+|-damage|p1a: Stonjourner|0 fnt|[from] item: Life Orb
+|faint|p1a: Stonjourner
+|move|p2a: Regirock|Stone Edge|p1: Stonjourner|[notarget]
+|-fail|p2a: Regirock
+|
+|upkeep
+|
+|switch|p1a: Toxtricity|Toxtricity, L82, M|94/257
+|turn|15
+|
+|move|p1a: Toxtricity|Sludge Wave|p2a: Regirock
+|-resisted|p2a: Regirock
+|-damage|p2a: Regirock|0 fnt
+|faint|p2a: Regirock
+|
+|upkeep
+|
+|switch|p2a: Deoxys|Deoxys-Attack, L72|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|16
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Toxtricity
+|-supereffective|p1a: Toxtricity
+|-damage|p1a: Toxtricity|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Toxtricity
+|-damage|p2a: Deoxys|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Swampert|Swampert, L83, F|302/302
+|turn|17
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert
+|-damage|p1a: Swampert|193/302
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|81/100|[from] item: Life Orb
+|move|p1a: Swampert|Stealth Rock|p2a: Deoxys
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|-heal|p1a: Swampert|211/302|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert|[miss]
+|-miss|p2a: Deoxys|p1a: Swampert
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p1a: Swampert|229/302|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert
+|-damage|p1a: Swampert|158/302
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|71/100|[from] item: Life Orb
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p1a: Swampert|176/302|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert
+|-damage|p1a: Swampert|118/302
+|-damage|p2a: Deoxys|61/100|[from] item: Life Orb
+|move|p1a: Swampert|Stealth Rock||[still]
+|-fail|p1a: Swampert
+|
+|-heal|p1a: Swampert|136/302|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert
+|-damage|p1a: Swampert|74/302
+|-damage|p2a: Deoxys|51/100|[from] item: Life Orb
+|move|p1a: Swampert|Flip Turn|p2a: Deoxys
+|-damage|p2a: Deoxys|0 fnt
+|faint|p2a: Deoxys
+|
+|switch|p1a: Mewtwo|Mewtwo, L72|218/272|[from] Flip Turn
+|-ability|p1a: Mewtwo|Pressure
+|
+|upkeep
+|
+|switch|p2a: Oinkologne|Oinkologne-F, L92, F|100/100
+|-damage|p2a: Oinkologne|88/100|[from] Stealth Rock
+|turn|22
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Oinkologne
+|-damage|p2a: Oinkologne|72/100
+|move|p2a: Oinkologne|Double-Edge|p1a: Mewtwo
+|-damage|p1a: Mewtwo|61/272
+|-damage|p2a: Oinkologne|58/100|[from] Recoil
+|
+|-heal|p2a: Oinkologne|64/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Mewtwo|Fire Blast|p2a: Oinkologne
+|-damage|p2a: Oinkologne|50/100
+|move|p2a: Oinkologne|Double-Edge|p1a: Mewtwo
+|-damage|p1a: Mewtwo|0 fnt
+|faint|p1a: Mewtwo
+|-damage|p2a: Oinkologne|44/100|[from] Recoil
+|
+|-heal|p2a: Oinkologne|50/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Swampert|Swampert, L83, F|74/302
+|turn|24
+|
+|move|p2a: Oinkologne|Double-Edge|p1a: Swampert
+|-damage|p1a: Swampert|0 fnt
+|faint|p1a: Swampert
+|-damage|p2a: Oinkologne|44/100|[from] Recoil
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

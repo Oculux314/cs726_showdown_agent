@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22514</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22514<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22514|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Golem|Golem, L87, F|281/281
+|switch|p2a: Tinkaton|Tinkaton, L82, F|100/100
+|-ability|p2a: Tinkaton|Mold Breaker
+|turn|1
+|
+|switch|p1a: Wugtrio|Wugtrio, L91, F|212/212
+|move|p2a: Tinkaton|Gigaton Hammer|p1a: Wugtrio
+|-resisted|p1a: Wugtrio
+|-damage|p1a: Wugtrio|120/212
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Gurdurr|Gurdurr, L85, F|283/283
+|move|p2a: Tinkaton|Play Rough|p1a: Gurdurr
+|-supereffective|p1a: Gurdurr
+|-damage|p1a: Gurdurr|185/283
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Tinkaton|Gigaton Hammer|p1a: Gurdurr
+|-damage|p1a: Gurdurr|88/283
+|move|p1a: Gurdurr|Bulk Up|p1a: Gurdurr
+|-boost|p1a: Gurdurr|atk|1
+|-boost|p1a: Gurdurr|def|1
+|
+|upkeep
+|turn|4
+|
+|-terastallize|p1a: Gurdurr|Steel
+|move|p2a: Tinkaton|Play Rough|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|72/283
+|-unboost|p1a: Gurdurr|atk|1
+|move|p1a: Gurdurr|Drain Punch|p2a: Tinkaton
+|-damage|p2a: Tinkaton|66/100
+|-heal|p1a: Gurdurr|119/283|[from] drain|[of] p2a: Tinkaton
+|
+|-heal|p2a: Tinkaton|72/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Tinkaton|Gigaton Hammer|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|90/283
+|move|p1a: Gurdurr|Bulk Up|p1a: Gurdurr
+|-boost|p1a: Gurdurr|atk|1
+|-boost|p1a: Gurdurr|def|1
+|
+|-heal|p2a: Tinkaton|79/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p2a: Tinkaton|Play Rough|p1a: Gurdurr
+|-resisted|p1a: Gurdurr
+|-damage|p1a: Gurdurr|78/283
+|move|p1a: Gurdurr|Bulk Up|p1a: Gurdurr
+|-boost|p1a: Gurdurr|atk|1
+|-boost|p1a: Gurdurr|def|1
+|
+|-heal|p2a: Tinkaton|85/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|switch|p1a: Squawkabilly|Squawkabilly-Yellow, L89, M|291/291
+|move|p2a: Tinkaton|Gigaton Hammer|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|123/291
+|
+|-heal|p2a: Tinkaton|91/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|switch|p1a: Shaymin|Shaymin, L82|298/298
+|move|p2a: Tinkaton|Play Rough|p1a: Shaymin
+|-damage|p1a: Shaymin|228/298
+|-unboost|p1a: Shaymin|atk|1
+|
+|-heal|p1a: Shaymin|246/298|[from] item: Leftovers
+|-heal|p2a: Tinkaton|97/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Shaymin|Earth Power|p2a: Tinkaton
+|-supereffective|p2a: Tinkaton
+|-crit|p2a: Tinkaton
+|-damage|p2a: Tinkaton|37/100
+|move|p2a: Tinkaton|Gigaton Hammer|p1a: Shaymin
+|-damage|p1a: Shaymin|120/298
+|
+|-heal|p1a: Shaymin|138/298|[from] item: Leftovers
+|-heal|p2a: Tinkaton|44/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Shaymin|Earth Power|p2a: Tinkaton
+|-supereffective|p2a: Tinkaton
+|-damage|p2a: Tinkaton|6/100
+|move|p2a: Tinkaton|Play Rough|p1a: Shaymin|[miss]
+|-miss|p2a: Tinkaton|p1a: Shaymin
+|
+|-heal|p1a: Shaymin|156/298|[from] item: Leftovers
+|-heal|p2a: Tinkaton|12/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Shaymin|Earth Power|p2a: Tinkaton
+|-supereffective|p2a: Tinkaton
+|-damage|p2a: Tinkaton|0 fnt
+|faint|p2a: Tinkaton
+|
+|-heal|p1a: Shaymin|174/298|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Camerupt|Camerupt, L91, F|100/100
+|turn|12
+|
+|switch|p1a: Squawkabilly|Squawkabilly-Yellow, L89, M|123/291
+|move|p2a: Camerupt|Overheat|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|0 fnt
+|-unboost|p2a: Camerupt|spa|2
+|faint|p1a: Squawkabilly
+|
+|upkeep
+|
+|switch|p1a: Gurdurr|Gurdurr, L85, F, tera:Steel|78/283
+|turn|13
+|
+|move|p2a: Camerupt|Overheat|p1a: Gurdurr
+|-supereffective|p1a: Gurdurr
+|-damage|p1a: Gurdurr|0 fnt
+|-unboost|p2a: Camerupt|spa|2
+|faint|p1a: Gurdurr
+|
+|upkeep
+|
+|switch|p1a: Golem|Golem, L87, F|281/281
+|turn|14
+|
+|switch|p1a: Shaymin|Shaymin, L82|174/298
+|move|p2a: Camerupt|Overheat|p1a: Shaymin
+|-supereffective|p1a: Shaymin
+|-damage|p1a: Shaymin|64/298
+|-unboost|p2a: Camerupt|spa|2
+|
+|-heal|p1a: Shaymin|82/298|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Shaymin|Earth Power|p2a: Camerupt
+|-supereffective|p2a: Camerupt
+|-damage|p2a: Camerupt|64/100
+|move|p2a: Camerupt|Overheat|p1a: Shaymin|[miss]
+|-miss|p2a: Camerupt|p1a: Shaymin
+|
+|-heal|p1a: Shaymin|100/298|[from] item: Leftovers
+|-heal|p2a: Camerupt|70/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|switch|p1a: Wugtrio|Wugtrio, L91, F|120/212
+|move|p2a: Camerupt|Overheat|p1a: Wugtrio
+|-resisted|p1a: Wugtrio
+|-damage|p1a: Wugtrio|96/212
+|
+|-heal|p2a: Camerupt|76/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Wugtrio|Liquidation|p2a: Camerupt
+|-supereffective|p2a: Camerupt
+|-damage|p2a: Camerupt|0 fnt
+|faint|p2a: Camerupt
+|
+|upkeep
+|
+|switch|p2a: Misdreavus|Misdreavus, L90, F|100/100
+|turn|18
+|
+|move|p1a: Wugtrio|Liquidation|p2a: Misdreavus
+|-damage|p2a: Misdreavus|50/100
+|move|p2a: Misdreavus|Shadow Ball|p1a: Wugtrio
+|-damage|p1a: Wugtrio|0 fnt
+|faint|p1a: Wugtrio
+|
+|upkeep
+|
+|switch|p1a: Toxtricity|Toxtricity, L82, F|257/257
+|turn|19
+|
+|move|p2a: Misdreavus|Shadow Ball|p1a: Toxtricity
+|-crit|p1a: Toxtricity
+|-damage|p1a: Toxtricity|98/257
+|move|p1a: Toxtricity|Overdrive|p2a: Misdreavus
+|-damage|p2a: Misdreavus|18/100
+|-enditem|p1a: Toxtricity|Throat Spray
+|-boost|p1a: Toxtricity|spa|1|[from] item: Throat Spray
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Misdreavus|Shadow Ball|p1a: Toxtricity
+|-damage|p1a: Toxtricity|0 fnt
+|faint|p1a: Toxtricity
+|
+|upkeep
+|
+|switch|p1a: Shaymin|Shaymin, L82|100/298
+|turn|21
+|
+|move|p1a: Shaymin|Earth Power|p2a: Misdreavus
+|-immune|p2a: Misdreavus|[from] ability: Levitate
+|move|p2a: Misdreavus|Shadow Ball|p1a: Shaymin
+|-damage|p1a: Shaymin|22/298
+|
+|-heal|p1a: Shaymin|40/298|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Shaymin|Synthesis|p1a: Shaymin
+|-heal|p1a: Shaymin|189/298
+|move|p2a: Misdreavus|Shadow Ball|p1a: Shaymin
+|-damage|p1a: Shaymin|102/298
+|-unboost|p1a: Shaymin|spd|1
+|
+|-heal|p1a: Shaymin|120/298|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|switch|p1a: Golem|Golem, L87, F|281/281
+|move|p2a: Misdreavus|Shadow Ball|p1a: Golem
+|-damage|p1a: Golem|173/281
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Misdreavus|Shadow Ball|p1a: Golem
+|-damage|p1a: Golem|58/281
+|move|p1a: Golem|Explosion|p2a: Misdreavus
+|-immune|p2a: Misdreavus
+|faint|p1a: Golem
+|
+|upkeep
+|
+|switch|p1a: Shaymin|Shaymin, L82|120/298
+|turn|25
+|
+|move|p1a: Shaymin|Earth Power|p2a: Misdreavus
+|-immune|p2a: Misdreavus|[from] ability: Levitate
+|move|p2a: Misdreavus|Shadow Ball|p1a: Shaymin
+|-damage|p1a: Shaymin|41/298
+|
+|-heal|p1a: Shaymin|59/298|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Shaymin|Earth Power|p2a: Misdreavus
+|-immune|p2a: Misdreavus|[from] ability: Levitate
+|move|p2a: Misdreavus|Shadow Ball|p1a: Shaymin
+|-damage|p1a: Shaymin|0 fnt
+|faint|p1a: Shaymin
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23052</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23052<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23052|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Oinkologne|Oinkologne, L92, M|352/352
+|switch|p2a: Rotom|Rotom-Fan, L86|100/100
+|turn|1
+|
+|-terastallize|p1a: Oinkologne|Ground
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Lash Out|p2a: Rotom
+|-crit|p2a: Rotom
+|-damage|p2a: Rotom|65/100
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|6
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|321/321
+|move|p2a: Rotom|Thunderbolt|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|266/321
+|
+|upkeep
+|turn|7
+|
+|switch|p1a: Oinkologne|Oinkologne, L92, M, tera:Ground|352/352
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|10
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|321/321
+|move|p2a: Rotom|Thunderbolt|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-crit|p1a: Amoonguss
+|-damage|p1a: Amoonguss|233/321
+|
+|upkeep
+|turn|11
+|
+|switch|p1a: Oinkologne|Oinkologne, L92, M, tera:Ground|352/352
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|14
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|High Horsepower|p2a: Rotom
+|-immune|p2a: Rotom
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Rotom|Thunderbolt|p1a: Oinkologne
+|-immune|p1a: Oinkologne
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|270/352
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|-heal|p1a: Oinkologne|292/352|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|204/352
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|-heal|p1a: Oinkologne|226/352|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|133/352
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|-unboost|p1a: Oinkologne|spe|1
+|-boost|p1a: Oinkologne|atk|1
+|-boost|p1a: Oinkologne|def|1
+|
+|-heal|p1a: Oinkologne|155/352|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|62/352
+|cant|p1a: Oinkologne|flinch
+|
+|-heal|p1a: Oinkologne|84/352|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|3/352
+|move|p1a: Oinkologne|Curse|p1a: Oinkologne
+|
+|-heal|p1a: Oinkologne|25/352|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Rotom|Air Slash|p1a: Oinkologne
+|-damage|p1a: Oinkologne|0 fnt
+|faint|p1a: Oinkologne
+|
+|upkeep
+|
+|switch|p1a: Regirock|Regirock, L83|268/268
+|turn|31
+|
+|move|p2a: Rotom|Air Slash|p1a: Regirock
+|-resisted|p1a: Regirock
+|-damage|p1a: Regirock|226/268
+|move|p1a: Regirock|Stone Edge|p2a: Rotom
+|-supereffective|p2a: Rotom
+|-damage|p2a: Rotom|0 fnt
+|faint|p2a: Rotom
+|
+|upkeep
+|
+|switch|p2a: Leavanny|Leavanny, L86, M|100/100
+|turn|32
+|
+|move|p2a: Leavanny|Knock Off|p1a: Regirock
+|-damage|p1a: Regirock|185/268
+|-enditem|p1a: Regirock|Chesto Berry|[from] move: Knock Off|[of] p2a: Leavanny
+|move|p1a: Regirock|Stone Edge|p2a: Leavanny
+|-supereffective|p2a: Leavanny
+|-damage|p2a: Leavanny|9/100
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Leavanny|Knock Off|p1a: Regirock
+|-damage|p1a: Regirock|161/268
+|move|p1a: Regirock|Stone Edge|p2a: Leavanny
+|-supereffective|p2a: Leavanny
+|-damage|p2a: Leavanny|0 fnt
+|faint|p2a: Leavanny
+|
+|upkeep
+|
+|switch|p2a: Darkrai|Darkrai, L77|100/100
+|turn|34
+|
+|move|p2a: Darkrai|Focus Blast|p1a: Regirock
+|-supereffective|p1a: Regirock
+|-damage|p1a: Regirock|0 fnt
+|faint|p1a: Regirock
+|-damage|p2a: Darkrai|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, F|321/321
+|turn|35
+|
+|move|p2a: Darkrai|Focus Blast|p1a: Amoonguss|[miss]
+|-miss|p2a: Darkrai|p1a: Amoonguss
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Darkrai
+|-damage|p2a: Darkrai|56/100
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Darkrai|Focus Blast|p1a: Amoonguss|[miss]
+|-miss|p2a: Darkrai|p1a: Amoonguss
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Darkrai
+|-damage|p2a: Darkrai|17/100
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Darkrai|Focus Blast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|253/321
+|-damage|p2a: Darkrai|7/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Darkrai
+|-damage|p2a: Darkrai|0 fnt
+|faint|p2a: Darkrai
+|
+|upkeep
+|
+|switch|p2a: Cacturne|Cacturne, L92, F|100/100
+|turn|38
+|
+|move|p2a: Cacturne|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|187/321
+|-unboost|p2a: Cacturne|spa|2
+|-damage|p2a: Cacturne|91/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Cacturne
+|-supereffective|p2a: Cacturne
+|-damage|p2a: Cacturne|17/100
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Cacturne|Leaf Storm|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|156/321
+|-unboost|p2a: Cacturne|spa|2
+|-damage|p2a: Cacturne|7/100|[from] item: Life Orb
+|move|p1a: Amoonguss|Sludge Bomb|p2a: Cacturne
+|-supereffective|p2a: Cacturne
+|-damage|p2a: Cacturne|0 fnt
+|faint|p2a: Cacturne
+|
+|upkeep
+|
+|switch|p2a: Sudowoodo|Sudowoodo, L94, M|100/100
+|turn|40
+|
+|move|p2a: Sudowoodo|Head Smash|p1a: Amoonguss
+|-damage|p1a: Amoonguss|0 fnt
+|-damage|p2a: Sudowoodo|84/100|[from] item: Rocky Helmet|[of] p1a: Amoonguss
+|faint|p1a: Amoonguss
+|
+|upkeep
+|
+|switch|p1a: Brute Bonnet|Brute Bonnet, L81|312/312
+|turn|41
+|
+|move|p1a: Brute Bonnet|Close Combat|p2a: Sudowoodo
+|-supereffective|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|33/100
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|move|p2a: Sudowoodo|Head Smash|p1a: Brute Bonnet|[miss]
+|-miss|p2a: Sudowoodo|p1a: Brute Bonnet
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Brute Bonnet|Close Combat|p2a: Sudowoodo
+|-supereffective|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|0 fnt
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|faint|p2a: Sudowoodo
+|
+|upkeep
+|
+|switch|p2a: Ariados|Ariados, L95, F|100/100
+|turn|43
+|
+|move|p1a: Brute Bonnet|Close Combat|p2a: Ariados
+|-resisted|p2a: Ariados
+|-damage|p2a: Ariados|92/100
+|-unboost|p1a: Brute Bonnet|def|1
+|-unboost|p1a: Brute Bonnet|spd|1
+|move|p2a: Ariados|Megahorn|p1a: Brute Bonnet|[miss]
+|-miss|p2a: Ariados|p1a: Brute Bonnet
+|
+|upkeep
+|turn|44
+|
+|move|p1a: Brute Bonnet|Sucker Punch|p2a: Ariados
+|-damage|p2a: Ariados|60/100
+|move|p2a: Ariados|Megahorn|p1a: Brute Bonnet
+|-supereffective|p1a: Brute Bonnet
+|-damage|p1a: Brute Bonnet|0 fnt
+|faint|p1a: Brute Bonnet
+|-end|p1a: Brute Bonnet|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p1a: Annihilape|Annihilape, L76, M|292/292
+|turn|45
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|244/292
+|
+|-heal|p1a: Annihilape|262/292|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|226/292
+|
+|-heal|p1a: Annihilape|244/292|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|216/292
+|
+|-heal|p1a: Annihilape|234/292|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|213/292
+|
+|-heal|p1a: Annihilape|231/292|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|212/292
+|
+|-heal|p1a: Annihilape|230/292|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|1
+|-boost|p1a: Annihilape|def|1
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|212/292
+|
+|-heal|p1a: Annihilape|230/292|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|213/292
+|
+|-heal|p1a: Annihilape|231/292|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|215/292
+|
+|-heal|p1a: Annihilape|233/292|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|216/292
+|
+|-heal|p1a: Annihilape|234/292|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape|[miss]
+|-miss|p2a: Ariados|p1a: Annihilape
+|
+|-heal|p1a: Annihilape|252/292|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|235/292
+|
+|-heal|p1a: Annihilape|253/292|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|237/292
+|
+|-heal|p1a: Annihilape|255/292|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape
+|-resisted|p1a: Annihilape
+|-damage|p1a: Annihilape|238/292
+|
+|-heal|p1a: Annihilape|256/292|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|move|p2a: Ariados|Megahorn|p1a: Annihilape|[miss]
+|-miss|p2a: Ariados|p1a: Annihilape
+|
+|-heal|p1a: Annihilape|274/292|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|-activate|p2a: Ariados|move: Struggle
+|move|p2a: Ariados|Struggle|p1a: Annihilape
+|-damage|p1a: Annihilape|253/292
+|-damage|p2a: Ariados|35/100|[from] recoil
+|
+|-heal|p1a: Annihilape|271/292|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|move|p1a: Annihilape|Bulk Up|p1a: Annihilape
+|-boost|p1a: Annihilape|atk|0
+|-boost|p1a: Annihilape|def|0
+|-activate|p2a: Ariados|move: Struggle
+|move|p2a: Ariados|Struggle|p1a: Annihilape
+|-damage|p1a: Annihilape|250/292
+|-damage|p2a: Ariados|10/100|[from] recoil
+|
+|-heal|p1a: Annihilape|268/292|[from] item: Leftovers
+|upkeep
+|turn|61
+|
+|move|p1a: Annihilape|Rage Fist|p2a: Ariados
+|-damage|p2a: Ariados|0 fnt
+|faint|p2a: Ariados
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

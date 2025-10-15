@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22656</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22656<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22656|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Rabsca|Rabsca, L91, F|284/284
+|switch|p2a: Pyroar|Pyroar, L88, F|100/100
+|-ability|p2a: Pyroar|Unnerve
+|turn|1
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Rabsca
+|-supereffective|p1a: Rabsca
+|-damage|p1a: Rabsca|44/284
+|move|p1a: Rabsca|Psychic|p2a: Pyroar
+|-damage|p2a: Pyroar|49/100
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Rabsca
+|-supereffective|p1a: Rabsca
+|-damage|p1a: Rabsca|0 fnt
+|faint|p1a: Rabsca
+|
+|upkeep
+|
+|switch|p1a: Cobalion|Cobalion, L80|277/277
+|turn|3
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Cobalion
+|-supereffective|p1a: Cobalion
+|-damage|p1a: Cobalion|0 fnt
+|faint|p1a: Cobalion
+|
+|upkeep
+|
+|switch|p1a: Flamigo|Flamigo, L82, M|269/269
+|turn|4
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Flamigo|[miss]
+|-miss|p2a: Pyroar|p1a: Flamigo
+|move|p1a: Flamigo|Roost||[still]
+|-fail|p1a: Flamigo|heal
+|
+|upkeep
+|turn|5
+|
+|-terastallize|p1a: Flamigo|Steel
+|move|p2a: Pyroar|Fire Blast|p1a: Flamigo
+|-supereffective|p1a: Flamigo
+|-damage|p1a: Flamigo|0 fnt
+|faint|p1a: Flamigo
+|
+|upkeep
+|
+|switch|p1a: Dedenne|Dedenne, L88, F|261/261
+|turn|6
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Dedenne
+|-damage|p1a: Dedenne|83/261
+|move|p1a: Dedenne|Dazzling Gleam|p2a: Pyroar
+|-resisted|p2a: Pyroar
+|-damage|p2a: Pyroar|33/100
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Dedenne
+|-damage|p1a: Dedenne|0 fnt
+|faint|p1a: Dedenne
+|
+|upkeep
+|
+|switch|p1a: Kingdra|Kingdra, L84, F|263/263
+|turn|8
+|
+|move|p2a: Pyroar|Fire Blast|p1a: Kingdra
+|-resisted|p1a: Kingdra
+|-damage|p1a: Kingdra|233/263
+|move|p1a: Kingdra|Wave Crash|p2a: Pyroar
+|-supereffective|p2a: Pyroar
+|-damage|p2a: Pyroar|0 fnt
+|faint|p2a: Pyroar
+|-damage|p1a: Kingdra|201/263|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Incineroar|Incineroar, L82, F|100/100
+|-ability|p2a: Incineroar|Intimidate|boost
+|-unboost|p1a: Kingdra|atk|1
+|turn|9
+|
+|move|p1a: Kingdra|Waterfall|p2a: Incineroar
+|-supereffective|p2a: Incineroar
+|-damage|p2a: Incineroar|63/100
+|move|p2a: Incineroar|Overheat|p1a: Kingdra
+|-resisted|p1a: Kingdra
+|-damage|p1a: Kingdra|177/263
+|-unboost|p2a: Incineroar|spa|2
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Kingdra|Waterfall|p2a: Incineroar
+|-supereffective|p2a: Incineroar
+|-damage|p2a: Incineroar|26/100
+|move|p2a: Incineroar|Overheat|p1a: Kingdra
+|-resisted|p1a: Kingdra
+|-damage|p1a: Kingdra|164/263
+|-unboost|p2a: Incineroar|spa|2
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Kingdra|Waterfall|p2a: Incineroar
+|-supereffective|p2a: Incineroar
+|-damage|p2a: Incineroar|0 fnt
+|faint|p2a: Incineroar
+|
+|upkeep
+|
+|switch|p2a: Grumpig|Grumpig, L92, F|100/100
+|turn|12
+|
+|switch|p1a: Cetitan|Cetitan, L82, M|413/413
+|move|p2a: Grumpig|Focus Blast|p1a: Cetitan|[miss]
+|-miss|p2a: Grumpig|p1a: Cetitan
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Cetitan|Ice Shard|p2a: Grumpig
+|-crit|p2a: Grumpig
+|-damage|p2a: Grumpig|82/100
+|-damage|p1a: Cetitan|372/413|[from] item: Life Orb
+|move|p2a: Grumpig|Focus Blast|p1a: Cetitan
+|-supereffective|p1a: Cetitan
+|-damage|p1a: Cetitan|0 fnt
+|faint|p1a: Cetitan
+|
+|upkeep
+|
+|switch|p1a: Kingdra|Kingdra, L84, F|164/263
+|turn|14
+|
+|move|p2a: Grumpig|Focus Blast|p1a: Kingdra
+|-damage|p1a: Kingdra|34/263
+|move|p1a: Kingdra|Waterfall|p2a: Grumpig
+|-damage|p2a: Grumpig|48/100
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Grumpig|Focus Blast|p1a: Kingdra
+|-damage|p1a: Kingdra|0 fnt
+|faint|p1a: Kingdra
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

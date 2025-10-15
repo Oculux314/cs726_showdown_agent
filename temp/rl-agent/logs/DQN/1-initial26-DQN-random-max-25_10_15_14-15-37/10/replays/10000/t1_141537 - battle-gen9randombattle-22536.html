@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22536</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22536<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22536|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Sableye|Sableye, L88, F|231/231
+|switch|p2a: Illumise|Illumise, L91, F|100/100
+|turn|1
+|
+|-terastallize|p1a: Sableye|Poison
+|move|p1a: Sableye|Recover||[still]
+|-fail|p1a: Sableye|heal
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-damage|p1a: Sableye|176/231
+|
+|-heal|p1a: Sableye|190/231|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-damage|p1a: Sableye|134/231
+|move|p1a: Sableye|Knock Off|p2a: Illumise
+|-damage|p2a: Illumise|63/100
+|-enditem|p2a: Illumise|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Sableye
+|
+|-heal|p1a: Sableye|148/231|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Sableye|Encore|p2a: Illumise
+|-start|p2a: Illumise|Encore
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-damage|p1a: Sableye|94/231
+|-unboost|p1a: Sableye|spd|1
+|
+|-heal|p1a: Sableye|108/231|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-damage|p1a: Sableye|27/231
+|move|p1a: Sableye|Knock Off|p2a: Illumise
+|-damage|p2a: Illumise|37/100
+|
+|-heal|p1a: Sableye|41/231|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Sableye|Recover|p1a: Sableye
+|-heal|p1a: Sableye|157/231
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-crit|p1a: Sableye
+|-damage|p1a: Sableye|28/231
+|
+|-heal|p1a: Sableye|42/231|[from] item: Leftovers
+|-end|p2a: Illumise|Encore
+|upkeep
+|turn|6
+|
+|move|p2a: Illumise|Bug Buzz|p1a: Sableye
+|-resisted|p1a: Sableye
+|-damage|p1a: Sableye|0 fnt
+|faint|p1a: Sableye
+|
+|upkeep
+|
+|switch|p1a: Espeon|Espeon, L84, M|246/246
+|turn|7
+|
+|move|p1a: Espeon|Alluring Voice|p2a: Illumise
+|-damage|p2a: Illumise|0 fnt
+|faint|p2a: Illumise
+|
+|upkeep
+|
+|switch|p2a: Gothitelle|Gothitelle, L90, M|100/100
+|turn|8
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Espeon
+|-resisted|p1a: Espeon
+|-damage|p1a: Espeon|199/246
+|move|p1a: Espeon|Alluring Voice|p2a: Gothitelle
+|-damage|p2a: Gothitelle|67/100
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Espeon
+|-resisted|p1a: Espeon
+|-damage|p1a: Espeon|155/246
+|move|p1a: Espeon|Alluring Voice|p2a: Gothitelle
+|-damage|p2a: Gothitelle|37/100
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Espeon|[miss]
+|-miss|p2a: Gothitelle|p1a: Espeon
+|move|p1a: Espeon|Alluring Voice|p2a: Gothitelle
+|-damage|p2a: Gothitelle|3/100
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Gothitelle|Focus Blast|p1a: Espeon
+|-resisted|p1a: Espeon
+|-damage|p1a: Espeon|106/246
+|move|p1a: Espeon|Alluring Voice|p2a: Gothitelle
+|-crit|p2a: Gothitelle
+|-damage|p2a: Gothitelle|0 fnt
+|faint|p2a: Gothitelle
+|
+|upkeep
+|
+|switch|p2a: Manaphy|Manaphy, L78|100/100
+|turn|12
+|
+|move|p1a: Espeon|Alluring Voice|p2a: Manaphy
+|-damage|p2a: Manaphy|66/100
+|move|p2a: Manaphy|Energy Ball|p1a: Espeon
+|-damage|p1a: Espeon|50/246
+|
+|-heal|p2a: Manaphy|72/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Espeon|Alluring Voice|p2a: Manaphy
+|-damage|p2a: Manaphy|34/100
+|move|p2a: Manaphy|Energy Ball|p1a: Espeon
+|-damage|p1a: Espeon|0 fnt
+|faint|p1a: Espeon
+|
+|-heal|p2a: Manaphy|40/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, F|225/225
+|-item|p2a: Manaphy|Leftovers|[from] ability: Frisk|[of] p1a: Dusknoir
+|turn|14
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|185/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|53/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|149/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|59/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|163/225|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|-singleturn|p1a: Dusknoir|move: Focus Punch
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|125/225
+|cant|p1a: Dusknoir|Focus Punch|Focus Punch
+|
+|-heal|p2a: Manaphy|65/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|139/225|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|100/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|50/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|141/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|56/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|155/225|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|113/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|48/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|135/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|54/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|149/225|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|109/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|46/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|130/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|52/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|144/225|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|106/225
+|-unboost|p1a: Dusknoir|spd|1
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|45/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|126/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|51/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|140/225|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|79/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|40/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|111/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|46/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|125/225|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|68/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|35/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|98/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|41/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|112/225|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|50/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|29/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|82/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|35/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|96/225|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|37/225
+|move|p1a: Dusknoir|Pain Split|p2a: Manaphy
+|-sethp|p2a: Manaphy|24/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Dusknoir|68/225|[from] move: Pain Split
+|
+|-heal|p2a: Manaphy|30/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|82/225|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|20/225
+|move|p1a: Dusknoir|Poltergeist|p2a: Manaphy|[miss]
+|-miss|p1a: Dusknoir|p2a: Manaphy
+|
+|-heal|p2a: Manaphy|36/100|[from] item: Leftovers
+|-heal|p1a: Dusknoir|34/225|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Manaphy|Energy Ball|p1a: Dusknoir
+|-damage|p1a: Dusknoir|0 fnt
+|faint|p1a: Dusknoir
+|
+|-heal|p2a: Manaphy|42/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Blissey|Blissey, L85, F|572/572
+|turn|26
+|
+|switch|p1a: Galvantula|Galvantula, L82, M|249/249
+|move|p2a: Manaphy|Energy Ball|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|213/249
+|
+|-heal|p2a: Manaphy|48/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Galvantula|Thunder|p2a: Manaphy|[miss]
+|-miss|p1a: Galvantula|p2a: Manaphy
+|move|p2a: Manaphy|Energy Ball|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|177/249
+|
+|-heal|p2a: Manaphy|54/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Galvantula|Thunder|p2a: Manaphy
+|-supereffective|p2a: Manaphy
+|-damage|p2a: Manaphy|0 fnt
+|faint|p2a: Manaphy
+|
+|upkeep
+|
+|switch|p2a: Kleavor|Kleavor, L78, F|100/100
+|turn|29
+|
+|move|p1a: Galvantula|Sticky Web|p2a: Kleavor
+|-sidestart|p2: t2_141537|move: Sticky Web
+|move|p2a: Kleavor|Close Combat|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|107/249
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Galvantula|Thunder|p2a: Kleavor
+|-damage|p2a: Kleavor|12/100
+|-status|p2a: Kleavor|par
+|move|p2a: Kleavor|Close Combat|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|40/249
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Galvantula|Thunder|p2a: Kleavor
+|-damage|p2a: Kleavor|0 fnt
+|faint|p2a: Kleavor
+|
+|upkeep
+|
+|switch|p2a: Dedenne|Dedenne, L88, F|100/100
+|-activate|p2a: Dedenne|move: Sticky Web
+|-unboost|p2a: Dedenne|spe|1
+|turn|32
+|
+|move|p1a: Galvantula|Thunder|p2a: Dedenne
+|-resisted|p2a: Dedenne
+|-damage|p2a: Dedenne|74/100
+|move|p2a: Dedenne|Thunderbolt|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|0 fnt
+|faint|p1a: Galvantula
+|
+|upkeep
+|
+|switch|p1a: Appletun|Appletun, L92, M|352/352
+|turn|33
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|329/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|upkeep
+|turn|34
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|331/352
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|331/352
+|-status|p1a: Appletun|par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|36
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-crit|p1a: Appletun
+|-damage|p1a: Appletun|318/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|340/352 par|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|316/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|331/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|39
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|40
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|350/352 par|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|42
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|331/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|43
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352 par
+|
+|upkeep
+|turn|44
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|330/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|352/352 par|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|330/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|352/352 par|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|329/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|351/352 par|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|330/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|352/352 par|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|350/352 par|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|329/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|351/352 par|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|330/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|352/352 par|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|329/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|351/352 par|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|327/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|349/352 par|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|328/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|350/352 par|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|326/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|348/352 par|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p2a: Dedenne|Thunderbolt|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|324/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|346/352 par|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|178/352 par
+|move|p1a: Appletun|Dragon Pulse|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Appletun|200/352 par|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|30/352 par
+|cant|p1a: Appletun|par
+|
+|-heal|p1a: Appletun|52/352 par|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Appletun
+|-supereffective|p1a: Appletun
+|-damage|p1a: Appletun|0 fnt
+|faint|p1a: Appletun
+|
+|upkeep
+|
+|switch|p1a: Blissey|Blissey, L85, F|572/572
+|turn|59
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|514/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|60
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|509/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|61
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|508/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|62
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|511/572
+|move|p1a: Blissey|Heal Bell||[still]
+|-activate|p1a: Blissey|move: Heal Bell
+|-fail|p1a: Blissey
+|
+|-heal|p1a: Blissey|546/572|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|492/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|64
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|508/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|65
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|509/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|517/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|514/572
+|move|p1a: Blissey|Heal Bell||[still]
+|-activate|p1a: Blissey|move: Heal Bell
+|-fail|p1a: Blissey
+|
+|-heal|p1a: Blissey|549/572|[from] item: Leftovers
+|upkeep
+|turn|68
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|495/572
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|69
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|514/572
+|move|p1a: Blissey|Seismic Toss|p2a: Dedenne
+|-damage|p2a: Dedenne|41/100
+|-enditem|p2a: Dedenne|Sitrus Berry|[eat]
+|-heal|p2a: Dedenne|66/100|[from] item: Sitrus Berry
+|-heal|p2a: Dedenne|99/100|[from] ability: Cheek Pouch
+|
+|-heal|p1a: Blissey|549/572|[from] item: Leftovers
+|upkeep
+|turn|70
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|492/572
+|move|p1a: Blissey|Seismic Toss|p2a: Dedenne
+|-damage|p2a: Dedenne|67/100
+|
+|-heal|p1a: Blissey|527/572|[from] item: Leftovers
+|upkeep
+|turn|71
+|
+|move|p2a: Dedenne|Dazzling Gleam|p1a: Blissey
+|-damage|p1a: Blissey|467/572
+|move|p1a: Blissey|Heal Bell||[still]
+|-activate|p1a: Blissey|move: Heal Bell
+|-fail|p1a: Blissey
+|
+|-heal|p1a: Blissey|502/572|[from] item: Leftovers
+|upkeep
+|turn|72
+|
+|move|p2a: Dedenne|Nuzzle|p1a: Blissey
+|-damage|p1a: Blissey|448/572
+|-status|p1a: Blissey|par
+|move|p1a: Blissey|Seismic Toss|p2a: Dedenne
+|-damage|p2a: Dedenne|35/100
+|
+|-heal|p1a: Blissey|483/572 par|[from] item: Leftovers
+|upkeep
+|turn|73
+|
+|move|p2a: Dedenne|Nuzzle|p1a: Blissey
+|-damage|p1a: Blissey|438/572 par
+|cant|p1a: Blissey|par
+|
+|-heal|p1a: Blissey|473/572 par|[from] item: Leftovers
+|upkeep
+|turn|74
+|
+|move|p2a: Dedenne|Nuzzle|p1a: Blissey
+|-damage|p1a: Blissey|421/572 par
+|move|p1a: Blissey|Thunder Wave|p2a: Dedenne
+|-immune|p2a: Dedenne
+|
+|-heal|p1a: Blissey|456/572 par|[from] item: Leftovers
+|upkeep
+|turn|75
+|
+|move|p2a: Dedenne|Nuzzle|p1a: Blissey
+|-damage|p1a: Blissey|407/572 par
+|move|p1a: Blissey|Seismic Toss|p2a: Dedenne
+|-damage|p2a: Dedenne|2/100
+|
+|-heal|p1a: Blissey|442/572 par|[from] item: Leftovers
+|upkeep
+|turn|76
+|
+|move|p2a: Dedenne|Nuzzle|p1a: Blissey
+|-damage|p1a: Blissey|394/572 par
+|move|p1a: Blissey|Seismic Toss|p2a: Dedenne
+|-damage|p2a: Dedenne|0 fnt
+|faint|p2a: Dedenne
+|
+|-heal|p1a: Blissey|429/572 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Piloswine|Piloswine, L85, F|100/100
+|-activate|p2a: Piloswine|move: Sticky Web
+|-unboost|p2a: Piloswine|spe|1
+|turn|77
+|
+|move|p2a: Piloswine|Earthquake|p1a: Blissey
+|-damage|p1a: Blissey|69/572 par
+|move|p1a: Blissey|Seismic Toss|p2a: Piloswine
+|-damage|p2a: Piloswine|73/100
+|
+|-heal|p1a: Blissey|104/572 par|[from] item: Leftovers
+|upkeep
+|turn|78
+|
+|move|p2a: Piloswine|Earthquake|p1a: Blissey
+|-damage|p1a: Blissey|0 fnt
+|faint|p1a: Blissey
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

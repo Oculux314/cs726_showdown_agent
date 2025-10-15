@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22341</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22341<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22341|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Salamence|Salamence, L77, M|273/273
+|switch|p2a: Roaring Moon|Roaring Moon, L72|100/100
+|-ability|p1a: Salamence|Intimidate|boost
+|-unboost|p2a: Roaring Moon|atk|1
+|turn|1
+|
+|switch|p1a: Gyarados|Gyarados, L79, M|280/280
+|-ability|p1a: Gyarados|Intimidate|boost
+|-unboost|p2a: Roaring Moon|atk|1
+|move|p2a: Roaring Moon|Outrage|p1a: Gyarados
+|-damage|p1a: Gyarados|210/280
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gyarados|[from] lockedmove
+|-damage|p1a: Gyarados|138/280
+|move|p1a: Gyarados|Stone Edge|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|61/100
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gyarados|[from] lockedmove
+|-damage|p1a: Gyarados|59/280
+|-start|p2a: Roaring Moon|confusion|[fatigue]
+|-enditem|p2a: Roaring Moon|Lum Berry|[eat]
+|-end|p2a: Roaring Moon|confusion
+|move|p1a: Gyarados|Waterfall|p2a: Roaring Moon
+|-resisted|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|40/100
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Roaring Moon|Outrage|p1a: Gyarados
+|-damage|p1a: Gyarados|0 fnt
+|faint|p1a: Gyarados
+|
+|upkeep
+|
+|switch|p1a: Cinderace|Cinderace, L77, F|249/249
+|turn|5
+|
+|move|p1a: Cinderace|U-turn|p2a: Roaring Moon
+|-start|p1a: Cinderace|typechange|Bug|[from] ability: Libero
+|-supereffective|p2a: Roaring Moon
+|-damage|p2a: Roaring Moon|0 fnt
+|faint|p2a: Roaring Moon
+|-end|p2a: Roaring Moon|Protosynthesis|[silent]
+|
+|switch|p1a: Pikachu|Pikachu-Sinnoh, L93, F|216/216|[from] U-turn
+|
+|upkeep
+|
+|switch|p2a: Sceptile|Sceptile, L87, F|100/100
+|turn|6
+|
+|move|p2a: Sceptile|Earthquake|p1a: Pikachu
+|-supereffective|p1a: Pikachu
+|-damage|p1a: Pikachu|0 fnt
+|faint|p1a: Pikachu
+|-damage|p2a: Sceptile|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Cinderace|Cinderace, L77, F|249/249
+|turn|7
+|
+|move|p2a: Sceptile|Earthquake|p1a: Cinderace
+|-supereffective|p1a: Cinderace
+|-damage|p1a: Cinderace|41/249
+|-damage|p2a: Sceptile|81/100|[from] item: Life Orb
+|move|p1a: Cinderace|Court Change||[still]
+|-start|p1a: Cinderace|typechange|Normal|[from] ability: Libero
+|-fail|p1a: Cinderace
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Sceptile|Earthquake|p1a: Cinderace
+|-damage|p1a: Cinderace|0 fnt
+|faint|p1a: Cinderace
+|-damage|p2a: Sceptile|71/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Salamence|Salamence, L77, M|273/273
+|-ability|p1a: Salamence|Intimidate|boost
+|-unboost|p2a: Sceptile|atk|1
+|turn|9
+|
+|move|p2a: Sceptile|Earthquake|p1a: Salamence
+|-immune|p1a: Salamence
+|move|p1a: Salamence|Dual Wingbeat|p2a: Sceptile
+|-supereffective|p2a: Sceptile
+|-damage|p2a: Sceptile|32/100
+|-supereffective|p2a: Sceptile
+|-damage|p2a: Sceptile|0 fnt
+|faint|p2a: Sceptile
+|-hitcount|p2: Sceptile|2
+|
+|upkeep
+|
+|switch|p2a: Flareon|Flareon, L90, F|100/100
+|turn|10
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Flareon
+|-damage|p2a: Flareon|78/100
+|-damage|p2a: Flareon|56/100
+|-hitcount|p2a: Flareon|2
+|move|p2a: Flareon|Flare Blitz|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|162/273
+|-damage|p2a: Flareon|42/100|[from] Recoil
+|
+|-status|p2a: Flareon|tox|[from] item: Toxic Orb
+|upkeep
+|turn|11
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Flareon
+|-damage|p2a: Flareon|21/100 tox
+|-damage|p2a: Flareon|0 fnt
+|faint|p2a: Flareon
+|-hitcount|p2: Flareon|2
+|
+|upkeep
+|
+|switch|p2a: Rillaboom|Rillaboom, L79, M|100/100
+|-fieldstart|move: Grassy Terrain|[from] ability: Grassy Surge|[of] p2a: Rillaboom
+|turn|12
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Rillaboom
+|-supereffective|p2a: Rillaboom
+|-damage|p2a: Rillaboom|67/100
+|-supereffective|p2a: Rillaboom
+|-damage|p2a: Rillaboom|35/100
+|-hitcount|p2a: Rillaboom|2
+|move|p2a: Rillaboom|Wood Hammer|p1a: Salamence
+|-resisted|p1a: Salamence
+|-damage|p1a: Salamence|87/273
+|-damage|p2a: Rillaboom|27/100|[from] Recoil
+|
+|-heal|p2a: Rillaboom|33/100|[from] Grassy Terrain
+|upkeep
+|turn|13
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Rillaboom
+|-supereffective|p2a: Rillaboom
+|-damage|p2a: Rillaboom|0 fnt
+|faint|p2a: Rillaboom
+|-hitcount|p2: Rillaboom|1
+|
+|upkeep
+|
+|switch|p2a: Klefki|Klefki, L84, M|100/100
+|turn|14
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|90/100
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|81/100
+|-hitcount|p2a: Klefki|2
+|move|p2a: Klefki|Play Rough|p1a: Salamence|[miss]
+|-miss|p2a: Klefki|p1a: Salamence
+|
+|-heal|p2a: Klefki|87/100|[from] Grassy Terrain
+|-heal|p2a: Klefki|93/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Salamence|Dual Wingbeat|p2a: Klefki|[miss]
+|-miss|p1a: Salamence|p2a: Klefki
+|move|p2a: Klefki|Play Rough|p1a: Salamence
+|-supereffective|p1a: Salamence
+|-damage|p1a: Salamence|0 fnt
+|faint|p1a: Salamence
+|
+|-heal|p2a: Klefki|99/100|[from] Grassy Terrain
+|-heal|p2a: Klefki|100/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Terapagos|Terapagos, L77, F|265/265
+|-activate|p1a: Terapagos|ability: Tera Shift
+|detailschange|p1a: Terapagos|Terapagos-Terastal, L77, F
+|-heal|p1a: Terapagos|273/273|[silent]
+|turn|16
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|89/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|238/273
+|
+|-heal|p1a: Terapagos|255/273|[from] Grassy Terrain
+|-heal|p2a: Klefki|95/100|[from] Grassy Terrain
+|-heal|p2a: Klefki|100/100|[from] item: Leftovers
+|-fieldend|move: Grassy Terrain
+|upkeep
+|turn|17
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|89/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos|[miss]
+|-miss|p2a: Klefki|p1a: Terapagos
+|
+|-heal|p2a: Klefki|95/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|85/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos
+|-damage|p1a: Terapagos|179/273
+|
+|-heal|p2a: Klefki|91/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|80/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos
+|-damage|p1a: Terapagos|103/273
+|
+|-heal|p2a: Klefki|86/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|76/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos
+|-damage|p1a: Terapagos|31/273
+|
+|-heal|p2a: Klefki|82/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Terapagos|Dark Pulse|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|70/100
+|move|p2a: Klefki|Play Rough|p1a: Terapagos
+|-damage|p1a: Terapagos|0 fnt
+|faint|p1a: Terapagos
+|
+|-heal|p2a: Klefki|76/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Swalot|Swalot, L90, F|326/326
+|turn|22
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|284/326
+|move|p1a: Swalot|Encore|p2a: Klefki
+|-start|p2a: Klefki|Encore
+|
+|-heal|p2a: Klefki|82/100|[from] item: Leftovers
+|-heal|p1a: Swalot|304/326|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|265/326
+|move|p1a: Swalot|Encore||[still]
+|-fail|p1a: Swalot
+|
+|-heal|p2a: Klefki|88/100|[from] item: Leftovers
+|-heal|p1a: Swalot|285/326|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|242/326
+|move|p1a: Swalot|Encore||[still]
+|-fail|p1a: Swalot
+|
+|-heal|p2a: Klefki|94/100|[from] item: Leftovers
+|-heal|p1a: Swalot|262/326|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-crit|p1a: Swalot
+|-damage|p1a: Swalot|206/326
+|move|p1a: Swalot|Encore||[still]
+|-fail|p1a: Swalot
+|
+|-heal|p2a: Klefki|100/100|[from] item: Leftovers
+|-heal|p1a: Swalot|226/326|[from] item: Leftovers
+|-end|p2a: Klefki|Encore
+|upkeep
+|turn|26
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|189/326
+|move|p1a: Swalot|Encore|p2a: Klefki
+|-start|p2a: Klefki|Encore
+|
+|-heal|p1a: Swalot|209/326|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|166/326
+|move|p1a: Swalot|Encore||[still]
+|-fail|p1a: Swalot
+|
+|-heal|p1a: Swalot|186/326|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|146/326
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|82/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|189/326|[from] move: Pain Split
+|
+|-heal|p2a: Klefki|88/100|[from] item: Leftovers
+|-heal|p1a: Swalot|209/326|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p2a: Klefki|Play Rough|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|169/326
+|move|p1a: Swalot|Encore||[still]
+|-fail|p1a: Swalot
+|
+|-heal|p2a: Klefki|94/100|[from] item: Leftovers
+|-heal|p1a: Swalot|189/326|[from] item: Leftovers
+|-end|p2a: Klefki|Encore
+|upkeep
+|turn|30
+|
+|move|p2a: Klefki|Magnet Rise|p2a: Klefki
+|-start|p2a: Klefki|Magnet Rise
+|move|p1a: Swalot|Encore|p2a: Klefki
+|-start|p2a: Klefki|Encore
+|
+|-heal|p2a: Klefki|99/100|[from] item: Leftovers
+|-heal|p1a: Swalot|209/326|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|95/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|220/326|[from] move: Pain Split
+|
+|-heal|p2a: Klefki|100/100|[from] item: Leftovers
+|-heal|p1a: Swalot|240/326|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|236/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|256/326|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|244/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|264/326|[from] item: Leftovers
+|-end|p2a: Klefki|Encore
+|upkeep
+|turn|34
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|248/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|268/326|[from] item: Leftovers
+|-end|p2a: Klefki|Magnet Rise
+|upkeep
+|turn|35
+|
+|move|p2a: Klefki|Magnet Rise|p2a: Klefki
+|-start|p2a: Klefki|Magnet Rise
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|250/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|270/326|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|251/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|271/326|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|-end|p2a: Klefki|Magnet Rise
+|upkeep
+|turn|40
+|
+|move|p2a: Klefki|Magnet Rise|p2a: Klefki
+|-start|p2a: Klefki|Magnet Rise
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p2a: Klefki|Magnet Rise||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|-end|p2a: Klefki|Magnet Rise
+|upkeep
+|turn|45
+|
+|move|p2a: Klefki|Magnet Rise|p2a: Klefki
+|-start|p2a: Klefki|Magnet Rise
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p2a: Klefki|Spikes|p1a: Swalot
+|-sidestart|p1: t1_141537|Spikes
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p2a: Klefki|Spikes|p1a: Swalot
+|-sidestart|p1: t1_141537|Spikes
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p2a: Klefki|Spikes|p1a: Swalot
+|-sidestart|p1: t1_141537|Spikes
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|-end|p2a: Klefki|Magnet Rise
+|upkeep
+|turn|50
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|58
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|59
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|60
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|61
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Pain Split|p2a: Klefki
+|-sethp|p2a: Klefki|100/100|[from] move: Pain Split|[silent]
+|-sethp|p1a: Swalot|252/326|[from] move: Pain Split
+|
+|-heal|p1a: Swalot|272/326|[from] item: Leftovers
+|upkeep
+|turn|62
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|87/100
+|-enditem|p2a: Klefki|Leftovers|[from] move: Knock Off|[of] p1a: Swalot
+|
+|-heal|p1a: Swalot|292/326|[from] item: Leftovers
+|upkeep
+|turn|63
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|78/100
+|
+|-heal|p1a: Swalot|312/326|[from] item: Leftovers
+|upkeep
+|turn|64
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|70/100
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|65
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|61/100
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|52/100
+|
+|upkeep
+|turn|67
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|43/100
+|
+|upkeep
+|turn|68
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-crit|p2a: Klefki
+|-damage|p2a: Klefki|30/100
+|
+|upkeep
+|turn|69
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|22/100
+|
+|upkeep
+|turn|70
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|13/100
+|
+|upkeep
+|turn|71
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|4/100
+|
+|upkeep
+|turn|72
+|
+|move|p2a: Klefki|Spikes||[still]
+|-fail|p2a: Klefki
+|move|p1a: Swalot|Knock Off|p2a: Klefki
+|-resisted|p2a: Klefki
+|-damage|p2a: Klefki|0 fnt
+|faint|p2a: Klefki
+|
+|upkeep
+|
+|switch|p2a: Lanturn|Lanturn, L89, F|100/100
+|turn|73
+|
+|move|p2a: Lanturn|Thunderbolt|p1a: Swalot
+|-damage|p1a: Swalot|244/326
+|move|p1a: Swalot|Knock Off|p2a: Lanturn
+|-damage|p2a: Lanturn|78/100
+|-enditem|p2a: Lanturn|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Swalot
+|
+|-heal|p1a: Swalot|264/326|[from] item: Leftovers
+|upkeep
+|turn|74
+|
+|move|p2a: Lanturn|Thunderbolt|p1a: Swalot
+|-damage|p1a: Swalot|171/326
+|move|p1a: Swalot|Knock Off|p2a: Lanturn
+|-damage|p2a: Lanturn|64/100
+|
+|-heal|p1a: Swalot|191/326|[from] item: Leftovers
+|upkeep
+|turn|75
+|
+|move|p2a: Lanturn|Thunderbolt|p1a: Swalot
+|-damage|p1a: Swalot|110/326
+|move|p1a: Swalot|Knock Off|p2a: Lanturn
+|-damage|p2a: Lanturn|48/100
+|
+|-heal|p1a: Swalot|130/326|[from] item: Leftovers
+|upkeep
+|turn|76
+|
+|move|p2a: Lanturn|Thunderbolt|p1a: Swalot
+|-damage|p1a: Swalot|42/326
+|move|p1a: Swalot|Knock Off|p2a: Lanturn
+|-damage|p2a: Lanturn|34/100
+|
+|-heal|p1a: Swalot|62/326|[from] item: Leftovers
+|upkeep
+|turn|77
+|
+|move|p2a: Lanturn|Thunderbolt|p1a: Swalot
+|-damage|p1a: Swalot|0 fnt
+|faint|p1a: Swalot
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

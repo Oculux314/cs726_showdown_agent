@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22376</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22376<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22376|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Espeon|Espeon, L84, F|246/246
+|switch|p2a: Flutter Mane|Flutter Mane, L74|100/100
+|turn|1
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, M|321/321
+|move|p2a: Flutter Mane|Moonblast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|238/321
+|-unboost|p1a: Amoonguss|spa|1
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Arboliva|Arboliva, L91, M|288/288
+|move|p2a: Flutter Mane|Moonblast|p1a: Arboliva
+|-damage|p1a: Arboliva|167/288
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Arboliva
+|-damage|p1a: Arboliva|37/288
+|-unboost|p1a: Arboliva|spa|1
+|-enditem|p1a: Arboliva|Sitrus Berry|[eat]
+|-heal|p1a: Arboliva|109/288|[from] item: Sitrus Berry
+|move|p1a: Arboliva|Hyper Voice|p2a: Flutter Mane
+|-immune|p2a: Flutter Mane
+|
+|-item|p1a: Arboliva|Sitrus Berry|[from] ability: Harvest
+|upkeep
+|-enditem|p1a: Arboliva|Sitrus Berry|[eat]
+|-heal|p1a: Arboliva|181/288|[from] item: Sitrus Berry
+|turn|4
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Arboliva
+|-damage|p1a: Arboliva|54/288
+|-unboost|p1a: Arboliva|spa|1
+|move|p1a: Arboliva|Hyper Voice|p2a: Flutter Mane
+|-immune|p2a: Flutter Mane
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Arboliva
+|-damage|p1a: Arboliva|0 fnt
+|faint|p1a: Arboliva
+|
+|upkeep
+|
+|switch|p1a: Komala|Komala, L89, M|260/260
+|-ability|p1a: Komala|Comatose
+|turn|6
+|
+|move|p1a: Komala|Superpower|p2a: Flutter Mane
+|-immune|p2a: Flutter Mane
+|move|p2a: Flutter Mane|Moonblast|p1a: Komala
+|-damage|p1a: Komala|134/260
+|-unboost|p1a: Komala|spa|1
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Komala|Superpower|p2a: Flutter Mane
+|-immune|p2a: Flutter Mane
+|move|p2a: Flutter Mane|Moonblast|p1a: Komala
+|-damage|p1a: Komala|0 fnt
+|faint|p1a: Komala
+|
+|upkeep
+|
+|switch|p1a: Torkoal|Torkoal, L88, F|266/266
+|-weather|SunnyDay|[from] ability: Drought|[of] p1a: Torkoal
+|-activate|p2a: Flutter Mane|ability: Protosynthesis
+|-start|p2a: Flutter Mane|protosynthesisspa
+|turn|8
+|
+|-terastallize|p1a: Torkoal|Grass
+|move|p2a: Flutter Mane|Moonblast|p1a: Torkoal
+|-damage|p1a: Torkoal|28/266
+|move|p1a: Torkoal|Rapid Spin|p2a: Flutter Mane
+|-immune|p2a: Flutter Mane
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|9
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Torkoal
+|-damage|p1a: Torkoal|0 fnt
+|faint|p1a: Torkoal
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, M|321/321
+|turn|10
+|
+|switch|p1a: Rotom|Rotom-Wash, L83|219/219
+|move|p2a: Flutter Mane|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|39/219
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Rotom|52/219|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Rotom
+|-damage|p1a: Rotom|0 fnt
+|faint|p1a: Rotom
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Espeon|Espeon, L84, F|246/246
+|turn|12
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Espeon
+|-damage|p1a: Espeon|62/246
+|move|p1a: Espeon|Trick|p2a: Flutter Mane
+|-activate|p1a: Espeon|move: Trick|[of] p2a: Flutter Mane
+|-item|p2a: Flutter Mane|Choice Specs|[from] move: Trick
+|-item|p1a: Espeon|Choice Specs|[from] move: Trick
+|
+|-weather|none
+|-end|p2a: Flutter Mane|Protosynthesis
+|upkeep
+|turn|13
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Espeon
+|-damage|p1a: Espeon|0 fnt
+|faint|p1a: Espeon
+|
+|upkeep
+|
+|switch|p1a: Amoonguss|Amoonguss, L82, M|321/321
+|turn|14
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|234/321
+|move|p1a: Amoonguss|Giga Drain|p2a: Flutter Mane
+|-crit|p2a: Flutter Mane
+|-damage|p2a: Flutter Mane|62/100
+|-heal|p1a: Amoonguss|274/321|[from] drain|[of] p2a: Flutter Mane
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|193/321
+|move|p1a: Amoonguss|Giga Drain|p2a: Flutter Mane
+|-damage|p2a: Flutter Mane|35/100
+|-heal|p1a: Amoonguss|220/321|[from] drain|[of] p2a: Flutter Mane
+|
+|upkeep
+|turn|16
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|137/321
+|-unboost|p1a: Amoonguss|spa|1
+|move|p1a: Amoonguss|Giga Drain|p2a: Flutter Mane
+|-damage|p2a: Flutter Mane|16/100
+|-heal|p1a: Amoonguss|157/321|[from] drain|[of] p2a: Flutter Mane
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Flutter Mane|Moonblast|p1a: Amoonguss
+|-resisted|p1a: Amoonguss
+|-damage|p1a: Amoonguss|76/321
+|move|p1a: Amoonguss|Giga Drain|p2a: Flutter Mane
+|-damage|p2a: Flutter Mane|0 fnt
+|-heal|p1a: Amoonguss|92/321|[from] drain|[of] p2a: Flutter Mane
+|faint|p2a: Flutter Mane
+|-end|p2a: Flutter Mane|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p2a: Furret|Furret, L94, F|100/100
+|-item|p1a: Amoonguss|Rocky Helmet|[from] ability: Frisk|[of] p2a: Furret
+|turn|18
+|
+|move|p2a: Furret|Double-Edge|p1a: Amoonguss
+|-damage|p1a: Amoonguss|0 fnt
+|-damage|p2a: Furret|84/100|[from] item: Rocky Helmet|[of] p1a: Amoonguss
+|faint|p1a: Amoonguss
+|-damage|p2a: Furret|74/100|[from] Recoil
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

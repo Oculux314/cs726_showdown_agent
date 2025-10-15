@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22724</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22724<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22724|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Drifblim|Drifblim, L86, M|398/398
+|switch|p2a: Hitmonchan|Hitmonchan, L87, M|100/100
+|turn|1
+|
+|-terastallize|p1a: Drifblim|Fairy
+|move|p1a: Drifblim|Strength Sap|p2a: Hitmonchan
+|-unboost|p2a: Hitmonchan|atk|1
+|move|p2a: Hitmonchan|Drain Punch|p1a: Drifblim
+|-resisted|p1a: Drifblim
+|-crit|p1a: Drifblim
+|-damage|p1a: Drifblim|242/398
+|-damage|p2a: Hitmonchan|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Drifblim|Strength Sap|p2a: Hitmonchan
+|-unboost|p2a: Hitmonchan|atk|1
+|-heal|p1a: Drifblim|396/398
+|move|p2a: Hitmonchan|Drain Punch|p1a: Drifblim
+|-resisted|p1a: Drifblim
+|-damage|p1a: Drifblim|344/398
+|-heal|p2a: Hitmonchan|100/100|[from] drain|[of] p1a: Drifblim
+|-damage|p2a: Hitmonchan|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Mew|Mew, L82|298/298
+|move|p2a: Hitmonchan|Drain Punch|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|268/298
+|-heal|p2a: Hitmonchan|97/100|[from] drain|[of] p1a: Mew
+|-damage|p2a: Hitmonchan|88/100|[from] item: Life Orb
+|
+|-heal|p1a: Mew|286/298|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Hitmonchan
+|-status|p2a: Hitmonchan|brn
+|move|p2a: Hitmonchan|Drain Punch|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|269/298
+|-heal|p2a: Hitmonchan|92/100 brn|[from] drain|[of] p1a: Mew
+|-damage|p2a: Hitmonchan|82/100 brn|[from] item: Life Orb
+|
+|-heal|p1a: Mew|287/298|[from] item: Leftovers
+|-damage|p2a: Hitmonchan|76/100 brn|[from] brn
+|upkeep
+|turn|5
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Hitmonchan
+|-fail|p2a: Hitmonchan|brn
+|move|p2a: Hitmonchan|Drain Punch|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|271/298
+|-heal|p2a: Hitmonchan|80/100 brn|[from] drain|[of] p1a: Mew
+|-damage|p2a: Hitmonchan|70/100 brn|[from] item: Life Orb
+|
+|-heal|p1a: Mew|289/298|[from] item: Leftovers
+|-damage|p2a: Hitmonchan|64/100 brn|[from] brn
+|upkeep
+|turn|6
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Hitmonchan
+|-fail|p2a: Hitmonchan|brn
+|move|p2a: Hitmonchan|Drain Punch|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|273/298
+|-heal|p2a: Hitmonchan|67/100 brn|[from] drain|[of] p1a: Mew
+|-damage|p2a: Hitmonchan|58/100 brn|[from] item: Life Orb
+|
+|-heal|p1a: Mew|291/298|[from] item: Leftovers
+|-damage|p2a: Hitmonchan|52/100 brn|[from] brn
+|upkeep
+|turn|7
+|
+|switch|p1a: Medicham|Medicham, L86, M|243/243
+|move|p2a: Hitmonchan|Drain Punch|p1a: Medicham
+|-resisted|p1a: Medicham
+|-damage|p1a: Medicham|224/243
+|-heal|p2a: Hitmonchan|56/100 brn|[from] drain|[of] p1a: Medicham
+|-damage|p2a: Hitmonchan|46/100 brn|[from] item: Life Orb
+|
+|-damage|p2a: Hitmonchan|40/100 brn|[from] brn
+|upkeep
+|turn|8
+|
+|move|p1a: Medicham|Close Combat|p2a: Hitmonchan
+|-damage|p2a: Hitmonchan|0 fnt
+|-unboost|p1a: Medicham|def|1
+|-unboost|p1a: Medicham|spd|1
+|faint|p2a: Hitmonchan
+|
+|upkeep
+|
+|switch|p2a: Latias|Latias, L79, F|100/100
+|turn|9
+|
+|switch|p1a: Mew|Mew, L82|291/298
+|move|p2a: Latias|Draco Meteor|p1a: Mew|[miss]
+|-miss|p2a: Latias|p1a: Mew
+|
+|-heal|p1a: Mew|298/298|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Latias|Draco Meteor|p1a: Mew
+|-damage|p1a: Mew|139/298
+|-unboost|p2a: Latias|spa|2
+|move|p1a: Mew|Psychic Noise|p2a: Latias
+|-resisted|p2a: Latias
+|-damage|p2a: Latias|89/100
+|-start|p2a: Latias|move: Heal Block
+|
+|-heal|p1a: Mew|157/298|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Latias|Draco Meteor|p1a: Mew
+|-damage|p1a: Mew|81/298
+|-unboost|p2a: Latias|spa|2
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-status|p2a: Latias|brn
+|
+|-heal|p1a: Mew|99/298|[from] item: Leftovers
+|-damage|p2a: Latias|83/100 brn|[from] brn
+|-end|p2a: Latias|move: Heal Block
+|upkeep
+|turn|12
+|
+|switch|p1a: Charizard|Charizard, L85, F|271/271
+|move|p2a: Latias|Draco Meteor|p1a: Charizard
+|-damage|p1a: Charizard|213/271
+|-unboost|p2a: Latias|spa|2
+|
+|-damage|p2a: Latias|76/100 brn|[from] brn
+|upkeep
+|turn|13
+|
+|move|p1a: Charizard|Earthquake|p2a: Latias
+|-immune|p2a: Latias|[from] ability: Levitate
+|move|p2a: Latias|Draco Meteor|p1a: Charizard
+|-damage|p1a: Charizard|174/271
+|
+|-damage|p2a: Latias|70/100 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Charizard|Earthquake|p2a: Latias
+|-immune|p2a: Latias|[from] ability: Levitate
+|move|p2a: Latias|Draco Meteor|p1a: Charizard
+|-damage|p1a: Charizard|132/271
+|
+|-damage|p2a: Latias|64/100 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p2a: Latias|Draco Meteor|p1a: Charizard
+|-damage|p1a: Charizard|95/271
+|move|p1a: Charizard|Earthquake|p2a: Latias
+|-immune|p2a: Latias|[from] ability: Levitate
+|
+|-damage|p2a: Latias|58/100 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p2a: Latias|Draco Meteor|p1a: Charizard
+|-damage|p1a: Charizard|55/271
+|move|p1a: Charizard|Earthquake|p2a: Latias
+|-immune|p2a: Latias|[from] ability: Levitate
+|
+|-damage|p2a: Latias|51/100 brn|[from] brn
+|upkeep
+|turn|17
+|
+|move|p2a: Latias|Psyshock|p1a: Charizard
+|-damage|p1a: Charizard|27/271
+|move|p1a: Charizard|Earthquake|p2a: Latias
+|-immune|p2a: Latias|[from] ability: Levitate
+|
+|-damage|p2a: Latias|45/100 brn|[from] brn
+|upkeep
+|turn|18
+|
+|move|p2a: Latias|Psyshock|p1a: Charizard
+|-damage|p1a: Charizard|0 fnt
+|faint|p1a: Charizard
+|
+|-damage|p2a: Latias|39/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Mew|Mew, L82|99/298
+|turn|19
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|87/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|105/298|[from] item: Leftovers
+|-damage|p2a: Latias|33/100 brn|[from] brn
+|upkeep
+|turn|20
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|93/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|111/298|[from] item: Leftovers
+|-damage|p2a: Latias|26/100 brn|[from] brn
+|upkeep
+|turn|21
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|99/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|117/298|[from] item: Leftovers
+|-damage|p2a: Latias|20/100 brn|[from] brn
+|upkeep
+|turn|22
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|106/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|124/298|[from] item: Leftovers
+|-damage|p2a: Latias|14/100 brn|[from] brn
+|upkeep
+|turn|23
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|111/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias|[miss]
+|-miss|p1a: Mew|p2a: Latias
+|
+|-heal|p1a: Mew|129/298|[from] item: Leftovers
+|-damage|p2a: Latias|8/100 brn|[from] brn
+|upkeep
+|turn|24
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|118/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|136/298|[from] item: Leftovers
+|-damage|p2a: Latias|1/100 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p2a: Latias|Psyshock|p1a: Mew
+|-resisted|p1a: Mew
+|-damage|p1a: Mew|124/298
+|move|p1a: Mew|Will-O-Wisp|p2a: Latias
+|-fail|p2a: Latias|brn
+|
+|-heal|p1a: Mew|142/298|[from] item: Leftovers
+|-damage|p2a: Latias|0 fnt|[from] brn
+|faint|p2a: Latias
+|upkeep
+|
+|switch|p2a: Baxcalibur|Baxcalibur, L75, F|100/100
+|turn|26
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Baxcalibur|[miss]
+|-miss|p1a: Mew|p2a: Baxcalibur
+|move|p2a: Baxcalibur|Earthquake|p1a: Mew
+|-damage|p1a: Mew|66/298
+|
+|-heal|p1a: Mew|84/298|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Baxcalibur
+|-immune|p2a: Baxcalibur|[from] ability: Thermal Exchange
+|move|p2a: Baxcalibur|Earthquake|p1a: Mew
+|-damage|p1a: Mew|3/298
+|
+|-heal|p1a: Mew|21/298|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Mew|Will-O-Wisp|p2a: Baxcalibur
+|-immune|p2a: Baxcalibur|[from] ability: Thermal Exchange
+|move|p2a: Baxcalibur|Earthquake|p1a: Mew
+|-damage|p1a: Mew|0 fnt
+|faint|p1a: Mew
+|
+|upkeep
+|
+|switch|p1a: Flygon|Flygon, L82, M|265/265
+|turn|29
+|
+|move|p1a: Flygon|U-turn|p2a: Baxcalibur
+|-damage|p2a: Baxcalibur|81/100
+|
+|switch|p1a: Medicham|Medicham, L86, M|224/243|[from] U-turn
+|move|p2a: Baxcalibur|Earthquake|p1a: Medicham
+|-damage|p1a: Medicham|144/243
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Medicham|Close Combat|p2a: Baxcalibur
+|-supereffective|p2a: Baxcalibur
+|-crit|p2a: Baxcalibur
+|-damage|p2a: Baxcalibur|0 fnt
+|-unboost|p1a: Medicham|def|1
+|-unboost|p1a: Medicham|spd|1
+|faint|p2a: Baxcalibur
+|
+|upkeep
+|
+|switch|p2a: Wugtrio|Wugtrio, L91, F|100/100
+|turn|31
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Medicham
+|-damage|p1a: Medicham|0 fnt
+|faint|p1a: Medicham
+|
+|upkeep
+|
+|switch|p1a: Flygon|Flygon, L82, M|265/265
+|turn|32
+|
+|move|p1a: Flygon|U-turn|p2a: Wugtrio
+|-damage|p2a: Wugtrio|70/100
+|-ability|p2a: Wugtrio|Gooey
+|-unboost|p1a: Flygon|spe|1
+|
+|switch|p1a: Hitmonchan|Hitmonchan, L87, M|229/229|[from] U-turn
+|move|p2a: Wugtrio|Liquidation|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|57/229
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Hitmonchan
+|-damage|p1a: Hitmonchan|0 fnt
+|faint|p1a: Hitmonchan
+|
+|upkeep
+|
+|switch|p1a: Flygon|Flygon, L82, M|265/265
+|turn|34
+|
+|move|p1a: Flygon|U-turn|p2a: Wugtrio
+|-damage|p2a: Wugtrio|36/100
+|-ability|p2a: Wugtrio|Gooey
+|-unboost|p1a: Flygon|spe|1
+|
+|switch|p1a: Drifblim|Drifblim, L86, M, tera:Fairy|344/398|[from] U-turn
+|move|p2a: Wugtrio|Liquidation|p1a: Drifblim
+|-damage|p1a: Drifblim|101/398
+|
+|upkeep
+|turn|35
+|
+|move|p2a: Wugtrio|Liquidation|p1a: Drifblim
+|-damage|p1a: Drifblim|0 fnt
+|-damage|p2a: Wugtrio|11/100|[from] ability: Aftermath|[of] p1a: Drifblim
+|faint|p1a: Drifblim
+|
+|upkeep
+|
+|switch|p1a: Flygon|Flygon, L82, M|265/265
+|turn|36
+|
+|move|p1a: Flygon|U-turn|p2a: Wugtrio
+|-damage|p2a: Wugtrio|0 fnt
+|-ability|p2a: Wugtrio|Gooey
+|-unboost|p1a: Flygon|spe|1
+|faint|p2a: Wugtrio
+|
+|upkeep
+|
+|switch|p2a: Mimikyu|Mimikyu, L79, M|100/100
+|turn|37
+|
+|move|p1a: Flygon|U-turn|p2a: Mimikyu
+|-activate|p2a: Mimikyu|ability: Disguise
+|-damage|p2a: Mimikyu|100/100
+|detailschange|p2a: Mimikyu|Mimikyu-Busted, L79, M
+|-damage|p2a: Mimikyu|88/100|[from] pokemon: Mimikyu-Busted
+|move|p2a: Mimikyu|Wood Hammer|p1a: Flygon
+|-damage|p1a: Flygon|170/265
+|-damage|p2a: Mimikyu|74/100|[from] Recoil
+|-damage|p2a: Mimikyu|64/100|[from] item: Life Orb
+|
+|upkeep
+|turn|38
+|
+|move|p1a: Flygon|U-turn|p2a: Mimikyu
+|-resisted|p2a: Mimikyu
+|-damage|p2a: Mimikyu|57/100
+|move|p2a: Mimikyu|Wood Hammer|p1a: Flygon
+|-damage|p1a: Flygon|75/265
+|-damage|p2a: Mimikyu|43/100|[from] Recoil
+|-damage|p2a: Mimikyu|33/100|[from] item: Life Orb
+|
+|upkeep
+|turn|39
+|
+|move|p1a: Flygon|U-turn|p2a: Mimikyu
+|-resisted|p2a: Mimikyu
+|-damage|p2a: Mimikyu|28/100
+|move|p2a: Mimikyu|Wood Hammer|p1a: Flygon
+|-damage|p1a: Flygon|0 fnt
+|faint|p1a: Flygon
+|-damage|p2a: Mimikyu|16/100|[from] Recoil
+|-damage|p2a: Mimikyu|7/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

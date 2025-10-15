@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22533</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22533<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22533|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Houndstone|Houndstone, L86, M|264/264
+|switch|p2a: Lurantis|Lurantis, L87, F|100/100
+|turn|1
+|
+|switch|p1a: Gyarados|Gyarados, L79, F|280/280
+|move|p2a: Lurantis|Leaf Storm|p1a: Gyarados
+|-damage|p1a: Gyarados|166/280
+|-boost|p2a: Lurantis|spa|2
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Lurantis|Leaf Storm|p1a: Gyarados
+|-damage|p1a: Gyarados|0 fnt
+|-boost|p2a: Lurantis|spa|2
+|faint|p1a: Gyarados
+|
+|upkeep
+|
+|switch|p1a: Palafin|Palafin, L77, F|281/281
+|turn|3
+|
+|move|p1a: Palafin|Wave Crash|p2a: Lurantis
+|-resisted|p2a: Lurantis
+|-damage|p2a: Lurantis|79/100
+|-damage|p1a: Palafin|263/281|[from] Recoil
+|move|p2a: Lurantis|Leaf Storm|p1a: Palafin
+|-supereffective|p1a: Palafin
+|-damage|p1a: Palafin|0 fnt
+|-boost|p2a: Lurantis|spa|2
+|faint|p1a: Palafin
+|
+|upkeep
+|
+|switch|p1a: Oricorio|Oricorio-Sensu, L85, M|266/266
+|turn|4
+|
+|-terastallize|p1a: Oricorio|Fighting
+|move|p1a: Oricorio|Roost||[still]
+|-fail|p1a: Oricorio|heal
+|move|p2a: Lurantis|Leaf Storm|p1a: Oricorio
+|-damage|p1a: Oricorio|0 fnt
+|faint|p1a: Oricorio
+|
+|upkeep
+|
+|switch|p1a: Revavroom|Revavroom, L79, M|256/256
+|turn|5
+|
+|move|p1a: Revavroom|Shift Gear|p1a: Revavroom
+|-boost|p1a: Revavroom|spe|2
+|-boost|p1a: Revavroom|atk|1
+|move|p2a: Lurantis|Leaf Storm|p1a: Revavroom|[miss]
+|-miss|p2a: Lurantis|p1a: Revavroom
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Revavroom|Gunk Shot|p2a: Lurantis
+|-supereffective|p2a: Lurantis
+|-damage|p2a: Lurantis|0 fnt
+|faint|p2a: Lurantis
+|-damage|p1a: Revavroom|231/256|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Heatran|Heatran, L79, F|100/100
+|-item|p2a: Heatran|Air Balloon
+|turn|7
+|
+|move|p1a: Revavroom|Shift Gear|p1a: Revavroom
+|-boost|p1a: Revavroom|spe|2
+|-boost|p1a: Revavroom|atk|1
+|move|p2a: Heatran|Earth Power|p1a: Revavroom
+|-supereffective|p1a: Revavroom
+|-damage|p1a: Revavroom|0 fnt
+|faint|p1a: Revavroom
+|
+|upkeep
+|
+|switch|p1a: Houndstone|Houndstone, L86, M|264/264
+|turn|8
+|
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|218/264
+|move|p1a: Houndstone|Play Rough|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|95/100
+|-enditem|p2a: Heatran|Air Balloon
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|170/264
+|move|p1a: Houndstone|Play Rough|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|89/100
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Houndstone|Shadow Sneak|p2a: Heatran
+|-damage|p2a: Heatran|74/100
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|124/264
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|82/264
+|move|p1a: Houndstone|Play Rough|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|69/100
+|-unboost|p2a: Heatran|atk|1
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|39/264
+|move|p1a: Houndstone|Play Rough|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|63/100
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Heatran|Earth Power|p1a: Houndstone
+|-damage|p1a: Houndstone|0 fnt
+|faint|p1a: Houndstone
+|
+|upkeep
+|
+|switch|p1a: Pawmot|Pawmot, L80, M|243/243
+|turn|14
+|
+|move|p1a: Pawmot|Revival Blessing|p1a: Pawmot
+|
+|-heal|p1: Gyarados|140/280|[from] move: Revival Blessing
+|move|p2a: Heatran|Earth Power|p1a: Pawmot
+|-supereffective|p1a: Pawmot
+|-damage|p1a: Pawmot|37/243
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Pawmot|Ice Punch|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|56/100
+|-damage|p1a: Pawmot|13/243|[from] item: Life Orb
+|move|p2a: Heatran|Earth Power|p1a: Pawmot
+|-supereffective|p1a: Pawmot
+|-damage|p1a: Pawmot|0 fnt
+|faint|p1a: Pawmot
+|
+|upkeep
+|
+|switch|p1a: Gyarados|Gyarados, L79, F|140/280
+|turn|16
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|1
+|-boost|p1a: Gyarados|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|0
+|-boost|p1a: Gyarados|spe|0
+|move|p2a: Heatran|Earth Power|p1a: Gyarados
+|-immune|p1a: Gyarados
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|0
+|-boost|p1a: Gyarados|spe|0
+|move|p2a: Heatran|Lava Plume|p1a: Gyarados
+|-resisted|p1a: Gyarados
+|-damage|p1a: Gyarados|95/280
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|0
+|-boost|p1a: Gyarados|spe|0
+|move|p2a: Heatran|Lava Plume|p1a: Gyarados
+|-resisted|p1a: Gyarados
+|-damage|p1a: Gyarados|53/280
+|-status|p1a: Gyarados|brn
+|
+|-damage|p1a: Gyarados|36/280 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p1a: Gyarados|Dragon Dance|p1a: Gyarados
+|-boost|p1a: Gyarados|atk|0
+|-boost|p1a: Gyarados|spe|0
+|move|p2a: Heatran|Lava Plume|p1a: Gyarados
+|-resisted|p1a: Gyarados
+|-damage|p1a: Gyarados|0 fnt
+|faint|p1a: Gyarados
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

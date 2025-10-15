@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22631</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22631<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22631|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Bronzong|Bronzong, L88|261/261
+|switch|p2a: Milotic|Milotic, L83, F|100/100
+|turn|1
+|
+|-terastallize|p1a: Bronzong|Water
+|move|p2a: Milotic|Ice Beam|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|234/261
+|move|p1a: Bronzong|Stealth Rock|p2a: Milotic
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|-heal|p1a: Bronzong|250/261|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Milotic|Ice Beam|p1a: Bronzong
+|-resisted|p1a: Bronzong
+|-damage|p1a: Bronzong|223/261
+|move|p1a: Bronzong|Stealth Rock||[still]
+|-fail|p1a: Bronzong
+|
+|-heal|p1a: Bronzong|239/261|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|switch|p1a: Magnezone|Magnezone, L85|258/258
+|move|p2a: Milotic|Ice Beam|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|236/258
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Milotic|Ice Beam|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|216/258
+|move|p1a: Magnezone|Body Press|p2a: Milotic
+|-damage|p2a: Milotic|68/100
+|
+|-heal|p2a: Milotic|74/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Milotic|Ice Beam|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|197/258
+|move|p1a: Magnezone|Body Press|p2a: Milotic
+|-damage|p2a: Milotic|43/100
+|
+|-heal|p2a: Milotic|49/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p2a: Milotic|Ice Beam|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|177/258
+|move|p1a: Magnezone|Body Press|p2a: Milotic
+|-damage|p2a: Milotic|19/100
+|
+|-heal|p2a: Milotic|25/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Milotic|Ice Beam|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-crit|p1a: Magnezone
+|-damage|p1a: Magnezone|143/258
+|move|p1a: Magnezone|Body Press|p2a: Milotic
+|-damage|p2a: Milotic|0 fnt
+|faint|p2a: Milotic
+|
+|upkeep
+|
+|switch|p2a: Glaceon|Glaceon, L94, F|100/100
+|turn|8
+|
+|move|p2a: Glaceon|Freeze-Dry|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|108/258
+|move|p1a: Magnezone|Body Press|p2a: Glaceon
+|-supereffective|p2a: Glaceon
+|-damage|p2a: Glaceon|56/100
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Glaceon|Freeze-Dry|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|69/258
+|move|p1a: Magnezone|Body Press|p2a: Glaceon
+|-supereffective|p2a: Glaceon
+|-damage|p2a: Glaceon|12/100
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Glaceon|Freeze-Dry|p1a: Magnezone
+|-resisted|p1a: Magnezone
+|-damage|p1a: Magnezone|33/258
+|move|p1a: Magnezone|Body Press|p2a: Glaceon
+|-supereffective|p2a: Glaceon
+|-crit|p2a: Glaceon
+|-damage|p2a: Glaceon|0 fnt
+|faint|p2a: Glaceon
+|
+|upkeep
+|
+|switch|p2a: Tauros|Tauros-Paldea-Aqua, L81, M|100/100
+|-damage|p2a: Tauros|95/100|[from] Stealth Rock
+|-ability|p2a: Tauros|Intimidate|boost
+|-unboost|p1a: Magnezone|atk|1
+|turn|11
+|
+|move|p2a: Tauros|Close Combat|p1a: Magnezone
+|-supereffective|p1a: Magnezone
+|-damage|p1a: Magnezone|0 fnt
+|-unboost|p2a: Tauros|def|1
+|-unboost|p2a: Tauros|spd|1
+|faint|p1a: Magnezone
+|-damage|p2a: Tauros|85/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Scyther|Scyther, L82, M|249/249
+|turn|12
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Tauros
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|14/100
+|-supereffective|p2a: Tauros
+|-damage|p2a: Tauros|0 fnt
+|faint|p2a: Tauros
+|-hitcount|p2: Tauros|2
+|
+|upkeep
+|
+|switch|p2a: Dugtrio|Dugtrio, L84, F|100/100
+|-damage|p2a: Dugtrio|94/100|[from] Stealth Rock
+|turn|13
+|
+|switch|p1a: Pyroar|Pyroar, L88, M|295/295
+|-ability|p1a: Pyroar|Unnerve
+|move|p2a: Dugtrio|Earthquake|p1a: Pyroar
+|-supereffective|p1a: Pyroar
+|-damage|p1a: Pyroar|0 fnt
+|faint|p1a: Pyroar
+|-damage|p2a: Dugtrio|85/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Golurk|Golurk, L87|297/297
+|turn|14
+|
+|move|p2a: Dugtrio|Earthquake|p1a: Golurk
+|-damage|p1a: Golurk|161/297
+|-damage|p2a: Dugtrio|75/100|[from] item: Life Orb
+|move|p1a: Golurk|Dynamic Punch|p2a: Dugtrio
+|-damage|p2a: Dugtrio|0 fnt
+|faint|p2a: Dugtrio
+|
+|upkeep
+|
+|switch|p2a: Flamigo|Flamigo, L82, M|100/100
+|-damage|p2a: Flamigo|88/100|[from] Stealth Rock
+|turn|15
+|
+|move|p2a: Flamigo|Brave Bird|p1a: Golurk
+|-damage|p1a: Golurk|7/297
+|-damage|p2a: Flamigo|69/100|[from] Recoil
+|move|p1a: Golurk|Dynamic Punch|p2a: Flamigo
+|-resisted|p2a: Flamigo
+|-damage|p2a: Flamigo|41/100
+|-start|p2a: Flamigo|confusion
+|
+|upkeep
+|turn|16
+|
+|-activate|p2a: Flamigo|confusion
+|move|p2a: Flamigo|Brave Bird|p1a: Golurk
+|-damage|p1a: Golurk|0 fnt
+|faint|p1a: Golurk
+|-damage|p2a: Flamigo|40/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Salamence|Salamence, L77, M|273/273
+|turn|17
+|
+|-activate|p2a: Flamigo|confusion
+|move|p2a: Flamigo|Brave Bird|p1a: Salamence
+|-damage|p1a: Salamence|123/273
+|-damage|p2a: Flamigo|21/100|[from] Recoil
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|260/273
+|-singleturn|p1a: Salamence|move: Roost
+|
+|upkeep
+|turn|18
+|
+|-activate|p2a: Flamigo|confusion
+|-damage|p2a: Flamigo|7/100|[from] confusion
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|
+|upkeep
+|turn|19
+|
+|-activate|p2a: Flamigo|confusion
+|-damage|p2a: Flamigo|0 fnt|[from] confusion
+|faint|p2a: Flamigo
+|move|p1a: Salamence|Roost||[still]
+|-fail|p1a: Salamence|heal
+|
+|upkeep
+|
+|switch|p2a: Gholdengo|Gholdengo, L77|100/100
+|-damage|p2a: Gholdengo|94/100|[from] Stealth Rock
+|turn|20
+|
+|move|p1a: Salamence|Roost||[still]
+|-fail|p1a: Salamence|heal
+|move|p2a: Gholdengo|Make It Rain|p1a: Salamence
+|-damage|p1a: Salamence|122/273
+|-unboost|p2a: Gholdengo|spa|1
+|
+|-heal|p2a: Gholdengo|100/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|259/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Gholdengo|Make It Rain|p1a: Salamence
+|-damage|p1a: Salamence|150/273
+|-unboost|p2a: Gholdengo|spa|1
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Gholdengo|Make It Rain|p1a: Salamence
+|-damage|p1a: Salamence|189/273
+|-unboost|p2a: Gholdengo|spa|1
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|273/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Gholdengo|Make It Rain|p1a: Salamence
+|-crit|p1a: Salamence
+|-damage|p1a: Salamence|39/273
+|-unboost|p2a: Gholdengo|spa|1
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Salamence|Roost|p1a: Salamence
+|-heal|p1a: Salamence|176/273
+|-singleturn|p1a: Salamence|move: Roost
+|move|p2a: Gholdengo|Make It Rain|p1a: Salamence
+|-damage|p1a: Salamence|121/273
+|-unboost|p2a: Gholdengo|spa|1
+|
+|upkeep
+|turn|25
+|
+|switch|p1a: Scyther|Scyther, L82, M|249/249
+|move|p2a: Gholdengo|Make It Rain|p1a: Scyther
+|-damage|p1a: Scyther|207/249
+|-unboost|p2a: Gholdengo|spa|1
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Gholdengo
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|87/100
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|74/100
+|-hitcount|p2a: Gholdengo|2
+|move|p2a: Gholdengo|Make It Rain|p1a: Scyther
+|-damage|p1a: Scyther|165/249
+|
+|-heal|p2a: Gholdengo|81/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Gholdengo
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|68/100
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|55/100
+|-hitcount|p2a: Gholdengo|2
+|move|p2a: Gholdengo|Make It Rain|p1a: Scyther
+|-damage|p1a: Scyther|129/249
+|
+|-heal|p2a: Gholdengo|61/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Gholdengo
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|48/100
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|36/100
+|-hitcount|p2a: Gholdengo|2
+|move|p2a: Gholdengo|Shadow Ball|p1a: Scyther
+|-damage|p1a: Scyther|104/249
+|
+|-heal|p2a: Gholdengo|42/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Gholdengo
+|-resisted|p2a: Gholdengo
+|-crit|p2a: Gholdengo
+|-damage|p2a: Gholdengo|20/100
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|8/100
+|-hitcount|p2a: Gholdengo|2
+|move|p2a: Gholdengo|Shadow Ball|p1a: Scyther
+|-damage|p1a: Scyther|80/249
+|
+|-heal|p2a: Gholdengo|14/100|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Scyther|Dual Wingbeat|p2a: Gholdengo
+|-resisted|p2a: Gholdengo
+|-damage|p2a: Gholdengo|0 fnt
+|faint|p2a: Gholdengo
+|-hitcount|p2: Gholdengo|1
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

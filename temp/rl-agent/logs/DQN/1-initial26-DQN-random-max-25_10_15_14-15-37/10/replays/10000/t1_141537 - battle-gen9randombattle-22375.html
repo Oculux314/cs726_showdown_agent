@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22375</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22375<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22375|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Vikavolt|Vikavolt, L83, M|263/263
+|switch|p2a: Incineroar|Incineroar, L82, M|100/100
+|-ability|p2a: Incineroar|Intimidate|boost
+|-unboost|p1a: Vikavolt|atk|1
+|turn|1
+|
+|move|p2a: Incineroar|Overheat|p1a: Vikavolt
+|-supereffective|p1a: Vikavolt
+|-damage|p1a: Vikavolt|27/263
+|-unboost|p2a: Incineroar|spa|2
+|move|p1a: Vikavolt|Volt Switch|p2a: Incineroar
+|-damage|p2a: Incineroar|78/100
+|
+|switch|p1a: Galvantula|Galvantula, L82, M|249/249|[from] Volt Switch
+|
+|upkeep
+|turn|2
+|
+|switch|p1a: Spectrier|Spectrier, L75|274/274
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-damage|p1a: Spectrier|211/274
+|-unboost|p2a: Incineroar|spa|2
+|
+|-heal|p1a: Spectrier|228/274|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Incineroar
+|-damage|p2a: Incineroar|63/100
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-damage|p1a: Spectrier|183/274
+|-unboost|p2a: Incineroar|spa|2
+|
+|-heal|p1a: Spectrier|200/274|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Spectrier|Substitute|p1a: Spectrier
+|-start|p1a: Spectrier|Substitute
+|-damage|p1a: Spectrier|132/274
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-activate|p1a: Spectrier|move: Substitute|[damage]
+|
+|-heal|p1a: Spectrier|149/274|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Incineroar
+|-damage|p2a: Incineroar|47/100
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-activate|p1a: Spectrier|move: Substitute|[damage]
+|
+|-heal|p1a: Spectrier|166/274|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Incineroar
+|-damage|p2a: Incineroar|31/100
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-end|p1a: Spectrier|Substitute
+|
+|-heal|p1a: Spectrier|183/274|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Incineroar
+|-damage|p2a: Incineroar|17/100
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-damage|p1a: Spectrier|150/274
+|
+|-heal|p1a: Spectrier|167/274|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Incineroar
+|-damage|p2a: Incineroar|2/100
+|move|p2a: Incineroar|Overheat|p1a: Spectrier
+|-damage|p1a: Spectrier|134/274
+|
+|-heal|p1a: Spectrier|151/274|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Urshifu|Urshifu, L74, F|270/270
+|move|p2a: Incineroar|Close Combat|p1a: Urshifu
+|-supereffective|p1a: Urshifu
+|-damage|p1a: Urshifu|80/270
+|-unboost|p2a: Incineroar|def|1
+|-unboost|p2a: Incineroar|spd|1
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Urshifu|Wicked Blow|p2a: Incineroar
+|-resisted|p2a: Incineroar
+|-crit|p2a: Incineroar
+|-damage|p2a: Incineroar|0 fnt
+|faint|p2a: Incineroar
+|-damage|p1a: Urshifu|53/270|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Arcanine|Arcanine-Hisui, L79, F|100/100
+|turn|11
+|
+|move|p2a: Arcanine|Head Smash|p1a: Urshifu|[miss]
+|-miss|p2a: Arcanine|p1a: Urshifu
+|move|p1a: Urshifu|Wicked Blow|p2a: Arcanine
+|-crit|p2a: Arcanine
+|-damage|p2a: Arcanine|39/100
+|-damage|p1a: Urshifu|26/270|[from] item: Life Orb
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Arcanine|Head Smash|p1a: Urshifu|[miss]
+|-miss|p2a: Arcanine|p1a: Urshifu
+|move|p1a: Urshifu|Wicked Blow|p2a: Arcanine
+|-crit|p2a: Arcanine
+|-damage|p2a: Arcanine|0 fnt
+|faint|p2a: Arcanine
+|-damage|p1a: Urshifu|0 fnt|[from] item: Life Orb
+|faint|p1a: Urshifu
+|
+|upkeep
+|
+|switch|p2a: Espeon|Espeon, L84, M|100/100
+|switch|p1a: Vikavolt|Vikavolt, L83, M|27/263
+|turn|13
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Vikavolt
+|-damage|p1a: Vikavolt|0 fnt
+|faint|p1a: Vikavolt
+|-damage|p2a: Espeon|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Vaporeon|Vaporeon, L86, M|364/364
+|turn|14
+|
+|-terastallize|p1a: Vaporeon|Ghost
+|move|p2a: Espeon|Shadow Ball|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-damage|p1a: Vaporeon|192/364
+|-damage|p2a: Espeon|81/100|[from] item: Life Orb
+|move|p1a: Vaporeon|Scald|p2a: Espeon
+|-damage|p2a: Espeon|44/100
+|
+|-heal|p1a: Vaporeon|214/364|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-damage|p1a: Vaporeon|53/364
+|-damage|p2a: Espeon|35/100|[from] item: Life Orb
+|move|p1a: Vaporeon|Wish|p1a: Vaporeon
+|
+|-heal|p1a: Vaporeon|75/364|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Vaporeon
+|-supereffective|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|-damage|p2a: Espeon|25/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Gouging Fire|Gouging Fire, L74|277/277
+|turn|17
+|
+|move|p2a: Espeon|Shadow Ball|p1a: Gouging Fire
+|-damage|p1a: Gouging Fire|182/277
+|-unboost|p1a: Gouging Fire|spd|1
+|-damage|p2a: Espeon|15/100|[from] item: Life Orb
+|move|p1a: Gouging Fire|Heat Crash|p2a: Espeon
+|-damage|p2a: Espeon|0 fnt
+|faint|p2a: Espeon
+|
+|upkeep
+|
+|switch|p2a: Gurdurr|Gurdurr, L85, F|100/100
+|turn|18
+|
+|move|p1a: Gouging Fire|Heat Crash|p2a: Gurdurr
+|-damage|p2a: Gurdurr|73/100
+|move|p2a: Gurdurr|Drain Punch|p1a: Gouging Fire
+|-crit|p1a: Gouging Fire
+|-damage|p1a: Gouging Fire|61/277
+|-heal|p2a: Gurdurr|94/100|[from] drain|[of] p1a: Gouging Fire
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Gouging Fire|Heat Crash|p2a: Gurdurr
+|-damage|p2a: Gurdurr|66/100
+|move|p2a: Gurdurr|Drain Punch|p1a: Gouging Fire
+|-damage|p1a: Gouging Fire|0 fnt
+|-heal|p2a: Gurdurr|77/100|[from] drain|[of] p1a: Gouging Fire
+|faint|p1a: Gouging Fire
+|-end|p1a: Gouging Fire|Protosynthesis|[silent]
+|
+|upkeep
+|
+|switch|p1a: Galvantula|Galvantula, L82, M|249/249
+|turn|20
+|
+|move|p1a: Galvantula|Thunder|p2a: Gurdurr
+|-damage|p2a: Gurdurr|18/100
+|move|p2a: Gurdurr|Drain Punch|p1a: Galvantula
+|-resisted|p1a: Galvantula
+|-damage|p1a: Galvantula|194/249
+|-heal|p2a: Gurdurr|28/100|[from] drain|[of] p1a: Galvantula
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Galvantula|Thunder|p2a: Gurdurr
+|-damage|p2a: Gurdurr|0 fnt
+|faint|p2a: Gurdurr
+|
+|upkeep
+|
+|switch|p2a: Spidops|Spidops, L96, F|100/100
+|turn|22
+|
+|move|p1a: Galvantula|Thunder|p2a: Spidops
+|-damage|p2a: Spidops|46/100
+|move|p2a: Spidops|U-turn|p1a: Galvantula
+|-damage|p1a: Galvantula|92/249
+|
+|switch|p2a: Grimmsnarl|Grimmsnarl, L83, M|100/100|[from] U-turn
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Galvantula|Thunder|p2a: Grimmsnarl
+|-damage|p2a: Grimmsnarl|31/100
+|move|p2a: Grimmsnarl|Spirit Break|p1a: Galvantula
+|-damage|p1a: Galvantula|0 fnt
+|faint|p1a: Galvantula
+|
+|-heal|p2a: Grimmsnarl|37/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Spectrier|Spectrier, L75|151/274
+|turn|24
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Grimmsnarl
+|-damage|p2a: Grimmsnarl|12/100
+|move|p2a: Grimmsnarl|Spirit Break|p1a: Spectrier
+|-damage|p1a: Spectrier|25/274
+|-unboost|p1a: Spectrier|spa|1
+|
+|-heal|p1a: Spectrier|42/274|[from] item: Leftovers
+|-heal|p2a: Grimmsnarl|19/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Spectrier|Tera Blast|p2a: Grimmsnarl
+|-damage|p2a: Grimmsnarl|3/100
+|move|p2a: Grimmsnarl|Spirit Break|p1a: Spectrier
+|-damage|p1a: Spectrier|0 fnt
+|faint|p1a: Spectrier
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

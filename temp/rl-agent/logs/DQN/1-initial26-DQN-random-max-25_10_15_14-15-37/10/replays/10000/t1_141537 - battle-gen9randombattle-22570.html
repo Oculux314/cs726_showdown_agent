@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22570</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22570<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22570|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Scovillain|Scovillain, L91, M|266/266
+|switch|p2a: Tatsugiri|Tatsugiri, L87, F|100/100
+|turn|1
+|
+|-terastallize|p1a: Scovillain|Steel
+|move|p1a: Scovillain|Protect|p1a: Scovillain
+|-singleturn|p1a: Scovillain|Protect
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Scovillain
+|-activate|p1a: Scovillain|move: Protect
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Scovillain
+|-resisted|p1a: Scovillain
+|-damage|p1a: Scovillain|170/266
+|-unboost|p2a: Tatsugiri|spa|2
+|move|p1a: Scovillain|Leech Seed|p2a: Tatsugiri
+|-start|p2a: Tatsugiri|move: Leech Seed
+|
+|-heal|p1a: Scovillain|186/266|[from] item: Leftovers
+|-damage|p2a: Tatsugiri|88/100|[from] Leech Seed|[of] p1a: Scovillain
+|-heal|p1a: Scovillain|218/266|[silent]
+|upkeep
+|turn|3
+|
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Scovillain
+|-resisted|p1a: Scovillain
+|-damage|p1a: Scovillain|168/266
+|-unboost|p2a: Tatsugiri|spa|2
+|move|p1a: Scovillain|Leech Seed||[still]
+|-fail|p1a: Scovillain
+|
+|-heal|p1a: Scovillain|184/266|[from] item: Leftovers
+|-damage|p2a: Tatsugiri|76/100|[from] Leech Seed|[of] p1a: Scovillain
+|-heal|p1a: Scovillain|216/266|[silent]
+|upkeep
+|turn|4
+|
+|switch|p1a: Farigiraf|Farigiraf, L91, F|366/366
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Farigiraf
+|-damage|p1a: Farigiraf|303/366
+|-unboost|p2a: Tatsugiri|spa|2
+|
+|-heal|p1a: Farigiraf|325/366|[from] item: Leftovers
+|-damage|p2a: Tatsugiri|64/100|[from] Leech Seed|[of] p1a: Farigiraf
+|-heal|p1a: Farigiraf|357/366|[silent]
+|upkeep
+|turn|5
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|366/366|[from] item: Leftovers
+|-damage|p2a: Tatsugiri|51/100|[from] Leech Seed|[of] p1a: Farigiraf
+|upkeep
+|turn|6
+|
+|switch|p1a: Lugia|Lugia, L73|275/275
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Lugia
+|-damage|p1a: Lugia|260/275
+|
+|-damage|p2a: Tatsugiri|39/100|[from] Leech Seed|[of] p1a: Lugia
+|-heal|p1a: Lugia|275/275|[silent]
+|upkeep
+|turn|7
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Lugia
+|-damage|p1a: Lugia|265/275
+|
+|-damage|p2a: Tatsugiri|27/100|[from] Leech Seed|[of] p1a: Lugia
+|-heal|p1a: Lugia|275/275|[silent]
+|upkeep
+|turn|8
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Tatsugiri|Draco Meteor|p1a: Lugia
+|-damage|p1a: Lugia|267/275
+|
+|-damage|p2a: Tatsugiri|14/100|[from] Leech Seed|[of] p1a: Lugia
+|-heal|p1a: Lugia|275/275|[silent]
+|upkeep
+|turn|9
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Tatsugiri|Hydro Pump|p1a: Lugia
+|-crit|p1a: Lugia
+|-damage|p1a: Lugia|191/275
+|
+|-damage|p2a: Tatsugiri|2/100|[from] Leech Seed|[of] p1a: Lugia
+|-heal|p1a: Lugia|223/275|[silent]
+|upkeep
+|turn|10
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Tatsugiri|Hydro Pump|p1a: Lugia|[miss]
+|-miss|p2a: Tatsugiri|p1a: Lugia
+|
+|-damage|p2a: Tatsugiri|0 fnt|[from] Leech Seed|[of] p1a: Lugia
+|-heal|p1a: Lugia|227/275|[silent]
+|faint|p2a: Tatsugiri
+|upkeep
+|
+|switch|p2a: Talonflame|Talonflame, L83, M|100/100
+|turn|11
+|
+|move|p2a: Talonflame|Flare Blitz|p1a: Lugia
+|-crit|p1a: Lugia
+|-damage|p1a: Lugia|86/275
+|-damage|p2a: Talonflame|83/100|[from] Recoil
+|move|p1a: Lugia|Aeroblast|p2a: Talonflame
+|-damage|p2a: Talonflame|0 fnt
+|faint|p2a: Talonflame
+|
+|upkeep
+|
+|switch|p2a: Mimikyu|Mimikyu, L79, M|100/100
+|turn|12
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Mimikyu|Wood Hammer|p1a: Lugia
+|-resisted|p1a: Lugia
+|-damage|p1a: Lugia|50/275
+|-damage|p2a: Mimikyu|95/100|[from] Recoil
+|-damage|p2a: Mimikyu|85/100|[from] item: Life Orb
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Mimikyu|Wood Hammer|p1a: Lugia
+|-resisted|p1a: Lugia
+|-damage|p1a: Lugia|11/275
+|-damage|p2a: Mimikyu|79/100|[from] Recoil
+|-damage|p2a: Mimikyu|69/100|[from] item: Life Orb
+|
+|upkeep
+|turn|14
+|
+|switch|p1a: Typhlosion|Typhlosion, L84, M|267/267
+|move|p2a: Mimikyu|Wood Hammer|p1a: Typhlosion
+|-resisted|p1a: Typhlosion
+|-damage|p1a: Typhlosion|216/267
+|-damage|p2a: Mimikyu|62/100|[from] Recoil
+|-damage|p2a: Mimikyu|52/100|[from] item: Life Orb
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Mimikyu
+|-activate|p2a: Mimikyu|ability: Disguise
+|-damage|p2a: Mimikyu|52/100
+|detailschange|p2a: Mimikyu|Mimikyu-Busted, L79, M
+|-damage|p2a: Mimikyu|39/100|[from] pokemon: Mimikyu-Busted
+|move|p2a: Mimikyu|Wood Hammer|p1a: Typhlosion
+|-resisted|p1a: Typhlosion
+|-damage|p1a: Typhlosion|167/267
+|-damage|p2a: Mimikyu|32/100|[from] Recoil
+|-damage|p2a: Mimikyu|22/100|[from] item: Life Orb
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Mimikyu
+|-damage|p2a: Mimikyu|0 fnt
+|faint|p2a: Mimikyu
+|
+|upkeep
+|
+|switch|p2a: Iron Moth|Iron Moth, L78|100/100
+|turn|17
+|
+|move|p2a: Iron Moth|Fire Blast|p1a: Typhlosion
+|-start|p1a: Typhlosion|ability: Flash Fire
+|move|p1a: Typhlosion|Scorching Sands|p2a: Iron Moth
+|-supereffective|p2a: Iron Moth
+|-crit|p2a: Iron Moth
+|-damage|p2a: Iron Moth|0 fnt
+|faint|p2a: Iron Moth
+|-end|p2a: Iron Moth|Quark Drive|[silent]
+|
+|upkeep
+|
+|switch|p2a: Gardevoir|Gardevoir, L83, F|100/100
+|-ability|p2a: Gardevoir|Flash Fire|Trace|[from] ability: Trace|[of] p1a: Typhlosion
+|turn|18
+|
+|-end|p1a: Typhlosion|ability: Flash Fire|[silent]
+|switch|p1a: Klefki|Klefki, L84, M|233/233
+|move|p2a: Gardevoir|Focus Blast|p1a: Klefki
+|-damage|p1a: Klefki|121/233
+|-unboost|p1a: Klefki|spd|1
+|
+|-heal|p1a: Klefki|135/233|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Klefki|Thunder Wave|p2a: Gardevoir
+|-status|p2a: Gardevoir|par
+|move|p2a: Gardevoir|Focus Blast|p1a: Klefki
+|-damage|p1a: Klefki|0 fnt
+|faint|p1a: Klefki
+|
+|upkeep
+|
+|switch|p1a: Lugia|Lugia, L73|11/275
+|turn|20
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Gardevoir|Focus Blast|p1a: Lugia|[miss]
+|-miss|p2a: Gardevoir|p1a: Lugia
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Gardevoir|Focus Blast|p1a: Lugia
+|-resisted|p1a: Lugia
+|-damage|p1a: Lugia|2/275
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|cant|p2a: Gardevoir|par
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Lugia|Calm Mind|p1a: Lugia
+|-boost|p1a: Lugia|spa|1
+|-boost|p1a: Lugia|spd|1
+|move|p2a: Gardevoir|Focus Blast|p1a: Lugia
+|-resisted|p1a: Lugia
+|-damage|p1a: Lugia|0 fnt
+|faint|p1a: Lugia
+|
+|upkeep
+|
+|switch|p1a: Typhlosion|Typhlosion, L84, M|167/267
+|turn|24
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Gardevoir
+|-damage|p2a: Gardevoir|72/100 par
+|move|p2a: Gardevoir|Focus Blast|p1a: Typhlosion
+|-damage|p1a: Typhlosion|65/267
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Typhlosion|Scorching Sands|p2a: Gardevoir
+|-damage|p2a: Gardevoir|45/100 par
+|move|p2a: Gardevoir|Focus Blast|p1a: Typhlosion
+|-damage|p1a: Typhlosion|0 fnt
+|faint|p1a: Typhlosion
+|
+|upkeep
+|
+|switch|p1a: Farigiraf|Farigiraf, L91, F|366/366
+|turn|26
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Gardevoir|Focus Blast|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|-activate|p2a: Gardevoir|move: Struggle
+|move|p2a: Gardevoir|Struggle|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|-activate|p2a: Gardevoir|move: Struggle
+|move|p2a: Gardevoir|Struggle|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|-activate|p2a: Gardevoir|move: Struggle
+|move|p2a: Gardevoir|Struggle|p1a: Farigiraf
+|-damage|p1a: Farigiraf|345/366
+|-damage|p2a: Gardevoir|20/100 par|[from] recoil
+|
+|-heal|p1a: Farigiraf|366/366|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|-activate|p2a: Gardevoir|move: Struggle
+|move|p2a: Gardevoir|Struggle|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|-activate|p2a: Gardevoir|move: Struggle
+|move|p2a: Gardevoir|Struggle|p1a: Farigiraf
+|-damage|p1a: Farigiraf|345/366
+|-damage|p2a: Gardevoir|0 fnt|[from] recoil
+|faint|p2a: Gardevoir
+|
+|-heal|p1a: Farigiraf|366/366|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Garchomp|Garchomp, L74, M|100/100
+|turn|32
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|upkeep
+|turn|33
+|
+|switch|p1a: Scovillain|Scovillain, L91, M, tera:Steel|216/266
+|move|p2a: Garchomp|Outrage|p1a: Scovillain
+|-resisted|p1a: Scovillain
+|-damage|p1a: Scovillain|138/266
+|
+|-heal|p1a: Scovillain|154/266|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p2a: Garchomp|Outrage|p1a: Scovillain|[from] lockedmove
+|-resisted|p1a: Scovillain
+|-damage|p1a: Scovillain|83/266
+|-start|p2a: Garchomp|confusion|[fatigue]
+|move|p1a: Scovillain|Leech Seed|p2a: Garchomp
+|-start|p2a: Garchomp|move: Leech Seed
+|
+|-heal|p1a: Scovillain|99/266|[from] item: Leftovers
+|-damage|p2a: Garchomp|88/100|[from] Leech Seed|[of] p1a: Scovillain
+|-heal|p1a: Scovillain|134/266|[silent]
+|upkeep
+|turn|35
+|
+|switch|p1a: Farigiraf|Farigiraf, L91, F|366/366
+|-activate|p2a: Garchomp|confusion
+|-damage|p2a: Garchomp|77/100|[from] confusion
+|
+|-damage|p2a: Garchomp|64/100|[from] Leech Seed|[of] p1a: Farigiraf
+|upkeep
+|turn|36
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|-activate|p2a: Garchomp|confusion
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-damage|p2a: Garchomp|52/100|[from] Leech Seed|[of] p1a: Farigiraf
+|upkeep
+|turn|37
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|-end|p2a: Garchomp|confusion
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf
+|-damage|p1a: Farigiraf|231/366
+|
+|-heal|p1a: Farigiraf|253/366|[from] item: Leftovers
+|-damage|p2a: Garchomp|40/100|[from] Leech Seed|[of] p1a: Farigiraf
+|-heal|p1a: Farigiraf|288/366|[silent]
+|upkeep
+|turn|38
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf|[from] lockedmove
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|310/366|[from] item: Leftovers
+|-damage|p2a: Garchomp|27/100|[from] Leech Seed|[of] p1a: Farigiraf
+|-heal|p1a: Farigiraf|345/366|[silent]
+|upkeep
+|turn|39
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|366/366|[from] item: Leftovers
+|-damage|p2a: Garchomp|15/100|[from] Leech Seed|[of] p1a: Farigiraf
+|upkeep
+|turn|40
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf
+|-damage|p1a: Farigiraf|227/366
+|
+|-heal|p1a: Farigiraf|249/366|[from] item: Leftovers
+|-damage|p2a: Garchomp|2/100|[from] Leech Seed|[of] p1a: Farigiraf
+|-heal|p1a: Farigiraf|284/366|[silent]
+|upkeep
+|turn|41
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Garchomp|Outrage|p1a: Farigiraf|[from] lockedmove
+|-activate|p1a: Farigiraf|move: Protect
+|-start|p2a: Garchomp|confusion|[fatigue]
+|
+|-heal|p1a: Farigiraf|306/366|[from] item: Leftovers
+|-damage|p2a: Garchomp|0 fnt|[from] Leech Seed|[of] p1a: Farigiraf
+|-heal|p1a: Farigiraf|311/366|[silent]
+|faint|p2a: Garchomp
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22342</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22342<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22342|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Eelektross|Eelektross, L87, F|290/290
+|switch|p2a: Walking Wake|Walking Wake, L79|100/100
+|turn|1
+|
+|switch|p1a: Spidops|Spidops, L96, M|271/271
+|move|p2a: Walking Wake|Draco Meteor|p1a: Spidops
+|-damage|p1a: Spidops|99/271
+|-unboost|p2a: Walking Wake|spa|2
+|-damage|p2a: Walking Wake|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Spidops
+|-crit|p1a: Spidops
+|-damage|p1a: Spidops|0 fnt
+|-unboost|p2a: Walking Wake|spa|2
+|faint|p1a: Spidops
+|-damage|p2a: Walking Wake|81/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Blissey|Blissey, L85, F|572/572
+|turn|3
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey
+|-damage|p1a: Blissey|529/572
+|-unboost|p2a: Walking Wake|spa|2
+|-damage|p2a: Walking Wake|71/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey|[miss]
+|-miss|p2a: Walking Wake|p1a: Blissey
+|move|p1a: Blissey|Soft-Boiled||[still]
+|-fail|p1a: Blissey|heal
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey
+|-damage|p1a: Blissey|536/572
+|-damage|p2a: Walking Wake|61/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey
+|-damage|p1a: Blissey|537/572
+|-damage|p2a: Walking Wake|52/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey
+|-damage|p1a: Blissey|540/572
+|-damage|p2a: Walking Wake|42/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Walking Wake|Draco Meteor|p1a: Blissey
+|-damage|p1a: Blissey|536/572
+|-damage|p2a: Walking Wake|32/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Walking Wake|Flamethrower|p1a: Blissey
+|-damage|p1a: Blissey|556/572
+|-damage|p2a: Walking Wake|22/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572
+|
+|upkeep
+|turn|10
+|
+|move|p2a: Walking Wake|Flamethrower|p1a: Blissey
+|-damage|p1a: Blissey|556/572
+|-status|p1a: Blissey|brn
+|-damage|p2a: Walking Wake|12/100|[from] item: Life Orb
+|move|p1a: Blissey|Soft-Boiled|p1a: Blissey
+|-heal|p1a: Blissey|572/572 brn
+|
+|-damage|p1a: Blissey|537/572 brn|[from] brn
+|upkeep
+|turn|11
+|
+|move|p2a: Walking Wake|Flamethrower|p1a: Blissey
+|-damage|p1a: Blissey|521/572 brn
+|-damage|p2a: Walking Wake|3/100|[from] item: Life Orb
+|move|p1a: Blissey|Thunder Wave|p2a: Walking Wake
+|-status|p2a: Walking Wake|par
+|
+|-heal|p1a: Blissey|556/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|521/572 brn|[from] brn
+|upkeep
+|turn|12
+|
+|move|p1a: Blissey|Thunder Wave|p2a: Walking Wake
+|-fail|p2a: Walking Wake|par
+|move|p2a: Walking Wake|Flamethrower|p1a: Blissey
+|-damage|p1a: Blissey|504/572 brn
+|-damage|p2a: Walking Wake|0 fnt|[from] item: Life Orb
+|faint|p2a: Walking Wake
+|-end|p2a: Walking Wake|Protosynthesis|[silent]
+|
+|-heal|p1a: Blissey|539/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|504/572 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Inteleon|Inteleon, L81, M|100/100
+|turn|13
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Blissey
+|-damage|p1a: Blissey|360/572 brn
+|move|p1a: Blissey|Thunder Wave|p2a: Inteleon|[miss]
+|-miss|p1a: Blissey|p2a: Inteleon
+|
+|-heal|p1a: Blissey|395/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|360/572 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p2a: Inteleon|Hydro Pump|p1a: Blissey
+|-damage|p1a: Blissey|225/572 brn
+|move|p1a: Blissey|Thunder Wave|p2a: Inteleon
+|-status|p2a: Inteleon|par
+|
+|-heal|p1a: Blissey|260/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|225/572 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p1a: Blissey|Thunder Wave|p2a: Inteleon
+|-fail|p2a: Inteleon|par
+|move|p2a: Inteleon|Hydro Pump|p1a: Blissey
+|-damage|p1a: Blissey|81/572 brn
+|
+|-heal|p1a: Blissey|116/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|81/572 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p1a: Blissey|Thunder Wave|p2a: Inteleon|[miss]
+|-miss|p1a: Blissey|p2a: Inteleon
+|move|p2a: Inteleon|Hydro Pump|p1a: Blissey|[miss]
+|-miss|p2a: Inteleon|p1a: Blissey
+|
+|-heal|p1a: Blissey|116/572 brn|[from] item: Leftovers
+|-damage|p1a: Blissey|81/572 brn|[from] brn
+|upkeep
+|turn|17
+|
+|move|p1a: Blissey|Thunder Wave|p2a: Inteleon
+|-fail|p2a: Inteleon|par
+|move|p2a: Inteleon|Hydro Pump|p1a: Blissey
+|-damage|p1a: Blissey|0 fnt
+|faint|p1a: Blissey
+|
+|upkeep
+|
+|switch|p1a: Overqwil|Overqwil, L82, M|274/274
+|-ability|p1a: Overqwil|Intimidate|boost
+|-unboost|p2a: Inteleon|atk|1
+|turn|18
+|
+|move|p1a: Overqwil|Swords Dance|p1a: Overqwil
+|-boost|p1a: Overqwil|atk|2
+|move|p2a: Inteleon|Hydro Pump|p1a: Overqwil
+|-damage|p1a: Overqwil|22/274
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Overqwil|Crunch|p2a: Inteleon
+|-damage|p2a: Inteleon|9/100 par
+|-unboost|p2a: Inteleon|def|1
+|move|p2a: Inteleon|Hydro Pump|p1a: Overqwil
+|-damage|p1a: Overqwil|0 fnt
+|faint|p1a: Overqwil
+|
+|upkeep
+|
+|switch|p1a: Eelektross|Eelektross, L87, F|290/290
+|turn|20
+|
+|move|p1a: Eelektross|Drain Punch|p2a: Inteleon
+|-damage|p2a: Inteleon|0 fnt
+|faint|p2a: Inteleon
+|
+|upkeep
+|
+|switch|p2a: Arboliva|Arboliva, L91, F|100/100
+|turn|21
+|
+|move|p1a: Eelektross|Drain Punch|p2a: Arboliva
+|-supereffective|p2a: Arboliva
+|-damage|p2a: Arboliva|63/100
+|-fieldstart|move: Grassy Terrain|[from] ability: Seed Sower|[of] p2a: Arboliva
+|move|p2a: Arboliva|Earth Power|p1a: Eelektross
+|-immune|p1a: Eelektross|[from] ability: Levitate
+|
+|-heal|p2a: Arboliva|69/100|[from] Grassy Terrain
+|-heal|p2a: Arboliva|75/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Eelektross|Drain Punch|p2a: Arboliva
+|-supereffective|p2a: Arboliva
+|-damage|p2a: Arboliva|32/100
+|move|p2a: Arboliva|Earth Power|p1a: Eelektross
+|-immune|p1a: Eelektross|[from] ability: Levitate
+|
+|-heal|p2a: Arboliva|38/100|[from] Grassy Terrain
+|-heal|p2a: Arboliva|45/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Eelektross|Drain Punch|p2a: Arboliva
+|-supereffective|p2a: Arboliva
+|-damage|p2a: Arboliva|5/100
+|move|p2a: Arboliva|Earth Power|p1a: Eelektross
+|-immune|p1a: Eelektross|[from] ability: Levitate
+|
+|-heal|p2a: Arboliva|11/100|[from] Grassy Terrain
+|-heal|p2a: Arboliva|17/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|-terastallize|p1a: Eelektross|Fighting
+|move|p1a: Eelektross|Drain Punch|p2a: Arboliva
+|-supereffective|p2a: Arboliva
+|-damage|p2a: Arboliva|0 fnt
+|faint|p2a: Arboliva
+|
+|upkeep
+|
+|switch|p2a: Noctowl|Noctowl, L95, F|100/100
+|turn|25
+|
+|move|p2a: Noctowl|Hurricane|p1a: Eelektross
+|-supereffective|p1a: Eelektross
+|-damage|p1a: Eelektross|0 fnt
+|faint|p1a: Eelektross
+|
+|-fieldend|move: Grassy Terrain
+|upkeep
+|
+|switch|p1a: Rabsca|Rabsca, L91, F|284/284
+|turn|26
+|
+|move|p2a: Noctowl|Hurricane|p1a: Rabsca|[miss]
+|-miss|p2a: Noctowl|p1a: Rabsca
+|move|p1a: Rabsca|Revival Blessing|p1a: Rabsca
+|
+|-heal|p1: Spidops|135/271|[from] move: Revival Blessing
+|
+|upkeep
+|turn|27
+|
+|move|p2a: Noctowl|Hurricane|p1a: Rabsca
+|-supereffective|p1a: Rabsca
+|-damage|p1a: Rabsca|50/284
+|move|p1a: Rabsca|Earth Power|p2a: Noctowl
+|-immune|p2a: Noctowl
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Noctowl|Hurricane|p1a: Rabsca
+|-supereffective|p1a: Rabsca
+|-crit|p1a: Rabsca
+|-damage|p1a: Rabsca|0 fnt
+|faint|p1a: Rabsca
+|
+|upkeep
+|
+|switch|p1a: Spidops|Spidops, L96, M|135/271
+|turn|29
+|
+|move|p2a: Noctowl|Hurricane|p1a: Spidops|[miss]
+|-miss|p2a: Noctowl|p1a: Spidops
+|move|p1a: Spidops|Knock Off|p2a: Noctowl
+|-damage|p2a: Noctowl|71/100
+|-enditem|p2a: Noctowl|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Spidops
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Noctowl|Hurricane|p1a: Spidops|[miss]
+|-miss|p2a: Noctowl|p1a: Spidops
+|move|p1a: Spidops|Knock Off|p2a: Noctowl
+|-damage|p2a: Noctowl|50/100
+|
+|upkeep
+|turn|31
+|
+|move|p2a: Noctowl|Hurricane|p1a: Spidops|[miss]
+|-miss|p2a: Noctowl|p1a: Spidops
+|move|p1a: Spidops|Knock Off|p2a: Noctowl
+|-damage|p2a: Noctowl|32/100
+|
+|upkeep
+|turn|32
+|
+|move|p2a: Noctowl|Hurricane|p1a: Spidops|[miss]
+|-miss|p2a: Noctowl|p1a: Spidops
+|move|p1a: Spidops|Knock Off|p2a: Noctowl
+|-damage|p2a: Noctowl|12/100
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Noctowl|Hurricane|p1a: Spidops
+|-supereffective|p1a: Spidops
+|-damage|p1a: Spidops|0 fnt
+|faint|p1a: Spidops
+|
+|upkeep
+|
+|switch|p1a: Lumineon|Lumineon, L93, F|279/279
+|turn|34
+|
+|move|p1a: Lumineon|Hydro Pump|p2a: Noctowl|[miss]
+|-miss|p1a: Lumineon|p2a: Noctowl
+|move|p2a: Noctowl|Hurricane|p1a: Lumineon|[miss]
+|-miss|p2a: Noctowl|p1a: Lumineon
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Lumineon|Hydro Pump|p2a: Noctowl
+|-damage|p2a: Noctowl|0 fnt
+|faint|p2a: Noctowl
+|
+|upkeep
+|
+|switch|p2a: Deoxys|Deoxys-Speed, L82|100/100
+|-ability|p2a: Deoxys|Pressure
+|turn|36
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Lumineon
+|-damage|p1a: Lumineon|104/279
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|91/100|[from] item: Life Orb
+|move|p1a: Lumineon|Hydro Pump|p2a: Deoxys
+|-damage|p2a: Deoxys|42/100
+|
+|upkeep
+|turn|37
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Lumineon
+|-damage|p1a: Lumineon|22/279
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|32/100|[from] item: Life Orb
+|move|p1a: Lumineon|Encore|p2a: Deoxys
+|-start|p2a: Deoxys|Encore
+|
+|upkeep
+|turn|38
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Lumineon
+|-damage|p1a: Lumineon|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Lumineon
+|-damage|p2a: Deoxys|22/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

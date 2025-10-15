@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22641</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22641<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22641|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Cacturne|Cacturne, L92, F|278/278
+|switch|p2a: Talonflame|Talonflame, L83, M|100/100
+|turn|1
+|
+|-terastallize|p1a: Cacturne|Dark
+|move|p1a: Cacturne|Sucker Punch|p2a: Talonflame
+|-damage|p2a: Talonflame|23/100
+|-damage|p1a: Cacturne|251/278|[from] item: Life Orb
+|move|p2a: Talonflame|Overheat|p1a: Cacturne|[miss]
+|-miss|p2a: Talonflame|p1a: Cacturne
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Talonflame|Overheat|p1a: Cacturne
+|-damage|p1a: Cacturne|107/278
+|-unboost|p2a: Talonflame|spa|2
+|move|p1a: Cacturne|Swords Dance|p1a: Cacturne
+|-boost|p1a: Cacturne|atk|2
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Talonflame|Overheat|p1a: Cacturne
+|-damage|p1a: Cacturne|40/278
+|-unboost|p2a: Talonflame|spa|2
+|move|p1a: Cacturne|Swords Dance|p1a: Cacturne
+|-boost|p1a: Cacturne|atk|2
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Electivire|Electivire, L84, F|263/263
+|move|p2a: Talonflame|Overheat|p1a: Electivire
+|-damage|p1a: Electivire|223/263
+|-unboost|p2a: Talonflame|spa|2
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Talonflame|Overheat|p1a: Electivire
+|-damage|p1a: Electivire|195/263
+|move|p1a: Electivire|Earthquake|p2a: Talonflame
+|-immune|p2a: Talonflame
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Talonflame|Overheat|p1a: Electivire
+|-damage|p1a: Electivire|165/263
+|move|p1a: Electivire|Earthquake|p2a: Talonflame
+|-immune|p2a: Talonflame
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Talonflame|Overheat|p1a: Electivire|[miss]
+|-miss|p2a: Talonflame|p1a: Electivire
+|move|p1a: Electivire|Earthquake|p2a: Talonflame
+|-immune|p2a: Talonflame
+|
+|upkeep
+|turn|8
+|
+|switch|p1a: Cacturne|Cacturne, L92, F, tera:Dark|40/278
+|move|p2a: Talonflame|Overheat|p1a: Cacturne
+|-damage|p1a: Cacturne|4/278
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Cacturne
+|-damage|p1a: Cacturne|0 fnt
+|faint|p1a: Cacturne
+|-damage|p2a: Talonflame|23/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Electivire|Electivire, L84, F|165/263
+|turn|10
+|
+|move|p2a: Talonflame|Brave Bird|p1a: Electivire
+|-resisted|p1a: Electivire
+|-damage|p1a: Electivire|105/263
+|-damage|p2a: Talonflame|15/100|[from] Recoil
+|move|p1a: Electivire|Supercell Slam|p2a: Talonflame
+|-supereffective|p2a: Talonflame
+|-damage|p2a: Talonflame|0 fnt
+|faint|p2a: Talonflame
+|-damage|p1a: Electivire|79/263|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Suicune|Suicune, L82|100/100
+|-ability|p2a: Suicune|Pressure
+|turn|11
+|
+|move|p1a: Electivire|Earthquake|p2a: Suicune
+|-damage|p2a: Suicune|70/100
+|-damage|p1a: Electivire|53/263|[from] item: Life Orb
+|move|p2a: Suicune|Ice Beam|p1a: Electivire
+|-damage|p1a: Electivire|0 fnt
+|faint|p1a: Electivire
+|
+|-heal|p2a: Suicune|76/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Lumineon|Lumineon, L93, F|279/279
+|turn|12
+|
+|move|p1a: Lumineon|Encore|p2a: Suicune
+|-start|p2a: Suicune|Encore
+|move|p2a: Suicune|Ice Beam|p1a: Lumineon
+|-resisted|p1a: Lumineon
+|-damage|p1a: Lumineon|254/279
+|
+|-heal|p2a: Suicune|82/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Lumineon|Encore||[still]
+|-fail|p1a: Lumineon
+|move|p2a: Suicune|Ice Beam|p1a: Lumineon
+|-resisted|p1a: Lumineon
+|-damage|p1a: Lumineon|225/279
+|
+|-heal|p2a: Suicune|88/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Lumineon|Encore||[still]
+|-fail|p1a: Lumineon
+|move|p2a: Suicune|Ice Beam|p1a: Lumineon
+|-resisted|p1a: Lumineon
+|-damage|p1a: Lumineon|200/279
+|
+|-heal|p2a: Suicune|94/100|[from] item: Leftovers
+|-end|p2a: Suicune|Encore
+|upkeep
+|turn|15
+|
+|switch|p1a: Mesprit|Mesprit, L85|275/275
+|move|p2a: Suicune|Ice Beam|p1a: Mesprit
+|-damage|p1a: Mesprit|225/275
+|
+|-heal|p2a: Suicune|99/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Suicune|Ice Beam|p1a: Mesprit
+|-damage|p1a: Mesprit|177/275
+|move|p1a: Mesprit|Psychic|p2a: Suicune
+|-damage|p2a: Suicune|59/100
+|-damage|p1a: Mesprit|150/275|[from] item: Life Orb
+|
+|-heal|p2a: Suicune|65/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Suicune|Ice Beam|p1a: Mesprit
+|-damage|p1a: Mesprit|99/275
+|move|p1a: Mesprit|Psychic|p2a: Suicune
+|-damage|p2a: Suicune|25/100
+|-damage|p1a: Mesprit|72/275|[from] item: Life Orb
+|
+|-heal|p2a: Suicune|31/100|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Suicune|Ice Beam|p1a: Mesprit
+|-damage|p1a: Mesprit|27/275
+|move|p1a: Mesprit|Thunderbolt|p2a: Suicune
+|-supereffective|p2a: Suicune
+|-damage|p2a: Suicune|0 fnt
+|faint|p2a: Suicune
+|-damage|p1a: Mesprit|0 fnt|[from] item: Life Orb
+|faint|p1a: Mesprit
+|
+|upkeep
+|
+|switch|p2a: Rillaboom|Rillaboom, L79, F|100/100
+|switch|p1a: Lapras|Lapras, L87, F|368/368
+|-fieldstart|move: Grassy Terrain|[from] ability: Grassy Surge|[of] p2a: Rillaboom
+|turn|19
+|
+|move|p2a: Rillaboom|Wood Hammer|p1a: Lapras
+|-supereffective|p1a: Lapras
+|-damage|p1a: Lapras|0 fnt
+|faint|p1a: Lapras
+|-damage|p2a: Rillaboom|58/100|[from] Recoil
+|-damage|p2a: Rillaboom|49/100|[from] item: Life Orb
+|
+|-heal|p2a: Rillaboom|55/100|[from] Grassy Terrain
+|upkeep
+|
+|switch|p1a: Calyrex|Calyrex-Shadow, L64|235/235
+|-ability|p1a: Calyrex|As One
+|-ability|p1a: Calyrex|Unnerve
+|turn|20
+|
+|move|p1a: Calyrex|Pollen Puff|p2a: Rillaboom
+|-supereffective|p2a: Rillaboom
+|-damage|p2a: Rillaboom|0 fnt
+|faint|p2a: Rillaboom
+|-ability|p1a: Calyrex|Grim Neigh|boost
+|-boost|p1a: Calyrex|spa|1
+|-damage|p1a: Calyrex|212/235|[from] item: Life Orb
+|
+|-heal|p1a: Calyrex|226/235|[from] Grassy Terrain
+|upkeep
+|
+|switch|p2a: Seviper|Seviper, L93, F|100/100
+|turn|21
+|
+|move|p1a: Calyrex|Pollen Puff|p2a: Seviper
+|-resisted|p2a: Seviper
+|-damage|p2a: Seviper|79/100
+|-damage|p1a: Calyrex|203/235|[from] item: Life Orb
+|move|p2a: Seviper|Gunk Shot|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-damage|p1a: Calyrex|56/235
+|-damage|p2a: Seviper|69/100|[from] item: Life Orb
+|
+|-heal|p1a: Calyrex|70/235|[from] Grassy Terrain
+|-heal|p2a: Seviper|75/100|[from] Grassy Terrain
+|upkeep
+|turn|22
+|
+|move|p1a: Calyrex|Pollen Puff|p2a: Seviper
+|-resisted|p2a: Seviper
+|-damage|p2a: Seviper|51/100
+|-damage|p1a: Calyrex|47/235|[from] item: Life Orb
+|move|p2a: Seviper|Gunk Shot|p1a: Calyrex
+|-resisted|p1a: Calyrex
+|-crit|p1a: Calyrex
+|-damage|p1a: Calyrex|0 fnt
+|faint|p1a: Calyrex
+|-damage|p2a: Seviper|41/100|[from] item: Life Orb
+|
+|-heal|p2a: Seviper|47/100|[from] Grassy Terrain
+|upkeep
+|
+|switch|p1a: Lumineon|Lumineon, L93, F|200/279
+|turn|23
+|
+|move|p1a: Lumineon|Encore|p2a: Seviper
+|-start|p2a: Seviper|Encore
+|move|p2a: Seviper|Gunk Shot|p1a: Lumineon
+|-damage|p1a: Lumineon|0 fnt
+|faint|p1a: Lumineon
+|-damage|p2a: Seviper|37/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

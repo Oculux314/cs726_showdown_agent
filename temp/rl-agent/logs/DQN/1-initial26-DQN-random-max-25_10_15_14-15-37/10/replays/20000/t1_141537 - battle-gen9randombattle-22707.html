@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22707</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22707<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22707|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Indeedee|Indeedee, L84, M|238/238
+|switch|p2a: Appletun|Appletun, L92, F|100/100
+|-fieldstart|move: Psychic Terrain|[from] ability: Psychic Surge|[of] p1a: Indeedee
+|turn|1
+|
+|move|p1a: Indeedee|Healing Wish|p1a: Indeedee
+|faint|p1a: Indeedee
+|move|p2a: Appletun|Dragon Pulse|p1: Indeedee|[notarget]
+|-fail|p2a: Appletun
+|
+|upkeep
+|
+|switch|p1a: Medicham|Medicham, L86, M|243/243
+|turn|2
+|
+|move|p1a: Medicham|Close Combat|p2a: Appletun
+|-damage|p2a: Appletun|24/100
+|-unboost|p1a: Medicham|def|1
+|-unboost|p1a: Medicham|spd|1
+|move|p2a: Appletun|Dragon Pulse|p1a: Medicham
+|-damage|p1a: Medicham|74/243
+|
+|-heal|p2a: Appletun|30/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p1a: Medicham|Close Combat|p2a: Appletun
+|-damage|p2a: Appletun|0 fnt
+|-unboost|p1a: Medicham|def|1
+|-unboost|p1a: Medicham|spd|1
+|faint|p2a: Appletun
+|
+|upkeep
+|
+|switch|p2a: Weezing|Weezing-Galar, L86, F|100/100
+|turn|4
+|
+|move|p1a: Medicham|Close Combat|p2a: Weezing
+|-resisted|p2a: Weezing
+|-damage|p2a: Weezing|77/100
+|-unboost|p1a: Medicham|def|1
+|-unboost|p1a: Medicham|spd|1
+|move|p2a: Weezing|Gunk Shot|p1a: Medicham
+|-crit|p1a: Medicham
+|-damage|p1a: Medicham|0 fnt
+|faint|p1a: Medicham
+|
+|-heal|p2a: Weezing|83/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Honchkrow|Honchkrow, L86, F|312/312
+|turn|5
+|
+|move|p1a: Honchkrow|Lash Out|p2a: Weezing
+|-resisted|p2a: Weezing
+|-damage|p2a: Weezing|69/100
+|move|p2a: Weezing|Gunk Shot|p1a: Honchkrow
+|-damage|p1a: Honchkrow|134/312
+|-status|p1a: Honchkrow|psn
+|
+|-heal|p2a: Weezing|75/100|[from] item: Leftovers
+|-damage|p1a: Honchkrow|95/312 psn|[from] psn
+|-fieldend|move: Psychic Terrain
+|upkeep
+|turn|6
+|
+|-terastallize|p1a: Honchkrow|Dark
+|move|p1a: Honchkrow|Heat Wave|p2a: Weezing
+|-damage|p2a: Weezing|40/100
+|move|p2a: Weezing|Gunk Shot|p1a: Honchkrow
+|-crit|p1a: Honchkrow
+|-damage|p1a: Honchkrow|0 fnt
+|faint|p1a: Honchkrow
+|
+|-heal|p2a: Weezing|46/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Chansey|Chansey, L85, F|564/564
+|turn|7
+|
+|move|p2a: Weezing|Gunk Shot|p1a: Chansey|[miss]
+|-miss|p2a: Weezing|p1a: Chansey
+|move|p1a: Chansey|Stealth Rock|p2a: Weezing
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|-heal|p2a: Weezing|52/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Weezing|Gunk Shot|p1a: Chansey
+|-damage|p1a: Chansey|267/564
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|
+|-heal|p2a: Weezing|58/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Tentacruel|Tentacruel, L84, F|272/272
+|move|p2a: Weezing|Gunk Shot|p1a: Tentacruel
+|-resisted|p1a: Tentacruel
+|-damage|p1a: Tentacruel|199/272
+|
+|-heal|p1a: Tentacruel|216/272|[from] item: Leftovers
+|-heal|p2a: Weezing|64/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Tentacruel|Sludge Bomb|p2a: Weezing
+|-damage|p2a: Weezing|27/100
+|move|p2a: Weezing|Gunk Shot|p1a: Tentacruel
+|-resisted|p1a: Tentacruel
+|-damage|p1a: Tentacruel|138/272
+|
+|-heal|p1a: Tentacruel|155/272|[from] item: Leftovers
+|-heal|p2a: Weezing|33/100|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Tentacruel|Sludge Bomb|p2a: Weezing
+|-damage|p2a: Weezing|0 fnt
+|faint|p2a: Weezing
+|
+|-heal|p1a: Tentacruel|172/272|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Crabominable|Crabominable, L90, F|100/100
+|-damage|p2a: Crabominable|88/100|[from] Stealth Rock
+|turn|12
+|
+|move|p1a: Tentacruel|Sludge Bomb|p2a: Crabominable
+|-damage|p2a: Crabominable|61/100
+|move|p2a: Crabominable|Gunk Shot|p1a: Tentacruel
+|-resisted|p1a: Tentacruel
+|-crit|p1a: Tentacruel
+|-damage|p1a: Tentacruel|0 fnt
+|faint|p1a: Tentacruel
+|
+|upkeep
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263
+|turn|13
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Crabominable
+|-status|p2a: Crabominable|brn
+|move|p2a: Crabominable|Gunk Shot|p1a: Froslass
+|-resisted|p1a: Froslass
+|-damage|p1a: Froslass|212/263
+|-status|p1a: Froslass|psn
+|
+|-damage|p1a: Froslass|180/263 psn|[from] psn
+|-damage|p2a: Crabominable|55/100 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Froslass|Poltergeist|p2a: Crabominable
+|-activate|p2a: Crabominable|move: Poltergeist|Choice Band
+|-damage|p2a: Crabominable|19/100 brn
+|move|p2a: Crabominable|Gunk Shot|p1a: Froslass
+|-resisted|p1a: Froslass
+|-damage|p1a: Froslass|131/263 psn
+|
+|-damage|p1a: Froslass|99/263 psn|[from] psn
+|-damage|p2a: Crabominable|13/100 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p1a: Froslass|Spikes|p2a: Crabominable
+|-sidestart|p2: t2_141537|Spikes
+|move|p2a: Crabominable|Gunk Shot|p1a: Froslass
+|-resisted|p1a: Froslass
+|-damage|p1a: Froslass|45/263 psn
+|
+|-damage|p1a: Froslass|13/263 psn|[from] psn
+|-damage|p2a: Crabominable|6/100 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p1a: Froslass|Poltergeist|p2a: Crabominable
+|-activate|p2a: Crabominable|move: Poltergeist|Choice Band
+|-damage|p2a: Crabominable|0 fnt
+|faint|p2a: Crabominable
+|
+|-damage|p1a: Froslass|0 fnt|[from] psn
+|faint|p1a: Froslass
+|upkeep
+|
+|switch|p1a: Chansey|Chansey, L85, F|267/564
+|switch|p2a: Bastiodon|Bastiodon, L89, F|100/100
+|-heal|p1a: Chansey|564/564|[from] move: Healing Wish
+|-damage|p2a: Bastiodon|95/100|[from] Stealth Rock
+|-damage|p2a: Bastiodon|82/100|[from] Spikes
+|turn|17
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|554/564
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|544/564
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|534/564
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|523/564
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|512/564
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|502/564
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|492/564
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|481/564
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|471/564
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|460/564
+|
+|upkeep
+|turn|27
+|
+|move|p1a: Chansey|Seismic Toss|p2a: Bastiodon
+|-damage|p2a: Bastiodon|49/100
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|450/564
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|554/564
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Chansey|Thunder Wave|p2a: Bastiodon
+|-status|p2a: Bastiodon|par
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|30
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|544/564
+|
+|upkeep
+|turn|31
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|554/564
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Chansey|Seismic Toss|p2a: Bastiodon
+|-damage|p2a: Bastiodon|15/100 par
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|544/564
+|
+|upkeep
+|turn|34
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|35
+|
+|move|p1a: Chansey|Soft-Boiled||[still]
+|-fail|p1a: Chansey|heal
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|553/564
+|
+|upkeep
+|turn|36
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|37
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|38
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|553/564
+|
+|upkeep
+|turn|39
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|543/564
+|
+|upkeep
+|turn|40
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|move|p2a: Bastiodon|Foul Play|p1a: Chansey
+|-damage|p1a: Chansey|532/564
+|
+|upkeep
+|turn|41
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|42
+|
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|cant|p2a: Bastiodon|par
+|
+|upkeep
+|turn|43
+|
+|move|p1a: Chansey|Seismic Toss|p2a: Bastiodon
+|-damage|p2a: Bastiodon|0 fnt
+|faint|p2a: Bastiodon
+|
+|upkeep
+|
+|switch|p2a: Vigoroth|Vigoroth, L85, M|100/100
+|-damage|p2a: Vigoroth|88/100|[from] Stealth Rock
+|-damage|p2a: Vigoroth|76/100|[from] Spikes
+|turn|44
+|
+|move|p2a: Vigoroth|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|374/564
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|
+|upkeep
+|turn|45
+|
+|move|p2a: Vigoroth|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|232/564
+|move|p1a: Chansey|Stealth Rock||[still]
+|-fail|p1a: Chansey
+|
+|upkeep
+|turn|46
+|
+|move|p2a: Vigoroth|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|82/564
+|move|p1a: Chansey|Seismic Toss|p2a: Vigoroth
+|-damage|p2a: Vigoroth|45/100
+|
+|upkeep
+|turn|47
+|
+|move|p2a: Vigoroth|Earthquake|p1a: Chansey
+|-damage|p1a: Chansey|0 fnt
+|faint|p1a: Chansey
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

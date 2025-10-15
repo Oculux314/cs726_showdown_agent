@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23024</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23024<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23024|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Vileplume|Vileplume, L85, F|266/266
+|switch|p2a: Wigglytuff|Wigglytuff, L96, M|100/100
+|turn|1
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|217/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff
+|-status|p2a: Wigglytuff|slp|[from] move: Sleep Powder
+|
+|-heal|p1a: Vileplume|233/266|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, M|231/231
+|cant|p2a: Wigglytuff|slp
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Vileplume|Vileplume, L85, F|233/266
+|-curestatus|p2a: Wigglytuff|slp|[msg]
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|186/266
+|
+|-heal|p1a: Vileplume|202/266|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|151/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff|[miss]
+|-miss|p1a: Vileplume|p2a: Wigglytuff
+|
+|-heal|p1a: Vileplume|167/266|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, M|231/231
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Barraskewda
+|-damage|p1a: Barraskewda|83/231
+|
+|upkeep
+|turn|6
+|
+|switch|p1a: Vileplume|Vileplume, L85, F|167/266
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-crit|p1a: Vileplume
+|-damage|p1a: Vileplume|88/266
+|
+|-heal|p1a: Vileplume|104/266|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|57/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff|[miss]
+|-miss|p1a: Vileplume|p2a: Wigglytuff
+|
+|-heal|p1a: Vileplume|73/266|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|24/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff
+|-status|p2a: Wigglytuff|slp|[from] move: Sleep Powder
+|
+|-heal|p1a: Vileplume|40/266|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, M|83/231
+|cant|p2a: Wigglytuff|slp
+|
+|upkeep
+|turn|10
+|
+|switch|p1a: Vileplume|Vileplume, L85, F|40/266
+|cant|p2a: Wigglytuff|slp
+|
+|-heal|p1a: Vileplume|56/266|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|-curestatus|p2a: Wigglytuff|slp|[msg]
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|5/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff
+|-status|p2a: Wigglytuff|slp|[from] move: Sleep Powder
+|
+|-heal|p1a: Vileplume|21/266|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|cant|p2a: Wigglytuff|slp
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff|[miss]
+|-miss|p1a: Vileplume|p2a: Wigglytuff
+|
+|-heal|p1a: Vileplume|37/266|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|cant|p2a: Wigglytuff|slp
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff
+|-fail|p2a: Wigglytuff|slp
+|
+|-heal|p1a: Vileplume|53/266|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|cant|p2a: Wigglytuff|slp
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff
+|-fail|p2a: Wigglytuff|slp
+|
+|-heal|p1a: Vileplume|69/266|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|-curestatus|p2a: Wigglytuff|slp|[msg]
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|18/266
+|move|p1a: Vileplume|Sleep Powder|p2a: Wigglytuff|[miss]
+|-miss|p1a: Vileplume|p2a: Wigglytuff
+|
+|-heal|p1a: Vileplume|34/266|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Vileplume
+|-resisted|p1a: Vileplume
+|-damage|p1a: Vileplume|0 fnt
+|faint|p1a: Vileplume
+|
+|upkeep
+|
+|switch|p1a: Mandibuzz|Mandibuzz, L85, F|326/326
+|turn|17
+|
+|switch|p1a: Barraskewda|Barraskewda, L81, M|83/231
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Barraskewda
+|-damage|p1a: Barraskewda|0 fnt
+|faint|p1a: Barraskewda
+|
+|upkeep
+|
+|switch|p1a: Farigiraf|Farigiraf, L91, M|366/366
+|turn|18
+|
+|move|p1a: Farigiraf|Psychic Noise|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|67/100
+|-start|p2a: Wigglytuff|move: Heal Block
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Farigiraf
+|-damage|p1a: Farigiraf|254/366
+|
+|-heal|p1a: Farigiraf|276/366|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Farigiraf|Psychic Noise|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|34/100
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Farigiraf
+|-damage|p1a: Farigiraf|162/366
+|
+|-heal|p1a: Farigiraf|184/366|[from] item: Leftovers
+|-end|p2a: Wigglytuff|move: Heal Block
+|upkeep
+|turn|20
+|
+|move|p1a: Farigiraf|Psychic Noise|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|4/100
+|-start|p2a: Wigglytuff|move: Heal Block
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Farigiraf
+|-damage|p1a: Farigiraf|69/366
+|
+|-heal|p1a: Farigiraf|91/366|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Farigiraf|Psychic Noise|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|0 fnt
+|faint|p2a: Wigglytuff
+|
+|-heal|p1a: Farigiraf|113/366|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Magearna|Magearna-Original, L77|100/100
+|turn|22
+|
+|move|p1a: Farigiraf|Psychic Noise|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|82/100
+|-start|p2a: Magearna|move: Heal Block
+|move|p2a: Magearna|Fleur Cannon|p1a: Farigiraf
+|-damage|p1a: Farigiraf|0 fnt
+|-unboost|p2a: Magearna|spa|2
+|faint|p1a: Farigiraf
+|-ability|p2a: Magearna|Soul-Heart|boost
+|-boost|p2a: Magearna|spa|1
+|
+|upkeep
+|
+|switch|p1a: Mandibuzz|Mandibuzz, L85, F|326/326
+|turn|23
+|
+|-terastallize|p1a: Mandibuzz|Steel
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|278/326
+|-unboost|p2a: Magearna|spa|2
+|
+|-end|p2a: Magearna|move: Heal Block
+|upkeep
+|turn|24
+|
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|248/326
+|-unboost|p2a: Magearna|spa|2
+|
+|-heal|p2a: Magearna|88/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|229/326
+|-unboost|p2a: Magearna|spa|1
+|
+|-heal|p2a: Magearna|94/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Mandibuzz|Foul Play|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|81/100
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|211/326
+|
+|-heal|p2a: Magearna|87/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|193/326
+|
+|-heal|p2a: Magearna|93/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|175/326
+|
+|-heal|p2a: Magearna|99/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Mandibuzz|Foul Play|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|86/100
+|move|p2a: Magearna|Fleur Cannon|p1a: Mandibuzz
+|-resisted|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|159/326
+|
+|-heal|p2a: Magearna|92/100|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Mandibuzz|Defog|p2a: Magearna
+|-unboost|p2a: Magearna|evasion|1
+|move|p2a: Magearna|Aura Sphere|p1a: Mandibuzz
+|-supereffective|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|129/326
+|
+|-heal|p2a: Magearna|98/100|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Mandibuzz|Foul Play|p2a: Magearna
+|-resisted|p2a: Magearna
+|-crit|p2a: Magearna
+|-damage|p2a: Magearna|79/100
+|move|p2a: Magearna|Aura Sphere|p1a: Mandibuzz
+|-supereffective|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|103/326
+|
+|-heal|p2a: Magearna|85/100|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Mandibuzz|Foul Play|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|71/100
+|move|p2a: Magearna|Aura Sphere|p1a: Mandibuzz
+|-supereffective|p1a: Mandibuzz
+|-crit|p1a: Mandibuzz
+|-damage|p1a: Mandibuzz|0 fnt
+|faint|p1a: Mandibuzz
+|-ability|p2a: Magearna|Soul-Heart|boost
+|-boost|p2a: Magearna|spa|1
+|
+|-heal|p2a: Magearna|77/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Swalot|Swalot, L90, M|326/326
+|turn|33
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|65/100
+|-enditem|p2a: Magearna|Leftovers|[from] move: Knock Off|[of] p1a: Swalot
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|318/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|57/100
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|317/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|317/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|317/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|50/100
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|318/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|42/100
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-crit|p1a: Swalot
+|-damage|p1a: Swalot|280/326
+|
+|-heal|p1a: Swalot|300/326|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|35/100
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|292/326
+|
+|-heal|p1a: Swalot|312/326|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|304/326
+|
+|-heal|p1a: Swalot|324/326|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|316/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|318/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p1a: Swalot|Swords Dance|p1a: Swalot
+|-boost|p1a: Swalot|atk|2
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|318/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|317/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p1a: Swalot|Swords Dance|p1a: Swalot
+|-boost|p1a: Swalot|atk|2
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|318/326
+|
+|-heal|p1a: Swalot|326/326|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-crit|p1a: Swalot
+|-damage|p1a: Swalot|282/326
+|
+|-heal|p1a: Swalot|302/326|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|14/100
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-crit|p1a: Swalot
+|-damage|p1a: Swalot|257/326
+|
+|-heal|p1a: Swalot|277/326|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|move|p1a: Swalot|Gunk Shot|p2a: Magearna
+|-immune|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|269/326
+|
+|-heal|p1a: Swalot|289/326|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p1a: Swalot|Knock Off|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|0 fnt
+|faint|p2a: Magearna
+|
+|-heal|p1a: Swalot|309/326|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Lunala|Lunala, L70|100/100
+|turn|50
+|
+|move|p2a: Lunala|Moongeist Beam|p1a: Swalot
+|-damage|p1a: Swalot|218/326
+|move|p1a: Swalot|Knock Off|p2a: Lunala
+|-supereffective|p2a: Lunala
+|-damage|p2a: Lunala|0 fnt
+|-enditem|p2a: Lunala|Leftovers|[from] move: Knock Off|[of] p1a: Swalot
+|faint|p2a: Lunala
+|
+|-heal|p1a: Swalot|238/326|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Cobalion|Cobalion, L80|100/100
+|turn|51
+|
+|move|p2a: Cobalion|Close Combat|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|164/326
+|-unboost|p2a: Cobalion|def|1
+|-unboost|p2a: Cobalion|spd|1
+|-damage|p2a: Cobalion|91/100|[from] item: Life Orb
+|move|p1a: Swalot|Knock Off|p2a: Cobalion
+|-resisted|p2a: Cobalion
+|-damage|p2a: Cobalion|49/100
+|-ability|p2a: Cobalion|Justified|boost
+|-boost|p2a: Cobalion|atk|1
+|-enditem|p2a: Cobalion|Life Orb|[from] move: Knock Off|[of] p1a: Swalot
+|
+|-heal|p1a: Swalot|184/326|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|move|p2a: Cobalion|Close Combat|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|105/326
+|-unboost|p2a: Cobalion|def|1
+|-unboost|p2a: Cobalion|spd|1
+|move|p1a: Swalot|Knock Off|p2a: Cobalion
+|-resisted|p2a: Cobalion
+|-damage|p2a: Cobalion|15/100
+|-ability|p2a: Cobalion|Justified|boost
+|-boost|p2a: Cobalion|atk|1
+|
+|-heal|p1a: Swalot|125/326|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p2a: Cobalion|Close Combat|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|16/326
+|-unboost|p2a: Cobalion|def|1
+|-unboost|p2a: Cobalion|spd|1
+|move|p1a: Swalot|Knock Off|p2a: Cobalion
+|-resisted|p2a: Cobalion
+|-damage|p2a: Cobalion|0 fnt
+|faint|p2a: Cobalion
+|
+|-heal|p1a: Swalot|36/326|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Kleavor|Kleavor, L78, M|100/100
+|turn|54
+|
+|move|p2a: Kleavor|Close Combat|p1a: Swalot
+|-resisted|p1a: Swalot
+|-damage|p1a: Swalot|0 fnt
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|faint|p1a: Swalot
+|
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, F|292/292
+|turn|55
+|
+|move|p2a: Kleavor|Close Combat|p1a: Veluza
+|-resisted|p1a: Veluza
+|-damage|p1a: Veluza|234/292
+|-unboost|p2a: Kleavor|def|1
+|-unboost|p2a: Kleavor|spd|1
+|move|p1a: Veluza|Aqua Cutter|p2a: Kleavor
+|-supereffective|p2a: Kleavor
+|-damage|p2a: Kleavor|0 fnt
+|faint|p2a: Kleavor
+|
+|upkeep
+|
+|switch|p2a: Cetitan|Cetitan, L82, M|100/100
+|turn|56
+|
+|move|p1a: Veluza|Night Slash|p2a: Cetitan
+|-damage|p2a: Cetitan|78/100
+|move|p2a: Cetitan|Superpower|p1a: Veluza
+|-resisted|p1a: Veluza
+|-damage|p1a: Veluza|168/292
+|-unboost|p2a: Cetitan|atk|1
+|-unboost|p2a: Cetitan|def|1
+|-damage|p2a: Cetitan|68/100|[from] item: Life Orb
+|
+|upkeep
+|turn|57
+|
+|move|p1a: Veluza|Psycho Cut|p2a: Cetitan
+|-damage|p2a: Cetitan|17/100
+|move|p2a: Cetitan|Superpower|p1a: Veluza
+|-resisted|p1a: Veluza
+|-crit|p1a: Veluza
+|-damage|p1a: Veluza|74/292
+|-unboost|p2a: Cetitan|atk|1
+|-unboost|p2a: Cetitan|def|1
+|-enditem|p1a: Veluza|Sitrus Berry|[eat]
+|-heal|p1a: Veluza|147/292|[from] item: Sitrus Berry
+|-damage|p2a: Cetitan|7/100|[from] item: Life Orb
+|
+|upkeep
+|turn|58
+|
+|move|p1a: Veluza|Psycho Cut|p2a: Cetitan
+|-damage|p2a: Cetitan|0 fnt
+|faint|p2a: Cetitan
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

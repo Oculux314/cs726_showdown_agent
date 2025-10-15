@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23111</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23111<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23111|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Zekrom|Zekrom, L71|259/259
+|switch|p2a: Altaria|Altaria, L89, M|100/100
+|-ability|p1a: Zekrom|Teravolt
+|turn|1
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-damage|p1a: Zekrom|210/259
+|-damage|p2a: Altaria|95/100|[from] Recoil
+|move|p1a: Zekrom|Substitute|p1a: Zekrom
+|-start|p1a: Zekrom|Substitute
+|-damage|p1a: Zekrom|146/259
+|
+|-heal|p1a: Zekrom|162/259|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|switch|p1a: Excadrill|Excadrill, L79, F|303/303
+|-ability|p1a: Excadrill|Mold Breaker
+|move|p2a: Altaria|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|219/303
+|-damage|p2a: Altaria|85/100|[from] Recoil
+|
+|-heal|p1a: Excadrill|237/303|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Altaria|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|158/303
+|-damage|p2a: Altaria|75/100|[from] Recoil
+|move|p1a: Excadrill|Earthquake|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|-heal|p1a: Excadrill|176/303|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|switch|p1a: Zekrom|Zekrom, L71|162/259
+|-ability|p1a: Zekrom|Teravolt
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-damage|p1a: Zekrom|115/259
+|-damage|p2a: Altaria|70/100|[from] Recoil
+|
+|-heal|p1a: Zekrom|131/259|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-damage|p1a: Zekrom|83/259
+|-damage|p2a: Altaria|64/100|[from] Recoil
+|move|p1a: Zekrom|Substitute|p1a: Zekrom
+|-start|p1a: Zekrom|Substitute
+|-damage|p1a: Zekrom|19/259
+|
+|-heal|p1a: Zekrom|35/259|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-activate|p1a: Zekrom|move: Substitute|[damage]
+|-damage|p2a: Altaria|57/100|[from] Recoil|[of] p1a: Zekrom
+|move|p1a: Zekrom|Substitute|p1a: Zekrom
+|-fail|p1a: Zekrom|move: Substitute
+|
+|-heal|p1a: Zekrom|51/259|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-end|p1a: Zekrom|Substitute
+|-damage|p2a: Altaria|56/100|[from] Recoil|[of] p1a: Zekrom
+|move|p1a: Zekrom|Substitute|p1a: Zekrom
+|-fail|p1a: Zekrom|move: Substitute|[weak]
+|
+|-heal|p1a: Zekrom|67/259|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-damage|p1a: Zekrom|16/259
+|-damage|p2a: Altaria|50/100|[from] Recoil
+|move|p1a: Zekrom|Substitute|p1a: Zekrom
+|-fail|p1a: Zekrom|move: Substitute|[weak]
+|
+|-heal|p1a: Zekrom|32/259|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Altaria|Brave Bird|p1a: Zekrom
+|-resisted|p1a: Zekrom
+|-crit|p1a: Zekrom
+|-damage|p1a: Zekrom|0 fnt
+|faint|p1a: Zekrom
+|-damage|p2a: Altaria|46/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Revavroom|Revavroom, L79, M|256/256
+|turn|10
+|
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|202/256
+|-damage|p2a: Altaria|40/100|[from] Recoil
+|move|p1a: Revavroom|High Horsepower|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|139/256
+|-damage|p2a: Altaria|32/100|[from] Recoil
+|move|p1a: Revavroom|High Horsepower|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|86/256
+|-damage|p2a: Altaria|26/100|[from] Recoil
+|move|p1a: Revavroom|High Horsepower|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|upkeep
+|turn|13
+|
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-resisted|p1a: Revavroom
+|-damage|p1a: Revavroom|28/256
+|-damage|p2a: Altaria|19/100|[from] Recoil
+|move|p1a: Revavroom|High Horsepower|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|upkeep
+|turn|14
+|
+|-terastallize|p1a: Revavroom|Ground
+|move|p2a: Altaria|Brave Bird|p1a: Revavroom
+|-damage|p1a: Revavroom|0 fnt
+|faint|p1a: Revavroom
+|-damage|p2a: Altaria|16/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Excadrill|Excadrill, L79, F|176/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|15
+|
+|move|p2a: Altaria|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|96/303
+|-damage|p2a: Altaria|7/100|[from] Recoil
+|move|p1a: Excadrill|Earthquake|p2a: Altaria
+|-immune|p2a: Altaria
+|
+|-heal|p1a: Excadrill|114/303|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Altaria|Brave Bird|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|42/303
+|-damage|p2a: Altaria|0 fnt|[from] Recoil
+|faint|p2a: Altaria
+|move|p1a: Excadrill|Earthquake|p2: Altaria|[notarget]
+|-fail|p1a: Excadrill
+|
+|-heal|p1a: Excadrill|60/303|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Amoonguss|Amoonguss, L82, F|100/100
+|turn|17
+|
+|move|p1a: Excadrill|Earthquake|p2a: Amoonguss
+|-damage|p2a: Amoonguss|53/100
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Excadrill
+|-immune|p1a: Excadrill
+|
+|-heal|p1a: Excadrill|78/303|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p1a: Excadrill|Earthquake|p2a: Amoonguss
+|-damage|p2a: Amoonguss|9/100
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Excadrill
+|-immune|p1a: Excadrill
+|
+|-heal|p1a: Excadrill|96/303|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Excadrill|Earthquake|p2a: Amoonguss
+|-damage|p2a: Amoonguss|0 fnt
+|faint|p2a: Amoonguss
+|
+|-heal|p1a: Excadrill|114/303|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Araquanid|Araquanid, L82, F|100/100
+|turn|20
+|
+|move|p1a: Excadrill|Earthquake|p2a: Araquanid
+|-resisted|p2a: Araquanid
+|-damage|p2a: Araquanid|77/100
+|move|p2a: Araquanid|Hydro Pump|p1a: Excadrill|[miss]
+|-miss|p2a: Araquanid|p1a: Excadrill
+|
+|-heal|p1a: Excadrill|132/303|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Excadrill|Earthquake|p2a: Araquanid
+|-resisted|p2a: Araquanid
+|-crit|p2a: Araquanid
+|-damage|p2a: Araquanid|42/100
+|move|p2a: Araquanid|Hydro Pump|p1a: Excadrill
+|-supereffective|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|faint|p1a: Excadrill
+|
+|upkeep
+|
+|switch|p1a: Mienshao|Mienshao, L83, F|244/244
+|turn|22
+|
+|move|p1a: Mienshao|Knock Off|p2a: Araquanid
+|-crit|p2a: Araquanid
+|-damage|p2a: Araquanid|0 fnt
+|-enditem|p2a: Araquanid|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Mienshao
+|faint|p2a: Araquanid
+|
+|upkeep
+|
+|switch|p2a: Ditto|Ditto, L87|100/100
+|-transform|p2a: Ditto|p1a: Mienshao|[from] ability: Imposter
+|turn|23
+|
+|move|p2a: Ditto|Close Combat|p1a: Mienshao
+|-damage|p1a: Mienshao|34/244
+|-unboost|p2a: Ditto|def|1
+|-unboost|p2a: Ditto|spd|1
+|move|p1a: Mienshao|Knock Off|p2a: Ditto
+|-resisted|p2a: Ditto
+|-damage|p2a: Ditto|65/100
+|-enditem|p2a: Ditto|Choice Scarf|[from] move: Knock Off|[of] p1a: Mienshao
+|
+|upkeep
+|turn|24
+|
+|move|p1a: Mienshao|Knock Off|p2a: Ditto
+|-resisted|p2a: Ditto
+|-damage|p2a: Ditto|42/100
+|move|p2a: Ditto|Close Combat|p1a: Mienshao
+|-damage|p1a: Mienshao|0 fnt
+|-unboost|p2a: Ditto|def|1
+|-unboost|p2a: Ditto|spd|1
+|faint|p1a: Mienshao
+|
+|upkeep
+|
+|switch|p1a: Oranguru|Oranguru, L92, F|315/315
+|turn|25
+|
+|move|p2a: Ditto|Close Combat|p1a: Oranguru
+|-damage|p1a: Oranguru|155/315
+|-unboost|p2a: Ditto|def|1
+|-unboost|p2a: Ditto|spd|1
+|move|p1a: Oranguru|Hyper Voice|p2a: Ditto
+|-damage|p2a: Ditto|0 fnt
+|faint|p2a: Ditto
+|
+|upkeep
+|
+|switch|p2a: Slither Wing|Slither Wing, L81|100/100
+|turn|26
+|
+|move|p2a: Slither Wing|Close Combat|p1a: Oranguru
+|-damage|p1a: Oranguru|0 fnt
+|-unboost|p2a: Slither Wing|def|1
+|-unboost|p2a: Slither Wing|spd|1
+|faint|p1a: Oranguru
+|
+|upkeep
+|
+|switch|p1a: Appletun|Appletun, L92, F|352/352
+|turn|27
+|
+|move|p2a: Slither Wing|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|199/352
+|-unboost|p2a: Slither Wing|def|1
+|-unboost|p2a: Slither Wing|spd|1
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|upkeep
+|turn|28
+|
+|move|p2a: Slither Wing|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|207/352
+|-unboost|p2a: Slither Wing|def|1
+|-unboost|p2a: Slither Wing|spd|1
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|upkeep
+|turn|29
+|
+|move|p2a: Slither Wing|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|213/352
+|-unboost|p2a: Slither Wing|def|1
+|-unboost|p2a: Slither Wing|spd|1
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|upkeep
+|turn|30
+|
+|move|p2a: Slither Wing|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|213/352
+|-unboost|p2a: Slither Wing|def|1
+|-unboost|p2a: Slither Wing|spd|1
+|move|p1a: Appletun|Draco Meteor|p2a: Slither Wing
+|-damage|p2a: Slither Wing|0 fnt
+|-unboost|p1a: Appletun|spa|2
+|faint|p2a: Slither Wing
+|-end|p2a: Slither Wing|Protosynthesis|[silent]
+|
+|-heal|p1a: Appletun|235/352|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Sandslash|Sandslash-Alola, L88, F|100/100
+|turn|31
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|197/352
+|move|p1a: Appletun|Leech Seed|p2a: Sandslash
+|-start|p2a: Sandslash|move: Leech Seed
+|
+|-heal|p1a: Appletun|219/352|[from] item: Leftovers
+|-damage|p2a: Sandslash|88/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|253/352|[silent]
+|upkeep
+|turn|32
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|216/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|-heal|p2a: Sandslash|94/100|[from] item: Leftovers
+|-damage|p2a: Sandslash|82/100|[from] Leech Seed|[of] p1a: Appletun
+|upkeep
+|turn|33
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|316/352
+|move|p1a: Appletun|Draco Meteor|p2a: Sandslash
+|-resisted|p2a: Sandslash
+|-damage|p2a: Sandslash|64/100
+|-unboost|p1a: Appletun|spa|2
+|
+|-heal|p2a: Sandslash|71/100|[from] item: Leftovers
+|-heal|p1a: Appletun|338/352|[from] item: Leftovers
+|-damage|p2a: Sandslash|58/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|352/352|[silent]
+|upkeep
+|turn|34
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|315/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|-heal|p2a: Sandslash|64/100|[from] item: Leftovers
+|-damage|p2a: Sandslash|52/100|[from] Leech Seed|[of] p1a: Appletun
+|upkeep
+|turn|35
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-crit|p1a: Appletun
+|-damage|p1a: Appletun|293/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|-heal|p2a: Sandslash|58/100|[from] item: Leftovers
+|-damage|p2a: Sandslash|46/100|[from] Leech Seed|[of] p1a: Appletun
+|upkeep
+|turn|36
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|310/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|-heal|p2a: Sandslash|52/100|[from] item: Leftovers
+|-damage|p2a: Sandslash|40/100|[from] Leech Seed|[of] p1a: Appletun
+|upkeep
+|turn|37
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|312/352
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|
+|-heal|p2a: Sandslash|46/100|[from] item: Leftovers
+|-damage|p2a: Sandslash|34/100|[from] Leech Seed|[of] p1a: Appletun
+|upkeep
+|turn|38
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|314/352
+|move|p1a: Appletun|Apple Acid|p2a: Sandslash
+|-resisted|p2a: Sandslash
+|-damage|p2a: Sandslash|27/100
+|-unboost|p2a: Sandslash|spd|1
+|
+|-heal|p2a: Sandslash|33/100|[from] item: Leftovers
+|-heal|p1a: Appletun|336/352|[from] item: Leftovers
+|-damage|p2a: Sandslash|20/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|352/352|[silent]
+|upkeep
+|turn|39
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|313/352
+|move|p1a: Appletun|Apple Acid|p2a: Sandslash
+|-resisted|p2a: Sandslash
+|-damage|p2a: Sandslash|10/100
+|-unboost|p2a: Sandslash|spd|1
+|
+|-heal|p2a: Sandslash|16/100|[from] item: Leftovers
+|-heal|p1a: Appletun|335/352|[from] item: Leftovers
+|-damage|p2a: Sandslash|3/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|352/352|[silent]
+|upkeep
+|turn|40
+|
+|move|p2a: Sandslash|Earthquake|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|315/352
+|move|p1a: Appletun|Apple Acid|p2a: Sandslash
+|-resisted|p2a: Sandslash
+|-damage|p2a: Sandslash|0 fnt
+|faint|p2a: Sandslash
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22428</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22428<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22428|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Poliwrath|Poliwrath, L88, F|302/302
+|switch|p2a: Solgaleo|Solgaleo, L74|100/100
+|turn|1
+|
+|switch|p1a: Terapagos|Terapagos, L77, F|265/265
+|-activate|p1a: Terapagos|ability: Tera Shift
+|detailschange|p1a: Terapagos|Terapagos-Terastal, L77, F
+|-heal|p1a: Terapagos|273/273|[silent]
+|move|p2a: Solgaleo|Close Combat|p1a: Terapagos
+|-activate|p1a: Terapagos|ability: Tera Shell
+|-resisted|p1a: Terapagos
+|-damage|p1a: Terapagos|237/273
+|-unboost|p2a: Solgaleo|def|1
+|-unboost|p2a: Solgaleo|spd|1
+|
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Terapagos|Stellar
+|detailschange|p1a: Terapagos|Terapagos-Stellar, L77, F, tera:Stellar
+|-heal|p1a: Terapagos|337/373|[silent]
+|move|p2a: Solgaleo|Close Combat|p1a: Terapagos
+|-supereffective|p1a: Terapagos
+|-damage|p1a: Terapagos|187/373
+|-unboost|p2a: Solgaleo|def|1
+|-unboost|p2a: Solgaleo|spd|1
+|move|p1a: Terapagos|Tera Starstorm|p2a: Solgaleo
+|-damage|p2a: Solgaleo|25/100
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Solgaleo|Close Combat|p1a: Terapagos
+|-supereffective|p1a: Terapagos
+|-damage|p1a: Terapagos|31/373
+|-unboost|p2a: Solgaleo|def|1
+|-unboost|p2a: Solgaleo|spd|1
+|move|p1a: Terapagos|Tera Starstorm|p2a: Solgaleo
+|-damage|p2a: Solgaleo|0 fnt
+|faint|p2a: Solgaleo
+|
+|upkeep
+|
+|switch|p2a: Necrozma|Necrozma-Dawn-Wings, L76|100/100
+|turn|4
+|
+|move|p1a: Terapagos|Tera Starstorm|p2a: Necrozma
+|-damage|p2a: Necrozma|68/100
+|move|p2a: Necrozma|Photon Geyser|p1a: Terapagos
+|-damage|p1a: Terapagos|0 fnt
+|faint|p1a: Terapagos
+|detailschange|p1: Terapagos|Terapagos, L77, F|[silent]
+|
+|-heal|p2a: Necrozma|74/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Virizion|Virizion, L82|283/283
+|turn|5
+|
+|move|p1a: Virizion|Close Combat|p2a: Necrozma
+|-immune|p2a: Necrozma
+|move|p2a: Necrozma|Photon Geyser|p1a: Virizion
+|-supereffective|p1a: Virizion
+|-damage|p1a: Virizion|73/283
+|
+|-heal|p2a: Necrozma|81/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|switch|p1a: Samurott|Samurott, L88, M|310/310
+|move|p2a: Necrozma|Photon Geyser|p1a: Samurott
+|-damage|p1a: Samurott|220/310
+|
+|-heal|p2a: Necrozma|87/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Samurott|Ice Beam|p2a: Necrozma
+|-damage|p2a: Necrozma|62/100
+|move|p2a: Necrozma|Photon Geyser|p1a: Samurott
+|-damage|p1a: Samurott|129/310
+|
+|-heal|p2a: Necrozma|69/100|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Samurott|Ice Beam|p2a: Necrozma
+|-damage|p2a: Necrozma|46/100
+|move|p2a: Necrozma|Photon Geyser|p1a: Samurott
+|-damage|p1a: Samurott|23/310
+|
+|-heal|p2a: Necrozma|53/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|switch|p1a: Poliwrath|Poliwrath, L88, F|302/302
+|move|p2a: Necrozma|Photon Geyser|p1a: Poliwrath
+|-supereffective|p1a: Poliwrath
+|-damage|p1a: Poliwrath|38/302
+|
+|-heal|p1a: Poliwrath|56/302|[from] item: Leftovers
+|-heal|p2a: Necrozma|59/100|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Poliwrath|Drain Punch|p2a: Necrozma
+|-immune|p2a: Necrozma
+|move|p2a: Necrozma|Photon Geyser|p1a: Poliwrath
+|-supereffective|p1a: Poliwrath
+|-damage|p1a: Poliwrath|0 fnt
+|faint|p1a: Poliwrath
+|
+|-heal|p2a: Necrozma|65/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Kingambit|Kingambit, L74, F|270/270
+|-activate|p1a: Kingambit|ability: Supreme Overlord
+|-start|p1a: Kingambit|fallen2|[silent]
+|turn|11
+|
+|-end|p1a: Kingambit|fallen2|[silent]
+|switch|p1a: Ceruledge|Ceruledge, L78, M|245/245
+|move|p2a: Necrozma|Photon Geyser|p1a: Ceruledge
+|-damage|p1a: Ceruledge|125/245
+|
+|-heal|p2a: Necrozma|71/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Ceruledge|Close Combat|p2a: Necrozma
+|-immune|p2a: Necrozma
+|move|p2a: Necrozma|Moongeist Beam|p1a: Ceruledge
+|-supereffective|p1a: Ceruledge
+|-damage|p1a: Ceruledge|0 fnt
+|faint|p1a: Ceruledge
+|
+|-heal|p2a: Necrozma|78/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Kingambit|Kingambit, L74, F|270/270
+|-activate|p1a: Kingambit|ability: Supreme Overlord
+|-start|p1a: Kingambit|fallen3|[silent]
+|turn|13
+|
+|move|p2a: Necrozma|Moongeist Beam|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|189/270
+|move|p1a: Kingambit|Iron Head|p2a: Necrozma
+|-damage|p2a: Necrozma|42/100
+|
+|-heal|p2a: Necrozma|48/100|[from] item: Leftovers
+|-heal|p1a: Kingambit|205/270|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|-end|p1a: Kingambit|fallen3|[silent]
+|switch|p1a: Virizion|Virizion, L82|73/283
+|move|p2a: Necrozma|Moongeist Beam|p1a: Virizion
+|-damage|p1a: Virizion|0 fnt
+|faint|p1a: Virizion
+|
+|-heal|p2a: Necrozma|55/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Samurott|Samurott, L88, M|23/310
+|turn|15
+|
+|switch|p1a: Kingambit|Kingambit, L74, F|205/270
+|-activate|p1a: Kingambit|ability: Supreme Overlord
+|-start|p1a: Kingambit|fallen4|[silent]
+|move|p2a: Necrozma|Moongeist Beam|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|128/270
+|
+|-heal|p2a: Necrozma|61/100|[from] item: Leftovers
+|-heal|p1a: Kingambit|144/270|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Necrozma|Moongeist Beam|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|75/270
+|move|p1a: Kingambit|Iron Head|p2a: Necrozma
+|-damage|p2a: Necrozma|17/100
+|
+|-heal|p2a: Necrozma|23/100|[from] item: Leftovers
+|-heal|p1a: Kingambit|91/270|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Necrozma|Moongeist Beam|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|20/270
+|move|p1a: Kingambit|Iron Head|p2a: Necrozma
+|-damage|p2a: Necrozma|0 fnt
+|faint|p2a: Necrozma
+|
+|-heal|p1a: Kingambit|36/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Leavanny|Leavanny, L86, M|100/100
+|turn|18
+|
+|move|p2a: Leavanny|Knock Off|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|2/270
+|-enditem|p1a: Kingambit|Leftovers|[from] move: Knock Off|[of] p2a: Leavanny
+|move|p1a: Kingambit|Iron Head|p2a: Leavanny
+|-crit|p2a: Leavanny
+|-damage|p2a: Leavanny|31/100
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Leavanny
+|-crit|p2a: Leavanny
+|-damage|p2a: Leavanny|0 fnt
+|faint|p2a: Leavanny
+|
+|upkeep
+|
+|switch|p2a: Landorus|Landorus-Therian, L76, M|100/100
+|-ability|p2a: Landorus|Intimidate|boost
+|-unboost|p1a: Kingambit|atk|1
+|turn|20
+|
+|move|p2a: Landorus|Earthquake|p1a: Kingambit
+|-supereffective|p1a: Kingambit
+|-damage|p1a: Kingambit|0 fnt
+|faint|p1a: Kingambit
+|-end|p1a: Kingambit|fallen4|[silent]
+|
+|upkeep
+|
+|switch|p1a: Samurott|Samurott, L88, M|23/310
+|turn|21
+|
+|move|p2a: Landorus|Earthquake|p1a: Samurott
+|-damage|p1a: Samurott|0 fnt
+|faint|p1a: Samurott
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

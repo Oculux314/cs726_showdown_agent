@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22483</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22483<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22483|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Klawf|Klawf, L90, F|272/272
+|switch|p2a: Kyogre|Kyogre, L71|100/100
+|-weather|RainDance|[from] ability: Drizzle|[of] p2a: Kyogre
+|turn|1
+|
+|move|p1a: Klawf|Stone Edge|p2a: Kyogre
+|-damage|p2a: Kyogre|43/100
+|move|p2a: Kyogre|Thunder|p1a: Klawf
+|-damage|p1a: Klawf|165/272
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Kyogre|50/100|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Klawf|Dark
+|move|p1a: Klawf|Knock Off|p2a: Kyogre
+|-damage|p2a: Kyogre|0 fnt
+|-enditem|p2a: Kyogre|Leftovers|[from] move: Knock Off|[of] p1a: Klawf
+|faint|p2a: Kyogre
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|
+|switch|p2a: Qwilfish|Qwilfish-Hisui, L83, F|100/100
+|-ability|p2a: Qwilfish|Intimidate|boost
+|-unboost|p1a: Klawf|atk|1
+|turn|3
+|
+|move|p2a: Qwilfish|Gunk Shot|p1a: Klawf
+|-damage|p1a: Klawf|71/272
+|-ability|p1a: Klawf|Anger Shell|boost
+|-boost|p1a: Klawf|atk|1
+|-boost|p1a: Klawf|spa|1
+|-boost|p1a: Klawf|spe|1
+|-unboost|p1a: Klawf|def|1
+|-unboost|p1a: Klawf|spd|1
+|move|p1a: Klawf|Stone Edge|p2a: Qwilfish
+|-damage|p2a: Qwilfish|62/100
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|4
+|
+|move|p1a: Klawf|Stone Edge|p2a: Qwilfish
+|-damage|p2a: Qwilfish|24/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Klawf|[miss]
+|-miss|p2a: Qwilfish|p1a: Klawf
+|
+|-weather|RainDance|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p1a: Klawf|Stone Edge|p2a: Qwilfish
+|-damage|p2a: Qwilfish|0 fnt
+|faint|p2a: Qwilfish
+|
+|-weather|none
+|upkeep
+|
+|switch|p2a: Passimian|Passimian, L83, F|100/100
+|turn|6
+|
+|move|p1a: Klawf|Stone Edge|p2a: Passimian
+|-resisted|p2a: Passimian
+|-damage|p2a: Passimian|82/100
+|move|p2a: Passimian|Gunk Shot|p1a: Klawf
+|-damage|p1a: Klawf|0 fnt
+|faint|p1a: Klawf
+|
+|upkeep
+|
+|switch|p1a: Urshifu|Urshifu, L74, F|270/270
+|turn|7
+|
+|switch|p1a: Farigiraf|Farigiraf, L91, M|366/366
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-damage|p1a: Farigiraf|211/366
+|
+|-heal|p1a: Farigiraf|233/366|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|255/366|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-damage|p1a: Farigiraf|86/366
+|-status|p1a: Farigiraf|psn
+|
+|-heal|p1a: Farigiraf|108/366 psn|[from] item: Leftovers
+|-damage|p1a: Farigiraf|63/366 psn|[from] psn
+|upkeep
+|turn|10
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|85/366 psn|[from] item: Leftovers
+|-damage|p1a: Farigiraf|40/366 psn|[from] psn
+|upkeep
+|turn|11
+|
+|move|p1a: Farigiraf|Protect|p1a: Farigiraf
+|-singleturn|p1a: Farigiraf|Protect
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-activate|p1a: Farigiraf|move: Protect
+|
+|-heal|p1a: Farigiraf|62/366 psn|[from] item: Leftovers
+|-damage|p1a: Farigiraf|17/366 psn|[from] psn
+|upkeep
+|turn|12
+|
+|move|p1a: Farigiraf|Protect||[still]
+|-fail|p1a: Farigiraf
+|move|p2a: Passimian|Gunk Shot|p1a: Farigiraf
+|-damage|p1a: Farigiraf|0 fnt
+|faint|p1a: Farigiraf
+|
+|upkeep
+|
+|switch|p1a: Urshifu|Urshifu, L74, F|270/270
+|turn|13
+|
+|move|p1a: Urshifu|Poison Jab|p2a: Passimian
+|-damage|p2a: Passimian|57/100
+|-damage|p1a: Urshifu|243/270|[from] item: Life Orb
+|move|p2a: Passimian|Gunk Shot|p1a: Urshifu|[miss]
+|-miss|p2a: Passimian|p1a: Urshifu
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Urshifu|Poison Jab|p2a: Passimian
+|-damage|p2a: Passimian|32/100
+|-status|p2a: Passimian|psn
+|-damage|p1a: Urshifu|216/270|[from] item: Life Orb
+|-activate|p2a: Passimian|move: Struggle
+|move|p2a: Passimian|Struggle|p1a: Urshifu
+|-crit|p1a: Urshifu
+|-damage|p1a: Urshifu|129/270
+|-damage|p2a: Passimian|6/100 psn|[from] recoil
+|
+|-damage|p2a: Passimian|0 fnt|[from] psn
+|faint|p2a: Passimian
+|upkeep
+|
+|switch|p2a: Pincurchin|Pincurchin, M|100/100
+|-fieldstart|move: Electric Terrain|[from] ability: Electric Surge|[of] p2a: Pincurchin
+|turn|15
+|
+|move|p1a: Urshifu|Poison Jab|p2a: Pincurchin
+|-damage|p2a: Pincurchin|77/100
+|-damage|p1a: Urshifu|102/270|[from] item: Life Orb
+|move|p2a: Pincurchin|Liquidation|p1a: Urshifu
+|-damage|p1a: Urshifu|4/270
+|
+|-heal|p2a: Pincurchin|83/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Urshifu|Poison Jab|p2a: Pincurchin
+|-damage|p2a: Pincurchin|63/100
+|-damage|p1a: Urshifu|0 fnt|[from] item: Life Orb
+|faint|p1a: Urshifu
+|move|p2a: Pincurchin|Liquidation|p1: Urshifu|[notarget]
+|-fail|p2a: Pincurchin
+|
+|-heal|p2a: Pincurchin|69/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Moltres|Moltres, L81|278/278
+|turn|17
+|
+|move|p1a: Moltres|Roost||[still]
+|-fail|p1a: Moltres|heal
+|move|p2a: Pincurchin|Liquidation|p1a: Moltres
+|-supereffective|p1a: Moltres
+|-damage|p1a: Moltres|86/278
+|-unboost|p1a: Moltres|def|1
+|-status|p2a: Pincurchin|brn|[from] ability: Flame Body|[of] p1a: Moltres
+|
+|-heal|p2a: Pincurchin|75/100 brn|[from] item: Leftovers
+|-damage|p2a: Pincurchin|69/100 brn|[from] brn
+|upkeep
+|turn|18
+|
+|switch|p1a: Virizion|Virizion, L82|283/283
+|move|p2a: Pincurchin|Liquidation|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|257/283
+|
+|-heal|p2a: Pincurchin|75/100 brn|[from] item: Leftovers
+|-damage|p2a: Pincurchin|69/100 brn|[from] brn
+|upkeep
+|turn|19
+|
+|move|p1a: Virizion|Stone Edge|p2a: Pincurchin
+|-damage|p2a: Pincurchin|42/100 brn
+|-damage|p1a: Virizion|229/283|[from] item: Life Orb
+|move|p2a: Pincurchin|Liquidation|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|205/283
+|
+|-heal|p2a: Pincurchin|48/100 brn|[from] item: Leftovers
+|-damage|p2a: Pincurchin|42/100 brn|[from] brn
+|-fieldend|move: Electric Terrain
+|upkeep
+|turn|20
+|
+|move|p1a: Virizion|Leaf Blade|p2a: Pincurchin
+|-damage|p2a: Pincurchin|9/100 brn
+|-damage|p1a: Virizion|177/283|[from] item: Life Orb
+|move|p2a: Pincurchin|Liquidation|p1a: Virizion
+|-resisted|p1a: Virizion
+|-damage|p1a: Virizion|152/283
+|
+|-heal|p2a: Pincurchin|16/100 brn|[from] item: Leftovers
+|-damage|p2a: Pincurchin|9/100 brn|[from] brn
+|upkeep
+|turn|21
+|
+|move|p1a: Virizion|Stone Edge|p2a: Pincurchin
+|-damage|p2a: Pincurchin|0 fnt
+|faint|p2a: Pincurchin
+|-damage|p1a: Virizion|124/283|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Sudowoodo|Sudowoodo, L94, F|100/100
+|turn|22
+|
+|move|p1a: Virizion|Stone Edge|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|81/100
+|-damage|p1a: Virizion|96/283|[from] item: Life Orb
+|move|p2a: Sudowoodo|Head Smash|p1a: Virizion
+|-resisted|p1a: Virizion
+|-crit|p1a: Virizion
+|-damage|p1a: Virizion|0 fnt
+|faint|p1a: Virizion
+|
+|-heal|p2a: Sudowoodo|87/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Moltres|Moltres, L81|86/278
+|turn|23
+|
+|move|p1a: Moltres|Roost|p1a: Moltres
+|-heal|p1a: Moltres|225/278
+|-singleturn|p1a: Moltres|move: Roost
+|move|p2a: Sudowoodo|Head Smash|p1a: Moltres
+|-supereffective|p1a: Moltres
+|-damage|p1a: Moltres|0 fnt
+|faint|p1a: Moltres
+|
+|-heal|p2a: Sudowoodo|93/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Calyrex|Calyrex-Ice, L72|263/263
+|-ability|p1a: Calyrex|As One
+|-ability|p1a: Calyrex|Unnerve
+|turn|24
+|
+|move|p1a: Calyrex|Close Combat|p2a: Sudowoodo
+|-supereffective|p2a: Sudowoodo
+|-damage|p2a: Sudowoodo|42/100
+|-unboost|p1a: Calyrex|def|1
+|-unboost|p1a: Calyrex|spd|1
+|move|p2a: Sudowoodo|Head Smash|p1a: Calyrex
+|-supereffective|p1a: Calyrex
+|-crit|p1a: Calyrex
+|-damage|p1a: Calyrex|0 fnt
+|faint|p1a: Calyrex
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

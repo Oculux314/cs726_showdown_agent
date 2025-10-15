@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22479</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22479<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22479|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Squawkabilly|Squawkabilly-White, L89, F|291/291
+|switch|p2a: Torkoal|Torkoal, L88, F|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Torkoal
+|turn|1
+|
+|move|p1a: Squawkabilly|Quick Attack|p2a: Torkoal
+|-damage|p2a: Torkoal|74/100
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Squawkabilly
+|-resisted|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|233/291
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|2
+|
+|move|p1a: Squawkabilly|Quick Attack|p2a: Torkoal
+|-damage|p2a: Torkoal|48/100
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Squawkabilly
+|-resisted|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|171/291
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|3
+|
+|move|p1a: Squawkabilly|Quick Attack|p2a: Torkoal
+|-damage|p2a: Torkoal|22/100
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Squawkabilly
+|-resisted|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|113/291
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|4
+|
+|move|p1a: Squawkabilly|Quick Attack|p2a: Torkoal|[miss]
+|-miss|p1a: Squawkabilly|p2a: Torkoal
+|move|p2a: Torkoal|Solar Beam||[still]
+|-prepare|p2a: Torkoal|Solar Beam
+|-anim|p2a: Torkoal|Solar Beam|p1a: Squawkabilly
+|-resisted|p1a: Squawkabilly
+|-damage|p1a: Squawkabilly|52/291
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p1a: Squawkabilly|Quick Attack|p2a: Torkoal
+|-damage|p2a: Torkoal|0 fnt
+|faint|p2a: Torkoal
+|
+|-weather|none
+|upkeep
+|
+|switch|p2a: Electrode|Electrode-Hisui, L87|100/100
+|turn|6
+|
+|switch|p1a: Iron Leaves|Iron Leaves, L80|275/275
+|move|p2a: Electrode|Leaf Storm|p1a: Iron Leaves
+|-resisted|p1a: Iron Leaves
+|-damage|p1a: Iron Leaves|207/275
+|-unboost|p2a: Electrode|spa|2
+|-damage|p2a: Electrode|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Electrode|Leaf Storm|p1a: Iron Leaves
+|-resisted|p1a: Iron Leaves
+|-damage|p1a: Iron Leaves|168/275
+|-unboost|p2a: Electrode|spa|2
+|-damage|p2a: Electrode|81/100|[from] item: Life Orb
+|move|p1a: Iron Leaves|Psyblade|p2a: Electrode
+|-damage|p2a: Electrode|20/100
+|-damage|p1a: Iron Leaves|141/275|[from] item: Life Orb
+|
+|upkeep
+|turn|8
+|
+|move|p2a: Electrode|Leaf Storm|p1a: Iron Leaves
+|-resisted|p1a: Iron Leaves
+|-damage|p1a: Iron Leaves|115/275
+|-unboost|p2a: Electrode|spa|2
+|-damage|p2a: Electrode|11/100|[from] item: Life Orb
+|move|p1a: Iron Leaves|Psyblade|p2a: Electrode
+|-damage|p2a: Electrode|0 fnt
+|-damage|p1a: Iron Leaves|47/275|[from] ability: Aftermath|[of] p2a: Electrode
+|faint|p2a: Electrode
+|-damage|p1a: Iron Leaves|20/275|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Suicune|Suicune, L82|100/100
+|-ability|p2a: Suicune|Pressure
+|turn|9
+|
+|-end|p1a: Iron Leaves|Quark Drive|[silent]
+|switch|p1a: Iron Valiant|Iron Valiant, L78|244/244
+|move|p2a: Suicune|Scald|p1a: Iron Valiant
+|-damage|p1a: Iron Valiant|141/244
+|-status|p1a: Iron Valiant|brn
+|
+|-damage|p1a: Iron Valiant|126/244 brn|[from] brn
+|upkeep
+|turn|10
+|
+|-terastallize|p1a: Iron Valiant|Fighting
+|move|p1a: Iron Valiant|Moonblast|p2a: Suicune
+|-damage|p2a: Suicune|66/100
+|-damage|p1a: Iron Valiant|102/244 brn|[from] item: Life Orb
+|move|p2a: Suicune|Scald|p1a: Iron Valiant
+|-damage|p1a: Iron Valiant|0 fnt
+|faint|p1a: Iron Valiant
+|-end|p1a: Iron Valiant|Quark Drive|[silent]
+|
+|-heal|p2a: Suicune|72/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Iron Leaves|Iron Leaves, L80|20/275
+|turn|11
+|
+|-end|p1a: Iron Leaves|Quark Drive|[silent]
+|switch|p1a: Mabosstiff|Mabosstiff, L86, M|278/278
+|move|p2a: Suicune|Scald|p1a: Mabosstiff
+|-damage|p1a: Mabosstiff|194/278
+|
+|-heal|p2a: Suicune|78/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Mabosstiff|Crunch|p2a: Suicune
+|-damage|p2a: Suicune|30/100
+|move|p2a: Suicune|Scald|p1a: Mabosstiff
+|-damage|p1a: Mabosstiff|110/278
+|
+|-heal|p2a: Suicune|36/100|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Mabosstiff|Crunch|p2a: Suicune
+|-damage|p2a: Suicune|0 fnt
+|faint|p2a: Suicune
+|
+|upkeep
+|
+|switch|p2a: Annihilape|Annihilape, L76, M|100/100
+|turn|14
+|
+|move|p1a: Mabosstiff|Crunch|p2a: Annihilape
+|-damage|p2a: Annihilape|36/100
+|move|p2a: Annihilape|Gunk Shot|p1a: Mabosstiff
+|-damage|p1a: Mabosstiff|32/278
+|
+|-heal|p2a: Annihilape|43/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Mabosstiff|Crunch|p2a: Annihilape
+|-damage|p2a: Annihilape|0 fnt
+|faint|p2a: Annihilape
+|
+|upkeep
+|
+|switch|p2a: Bellossom|Bellossom, L84, F|100/100
+|turn|16
+|
+|move|p1a: Mabosstiff|Crunch|p2a: Bellossom
+|-damage|p2a: Bellossom|41/100
+|move|p2a: Bellossom|Moonblast|p1a: Mabosstiff
+|-supereffective|p1a: Mabosstiff
+|-damage|p1a: Mabosstiff|0 fnt
+|faint|p1a: Mabosstiff
+|
+|-heal|p2a: Bellossom|47/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Squawkabilly|Squawkabilly-White, L89, F|52/291
+|turn|17
+|
+|move|p1a: Squawkabilly|Brave Bird|p2a: Bellossom
+|-supereffective|p2a: Bellossom
+|-damage|p2a: Bellossom|0 fnt
+|faint|p2a: Bellossom
+|-damage|p1a: Squawkabilly|12/291|[from] Recoil
+|
+|upkeep
+|
+|switch|p2a: Slowbro|Slowbro-Galar, L87, F|100/100
+|turn|18
+|
+|move|p1a: Squawkabilly|Brave Bird|p2a: Slowbro|[miss]
+|-miss|p1a: Squawkabilly|p2a: Slowbro
+|move|p2a: Slowbro|Earthquake|p1a: Squawkabilly
+|-immune|p1a: Squawkabilly
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Squawkabilly|Brave Bird|p2a: Slowbro
+|-damage|p2a: Slowbro|8/100
+|-damage|p1a: Squawkabilly|0 fnt|[from] Recoil
+|faint|p1a: Squawkabilly
+|move|p2a: Slowbro|Earthquake|p1: Squawkabilly|[notarget]
+|-fail|p2a: Slowbro
+|
+|-heal|p2a: Slowbro|15/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Leavanny|Leavanny, L86, F|269/269
+|turn|20
+|
+|move|p1a: Leavanny|Sticky Web|p2a: Slowbro
+|-sidestart|p2: t2_141537|move: Sticky Web
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|249/269
+|
+|-heal|p2a: Slowbro|21/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|230/269
+|
+|-heal|p2a: Slowbro|27/100|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|210/269
+|
+|-heal|p2a: Slowbro|33/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|189/269
+|
+|-heal|p2a: Slowbro|39/100|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|168/269
+|
+|-heal|p2a: Slowbro|45/100|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|148/269
+|
+|-heal|p2a: Slowbro|52/100|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|128/269
+|
+|-heal|p2a: Slowbro|58/100|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|107/269
+|
+|-heal|p2a: Slowbro|64/100|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|85/269
+|
+|-heal|p2a: Slowbro|70/100|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Leavanny|Bullet Seed|p2a: Slowbro
+|-resisted|p2a: Slowbro
+|-damage|p2a: Slowbro|66/100
+|-resisted|p2a: Slowbro
+|-damage|p2a: Slowbro|62/100
+|-resisted|p2a: Slowbro
+|-crit|p2a: Slowbro
+|-damage|p2a: Slowbro|55/100
+|-resisted|p2a: Slowbro
+|-damage|p2a: Slowbro|51/100
+|-resisted|p2a: Slowbro
+|-damage|p2a: Slowbro|47/100
+|-hitcount|p2a: Slowbro|5
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|64/269
+|
+|-heal|p2a: Slowbro|53/100|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Leavanny|Sticky Web||[still]
+|-fail|p1a: Leavanny
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|46/269
+|
+|-heal|p2a: Slowbro|59/100|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Leavanny|Triple Axel|p2a: Slowbro|[miss]
+|-miss|p1a: Leavanny|p2a: Slowbro
+|move|p2a: Slowbro|Earthquake|p1a: Leavanny
+|-resisted|p1a: Leavanny
+|-damage|p1a: Leavanny|25/269
+|
+|-heal|p2a: Slowbro|65/100|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|switch|p1a: Sudowoodo|Sudowoodo, L94, M|284/284
+|move|p2a: Slowbro|Earthquake|p1a: Sudowoodo
+|-supereffective|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|170/284
+|
+|-heal|p1a: Sudowoodo|187/284|[from] item: Leftovers
+|-heal|p2a: Slowbro|72/100|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Sudowoodo|Earthquake|p2a: Slowbro
+|-supereffective|p2a: Slowbro
+|-damage|p2a: Slowbro|17/100
+|move|p2a: Slowbro|Earthquake|p1a: Sudowoodo
+|-supereffective|p1a: Sudowoodo
+|-damage|p1a: Sudowoodo|65/284
+|
+|-heal|p1a: Sudowoodo|82/284|[from] item: Leftovers
+|-heal|p2a: Slowbro|23/100|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|switch|p1a: Iron Leaves|Iron Leaves, L80|20/275
+|move|p2a: Slowbro|Shell Side Arm|p1a: Iron Leaves|[anim] Shell Side Arm Physical
+|-supereffective|p1a: Iron Leaves
+|-damage|p1a: Iron Leaves|0 fnt
+|-hint|Physical Shell Side Arm
+|faint|p1a: Iron Leaves
+|-end|p1a: Iron Leaves|Quark Drive|[silent]
+|
+|-heal|p2a: Slowbro|29/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Sudowoodo|Sudowoodo, L94, M|82/284
+|turn|35
+|
+|move|p1a: Sudowoodo|Earthquake|p2a: Slowbro
+|-supereffective|p2a: Slowbro
+|-crit|p2a: Slowbro
+|-damage|p2a: Slowbro|0 fnt
+|faint|p2a: Slowbro
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

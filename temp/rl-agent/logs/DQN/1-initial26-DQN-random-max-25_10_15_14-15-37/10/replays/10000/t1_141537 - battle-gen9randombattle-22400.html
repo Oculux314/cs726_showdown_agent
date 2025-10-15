@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22400</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22400<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22400|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Slowking|Slowking-Galar, L85, F|300/300
+|switch|p2a: Armarouge|Armarouge, L80, M|100/100
+|turn|1
+|
+|move|p2a: Armarouge|Armor Cannon|p1a: Slowking
+|-damage|p1a: Slowking|222/300
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|move|p1a: Slowking|Sludge Bomb|p2a: Armarouge
+|-damage|p2a: Armarouge|36/100
+|-status|p2a: Armarouge|psn
+|
+|-damage|p2a: Armarouge|24/100 psn|[from] psn
+|upkeep
+|turn|2
+|
+|move|p2a: Armarouge|Armor Cannon|p1a: Slowking
+|-damage|p1a: Slowking|146/300
+|-unboost|p2a: Armarouge|def|1
+|-unboost|p2a: Armarouge|spd|1
+|move|p1a: Slowking|Sludge Bomb|p2a: Armarouge
+|-damage|p2a: Armarouge|0 fnt
+|faint|p2a: Armarouge
+|
+|upkeep
+|
+|switch|p2a: Gengar|Gengar, L81, M|100/100
+|turn|3
+|
+|move|p2a: Gengar|Focus Blast|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|128/300
+|-damage|p2a: Gengar|90/100|[from] item: Life Orb
+|move|p1a: Slowking|Sludge Bomb|p2a: Gengar
+|-resisted|p2a: Gengar
+|-damage|p2a: Gengar|77/100
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Gengar|Focus Blast|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|110/300
+|-damage|p2a: Gengar|67/100|[from] item: Life Orb
+|move|p1a: Slowking|Sludge Bomb|p2a: Gengar
+|-resisted|p2a: Gengar
+|-damage|p2a: Gengar|52/100
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Gengar|Focus Blast|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|92/300
+|-damage|p2a: Gengar|42/100|[from] item: Life Orb
+|move|p1a: Slowking|Sludge Bomb|p2a: Gengar
+|-resisted|p2a: Gengar
+|-damage|p2a: Gengar|27/100
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Gengar|Focus Blast|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|74/300
+|-damage|p2a: Gengar|17/100|[from] item: Life Orb
+|move|p1a: Slowking|Sludge Bomb|p2a: Gengar
+|-resisted|p2a: Gengar
+|-damage|p2a: Gengar|3/100
+|
+|upkeep
+|turn|7
+|
+|switch|p1a: Scyther|Scyther, L82, F|249/249
+|move|p2a: Gengar|Focus Blast|p1a: Scyther
+|-resisted|p1a: Scyther
+|-damage|p1a: Scyther|211/249
+|-damage|p2a: Gengar|0 fnt|[from] item: Life Orb
+|faint|p2a: Gengar
+|
+|upkeep
+|
+|switch|p2a: Ribombee|Ribombee, L83, F|100/100
+|turn|8
+|
+|move|p2a: Ribombee|Moonblast|p1a: Scyther
+|-damage|p1a: Scyther|94/249
+|move|p1a: Scyther|Close Combat|p2a: Ribombee
+|-resisted|p2a: Ribombee
+|-damage|p2a: Ribombee|88/100
+|-unboost|p1a: Scyther|def|1
+|-unboost|p1a: Scyther|spd|1
+|
+|upkeep
+|turn|9
+|
+|move|p2a: Ribombee|Moonblast|p1a: Scyther
+|-damage|p1a: Scyther|0 fnt
+|faint|p1a: Scyther
+|
+|upkeep
+|
+|switch|p1a: Slowking|Slowking-Galar, L85, F|174/300
+|turn|10
+|
+|move|p2a: Ribombee|Moonblast|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|147/300
+|move|p1a: Slowking|Sludge Bomb|p2a: Ribombee
+|-supereffective|p2a: Ribombee
+|-damage|p2a: Ribombee|0 fnt
+|faint|p2a: Ribombee
+|
+|upkeep
+|
+|switch|p2a: Banette|Banette, L93, M|100/100
+|turn|11
+|
+|move|p2a: Banette|Gunk Shot|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|63/300
+|-damage|p2a: Banette|90/100|[from] item: Life Orb
+|move|p1a: Slowking|Sludge Bomb|p2a: Banette
+|-resisted|p2a: Banette
+|-damage|p2a: Banette|65/100
+|-start|p1a: Slowking|Disable|Sludge Bomb|[from] ability: Cursed Body|[of] p2a: Banette
+|
+|upkeep
+|turn|12
+|
+|move|p2a: Banette|Gunk Shot|p1a: Slowking
+|-resisted|p1a: Slowking
+|-damage|p1a: Slowking|0 fnt
+|faint|p1a: Slowking
+|-damage|p2a: Banette|55/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Lumineon|Lumineon, L93, M|279/279
+|turn|13
+|
+|move|p1a: Lumineon|Encore|p2a: Banette
+|-start|p2a: Banette|Encore
+|move|p2a: Banette|Gunk Shot|p1a: Lumineon
+|-damage|p1a: Lumineon|124/279
+|-damage|p2a: Banette|45/100|[from] item: Life Orb
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Lumineon|Encore||[still]
+|-fail|p1a: Lumineon
+|move|p2a: Banette|Gunk Shot|p1a: Lumineon
+|-damage|p1a: Lumineon|0 fnt
+|faint|p1a: Lumineon
+|-damage|p2a: Banette|35/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Dialga|Dialga-Origin, L73|266/266
+|-ability|p1a: Dialga|Pressure
+|turn|15
+|
+|move|p2a: Banette|Gunk Shot|p1a: Dialga
+|-immune|p1a: Dialga
+|move|p1a: Dialga|Dragon Tail|p2a: Banette
+|-damage|p2a: Banette|8/100
+|-start|p1a: Dialga|Disable|Dragon Tail|[from] ability: Cursed Body|[of] p2a: Banette
+|drag|p2a: Heatran|Heatran, L79, F|100/100
+|-item|p2a: Heatran|Air Balloon
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Dialga|Draco Meteor|p2a: Heatran|[miss]
+|-miss|p1a: Dialga|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Dialga
+|-supereffective|p1a: Dialga
+|-damage|p1a: Dialga|140/266
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Dialga|Draco Meteor|p2a: Heatran
+|-resisted|p2a: Heatran
+|-crit|p2a: Heatran
+|-damage|p2a: Heatran|56/100
+|-unboost|p1a: Dialga|spa|2
+|-enditem|p2a: Heatran|Air Balloon
+|move|p2a: Heatran|Earth Power|p1a: Dialga
+|-supereffective|p1a: Dialga
+|-damage|p1a: Dialga|12/266
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Dialga|Draco Meteor|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|40/100
+|-unboost|p1a: Dialga|spa|2
+|move|p2a: Heatran|Earth Power|p1a: Dialga
+|-supereffective|p1a: Dialga
+|-damage|p1a: Dialga|0 fnt
+|faint|p1a: Dialga
+|
+|upkeep
+|
+|switch|p1a: Hypno|Hypno, L95, F|315/315
+|turn|19
+|
+|move|p1a: Hypno|Encore|p2a: Heatran
+|-start|p2a: Heatran|Encore
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-crit|p1a: Hypno
+|-damage|p1a: Hypno|233/315
+|
+|-heal|p1a: Hypno|252/315|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|switch|p1a: Hitmontop|Hitmontop, L88, M|231/231
+|-ability|p1a: Hitmontop|Intimidate|boost
+|-unboost|p2a: Heatran|atk|1
+|move|p2a: Heatran|Earth Power|p1a: Hitmontop
+|-damage|p1a: Hitmontop|195/231
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Hitmontop|Stone Edge|p2a: Heatran
+|-damage|p2a: Heatran|15/100
+|move|p2a: Heatran|Earth Power|p1a: Hitmontop
+|-damage|p1a: Hitmontop|156/231
+|-unboost|p1a: Hitmontop|spd|1
+|
+|-end|p2a: Heatran|Encore
+|upkeep
+|turn|22
+|
+|-terastallize|p1a: Hitmontop|Steel
+|move|p1a: Hitmontop|Rapid Spin|p2a: Heatran
+|-resisted|p2a: Heatran
+|-damage|p2a: Heatran|9/100
+|-boost|p1a: Hitmontop|spe|1
+|move|p2a: Heatran|Earth Power|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|38/231
+|
+|upkeep
+|turn|23
+|
+|move|p1a: Hitmontop|Stone Edge|p2a: Heatran|[miss]
+|-miss|p1a: Hitmontop|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hitmontop
+|-supereffective|p1a: Hitmontop
+|-damage|p1a: Hitmontop|0 fnt
+|faint|p1a: Hitmontop
+|
+|upkeep
+|
+|switch|p1a: Hypno|Hypno, L95, F|252/315
+|turn|24
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran|[miss]
+|-miss|p1a: Hypno|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-damage|p1a: Hypno|200/315
+|
+|-heal|p1a: Hypno|219/315|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran
+|-immune|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-damage|p1a: Hypno|168/315
+|
+|-heal|p1a: Hypno|187/315|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran
+|-immune|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-damage|p1a: Hypno|132/315
+|
+|-heal|p1a: Hypno|151/315|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran|[miss]
+|-miss|p1a: Hypno|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-damage|p1a: Hypno|101/315
+|
+|-heal|p1a: Hypno|120/315|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran
+|-immune|p2a: Heatran
+|move|p2a: Heatran|Earth Power|p1a: Hypno
+|-damage|p1a: Hypno|71/315
+|
+|-heal|p1a: Hypno|90/315|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran
+|-immune|p2a: Heatran
+|move|p2a: Heatran|Lava Plume|p1a: Hypno
+|-damage|p1a: Hypno|26/315
+|
+|-heal|p1a: Hypno|45/315|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Hypno|Toxic|p2a: Heatran
+|-immune|p2a: Heatran
+|move|p2a: Heatran|Lava Plume|p1a: Hypno
+|-damage|p1a: Hypno|0 fnt
+|faint|p1a: Hypno
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

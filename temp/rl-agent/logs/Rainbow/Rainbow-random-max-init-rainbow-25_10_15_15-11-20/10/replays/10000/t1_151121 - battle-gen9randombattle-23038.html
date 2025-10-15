@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23038</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23038<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23038|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Sylveon|Sylveon, L85, M|300/300
+|switch|p2a: Jumpluff|Jumpluff, L87, F|100/100
+|turn|1
+|
+|move|p2a: Jumpluff|Acrobatics|p1a: Sylveon
+|-damage|p1a: Sylveon|192/300
+|move|p1a: Sylveon|Hyper Voice|p2a: Jumpluff
+|-damage|p2a: Jumpluff|60/100
+|
+|-heal|p1a: Sylveon|210/300|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Jumpluff|Acrobatics|p1a: Sylveon
+|-damage|p1a: Sylveon|110/300
+|move|p1a: Sylveon|Hyper Voice|p2a: Jumpluff
+|-damage|p2a: Jumpluff|15/100
+|
+|-heal|p1a: Sylveon|128/300|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Jumpluff|Acrobatics|p1a: Sylveon
+|-damage|p1a: Sylveon|31/300
+|move|p1a: Sylveon|Hyper Voice|p2a: Jumpluff
+|-damage|p2a: Jumpluff|0 fnt
+|faint|p2a: Jumpluff
+|
+|-heal|p1a: Sylveon|49/300|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Porygon2|Porygon2, L81|100/100
+|-ability|p2a: Porygon2|Download|boost
+|-boost|p2a: Porygon2|atk|1
+|turn|4
+|
+|move|p1a: Sylveon|Hyper Voice|p2a: Porygon2
+|-damage|p2a: Porygon2|69/100
+|move|p2a: Porygon2|Shadow Ball|p1a: Sylveon
+|-damage|p1a: Sylveon|4/300
+|
+|-heal|p1a: Sylveon|22/300|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Sylveon|Hyper Voice|p2a: Porygon2
+|-damage|p2a: Porygon2|39/100
+|move|p2a: Porygon2|Shadow Ball|p1a: Sylveon
+|-damage|p1a: Sylveon|0 fnt
+|faint|p1a: Sylveon
+|
+|upkeep
+|
+|switch|p1a: Meowscarada|Meowscarada, L78, M|247/247
+|turn|6
+|
+|move|p1a: Meowscarada|Flower Trick|p2a: Porygon2
+|-start|p1a: Meowscarada|typechange|Grass|[from] ability: Protean
+|-crit|p2a: Porygon2
+|-damage|p2a: Porygon2|3/100
+|-damage|p1a: Meowscarada|223/247|[from] item: Life Orb
+|move|p2a: Porygon2|Shadow Ball|p1a: Meowscarada
+|-damage|p1a: Meowscarada|148/247
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Meowscarada|Flower Trick|p2a: Porygon2
+|-crit|p2a: Porygon2
+|-damage|p2a: Porygon2|0 fnt
+|faint|p2a: Porygon2
+|-damage|p1a: Meowscarada|124/247|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Klefki|Klefki, L84, F|100/100
+|turn|8
+|
+|move|p1a: Meowscarada|Flower Trick|p2a: Klefki
+|-resisted|p2a: Klefki
+|-crit|p2a: Klefki
+|-damage|p2a: Klefki|73/100
+|-damage|p1a: Meowscarada|100/247|[from] item: Life Orb
+|move|p2a: Klefki|Foul Play|p1a: Meowscarada
+|-damage|p1a: Meowscarada|14/247
+|
+|-heal|p2a: Klefki|79/100|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p1a: Meowscarada|Flower Trick|p2a: Klefki
+|-resisted|p2a: Klefki
+|-crit|p2a: Klefki
+|-damage|p2a: Klefki|49/100
+|-damage|p1a: Meowscarada|0 fnt|[from] item: Life Orb
+|faint|p1a: Meowscarada
+|move|p2a: Klefki|Foul Play|p1: Meowscarada|[notarget]
+|-fail|p2a: Klefki
+|
+|-heal|p2a: Klefki|55/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Dondozo|Dondozo, L78, M|362/362
+|turn|10
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|302/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|61/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|324/362|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|288/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|67/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|310/362|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|282/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|73/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|304/362|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|281/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|79/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|303/362|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|284/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|85/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|306/362|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|289/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|-unboost|p1a: Dondozo|spe|1
+|-boost|p1a: Dondozo|atk|1
+|-boost|p1a: Dondozo|def|1
+|
+|-heal|p2a: Klefki|91/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|311/362|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|296/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p2a: Klefki|97/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|318/362|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|304/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p2a: Klefki|100/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|326/362|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|311/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|333/362|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|318/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|340/362|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|325/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|347/362|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|332/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|354/362|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|340/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|362/362|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|347/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|362/362|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|349/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|362/362|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|348/362
+|move|p1a: Dondozo|Curse|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|362/362|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p2a: Klefki|Foul Play|p1a: Dondozo
+|-damage|p1a: Dondozo|348/362
+|move|p1a: Dondozo|Wave Crash|p2a: Klefki
+|-damage|p2a: Klefki|0 fnt
+|faint|p2a: Klefki
+|-damage|p1a: Dondozo|271/362|[from] Recoil
+|
+|-heal|p1a: Dondozo|293/362|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Zekrom|Zekrom, L71|100/100
+|-ability|p2a: Zekrom|Teravolt
+|turn|27
+|
+|move|p2a: Zekrom|Bolt Strike|p1a: Dondozo
+|-supereffective|p1a: Dondozo
+|-damage|p1a: Dondozo|225/362
+|move|p1a: Dondozo|Wave Crash|p2a: Zekrom
+|-resisted|p2a: Zekrom
+|-damage|p2a: Zekrom|24/100
+|-damage|p1a: Dondozo|160/362|[from] Recoil
+|
+|-heal|p2a: Zekrom|30/100|[from] item: Leftovers
+|-heal|p1a: Dondozo|182/362|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p2a: Zekrom|Bolt Strike|p1a: Dondozo
+|-supereffective|p1a: Dondozo
+|-damage|p1a: Dondozo|120/362
+|-status|p1a: Dondozo|par
+|move|p1a: Dondozo|Wave Crash|p2a: Zekrom
+|-resisted|p2a: Zekrom
+|-damage|p2a: Zekrom|0 fnt
+|faint|p2a: Zekrom
+|-damage|p1a: Dondozo|95/362 par|[from] Recoil
+|
+|-heal|p1a: Dondozo|117/362 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Suicune|Suicune, L82|100/100
+|-ability|p2a: Suicune|Pressure
+|turn|29
+|
+|-terastallize|p1a: Dondozo|Dragon
+|move|p2a: Suicune|Scald|p1a: Dondozo
+|-resisted|p1a: Dondozo
+|-damage|p1a: Dondozo|63/362 par
+|move|p1a: Dondozo|Sleep Talk||[still]
+|-fail|p1a: Dondozo
+|
+|-heal|p1a: Dondozo|85/362 par|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p2a: Suicune|Scald|p1a: Dondozo
+|-resisted|p1a: Dondozo
+|-damage|p1a: Dondozo|37/362 par
+|move|p1a: Dondozo|Wave Crash|p2a: Suicune
+|-resisted|p2a: Suicune
+|-damage|p2a: Suicune|34/100
+|-damage|p1a: Dondozo|0 fnt|[from] Recoil
+|faint|p1a: Dondozo
+|
+|-heal|p2a: Suicune|40/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, M|292/292
+|turn|31
+|
+|switch|p1a: Gurdurr|Gurdurr, L85, F|283/283
+|move|p2a: Suicune|Scald|p1a: Gurdurr
+|-damage|p1a: Gurdurr|208/283
+|
+|-heal|p2a: Suicune|46/100|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p2a: Suicune|Scald|p1a: Gurdurr
+|-damage|p1a: Gurdurr|127/283
+|move|p1a: Gurdurr|Knock Off|p2a: Suicune
+|-damage|p2a: Suicune|24/100
+|-enditem|p2a: Suicune|Leftovers|[from] move: Knock Off|[of] p1a: Gurdurr
+|
+|upkeep
+|turn|33
+|
+|move|p2a: Suicune|Scald|p1a: Gurdurr
+|-damage|p1a: Gurdurr|57/283
+|-status|p1a: Gurdurr|brn
+|move|p1a: Gurdurr|Knock Off|p2a: Suicune
+|-crit|p2a: Suicune
+|-damage|p2a: Suicune|0 fnt
+|faint|p2a: Suicune
+|
+|-damage|p1a: Gurdurr|40/283 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Chi-Yu|Chi-Yu, L77|100/100
+|-ability|p2a: Chi-Yu|Beads of Ruin
+|turn|34
+|
+|move|p1a: Gurdurr|Mach Punch|p2a: Chi-Yu
+|-supereffective|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|18/100
+|move|p2a: Chi-Yu|Fire Blast|p1a: Gurdurr
+|-damage|p1a: Gurdurr|0 fnt
+|faint|p1a: Gurdurr
+|
+|upkeep
+|
+|switch|p1a: Veluza|Veluza, L85, M|292/292
+|turn|35
+|
+|move|p1a: Veluza|Aqua Jet|p2a: Chi-Yu
+|-supereffective|p2a: Chi-Yu
+|-damage|p2a: Chi-Yu|0 fnt
+|faint|p2a: Chi-Yu
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

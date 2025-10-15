@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22390</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22390<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22390|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Uxie|Uxie, L83|260/260
+|switch|p2a: Minior|Minior-Violet, L79|100/100
+|-formechange|p2a: Minior|Minior-Meteor||[from] ability: Shields Down
+|turn|1
+|
+|move|p1a: Uxie|Yawn|p2a: Minior
+|-immune|p2a: Minior|[from] ability: Shields Down
+|move|p2a: Minior|Earthquake|p1a: Uxie
+|-immune|p1a: Uxie|[from] ability: Levitate
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Uxie|Yawn|p2a: Minior
+|-immune|p2a: Minior|[from] ability: Shields Down
+|move|p2a: Minior|Earthquake|p1a: Uxie
+|-immune|p1a: Uxie|[from] ability: Levitate
+|
+|upkeep
+|turn|3
+|
+|switch|p1a: Garchomp|Garchomp, L74, F|282/282
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|236/282
+|
+|upkeep
+|turn|4
+|
+|move|p1a: Garchomp|Swords Dance|p1a: Garchomp
+|-boost|p1a: Garchomp|atk|2
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|190/282
+|
+|upkeep
+|turn|5
+|
+|switch|p1a: Glimmora|Glimmora, L75, M|248/248
+|move|p2a: Minior|Earthquake|p1a: Glimmora
+|-supereffective|p1a: Glimmora
+|-crit|p1a: Glimmora
+|-damage|p1a: Glimmora|0 fnt
+|-activate|p1a: Glimmora|ability: Toxic Debris
+|-sidestart|p2: t2_141537|move: Toxic Spikes
+|faint|p1a: Glimmora
+|
+|upkeep
+|
+|switch|p1a: Slaking|Slaking, L84, M|389/389
+|turn|6
+|
+|switch|p1a: Garchomp|Garchomp, L74, F|190/282
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|141/282
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Garchomp|Swords Dance|p1a: Garchomp
+|-boost|p1a: Garchomp|atk|2
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|94/282
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Garchomp|Scale Shot|p2a: Minior
+|-damage|p2a: Minior|78/100
+|-damage|p2a: Minior|55/100
+|-damage|p2a: Minior|32/100
+|-damage|p2a: Minior|9/100
+|-hitcount|p2a: Minior|4
+|-unboost|p1a: Garchomp|def|1
+|-boost|p1a: Garchomp|spe|1
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|25/282
+|
+|-formechange|p2a: Minior|Minior-Violet||[from] ability: Shields Down
+|upkeep
+|turn|9
+|
+|move|p1a: Garchomp|Swords Dance|p1a: Garchomp
+|-boost|p1a: Garchomp|atk|2
+|move|p2a: Minior|Earthquake|p1a: Garchomp
+|-damage|p1a: Garchomp|0 fnt
+|faint|p1a: Garchomp
+|
+|upkeep
+|
+|switch|p1a: Meowstic|Meowstic-F, L89, F|277/277
+|turn|10
+|
+|switch|p1a: Slaking|Slaking, L84, M|389/389
+|move|p2a: Minior|Earthquake|p1a: Slaking
+|-damage|p1a: Slaking|331/389
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Minior|Earthquake|p1a: Slaking
+|-damage|p1a: Slaking|275/389
+|move|p1a: Slaking|Knock Off|p2a: Minior
+|-damage|p2a: Minior|0 fnt
+|-enditem|p2a: Minior|White Herb|[from] move: Knock Off|[of] p1a: Slaking
+|faint|p2a: Minior
+|
+|upkeep
+|
+|switch|p2a: Deoxys|Deoxys, L74|100/100
+|-status|p2a: Deoxys|psn
+|-ability|p2a: Deoxys|Pressure
+|turn|12
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Slaking
+|-damage|p1a: Slaking|25/389
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|91/100 psn|[from] item: Life Orb
+|cant|p1a: Slaking|ability: Truant
+|
+|-damage|p2a: Deoxys|79/100 psn|[from] psn
+|upkeep
+|turn|13
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Slaking
+|-damage|p1a: Slaking|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Slaking
+|-damage|p2a: Deoxys|69/100 psn|[from] item: Life Orb
+|
+|-damage|p2a: Deoxys|57/100 psn|[from] psn
+|upkeep
+|
+|switch|p1a: Uxie|Uxie, L83|260/260
+|turn|14
+|
+|switch|p1a: Meowstic|Meowstic-F, L89, F|277/277
+|move|p2a: Deoxys|Psycho Boost|p1a: Meowstic
+|-resisted|p1a: Meowstic
+|-damage|p1a: Meowstic|245/277
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|47/100 psn|[from] item: Life Orb
+|
+|-damage|p2a: Deoxys|35/100 psn|[from] psn
+|upkeep
+|turn|15
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Meowstic
+|-resisted|p1a: Meowstic
+|-damage|p1a: Meowstic|216/277
+|-damage|p2a: Deoxys|25/100 psn|[from] item: Life Orb
+|move|p1a: Meowstic|Nasty Plot|p1a: Meowstic
+|-boost|p1a: Meowstic|spa|2
+|
+|-damage|p2a: Deoxys|13/100 psn|[from] psn
+|upkeep
+|turn|16
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Meowstic
+|-resisted|p1a: Meowstic
+|-damage|p1a: Meowstic|191/277
+|-damage|p2a: Deoxys|3/100 psn|[from] item: Life Orb
+|move|p1a: Meowstic|Thunderbolt|p2a: Deoxys
+|-damage|p2a: Deoxys|0 fnt
+|faint|p2a: Deoxys
+|-damage|p1a: Meowstic|164/277|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Braviary|Braviary, L85, M|100/100
+|turn|17
+|
+|move|p1a: Meowstic|Thunderbolt|p2a: Braviary
+|-supereffective|p2a: Braviary
+|-damage|p2a: Braviary|0 fnt
+|faint|p2a: Braviary
+|-damage|p1a: Meowstic|137/277|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Hitmonlee|Hitmonlee, L85, M|100/100
+|-status|p2a: Hitmonlee|psn
+|turn|18
+|
+|move|p1a: Meowstic|Thunderbolt|p2a: Hitmonlee
+|-damage|p2a: Hitmonlee|39/100 psn
+|-damage|p1a: Meowstic|110/277|[from] item: Life Orb
+|move|p2a: Hitmonlee|Close Combat|p1a: Meowstic
+|-resisted|p1a: Meowstic
+|-damage|p1a: Meowstic|34/277
+|-unboost|p2a: Hitmonlee|def|1
+|-unboost|p2a: Hitmonlee|spd|1
+|-enditem|p2a: Hitmonlee|White Herb
+|-clearnegativeboost|p2a: Hitmonlee|[silent]
+|
+|-damage|p2a: Hitmonlee|26/100 psn|[from] psn
+|upkeep
+|turn|19
+|
+|move|p2a: Hitmonlee|Close Combat|p1a: Meowstic
+|-resisted|p1a: Meowstic
+|-damage|p1a: Meowstic|0 fnt
+|-unboost|p2a: Hitmonlee|def|1
+|-unboost|p2a: Hitmonlee|spd|1
+|faint|p1a: Meowstic
+|
+|-damage|p2a: Hitmonlee|14/100 psn|[from] psn
+|upkeep
+|
+|switch|p1a: Falinks|Falinks, L84|246/246
+|turn|20
+|
+|move|p2a: Hitmonlee|Close Combat|p1a: Falinks
+|-damage|p1a: Falinks|107/246
+|-unboost|p2a: Hitmonlee|def|1
+|-unboost|p2a: Hitmonlee|spd|1
+|move|p1a: Falinks|Iron Head|p2a: Hitmonlee
+|-damage|p2a: Hitmonlee|0 fnt
+|faint|p2a: Hitmonlee
+|-damage|p1a: Falinks|83/246|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Dewgong|Dewgong, L94, F|100/100
+|turn|21
+|
+|move|p2a: Dewgong|Surf|p1a: Falinks
+|-damage|p1a: Falinks|0 fnt
+|faint|p1a: Falinks
+|
+|upkeep
+|
+|switch|p1a: Uxie|Uxie, L83|260/260
+|turn|22
+|
+|move|p1a: Uxie|Yawn|p2a: Dewgong
+|-start|p2a: Dewgong|move: Yawn|[of] p1a: Uxie
+|move|p2a: Dewgong|Surf|p1a: Uxie
+|-damage|p1a: Uxie|193/260
+|
+|-heal|p1a: Uxie|209/260|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p1a: Uxie|Yawn||[still]
+|-fail|p1a: Uxie
+|move|p2a: Dewgong|Surf|p1a: Uxie
+|-crit|p1a: Uxie
+|-damage|p1a: Uxie|103/260
+|
+|-heal|p1a: Uxie|119/260|[from] item: Leftovers
+|-end|p2a: Dewgong|move: Yawn|[silent]
+|-status|p2a: Dewgong|slp
+|upkeep
+|turn|24
+|
+|-terastallize|p1a: Uxie|Dark
+|move|p1a: Uxie|Psychic Noise|p2a: Dewgong
+|-damage|p2a: Dewgong|83/100 slp
+|-start|p2a: Dewgong|move: Heal Block
+|cant|p2a: Dewgong|slp
+|
+|-heal|p1a: Uxie|135/260|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p1a: Uxie|Yawn||[still]
+|-fail|p1a: Uxie
+|cant|p2a: Dewgong|slp
+|
+|-heal|p1a: Uxie|151/260|[from] item: Leftovers
+|-end|p2a: Dewgong|move: Heal Block
+|upkeep
+|turn|26
+|
+|move|p1a: Uxie|Knock Off|p2a: Dewgong
+|-damage|p2a: Dewgong|58/100 slp
+|-enditem|p2a: Dewgong|Heavy-Duty Boots|[from] move: Knock Off|[of] p1a: Uxie
+|-curestatus|p2a: Dewgong|slp|[msg]
+|move|p2a: Dewgong|Surf|p1a: Uxie
+|-damage|p1a: Uxie|85/260
+|
+|-heal|p1a: Uxie|101/260|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Uxie|Yawn|p2a: Dewgong
+|-start|p2a: Dewgong|move: Yawn|[of] p1a: Uxie
+|move|p2a: Dewgong|Surf|p1a: Uxie
+|-damage|p1a: Uxie|31/260
+|
+|-heal|p1a: Uxie|47/260|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Uxie|Yawn||[still]
+|-fail|p1a: Uxie
+|move|p2a: Dewgong|Surf|p1a: Uxie
+|-damage|p1a: Uxie|0 fnt
+|faint|p1a: Uxie
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

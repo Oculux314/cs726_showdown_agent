@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22346</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22346<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22346|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Stonjourner|Stonjourner, L91, F|330/330
+|switch|p2a: Walking Wake|Walking Wake, L79|100/100
+|turn|1
+|
+|switch|p1a: Furret|Furret, L94, F|312/312
+|-item|p2a: Walking Wake|Life Orb|[from] ability: Frisk|[of] p1a: Furret
+|move|p2a: Walking Wake|Draco Meteor|p1a: Furret
+|-damage|p1a: Furret|61/312
+|-unboost|p2a: Walking Wake|spa|2
+|-damage|p2a: Walking Wake|91/100|[from] item: Life Orb
+|
+|upkeep
+|turn|2
+|
+|move|p1a: Furret|Tidy Up|p1a: Furret
+|-boost|p1a: Furret|atk|1
+|-boost|p1a: Furret|spe|1
+|move|p2a: Walking Wake|Draco Meteor|p1a: Furret
+|-damage|p1a: Furret|0 fnt
+|-unboost|p2a: Walking Wake|spa|2
+|faint|p1a: Furret
+|-damage|p2a: Walking Wake|81/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Kingambit|Kingambit, L74, M|270/270
+|-activate|p1a: Kingambit|ability: Supreme Overlord
+|-start|p1a: Kingambit|fallen1|[silent]
+|turn|3
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Walking Wake
+|-damage|p2a: Walking Wake|52/100
+|move|p2a: Walking Wake|Draco Meteor|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-crit|p1a: Kingambit
+|-damage|p1a: Kingambit|113/270
+|-unboost|p2a: Walking Wake|spa|2
+|-damage|p2a: Walking Wake|42/100|[from] item: Life Orb
+|
+|-heal|p1a: Kingambit|129/270|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Walking Wake
+|-damage|p2a: Walking Wake|9/100
+|move|p2a: Walking Wake|Draco Meteor|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|100/270
+|-damage|p2a: Walking Wake|0 fnt|[from] item: Life Orb
+|faint|p2a: Walking Wake
+|-end|p2a: Walking Wake|Protosynthesis|[silent]
+|
+|-heal|p1a: Kingambit|116/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Raichu|Raichu-Alola, L87, F|100/100
+|turn|5
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Raichu
+|-supereffective|p2a: Raichu
+|-damage|p2a: Raichu|5/100
+|move|p2a: Raichu|Surf|p1a: Kingambit
+|-damage|p1a: Kingambit|9/270
+|-damage|p2a: Raichu|0 fnt|[from] item: Life Orb
+|faint|p2a: Raichu
+|
+|-heal|p1a: Kingambit|25/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Qwilfish|Qwilfish-Hisui, L83, F|100/100
+|-ability|p2a: Qwilfish|Intimidate|boost
+|-unboost|p1a: Kingambit|atk|1
+|turn|6
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|92/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|
+|-heal|p1a: Kingambit|41/270|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|85/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|
+|-heal|p1a: Kingambit|57/270|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|76/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|
+|-heal|p1a: Kingambit|73/270|[from] item: Leftovers
+|upkeep
+|turn|9
+|
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|66/100
+|
+|-heal|p1a: Kingambit|89/270|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|57/100
+|
+|-heal|p1a: Kingambit|105/270|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|47/100
+|
+|-heal|p1a: Kingambit|121/270|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|39/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|
+|-heal|p1a: Kingambit|137/270|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Kingambit|Sucker Punch|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|31/100
+|move|p2a: Qwilfish|Gunk Shot|p1a: Kingambit
+|-immune|p1a: Kingambit
+|
+|-heal|p1a: Kingambit|153/270|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p2a: Qwilfish|Crunch|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|119/270
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|22/100
+|
+|-heal|p1a: Kingambit|135/270|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p2a: Qwilfish|Crunch|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|101/270
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|12/100
+|
+|-heal|p1a: Kingambit|117/270|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Qwilfish|Crunch|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|81/270
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|2/100
+|
+|-heal|p1a: Kingambit|97/270|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p2a: Qwilfish|Crunch|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-damage|p1a: Kingambit|58/270
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Qwilfish
+|-resisted|p2a: Qwilfish
+|-damage|p2a: Qwilfish|0 fnt
+|faint|p2a: Qwilfish
+|
+|-heal|p1a: Kingambit|74/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Chansey|Chansey, L85, F|100/100
+|turn|18
+|
+|move|p2a: Chansey|Heal Bell||[still]
+|-activate|p2a: Chansey|move: Heal Bell
+|-fail|p2a: Chansey
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Chansey
+|-damage|p2a: Chansey|74/100
+|
+|-heal|p1a: Kingambit|90/270|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p2a: Chansey|Heal Bell||[still]
+|-activate|p2a: Chansey|move: Heal Bell
+|-fail|p2a: Chansey
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Chansey
+|-damage|p2a: Chansey|44/100
+|
+|-heal|p1a: Kingambit|106/270|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Chansey|Heal Bell||[still]
+|-activate|p2a: Chansey|move: Heal Bell
+|-fail|p2a: Chansey
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Chansey
+|-damage|p2a: Chansey|19/100
+|
+|-heal|p1a: Kingambit|122/270|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Chansey|Heal Bell||[still]
+|-activate|p2a: Chansey|move: Heal Bell
+|-fail|p2a: Chansey
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Chansey
+|-damage|p2a: Chansey|0 fnt
+|faint|p2a: Chansey
+|
+|-heal|p1a: Kingambit|138/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Dugtrio|Dugtrio, L84, M|100/100
+|turn|22
+|
+|move|p2a: Dugtrio|Stone Edge|p1a: Kingambit|[miss]
+|-miss|p2a: Dugtrio|p1a: Kingambit
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Dugtrio
+|-damage|p2a: Dugtrio|49/100
+|
+|-heal|p1a: Kingambit|154/270|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Dugtrio|Stone Edge|p1a: Kingambit
+|-resisted|p1a: Kingambit
+|-crit|p1a: Kingambit
+|-damage|p1a: Kingambit|89/270
+|-damage|p2a: Dugtrio|40/100|[from] item: Life Orb
+|move|p1a: Kingambit|Kowtow Cleave|p2a: Dugtrio
+|-damage|p2a: Dugtrio|0 fnt
+|faint|p2a: Dugtrio
+|
+|-heal|p1a: Kingambit|105/270|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Hawlucha|Hawlucha, L80, F|100/100
+|turn|24
+|
+|move|p2a: Hawlucha|Close Combat|p1a: Kingambit
+|-supereffective|p1a: Kingambit
+|-damage|p1a: Kingambit|0 fnt
+|-unboost|p2a: Hawlucha|def|1
+|-unboost|p2a: Hawlucha|spd|1
+|faint|p1a: Kingambit
+|-end|p1a: Kingambit|fallen1|[silent]
+|-enditem|p2a: Hawlucha|White Herb
+|-clearnegativeboost|p2a: Hawlucha|[silent]
+|
+|upkeep
+|
+|switch|p1a: Electrode|Electrode-Hisui, L87|246/246
+|turn|25
+|
+|move|p2a: Hawlucha|Close Combat|p1a: Electrode
+|-damage|p1a: Electrode|126/246
+|-unboost|p2a: Hawlucha|def|1
+|-unboost|p2a: Hawlucha|spd|1
+|move|p1a: Electrode|Volt Switch|p2a: Hawlucha
+|-supereffective|p2a: Hawlucha
+|-damage|p2a: Hawlucha|0 fnt
+|faint|p2a: Hawlucha
+|-damage|p1a: Electrode|102/246|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

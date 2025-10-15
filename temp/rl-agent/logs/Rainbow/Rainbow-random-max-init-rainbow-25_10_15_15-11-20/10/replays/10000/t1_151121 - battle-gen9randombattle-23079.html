@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23079</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23079<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23079|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Spidops|Spidops, L96, F|271/271
+|switch|p2a: Groudon|Groudon, L72|100/100
+|-weather|SunnyDay|[from] ability: Drought|[of] p2a: Groudon
+|turn|1
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Spidops
+|-resisted|p1a: Spidops
+|-damage|p1a: Spidops|217/271
+|move|p1a: Spidops|Sticky Web|p2a: Groudon
+|-sidestart|p2: t2_151121|move: Sticky Web
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|2
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Spidops
+|-resisted|p1a: Spidops
+|-damage|p1a: Spidops|161/271
+|move|p1a: Spidops|Sticky Web||[still]
+|-fail|p1a: Spidops
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|3
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Spidops
+|-resisted|p1a: Spidops
+|-damage|p1a: Spidops|107/271
+|move|p1a: Spidops|Sticky Web||[still]
+|-fail|p1a: Spidops
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|4
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Spidops
+|-resisted|p1a: Spidops
+|-crit|p1a: Spidops
+|-damage|p1a: Spidops|27/271
+|move|p1a: Spidops|Sticky Web||[still]
+|-fail|p1a: Spidops
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|5
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Spidops
+|-resisted|p1a: Spidops
+|-damage|p1a: Spidops|0 fnt
+|faint|p1a: Spidops
+|
+|-weather|none
+|upkeep
+|
+|switch|p1a: Chandelure|Chandelure, L83, F|235/235
+|turn|6
+|
+|move|p1a: Chandelure|Trick|p2a: Groudon
+|-activate|p1a: Chandelure|move: Trick|[of] p2a: Groudon
+|-item|p2a: Groudon|Choice Scarf|[from] move: Trick
+|-item|p1a: Chandelure|Leftovers|[from] move: Trick
+|move|p2a: Groudon|Precipice Blades|p1a: Chandelure
+|-supereffective|p1a: Chandelure
+|-damage|p1a: Chandelure|0 fnt
+|faint|p1a: Chandelure
+|
+|upkeep
+|
+|switch|p1a: Swampert|Swampert, L83, M|302/302
+|turn|7
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Swampert
+|-damage|p1a: Swampert|181/302
+|move|p1a: Swampert|Ice Beam|p2a: Groudon
+|-supereffective|p2a: Groudon
+|-damage|p2a: Groudon|47/100
+|
+|-heal|p1a: Swampert|199/302|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|move|p2a: Groudon|Precipice Blades|p1a: Swampert
+|-damage|p1a: Swampert|73/302
+|move|p1a: Swampert|Ice Beam|p2a: Groudon
+|-supereffective|p2a: Groudon
+|-damage|p2a: Groudon|0 fnt
+|faint|p2a: Groudon
+|
+|-heal|p1a: Swampert|91/302|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Calyrex|Calyrex-Ice, L72|100/100
+|-ability|p2a: Calyrex|As One
+|-ability|p2a: Calyrex|Unnerve
+|turn|9
+|
+|-terastallize|p1a: Swampert|Poison
+|move|p1a: Swampert|Flip Turn|p2a: Calyrex
+|-damage|p2a: Calyrex|67/100
+|
+|switch|p1a: Froslass|Froslass, L87, F|263/263|[from] Flip Turn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-status|p2a: Calyrex|brn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|61/100 brn|[from] brn
+|upkeep
+|turn|11
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|55/100 brn|[from] brn
+|upkeep
+|turn|12
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex|[miss]
+|-miss|p1a: Froslass|p2a: Calyrex
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|49/100 brn|[from] brn
+|upkeep
+|turn|13
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|43/100 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|37/100 brn|[from] brn
+|upkeep
+|turn|15
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex|[miss]
+|-miss|p1a: Froslass|p2a: Calyrex
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|31/100 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Calyrex|25/100 brn|[from] brn
+|upkeep
+|turn|17
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|Glacial Lance|p1a: Froslass
+|-resisted|p1a: Froslass
+|-damage|p1a: Froslass|222/263
+|-start|p2a: Calyrex|Disable|Glacial Lance|[from] ability: Cursed Body|[of] p1a: Froslass
+|
+|-damage|p2a: Calyrex|19/100 brn|[from] brn
+|upkeep
+|turn|18
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|High Horsepower|p1a: Froslass
+|-damage|p1a: Froslass|175/263
+|
+|-damage|p2a: Calyrex|13/100 brn|[from] brn
+|upkeep
+|turn|19
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|High Horsepower|p1a: Froslass
+|-damage|p1a: Froslass|134/263
+|
+|-damage|p2a: Calyrex|7/100 brn|[from] brn
+|upkeep
+|turn|20
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Calyrex
+|-fail|p2a: Calyrex|brn
+|move|p2a: Calyrex|High Horsepower|p1a: Froslass
+|-damage|p1a: Froslass|92/263
+|
+|-damage|p2a: Calyrex|0 fnt|[from] brn
+|faint|p2a: Calyrex
+|upkeep
+|
+|switch|p2a: Koraidon|Koraidon, L64|100/100
+|-activate|p2a: Koraidon|move: Sticky Web
+|-unboost|p2a: Koraidon|spe|1
+|-weather|SunnyDay|[from] ability: Orichalcum Pulse|[of] p2a: Koraidon
+|-activate|p2a: Koraidon|Orichalcum Pulse|[source]
+|turn|21
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-status|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Koraidon|95/100 brn|[from] brn
+|upkeep
+|turn|22
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Koraidon|89/100 brn|[from] brn
+|upkeep
+|turn|23
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Koraidon|83/100 brn|[from] brn
+|upkeep
+|turn|24
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Koraidon|77/100 brn|[from] brn
+|upkeep
+|turn|25
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-weather|none
+|-damage|p2a: Koraidon|71/100 brn|[from] brn
+|upkeep
+|turn|26
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Koraidon|65/100 brn|[from] brn
+|upkeep
+|turn|27
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Koraidon|59/100 brn|[from] brn
+|upkeep
+|turn|28
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|move|p2a: Koraidon|Close Combat|p1a: Froslass
+|-immune|p1a: Froslass
+|
+|-damage|p2a: Koraidon|53/100 brn|[from] brn
+|upkeep
+|turn|29
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon
+|-fail|p2a: Koraidon|brn
+|-activate|p2a: Koraidon|move: Struggle
+|move|p2a: Koraidon|Struggle|p1a: Froslass
+|-damage|p1a: Froslass|71/263
+|-damage|p2a: Koraidon|28/100 brn|[from] recoil
+|
+|-damage|p2a: Koraidon|22/100 brn|[from] brn
+|upkeep
+|turn|30
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Koraidon|[miss]
+|-miss|p1a: Froslass|p2a: Koraidon
+|-activate|p2a: Koraidon|move: Struggle
+|move|p2a: Koraidon|Struggle|p1a: Froslass
+|-damage|p1a: Froslass|50/263
+|-damage|p2a: Koraidon|0 fnt|[from] recoil
+|faint|p2a: Koraidon
+|
+|upkeep
+|
+|switch|p2a: Cinderace|Cinderace, L77, M|100/100
+|turn|31
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Cinderace
+|-immune|p2a: Cinderace
+|move|p2a: Cinderace|High Jump Kick|p1a: Froslass
+|-start|p2a: Cinderace|typechange|Fighting|[from] ability: Libero
+|-immune|p1a: Froslass
+|-damage|p2a: Cinderace|51/100|[from] highjumpkick
+|
+|upkeep
+|turn|32
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Cinderace
+|-status|p2a: Cinderace|brn
+|move|p2a: Cinderace|High Jump Kick|p1a: Froslass
+|-immune|p1a: Froslass
+|-damage|p2a: Cinderace|1/100 brn|[from] highjumpkick
+|
+|-damage|p2a: Cinderace|0 fnt|[from] brn
+|faint|p2a: Cinderace
+|upkeep
+|
+|switch|p2a: Rotom|Rotom-Fan, L86|100/100
+|turn|33
+|
+|move|p1a: Froslass|Will-O-Wisp|p2a: Rotom
+|-status|p2a: Rotom|brn
+|move|p2a: Rotom|Thunderbolt|p1a: Froslass
+|-damage|p1a: Froslass|0 fnt
+|faint|p1a: Froslass
+|
+|-damage|p2a: Rotom|94/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Luvdisc|Luvdisc, F|247/247
+|turn|34
+|
+|move|p1a: Luvdisc|Endeavor|p2a: Rotom
+|-immune|p2a: Rotom
+|move|p2a: Rotom|Thunderbolt|p1a: Luvdisc
+|-supereffective|p1a: Luvdisc
+|-damage|p1a: Luvdisc|5/247
+|
+|-damage|p2a: Rotom|88/100 brn|[from] brn
+|upkeep
+|turn|35
+|
+|move|p1a: Luvdisc|Endeavor|p2a: Rotom
+|-damage|p2a: Rotom|3/100 brn
+|move|p2a: Rotom|Thunderbolt|p1a: Luvdisc
+|-supereffective|p1a: Luvdisc
+|-damage|p1a: Luvdisc|0 fnt
+|faint|p1a: Luvdisc
+|
+|-damage|p2a: Rotom|0 fnt|[from] brn
+|faint|p2a: Rotom
+|upkeep
+|
+|switch|p1a: Swampert|Swampert, L83, M, tera:Poison|91/302
+|switch|p2a: Deoxys|Deoxys-Attack, L72|100/100
+|-activate|p2a: Deoxys|move: Sticky Web
+|-unboost|p2a: Deoxys|spe|1
+|-ability|p2a: Deoxys|Pressure
+|turn|36
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Swampert
+|-supereffective|p1a: Swampert
+|-damage|p1a: Swampert|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Swampert
+|-damage|p2a: Deoxys|91/100|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p1a: Iron Hands|Iron Hands, L79|373/373
+|turn|37
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Hands
+|-supereffective|p1a: Iron Hands
+|-damage|p1a: Iron Hands|90/373
+|-unboost|p2a: Deoxys|spa|2
+|-damage|p2a: Deoxys|81/100|[from] item: Life Orb
+|move|p1a: Iron Hands|Swords Dance|p1a: Iron Hands
+|-boost|p1a: Iron Hands|atk|2
+|
+|-heal|p1a: Iron Hands|113/373|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p2a: Deoxys|Psycho Boost|p1a: Iron Hands
+|-supereffective|p1a: Iron Hands
+|-damage|p1a: Iron Hands|0 fnt
+|-unboost|p2a: Deoxys|spa|2
+|faint|p1a: Iron Hands
+|-end|p1a: Iron Hands|Quark Drive|[silent]
+|-damage|p2a: Deoxys|71/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

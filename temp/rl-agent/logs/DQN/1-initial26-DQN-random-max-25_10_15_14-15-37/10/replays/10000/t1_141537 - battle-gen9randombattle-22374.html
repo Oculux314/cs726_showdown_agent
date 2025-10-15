@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22374</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22374<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22374|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Vaporeon|Vaporeon, L86, F|364/364
+|switch|p2a: Honchkrow|Honchkrow, L86, M|100/100
+|turn|1
+|
+|-terastallize|p1a: Vaporeon|Poison
+|move|p2a: Honchkrow|Brave Bird|p1a: Vaporeon
+|-damage|p1a: Vaporeon|169/364
+|-damage|p2a: Honchkrow|80/100|[from] Recoil
+|move|p1a: Vaporeon|Scald|p2a: Honchkrow
+|-damage|p2a: Honchkrow|34/100
+|
+|-heal|p1a: Vaporeon|191/364|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Honchkrow|Brave Bird|p1a: Vaporeon
+|-damage|p1a: Vaporeon|0 fnt
+|faint|p1a: Vaporeon
+|-ability|p2a: Honchkrow|Moxie|boost
+|-boost|p2a: Honchkrow|atk|1
+|-damage|p2a: Honchkrow|14/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Electivire|Electivire, L84, M|263/263
+|turn|3
+|
+|move|p1a: Electivire|Earthquake|p2a: Honchkrow
+|-immune|p2a: Honchkrow
+|move|p2a: Honchkrow|Brave Bird|p1a: Electivire
+|-resisted|p1a: Electivire
+|-damage|p1a: Electivire|111/263
+|-damage|p2a: Honchkrow|0 fnt|[from] Recoil
+|faint|p2a: Honchkrow
+|
+|upkeep
+|
+|switch|p2a: Amoonguss|Amoonguss, L82, F|100/100
+|turn|4
+|
+|move|p1a: Electivire|Supercell Slam|p2a: Amoonguss
+|-resisted|p2a: Amoonguss
+|-damage|p2a: Amoonguss|71/100
+|-damage|p1a: Electivire|68/263|[from] item: Rocky Helmet|[of] p2a: Amoonguss
+|-damage|p1a: Electivire|42/263|[from] item: Life Orb
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Electivire
+|-damage|p1a: Electivire|0 fnt
+|faint|p1a: Electivire
+|
+|upkeep
+|
+|switch|p1a: Golem|Golem, L87, F|281/281
+|turn|5
+|
+|move|p1a: Golem|Stone Edge|p2a: Amoonguss
+|-damage|p2a: Amoonguss|20/100
+|move|p2a: Amoonguss|Sludge Bomb|p1a: Golem
+|-resisted|p1a: Golem
+|-damage|p1a: Golem|257/281
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Golem|Earthquake|p2a: Amoonguss
+|-damage|p2a: Amoonguss|0 fnt
+|faint|p2a: Amoonguss
+|
+|upkeep
+|
+|switch|p2a: Squawkabilly|Squawkabilly-White, L89, M|100/100
+|turn|7
+|
+|move|p2a: Squawkabilly|Double-Edge|p1a: Golem
+|-resisted|p1a: Golem
+|-damage|p1a: Golem|152/281
+|-damage|p2a: Squawkabilly|88/100|[from] Recoil
+|move|p1a: Golem|Stone Edge|p2a: Squawkabilly
+|-supereffective|p2a: Squawkabilly
+|-damage|p2a: Squawkabilly|0 fnt
+|faint|p2a: Squawkabilly
+|
+|upkeep
+|
+|switch|p2a: Iron Hands|Iron Hands, L79|100/100
+|turn|8
+|
+|move|p1a: Golem|Stone Edge|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|85/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Golem
+|-supereffective|p1a: Golem
+|-damage|p1a: Golem|24/281
+|-heal|p2a: Iron Hands|100/100|[from] drain|[of] p1a: Golem
+|-enditem|p1a: Golem|Weakness Policy
+|-boost|p1a: Golem|atk|2|[from] item: Weakness Policy
+|-boost|p1a: Golem|spa|2|[from] item: Weakness Policy
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Golem|Stone Edge|p2a: Iron Hands
+|-resisted|p2a: Iron Hands
+|-damage|p2a: Iron Hands|66/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Golem
+|-supereffective|p1a: Golem
+|-crit|p1a: Golem
+|-damage|p1a: Golem|0 fnt
+|-heal|p2a: Iron Hands|69/100|[from] drain|[of] p1a: Golem
+|faint|p1a: Golem
+|
+|upkeep
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, F|225/225
+|-item|p2a: Iron Hands|Assault Vest|[from] ability: Frisk|[of] p1a: Dusknoir
+|turn|10
+|
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-start|p1a: Dusknoir|Substitute
+|-damage|p1a: Dusknoir|169/225
+|move|p2a: Iron Hands|Drain Punch|p1a: Dusknoir
+|-immune|p1a: Dusknoir
+|
+|-heal|p1a: Dusknoir|183/225|[from] item: Leftovers
+|upkeep
+|turn|11
+|
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-fail|p1a: Dusknoir|move: Substitute
+|move|p2a: Iron Hands|Drain Punch|p1a: Dusknoir
+|-immune|p1a: Dusknoir
+|
+|-heal|p1a: Dusknoir|197/225|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-fail|p1a: Dusknoir|move: Substitute
+|move|p2a: Iron Hands|Drain Punch|p1a: Dusknoir
+|-immune|p1a: Dusknoir
+|
+|-heal|p1a: Dusknoir|211/225|[from] item: Leftovers
+|upkeep
+|turn|13
+|
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-fail|p1a: Dusknoir|move: Substitute
+|move|p2a: Iron Hands|Drain Punch|p1a: Dusknoir
+|-immune|p1a: Dusknoir
+|
+|-heal|p1a: Dusknoir|225/225|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Dusknoir|Substitute|p1a: Dusknoir
+|-fail|p1a: Dusknoir|move: Substitute
+|move|p2a: Iron Hands|Drain Punch|p1a: Dusknoir
+|-immune|p1a: Dusknoir
+|
+|upkeep
+|turn|15
+|
+|switch|p1a: Thundurus|Thundurus-Therian, L80, M|258/258
+|move|p2a: Iron Hands|Drain Punch|p1a: Thundurus
+|-resisted|p1a: Thundurus
+|-damage|p1a: Thundurus|199/258
+|-heal|p2a: Iron Hands|77/100|[from] drain|[of] p1a: Thundurus
+|
+|upkeep
+|turn|16
+|
+|move|p1a: Thundurus|Tera Blast|p2a: Iron Hands
+|-damage|p2a: Iron Hands|61/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Thundurus
+|-resisted|p1a: Thundurus
+|-damage|p1a: Thundurus|141/258
+|-heal|p2a: Iron Hands|69/100|[from] drain|[of] p1a: Thundurus
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Thundurus|Tera Blast|p2a: Iron Hands
+|-damage|p2a: Iron Hands|53/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Thundurus
+|-resisted|p1a: Thundurus
+|-damage|p1a: Thundurus|81/258
+|-heal|p2a: Iron Hands|61/100|[from] drain|[of] p1a: Thundurus
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Thundurus|Tera Blast|p2a: Iron Hands
+|-damage|p2a: Iron Hands|44/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Thundurus
+|-resisted|p1a: Thundurus
+|-damage|p1a: Thundurus|26/258
+|-heal|p2a: Iron Hands|52/100|[from] drain|[of] p1a: Thundurus
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Thundurus|Tera Blast|p2a: Iron Hands
+|-damage|p2a: Iron Hands|36/100
+|move|p2a: Iron Hands|Drain Punch|p1a: Thundurus
+|-resisted|p1a: Thundurus
+|-damage|p1a: Thundurus|0 fnt
+|-heal|p2a: Iron Hands|39/100|[from] drain|[of] p1a: Thundurus
+|faint|p1a: Thundurus
+|
+|upkeep
+|
+|switch|p1a: Hatterene|Hatterene, L85, F|236/236
+|turn|20
+|
+|move|p2a: Iron Hands|Drain Punch|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|215/236
+|-heal|p2a: Iron Hands|42/100|[from] drain|[of] p1a: Hatterene
+|move|p1a: Hatterene|Mystical Fire|p2a: Iron Hands
+|-damage|p2a: Iron Hands|25/100
+|-unboost|p2a: Iron Hands|spa|1
+|
+|-heal|p1a: Hatterene|229/236|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p2a: Iron Hands|Drain Punch|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|209/236
+|-heal|p2a: Iron Hands|27/100|[from] drain|[of] p1a: Hatterene
+|move|p1a: Hatterene|Mystical Fire|p2a: Iron Hands
+|-damage|p2a: Iron Hands|11/100
+|-unboost|p2a: Iron Hands|spa|1
+|
+|-heal|p1a: Hatterene|223/236|[from] item: Leftovers
+|upkeep
+|turn|22
+|
+|move|p2a: Iron Hands|Drain Punch|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|201/236
+|-heal|p2a: Iron Hands|14/100|[from] drain|[of] p1a: Hatterene
+|move|p1a: Hatterene|Mystical Fire|p2a: Iron Hands
+|-damage|p2a: Iron Hands|0 fnt
+|faint|p2a: Iron Hands
+|-end|p2a: Iron Hands|Quark Drive|[silent]
+|
+|-heal|p1a: Hatterene|215/236|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Clawitzer|Clawitzer, L87, F|100/100
+|turn|23
+|
+|move|p2a: Clawitzer|Dark Pulse|p1a: Hatterene
+|-damage|p1a: Hatterene|77/236
+|move|p1a: Hatterene|Mystical Fire|p2a: Clawitzer
+|-resisted|p2a: Clawitzer
+|-damage|p2a: Clawitzer|87/100
+|-unboost|p2a: Clawitzer|spa|1
+|
+|-heal|p1a: Hatterene|91/236|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, F|225/225
+|-item|p2a: Clawitzer|Choice Specs|[from] ability: Frisk|[of] p1a: Dusknoir
+|move|p2a: Clawitzer|Dark Pulse|p1a: Dusknoir
+|-supereffective|p1a: Dusknoir
+|-damage|p1a: Dusknoir|73/225
+|
+|-heal|p1a: Dusknoir|87/225|[from] item: Leftovers
+|upkeep
+|turn|25
+|
+|move|p2a: Clawitzer|Dark Pulse|p1a: Dusknoir
+|-supereffective|p1a: Dusknoir
+|-damage|p1a: Dusknoir|0 fnt
+|faint|p1a: Dusknoir
+|
+|upkeep
+|
+|switch|p1a: Hatterene|Hatterene, L85, F|91/236
+|turn|26
+|
+|move|p2a: Clawitzer|Dark Pulse|p1a: Hatterene
+|-damage|p1a: Hatterene|3/236
+|cant|p1a: Hatterene|flinch
+|
+|-heal|p1a: Hatterene|17/236|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p2a: Clawitzer|Dark Pulse|p1a: Hatterene
+|-damage|p1a: Hatterene|0 fnt
+|faint|p1a: Hatterene
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

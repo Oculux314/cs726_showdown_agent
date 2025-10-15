@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-23010</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-23010<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_151121</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_151121</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-23010|init|battle
+|title|t1_151121 vs. t2_151121
+|j|☆t1_151121
+|j|☆t2_151121
+|gametype|singles
+|player|p1|t1_151121|2|
+|player|p2|t2_151121|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Golurk|Golurk, L87|297/297
+|switch|p2a: Kilowattrel|Kilowattrel, L83, M|100/100
+|turn|1
+|
+|switch|p1a: Gyarados|Gyarados, L79, M|280/280
+|-ability|p1a: Gyarados|Intimidate|boost
+|-unboost|p2a: Kilowattrel|atk|1
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados|[miss]
+|-miss|p2a: Kilowattrel|p1a: Gyarados
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados
+|-damage|p1a: Gyarados|154/280
+|move|p1a: Gyarados|Earthquake|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|3
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados
+|-damage|p1a: Gyarados|33/280
+|move|p1a: Gyarados|Earthquake|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|4
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados|[miss]
+|-miss|p2a: Kilowattrel|p1a: Gyarados
+|move|p1a: Gyarados|Earthquake|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|5
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados|[miss]
+|-miss|p2a: Kilowattrel|p1a: Gyarados
+|move|p1a: Gyarados|Earthquake|p2a: Kilowattrel
+|-immune|p2a: Kilowattrel
+|
+|upkeep
+|turn|6
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Gyarados
+|-damage|p1a: Gyarados|0 fnt
+|faint|p1a: Gyarados
+|
+|upkeep
+|
+|switch|p1a: Excadrill|Excadrill, L79, M|303/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|7
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|250/303
+|move|p1a: Excadrill|Rapid Spin|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|79/100
+|-boost|p1a: Excadrill|spe|1
+|
+|upkeep
+|turn|8
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|57/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Kilowattrel|Hurricane|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|195/303
+|
+|upkeep
+|turn|9
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|35/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Kilowattrel|Hurricane|p1a: Excadrill
+|-resisted|p1a: Excadrill
+|-damage|p1a: Excadrill|142/303
+|
+|upkeep
+|turn|10
+|
+|switch|p1a: Zebstrika|Zebstrika, L87, F|272/272
+|move|p2a: Kilowattrel|Hurricane|p1a: Zebstrika|[miss]
+|-miss|p2a: Kilowattrel|p1a: Zebstrika
+|
+|upkeep
+|turn|11
+|
+|move|p2a: Kilowattrel|Hurricane|p1a: Zebstrika|[miss]
+|-miss|p2a: Kilowattrel|p1a: Zebstrika
+|move|p1a: Zebstrika|Overheat|p2a: Kilowattrel
+|-damage|p2a: Kilowattrel|0 fnt
+|-unboost|p1a: Zebstrika|spa|2
+|faint|p2a: Kilowattrel
+|-damage|p1a: Zebstrika|245/272|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Virizion|Virizion, L82|100/100
+|turn|12
+|
+|move|p1a: Zebstrika|Overheat|p2a: Virizion
+|-supereffective|p2a: Virizion
+|-damage|p2a: Virizion|73/100
+|-unboost|p1a: Zebstrika|spa|2
+|-damage|p1a: Zebstrika|218/272|[from] item: Life Orb
+|move|p2a: Virizion|Close Combat|p1a: Zebstrika
+|-damage|p1a: Zebstrika|26/272
+|-unboost|p2a: Virizion|def|1
+|-unboost|p2a: Virizion|spd|1
+|-damage|p2a: Virizion|63/100|[from] item: Life Orb
+|
+|upkeep
+|turn|13
+|
+|-terastallize|p1a: Zebstrika|Ground
+|move|p1a: Zebstrika|High Horsepower|p2a: Virizion
+|-resisted|p2a: Virizion
+|-damage|p2a: Virizion|17/100
+|-damage|p1a: Zebstrika|0 fnt|[from] item: Life Orb
+|faint|p1a: Zebstrika
+|move|p2a: Virizion|Close Combat|p1: Zebstrika|[notarget]
+|-fail|p2a: Virizion
+|
+|upkeep
+|
+|switch|p1a: Okidogi|Okidogi, L77, M|262/262
+|turn|14
+|
+|switch|p1a: Victreebel|Victreebel, L90, M|290/290
+|move|p2a: Virizion|Close Combat|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|212/290
+|-unboost|p2a: Virizion|def|1
+|-unboost|p2a: Virizion|spd|1
+|-damage|p2a: Virizion|8/100|[from] item: Life Orb
+|
+|upkeep
+|turn|15
+|
+|move|p2a: Virizion|Close Combat|p1a: Victreebel
+|-resisted|p1a: Victreebel
+|-damage|p1a: Victreebel|130/290
+|-unboost|p2a: Virizion|def|1
+|-unboost|p2a: Virizion|spd|1
+|-damage|p2a: Virizion|0 fnt|[from] item: Life Orb
+|faint|p2a: Virizion
+|move|p1a: Victreebel|Strength Sap|p2: Virizion|[notarget]
+|-fail|p1a: Victreebel
+|
+|upkeep
+|
+|switch|p2a: Garchomp|Garchomp, L74, F|100/100
+|turn|16
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|1/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|236/290
+|
+|upkeep
+|turn|17
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|154/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|290/290
+|
+|upkeep
+|turn|18
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|226/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|290/290
+|
+|upkeep
+|turn|19
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|242/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|290/290
+|
+|upkeep
+|turn|20
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|251/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|290/290
+|
+|upkeep
+|turn|21
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-crit|p1a: Victreebel
+|-damage|p1a: Victreebel|97/290
+|move|p1a: Victreebel|Strength Sap|p2a: Garchomp
+|-unboost|p2a: Garchomp|atk|1
+|-heal|p1a: Victreebel|164/290
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|133/290
+|move|p1a: Victreebel|Strength Sap||[still]
+|-fail|p1a: Victreebel
+|
+|upkeep
+|turn|23
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|103/290
+|move|p1a: Victreebel|Sludge Wave|p2a: Garchomp
+|-resisted|p2a: Garchomp
+|-damage|p2a: Garchomp|70/100
+|-damage|p1a: Victreebel|74/290|[from] item: Life Orb
+|
+|upkeep
+|turn|24
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|43/290
+|move|p1a: Victreebel|Sludge Wave|p2a: Garchomp
+|-resisted|p2a: Garchomp
+|-damage|p2a: Garchomp|40/100
+|-damage|p1a: Victreebel|14/290|[from] item: Life Orb
+|
+|upkeep
+|turn|25
+|
+|move|p2a: Garchomp|Earthquake|p1a: Victreebel
+|-damage|p1a: Victreebel|0 fnt
+|faint|p1a: Victreebel
+|
+|upkeep
+|
+|switch|p1a: Golurk|Golurk, L87|297/297
+|turn|26
+|
+|move|p2a: Garchomp|Earthquake|p1a: Golurk
+|-crit|p1a: Golurk
+|-damage|p1a: Golurk|137/297
+|move|p1a: Golurk|Earthquake|p2a: Garchomp
+|-damage|p2a: Garchomp|0 fnt
+|faint|p2a: Garchomp
+|-damage|p1a: Golurk|108/297|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Avalugg|Avalugg, L88, M|100/100
+|turn|27
+|
+|move|p1a: Golurk|Earthquake|p2a: Avalugg
+|-damage|p2a: Avalugg|72/100
+|-damage|p1a: Golurk|79/297|[from] item: Life Orb
+|move|p2a: Avalugg|Body Press|p1a: Golurk
+|-immune|p1a: Golurk
+|
+|upkeep
+|turn|28
+|
+|move|p1a: Golurk|Earthquake|p2a: Avalugg
+|-damage|p2a: Avalugg|44/100
+|-damage|p1a: Golurk|50/297|[from] item: Life Orb
+|move|p2a: Avalugg|Body Press|p1a: Golurk
+|-immune|p1a: Golurk
+|
+|upkeep
+|turn|29
+|
+|move|p1a: Golurk|Earthquake|p2a: Avalugg
+|-crit|p2a: Avalugg
+|-damage|p2a: Avalugg|0 fnt
+|faint|p2a: Avalugg
+|-damage|p1a: Golurk|21/297|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Falinks|Falinks, L84|100/100
+|turn|30
+|
+|move|p2a: Falinks|Close Combat|p1a: Golurk
+|-immune|p1a: Golurk
+|move|p1a: Golurk|Earthquake|p2a: Falinks
+|-damage|p2a: Falinks|37/100
+|-damage|p1a: Golurk|0 fnt|[from] item: Life Orb
+|faint|p1a: Golurk
+|
+|upkeep
+|
+|switch|p1a: Okidogi|Okidogi, L77, M|262/262
+|turn|31
+|
+|move|p2a: Falinks|Close Combat|p1a: Okidogi
+|-resisted|p1a: Okidogi
+|-damage|p1a: Okidogi|192/262
+|-unboost|p2a: Falinks|def|1
+|-unboost|p2a: Falinks|spd|1
+|-damage|p2a: Falinks|27/100|[from] item: Life Orb
+|move|p1a: Okidogi|Psychic Fangs|p2a: Falinks
+|-supereffective|p2a: Falinks
+|-damage|p2a: Falinks|0 fnt
+|faint|p2a: Falinks
+|
+|upkeep
+|
+|switch|p2a: Snorlax|Snorlax, L82, M|100/100
+|turn|32
+|
+|move|p1a: Okidogi|Psychic Fangs|p2a: Snorlax
+|-damage|p2a: Snorlax|80/100
+|move|p2a: Snorlax|Earthquake|p1a: Okidogi
+|-supereffective|p1a: Okidogi
+|-damage|p1a: Okidogi|56/262
+|
+|upkeep
+|turn|33
+|
+|move|p1a: Okidogi|Psychic Fangs|p2a: Snorlax
+|-damage|p2a: Snorlax|59/100
+|move|p2a: Snorlax|Earthquake|p1a: Okidogi
+|-supereffective|p1a: Okidogi
+|-damage|p1a: Okidogi|0 fnt
+|faint|p1a: Okidogi
+|
+|upkeep
+|
+|switch|p1a: Excadrill|Excadrill, L79, M|142/303
+|-ability|p1a: Excadrill|Mold Breaker
+|turn|34
+|
+|move|p1a: Excadrill|Rapid Spin|p2a: Snorlax
+|-damage|p2a: Snorlax|47/100
+|-boost|p1a: Excadrill|spe|1
+|move|p2a: Snorlax|Earthquake|p1a: Excadrill
+|-supereffective|p1a: Excadrill
+|-damage|p1a: Excadrill|0 fnt
+|faint|p1a: Excadrill
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

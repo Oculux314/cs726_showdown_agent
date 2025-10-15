@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22565</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22565<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22565|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Wyrdeer|Wyrdeer, L87, M|321/321
+|switch|p2a: Serperior|Serperior, L79, F|100/100
+|-ability|p1a: Wyrdeer|Intimidate|boost
+|-boost|p2a: Serperior|atk|1
+|turn|1
+|
+|move|p2a: Serperior|Leaf Storm|p1a: Wyrdeer|[miss]
+|-miss|p2a: Serperior|p1a: Wyrdeer
+|move|p1a: Wyrdeer|Psychic Noise|p2a: Serperior
+|-damage|p2a: Serperior|63/100
+|-start|p2a: Serperior|move: Heal Block
+|
+|upkeep
+|turn|2
+|
+|move|p2a: Serperior|Leaf Storm|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|210/321
+|-boost|p2a: Serperior|spa|2
+|move|p1a: Wyrdeer|Megahorn|p2a: Serperior
+|-supereffective|p2a: Serperior
+|-damage|p2a: Serperior|0 fnt
+|faint|p2a: Serperior
+|
+|-heal|p1a: Wyrdeer|230/321|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Vaporeon|Vaporeon, L86, M|100/100
+|turn|3
+|
+|move|p1a: Wyrdeer|Psychic Noise|p2a: Vaporeon
+|-damage|p2a: Vaporeon|77/100
+|-start|p2a: Vaporeon|move: Heal Block
+|move|p2a: Vaporeon|Scald|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|113/321
+|-status|p1a: Wyrdeer|brn
+|
+|-heal|p1a: Wyrdeer|133/321 brn|[from] item: Leftovers
+|-damage|p1a: Wyrdeer|113/321 brn|[from] brn
+|upkeep
+|turn|4
+|
+|move|p1a: Wyrdeer|Psychic Noise|p2a: Vaporeon
+|-damage|p2a: Vaporeon|54/100
+|move|p2a: Vaporeon|Scald|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|4/321 brn
+|
+|-heal|p1a: Wyrdeer|24/321 brn|[from] item: Leftovers
+|-damage|p1a: Wyrdeer|4/321 brn|[from] brn
+|-end|p2a: Vaporeon|move: Heal Block
+|upkeep
+|turn|5
+|
+|move|p1a: Wyrdeer|Thunder Wave|p2a: Vaporeon
+|-status|p2a: Vaporeon|par
+|cant|p2a: Vaporeon|par
+|
+|-heal|p1a: Wyrdeer|24/321 brn|[from] item: Leftovers
+|-heal|p2a: Vaporeon|60/100 par|[from] item: Leftovers
+|-damage|p1a: Wyrdeer|4/321 brn|[from] brn
+|upkeep
+|turn|6
+|
+|switch|p1a: Alomomola|Alomomola, L87, M|429/429
+|move|p2a: Vaporeon|Scald|p1a: Alomomola
+|-resisted|p1a: Alomomola
+|-damage|p1a: Alomomola|359/429
+|-status|p1a: Alomomola|brn
+|
+|-heal|p2a: Vaporeon|66/100 par|[from] item: Leftovers
+|-damage|p1a: Alomomola|333/429 brn|[from] brn
+|upkeep
+|turn|7
+|
+|switch|p1a: Cobalion|Cobalion, L80|277/277
+|move|p2a: Vaporeon|Scald|p1a: Cobalion
+|-damage|p1a: Cobalion|163/277
+|
+|-heal|p1a: Cobalion|180/277|[from] item: Leftovers
+|-heal|p2a: Vaporeon|72/100 par|[from] item: Leftovers
+|upkeep
+|turn|8
+|
+|switch|p1a: Wyrdeer|Wyrdeer, L87, M|4/321 brn
+|-ability|p1a: Wyrdeer|Intimidate|boost
+|-unboost|p2a: Vaporeon|atk|1
+|move|p2a: Vaporeon|Scald|p1a: Wyrdeer
+|-damage|p1a: Wyrdeer|0 fnt
+|faint|p1a: Wyrdeer
+|
+|-heal|p2a: Vaporeon|78/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Cobalion|Cobalion, L80|180/277
+|turn|9
+|
+|move|p1a: Cobalion|Iron Head|p2a: Vaporeon
+|-resisted|p2a: Vaporeon
+|-damage|p2a: Vaporeon|66/100 par
+|cant|p2a: Vaporeon|flinch
+|
+|-heal|p1a: Cobalion|197/277|[from] item: Leftovers
+|-heal|p2a: Vaporeon|72/100 par|[from] item: Leftovers
+|upkeep
+|turn|10
+|
+|move|p1a: Cobalion|Iron Head|p2a: Vaporeon
+|-resisted|p2a: Vaporeon
+|-damage|p2a: Vaporeon|57/100 par
+|move|p2a: Vaporeon|Scald|p1a: Cobalion
+|-damage|p1a: Cobalion|77/277
+|-status|p1a: Cobalion|brn
+|
+|-heal|p1a: Cobalion|94/277 brn|[from] item: Leftovers
+|-heal|p2a: Vaporeon|63/100 par|[from] item: Leftovers
+|-damage|p1a: Cobalion|77/277 brn|[from] brn
+|upkeep
+|turn|11
+|
+|move|p1a: Cobalion|Iron Head|p2a: Vaporeon
+|-resisted|p2a: Vaporeon
+|-damage|p2a: Vaporeon|57/100 par
+|move|p2a: Vaporeon|Scald|p1a: Cobalion
+|-damage|p1a: Cobalion|0 fnt
+|faint|p1a: Cobalion
+|
+|-heal|p2a: Vaporeon|63/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Kricketune|Kricketune, L99, M|312/312
+|turn|12
+|
+|move|p1a: Kricketune|Knock Off|p2a: Vaporeon
+|-damage|p2a: Vaporeon|32/100 par
+|-enditem|p2a: Vaporeon|Leftovers|[from] move: Knock Off|[of] p1a: Kricketune
+|cant|p2a: Vaporeon|par
+|
+|upkeep
+|turn|13
+|
+|move|p1a: Kricketune|Knock Off|p2a: Vaporeon
+|-damage|p2a: Vaporeon|10/100 par
+|move|p2a: Vaporeon|Scald|p1a: Kricketune
+|-damage|p1a: Kricketune|192/312
+|-status|p1a: Kricketune|brn
+|
+|-damage|p1a: Kricketune|173/312 brn|[from] brn
+|upkeep
+|turn|14
+|
+|move|p1a: Kricketune|Knock Off|p2a: Vaporeon
+|-damage|p2a: Vaporeon|0 fnt
+|faint|p2a: Vaporeon
+|
+|-damage|p1a: Kricketune|154/312 brn|[from] brn
+|upkeep
+|
+|switch|p2a: Passimian|Passimian, L83, F|100/100
+|turn|15
+|
+|move|p2a: Passimian|Close Combat|p1a: Kricketune
+|-resisted|p1a: Kricketune
+|-damage|p1a: Kricketune|64/312 brn
+|-unboost|p2a: Passimian|def|1
+|-unboost|p2a: Passimian|spd|1
+|move|p1a: Kricketune|Knock Off|p2a: Passimian
+|-resisted|p2a: Passimian
+|-damage|p2a: Passimian|90/100
+|-enditem|p2a: Passimian|Choice Scarf|[from] move: Knock Off|[of] p1a: Kricketune
+|
+|-damage|p1a: Kricketune|45/312 brn|[from] brn
+|upkeep
+|turn|16
+|
+|move|p1a: Kricketune|Knock Off|p2a: Passimian
+|-resisted|p2a: Passimian
+|-damage|p2a: Passimian|83/100
+|move|p2a: Passimian|Close Combat|p1a: Kricketune
+|-resisted|p1a: Kricketune
+|-damage|p1a: Kricketune|0 fnt
+|-unboost|p2a: Passimian|def|1
+|-unboost|p2a: Passimian|spd|1
+|faint|p1a: Kricketune
+|
+|upkeep
+|
+|switch|p1a: Hatterene|Hatterene, L85, F|236/236
+|turn|17
+|
+|move|p2a: Passimian|Close Combat|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|202/236
+|-unboost|p2a: Passimian|def|1
+|-unboost|p2a: Passimian|spd|1
+|move|p1a: Hatterene|Psychic|p2a: Passimian
+|-supereffective|p2a: Passimian
+|-damage|p2a: Passimian|0 fnt
+|faint|p2a: Passimian
+|
+|upkeep
+|
+|switch|p2a: Pincurchin|Pincurchin, F|100/100
+|-fieldstart|move: Electric Terrain|[from] ability: Electric Surge|[of] p2a: Pincurchin
+|turn|18
+|
+|move|p1a: Hatterene|Psychic|p2a: Pincurchin
+|-damage|p2a: Pincurchin|56/100
+|move|p2a: Pincurchin|Thunderbolt|p1a: Hatterene
+|-damage|p1a: Hatterene|108/236
+|
+|-heal|p2a: Pincurchin|63/100|[from] item: Leftovers
+|upkeep
+|turn|19
+|
+|move|p1a: Hatterene|Psychic|p2a: Pincurchin
+|-damage|p2a: Pincurchin|18/100
+|move|p2a: Pincurchin|Thunderbolt|p1a: Hatterene
+|-damage|p1a: Hatterene|8/236
+|
+|-heal|p2a: Pincurchin|24/100|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p1a: Hatterene|Psychic|p2a: Pincurchin
+|-damage|p2a: Pincurchin|0 fnt
+|faint|p2a: Pincurchin
+|
+|upkeep
+|
+|switch|p2a: Sceptile|Sceptile, L87, M|100/100
+|turn|21
+|
+|move|p2a: Sceptile|Focus Blast|p1a: Hatterene|[miss]
+|-miss|p2a: Sceptile|p1a: Hatterene
+|move|p1a: Hatterene|Draining Kiss|p2a: Sceptile
+|-damage|p2a: Sceptile|73/100
+|-heal|p1a: Hatterene|62/236|[from] drain|[of] p2a: Sceptile
+|
+|upkeep
+|turn|22
+|
+|move|p2a: Sceptile|Focus Blast|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|43/236
+|-damage|p2a: Sceptile|63/100|[from] item: Life Orb
+|move|p1a: Hatterene|Psychic|p2a: Sceptile
+|-damage|p2a: Sceptile|17/100
+|
+|-fieldend|move: Electric Terrain
+|upkeep
+|turn|23
+|
+|move|p2a: Sceptile|Focus Blast|p1a: Hatterene
+|-resisted|p1a: Hatterene
+|-damage|p1a: Hatterene|25/236
+|-damage|p2a: Sceptile|7/100|[from] item: Life Orb
+|move|p1a: Hatterene|Psychic|p2a: Sceptile
+|-damage|p2a: Sceptile|0 fnt
+|faint|p2a: Sceptile
+|
+|upkeep
+|
+|switch|p2a: Heatran|Heatran, L79, M|100/100
+|-item|p2a: Heatran|Air Balloon
+|turn|24
+|
+|move|p2a: Heatran|Magma Storm|p1a: Hatterene
+|-damage|p1a: Hatterene|0 fnt
+|faint|p1a: Hatterene
+|
+|upkeep
+|
+|switch|p1a: Alomomola|Alomomola, L87, M|429/429 brn
+|turn|25
+|
+|move|p2a: Heatran|Magma Storm|p1a: Alomomola
+|-resisted|p1a: Alomomola
+|-damage|p1a: Alomomola|336/429 brn
+|-activate|p1a: Alomomola|move: Magma Storm|[of] p2a: Heatran
+|move|p1a: Alomomola|Scald|p2a: Heatran
+|-supereffective|p2a: Heatran
+|-damage|p2a: Heatran|68/100
+|-enditem|p2a: Heatran|Air Balloon
+|
+|-damage|p1a: Alomomola|310/429 brn|[from] brn
+|-damage|p1a: Alomomola|257/429 brn|[from] move: Magma Storm|[partiallytrapped]
+|upkeep
+|turn|26
+|
+|move|p2a: Heatran|Magma Storm|p1a: Alomomola
+|-resisted|p1a: Alomomola
+|-damage|p1a: Alomomola|170/429 brn
+|move|p1a: Alomomola|Scald|p2a: Heatran
+|-supereffective|p2a: Heatran
+|-damage|p2a: Heatran|30/100
+|
+|-damage|p1a: Alomomola|144/429 brn|[from] brn
+|-damage|p1a: Alomomola|91/429 brn|[from] move: Magma Storm|[partiallytrapped]
+|upkeep
+|turn|27
+|
+|-terastallize|p1a: Alomomola|Steel
+|move|p2a: Heatran|Magma Storm|p1a: Alomomola
+|-supereffective|p1a: Alomomola
+|-damage|p1a: Alomomola|0 fnt
+|faint|p1a: Alomomola
+|
+|upkeep
+|
+|switch|p1a: Volcanion|Volcanion, L79|255/255
+|turn|28
+|
+|move|p2a: Heatran|Magma Storm|p1a: Volcanion
+|-resisted|p1a: Volcanion
+|-damage|p1a: Volcanion|236/255
+|-activate|p1a: Volcanion|move: Magma Storm|[of] p2a: Heatran
+|move|p1a: Volcanion|Earth Power|p2a: Heatran
+|-supereffective|p2a: Heatran
+|-damage|p2a: Heatran|0 fnt
+|faint|p2a: Heatran
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

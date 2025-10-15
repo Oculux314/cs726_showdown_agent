@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22442</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22442<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22442|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Sableye|Sableye, L88, M|231/231
+|switch|p2a: Gouging Fire|Gouging Fire, L74|100/100
+|turn|1
+|
+|move|p1a: Sableye|Recover||[still]
+|-fail|p1a: Sableye|heal
+|move|p2a: Gouging Fire|Outrage|p1a: Sableye
+|-damage|p1a: Sableye|102/231
+|
+|-heal|p1a: Sableye|116/231|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|-terastallize|p1a: Sableye|Poison
+|move|p1a: Sableye|Encore|p2a: Gouging Fire
+|-start|p2a: Gouging Fire|Encore
+|move|p2a: Gouging Fire|Outrage|p1a: Sableye|[from] lockedmove
+|-damage|p1a: Sableye|1/231
+|
+|-heal|p1a: Sableye|15/231|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Gouging Fire|Outrage|p1a: Sableye|[from] lockedmove
+|-damage|p1a: Sableye|0 fnt
+|faint|p1a: Sableye
+|-start|p2a: Gouging Fire|confusion|[fatigue]
+|
+|upkeep
+|
+|switch|p1a: Magearna|Magearna, L77|250/250
+|turn|4
+|
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Magearna
+|-immune|p1a: Magearna
+|move|p1a: Magearna|Flash Cannon|p2a: Gouging Fire
+|-resisted|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|84/100
+|
+|-end|p2a: Gouging Fire|Encore
+|upkeep
+|turn|5
+|
+|-activate|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Magearna
+|-immune|p1a: Magearna
+|move|p1a: Magearna|Spikes|p2a: Gouging Fire
+|-sidestart|p2: t2_141537|Spikes
+|
+|upkeep
+|turn|6
+|
+|-end|p2a: Gouging Fire|confusion
+|move|p2a: Gouging Fire|Outrage|p1a: Magearna
+|-immune|p1a: Magearna
+|move|p1a: Magearna|Flash Cannon|p2a: Gouging Fire
+|-resisted|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|68/100
+|-unboost|p2a: Gouging Fire|spd|1
+|
+|upkeep
+|turn|7
+|
+|move|p2a: Gouging Fire|Outrage|p1a: Magearna
+|-immune|p1a: Magearna
+|move|p1a: Magearna|Flash Cannon|p2a: Gouging Fire
+|-resisted|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|43/100
+|
+|upkeep
+|turn|8
+|
+|switch|p1a: Miraidon|Miraidon, L65|238/238
+|-fieldstart|move: Electric Terrain|[from] ability: Hadron Engine|[of] p1a: Miraidon
+|move|p2a: Gouging Fire|Outrage|p1a: Miraidon
+|-supereffective|p1a: Miraidon
+|-damage|p1a: Miraidon|0 fnt
+|faint|p1a: Miraidon
+|
+|upkeep
+|
+|switch|p1a: Dusknoir|Dusknoir, L89, F|225/225
+|-item|p2a: Gouging Fire|Heavy-Duty Boots|[from] ability: Frisk|[of] p1a: Dusknoir
+|turn|9
+|
+|move|p1a: Dusknoir|Shadow Sneak|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|22/100
+|-damage|p1a: Dusknoir|203/225|[from] item: Life Orb
+|move|p2a: Gouging Fire|Outrage|p1a: Dusknoir|[from] lockedmove
+|-damage|p1a: Dusknoir|130/225
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Dusknoir|Shadow Sneak|p2a: Gouging Fire
+|-damage|p2a: Gouging Fire|0 fnt
+|faint|p2a: Gouging Fire
+|-end|p2a: Gouging Fire|Protosynthesis|[silent]
+|-damage|p1a: Dusknoir|108/225|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Koraidon|Koraidon, L64|100/100
+|-damage|p2a: Koraidon|88/100|[from] Spikes
+|-weather|SunnyDay|[from] ability: Orichalcum Pulse|[of] p2a: Koraidon
+|-activate|p2a: Koraidon|Orichalcum Pulse|[source]
+|turn|11
+|
+|move|p1a: Dusknoir|Shadow Sneak|p2a: Koraidon
+|-damage|p2a: Koraidon|59/100
+|-damage|p1a: Dusknoir|86/225|[from] item: Life Orb
+|move|p2a: Koraidon|Outrage|p1a: Dusknoir
+|-damage|p1a: Dusknoir|0 fnt
+|faint|p1a: Dusknoir
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Mesprit|Mesprit, L85|275/275
+|turn|12
+|
+|move|p2a: Koraidon|Outrage|p1a: Mesprit|[from] lockedmove
+|-damage|p1a: Mesprit|100/275
+|-start|p2a: Koraidon|confusion|[fatigue]
+|move|p1a: Mesprit|Psychic Noise|p2a: Koraidon
+|-supereffective|p2a: Koraidon
+|-damage|p2a: Koraidon|0 fnt
+|faint|p2a: Koraidon
+|
+|-weather|SunnyDay|[upkeep]
+|-heal|p1a: Mesprit|117/275|[from] item: Leftovers
+|-fieldend|move: Electric Terrain
+|upkeep
+|
+|switch|p2a: Swanna|Swanna, L89, M|100/100
+|turn|13
+|
+|switch|p1a: Hariyama|Hariyama, L87, M|392/392
+|move|p2a: Swanna|Brave Bird|p1a: Hariyama
+|-supereffective|p1a: Hariyama
+|-damage|p1a: Hariyama|56/392
+|-damage|p2a: Swanna|61/100|[from] Recoil
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|14
+|
+|move|p1a: Hariyama|Bullet Punch|p2a: Swanna
+|-resisted|p2a: Swanna
+|-damage|p2a: Swanna|53/100
+|move|p2a: Swanna|Brave Bird|p1a: Hariyama
+|-supereffective|p1a: Hariyama
+|-damage|p1a: Hariyama|0 fnt
+|faint|p1a: Hariyama
+|-damage|p2a: Swanna|47/100|[from] Recoil
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|switch|p1a: Magearna|Magearna, L77|250/250
+|turn|15
+|
+|switch|p1a: Mesprit|Mesprit, L85|117/275
+|move|p2a: Swanna|Brave Bird|p1a: Mesprit
+|-damage|p1a: Mesprit|2/275
+|-damage|p2a: Swanna|33/100|[from] Recoil
+|
+|-weather|none
+|-heal|p1a: Mesprit|19/275|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p2a: Swanna|Brave Bird|p1a: Mesprit
+|-damage|p1a: Mesprit|0 fnt
+|faint|p1a: Mesprit
+|-damage|p2a: Swanna|31/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Magearna|Magearna, L77|250/250
+|turn|17
+|
+|move|p2a: Swanna|Brave Bird|p1a: Magearna
+|-resisted|p1a: Magearna
+|-damage|p1a: Magearna|192/250
+|-damage|p2a: Swanna|24/100|[from] Recoil
+|move|p1a: Magearna|Flash Cannon|p2a: Swanna
+|-resisted|p2a: Swanna
+|-damage|p2a: Swanna|3/100
+|
+|-heal|p1a: Magearna|207/250|[from] item: Leftovers
+|upkeep
+|turn|18
+|
+|move|p2a: Swanna|Brave Bird|p1a: Magearna
+|-resisted|p1a: Magearna
+|-damage|p1a: Magearna|153/250
+|-damage|p2a: Swanna|0 fnt|[from] Recoil
+|faint|p2a: Swanna
+|-ability|p1a: Magearna|Soul-Heart|boost
+|-boost|p1a: Magearna|spa|1
+|move|p1a: Magearna|Flash Cannon|p2: Swanna|[notarget]
+|-fail|p1a: Magearna
+|
+|-heal|p1a: Magearna|168/250|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Victreebel|Victreebel, L90, F|100/100
+|-damage|p2a: Victreebel|88/100|[from] Spikes
+|turn|19
+|
+|move|p2a: Victreebel|Power Whip|p1a: Magearna
+|-resisted|p1a: Magearna
+|-damage|p1a: Magearna|77/250
+|-damage|p2a: Victreebel|78/100|[from] item: Life Orb
+|move|p1a: Magearna|Flash Cannon|p2a: Victreebel
+|-damage|p2a: Victreebel|25/100
+|-unboost|p2a: Victreebel|spd|1
+|
+|-heal|p1a: Magearna|92/250|[from] item: Leftovers
+|upkeep
+|turn|20
+|
+|move|p2a: Victreebel|Power Whip|p1a: Magearna
+|-resisted|p1a: Magearna
+|-damage|p1a: Magearna|0 fnt
+|faint|p1a: Magearna
+|-damage|p2a: Victreebel|15/100|[from] item: Life Orb
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

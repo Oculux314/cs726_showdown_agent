@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22395</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22395<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22395|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Landorus|Landorus, L75, M|257/257
+|switch|p2a: Cobalion|Cobalion, L80|100/100
+|turn|1
+|
+|move|p2a: Cobalion|Aura Sphere|p1a: Landorus
+|-resisted|p1a: Landorus
+|-damage|p1a: Landorus|215/257
+|move|p1a: Landorus|Focus Blast|p2a: Cobalion
+|-supereffective|p2a: Cobalion
+|-damage|p2a: Cobalion|0 fnt
+|faint|p2a: Cobalion
+|
+|upkeep
+|
+|switch|p2a: Scovillain|Scovillain, L91, M|100/100
+|turn|2
+|
+|move|p1a: Landorus|Stealth Rock|p2a: Scovillain
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|move|p2a: Scovillain|Fire Blast|p1a: Landorus
+|-damage|p1a: Landorus|47/257
+|
+|upkeep
+|turn|3
+|
+|move|p1a: Landorus|Earth Power|p2a: Scovillain
+|-damage|p2a: Scovillain|32/100
+|move|p2a: Scovillain|Fire Blast|p1a: Landorus|[miss]
+|-miss|p2a: Scovillain|p1a: Landorus
+|
+|upkeep
+|turn|4
+|
+|switch|p1a: Empoleon|Empoleon, L84, M|278/278
+|move|p2a: Scovillain|Fire Blast|p1a: Empoleon
+|-damage|p1a: Empoleon|133/278
+|
+|-heal|p1a: Empoleon|150/278|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|switch|p1a: Magmortar|Magmortar, L88, F|275/275
+|move|p2a: Scovillain|Fire Blast|p1a: Magmortar|[miss]
+|-miss|p2a: Scovillain|p1a: Magmortar
+|
+|upkeep
+|turn|6
+|
+|move|p1a: Magmortar|Thunderbolt|p2a: Scovillain
+|-resisted|p2a: Scovillain
+|-damage|p2a: Scovillain|15/100
+|move|p2a: Scovillain|Fire Blast|p1a: Magmortar
+|-resisted|p1a: Magmortar
+|-damage|p1a: Magmortar|207/275
+|
+|upkeep
+|turn|7
+|
+|move|p1a: Magmortar|Thunderbolt|p2a: Scovillain
+|-resisted|p2a: Scovillain
+|-damage|p2a: Scovillain|0 fnt
+|faint|p2a: Scovillain
+|
+|upkeep
+|
+|switch|p2a: Honchkrow|Honchkrow, L86, M|100/100
+|turn|8
+|
+|move|p1a: Magmortar|Thunderbolt|p2a: Honchkrow
+|-supereffective|p2a: Honchkrow
+|-damage|p2a: Honchkrow|29/100
+|move|p2a: Honchkrow|Brave Bird|p1a: Magmortar
+|-damage|p1a: Magmortar|23/275
+|-damage|p2a: Honchkrow|9/100|[from] Recoil
+|
+|upkeep
+|turn|9
+|
+|-terastallize|p1a: Magmortar|Water
+|move|p1a: Magmortar|Taunt|p2a: Honchkrow
+|-start|p2a: Honchkrow|move: Taunt
+|move|p2a: Honchkrow|Brave Bird|p1a: Magmortar
+|-damage|p1a: Magmortar|0 fnt
+|faint|p1a: Magmortar
+|-ability|p2a: Honchkrow|Moxie|boost
+|-boost|p2a: Honchkrow|atk|1
+|-damage|p2a: Honchkrow|7/100|[from] Recoil
+|
+|upkeep
+|
+|switch|p1a: Iron Jugulis|Iron Jugulis, L78|275/275
+|turn|10
+|
+|move|p1a: Iron Jugulis|Dark Pulse|p2a: Honchkrow
+|-resisted|p2a: Honchkrow
+|-damage|p2a: Honchkrow|0 fnt
+|faint|p2a: Honchkrow
+|
+|upkeep
+|
+|switch|p2a: Gastrodon|Gastrodon-East, L86, F|100/100
+|-damage|p2a: Gastrodon|94/100|[from] Stealth Rock
+|turn|11
+|
+|move|p1a: Iron Jugulis|Dark Pulse|p2a: Gastrodon
+|-damage|p2a: Gastrodon|64/100
+|move|p2a: Gastrodon|Earthquake|p1a: Iron Jugulis
+|-immune|p1a: Iron Jugulis
+|
+|-heal|p2a: Gastrodon|70/100|[from] item: Leftovers
+|upkeep
+|turn|12
+|
+|-end|p1a: Iron Jugulis|Quark Drive|[silent]
+|switch|p1a: Empoleon|Empoleon, L84, M|150/278
+|move|p2a: Gastrodon|Earthquake|p1a: Empoleon
+|-supereffective|p1a: Empoleon
+|-damage|p1a: Empoleon|0 fnt
+|faint|p1a: Empoleon
+|
+|-heal|p2a: Gastrodon|76/100|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Mismagius|Mismagius, L86, F|243/243
+|turn|13
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|183/243
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|-heal|p1a: Mismagius|198/243|[from] item: Leftovers
+|-heal|p2a: Gastrodon|82/100|[from] item: Leftovers
+|upkeep
+|turn|14
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|-heal|p1a: Mismagius|213/243|[from] item: Leftovers
+|-heal|p2a: Gastrodon|88/100|[from] item: Leftovers
+|upkeep
+|turn|15
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|-heal|p1a: Mismagius|228/243|[from] item: Leftovers
+|-heal|p2a: Gastrodon|94/100|[from] item: Leftovers
+|upkeep
+|turn|16
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|-heal|p1a: Mismagius|243/243|[from] item: Leftovers
+|-heal|p2a: Gastrodon|100/100|[from] item: Leftovers
+|upkeep
+|turn|17
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Gastrodon|Earthquake|p1a: Mismagius
+|-immune|p1a: Mismagius|[from] ability: Levitate
+|
+|upkeep
+|turn|19
+|
+|switch|p1a: Lurantis|Lurantis, L87, F|264/264
+|move|p2a: Gastrodon|Earthquake|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|213/264
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Lurantis|Superpower|p2a: Gastrodon
+|-damage|p2a: Gastrodon|67/100
+|-boost|p1a: Lurantis|atk|1
+|-boost|p1a: Lurantis|def|1
+|move|p2a: Gastrodon|Earthquake|p1a: Lurantis
+|-resisted|p1a: Lurantis
+|-damage|p1a: Lurantis|182/264
+|
+|-heal|p2a: Gastrodon|73/100|[from] item: Leftovers
+|upkeep
+|turn|21
+|
+|move|p1a: Lurantis|Leaf Storm|p2a: Gastrodon
+|-supereffective|p2a: Gastrodon
+|-crit|p2a: Gastrodon
+|-damage|p2a: Gastrodon|0 fnt
+|-boost|p1a: Lurantis|spa|2
+|faint|p2a: Gastrodon
+|
+|upkeep
+|
+|switch|p2a: Wigglytuff|Wigglytuff, L96, F|100/100
+|-damage|p2a: Wigglytuff|88/100|[from] Stealth Rock
+|turn|22
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Lurantis
+|-damage|p1a: Lurantis|119/264
+|move|p1a: Lurantis|Superpower|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|43/100
+|-boost|p1a: Lurantis|atk|1
+|-boost|p1a: Lurantis|def|1
+|
+|-heal|p2a: Wigglytuff|49/100|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|move|p2a: Wigglytuff|Alluring Voice|p1a: Lurantis
+|-damage|p1a: Lurantis|58/264
+|move|p1a: Lurantis|Leaf Storm|p2a: Wigglytuff
+|-damage|p2a: Wigglytuff|0 fnt
+|-boost|p1a: Lurantis|spa|2
+|faint|p2a: Wigglytuff
+|
+|upkeep
+|
+|switch|p2a: Kyurem|Kyurem-White, L73|100/100
+|-damage|p2a: Kyurem|76/100|[from] Stealth Rock
+|-ability|p2a: Kyurem|Turboblaze
+|turn|24
+|
+|move|p2a: Kyurem|Draco Meteor|p1a: Lurantis
+|-damage|p1a: Lurantis|0 fnt
+|-unboost|p2a: Kyurem|spa|2
+|faint|p1a: Lurantis
+|
+|upkeep
+|
+|switch|p1a: Mismagius|Mismagius, L86, F|243/243
+|turn|25
+|
+|move|p1a: Mismagius|Tera Blast|p2a: Kyurem
+|-damage|p2a: Kyurem|55/100
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius|[miss]
+|-miss|p2a: Kyurem|p1a: Mismagius
+|
+|upkeep
+|turn|26
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|183/243
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-end|p1a: Mismagius|Substitute
+|-unboost|p2a: Kyurem|spa|2
+|
+|-heal|p1a: Mismagius|198/243|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|138/243
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-end|p1a: Mismagius|Substitute
+|-unboost|p2a: Kyurem|spa|2
+|
+|-heal|p1a: Mismagius|153/243|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|93/243
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-activate|p1a: Mismagius|move: Substitute|[damage]
+|
+|-heal|p1a: Mismagius|108/243|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-crit|p1a: Mismagius
+|-end|p1a: Mismagius|Substitute
+|
+|-heal|p1a: Mismagius|123/243|[from] item: Leftovers
+|upkeep
+|turn|30
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|63/243
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-activate|p1a: Mismagius|move: Substitute|[damage]
+|
+|-heal|p1a: Mismagius|78/243|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|move|p2a: Kyurem|Draco Meteor|p1a: Mismagius
+|-end|p1a: Mismagius|Substitute
+|
+|-heal|p1a: Mismagius|93/243|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-start|p1a: Mismagius|Substitute
+|-damage|p1a: Mismagius|33/243
+|-activate|p2a: Kyurem|move: Struggle
+|move|p2a: Kyurem|Struggle|p1a: Mismagius
+|-activate|p1a: Mismagius|move: Substitute|[damage]
+|-damage|p2a: Kyurem|30/100|[from] recoil
+|
+|-heal|p1a: Mismagius|48/243|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p1a: Mismagius|Substitute|p1a: Mismagius
+|-fail|p1a: Mismagius|move: Substitute
+|-activate|p2a: Kyurem|move: Struggle
+|move|p2a: Kyurem|Struggle|p1a: Mismagius
+|-end|p1a: Mismagius|Substitute
+|-damage|p2a: Kyurem|4/100|[from] recoil
+|
+|-heal|p1a: Mismagius|63/243|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Mismagius|Shadow Ball|p2a: Kyurem
+|-damage|p2a: Kyurem|0 fnt
+|faint|p2a: Kyurem
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<!-- version 1 -->
+<title>battle-gen9randombattle-22455</title>
+<style>
+    html,
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 12px 0;
+    }
+
+    .battle-log {
+        font-family: Verdana, sans-serif;
+        font-size: 10pt;
+    }
+
+    .battle-log-inline {
+        border: 1px solid #AAAAAA;
+        background: #EEF2F5;
+        color: black;
+        max-width: 640px;
+        margin: 0 auto 80px;
+        padding-bottom: 5px;
+    }
+
+    .battle-log .inner {
+        padding: 4px 8px 0px 8px;
+    }
+
+    .battle-log .inner-preempt {
+        padding: 0 8px 4px 8px;
+    }
+
+    .battle-log .inner-after {
+        margin-top: 0.5em;
+    }
+
+    .battle-log h2 {
+        margin: 0.5em -8px;
+        padding: 4px 8px;
+        border: 1px solid #AAAAAA;
+        background: #E0E7EA;
+        border-left: 0;
+        border-right: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 13pt;
+    }
+
+    .backprop {
+        top: 0;
+    }
+
+    .battle-log .chat {
+        vertical-align: middle;
+        padding: 3px 0 3px 0;
+        font-size: 8pt;
+    }
+
+    .battle-log .chat strong {
+        color: #40576A;
+    }
+
+    .battle-log .chat em {
+        padding: 1px 4px 1px 3px;
+        color: #000000;
+        font-style: normal;
+    }
+
+    .chat.mine {
+        background: rgba(0, 0, 0, 0.05);
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .spoiler {
+        color: #BBBBBB;
+        background: #BBBBBB;
+        padding: 0px 3px;
+    }
+
+    .spoiler:hover,
+    .spoiler:active,
+    .spoiler-shown {
+        color: #000000;
+        background: #E2E2E2;
+        padding: 0px 3px;
+    }
+
+    .spoiler a {
+        color: #BBBBBB;
+    }
+
+    .spoiler:hover a,
+    .spoiler:active a,
+    .spoiler-shown a {
+        color: #2288CC;
+    }
+
+    .chat code,
+    .chat .spoiler:hover code,
+    .chat .spoiler:active code,
+    .chat .spoiler-shown code {
+        border: 1px solid #C0C0C0;
+        background: #EEEEEE;
+        color: black;
+        padding: 0 2px;
+    }
+
+    .chat .spoiler code {
+        border: 1px solid #CCCCCC;
+        background: #CCCCCC;
+        color: #CCCCCC;
+    }
+
+    .battle-log .rated {
+        padding: 3px 4px;
+    }
+
+    .battle-log .rated strong {
+        color: white;
+        background: #89A;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    .spacer {
+        margin-top: 0.5em;
+    }
+
+    .message-announce {
+        background: #6688AA;
+        color: white;
+        padding: 1px 4px 2px;
+    }
+
+    .message-announce a,
+    .broadcast-green a,
+    .broadcast-blue a,
+    .broadcast-red a {
+        color: #DDEEFF;
+    }
+
+    .broadcast-green {
+        background-color: #559955;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .broadcast-blue {
+        background-color: #6688AA;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .infobox {
+        border: 1px solid #6688AA;
+        padding: 2px 4px;
+    }
+
+    .infobox-limited {
+        max-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .broadcast-red {
+        background-color: #AA5544;
+        color: white;
+        padding: 2px 4px;
+    }
+
+    .message-learn-canlearn {
+        font-weight: bold;
+        color: #228822;
+        text-decoration: underline;
+    }
+
+    .message-learn-cannotlearn {
+        font-weight: bold;
+        color: #CC2222;
+        text-decoration: underline;
+    }
+
+    .message-effect-weak {
+        font-weight: bold;
+        color: #CC2222;
+    }
+
+    .message-effect-resist {
+        font-weight: bold;
+        color: #6688AA;
+    }
+
+    .message-effect-immune {
+        font-weight: bold;
+        color: #666666;
+    }
+
+    .message-learn-list {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .message-throttle-notice,
+    .message-error {
+        color: #992222;
+    }
+
+    .message-overflow,
+    .chat small.message-overflow {
+        font-size: 0pt;
+    }
+
+    .message-overflow::before {
+        font-size: 9pt;
+        content: '...';
+    }
+
+    .subtle {
+        color: #3A4A66;
+    }
+</style>
+<div class="wrapper replay-wrapper" style="max-width:1180px;margin:0 auto">
+    <input type="hidden" name="replayid" value="unregisteredserver-gen8randombattle-320064" />
+    <div class="battle"></div>
+    <div class="battle-log"></div>
+    <div class="replay-controls"></div>
+    <div class="replay-controls-2"></div>
+    <h1 style="font-weight:normal;text-align:center"><strong>poke-env battle replay</strong><br />battle-gen9randombattle-22455<br /><a
+            href="http://pokemonshowdown.com/users/randomplayer1" class="subtle" target="_blank">t1_141537</a>
+        vs. <a href="http://pokemonshowdown.com/users/randomplayer2" class="subtle"
+            target="_blank">t2_141537</a></h1>
+    <script type="text/plain" class="battle-log-data">
+    >battle-gen9randombattle-22455|init|battle
+|title|t1_141537 vs. t2_141537
+|j|☆t1_141537
+|j|☆t2_141537
+|gametype|singles
+|player|p1|t1_141537|2|
+|player|p2|t2_141537|170|
+|gen|9
+|tier|[Gen 9] Random Battle
+|rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
+|
+|teamsize|p1|6
+|teamsize|p2|6
+|start
+|switch|p1a: Chansey|Chansey, L85, F|564/564
+|switch|p2a: Magearna|Magearna-Original, L77|100/100
+|turn|1
+|
+|-terastallize|p1a: Chansey|Fairy
+|move|p2a: Magearna|Fleur Cannon|p1a: Chansey
+|-damage|p1a: Chansey|473/564
+|-unboost|p2a: Magearna|spa|2
+|move|p1a: Chansey|Seismic Toss|p2a: Magearna
+|-damage|p2a: Magearna|66/100
+|
+|-heal|p2a: Magearna|72/100|[from] item: Leftovers
+|upkeep
+|turn|2
+|
+|move|p2a: Magearna|Fleur Cannon|p1a: Chansey
+|-damage|p1a: Chansey|430/564
+|-unboost|p2a: Magearna|spa|2
+|move|p1a: Chansey|Stealth Rock|p2a: Magearna
+|-sidestart|p2: t2_141537|move: Stealth Rock
+|
+|-heal|p2a: Magearna|78/100|[from] item: Leftovers
+|upkeep
+|turn|3
+|
+|move|p2a: Magearna|Fleur Cannon|p1a: Chansey
+|-damage|p1a: Chansey|403/564
+|-unboost|p2a: Magearna|spa|2
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|-heal|p2a: Magearna|84/100|[from] item: Leftovers
+|upkeep
+|turn|4
+|
+|switch|p1a: Illumise|Illumise, L91, F|266/266
+|move|p2a: Magearna|Fleur Cannon|p1a: Illumise
+|-damage|p1a: Illumise|227/266
+|
+|-heal|p2a: Magearna|90/100|[from] item: Leftovers
+|upkeep
+|turn|5
+|
+|move|p1a: Illumise|Encore|p2a: Magearna
+|-start|p2a: Magearna|Encore
+|move|p2a: Magearna|Fleur Cannon|p1a: Illumise
+|-damage|p1a: Illumise|191/266
+|
+|-heal|p2a: Magearna|96/100|[from] item: Leftovers
+|upkeep
+|turn|6
+|
+|move|p1a: Illumise|Encore||[still]
+|-fail|p1a: Illumise
+|move|p2a: Magearna|Fleur Cannon|p1a: Illumise
+|-damage|p1a: Illumise|157/266
+|
+|-heal|p2a: Magearna|100/100|[from] item: Leftovers
+|upkeep
+|turn|7
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Fleur Cannon|p1a: Illumise|[miss]
+|-miss|p2a: Magearna|p1a: Illumise
+|
+|-end|p2a: Magearna|Encore
+|upkeep
+|turn|8
+|
+|move|p1a: Illumise|Encore|p2a: Magearna
+|-start|p2a: Magearna|Encore
+|move|p2a: Magearna|Fleur Cannon|p1a: Illumise
+|-damage|p1a: Illumise|233/266
+|
+|-end|p2a: Magearna|Encore
+|upkeep
+|turn|9
+|
+|move|p1a: Illumise|Encore||[still]
+|-fail|p1a: Illumise
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|212/266
+|
+|upkeep
+|turn|10
+|
+|move|p1a: Illumise|Encore|p2a: Magearna
+|-start|p2a: Magearna|Encore
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|191/266
+|
+|upkeep
+|turn|11
+|
+|move|p1a: Illumise|Encore||[still]
+|-fail|p1a: Illumise
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|169/266
+|
+|upkeep
+|turn|12
+|
+|move|p1a: Illumise|Thunder Wave|p2a: Magearna
+|-status|p2a: Magearna|par
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|148/266
+|
+|-end|p2a: Magearna|Encore
+|upkeep
+|turn|13
+|
+|move|p1a: Illumise|Encore|p2a: Magearna
+|-start|p2a: Magearna|Encore
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|127/266
+|-unboost|p1a: Illumise|spd|1
+|
+|upkeep
+|turn|14
+|
+|move|p1a: Illumise|Encore||[still]
+|-fail|p1a: Illumise
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|96/266
+|
+|upkeep
+|turn|15
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|229/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-crit|p1a: Illumise
+|-damage|p1a: Illumise|49/266
+|
+|-end|p2a: Magearna|Encore
+|upkeep
+|turn|16
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|182/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|148/266
+|
+|upkeep
+|turn|17
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|235/266
+|
+|upkeep
+|turn|18
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|235/266
+|
+|upkeep
+|turn|19
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|235/266
+|
+|upkeep
+|turn|20
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|233/266
+|
+|upkeep
+|turn|21
+|
+|move|p1a: Illumise|Roost|p1a: Illumise
+|-heal|p1a: Illumise|266/266
+|-singleturn|p1a: Illumise|move: Roost
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|232/266
+|-unboost|p1a: Illumise|spd|1
+|
+|upkeep
+|turn|22
+|
+|move|p1a: Illumise|Bug Buzz|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|92/100 par
+|-unboost|p2a: Magearna|spd|1
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|192/266
+|
+|-heal|p2a: Magearna|98/100 par|[from] item: Leftovers
+|upkeep
+|turn|23
+|
+|switch|p1a: Ampharos|Ampharos, L88, F|302/302
+|cant|p2a: Magearna|par
+|
+|-heal|p2a: Magearna|100/100 par|[from] item: Leftovers
+|upkeep
+|turn|24
+|
+|switch|p1a: Illumise|Illumise, L91, F|192/266
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-crit|p1a: Illumise
+|-damage|p1a: Illumise|63/266
+|
+|upkeep
+|turn|25
+|
+|move|p1a: Illumise|Bug Buzz|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|89/100 par
+|move|p2a: Magearna|Flash Cannon|p1a: Illumise
+|-damage|p1a: Illumise|42/266
+|
+|-heal|p2a: Magearna|95/100 par|[from] item: Leftovers
+|upkeep
+|turn|26
+|
+|move|p1a: Illumise|Bug Buzz|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|83/100 par
+|move|p2a: Magearna|Aura Sphere|p1a: Illumise
+|-resisted|p1a: Illumise
+|-damage|p1a: Illumise|35/266
+|
+|-heal|p2a: Magearna|89/100 par|[from] item: Leftovers
+|upkeep
+|turn|27
+|
+|move|p1a: Illumise|Bug Buzz|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|78/100 par
+|move|p2a: Magearna|Aura Sphere|p1a: Illumise
+|-resisted|p1a: Illumise
+|-damage|p1a: Illumise|28/266
+|
+|-heal|p2a: Magearna|84/100 par|[from] item: Leftovers
+|upkeep
+|turn|28
+|
+|switch|p1a: Arbok|Arbok, L87, F|246/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Magearna|atk|1
+|move|p2a: Magearna|Aura Sphere|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|239/246
+|
+|-heal|p2a: Magearna|90/100 par|[from] item: Leftovers
+|upkeep
+|turn|29
+|
+|switch|p1a: Illumise|Illumise, L91, F|28/266
+|move|p2a: Magearna|Aura Sphere|p1a: Illumise
+|-resisted|p1a: Illumise
+|-crit|p1a: Illumise
+|-damage|p1a: Illumise|0 fnt
+|faint|p1a: Illumise
+|-ability|p2a: Magearna|Soul-Heart|boost
+|-boost|p2a: Magearna|spa|1
+|
+|-heal|p2a: Magearna|96/100 par|[from] item: Leftovers
+|upkeep
+|
+|switch|p1a: Palkia|Palkia, L75|259/259
+|-ability|p1a: Palkia|Pressure
+|turn|30
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Magearna
+|-damage|p2a: Magearna|27/100 par
+|move|p2a: Magearna|Aura Sphere|p1a: Palkia
+|-damage|p1a: Palkia|242/259
+|
+|-heal|p2a: Magearna|33/100 par|[from] item: Leftovers
+|upkeep
+|turn|31
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Magearna|[miss]
+|-miss|p1a: Palkia|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Palkia
+|-damage|p1a: Palkia|226/259
+|
+|-heal|p2a: Magearna|39/100 par|[from] item: Leftovers
+|upkeep
+|turn|32
+|
+|switch|p1a: Ampharos|Ampharos, L88, F|302/302
+|move|p2a: Magearna|Aura Sphere|p1a: Ampharos
+|-damage|p1a: Ampharos|290/302
+|
+|-heal|p2a: Magearna|45/100 par|[from] item: Leftovers
+|upkeep
+|turn|33
+|
+|move|p2a: Magearna|Aura Sphere|p1a: Ampharos
+|-damage|p1a: Ampharos|279/302
+|move|p1a: Ampharos|Dragon Tail|p2a: Magearna
+|-immune|p2a: Magearna
+|
+|-heal|p2a: Magearna|51/100 par|[from] item: Leftovers
+|upkeep
+|turn|34
+|
+|move|p1a: Ampharos|Dazzling Gleam|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|33/100 par
+|move|p2a: Magearna|Aura Sphere|p1a: Ampharos
+|-damage|p1a: Ampharos|267/302
+|
+|-heal|p2a: Magearna|39/100 par|[from] item: Leftovers
+|upkeep
+|turn|35
+|
+|move|p2a: Magearna|Aura Sphere|p1a: Ampharos
+|-damage|p1a: Ampharos|255/302
+|move|p1a: Ampharos|Dragon Tail|p2a: Magearna
+|-immune|p2a: Magearna
+|
+|-heal|p2a: Magearna|45/100 par|[from] item: Leftovers
+|upkeep
+|turn|36
+|
+|move|p2a: Magearna|Aura Sphere|p1a: Ampharos
+|-damage|p1a: Ampharos|244/302
+|move|p1a: Ampharos|Dragon Tail|p2a: Magearna
+|-immune|p2a: Magearna
+|
+|-heal|p2a: Magearna|51/100 par|[from] item: Leftovers
+|upkeep
+|turn|37
+|
+|switch|p1a: Palkia|Palkia, L75|226/259
+|-ability|p1a: Palkia|Pressure
+|move|p2a: Magearna|Aura Sphere|p1a: Palkia
+|-damage|p1a: Palkia|209/259
+|
+|-heal|p2a: Magearna|57/100 par|[from] item: Leftovers
+|upkeep
+|turn|38
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Magearna|[miss]
+|-miss|p1a: Palkia|p2a: Magearna
+|move|p2a: Magearna|Aura Sphere|p1a: Palkia
+|-damage|p1a: Palkia|194/259
+|
+|-heal|p2a: Magearna|63/100 par|[from] item: Leftovers
+|upkeep
+|turn|39
+|
+|switch|p1a: Arbok|Arbok, L87, F|239/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Magearna|atk|1
+|move|p2a: Magearna|Aura Sphere|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|230/246
+|
+|-heal|p2a: Magearna|69/100 par|[from] item: Leftovers
+|upkeep
+|turn|40
+|
+|move|p1a: Arbok|Glare|p2a: Magearna
+|-fail|p2a: Magearna|par
+|move|p2a: Magearna|Aura Sphere|p1a: Arbok
+|-resisted|p1a: Arbok
+|-crit|p1a: Arbok
+|-damage|p1a: Arbok|180/246
+|
+|-heal|p2a: Magearna|75/100 par|[from] item: Leftovers
+|upkeep
+|turn|41
+|
+|switch|p1a: Appletun|Appletun, L92, F|352/352
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|81/100 par|[from] item: Leftovers
+|upkeep
+|turn|42
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|334/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|87/100 par|[from] item: Leftovers
+|upkeep
+|turn|43
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-crit|p1a: Appletun
+|-damage|p1a: Appletun|271/352
+|
+|-heal|p1a: Appletun|293/352|[from] item: Leftovers
+|-heal|p2a: Magearna|93/100 par|[from] item: Leftovers
+|upkeep
+|turn|44
+|
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|352/352
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|99/100 par|[from] item: Leftovers
+|upkeep
+|turn|45
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|100/100 par|[from] item: Leftovers
+|upkeep
+|turn|46
+|
+|move|p1a: Appletun|Apple Acid|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|75/100 par
+|-unboost|p2a: Magearna|spd|1
+|cant|p2a: Magearna|par
+|
+|-heal|p2a: Magearna|81/100 par|[from] item: Leftovers
+|upkeep
+|turn|47
+|
+|move|p1a: Appletun|Apple Acid|p2a: Magearna
+|-resisted|p2a: Magearna
+|-damage|p2a: Magearna|47/100 par
+|-unboost|p2a: Magearna|spd|1
+|cant|p2a: Magearna|par
+|
+|-heal|p2a: Magearna|53/100 par|[from] item: Leftovers
+|upkeep
+|turn|48
+|
+|switch|p1a: Chansey|Chansey, L85, F, tera:Fairy|564/564
+|move|p2a: Magearna|Aura Sphere|p1a: Chansey
+|-resisted|p1a: Chansey
+|-damage|p1a: Chansey|559/564
+|
+|-heal|p2a: Magearna|59/100 par|[from] item: Leftovers
+|upkeep
+|turn|49
+|
+|move|p1a: Chansey|Seismic Toss|p2a: Magearna
+|-damage|p2a: Magearna|25/100 par
+|move|p2a: Magearna|Aura Sphere|p1a: Chansey
+|-resisted|p1a: Chansey
+|-damage|p1a: Chansey|554/564
+|
+|-heal|p2a: Magearna|31/100 par|[from] item: Leftovers
+|upkeep
+|turn|50
+|
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|move|p2a: Magearna|Aura Sphere|p1a: Chansey
+|-resisted|p1a: Chansey
+|-damage|p1a: Chansey|559/564
+|
+|-heal|p2a: Magearna|37/100 par|[from] item: Leftovers
+|upkeep
+|turn|51
+|
+|switch|p1a: Ampharos|Ampharos, L88, F|244/302
+|cant|p2a: Magearna|par
+|
+|-heal|p2a: Magearna|43/100 par|[from] item: Leftovers
+|upkeep
+|turn|52
+|
+|switch|p1a: Appletun|Appletun, L92, F|352/352
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|336/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|49/100 par|[from] item: Leftovers
+|upkeep
+|turn|53
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|55/100 par|[from] item: Leftovers
+|upkeep
+|turn|54
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|61/100 par|[from] item: Leftovers
+|upkeep
+|turn|55
+|
+|move|p1a: Appletun|Recover||[still]
+|-fail|p1a: Appletun|heal
+|move|p2a: Magearna|Aura Sphere|p1a: Appletun
+|-damage|p1a: Appletun|335/352
+|
+|-heal|p1a: Appletun|352/352|[from] item: Leftovers
+|-heal|p2a: Magearna|67/100 par|[from] item: Leftovers
+|upkeep
+|turn|56
+|
+|switch|p1a: Palkia|Palkia, L75|194/259
+|-ability|p1a: Palkia|Pressure
+|move|p2a: Magearna|Aura Sphere|p1a: Palkia
+|-damage|p1a: Palkia|178/259
+|
+|-heal|p2a: Magearna|73/100 par|[from] item: Leftovers
+|upkeep
+|turn|57
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Magearna
+|-damage|p2a: Magearna|0 fnt
+|faint|p2a: Magearna
+|
+|upkeep
+|
+|switch|p2a: Eiscue|Eiscue, L88, M|100/100
+|-damage|p2a: Eiscue|76/100|[from] Stealth Rock
+|turn|58
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Eiscue
+|-damage|p2a: Eiscue|32/100
+|-enditem|p2a: Eiscue|Sitrus Berry|[eat]
+|-heal|p2a: Eiscue|57/100|[from] item: Sitrus Berry
+|move|p2a: Eiscue|Liquidation|p1a: Palkia
+|-resisted|p1a: Palkia
+|-damage|p1a: Palkia|164/259
+|
+|upkeep
+|turn|59
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Eiscue
+|-damage|p2a: Eiscue|7/100
+|move|p2a: Eiscue|Liquidation|p1a: Palkia
+|-resisted|p1a: Palkia
+|-damage|p1a: Palkia|150/259
+|
+|upkeep
+|turn|60
+|
+|move|p1a: Palkia|Hydro Pump|p2a: Eiscue
+|-crit|p2a: Eiscue
+|-damage|p2a: Eiscue|0 fnt
+|faint|p2a: Eiscue
+|
+|upkeep
+|
+|switch|p2a: Conkeldurr|Conkeldurr, L80, M|100/100
+|-damage|p2a: Conkeldurr|94/100|[from] Stealth Rock
+|turn|61
+|
+|switch|p1a: Ampharos|Ampharos, L88, F|244/302
+|move|p2a: Conkeldurr|Close Combat|p1a: Ampharos
+|-damage|p1a: Ampharos|81/302
+|-unboost|p2a: Conkeldurr|def|1
+|-unboost|p2a: Conkeldurr|spd|1
+|
+|-status|p2a: Conkeldurr|brn|[from] item: Flame Orb
+|upkeep
+|turn|62
+|
+|move|p2a: Conkeldurr|Close Combat|p1a: Ampharos
+|-damage|p1a: Ampharos|0 fnt
+|-unboost|p2a: Conkeldurr|def|1
+|-unboost|p2a: Conkeldurr|spd|1
+|faint|p1a: Ampharos
+|
+|-damage|p2a: Conkeldurr|88/100 brn|[from] brn
+|upkeep
+|
+|switch|p1a: Arbok|Arbok, L87, F|180/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Conkeldurr|atk|1
+|turn|63
+|
+|move|p1a: Arbok|Glare||[still]
+|-fail|p1a: Arbok
+|move|p2a: Conkeldurr|Close Combat|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|93/246
+|-unboost|p2a: Conkeldurr|def|1
+|-unboost|p2a: Conkeldurr|spd|1
+|
+|-damage|p2a: Conkeldurr|82/100 brn|[from] brn
+|upkeep
+|turn|64
+|
+|move|p1a: Arbok|Earthquake|p2a: Conkeldurr
+|-damage|p2a: Conkeldurr|0 fnt
+|faint|p2a: Conkeldurr
+|-damage|p1a: Arbok|69/246|[from] item: Life Orb
+|
+|upkeep
+|
+|switch|p2a: Kommo-o|Kommo-o, L78, F|100/100
+|-damage|p2a: Kommo-o|94/100|[from] Stealth Rock
+|turn|65
+|
+|switch|p1a: Chansey|Chansey, L85, F, tera:Fairy|559/564
+|move|p2a: Kommo-o|Close Combat|p1a: Chansey
+|-resisted|p1a: Chansey
+|-damage|p1a: Chansey|413/564
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|
+|upkeep
+|turn|66
+|
+|move|p2a: Kommo-o|Close Combat|p1a: Chansey
+|-resisted|p1a: Chansey
+|-damage|p1a: Chansey|282/564
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|move|p1a: Chansey|Soft-Boiled|p1a: Chansey
+|-heal|p1a: Chansey|564/564
+|
+|upkeep
+|turn|67
+|
+|switch|p1a: Arbok|Arbok, L87, F|69/246
+|-ability|p1a: Arbok|Intimidate|boost
+|-unboost|p2a: Kommo-o|atk|1
+|move|p2a: Kommo-o|Close Combat|p1a: Arbok
+|-resisted|p1a: Arbok
+|-damage|p1a: Arbok|22/246
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|
+|upkeep
+|turn|68
+|
+|switch|p1a: Appletun|Appletun, L92, F|352/352
+|move|p2a: Kommo-o|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|277/352
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|
+|-heal|p1a: Appletun|299/352|[from] item: Leftovers
+|upkeep
+|turn|69
+|
+|move|p2a: Kommo-o|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|220/352
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|move|p1a: Appletun|Leech Seed|p2a: Kommo-o
+|-start|p2a: Kommo-o|move: Leech Seed
+|
+|-heal|p1a: Appletun|242/352|[from] item: Leftovers
+|-damage|p2a: Kommo-o|82/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|272/352|[silent]
+|upkeep
+|turn|70
+|
+|move|p2a: Kommo-o|Close Combat|p1a: Appletun
+|-crit|p1a: Appletun
+|-damage|p1a: Appletun|80/352
+|-unboost|p2a: Kommo-o|def|1
+|-unboost|p2a: Kommo-o|spd|1
+|move|p1a: Appletun|Recover|p1a: Appletun
+|-heal|p1a: Appletun|256/352
+|
+|-heal|p1a: Appletun|278/352|[from] item: Leftovers
+|-damage|p2a: Kommo-o|70/100|[from] Leech Seed|[of] p1a: Appletun
+|-heal|p1a: Appletun|308/352|[silent]
+|upkeep
+|turn|71
+|
+|move|p2a: Kommo-o|Close Combat|p1a: Appletun
+|-damage|p1a: Appletun|224/352
+|move|p1a: Appletun|Draco Meteor|p2a: Kommo-o
+|-supereffective|p2a: Kommo-o
+|-damage|p2a: Kommo-o|0 fnt
+|-unboost|p1a: Appletun|spa|2
+|faint|p2a: Kommo-o
+|
+|-heal|p1a: Appletun|246/352|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Cinderace|Cinderace, L77, M|100/100
+|turn|72
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Appletun|[miss]
+|-start|p2a: Cinderace|typechange|Fighting|[from] ability: Libero
+|-miss|p2a: Cinderace|p1a: Appletun
+|-damage|p2a: Cinderace|51/100|[from] highjumpkick
+|move|p1a: Appletun|Apple Acid|p2a: Cinderace
+|-damage|p2a: Cinderace|25/100
+|-unboost|p2a: Cinderace|spd|1
+|
+|-heal|p1a: Appletun|268/352|[from] item: Leftovers
+|upkeep
+|turn|73
+|
+|move|p2a: Cinderace|High Jump Kick|p1a: Appletun
+|-damage|p1a: Appletun|127/352
+|move|p1a: Appletun|Apple Acid|p2a: Cinderace
+|-damage|p2a: Cinderace|0 fnt
+|faint|p2a: Cinderace
+|
+|-heal|p1a: Appletun|149/352|[from] item: Leftovers
+|upkeep
+|
+|switch|p2a: Arceus|Arceus-Electric, L70|100/100
+|-damage|p2a: Arceus|88/100|[from] Stealth Rock
+|turn|74
+|
+|move|p2a: Arceus|Judgment|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|124/352
+|move|p1a: Appletun|Apple Acid|p2a: Arceus
+|-damage|p2a: Arceus|69/100
+|-unboost|p2a: Arceus|spd|1
+|
+|-heal|p1a: Appletun|146/352|[from] item: Leftovers
+|upkeep
+|turn|75
+|
+|move|p2a: Arceus|Judgment|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|118/352
+|move|p1a: Appletun|Apple Acid|p2a: Arceus
+|-damage|p2a: Arceus|42/100
+|-unboost|p2a: Arceus|spd|1
+|
+|-heal|p1a: Appletun|140/352|[from] item: Leftovers
+|upkeep
+|turn|76
+|
+|move|p2a: Arceus|Judgment|p1a: Appletun
+|-resisted|p1a: Appletun
+|-damage|p1a: Appletun|114/352
+|move|p1a: Appletun|Apple Acid|p2a: Arceus
+|-damage|p2a: Arceus|9/100
+|-unboost|p2a: Arceus|spd|1
+|
+|-heal|p1a: Appletun|136/352|[from] item: Leftovers
+|upkeep
+|turn|77
+|
+|switch|p1a: Palkia|Palkia, L75|150/259
+|-ability|p1a: Palkia|Pressure
+|move|p2a: Arceus|Judgment|p1a: Palkia
+|-damage|p1a: Palkia|48/259
+|
+|upkeep
+|turn|78
+|
+|move|p1a: Palkia|Draco Meteor|p2a: Arceus
+|-damage|p2a: Arceus|0 fnt
+|-unboost|p1a: Palkia|spa|2
+|faint|p2a: Arceus
+|
+    </script>
+</div>
+
+<div class="battle-log battle-log-inline" style="display:none"></div>
+
+<script>
+    let daily = Math.floor(Date.now() / 1000 / 60 / 60 / 24); document.write('<script src="https://play.pokemonshowdown.com/js/replay-embed.js?version' + daily + '"></' + 'script>');
+</script>
+
+<p style="text-align:center"> Replay created by <a href="https://github.com/hsahovic/poke-env">poke-env</a>, with code from <a
+        href="https://github.com/smogon/pokemon-showdown"> pokemon-showdown</a>. If something goes wrong, don't hesitate
+    to open an <a href="https://github.com/hsahovic/poke-env/issues">issue!</a></p>
