@@ -101,14 +101,6 @@ export class SimulatorCloneAPI {
 			) {
 				// GET /battle/{id}/info - Get info about a cloned battle and how to join
 				this.handleBattleInfo(pathParts[1], res);
-			} else if (
-				pathParts.length === 3 &&
-				pathParts[0] === "battle" &&
-				pathParts[2] === "log" &&
-				req.method === "GET"
-			) {
-				// GET /battle/{id}/log - Get message log of a battle room
-				this.handleBattleLog(pathParts[1], res);
 			} else {
 				this.handleNotFound(res);
 			}
@@ -399,8 +391,6 @@ export class SimulatorCloneAPI {
 					"GET /battles - List all active battles",
 					"POST /battle/{id}/clone - Clone a specific battle",
 					"GET /clones - List all cloned battles",
-					"GET /battle/{id}/info - Get battle info and join instructions",
-					"GET /battle/{id}/log - Get message log of a battle room",
 				],
 			})
 		);
@@ -468,48 +458,6 @@ export class SimulatorCloneAPI {
 					commands: [],
 					directUrl: `http://localhost:8000/${battleId}`,
 				},
-			};
-
-			res.writeHead(200, {
-				"Content-Type": "application/json",
-				...CORS_HEADERS,
-			});
-			res.end(JSON.stringify(response));
-		} catch (error) {
-			this.handleError(res, error instanceof Error ? error : new Error(String(error)));
-		}
-	}
-
-	private handleBattleLog(battleId: string, res: any) {
-		try {
-			const room = Rooms.get(battleId);
-			if (!room) {
-				res.writeHead(404, {
-					"Content-Type": "application/json",
-					...CORS_HEADERS,
-				});
-				res.end(
-					JSON.stringify({
-						success: false,
-						error: "Room not found",
-						roomid: battleId,
-					} as APIResponse)
-				);
-				return;
-			}
-
-			// Get the room's log as a single text string
-			const log = room.log?.getScrollback() || "";
-
-			const response = {
-				success: true,
-				room: {
-					roomid: battleId,
-					title: room.title,
-					type: room.battle ? 'battle' : 'chat',
-					isClone: battleId.includes('-clone-'),
-				},
-				log,
 			};
 
 			res.writeHead(200, {
