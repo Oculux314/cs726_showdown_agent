@@ -10,12 +10,15 @@ from poke_env import (
     SimpleHeuristicsPlayer,
 )
 from poke_env.battle import AbstractBattle
+from poke_env.battle import Battle
 from poke_env.environment.single_agent_wrapper import SingleAgentWrapper
-from poke_env.environment.singles_env import ObsType
 from poke_env.player.player import Player
+from poke_env.data import GenData
+from poke_env.battle.pokemon_type import PokemonType
 
 from showdown_gym.base_environment import BaseShowdownEnv
 
+gen9_data = GenData.from_gen(9)
 
 class ShowdownEnvironment(BaseShowdownEnv):
 
@@ -43,7 +46,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         This should return the number of actions you wish to use if not using the default action scheme.
         """
-        return None  # Return None if action size is default
+        return 4  # Return None if action size is default
 
     def process_action(self, action: np.int64) -> np.int64:
         """
@@ -65,7 +68,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :return: The battle order ID for the given action in context of the current battle.
         :rtype: np.Int64
         """
-        return action
+        # 0-3 => 6-9
+        return action + 4
 
     def get_additional_info(self) -> Dict[str, Dict[str, Any]]:
         info = super().get_additional_info()
@@ -125,6 +129,12 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Reward for reducing the opponent's health
         reward += np.sum(diff_health_opponent)
 
+        # Count number of fainted opponents (num 0's in array)
+        prior_num_fainted = sum(1 for hp in prior_health_opponent if hp == 0)
+        num_fainted = sum(1 for hp in health_opponent if hp == 0)
+        reward += (num_fainted - prior_num_fainted)
+
+        # print(f"Reward: {reward}")
         return reward
 
     def _observation_size(self) -> int:
@@ -140,9 +150,9 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 12
+        return 11
 
-    def embed_battle(self, battle: AbstractBattle) -> np.ndarray:
+    def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
         """
         Embeds the current state of a Pokémon battle into a numerical vector representation.
         This method generates a feature vector that represents the current state of the battle,
@@ -156,15 +166,38 @@ class ShowdownEnvironment(BaseShowdownEnv):
         Returns:
             np.float32: A 1D numpy array containing the state you want the agent to observe.
         """
+        if not isinstance(battle, Battle):
+            raise TypeError("ERROR: Expected battle to be of type Battle")
 
-        health_team = [mon.current_hp_fraction for mon in battle.team.values()]
-        health_opponent = [
-            mon.current_hp_fraction for mon in battle.opponent_team.values()
-        ]
+        if battle.active_pokemon is None or battle.opponent_active_pokemon is None:
+            raise TypeError("ERROR: Battle or active pokemon is None")
+
+        # Health of active pokemon
+        # health_active = battle.active_pokemon.current_hp_fraction
+
+        # Type of each move
+        move_strs = [move for move in battle.active_pokemon.moves]
+        moves = [gen9_data.moves.get(move_str) for move_str in move_strs]
+        assert None not in moves, "ERROR: Move not found in gen9_data"
+        moves = [move for move in moves if move is not None]
+
+        moves_damages = [move.get("basePower") for move in moves]
+        move_types = [PokemonType.from_name(move.get("type")).value for move in moves]
+
+        # Opponent
+        health_opponent = battle.opponent_active_pokemon.current_hp_fraction
+        type1_opponent = battle.opponent_active_pokemon.type_1.value
+        type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
+
+        # Health of team
+        # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
+        # health_opponent = [
+        #     mon.current_hp_fraction for mon in battle.opponent_team.values()
+        # ]
 
         # Ensure health_opponent has 6 components, filling missing values with 1.0 (fraction of health)
-        if len(health_opponent) < len(health_team):
-            health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
+        # if len(health_opponent) < len(health_team):
+        #     health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
 
         #########################################################################################################
         # Caluclate the length of the final_vector and make sure to update the value in _observation_size above #
@@ -173,10 +206,19 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Final vector - single array with health of both teams
         final_vector = np.concatenate(
             [
-                health_team,  # N components for the health of each pokemon
-                health_opponent,  # N components for the health of opponent pokemon
+                moves_damages,
+                move_types,
+                [health_opponent,
+                type1_opponent,
+                type2_opponent]
             ]
         )
+
+        if len(final_vector) != self._observation_size():
+            print(f"Final Vector: {final_vector}")
+            raise ValueError(
+                f"ERROR: final_vector size {len(final_vector)} does not match observation_size {self._observation_size()}."
+            )
 
         return final_vector
 

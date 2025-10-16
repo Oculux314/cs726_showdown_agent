@@ -5,11 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python Debugger: Current File",
+      "name": "run.py",
       "type": "debugpy",
       "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal"
+      "program": "gymnasium_envrionments/scripts/run.py",
+      "console": "integratedTerminal",
+      "args": [
+        "train",
+        "cli",
+        "--gym", "showdown",
+        "--domain", "random",
+        "--task", "max",
+        "--save_train_checkpoints", "1",
+        "Rainbow"
+      ]
     }
   ]
 }
