@@ -1,6 +1,6 @@
 import os
 import time
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 import numpy as np
 from poke_env import (
@@ -175,11 +175,16 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Health of active pokemon
         # health_active = battle.active_pokemon.current_hp_fraction
 
+        default_move: dict[str, Union[int, str]] = {"basePower": 0, "type": "Normal"}
+
         # Type of each move
         move_strs = [move for move in battle.active_pokemon.moves]
         moves = [gen9_data.moves.get(move_str) for move_str in move_strs]
         assert None not in moves, "ERROR: Move not found in gen9_data"
         moves = [move for move in moves if move is not None]
+        while len(moves) < 4:
+            moves.append(default_move)
+        assert len(moves) == 4, "ERROR: Expected 4 moves"
 
         moves_damages = [move.get("basePower") for move in moves]
         move_types = [PokemonType.from_name(move.get("type")).value for move in moves]

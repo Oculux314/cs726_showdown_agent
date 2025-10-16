@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "run.py",
+      "name": "Train",
       "type": "debugpy",
       "request": "launch",
       "program": "gymnasium_envrionments/scripts/run.py",
@@ -18,6 +18,18 @@
         "--task", "max",
         "--save_train_checkpoints", "1",
         "Rainbow"
+      ]
+    },
+    {
+      "name": "Resume",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "gymnasium_envrionments/scripts/run.py",
+      "console": "integratedTerminal",
+      "args": [
+        "resume",
+        "--data_path", "C:\\repos\\uni\\cs726\\logs\\5-Rdmg-S11-A4-Rainbow-random-max-25_10_16_18-52-23",
+        "--seed", "10"
       ]
     }
   ]
