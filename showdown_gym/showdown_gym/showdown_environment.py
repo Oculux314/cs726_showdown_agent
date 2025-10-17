@@ -69,6 +69,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
         # 0-3 => 6-9
+        print(f"Action: {action}")
         return action + 4
 
     def get_additional_info(self) -> Dict[str, Dict[str, Any]]:
@@ -134,6 +135,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         num_fainted = sum(1 for hp in health_opponent if hp == 0)
         reward += (num_fainted - prior_num_fainted)
 
+        # print(battle.player_username)
         # print(f"Reward: {reward}")
         return reward
 

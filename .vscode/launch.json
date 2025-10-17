@@ -17,7 +17,10 @@
         "--domain", "random",
         "--task", "max",
         "--save_train_checkpoints", "1",
-        "Rainbow"
+        "--number_steps_per_evaluation", "10000",
+        "--number_eval_episodes", "10",
+        "--seeds", "10",
+        "DQN"
       ]
     },
     {
@@ -28,7 +31,7 @@
       "console": "integratedTerminal",
       "args": [
         "resume",
-        "--data_path", "C:\\repos\\uni\\cs726\\logs\\5-Rdmg-S11-A4-Rainbow-random-max-25_10_16_18-52-23",
+        "--data_path", "C:\\repos\\uni\\cs726\\logs\\6-Rdmg-S11-A4Finished-Rainbow-random-max-25_10_17_01-02-55",
         "--seed", "10"
       ]
     }
