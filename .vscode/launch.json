@@ -17,10 +17,9 @@
         "--domain", "random",
         "--task", "max",
         "--save_train_checkpoints", "1",
-        "--number_steps_per_evaluation", "10000",
+        "--number_steps_per_evaluation", "1000",
         "--number_eval_episodes", "10",
-        "--seeds", "10",
-        "DQN"
+        "Rainbow"
       ]
     },
     {
