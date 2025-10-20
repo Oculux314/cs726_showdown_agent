@@ -27,7 +27,13 @@ import requests
 
 from showdown_gym.base_environment import BaseShowdownEnv
 
+# MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
+
+moves_true_dmg: list[float] = []
+moves_true_dmg_old: list[float] = []
+chosen_action: np.int64 = np.int64(-99)
+prev_chosen_action: np.int64 = np.int64(-99)
 
 class ShowdownEnvironment(BaseShowdownEnv):
 
@@ -80,12 +86,15 @@ class ShowdownEnvironment(BaseShowdownEnv):
         """
 
         print("--------------------------------------------------------")
-        print(f"Action: {action}")
+        global chosen_action
+        global prev_chosen_action
+        prev_chosen_action = chosen_action
+        chosen_action = action
 
         # 0-3 => 6-9
         true_action = action + 6
 
-        print(f"True Action: {true_action}")
+        print(f"Action: {action} ({true_action})")
         return true_action
 
     # MARK: INFO
@@ -115,6 +124,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
         Returns:
             float: The calculated reward based on the change in state of the battle.
         """
+        if battle.player_username[1] == "2":
+            return 0
 
         prior_battle = self._get_prior_battle(battle)
 
@@ -153,9 +164,13 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # num_fainted = sum(1 for hp in health_opponent if hp == 0)
         # reward += (num_fainted - prior_num_fainted)
 
-        # print(battle.player_username)
-        print(f"Reward: {reward}")
-        return reward
+        temp_reward = moves_true_dmg_old[chosen_action]
+        if chosen_action == prev_chosen_action:
+            temp_reward /= 2.0  # Penalize repeating same action
+        print(f"Reward: {temp_reward} ({chosen_action})")
+
+        # return reward
+        return temp_reward
 
     def _observation_size(self) -> int:
         """
@@ -170,7 +185,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 4
+        return 5
 
     # MARK: EMBEDDING
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -187,6 +202,9 @@ class ShowdownEnvironment(BaseShowdownEnv):
         Returns:
             np.float32: A 1D numpy array containing the state you want the agent to observe.
         """
+        if battle.player_username[1] == "2":
+            return np.array([0.0, 0.0, 0.0, 0.0], dtype=np.float32)
+
         if not isinstance(battle, Battle):
             raise TypeError("ERROR: Expected battle to be of type Battle")
 
@@ -216,7 +234,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
 
         # True Move Damage
-        moves_true_dmg: list[float] = []
+        moves_true_dmg_old.clear()
+        for dmg in moves_true_dmg:
+            moves_true_dmg_old.append(dmg)
+        moves_true_dmg.clear()
+        # moves_true_dmg: list[float] = []
         for i, move in enumerate(moves):
             print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
             move_type = PokemonType.from_name(move.get("type"))
@@ -248,6 +270,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
+                [chosen_action],
                 # [health_opponent,
                 # type1_opponent,
                 # type2_opponent]
