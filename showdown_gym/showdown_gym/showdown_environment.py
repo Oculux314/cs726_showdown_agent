@@ -85,7 +85,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
 
-        print("--------------------------------------------------------")
+        # print("--------------------------------------------------------")
         global chosen_action
         global prev_chosen_action
         prev_chosen_action = chosen_action
@@ -94,7 +94,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # 0-3 => 6-9
         true_action = action + 6
 
-        print(f"Action: {action} ({true_action})")
+        # print(f"Action: {action} ({true_action})")
         return true_action
 
     # MARK: INFO
@@ -165,8 +165,13 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # reward += (num_fainted - prior_num_fainted)
 
         temp_reward = moves_true_dmg_old[chosen_action]
-        if chosen_action == prev_chosen_action:
-            temp_reward /= 2.0  # Penalize repeating same action
+        # if chosen_action == prev_chosen_action:
+        #     temp_reward /= 2.0  # Penalize repeating same action
+
+        temp_reward /= 400.0  # Scale down
+        if temp_reward > 1.0:
+            print("WARNING: High reward detected, check damage calculations")
+
         print(f"Reward: {temp_reward} ({chosen_action})")
 
         # return reward
@@ -240,7 +245,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         moves_true_dmg.clear()
         # moves_true_dmg: list[float] = []
         for i, move in enumerate(moves):
-            print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
+            # print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
             move_type = PokemonType.from_name(move.get("type"))
             dmg_mult = move_type.damage_multiplier(
                 battle.opponent_active_pokemon.type_1,
@@ -277,7 +282,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
             ]
         )
 
-        print(f"Observation Vector: {final_vector}")
+        # print(f"Observation Vector: {final_vector}")
 
         if len(final_vector) != self._observation_size():
             print(f"Final Vector: {final_vector}")
