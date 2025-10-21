@@ -168,9 +168,12 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # if chosen_action == prev_chosen_action:
         #     temp_reward /= 2.0  # Penalize repeating same action
 
-        temp_reward /= 400.0  # Scale down
-        if temp_reward > 1.0:
-            print("WARNING: High reward detected, check damage calculations")
+        # temp_reward /= 400.0  # Scale down
+        # if temp_reward > 1.0:
+        #     print("WARNING: High reward detected, check damage calculations")
+
+        # tanh scaling
+        temp_reward = np.tanh(temp_reward / 200.0)  # Scale to 0 to 1 range
 
         print(f"Reward: {temp_reward} ({chosen_action})")
 
@@ -275,7 +278,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
-                [chosen_action],
+                # [chosen_action],
                 # [health_opponent,
                 # type1_opponent,
                 # type2_opponent]

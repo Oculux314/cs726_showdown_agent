@@ -113,7 +113,7 @@ class AlgorithmConfig(SubscriptableClass):
 
 class DQNConfig(AlgorithmConfig):
     algorithm: str = Field("DQN", Literal=True)
-    lr: float = 1e-3
+    lr: float = 1e-6
     gamma: float = 0.99
     tau: float = 1.0
 
@@ -237,7 +237,7 @@ class C51Config(DQNConfig):
 
     num_atoms: int = 51
     v_min: float = 0.0
-    v_max: float = 200.0
+    v_max: float = 1.0
 
 
 class QRDQNConfig(DQNConfig):
@@ -273,12 +273,12 @@ class RainbowConfig(C51Config):
     use_double_dqn: int = 1
 
     # PER
-    use_per_buffer: int = 1
+    use_per_buffer: int = 0
     min_priority: float = 1e-6
     per_alpha: float = 0.6
 
     # n-step
-    n_step: int = 3
+    n_step: int = 1
 
     feature_layer_config: MLPConfig = MLPConfig(
         layers=[
