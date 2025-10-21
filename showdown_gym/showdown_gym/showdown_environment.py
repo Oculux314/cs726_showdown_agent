@@ -1,6 +1,7 @@
 import os
 import time
-from typing import Any, Dict, Union
+from typing import Any, Dict, Union, List, TypedDict
+from typing_extensions import NotRequired
 
 import numpy as np
 from poke_env import (
@@ -27,8 +28,22 @@ import requests
 
 from showdown_gym.base_environment import BaseShowdownEnv
 
+class Action(TypedDict):
+    chosen_action: np.int64
+    true_action: np.int64
+
+class Reward(TypedDict):
+    reward: float
+    raw_damage: float
+
+class Log(TypedDict):
+    state: np.ndarray[np.float32, np.dtype[np.float32]]
+    action: NotRequired[Action]
+    reward: NotRequired[Reward]
+
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
+logs: list[Log] = []
 
 moves_true_dmg: list[float] = []
 moves_true_dmg_old: list[float] = []
@@ -53,6 +68,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         self.rl_agent = account_name_one
 
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # MARK: ACTION SIZE
     def _get_action_size(self) -> int | None:
         """
         None just uses the default number of actions as laid out in process_action - 26 actions.
@@ -63,6 +80,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         """
         return 4  # Return None if action size is default
 
+    # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: ACTION
     def process_action(self, action: np.int64) -> np.int64:
         """
@@ -85,7 +103,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
 
-        # print("--------------------------------------------------------")
+        print("--------------------------------------------------------")
         global chosen_action
         global prev_chosen_action
         prev_chosen_action = chosen_action
@@ -94,9 +112,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # 0-3 => 6-9
         true_action = action + 6
 
-        # print(f"Action: {action} ({true_action})")
+        print(f"Action: {action} ({true_action})")
+        logs[-1]["action"] = {"chosen_action": chosen_action, "true_action": true_action}
         return true_action
 
+    # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: INFO
     def get_additional_info(self) -> Dict[str, Dict[str, Any]]:
         info = super().get_additional_info()
@@ -107,9 +127,17 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if self.battle1 is not None:
             agent = self.possible_agents[0]
             info[agent]["win"] = self.battle1.won
+            info[agent]["logs"] = logs
+            # Reset logs if battle is over
+            if self.battle1.won is not None:
+                info[agent]["logs"] = logs.copy()
+                logs.clear()
 
+
+        # print(f"Info: {info}")
         return info
 
+    # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: REWARD
     def calc_reward(self, battle: AbstractBattle) -> float:
         """
@@ -173,13 +201,14 @@ class ShowdownEnvironment(BaseShowdownEnv):
         #     print("WARNING: High reward detected, check damage calculations")
 
         # tanh scaling
-        temp_reward = np.tanh(temp_reward / 200.0)  # Scale to 0 to 1 range
+        tanh_reward = np.tanh(temp_reward / 200.0)  # Scale to 0 to 1 range
 
-        print(f"Reward: {temp_reward} ({chosen_action})")
+        logs[-2]["reward"] = {"reward": tanh_reward, "raw_damage": temp_reward}
+        print(f"Reward: {tanh_reward} ({temp_reward})")
+        return tanh_reward
 
-        # return reward
-        return temp_reward
-
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # MARK: OBSERVATION SIZE
     def _observation_size(self) -> int:
         """
         Returns the size of the observation size to create the observation space for all possible agents in the environment.
@@ -193,9 +222,9 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 5
+        return 4
 
-    # MARK: EMBEDDING
+    # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
         """
         Embeds the current state of a Pokémon battle into a numerical vector representation.
@@ -248,7 +277,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         moves_true_dmg.clear()
         # moves_true_dmg: list[float] = []
         for i, move in enumerate(moves):
-            # print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
+            print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
             move_type = PokemonType.from_name(move.get("type"))
             dmg_mult = move_type.damage_multiplier(
                 battle.opponent_active_pokemon.type_1,
@@ -285,7 +314,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
             ]
         )
 
-        # print(f"Observation Vector: {final_vector}")
+        # Logs
+        logs.append({"state": final_vector.copy()})
 
         if len(final_vector) != self._observation_size():
             print(f"Final Vector: {final_vector}")
@@ -300,7 +330,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 # DO NOT EDIT THE CODE BELOW THIS LINE #
 ########################################
 
-
+# MARK: SINGLE AGENT WRAPPER
 class SingleShowdownWrapper(SingleAgentWrapper):
     """
     A wrapper class for the PokeEnvironment that simplifies the setup of single-agent
