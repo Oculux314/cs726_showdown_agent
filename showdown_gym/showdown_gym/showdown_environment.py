@@ -193,7 +193,12 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Index of max damage
         max_damage = max(move_damages)
-        reward = chosen_damage / max_damage
+
+        # Handle division by zero case
+        if max_damage == 0:
+            reward = 0.0  # No damage possible, reward is 0
+        else:
+            reward = chosen_damage / max_damage
 
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range

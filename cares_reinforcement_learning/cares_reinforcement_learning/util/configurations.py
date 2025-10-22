@@ -113,8 +113,8 @@ class AlgorithmConfig(SubscriptableClass):
 
 class DQNConfig(AlgorithmConfig):
     algorithm: str = Field("DQN", Literal=True)
-    lr: float = 1e-6
-    gamma: float = 0.0
+    lr: float = 1e-5
+    gamma: float = 0.99
     tau: float = 1.0
 
     batch_size: int = 32
