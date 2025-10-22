@@ -198,7 +198,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if max_damage == 0:
             reward = 0.0  # No damage possible, reward is 0
         else:
-            reward = np.trunc(chosen_damage / max_damage)
+            reward = chosen_damage / max_damage
 
         prev_action = -1
         # Previous action
