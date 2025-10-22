@@ -205,7 +205,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         logs[-2]["reward"] = {"reward": reward, "raw_damage": chosen_damage}
         if PRINT_LOGS: print(f"Reward: {reward} ({chosen_damage})")
-        return reward
+        return 0.0
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: OBSERVATION SIZE
