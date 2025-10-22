@@ -200,6 +200,16 @@ class ShowdownEnvironment(BaseShowdownEnv):
         else:
             reward = np.trunc(chosen_damage / max_damage)
 
+        prev_action = -1
+        # Previous action
+        if len(logs) >= 3:
+            prev_action_info = logs[-3].get("action")
+            if prev_action_info is not None:
+                prev_action = prev_action_info.get("chosen_action")
+
+        if (reward != 1.0 and chosen_action == prev_action):
+            reward -= -0.5  # Penalize repeating same action if not max reward
+
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
 
@@ -222,7 +232,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 4
+        return 5
 
     # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -293,6 +303,13 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # if len(health_opponent) < len(health_team):
         #     health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
 
+        # Previous action
+        prev_action = -1
+        if len(logs) >= 1:
+            prev_action_info = logs[-1].get("action")
+            if prev_action_info is not None:
+                prev_action = prev_action_info.get("chosen_action")
+
         #########################################################################################################
         # Caluclate the length of the final_vector and make sure to update the value in _observation_size above #
         #########################################################################################################
@@ -303,9 +320,10 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
+                [prev_action],
                 # [health_opponent,
                 # type1_opponent,
-                # type2_opponent]
+                # type2_opponent],
             ]
         )
 
