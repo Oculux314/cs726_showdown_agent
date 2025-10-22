@@ -1,9 +1,10 @@
 import os
 import time
-from typing import Any, Dict, Union, List, TypedDict
-from typing_extensions import NotRequired
+from typing import Any, Dict, Union, TypedDict
+from typing import Tuple, cast
 
 import numpy as np
+from typing_extensions import NotRequired
 from poke_env import (
     AccountConfiguration,
     MaxBasePowerPlayer,
@@ -17,7 +18,6 @@ from poke_env.player.player import Player
 from poke_env.data import GenData
 from poke_env.battle.pokemon_type import PokemonType
 
-from typing import Tuple, cast
 from poke_env.player.battle_order import BattleOrder
 from poke_env.battle import Move
 from poke_env.battle import Pokemon
@@ -44,11 +44,6 @@ class Log(TypedDict):
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
 logs: list[Log] = []
-
-moves_true_dmg: list[float] = []
-moves_true_dmg_old: list[float] = []
-chosen_action: np.int64 = np.int64(-99)
-prev_chosen_action: np.int64 = np.int64(-99)
 
 class ShowdownEnvironment(BaseShowdownEnv):
 
@@ -104,16 +99,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         """
 
         print("--------------------------------------------------------")
-        global chosen_action
-        global prev_chosen_action
-        prev_chosen_action = chosen_action
-        chosen_action = action
-
         # 0-3 => 6-9
         true_action = action + 6
 
         print(f"Action: {action} ({true_action})")
-        logs[-1]["action"] = {"chosen_action": chosen_action, "true_action": true_action}
+        logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
         return true_action
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
@@ -192,19 +182,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # num_fainted = sum(1 for hp in health_opponent if hp == 0)
         # reward += (num_fainted - prior_num_fainted)
 
-        temp_reward = moves_true_dmg_old[chosen_action]
-        # if chosen_action == prev_chosen_action:
-        #     temp_reward /= 2.0  # Penalize repeating same action
-
-        # temp_reward /= 400.0  # Scale down
-        # if temp_reward > 1.0:
-        #     print("WARNING: High reward detected, check damage calculations")
-
         # tanh scaling
-        tanh_reward = np.tanh(temp_reward / 200.0)  # Scale to 0 to 1 range
+        tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
 
-        logs[-2]["reward"] = {"reward": tanh_reward, "raw_damage": temp_reward}
-        print(f"Reward: {tanh_reward} ({temp_reward})")
+        logs[-2]["reward"] = {"reward": tanh_reward, "raw_damage": reward}
+        print(f"Reward: {tanh_reward} ({reward})")
         return tanh_reward
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
@@ -271,11 +253,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
 
         # True Move Damage
-        moves_true_dmg_old.clear()
-        for dmg in moves_true_dmg:
-            moves_true_dmg_old.append(dmg)
-        moves_true_dmg.clear()
-        # moves_true_dmg: list[float] = []
+        moves_true_dmg: list[float] = []
         for i, move in enumerate(moves):
             print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
             move_type = PokemonType.from_name(move.get("type"))
@@ -307,7 +285,6 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
-                # [chosen_action],
                 # [health_opponent,
                 # type1_opponent,
                 # type2_opponent]
