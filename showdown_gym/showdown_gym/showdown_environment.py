@@ -42,6 +42,8 @@ class Log(TypedDict):
     reward: NotRequired[Reward]
 
 # MARK: GLOBALS
+PRINT_LOGS = False
+
 gen9_data = GenData.from_gen(9)
 logs: list[Log] = []
 
@@ -98,11 +100,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
 
-        print("--------------------------------------------------------")
+        if PRINT_LOGS: print("--------------------------------------------------------")
         # 0-3 => 6-9
         true_action = action + 6
 
-        print(f"Action: {action} ({true_action})")
+        if PRINT_LOGS: print(f"Action: {action} ({true_action})")
         logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
         return true_action
 
@@ -124,7 +126,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 logs.clear()
 
 
-        # print(f"Info: {info}")
+        # if print_logs: print(f"Info: {info}")
         return info
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
@@ -145,49 +147,60 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if battle.player_username[1] == "2":
             return 0
 
-        prior_battle = self._get_prior_battle(battle)
-
         reward = 0.0
 
-        health_team = [mon.current_hp_fraction for mon in battle.team.values()]
-        health_opponent = [
-            mon.current_hp_fraction for mon in battle.opponent_team.values()
-        ]
+        # prior_battle = self._get_prior_battle(battle)
+        # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
+        # health_opponent = [
+        #     mon.current_hp_fraction for mon in battle.opponent_team.values()
+        # ]
 
-        # If the opponent has less than 6 Pokémon, fill the missing values with 1.0 (fraction of health)
-        if len(health_opponent) < len(health_team):
-            health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
+        # # If the opponent has less than 6 Pokémon, fill the missing values with 1.0 (fraction of health)
+        # if len(health_opponent) < len(health_team):
+        #     health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
 
-        prior_health_opponent = []
-        if prior_battle is not None:
-            prior_health_opponent = [
-                mon.current_hp_fraction for mon in prior_battle.opponent_team.values()
-            ]
+        # prior_health_opponent = []
+        # if prior_battle is not None:
+        #     prior_health_opponent = [
+        #         mon.current_hp_fraction for mon in prior_battle.opponent_team.values()
+        #     ]
 
-        # Ensure health_opponent has 6 components, filling missing values with 1.0 (fraction of health)
-        if len(prior_health_opponent) < len(health_team):
-            prior_health_opponent.extend(
-                [1.0] * (len(health_team) - len(prior_health_opponent))
-            )
+        # # Ensure health_opponent has 6 components, filling missing values with 1.0 (fraction of health)
+        # if len(prior_health_opponent) < len(health_team):
+        #     prior_health_opponent.extend(
+        #         [1.0] * (len(health_team) - len(prior_health_opponent))
+        #     )
 
-        diff_health_opponent = np.array(prior_health_opponent) - np.array(
-            health_opponent
-        )
+        # diff_health_opponent = np.array(prior_health_opponent) - np.array(
+        #     health_opponent
+        # )
 
-        # Reward for reducing the opponent's health
-        reward += np.sum(diff_health_opponent)
+        # # Reward for reducing the opponent's health
+        # reward += np.sum(diff_health_opponent)
 
         # # Count number of fainted opponents (num 0's in array)
         # prior_num_fainted = sum(1 for hp in prior_health_opponent if hp == 0)
         # num_fainted = sum(1 for hp in health_opponent if hp == 0)
         # reward += (num_fainted - prior_num_fainted)
 
-        # tanh scaling
-        tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
+        # Damage of move
+        move_damages = logs[-2].get("state")
+        action_info = logs[-2].get("action")
+        if action_info is None:
+            return 0.0
+        chosen_action = action_info.get("chosen_action")
+        chosen_damage = move_damages[chosen_action]
 
-        logs[-2]["reward"] = {"reward": tanh_reward, "raw_damage": reward}
-        print(f"Reward: {tanh_reward} ({reward})")
-        return tanh_reward
+        # Index of max damage
+        max_damage = max(move_damages)
+        reward = chosen_damage / max_damage
+
+        # tanh scaling
+        # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
+
+        logs[-2]["reward"] = {"reward": reward, "raw_damage": chosen_damage}
+        if PRINT_LOGS: print(f"Reward: {reward} ({chosen_damage})")
+        return reward
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: OBSERVATION SIZE
@@ -255,7 +268,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # True Move Damage
         moves_true_dmg: list[float] = []
         for i, move in enumerate(moves):
-            print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
+            if PRINT_LOGS: print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
             move_type = PokemonType.from_name(move.get("type"))
             dmg_mult = move_type.damage_multiplier(
                 battle.opponent_active_pokemon.type_1,
@@ -292,10 +305,10 @@ class ShowdownEnvironment(BaseShowdownEnv):
         )
 
         # Logs
+        if PRINT_LOGS: print(f"Final Vector: {final_vector}")
         logs.append({"state": final_vector.copy()})
 
         if len(final_vector) != self._observation_size():
-            print(f"Final Vector: {final_vector}")
             raise ValueError(
                 f"ERROR: final_vector size {len(final_vector)} does not match observation_size {self._observation_size()}."
             )
