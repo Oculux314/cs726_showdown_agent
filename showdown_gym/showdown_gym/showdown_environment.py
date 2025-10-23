@@ -116,14 +116,15 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Add any additional information you want to include in the info dictionary that is saved in logs
         # For example, you can add the win status
 
-        if self.battle1 is not None:
+        if self.battle1 is not None and self.battle1.won is not None:
             agent = self.possible_agents[0]
             info[agent]["win"] = self.battle1.won
             info[agent]["logs"] = logs
             # Reset logs if battle is over
-            if self.battle1.won is not None:
-                info[agent]["logs"] = logs.copy()
-                logs.clear()
+            info[agent]["logs"] = logs.copy()
+            logs.clear()
+            # Timestamp
+            info[agent]["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
 
 
         # if print_logs: print(f"Info: {info}")
@@ -198,7 +199,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if max_damage == 0:
             reward = 0.0  # No damage possible, reward is 0
         else:
-            reward = chosen_damage / max_damage
+            reward = np.trunc(chosen_damage / max_damage)
 
         prev_action = -1
         # Previous action
@@ -208,7 +209,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 prev_action = prev_action_info.get("chosen_action")
 
         if (reward != 1.0 and chosen_action == prev_action):
-            reward -= -0.5  # Penalize repeating same action if not max reward
+            reward = -1.0  # Penalize repeating same action if not max reward
 
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
