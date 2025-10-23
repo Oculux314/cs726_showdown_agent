@@ -815,7 +815,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
             pokemon_index = team_species.index(simple_agent_order.species)
             return pokemon_index  # Switch index
 
-        raise ValueError(f"ERROR: Order {order} is neither Move nor Pokemon")
+        print(f"ERROR: Order {simple_agent_order} is neither Move nor Pokemon")
+        return -2
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: OBSERVATION SIZE
