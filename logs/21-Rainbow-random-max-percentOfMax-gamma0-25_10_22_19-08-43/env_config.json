@@ -1,1 +1,13 @@
-{"domain": "random", "task": "max", "display": 0, "save_train_checkpoints": 1, "state_std": 0.0, "action_std": 0.0, "frames_to_stack": 3, "frame_width": 84, "frame_height": 84, "grey_scale": 0, "gym": "showdown"}
+{
+  "domain": "random",
+  "task": "max",
+  "display": 0,
+  "save_train_checkpoints": 1,
+  "state_std": 0.0,
+  "action_std": 0.0,
+  "frames_to_stack": 3,
+  "frame_width": 84,
+  "frame_height": 84,
+  "grey_scale": 0,
+  "gym": "showdown"
+}

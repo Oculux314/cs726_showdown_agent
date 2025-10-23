@@ -199,17 +199,17 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if max_damage == 0:
             reward = 0.0  # No damage possible, reward is 0
         else:
-            reward = np.trunc(chosen_damage / max_damage)
+            reward = chosen_damage / max_damage
 
-        prev_action = -1
-        # Previous action
-        if len(logs) >= 3:
-            prev_action_info = logs[-3].get("action")
-            if prev_action_info is not None:
-                prev_action = prev_action_info.get("chosen_action")
+        # prev_action = -1
+        # # Previous action
+        # if len(logs) >= 3:
+        #     prev_action_info = logs[-3].get("action")
+        #     if prev_action_info is not None:
+        #         prev_action = prev_action_info.get("chosen_action")
 
-        if (reward != 1.0 and chosen_action == prev_action):
-            reward = -1.0  # Penalize repeating same action if not max reward
+        # if (reward != 1.0 and chosen_action == prev_action):
+        #     reward = -1.0  # Penalize repeating same action if not max reward
 
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
@@ -233,7 +233,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 5
+        return 4
 
     # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -321,7 +321,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
-                [prev_action],
+                # [prev_action],
                 # [health_opponent,
                 # type1_opponent,
                 # type2_opponent],
