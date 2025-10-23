@@ -42,7 +42,7 @@ class Log(TypedDict):
     reward: NotRequired[Reward]
 
 # MARK: GLOBALS
-PRINT_LOGS = False
+PRINT_LOGS = True
 
 gen9_data = GenData.from_gen(9)
 logs: list[Log] = []

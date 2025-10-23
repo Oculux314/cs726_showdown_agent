@@ -113,7 +113,7 @@ class AlgorithmConfig(SubscriptableClass):
 
 class DQNConfig(AlgorithmConfig):
     algorithm: str = Field("DQN", Literal=True)
-    lr: float = 1e-5
+    lr: float = 1e-3
     gamma: float = 0.0
     tau: float = 1.0
 
@@ -169,7 +169,7 @@ class PERDQNConfig(DQNConfig):
 class DuelingDQNConfig(DQNConfig):
     algorithm: str = Field("DuelingDQN", Literal=True)
     lr: float = 5e-4
-    gamma: float = 0.99
+    gamma: float = 0.0
     tau: float = 0.005
     target_update_freq: int = 1
 
