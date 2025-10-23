@@ -114,7 +114,7 @@ class AlgorithmConfig(SubscriptableClass):
 class DQNConfig(AlgorithmConfig):
     algorithm: str = Field("DQN", Literal=True)
     lr: float = 1e-3
-    gamma: float = 0.0
+    gamma: float = 0.99
     tau: float = 1.0
 
     batch_size: int = 32
@@ -127,12 +127,12 @@ class DQNConfig(AlgorithmConfig):
     # PER
     per_sampling_strategy: str = "stratified"
     per_weight_normalisation: str = "batch"
-    use_per_buffer: int = 0
+    use_per_buffer: int = 1
     min_priority: float = 1e-6
     per_alpha: float = 0.6
 
     # n-step
-    n_step: int = 1
+    n_step: int = 3
 
     max_grad_norm: float | None = None
 
@@ -169,7 +169,7 @@ class PERDQNConfig(DQNConfig):
 class DuelingDQNConfig(DQNConfig):
     algorithm: str = Field("DuelingDQN", Literal=True)
     lr: float = 5e-4
-    gamma: float = 0.0
+    gamma: float = 0.99
     tau: float = 0.005
     target_update_freq: int = 1
 
@@ -273,12 +273,12 @@ class RainbowConfig(C51Config):
     use_double_dqn: int = 1
 
     # PER
-    use_per_buffer: int = 0
+    use_per_buffer: int = 1
     min_priority: float = 1e-6
     per_alpha: float = 0.6
 
     # n-step
-    n_step: int = 1
+    n_step: int = 3
 
     feature_layer_config: MLPConfig = MLPConfig(
         layers=[
