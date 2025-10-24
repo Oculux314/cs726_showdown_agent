@@ -18,7 +18,7 @@ from poke_env.player.player import Player
 from poke_env.data import GenData
 from poke_env.battle.pokemon_type import PokemonType
 
-from poke_env.player.battle_order import BattleOrder
+from poke_env.player.battle_order import BattleOrder, SingleBattleOrder
 from poke_env.battle import Move
 from poke_env.battle import Pokemon
 from poke_env.calc.damage_calc_gen9 import calculate_damage
@@ -320,6 +320,25 @@ class CustomAgent(Player):
                 return poke
         return None
 
+    # NEEDS TO BE CHECKED
+    def choose_switch_hrl(self, battle: Battle) -> int:
+        opponent_pokemon = battle.opponent_active_pokemon
+
+        # If we have no available switches, random
+        if not opponent_pokemon:
+            opponent_pokemon = self.findFirstNonFaintedOpponent(battle.opponent_team)
+            if not opponent_pokemon:
+                print("INFO: No opponent active pokemon, choosing random move")
+                return -2
+        if len(battle.available_switches) == 0:
+            print("INFO: No available switches, choosing random move")
+            return -2
+
+        best_switch = self.getPokemonToTypeScore(battle, opponent_pokemon)[0]
+        best_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_switch[0].species and not p.fainted), -1)
+        # print(f"DEBUG: Switching to {best_switch[0].species} with type score {best_switch[1]:.2f}")
+        return best_index
+
     # Only when pokemon faints or otherwise forced
     def choose_forced_switch(self, battle: Battle) -> BattleOrder:
         opponent_pokemon = battle.opponent_active_pokemon
@@ -380,11 +399,11 @@ class CustomAgent(Player):
         attacker_id = self.generateIdentifier(attacker, attackingOpponent, battle)
         defender_id = self.generateIdentifier(defender, not attackingOpponent, battle)
 
-        attacker_simple_id = to_id_str(attacker_id[3:])
-        defender_simple_id = to_id_str(defender_id[3:])
-        if (attacker_simple_id, defender_simple_id, move.id) in memory[battle.battle_tag].prev_damage:
-            damage = memory[battle.battle_tag].prev_damage[(attacker_simple_id, defender_simple_id, move.id)]
-            return damage, damage
+        # attacker_simple_id = to_id_str(attacker_id[3:])
+        # defender_simple_id = to_id_str(defender_id[3:])
+        # if (attacker_simple_id, defender_simple_id, move.id) in memory[battle.battle_tag].prev_damage:
+        #     damage = memory[battle.battle_tag].prev_damage[(attacker_simple_id, defender_simple_id, move.id)]
+        #     return damage, damage
 
         try:
             return calculate_damage(attacker_id, defender_id, move, battle)
@@ -564,6 +583,8 @@ PRINT_LOGS = True
 
 gen9_data = GenData.from_gen(9)
 logs: list[Log] = []
+expertAgent = CustomAgent()
+simpleAgent = DummyOpponentAgent("")
 
 class ShowdownEnvironment(BaseShowdownEnv):
 
@@ -593,7 +614,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         This should return the number of actions you wish to use if not using the default action scheme.
         """
-        return 4  # Return None if action size is default
+        return 10  # Return None if action size is default
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: ACTION
@@ -620,7 +641,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         if PRINT_LOGS: print("--------------------------------------------------------")
         # 0-3 => 6-9
-        true_action = action + 6
+        true_action = action
 
         if PRINT_LOGS: print(f"Action: {action} ({true_action})")
         logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
@@ -668,6 +689,20 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         reward = 0.0
 
+        action_info = logs[-2].get("action")
+        if action_info is None:
+            print("ERROR: No action info in logs for reward calculation")
+            return 0.0
+        chosen_action = action_info.get("chosen_action")
+
+        prev_battle = self._get_prior_battle(battle)
+        if prev_battle is None or not isinstance(prev_battle, Battle):
+            print("ERROR: No prior battle for reward calculation")
+            return 0.0
+        suggested_move_index = self.getMoveIndexFromSimple(prev_battle)
+        if chosen_action == suggested_move_index:
+            reward = 1.0
+
         # prior_battle = self._get_prior_battle(battle)
         # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
         # health_opponent = [
@@ -703,22 +738,25 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # reward += (num_fainted - prior_num_fainted)
 
         # Damage of move
-        move_damages = logs[-2].get("state")
-        action_info = logs[-2].get("action")
-        if action_info is None:
-            return 0.0
-        chosen_action = action_info.get("chosen_action")
-        chosen_damage = move_damages[chosen_action]
+        # move_damages = logs[-2].get("state")
+        # chosen_damage = move_damages[chosen_action]
 
-        # Index of max damage
-        max_damage = max(move_damages)
+        # if chosen_action == -2:
+        #     reward = -1.0
 
-        # Handle division by zero case
-        if max_damage == 0:
-            reward = 0.0  # No damage possible, reward is 0
-        else:
-            reward = chosen_damage / max_damage
+        # else:
+        #     pass
 
+        # # Index of max damage
+        # max_damage = max(move_damages)
+
+        # # Handle division by zero case
+        # if max_damage == 0:
+        #     reward = 0.0  # No damage possible, reward is 0
+        # else:
+        #     reward = chosen_damage / max_damage
+
+        # --- IDK ---
         # prev_action = -1
         # # Previous action
         # if len(logs) >= 3:
@@ -732,9 +770,40 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
 
-        logs[-2]["reward"] = {"reward": reward, "raw_damage": chosen_damage}
-        if PRINT_LOGS: print(f"Reward: {reward} ({chosen_damage})")
+        logs[-2]["reward"] = {"reward": reward, "suggested": suggested}
+        if PRINT_LOGS: print(f"Reward: {reward} ({suggested})")
         return reward
+
+    # NEEDS TO BE CHECKED
+    def getMoveIndexFromSimple(self, battle: Battle) -> int:
+        """
+        Returns the index of the given order in the current battle's available orders.
+
+        Args:
+            battle (Battle): The current battle instance.
+            order (BattleOrder): The battle order to find the index for.
+        Returns:
+            int: The index of the given order in the battle's available orders.
+        """
+        # Switches: 0 - 5
+        # Moves: 6 - 9
+
+        simple_agent_move = DummyOpponentAgent("").choose_move(battle)
+        if not isinstance(simple_agent_move, SingleBattleOrder):
+            raise TypeError("ERROR: Expected simple_agent_move to be of type SingleBattleOrder")
+        simple_agent_order = simple_agent_move.order
+
+        if isinstance(simple_agent_order, Move):
+            move_index = battle.available_moves.index(simple_agent_order)
+            return move_index + 6  # Move index
+
+        if isinstance(simple_agent_order, Pokemon):
+            team_species = [mon.species for mon in battle.team.values()]
+            pokemon_index = team_species.index(simple_agent_order.species)
+            return pokemon_index  # Switch index
+
+        print(f"ERROR: Order {simple_agent_order} is neither Move nor Pokemon")
+        return -2
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: OBSERVATION SIZE
@@ -751,7 +820,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 4
+        return 23
 
     # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -778,7 +847,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
             raise TypeError("ERROR: Battle or active pokemon is None")
 
         # Health of active pokemon
-        # health_active = battle.active_pokemon.current_hp_fraction
+        health_active = battle.active_pokemon.current_hp_fraction
+        health_team = [mon.current_hp_fraction for mon in battle.team.values()]
+        team_species = [mon.species for mon in battle.team.values()]
+        current_pokemon_index = team_species.index(battle.active_pokemon.species)
+        if PRINT_LOGS: print(f"Team: {health_active} ({current_pokemon_index}) {health_team}")
 
         default_move: dict[str, Union[int, str]] = {"basePower": 0, "type": "Normal"}
 
@@ -788,6 +861,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         assert None not in moves, "ERROR: Move not found in gen9_data"
         moves = [move for move in moves if move is not None]
         while len(moves) < 4:
+            print("WARN: Less than 4 moves found, adding default move")
             moves.append(default_move)
         assert len(moves) == 4, "ERROR: Expected 4 moves"
 
@@ -795,22 +869,38 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # move_types = [PokemonType.from_name(move.get("type")).value for move in moves]
 
         # # Opponent
-        # health_opponent = battle.opponent_active_pokemon.current_hp_fraction
+        health_opponent = battle.opponent_active_pokemon.current_hp_fraction
+        health_opp_team = [mon.current_hp_fraction for mon in battle.opponent_team.values()]
+        health_opp_team.extend([1.0] * (6 - len(health_opp_team)))
+        if PRINT_LOGS: print(f"Opponent: {health_opponent} {health_opp_team}")
         # type1_opponent = battle.opponent_active_pokemon.type_1.value
         # type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
 
         # True Move Damage
         moves_true_dmg: list[float] = []
+        moves_pp: list[int] = []
         for i, move in enumerate(moves):
-            if PRINT_LOGS: print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}")
-            move_type = PokemonType.from_name(move.get("type"))
-            dmg_mult = move_type.damage_multiplier(
-                battle.opponent_active_pokemon.type_1,
-                battle.opponent_active_pokemon.type_2,
-                type_chart=gen9_data.type_chart,
+            if PRINT_LOGS: print(f"  {i}: {move.get('name')}  |  BP: {move.get('basePower')}  |  T: {move.get('type')}  |  PP: {move.get('pp')}")
+            move_id = Move.retrieve_id(move.get("name"))
+            real_move = battle.active_pokemon.moves.get(move_id)
+            if real_move is None:
+                print(f"ERROR: real_move for {move.get('name')} is None")
+                moves_true_dmg.append(0)
+                moves_pp.append(0)
+                break
+            dmg_range = CustomAgent().estimate_damage(
+                attacker=battle.active_pokemon,
+                defender=battle.opponent_active_pokemon,
+                move=real_move,
+                battle=battle,
+                attackingOpponent=True
             )
-            true_dmg = move.get("basePower") * dmg_mult
+            true_dmg = (dmg_range[0] + dmg_range[1]) / 2.0
+
+            pp = move.get("pp")
+
             moves_true_dmg.append(true_dmg)
+            moves_pp.append(pp)
 
         # Health of team
         # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
@@ -823,11 +913,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         #     health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
 
         # Previous action
-        prev_action = -1
-        if len(logs) >= 1:
-            prev_action_info = logs[-1].get("action")
-            if prev_action_info is not None:
-                prev_action = prev_action_info.get("chosen_action")
+        # prev_action = -1
+        # if len(logs) >= 1:
+        #     prev_action_info = logs[-1].get("action")
+        #     if prev_action_info is not None:
+        #         prev_action = prev_action_info.get("chosen_action")
 
         #########################################################################################################
         # Caluclate the length of the final_vector and make sure to update the value in _observation_size above #
@@ -839,8 +929,13 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 # moves_damages,
                 # move_types,
                 moves_true_dmg,
+                moves_pp,
+                [health_active],
+                health_team,
+                [current_pokemon_index],
                 # [prev_action],
-                # [health_opponent,
+                [health_opponent],
+                health_opp_team,
                 # type1_opponent,
                 # type2_opponent],
             ]
@@ -941,8 +1036,3 @@ class SingleShowdownWrapper(SingleAgentWrapper):
             return bot_teams[team_type]
 
         return None
-
-
-
-
-
