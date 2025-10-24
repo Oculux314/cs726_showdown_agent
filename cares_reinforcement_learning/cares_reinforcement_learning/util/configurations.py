@@ -169,7 +169,7 @@ class PERDQNConfig(DQNConfig):
 
 class DuelingDQNConfig(DQNConfig):
     algorithm: str = Field("DuelingDQN", Literal=True)
-    lr: float = 5e-4
+    lr: float = 1e-4
     gamma: float = 0.99
     tau: float = 0.005
     target_update_freq: int = 1

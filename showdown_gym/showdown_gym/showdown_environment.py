@@ -704,7 +704,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 23
+        return 39
 
     # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -732,8 +732,12 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Health of active pokemon
         health_active = battle.active_pokemon.current_hp_fraction
+        type_active_1 = battle.active_pokemon.type_1.value
+        type_active_2 = battle.active_pokemon.type_2.value if battle.active_pokemon.type_2 else 0
         health_team = [mon.current_hp_fraction for mon in battle.team.values()]
         team_species = [mon.species for mon in battle.team.values()]
+        team_types_1 = [mon.type_1.value for mon in battle.team.values()]
+        team_types_2 = [mon.type_2.value if mon.type_2 else 0 for mon in battle.team.values()]
         current_pokemon_index = team_species.index(battle.active_pokemon.species)
         if PRINT_LOGS: print(f"Team: {health_active} ({current_pokemon_index}) {health_team}")
 
@@ -751,8 +755,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
         health_opp_team = [mon.current_hp_fraction for mon in battle.opponent_team.values()]
         health_opp_team.extend([1.0] * (6 - len(health_opp_team)))
         if PRINT_LOGS: print(f"Opponent: {health_opponent} {health_opp_team}")
-        # type1_opponent = battle.opponent_active_pokemon.type_1.value
-        # type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
+        type1_opponent = battle.opponent_active_pokemon.type_1.value
+        type2_opponent = battle.opponent_active_pokemon.type_2.value if battle.opponent_active_pokemon.type_2 else 0
 
         # True Move Damage
         moves_true_dmg: list[float] = []
@@ -817,13 +821,15 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 moves_true_dmg,
                 moves_pp,
                 [health_active],
+                [type_active_1, type_active_2],
                 health_team,
+                team_types_1,
+                team_types_2,
                 [current_pokemon_index],
                 # [prev_action],
                 [health_opponent],
                 health_opp_team,
-                # type1_opponent,
-                # type2_opponent],
+                [type1_opponent, type2_opponent],
             ]
         )
 
