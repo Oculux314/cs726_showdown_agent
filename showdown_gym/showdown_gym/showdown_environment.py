@@ -543,7 +543,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         This should return the number of actions you wish to use if not using the default action scheme.
         """
-        return 2  # Return None if action size is default
+        return 10  # Return None if action size is default
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: ACTION
@@ -568,23 +568,9 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
 
-        if PRINT_LOGS: print(f"-------------------------------------------------------- {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        if PRINT_LOGS: print("--------------------------------------------------------")
         # 0-3 => 6-9
-        # true_action = action + 6
-
-        if not isinstance(self.battle1, Battle):
-            print("ERROR: battle1 is not of type Battle")
-            return np.int64(-2)
-
-        move_action: BattleOrder
-        if action == 0:
-            # Choose best switch
-            move_action = expertAgent.choose_forced_switch(self.battle1)
-        else: # action == 1
-            # Choose best attack
-            move_action = expertAgent.choose_move_impl(self.battle1)
-
-        true_action = np.int64(self.getIndexFromOrder(self.battle1, move_action))
+        true_action = action
 
         if PRINT_LOGS: print(f"Action: {action} ({true_action})")
         logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
@@ -637,15 +623,13 @@ class ShowdownEnvironment(BaseShowdownEnv):
             print("ERROR: No action info in logs for reward calculation")
             return 0.0
         chosen_action = action_info.get("chosen_action")
-        chosen_action_type = "move" if chosen_action >=6 else "switch"
 
         prev_battle = self._get_prior_battle(battle)
         if prev_battle is None or not isinstance(prev_battle, Battle):
             print("ERROR: No prior battle for reward calculation")
             return 0.0
         suggested_move_index = self.getMoveIndexFromSimple(prev_battle)
-        suggested_move_type = "move" if suggested_move_index >=6 else "switch"
-        if chosen_action_type == suggested_move_type:
+        if chosen_action == suggested_move_index:
             reward = 1.0
 
         # Logging
