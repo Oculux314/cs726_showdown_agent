@@ -16,7 +16,6 @@ from poke_env.battle import Battle
 from poke_env.environment.single_agent_wrapper import SingleAgentWrapper
 from poke_env.player.player import Player
 from poke_env.data import GenData
-from poke_env.battle.pokemon_type import PokemonType
 
 from poke_env.player.battle_order import BattleOrder, SingleBattleOrder
 from poke_env.battle import Move
@@ -658,9 +657,9 @@ class ShowdownEnvironment(BaseShowdownEnv):
         if self.battle1 is not None and self.battle1.won is not None:
             agent = self.possible_agents[0]
             info[agent]["win"] = self.battle1.won
-            info[agent]["logs"] = logs
+            # info[agent]["logs"] = logs
             # Reset logs if battle is over
-            info[agent]["logs"] = logs.copy()
+            # info[agent]["logs"] = logs.copy()
             logs.clear()
             # Timestamp
             info[agent]["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -770,8 +769,8 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # tanh scaling
         # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
 
-        logs[-2]["reward"] = {"reward": reward, "suggested": suggested}
-        if PRINT_LOGS: print(f"Reward: {reward} ({suggested})")
+        logs[-2]["reward"] = {"reward": reward, "suggested": suggested_move_index}
+        if PRINT_LOGS: print(f"Reward: {reward} ({suggested_move_index})")
         return reward
 
     # NEEDS TO BE CHECKED
@@ -788,7 +787,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Switches: 0 - 5
         # Moves: 6 - 9
 
-        simple_agent_move = DummyOpponentAgent("").choose_move(battle)
+        simple_agent_move = simpleAgent.choose_move(battle)
         if not isinstance(simple_agent_move, SingleBattleOrder):
             raise TypeError("ERROR: Expected simple_agent_move to be of type SingleBattleOrder")
         simple_agent_order = simple_agent_move.order
@@ -853,17 +852,11 @@ class ShowdownEnvironment(BaseShowdownEnv):
         current_pokemon_index = team_species.index(battle.active_pokemon.species)
         if PRINT_LOGS: print(f"Team: {health_active} ({current_pokemon_index}) {health_team}")
 
-        default_move: dict[str, Union[int, str]] = {"basePower": 0, "type": "Normal"}
-
         # Type of each move
         move_strs = [move for move in battle.active_pokemon.moves]
         moves = [gen9_data.moves.get(move_str) for move_str in move_strs]
         assert None not in moves, "ERROR: Move not found in gen9_data"
         moves = [move for move in moves if move is not None]
-        while len(moves) < 4:
-            print("WARN: Less than 4 moves found, adding default move")
-            moves.append(default_move)
-        assert len(moves) == 4, "ERROR: Expected 4 moves"
 
         # moves_damages = [move.get("basePower") for move in moves]
         # move_types = [PokemonType.from_name(move.get("type")).value for move in moves]
@@ -888,7 +881,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
                 moves_true_dmg.append(0)
                 moves_pp.append(0)
                 break
-            dmg_range = CustomAgent().estimate_damage(
+            dmg_range = expertAgent.estimate_damage(
                 attacker=battle.active_pokemon,
                 defender=battle.opponent_active_pokemon,
                 move=real_move,
@@ -901,6 +894,14 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
             moves_true_dmg.append(true_dmg)
             moves_pp.append(pp)
+
+        # Ensure we have 4 moves, fill missing with default values
+        while len(moves_true_dmg) < 4:
+            print("WARN: Less than 4 moves_true_dmg found, adding 0")
+            moves_true_dmg.append(0)
+        while len(moves_pp) < 4:
+            print("WARN: Less than 4 moves_pp found, adding 0")
+            moves_pp.append(0)
 
         # Health of team
         # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
