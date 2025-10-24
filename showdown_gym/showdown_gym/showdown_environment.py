@@ -1,6 +1,6 @@
 import os
 import time
-from typing import Any, Dict, Union, TypedDict
+from typing import Any, Dict, TypedDict
 from typing import Tuple, cast
 
 import numpy as np
@@ -103,17 +103,9 @@ IVs: 0 SpA
 - Heavy Slam
 """
 
-# MARK: MEMORY
-class Memory:
-    def __init__(self):
-        self.knockoffed_pokes = cast(set[str], set()) # species names of pokes that have been knockoffed
-        self.last_used_future_sight = -10 # round number when future sight was last used
-        self.toxiced_pokes = cast(set[str], set()) # species names of pokes that have been toxiced
-        self.prev_damage = cast(dict[tuple[str, str, str], float], {}) # attacker_id, defender_id, move_id -> damage
 
 # MARK: GLOBALS
 gen9_data = GenData.from_gen(9)
-memory = cast(dict[str, Memory], {}) # battle_tag -> Memory
 
 class CustomAgent(Player):
 
@@ -122,7 +114,6 @@ class CustomAgent(Player):
         super().__init__(team=team, *args, **kwargs)
 
     def teampreview(self, battle: AbstractBattle) -> str:
-        memory[battle.battle_tag] = Memory() # Set up memory for this battle
         # Cast: Ensure battle is of correct type
         if not isinstance(battle, Battle):
             print("ERROR: Expected battle to be of type Battle")
@@ -140,25 +131,6 @@ class CustomAgent(Player):
         except Exception as e:
             print(f"ERROR: in teampreview method: {e}")
             return "/team 123456"
-
-    ## MARK: BATTLE MSGs
-    async def _handle_battle_message(self, split_messages: list[list[str]]) -> None:
-        await super()._handle_battle_message(split_messages)
-        battle = await self._get_battle(split_messages[0][0])
-
-        # Remember moves which did no damage due to immunity
-        attacking_poke = ""
-        current_move = ""
-        defender_poke = ""
-        for msg in split_messages:
-            if len(msg) < 2:
-                continue
-            if msg[1] == 'move':
-                attacking_poke = to_id_str(msg[2][4:])
-                current_move = to_id_str(msg[3])
-                defender_poke = to_id_str(msg[4][4:])
-            if msg[1] == '-immune':
-                memory[battle.battle_tag].prev_damage[(attacking_poke, defender_poke, current_move)] = 0
 
     def aggregateAllMessages(self, battle: Battle) -> str:
         # Make a network call to localhost:3001 to get latest data
@@ -217,14 +189,10 @@ class CustomAgent(Player):
             if battle.active_pokemon.effects.get(Effect.HEAL_BLOCK):
                 print(f"INFO: {battle.active_pokemon.species} is affected by Heal Block, cannot use recovery move")
             else:
-                move = self.findMove(battle.available_moves, "recover")
-                if not move:
-                    move = self.findMove(battle.available_moves, "slackoff")
-                if not move:
-                    move = self.findMove(battle.available_moves, "morningsun")
-                if move:
-                    # print(f"ACCEPTED: {battle.active_pokemon.species} used recovery move.")
-                    return self.create_order(move)
+                for move in battle.available_moves:
+                    if move.heal > 0:
+                        # print(f"ACCEPTED: {battle.active_pokemon.species} used recovery move.")
+                        return self.create_order(move)
 
         ## Hazards
         hazardsToMax = { "stealthrock": 1, "spikes": 3, "toxicspikes": 2 }
@@ -249,12 +217,10 @@ class CustomAgent(Player):
                     return self.create_order(move)
 
         ## Knock off if we can and haven't already
-        if battle.active_pokemon.species not in memory[battle.battle_tag].knockoffed_pokes:
-            move = self.findMove(battle.available_moves, "knockoff")
-            if move:
-                memory[battle.battle_tag].knockoffed_pokes.add(battle.active_pokemon.species)
-                print(f"ACCEPTED: {battle.active_pokemon.species} used knockoff.")
-                return self.create_order(move)
+        move = self.findMove(battle.available_moves, "knockoff")
+        if move:
+            print(f"ACCEPTED: {battle.active_pokemon.species} used knockoff.")
+            return self.create_order(move)
 
         ## Rapid Spin if we can and hazards are up
         if self.check_hazards(battle) > 0:
@@ -263,12 +229,9 @@ class CustomAgent(Player):
                 return self.create_order(move)
 
         ## Toxic if we can and opponent isn't already statused
-        if not self.opponent_has_status(battle, "tox") and battle.opponent_active_pokemon.species not in memory[battle.battle_tag].toxiced_pokes:
+        if not self.opponent_has_status(battle, "tox"):
             move = self.findMove(battle.available_moves, "toxic")
             if move:
-                # print("DEBUG: Using Toxic. Current toxiced pokes:", memory[battle.battle_tag].toxiced_pokes)
-                memory[battle.battle_tag].toxiced_pokes.add(battle.opponent_active_pokemon.species) # Avoid re-toxicing with same pokemon
-                # print("DEBUG: Current toxiced pokes:", memory[battle.battle_tag].toxiced_pokes)
                 return self.create_order(move)
 
         ## Gholdengo Nasty Plot
@@ -318,25 +281,6 @@ class CustomAgent(Player):
             if not poke.fainted:
                 return poke
         return None
-
-    # NEEDS TO BE CHECKED
-    def choose_switch_hrl(self, battle: Battle) -> int:
-        opponent_pokemon = battle.opponent_active_pokemon
-
-        # If we have no available switches, random
-        if not opponent_pokemon:
-            opponent_pokemon = self.findFirstNonFaintedOpponent(battle.opponent_team)
-            if not opponent_pokemon:
-                print("INFO: No opponent active pokemon, choosing random move")
-                return -2
-        if len(battle.available_switches) == 0:
-            print("INFO: No available switches, choosing random move")
-            return -2
-
-        best_switch = self.getPokemonToTypeScore(battle, opponent_pokemon)[0]
-        best_index = next((i for i, p in enumerate(battle.team.values()) if p.species == best_switch[0].species and not p.fainted), -1)
-        # print(f"DEBUG: Switching to {best_switch[0].species} with type score {best_switch[1]:.2f}")
-        return best_index
 
     # Only when pokemon faints or otherwise forced
     def choose_forced_switch(self, battle: Battle) -> BattleOrder:
@@ -398,12 +342,6 @@ class CustomAgent(Player):
         attacker_id = self.generateIdentifier(attacker, attackingOpponent, battle)
         defender_id = self.generateIdentifier(defender, not attackingOpponent, battle)
 
-        # attacker_simple_id = to_id_str(attacker_id[3:])
-        # defender_simple_id = to_id_str(defender_id[3:])
-        # if (attacker_simple_id, defender_simple_id, move.id) in memory[battle.battle_tag].prev_damage:
-        #     damage = memory[battle.battle_tag].prev_damage[(attacker_simple_id, defender_simple_id, move.id)]
-        #     return damage, damage
-
         try:
             return calculate_damage(attacker_id, defender_id, move, battle)
         except Exception as e:
@@ -449,14 +387,6 @@ class CustomAgent(Player):
     def getMaxDamageMove(self, battle: Battle) -> Move:
         ranked_moves = self.getRankedMovesByDamage(battle)
         best_move = ranked_moves[0][0] if ranked_moves else battle.available_moves[0]
-
-        # Avoid wasting moves like Future Sight
-        if best_move.id == "futuresight" and battle.turn - memory[battle.battle_tag].last_used_future_sight < 3:
-            if len(ranked_moves) > 1:
-                best_move = ranked_moves[1][0]
-        if best_move.id == "futuresight": # Update memory only if we actually use Future Sight
-            memory[battle.battle_tag].last_used_future_sight = battle.turn
-
         return best_move
 
     def getRankedMovesByDamage(self, battle: Battle) -> list[tuple[Move, float]]:
@@ -570,7 +500,7 @@ class Action(TypedDict):
 
 class Reward(TypedDict):
     reward: float
-    raw_damage: float
+    suggested: int
 
 class Log(TypedDict):
     state: np.ndarray[np.float32, np.dtype[np.float32]]
@@ -613,7 +543,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         This should return the number of actions you wish to use if not using the default action scheme.
         """
-        return 10  # Return None if action size is default
+        return 2  # Return None if action size is default
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: ACTION
@@ -638,9 +568,23 @@ class ShowdownEnvironment(BaseShowdownEnv):
         :rtype: np.Int64
         """
 
-        if PRINT_LOGS: print("--------------------------------------------------------")
+        if PRINT_LOGS: print(f"-------------------------------------------------------- {time.strftime('%Y-%m-%d %H:%M:%S')}")
         # 0-3 => 6-9
-        true_action = action
+        # true_action = action + 6
+
+        if not isinstance(self.battle1, Battle):
+            print("ERROR: battle1 is not of type Battle")
+            return np.int64(-2)
+
+        move_action: BattleOrder
+        if action == 0:
+            # Choose best switch
+            move_action = expertAgent.choose_forced_switch(self.battle1)
+        else: # action == 1
+            # Choose best attack
+            move_action = expertAgent.choose_move_impl(self.battle1)
+
+        true_action = np.int64(self.getIndexFromOrder(self.battle1, move_action))
 
         if PRINT_LOGS: print(f"Action: {action} ({true_action})")
         logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
@@ -693,88 +637,24 @@ class ShowdownEnvironment(BaseShowdownEnv):
             print("ERROR: No action info in logs for reward calculation")
             return 0.0
         chosen_action = action_info.get("chosen_action")
+        chosen_action_type = "move" if chosen_action >=6 else "switch"
 
         prev_battle = self._get_prior_battle(battle)
         if prev_battle is None or not isinstance(prev_battle, Battle):
             print("ERROR: No prior battle for reward calculation")
             return 0.0
         suggested_move_index = self.getMoveIndexFromSimple(prev_battle)
-        if chosen_action == suggested_move_index:
+        suggested_move_type = "move" if suggested_move_index >=6 else "switch"
+        if chosen_action_type == suggested_move_type:
             reward = 1.0
 
-        # prior_battle = self._get_prior_battle(battle)
-        # health_team = [mon.current_hp_fraction for mon in battle.team.values()]
-        # health_opponent = [
-        #     mon.current_hp_fraction for mon in battle.opponent_team.values()
-        # ]
-
-        # # If the opponent has less than 6 Pokémon, fill the missing values with 1.0 (fraction of health)
-        # if len(health_opponent) < len(health_team):
-        #     health_opponent.extend([1.0] * (len(health_team) - len(health_opponent)))
-
-        # prior_health_opponent = []
-        # if prior_battle is not None:
-        #     prior_health_opponent = [
-        #         mon.current_hp_fraction for mon in prior_battle.opponent_team.values()
-        #     ]
-
-        # # Ensure health_opponent has 6 components, filling missing values with 1.0 (fraction of health)
-        # if len(prior_health_opponent) < len(health_team):
-        #     prior_health_opponent.extend(
-        #         [1.0] * (len(health_team) - len(prior_health_opponent))
-        #     )
-
-        # diff_health_opponent = np.array(prior_health_opponent) - np.array(
-        #     health_opponent
-        # )
-
-        # # Reward for reducing the opponent's health
-        # reward += np.sum(diff_health_opponent)
-
-        # # Count number of fainted opponents (num 0's in array)
-        # prior_num_fainted = sum(1 for hp in prior_health_opponent if hp == 0)
-        # num_fainted = sum(1 for hp in health_opponent if hp == 0)
-        # reward += (num_fainted - prior_num_fainted)
-
-        # Damage of move
-        # move_damages = logs[-2].get("state")
-        # chosen_damage = move_damages[chosen_action]
-
-        # if chosen_action == -2:
-        #     reward = -1.0
-
-        # else:
-        #     pass
-
-        # # Index of max damage
-        # max_damage = max(move_damages)
-
-        # # Handle division by zero case
-        # if max_damage == 0:
-        #     reward = 0.0  # No damage possible, reward is 0
-        # else:
-        #     reward = chosen_damage / max_damage
-
-        # --- IDK ---
-        # prev_action = -1
-        # # Previous action
-        # if len(logs) >= 3:
-        #     prev_action_info = logs[-3].get("action")
-        #     if prev_action_info is not None:
-        #         prev_action = prev_action_info.get("chosen_action")
-
-        # if (reward != 1.0 and chosen_action == prev_action):
-        #     reward = -1.0  # Penalize repeating same action if not max reward
-
-        # tanh scaling
-        # tanh_reward = np.tanh(reward / 200.0)  # Scale to 0 to 1 range
-
+        # Logging
         logs[-2]["reward"] = {"reward": reward, "suggested": suggested_move_index}
         if PRINT_LOGS: print(f"Reward: {reward} ({suggested_move_index})")
         return reward
 
-    # NEEDS TO BE CHECKED
-    def getMoveIndexFromSimple(self, battle: Battle) -> int:
+    # MARK: ORDER -> INDEX
+    def getIndexFromOrder(self, battle: Battle, battleOrder: BattleOrder) -> int:
         """
         Returns the index of the given order in the current battle's available orders.
 
@@ -786,23 +666,28 @@ class ShowdownEnvironment(BaseShowdownEnv):
         """
         # Switches: 0 - 5
         # Moves: 6 - 9
-
-        simple_agent_move = simpleAgent.choose_move(battle)
-        if not isinstance(simple_agent_move, SingleBattleOrder):
+        if not isinstance(battleOrder, SingleBattleOrder):
             raise TypeError("ERROR: Expected simple_agent_move to be of type SingleBattleOrder")
-        simple_agent_order = simple_agent_move.order
+        order = battleOrder.order
 
-        if isinstance(simple_agent_order, Move):
-            move_index = battle.available_moves.index(simple_agent_order)
+        if isinstance(order, Move):
+            move_index = battle.available_moves.index(order)
             return move_index + 6  # Move index
 
-        if isinstance(simple_agent_order, Pokemon):
+        if isinstance(order, Pokemon):
             team_species = [mon.species for mon in battle.team.values()]
-            pokemon_index = team_species.index(simple_agent_order.species)
+            pokemon_index = team_species.index(order.species)
             return pokemon_index  # Switch index
 
-        print(f"ERROR: Order {simple_agent_order} is neither Move nor Pokemon")
+        print(f"ERROR: Order {order} is neither Move nor Pokemon")
         return -2
+
+    def getMoveIndexFromSimple(self, battle: Battle) -> int:
+        # Switches: 0 - 5
+        # Moves: 6 - 9
+        simple_agent_order = simpleAgent.choose_move(battle)
+        return self.getIndexFromOrder(battle, simple_agent_order)
+
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: OBSERVATION SIZE
