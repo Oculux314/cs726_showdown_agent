@@ -619,31 +619,31 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         reward = 0.0
 
-        prev_battle = self._get_prior_battle(battle)
-        if prev_battle is None:
-            print("ERROR: prior battle is None, cannot calculate reward")
-            return 0.0
+        # prev_battle = self._get_prior_battle(battle)
+        # if prev_battle is None:
+        #     print("ERROR: prior battle is None, cannot calculate reward")
+        #     return 0.0
 
-        # Reward for winning
-        if battle.won:
-            reward += 1.0
-        elif battle.lost:
-            reward -= 1.0
-        # Reward for KO
-        num_ko = self.getNumberOfFainted(battle.opponent_team) - self.getNumberOfFainted(prev_battle.opponent_team)
-        num_ko_self = self.getNumberOfFainted(battle.team) - self.getNumberOfFainted(prev_battle.team)
-        reward += (num_ko - num_ko_self) * 0.1
-        # Reward for damage dealt
-        if battle.active_pokemon and battle.opponent_active_pokemon:
-            damage_dealt = self.getDamageDealt(prev_battle.opponent_active_pokemon, battle.opponent_active_pokemon)
-            damage_taken = self.getDamageDealt(prev_battle.active_pokemon, battle.active_pokemon)
-            reward += (damage_dealt - damage_taken) * 0.1
+        # # Reward for winning
+        # if battle.won:
+        #     reward += 1.0
+        # elif battle.lost:
+        #     reward -= 1.0
+        # # Reward for KO
+        # num_ko = self.getNumberOfFainted(battle.opponent_team) - self.getNumberOfFainted(prev_battle.opponent_team)
+        # num_ko_self = self.getNumberOfFainted(battle.team) - self.getNumberOfFainted(prev_battle.team)
+        # reward += (num_ko - num_ko_self) * 0.1
+        # # Reward for damage dealt
+        # if battle.active_pokemon and battle.opponent_active_pokemon:
+        #     damage_dealt = self.getDamageDealt(prev_battle.opponent_active_pokemon, battle.opponent_active_pokemon)
+        #     damage_taken = self.getDamageDealt(prev_battle.active_pokemon, battle.active_pokemon)
+        #     reward += (damage_dealt - damage_taken) * 0.1
 
-        # Logging
-        status_str = "WIN" if battle.won else ("LOSS" if battle.lost else "ONGOING")
-        stats_string = f"{status_str} | +{num_ko} KOs, -{num_ko_self} Team, DID {damage_dealt:.2f} dmg, TOOK {damage_taken:.2f} dmg"
-        logs[-2]["reward"] = {"reward": reward, "suggested": stats_string}
-        if PRINT_LOGS: print(f"Reward: {reward} ({stats_string})")
+        # # Logging
+        # status_str = "WIN" if battle.won else ("LOSS" if battle.lost else "ONGOING")
+        # stats_string = f"{status_str} | +{num_ko} KOs, -{num_ko_self} Team, DID {damage_dealt:.2f} dmg, TOOK {damage_taken:.2f} dmg"
+        # logs[-2]["reward"] = {"reward": reward, "suggested": stats_string}
+        # if PRINT_LOGS: print(f"Reward: {reward} ({stats_string})")
         return reward
 
     # MARK: HELPERS
@@ -710,7 +710,7 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         # Simply change this number to the number of features you want to include in the observation from embed_battle.
         # If you find a way to automate this, please let me know!
-        return 39
+        return 1
 
     # MARK: OBSERVATION
     def embed_battle(self, battle: AbstractBattle) -> np.ndarray[np.float32, np.dtype[np.float32]]:
@@ -822,26 +822,27 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # MARK: Final vector
         final_vector = np.concatenate(
             [
-                self.normaliseArray(moves_true_dmg, 400.0),  # Normalize damage to [0, 1] assuming max damage is 400
-                self.normaliseArray(moves_pp, 64.0),  # Normalize PP to [0, 1] assuming max PP is 64
-                [health_active],
-                # self.oneHotType(type_active_1),
-                # self.oneHotType(type_active_2),
-                [type_active_1],
-                [type_active_2],
-                health_team,
-                # self.oneHotTypeTeam(team_types_1),
-                # self.oneHotTypeTeam(team_types_2),
-                team_types_1,
-                team_types_2,
-                [current_pokemon_index],
-                # [prev_action],
-                [health_opponent],
-                health_opp_team,
-                # self.oneHotType(type1_opponent),
-                # self.oneHotType(type2_opponent),
-                [type1_opponent],
-                [type2_opponent],
+                [0]
+                # self.normaliseArray(moves_true_dmg, 400.0),  # Normalize damage to [0, 1] assuming max damage is 400
+                # self.normaliseArray(moves_pp, 64.0),  # Normalize PP to [0, 1] assuming max PP is 64
+                # [health_active],
+                # # self.oneHotType(type_active_1),
+                # # self.oneHotType(type_active_2),
+                # [type_active_1],
+                # [type_active_2],
+                # health_team,
+                # # self.oneHotTypeTeam(team_types_1),
+                # # self.oneHotTypeTeam(team_types_2),
+                # team_types_1,
+                # team_types_2,
+                # [current_pokemon_index],
+                # # [prev_action],
+                # [health_opponent],
+                # health_opp_team,
+                # # self.oneHotType(type1_opponent),
+                # # self.oneHotType(type2_opponent),
+                # [type1_opponent],
+                # [type2_opponent],
             ]
         )
 
