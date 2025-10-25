@@ -23,6 +23,7 @@ from poke_env.battle import Pokemon
 from poke_env.calc.damage_calc_gen9 import calculate_damage
 from poke_env.battle import Effect
 from poke_env.data.normalize import to_id_str
+from poke_env.battle.pokemon_type import PokemonType
 import requests
 
 from showdown_gym.base_environment import BaseShowdownEnv
@@ -618,24 +619,45 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         reward = 0.0
 
-        action_info = logs[-2].get("action")
-        if action_info is None:
-            print("ERROR: No action info in logs for reward calculation")
-            return 0.0
-        chosen_action = action_info.get("chosen_action")
-
         prev_battle = self._get_prior_battle(battle)
-        if prev_battle is None or not isinstance(prev_battle, Battle):
-            print("ERROR: No prior battle for reward calculation")
+        if prev_battle is None:
+            print("ERROR: prior battle is None, cannot calculate reward")
             return 0.0
-        suggested_move_index = self.getMoveIndexFromSimple(prev_battle)
-        if chosen_action == suggested_move_index:
-            reward = 1.0
+
+        # Reward for winning
+        if battle.won:
+            reward += 1.0
+        elif battle.lost:
+            reward -= 1.0
+        # Reward for KO
+        num_ko = self.getNumberOfFainted(battle.opponent_team) - self.getNumberOfFainted(prev_battle.opponent_team)
+        num_ko_self = self.getNumberOfFainted(battle.team) - self.getNumberOfFainted(prev_battle.team)
+        reward += (num_ko - num_ko_self) * 0.1
+        # Reward for damage dealt
+        if battle.active_pokemon and battle.opponent_active_pokemon:
+            damage_dealt = self.getDamageDealt(prev_battle.opponent_active_pokemon, battle.opponent_active_pokemon)
+            damage_taken = self.getDamageDealt(prev_battle.active_pokemon, battle.active_pokemon)
+            reward += (damage_dealt - damage_taken) * 0.1
 
         # Logging
-        logs[-2]["reward"] = {"reward": reward, "suggested": suggested_move_index}
-        if PRINT_LOGS: print(f"Reward: {reward} ({suggested_move_index})")
+        status_str = "WIN" if battle.won else ("LOSS" if battle.lost else "ONGOING")
+        stats_string = f"{status_str} | +{num_ko} KOs, -{num_ko_self} Team, DID {damage_dealt:.2f} dmg, TOOK {damage_taken:.2f} dmg"
+        logs[-2]["reward"] = {"reward": reward, "suggested": stats_string}
+        if PRINT_LOGS: print(f"Reward: {reward} ({stats_string})")
         return reward
+
+    # MARK: HELPERS
+    def getNumberOfFainted(self, team: Dict[str, Pokemon]) -> int:
+        fainted_count = 0
+        for mon in team.values():
+            if mon.fainted:
+                fainted_count += 1
+        return fainted_count
+
+    def getDamageDealt(self, prior_pokemon: Pokemon, current_pokemon: Pokemon) -> float:
+        if prior_pokemon.species != current_pokemon.species:
+            return 0.0
+        return prior_pokemon.current_hp_fraction - current_pokemon.current_hp_fraction
 
     # MARK: ORDER -> INDEX
     def getIndexFromOrder(self, battle: Battle, battleOrder: BattleOrder) -> int:
@@ -797,23 +819,29 @@ class ShowdownEnvironment(BaseShowdownEnv):
         # Caluclate the length of the final_vector and make sure to update the value in _observation_size above #
         #########################################################################################################
 
-        # Final vector - single array with health of both teams
+        # MARK: Final vector
         final_vector = np.concatenate(
             [
-                # moves_damages,
-                # move_types,
-                moves_true_dmg,
-                moves_pp,
+                self.normaliseArray(moves_true_dmg, 400.0),  # Normalize damage to [0, 1] assuming max damage is 400
+                self.normaliseArray(moves_pp, 64.0),  # Normalize PP to [0, 1] assuming max PP is 64
                 [health_active],
-                [type_active_1, type_active_2],
+                # self.oneHotType(type_active_1),
+                # self.oneHotType(type_active_2),
+                [type_active_1],
+                [type_active_2],
                 health_team,
+                # self.oneHotTypeTeam(team_types_1),
+                # self.oneHotTypeTeam(team_types_2),
                 team_types_1,
                 team_types_2,
                 [current_pokemon_index],
                 # [prev_action],
                 [health_opponent],
                 health_opp_team,
-                [type1_opponent, type2_opponent],
+                # self.oneHotType(type1_opponent),
+                # self.oneHotType(type2_opponent),
+                [type1_opponent],
+                [type2_opponent],
             ]
         )
 
@@ -828,6 +856,38 @@ class ShowdownEnvironment(BaseShowdownEnv):
 
         return final_vector
 
+    # MARK: HELPERS
+    def normaliseArray(self, arr: list[float], max_val: float) -> list[float]:
+        for i in range(len(arr)):
+            arr[i] = arr[i] / max_val
+        return arr
+
+    def oneHotTypeTeam(self, pokemon_types: list[int]) -> np.ndarray[np.float32, np.dtype[np.float32]]:
+        one_hot_team = np.zeros(18 * 6, dtype=np.float32)
+        for i, pokemon_type in enumerate(pokemon_types):
+            start_index = i * 18
+            if pokemon_type == 0:
+                # None
+                continue
+            one_hot_team[start_index:start_index + 18] = self.oneHotType(pokemon_type)
+        return one_hot_team
+
+    def oneHotType(self, pokemon_type: int) -> np.ndarray[np.float32, np.dtype[np.float32]]:
+        if pokemon_type == 0:
+            # None
+            return np.zeros(18, dtype=np.float32)
+        return self.oneHotEncode(pokemon_type - 1, 18)
+
+    def oneHotEncode(self, index: int, size: int) -> np.ndarray[np.float32, np.dtype[np.float32]]:
+        one_hot = np.zeros(size, dtype=np.float32)
+        if index < 0:
+            print (f"WARN: oneHotEncode received negative index {index}, returning all zeros")
+            return one_hot
+        if index >= size:
+            print (f"WARN: oneHotEncode received out-of-bounds index {index} for size {size}, returning all zeros")
+            return one_hot
+        one_hot[index] = 1.0
+        return one_hot
 
 ########################################
 # DO NOT EDIT THE CODE BELOW THIS LINE #

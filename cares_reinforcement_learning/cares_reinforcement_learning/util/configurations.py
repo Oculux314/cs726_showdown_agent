@@ -114,8 +114,8 @@ class AlgorithmConfig(SubscriptableClass):
 # MARK: DQN
 class DQNConfig(AlgorithmConfig):
     algorithm: str = Field("DQN", Literal=True)
-    lr: float = 1e-3
-    gamma: float = 0.0
+    lr: float = 1e-4
+    gamma: float = 0.99
     tau: float = 1.0
 
     batch_size: int = 32
@@ -123,7 +123,7 @@ class DQNConfig(AlgorithmConfig):
     target_update_freq: int = 1000
 
     # Double DQN
-    use_double_dqn: int = 0
+    use_double_dqn: int = 1
 
     # PER
     per_sampling_strategy: str = "stratified"
@@ -133,7 +133,7 @@ class DQNConfig(AlgorithmConfig):
     per_alpha: float = 0.6
 
     # n-step
-    n_step: int = 1
+    n_step: int = 3
 
     max_grad_norm: float | None = None
 
@@ -145,11 +145,11 @@ class DQNConfig(AlgorithmConfig):
 
     network_config: MLPConfig = MLPConfig(
         layers=[
-            TrainableLayer(layer_type="Linear", out_features=64),
+            TrainableLayer(layer_type="Linear", out_features=128),
             FunctionLayer(layer_type="ReLU"),
-            TrainableLayer(layer_type="Linear", in_features=64, out_features=64),
+            TrainableLayer(layer_type="Linear", in_features=128, out_features=128),
             FunctionLayer(layer_type="ReLU"),
-            TrainableLayer(layer_type="Linear", in_features=64),
+            TrainableLayer(layer_type="Linear", in_features=128),
         ]
     )
 
@@ -238,7 +238,7 @@ class C51Config(DQNConfig):
     algorithm: str = Field("C51", Literal=True)
 
     num_atoms: int = 51
-    v_min: float = 0.0
+    v_min: float = -1.0
     v_max: float = 1.0
 
 
