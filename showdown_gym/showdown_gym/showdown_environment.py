@@ -570,12 +570,84 @@ class ShowdownEnvironment(BaseShowdownEnv):
         """
 
         if PRINT_LOGS: print("--------------------------------------------------------")
-        # 0-3 => 6-9
-        true_action = action
+        shield_threshold = 1.0
 
+
+        battle = self.battle1
+        if battle is None or not isinstance(battle, Battle):
+            if PRINT_LOGS: print(f"No battle found, returning action {action} as is")
+            return action
+
+        best_action_ea = self.getBestActionEA(battle)
+        # return np.int64(best_action_ea)
+        best_action_type_ea = self.actionToType(best_action_ea)
+        best_action_type_rl = self.actionToType(action)
+        print(f"Processing action: {action}")
+        print(f"EA chose action: {best_action_ea}")
+
+        # Shielded RL with hardcoded logic
+        true_action: np.int64 = action
+        if best_action_type_ea != best_action_type_rl:
+            # Override with EA if RL is chosing wrong type of action (switch vs move)
+            true_action = np.int64(best_action_ea)
+
+        else:
+            if self.actionToType(action) == "switch":
+                # Switch 0-5
+                switch_ratings_ea = self.getSwitchRatingsEA(battle)
+                if len(switch_ratings_ea) > 0:
+                    best_rating_ea = max(switch_ratings_ea)
+                    chosen_rating = switch_ratings_ea[action]
+                    if chosen_rating < shield_threshold * best_rating_ea:
+                        true_action = np.int64(best_action_ea)
+            else:
+                # Move 6-9
+                if battle.active_pokemon is not None:
+                    if len(battle.available_moves) <= action - 6:
+                        # usually only 1 move available
+                        true_action = np.int64(best_action_ea)
+                    else:
+                        if battle.available_moves[action - 6].base_power != 0: # Ignore status moves for now
+                            move_ratings_ea = self.getMoveRatingsEA(battle)
+                            if len(move_ratings_ea) > 0:
+                                best_rating_ea = max(move_ratings_ea)
+                                chosen_rating = move_ratings_ea[action - 6]
+                                if chosen_rating < shield_threshold * best_rating_ea:
+                                    true_action = np.int64(best_action_ea)
+
+        # Logging
         if PRINT_LOGS: print(f"Action: {action} ({true_action})")
         logs[-1]["action"] = {"chosen_action": action, "true_action": true_action}
         return true_action
+
+    # MARK: Helpers
+    def actionToType(self, action: np.int64 | int) -> str:
+        if action < 6:
+            return "switch"
+        else:
+            return "move"
+
+    def getBestActionEA(self, battle: Battle) -> int:
+        battleOrder = simpleAgent.choose_move(battle)
+        return self.getIndexFromOrder(battle, battleOrder)
+
+    def getMoveRatingsEA(self, battle: Battle) -> list[float]:
+        if not battle.active_pokemon or not battle.opponent_active_pokemon:
+            return []
+        move_ratings: list[float] = []
+        for move in battle.available_moves:
+            rating = expertAgent.estimate_damage(battle.active_pokemon, battle.opponent_active_pokemon, move, battle, True)
+            move_ratings.append((rating[0] + rating[1]) / 2.0)
+        return move_ratings
+
+    def getSwitchRatingsEA(self, battle: Battle) -> list[float]:
+        if not battle.active_pokemon or not battle.opponent_active_pokemon:
+            return []
+        switch_ratings: list[float] = []
+        for poke in battle.available_switches:
+            rating = expertAgent.getTypeScoreTwoWay(poke, battle.opponent_active_pokemon) if battle.opponent_active_pokemon else 0.0
+            switch_ratings.append(rating)
+        return switch_ratings
 
     # -----------------------------------------------------------------------------------------------------------------------------------------
     # MARK: INFO
