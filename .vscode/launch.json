@@ -33,6 +33,19 @@
         "--data_path", "C:\\repos\\uni\\cs726\\logs\\6-Rdmg-S11-A4Finished-Rainbow-random-max-25_10_17_01-02-55",
         "--seed", "10"
       ]
+    },
+    {
+      "name": "Test",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "gymnasium_envrionments/scripts/run.py",
+      "console": "integratedTerminal",
+      "args": [
+        "test",
+        "--seeds", "10",
+        "--episodes", "100",
+        "--data_path", "C:\\repos\\uni\\cs726\\logs\\1-Initial\\0-DQN-random-max-RANDOM-25_10_25_19-42-47"
+      ]
     }
   ]
 }
